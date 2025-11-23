@@ -55,7 +55,7 @@ RXPGuides.RegisterGuide([[
     step
         .goto Hellfire Peninsula,56.71,37.47
         >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Floyd Pinkus|r
-        .home
+        .home >> Set your Hearthstone to Thrallmar
         .target Floyd Pinkus  
 
 	step
@@ -65,7 +65,7 @@ RXPGuides.RegisterGuide([[
 	step
 		>>Clear |cFFfa9602The Blood Furnace|r until you reach 5999 reputation into friendly with |cRXP_FRIENDLY_Thrallmar|r
         >>This will take around 12 runs with an average of 750 rep per run
-        .reputation,947,Friendly,5999
+        .reputation 947,Friendly,5999
 
 	step
 		#completewith next
@@ -132,14 +132,14 @@ RXPGuides.RegisterGuide([[
 		#scryer
 		.goto Shattrath City,56.2,81.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Innkeeper Haelthol|r
-		.home
+		.home >> Set your Hearthstone to Shattrath City
 		.target Innkeeper Haelthol
 
 	step
 		#aldor
 		.goto Shattrath City,28.0,49.2
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Minalei|r
-		.home
+		.home >> Set your Hearthstone to Shattrath City
 		.target Minalei		
 
 	step
@@ -166,7 +166,7 @@ RXPGuides.RegisterGuide([[
 
     step
 		>>Clear |cFFfa9602The Slave Pens|r until you reach level 65 and 5999 reputation into friendly with |cRXP_FRIENDLY_Cenarion Expedition|r
-        .reputation,942,Friendly,5999   
+        .reputation 942,Friendly,5999   
         .xp 65
 
 	step
@@ -263,7 +263,7 @@ RXPGuides.RegisterGuide([[
 	step
 		>>Clear |cFFfa9602The Sethekk Halls|r until you reach 5999 reputation into friendly with |cRXP_FRIENDLY_Lower City|r
         >>This will take around 8 runs with an average of 1139 rep per run
-        .reputation,1011,Friendly,5999
+        .reputation 1011,Friendly,5999
 		.collect 27991
 
 	step
@@ -405,7 +405,7 @@ RXPGuides.RegisterGuide([[
 		#sticky
 		#completewith ShattAlterac
 		>>Hearth or Mage portal to Shattrath City
-		.zoneskip Shattrath
+		.zoneskip Shattrath City
 
 	step
 		#sticky
@@ -527,7 +527,7 @@ RXPGuides.RegisterGuide([[
 	step
 		>>Clear |cFFfa9602Black Morass|r until you are 1000 rep away from revered with |cRXP_FRIENDLY_Keepers of Time|r
         >>This will take around 5-6 runs with an average of 1100 rep per run
-        .reputation,989,Honored,11000
+        .reputation 989,Honored,11000
 
 	step
 		.hs >> Hearth to Shattrath City
@@ -556,7 +556,7 @@ RXPGuides.RegisterGuide([[
 		>>Clear |cFFfa9602The Shadow Labyrinth|r until you reach revered reputation with |cRXP_FRIENDLY_Lower City|r
         >>This will take around 6 runs with an average of 2000 rep per run
 		>> You can opt to clear only the first two bosses of the dungeon for improved efficiency
-        .reputation,1011,Revered
+        .reputation 1011,Revered
 		
 	step
 		.hs >> Hearth to Shattrath City
@@ -612,7 +612,7 @@ RXPGuides.RegisterGuide([[
     step
 		>>Clear |cFFfa9602The Steamvault|r until you reach revered reputation with |cRXP_FRIENDLY_Cenarion Expedition|r
         >>This will take around 7 runs with an average of 1800 rep per run
-        .reputation,942,Revered
+        .reputation 942,Revered
 
 	step
 		.hs >> Hearth to Shattrath City
@@ -644,7 +644,7 @@ RXPGuides.RegisterGuide([[
 	step
 		>>Clear |cFFfa9602The Shattered Halls|r until you reach revered reputation with |cRXP_FRIENDLY_Thrallmar|r
         >>This will take around 8 runs with an average of 1600 rep per run
-        .reputation,947,Revered  
+        .reputation 947,Revered  
 
 	step
 		.hs >> Hearth to Shattrath City
@@ -835,7 +835,7 @@ RXPGuides.RegisterGuide([[
         >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nutral|r
         .fly Area 52 >>Fly to |cFFfa9602Area 52|r
         .target Nutral
-        .zoneskip Area 52
+        .subzoneskip 3712
 
 	step
 		.goto Netherstorm,74.4,57.7,20 >> Fly to The Arcatraz, unlock the door, then go inside
@@ -902,7 +902,7 @@ RXPGuides.RegisterGuide([[
         >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nutral|r
         .fly Area 52 >>Fly to |cFFfa9602Area 52|r
         .target Nutral
-        .zoneskip Area 52
+        .subzoneskip 3712
 
 	step
 		.goto Netherstorm,71.7,55.1,20 >> Fly to |cFFfa9602The Botanica|r, then go inside
@@ -910,7 +910,7 @@ RXPGuides.RegisterGuide([[
 	step
 		>>Clear |cFFfa9602The Botancia|r until you reach revered reputation with |cRXP_FRIENDLY_Sha'tar|r
         >>This will take around 8 runs with an average of 1600 rep per run
-        .reputation,935,Revered  
+        .reputation 935,Revered  
 
 	step
 		+Congratulations, you have now reached Level 70, unlocked 15/15 Heroic Dungeons, got your Flying Mount and are attuned for Karazhan.
