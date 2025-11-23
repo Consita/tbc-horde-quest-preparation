@@ -2797,7 +2797,7 @@ RXPGuides.RegisterGuide([[
 			.goto Winterspring,69.62,38.31
 			>>Kill |cRXP_ENEMY_High Chief Winterfall|r. Loot him for his |T133740:0|t[|cRXP_LOOT_Crudely-written Log|r]. Do not accept the quest! It is used in |cRXP_WARN_TBC!|r
 			.complete 5121,1 
-			.collect 12842,1,5121
+			.collect 12842,1,5121,1
 			.mob High Chief Winterfall	
 
 		step
