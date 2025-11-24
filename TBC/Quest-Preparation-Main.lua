@@ -547,10 +547,9 @@ RXPGuides.RegisterGuide([[
 			.accept 3527 >> Accept The Prophecy of Mosh'aru
 
 		step
-			>>Now you should be looking for a group to Zul'Farrak to complete |cRXP_LOOT_Accept The Prophecy of Mosh'aru|r. This can be done solo as a level 60
-			.goto Tanaris,38.73,20.02 >> Travel to Zul'Farrak
-			.zoneskip 1176
-			.isOnQuest 3527
+			#completewith next
+			>>Now you should be looking for a group to Zul'Farrak. This can be done solo as a level 60
+			.goto Tanaris,38.73,20.02,20 >> Travel to Zul'Farrak
 
 		step
 			#completewith next
