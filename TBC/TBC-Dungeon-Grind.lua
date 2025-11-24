@@ -1,3 +1,7 @@
+if RXPGuides == nil then
+	return
+end
+
 RXPGuides.RegisterGuide([[
 #tbc
 #version 3
@@ -41,7 +45,7 @@ RXPGuides.RegisterGuide([[
     step
         .goto Hellfire Peninsula,87.34,48.13
         >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vlagga Freyfeather|r
-		.fly Thrallmar >> Fly to Thrallmar
+		.fly Thrallmar >> Fly to |cFFfa9602Thrallmar|r
         .skipgossip
         .target Vlagga Freyfeather       
         
@@ -55,13 +59,13 @@ RXPGuides.RegisterGuide([[
     step
         .goto Hellfire Peninsula,56.71,37.47
         >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Floyd Pinkus|r
-        .home >> Set your Hearthstone to Thrallmar
+        .home >> Set your Hearthstone to |cFFfa9602Thrallmar|r
         .target Floyd Pinkus  
 
 	step
 		#completewith next
 		.goto Hellfire Peninsula,46.0,58.7,20,0
-		.goto Hellfire Peninsula,46.1,51.7,20 >> Travel to Blood Furnace. At the waypoint look for wooden stairs that lead up to the wall. Riding along this wall will take you to the instance.
+		.goto Hellfire Peninsula,46.1,51.7,20 >> Travel to |cFFfa9602The Blood Furnace|r. At the waypoint look for wooden stairs that lead up to the wall. Riding along this wall will take you to the instance.
 
 	step
 		>>Clear |cFFfa9602The Blood Furnace|r until you reach 5999 reputation into friendly with |cRXP_FRIENDLY_Thrallmar|r
@@ -70,7 +74,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.subzone 3718 >>Travel to Swamprat Post in Zangarmarsh
+		.subzone 3718 >>Travel to |cFFfa9602Swamprat Post|r in Zangarmarsh
 
     step
         .goto Zangarmarsh,84.76,55.11
@@ -80,7 +84,7 @@ RXPGuides.RegisterGuide([[
     
 	step
 		#completewith next
-		.zone Shattrath City >>Travel to Shattrath City
+		.zone Shattrath City >>Travel to |cFFfa9602Shattrath City|r
 		.zoneskip Shattrath City
 		
 	step
@@ -133,20 +137,20 @@ RXPGuides.RegisterGuide([[
 		#scryer
 		.goto Shattrath City,56.2,81.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Innkeeper Haelthol|r
-		.home >> Set your Hearthstone to Shattrath City
+		.home >> Set your Hearthstone to |cFFfa9602Shattrath City|r
 		.target Innkeeper Haelthol
 
 	step
 		#aldor
 		.goto Shattrath City,28.0,49.2
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Minalei|r
-		.home >> Set your Hearthstone to Shattrath City
+		.home >> Set your Hearthstone to |cFFfa9602Shattrath City|r
 		.target Minalei		
 
 	step
 		.goto Shattrath City,64.05,41.12
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nutral|r
-		.fp Shattrath
+		.fp Shattrath City
 		.target Nutral
 
     step
@@ -160,11 +164,11 @@ RXPGuides.RegisterGuide([[
 	step
 		#completewith next
 		.goto Zangarmarsh,50.4,40.8,15,0
-		.goto Zangarmarsh,51.9,37.8,20 >>Swim to the center of Coilfang Reservoir until you are over the open drain pipe below. Dive and swim through it until you find the underwater cavern.
+		.goto Zangarmarsh,51.9,37.8,20 >>Swim to the center of |cFFfa9602Coilfang Reservoir|r until you are over the open drain pipe below. Dive and swim through it until you find the underwater cavern.
 
 	step
 		#completewith next
-		.goto Zangarmarsh,48.9,35.7,20 >> Enter The Slave Pens
+		.goto Zangarmarsh,48.9,35.7,20 >> Enter |cFFfa9602The Slave Pens|r
 
     step
 		>>Clear |cFFfa9602The Slave Pens|r until you reach level 65 and 5999 reputation into friendly with |cRXP_FRIENDLY_Cenarion Expedition|r
@@ -173,11 +177,11 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.hs >>Hearth to Shattrath
+		.hs >>Hearth to |cFFfa9602Shattrath City|r
 		.zoneskip Shattrath City
 
 	step
-		>>Travel to the Sethekk Area of Lower City
+		>>Travel to the Sethekk Area of |cFFfa9602Lower City|r
 		.goto Shattrath City, 58.0,15.5
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Oloraak|r
 		.accept 10180 >> Accept Can't Stay Away	
@@ -185,7 +189,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.subzone 3683 >>Travel to Stonebreaker Hold	
+		.subzone 3683 >>Travel to |cFFfa9602Stonebreaker Hold|r
 
 	step
 		.goto Terokkar Forest,49.2,43.6
@@ -194,19 +198,24 @@ RXPGuides.RegisterGuide([[
 		.target Kerna
 
 	step
-		.goto Terokkar Forest,39.4,58.6 
-		>>Run to the entrance of Mana Tombs in Auchindoun.
+		.goto Terokkar Forest,39.4,58.5
+		>>Run to the entrance of |cFFfa9602Mana Tombs|r in Auchindoun.
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Artificer Morphalius|r
 		.accept 10216
 		.target Artificer Morphalius
 
 	step
-		.goto Terokkar Forest,39.4,58.6
+		.goto Terokkar Forest,39.4,58.5
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nexus-Prince Haramad|r
 		.accept 10165
 		.target Nexus-Prince Haramad
 
 	step
+		#completewith next
+		.goto Terokkar Forest,39.6,57.7,10 >>Enter |cFFfa9602Mana Tombs|r
+
+	step
+		>>Kill 10x |cRXP_ENEMY_Ethereal Crypt Raider|r, 5x |cRXP_ENEMY_Nexus Stalker|r, 5x |cRXP_ENEMY_Ethereal Sorcerer|r, 5x |cRXP_ENEMY_Ethereal Spellbinder|r and |cRXP_ENEMY_Nexus-Prince Shaffar|r within |cFFfa9602Mana Tombs|r. Loot |cRXP_ENEMY_Nexus-Prince Shaffar|r for |cRXP_LOOT_Shaffar's Wrappings|r
 		.complete 10216,1
 		.complete 10216,2
 		.complete 10216,3
@@ -219,17 +228,18 @@ RXPGuides.RegisterGuide([[
 		.mob Nexus-Prince Shaffar
 
 	step
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ethereal Transporter Control Panel|r
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ethereal Transporter Control Panel|r within |cFFfa9602Mana Tombs|r
 		.turnin 10216 >>Turn In Safety Is Job One		
 
 	step
-		.accept 10218 >>Complete Escort Quest Starting at Cryo-Engineer Sha'heen
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Cryo-Engineer Sha'heen|r within |cFFfa9602Mana Tombs|r
+		.accept 10218
 		.complete 10218,1
 		.target Cryo-Engineer Sha'heen
 
 	step
 		#sticky
-		.goto Terokkar Forest,39.4,58.6
+		.goto Terokkar Forest,39.4,58.5
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nexus-Prince Haramad|r
 		.turnin 10165
 		.turnin 10218
@@ -241,7 +251,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.goto Terokkar Forest,43.1,65.6,20 >>Run to the entrance of Sethekk Halls in Auchindoun.
+		.goto Terokkar Forest,43.1,65.6,20 >>Run to the entrance of |cFFfa9602Sethekk Halls|r in Auchindoun.
 
 	step
 		.goto Terokkar Forest,44.1,65.0
@@ -252,12 +262,34 @@ RXPGuides.RegisterGuide([[
 		.target Isfar
 
 	step
-		>>Make sure you loot the Key to Shadow Labyrinth at the end of the dungeon in the chest behind the boss.
-		.complete 10097,1 
-		.complete 10098,1 
-		.collect 27991,1 
+		#completewith next
+		.goto Terokkar Forest,44.9,65.6,10 >>Enter |cFFfa9602Sethekk Halls|r
 
 	step
+		>>Kill |cRXP_ENEMY_Darkweaver Syth|r and loot him for |cRXP_LOOT_Terokk's Mask|r. Free |cRXP_FRIENDLY_Lakka|r afterwards
+		.complete 10097,1 
+		.complete 10098,1 	
+		.complete 10097,2
+		.mob Darkweaver Syth
+		.target Lakka
+		.skipgossip
+
+	step
+		#completewith next
+		>>Loot |cRXP_LOOT_The Saga of Terokk|r. It's a small red book and in the room just before reaching |cRXP_ENEMY_Talon King Ikiss|r
+		.complete 10098,2 		
+
+	step
+		#completewith next
+		>>Kill |cRXP_ENEMY_Talon King Ikiss|r and loot him for |cRXP_LOOT_Terokk's Quill|r 
+		.complete 10098,3
+		
+	step
+		>>Make sure you loot the |cRXP_LOOT_Shadow Labyrinth Key|r at the end of the dungeon in the chest behind |cRXP_ENEMY_Talon King Ikiss|r
+		.collect 27991,1 			
+
+	step
+		#completewith next
 		.goto Terokkar Forest,44.1,65.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Isfar|r
 		.turnin 10097 >>Turn In Brother Against Brother
@@ -272,13 +304,13 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.hs >> Hearth to Shattrath City
+		.hs >> Hearth to |cFFfa9602Shattrath City|r
 		.zoneskip Shattrath City
 
 	step
 		#completewith next
 		.goto Shattrath City,52.2,52.8
-		.zone Orgrimmar >> Take the Portal to Orgrimmar
+		.zone Orgrimmar >> Take the Portal to |cFFfa9602Orgrimmar|r
 		.zoneskip Orgrimmar
 		
 	step << Paladin
@@ -339,7 +371,7 @@ RXPGuides.RegisterGuide([[
 	step
 		#sticky
 		#completewith PondR
-		>>Kill Ghosts. Loot them for Ghostly Essences
+		>>Kill |cRXP_ENEMY_Ghosts|r. Loot them for |cRXP_LOOT_Ghostly Essences|r
 		.complete 9825,1
 		.mob Unliving Caretaker
 		.mob Damned Soul
@@ -381,7 +413,7 @@ RXPGuides.RegisterGuide([[
 		.goto Deadwind Pass,41.5,63.0,40,0
 		.goto Deadwind Pass,41.7,76.8,40,0
 		.goto Deadwind Pass,46.8,75.1,40,0
-		>>Finish looting Ghosts for the essences. Split your group up to go back to the other cellar for more spawns if you wish
+		>>Finish looting |cRXP_ENEMY_Ghosts|r for the remaining |cRXP_LOOT_Ghostly Essences|r. Split your group up to go back to the other cellar for more spawns if you wish
 		.complete 9825,1 
 		.mob Unliving Caretaker
 		.mob Damned Soul
@@ -397,12 +429,15 @@ RXPGuides.RegisterGuide([[
 		.target Archmage Alturus
 
 	step
+		#completewith next
 		.goto Swamp of Sorrows,46.0,54.7
-		.fly Tarren Mill >>Fly to Tarren Mill or use a Portal to Undercity
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Breyk|r
+		.fly Tarren Mill >>Fly to |cFFfa9602Tarren Mill|r
 		.zoneskip Hillsbrad Foothills
+		.target Breyk
 
 	step
-		>>Ride to the Outskirts of Dalaran and speak to Archmage Cedric.
+		>>Ride to the Outskirts of |cFFfa9602Dalaran|r
 		.goto Alterac Mountains,15.6,54.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Archmage Cedric|r
 		.turnin 9826 >>Turn in Contact from Dalaran
@@ -411,7 +446,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.hs >>Hearth or Mage portal to Shattrath City
+		.hs >>Hearth or Mage portal to |cFFfa9602Shattrath City|r
 		.zoneskip Shattrath City
 
 	step
@@ -421,7 +456,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.zone Shattrath City >> Go to Shattrath City
+		.zone Shattrath City >> Go to |cFFfa9602Shattrath City|r
 		.zoneskip Shattrath City
 
 	step
@@ -433,8 +468,26 @@ RXPGuides.RegisterGuide([[
 	step
 		#completewith next
 		.goto Shattrath City,52.2,52.8
-		.zone Orgrimmar >> Take the Portal to Orgrimmar
+		.zone Orgrimmar >> Take the Portal to |cFFfa9602Orgrimmar|r
 		.zoneskip Orgrimmar
+
+	step
+		.goto Orgrimmar,55.59,62.92
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thathung|r
+		>>|cRXP_BUY_Collect the following items for the |cRXP_LOOT_Shattered Halls Key|r questline:|r
+		>>4x |T133230:0|t[Fel Iron Bar]
+		>>2x |T132854:0|t[Arcane Dust]
+		>>4x |T132839:0|t[Mote of Fire]
+		>>|cRXP_WARN_Buy them from the Auction House if possible|r
+		.collect 23445,4,10757,1
+		.collect 22445,2,10757,1
+		.collect 22574,4,10757,1
+
+	step
+		.goto Orgrimmar,49.58,69.13
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Karus|r
+		.bankdeposit 23445,22445,22574 >>Deposit all items for the |cRXP_LOOT_Shattered Halls Key|r questline
+		.target Karus
 
 	step
 		#completewith next
@@ -445,7 +498,7 @@ RXPGuides.RegisterGuide([[
 		.zoneskip Tanaris
 
 	step
-		.goto Tanaris,66.1,49.7 >>Travel to the Caverns of Time
+		.goto Tanaris,66.1,49.7 >>Travel to the |cFFfa9602Caverns of Time|r
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Steward of Time|r
 		.accept 10279 >>Accept To The Master's Lair
 		.target Steward of Time
@@ -471,7 +524,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.goto Tanaris,55.6,53.6,20 >>Enter Old Hillsbrad Foothills Dungeon.
+		.goto Tanaris,55.6,53.6,20 >>Enter |cFFfa9602Old Hillsbrad Foothills|r
 
 	step
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Erozion|r
@@ -484,21 +537,21 @@ RXPGuides.RegisterGuide([[
 		.complete 10283,1
 
 	step
-		>>Clear up to Thrall who is located in the basement prison of Durnholde Keep.
+		>>Clear up to |cRXP_FRIENDLY_Thrall|r who is located in the basement prison of |cFFfa9602Durnholde Keep|r
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thrall|r
 		.turnin 10283 >>Turn in Taretha's Diversion
 		.accept 10284 >>Accept Escape from Durnholde
 		.target Thrall
 
 	step
-		>>Clear the rest of the dungeon killing the Epoch Hunter in Tarren Mill
+		>>Kill the |cRXP_ENEMY_Epoch Hunter|r in |cFFfa9602Tarren Mill|r
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Erozion|r
 		.turnin 10284 >>Turn in Escape from Durnholde
 		.accept 10285 >>Accept Return to Andormu
 		.target Erozion
 
 	step
-		>>Exit Old Hillsbrad Foothills Dungeon.
+		>>Exit |cFFfa9602Old Hillsbrad Foothills|r
 		.goto Tanaris,58.4,54.2
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Andormu|r
 		.turnin 10285 >>Turn in Return to Andormu
@@ -507,11 +560,11 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.goto Tanaris,57.4,62.8,20 >> Enter The Black Morass
+		.goto Tanaris,57.4,62.8,20 >> Enter |cFFfa9602The Black Morass|r
 
 	step
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sa'at|r
-		>>Make sure each member of your Dungeon Group picks up a Chrono-Beacon from him.
+		>>Make sure each member of your Dungeon Group picks up a |cRXP_LOOT_Chrono-Beacon|r from him
 		.turnin 10296 >>Turn in The Black Morass
 		.accept 10297 >>Accept The Opening of the Dark Portal	
 		.target Sa'at
@@ -539,7 +592,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.hs >> Hearth to Shattrath City
+		.hs >> Hearth to |cFFfa9602Shattrath City|r
 		.zoneskip Shattrath City
 
     step
@@ -553,15 +606,14 @@ RXPGuides.RegisterGuide([[
 	step
 		#sticky
 		#completewith next
-		>>Restock from the vendors outside if you're running low on food/drink/ammo/poisons etc
-		.goto Terokkar Forest,39.7,70.1
+		.goto Terokkar Forest,39.7,70.1,10 >>Restock from the vendors outside if you're running low on food/drink/ammo/poisons etc
 
 	step
 		#completewith next
-		.goto Terokkar Forest,39.7,71.0,30 >> Use the key from Sethekk Halls to open the Shadow Labyrinth Door
+		.goto Terokkar Forest,39.7,71.0,30 >> Use the key from |cFFfa9602Sethekk Halls|r to open the |cFFfa9602Shadow Labyrinth|r Door
 
 	step
-		>>Click the Container on the left after killing Murmur to spawn the |cRXP_ENEMY_First Fragment Guardian|r
+		>>Click the Container on the left after killing |cRXP_ENEMY_Murmur|r to spawn the |cRXP_ENEMY_First Fragment Guardian|r
 		>>Kill and loot him for the |cRXP_LOOT_First Key Fragment|r
 		.complete 9831,1 
 		.mob First Fragment Guardian
@@ -574,7 +626,7 @@ RXPGuides.RegisterGuide([[
 		
 	step
 		#completewith next
-		.hs >> Hearth to Shattrath City
+		.hs >> Hearth to |cFFfa9602Shattrath City|r
 		.zoneskip Shattrath City	
 
     step
@@ -595,7 +647,7 @@ RXPGuides.RegisterGuide([[
 	step
 		#completewith next
 		.goto Zangarmarsh,50.4,40.8,15,0
-		.goto Zangarmarsh,51.9,37.8,20 >>Swim to the center of Coilfang Reservoir until you are over the open drain pipe below. Dive and swim through it until you find the underwater cavern.
+		.goto Zangarmarsh,51.9,37.8,20 >>Swim to the center of |cFFfa9602Coilfang Reservoir|r until you are over the open drain pipe below. Dive and swim through it until you find the underwater cavern.
 
 	step
 		.goto Zangarmarsh,52.3,36.0
@@ -605,7 +657,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.goto Zangarmarsh,50.4,33.3,20 >> Enter The Steamvaults
+		.goto Zangarmarsh,50.4,33.3,20 >> Enter |cFFfa9602The Steamvault|r
 
 	step
 		>>Click the Container underwater near the first boss (northern part of the water) to spawn the |cRXP_ENEMY_Second Fragment Guardian|r
@@ -614,15 +666,19 @@ RXPGuides.RegisterGuide([[
 		.mob Second Fragment Guardian		
 
 	step
+		>>Kill |cRXP_ENEMY_Warlord Kalithresh|r
 		.complete 9763,1
 		.target Warlord Kalithresh
 	
 	step
-		#completewith next
 		.goto Zangarmarsh,52.3,36.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Watcher Jhang|r
 		.turnin 9763 >>Turn In The Warlord's Hideout
 		.target Watcher Jhang
+		
+	step
+		#completewith next
+		.goto Zangarmarsh,50.4,33.3,20 >> Enter |cFFfa9602The Steamvault|r
 
     step
 		>>Clear |cFFfa9602The Steamvault|r until you reach revered reputation with |cRXP_FRIENDLY_Cenarion Expedition|r
@@ -631,8 +687,28 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.hs >> Hearth to Shattrath City
+		.hs >> Hearth to |cFFfa9602Shattrath City|r
 		.zoneskip Shattrath City	
+
+	step
+		#scryer
+		.goto Shattrath City,58.7,61.5
+        >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Berudan Keysworn|r
+		.bankwithdraw 23445,22445,22574 >>Withdraw all items for the |cRXP_LOOT_Shattered Halls Key|r questline
+		.collect 23445,4,10757,1
+		.collect 22445,2,10757,1
+		.collect 22574,4,10757,1
+		.target Berudan Keysworn
+
+	step
+		#aldor
+		.goto Shattrath City,49.4,28.3
+        >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mendorn|r
+		.bankwithdraw 23445,22445,22574 >>Withdraw all items for the |cRXP_LOOT_Shattered Halls Key|r questline
+		.collect 23445,4,10757,1
+		.collect 22445,2,10757,1
+		.collect 22574,4,10757,1
+		.target Mendorn	
 
     step
         #completewith next
@@ -654,8 +730,71 @@ RXPGuides.RegisterGuide([[
 		.skill riding,225,1
 		.target Olrokk
 
+	step
+		.goto Shadowmoon Valley,67.6,36.6
+		>>Kill |cRXP_ENEMY_Smith Gorlunk|r and loot him for |cRXP_LOOT_Primed Key Mold|r
+		.collect 31241,1,10755,1
+		.mob Smith Gorlunk
 
--- include shattered halls key
+	step
+		#completewith next
+		.use 31241
+		.accept 10755
+		.itemcount 31241,1
+
+	step
+		#scryer
+		.goto Shadowmoon Valley,30.3,29.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Drek'Gol|r
+		.fly Thrallmar >>Fly to |cFFfa9602Thrallmar|r
+		.target Drek'Gol
+
+	step
+		#aldor
+		.goto Shadowmoon Valley,63.2,30.4
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maddix|r
+		.fly Thrallmar >>Fly to |cFFfa9602Thrallmar|r
+		.target Maddix
+
+    step
+		.goto Hellfire Peninsula,55.0,36.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nazgrel|r
+		.turnin 10755
+		.accept 10756
+		.target Nazgrel
+
+    step
+		.goto Hellfire Peninsula,53.2,38.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Grand Master Rohok|r
+		.turnin 10756
+		.accept 10757
+		.target Grand Master Rohok	
+
+	step
+		.goto Hellfire Peninsula,53.2,38.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Grand Master Rohok|r
+		.turnin 10757
+		.accept 10758
+		.target Grand Master Rohok	
+		
+	step
+		>>Kill |cRXP_ENEMY_Fel Reaver|r and use |T134459:0|t[Unfired Key Mold] on his corpse. You don't need kill credit to use |T134459:0|t[Unfired Key Mold]
+		.line Hellfire Peninsula,70.74,44.49,70.1,44.53,69.48,44.19,68.89,43.27,68.22,42.33,68.36,41.28,68.39,40.21,68.0,39.41,67.52,38.59,66.73,38.31,66.07,38.35,65.47,38.44,64.92,37.64,64.52,36.59,64.36,35.86,63.76,34.78,63.04,34.29,62.29,34.1,61.65,34.33,61.29,34.98,61.12,35.97,60.62,37.1,60.17,38.22,59.91,39.12,59.93,40.05,59.86,41.01,59.82,41.98,60.09,43.05,60.58,43.99,60.95,44.99,61.43,46.11,62.07,47.0,62.73,47.9,63.13,48.73,62.88,49.88,62.81,50.69,62.63,51.75,62.13,52.68,61.71,53.59,61.69,54.53,62.1,55.59,62.74,56.39,63.38,56.8,64.16,56.5,64.68,56.05,65.27,55.9,65.97,55.61,66.63,55.47,67.25,55.5,67.85,55.96,68.51,56.49,69.02,57.43,69.22,58.5,69.28,59.49,69.33,60.44,69.39,61.44,69.14,62.23,68.51,62.07,67.91,61.97,67.37,61.9,66.68,62.12,66.02,62.89,65.98,64.02,65.74,65.29,65.49,66.26,65.17,67.16,64.67,68.02,64.04,68.95,63.4,69.67,62.77,69.95,62.13,71.06,61.8,72.08,61.5,73.06,61.12,74.02,60.94,74.96,60.16,75.3,59.58,75.0,58.89,74.2,58.4,73.13,58.2,72.42,57.72,71.54,56.91,71.25,56.32,71.26,55.66,71.47,55.03,71.79,54.35,71.8,53.71,71.95,53.03,72.04,52.4,71.95,51.95,72.57,51.71,73.45,51.37,74.53,51.22,75.68,50.81,76.49,50.46,77.5,50.23,78.57,49.76,79.75,49.19,80.2,48.54,79.62,48.22,78.53,48.11,77.61,48.08,76.74,47.87,75.83,47.9,74.85,47.83,73.89,47.39,72.92,46.71,72.03,46.61,71.08,46.89,70.09,47.17,69.37,47.87,69.26,48.51,69.55,49.21,69.57,49.87,69.17,50.34,68.28,50.44,67.25,50.24,66.19,50.16,65.27,49.81,64.28,50.16,65.27,50.24,66.19,50.44,67.25,50.35,68.28,49.87,69.17,49.21,69.57,48.51,69.55,47.87,69.26,47.17,69.37,46.89,70.09,46.61,71.08,46.71,72.03,47.39,72.92,47.83,73.89,47.9,74.85,47.87,75.83,48.08,76.74,48.11,77.61,48.22,78.53,48.54,79.62,49.19,80.2,49.76,79.75,50.23,78.57,50.46,77.5,50.81,76.49,51.22,75.68,51.37,74.54,51.71,73.45,51.95,72.57,52.4,71.95,53.03,72.04,53.71,71.95,54.35,71.8,55.03,71.79,55.66,71.47,56.32,71.26,56.91,71.25,57.72,71.54,58.2,72.42,58.4,73.13,58.89,74.2,59.58,75.0,60.16,75.3,60.94,74.96,61.12,74.02,61.5,73.06,61.8,72.08,62.13,71.06,62.76,69.95,63.39,69.67,64.04,68.95,64.67,68.02,65.17,67.16,65.49,66.26,65.74,65.29,65.98,64.02,66.02,62.89,66.68,62.12,67.37,61.9,67.91,61.97,68.51,62.07,69.14,62.24,69.39,61.44,69.33,60.45,69.28,59.49,69.22,58.5,69.02,57.43,68.51,56.49,67.85,55.96,67.25,55.5,66.63,55.47,65.97,55.61,65.28,55.89,64.68,56.05,64.16,56.5,63.38,56.8,62.74,56.39,62.1,55.59,61.69,54.53,61.71,53.59,62.13,52.68,62.63,51.75,62.81,50.69,62.88,49.88,63.13,48.73,62.73,47.9,62.07,47.0,61.43,46.11,60.95,44.99,60.58,43.99,60.09,43.06,59.82,41.98,59.86,41.01,59.93,40.05,59.91,39.12,60.17,38.22,60.62,37.1,61.12,35.97,61.29,34.98,61.65,34.33,62.29,34.1,63.04,34.29,63.76,34.78,64.36,35.86,64.51,36.57,64.92,37.64,65.47,38.44,66.07,38.35,66.72,38.31,67.52,38.59,68.0,39.41,68.39,40.21,68.36,41.28,68.22,42.33,68.88,43.27,69.48,44.19,70.1,44.53,70.74,44.49,71.41,44.02
+		.line Hellfire Peninsula,48.23,30.29,48.11,31.29,48.11,32.24,47.99,33.27,47.88,34.2,47.55,35.27,47.05,36.26,46.86,37.15,46.85,38.04,46.78,39.02,46.71,39.94,46.52,40.93,46.61,41.9,46.5,42.89,46.33,43.87,45.98,44.41,45.31,44.69,44.67,45.23,44.02,45.72,43.39,45.66,42.77,45.69,42.09,45.1,41.46,44.19,40.76,43.41,40.13,43.0,39.47,43.45,38.84,43.64,38.2,43.79,37.57,44.34,36.93,45.06,36.39,45.93,35.83,46.88,34.99,47.08,34.34,46.61,33.69,46.46,33.05,45.52,32.38,45.14,31.78,44.37,31.37,43.06,30.87,42.05,30.61,41.06,30.44,39.95,29.83,39.41,29.16,39.58,28.52,39.71,27.88,39.84,27.25,40.53,27.18,41.69,27.14,42.95,27.85,43.69,28.27,44.93,28.75,45.93,29.15,45.88,29.81,46.51,30.47,47.29,31.09,48.15,31.51,49.36,31.3,50.53,30.46,51.17,29.82,51.28,29.17,51.16,28.52,50.8,27.86,49.81,27.21,48.88,26.59,48.18,25.95,47.74,25.31,47.34,24.61,47.44,23.95,47.45,23.33,47.51,22.68,47.61,22.08,47.75,21.4,47.54,20.77,46.97,20.15,45.9,19.54,45.41,18.91,45.19,18.47,44.07,17.91,43.03,17.27,43.09,16.61,44.02,16.05,44.97,15.62,46.13,15.75,47.49,15.82,48.57,16.26,49.43,16.92,49.98,17.39,50.78,17.55,51.75,17.74,52.74,17.96,53.66,18.26,54.61,18.77,55.63,19.49,56.34,20.13,56.35,20.77,55.69,21.08,54.76,21.29,53.75,22.05,53.18,22.72,53.71,22.94,54.62,23.09,55.62,22.98,56.41,23.22,57.53,23.34,58.49,23.
+		.use 31252
+		.complete 10758,1
+		.unitscan Fel Reaver
+
+
+	step
+		.goto Hellfire Peninsula,53.2,38.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Grand Master Rohok|r
+		.turnin 10758
+		.target Grand Master Rohok	
+
+	step
+		#completewith next
+		.goto Hellfire Peninsula,47.7,52.0,10 >>Enter |cFFfa9602The Shattered Halls|r
 
 	step
 		>>Clear |cFFfa9602The Shattered Halls|r until you reach revered reputation with |cRXP_FRIENDLY_Thrallmar|r
@@ -664,7 +803,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.hs >> Hearth to Shattrath City
+		.hs >> Hearth to |cFFfa9602Shattrath City|r
 		.zoneskip Shattrath City	
 
     step
@@ -807,7 +946,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.hs >> Hearth to Shattrath City
+		.hs >> Hearth to |cFFfa9602Shattrath City|r
 		.zoneskip Shattrath City	
 
     step
@@ -841,7 +980,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.hs >> Hearth to Shattrath City
+		.hs >> Hearth to |cFFfa9602Shattrath City|r
 		.zoneskip Shattrath City	
 
 	step
@@ -878,28 +1017,30 @@ RXPGuides.RegisterGuide([[
 	step
 		#completewith next
 		.goto Shattrath City,52.2,52.8
-		.zone Thunder Bluff >> Take the Portal to Thunder Bluff
+		.zone Thunder Bluff >> Take the Portal to |cFFfa9602Thunder Bluff|r
 		.zoneskip Thunder Bluff
 
 	step
 		#completewith next
 		.goto Thunder Bluff,47.00,49.82
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tal|r
-		.fly Gadgetzan >> Fly to Gadgetzan
+		.fly Gadgetzan >> Fly to |cFFfa9602Gadgetzan|r
 		.target Tal
 		.zoneskip Tanaris
 
 	step
 		#completewith next
-		.goto Tanaris,62.0,50.4,100 >>Travel to the Caverns of Time
+		.goto Tanaris,62.0,50.4,100 >>Travel to the |cFFfa9602Caverns of Time|r
 
 	step
 		#completewith next
-		+Talk to the Steward Of Time. Accept the ride down to the Master's Lair
+		+Talk to the |cRXP_FRIENDLY_Steward Of Time|r. Accept the ride down to the Master's Lair
+		.target Steward Of Time
+		.skipgossip
 
 	step
 		#completewith next
-		.goto Tanaris,57.4,62.8,20 >> Enter The Black Morass
+		.goto Tanaris,57.4,62.8,20 >> Enter The |cFFfa9602Black Morass|r
 
 	step
 		>>Defend |cRXP_FRIENDLY_Medivh|r. After defeating |cRXP_ENEMY_Aeonus|r:
@@ -911,7 +1052,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.hs >> Hearth to Shattrath City
+		.hs >> Hearth to |cFFfa9602Shattrath City|r
 		.zoneskip Shattrath City	
 
     step
@@ -938,6 +1079,6 @@ RXPGuides.RegisterGuide([[
         .reputation 935,Revered  
 
 	step
-		+Congratulations, you have now reached Level 70, unlocked 15/15 Heroic Dungeons, got your Flying Mount and you are attuned for Karazhan
+		+Congratulations, you have now reached |cRXP_FRIENDLY_Level 70|r, unlocked |cRXP_FRIENDLY_15/15 Heroic Dungeons|r, got your |cRXP_FRIENDLY_Flying Mount|r and you are attuned for |cRXP_FRIENDLY_Karazhan|r
 
 ]])
