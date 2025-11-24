@@ -972,14 +972,6 @@ RXPGuides.RegisterGuide([[
 			.complete 2937,1
 			.mob Shadra		
 			
-        step
-            .goto Hillsbrad Foothills,61.4,19.2
-            >>|cRXP_WARN_This quests can be used as optional turn in quests for TBC. Check /tbcprep to see if you need it|r
-            >>|cRXP_ENEMY_Warning:|r |cRXP_WARN_Do not pick up or complete the followup|r |cRXP_LOOT_Venom to the Undercity|r|cRXPWARN, as this is used for TBC|r
-            >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Apothecary Lydon|r
-            .turnin 2937
-            .target Apothecary Lydon			
-
 	--- Tanaris 2
 
 		step
@@ -1001,6 +993,7 @@ RXPGuides.RegisterGuide([[
 		step
 			#completewith next
 			.use 22320 >> Open |cRXP_LOOT_Mux's Quality Goods|r and keep the |T132621:0|t[Goblin Rocket Fuel] for later
+			.collect 9061,8,8924,1
 
 		step
 			.goto Tanaris,66.989,22.354
