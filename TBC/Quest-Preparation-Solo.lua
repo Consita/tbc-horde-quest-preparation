@@ -481,7 +481,7 @@ RXPGuides.RegisterGuide([[
 		step
 			.goto Orgrimmar,49.58,69.13
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Karus|r
-			.bankdeposit 11315
+			.bankdeposit 11315 >>Deposit |cRXP_LOOT_Bloodpetal Sprout|r for TBC launch
 			.target Karus
 
 		step
@@ -840,7 +840,7 @@ RXPGuides.RegisterGuide([[
 		step
 			.goto Orgrimmar,49.58,69.13
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Karus|r
-			.bankdeposit 12359
+			.bankdeposit 12359 >> Deposit the |T133221:0|t[Thorium Bar] for later use
 			.target Karus
 
 		step
