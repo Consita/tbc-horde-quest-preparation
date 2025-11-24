@@ -704,7 +704,7 @@ RXPGuides.RegisterGuide([[
 			#label ungorolast
 			.destroy 11107 >>Destroy |T133653:0|t[A Small Pack]
 			.destroy 3108 >>Destroy the |T135427:0|t[Heavy Throwing Daggers]
-			.destroy 11108 >>Destroy the |T11108:0|t[Faded Photograph]	
+			.destroy 11108 >>Destroy the |T134944:0|t[Faded Photograph]	
 			
 		step
 			>>Collect |cRXP_LOOT_Un'Goro Soil|r from mobs or |cRXP_PICK_Un'Goro Dirt Piles|r
