@@ -331,10 +331,10 @@ RXPGuides.RegisterGuide([[
 
 		step
 			#completewith next
-			.goto Winterspring,60.47,36.30
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r
-			.fly Felwood>>Fly to Felwood
-			.target Yugrek
+			.goto Moonglade,32.2,66.6
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Faustron|r
+			.fly Felwood >>Fly to |cFFfa9602Felwood|r
+			.target Faustron
 			.zoneskip Felwood
 
 		step
@@ -442,6 +442,7 @@ RXPGuides.RegisterGuide([[
 			.goto The Hinterlands,35.6,74.8,0
 			.goto The Hinterlands,31.0,70.8,0
 			>>Kill |cRXP_ENEMY_Witherbark Broodguards|r. Loot them for an |cRXP_LOOT_Undamaged Venom Sac|r
+			>>|cRXP_WARN_The quest item has a duration of 30min. Make sure to turn it in asap|r
 			.complete 2934,1
 			.mob Witherbark Broodguard
 		
@@ -452,6 +453,7 @@ RXPGuides.RegisterGuide([[
 
 		step
 			.goto Hillsbrad Foothills,61.4,19.2
+			>>|cRXP_WARN_The quest item has a duration of 30min. Make sure to turn it in asap|r
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Apothecary Lydon|r
 			.turnin 2934
 			.accept 2935
@@ -545,10 +547,9 @@ RXPGuides.RegisterGuide([[
 			.accept 3527 >> Accept The Prophecy of Mosh'aru
 
 		step
-			>>Now you should be looking for a group to Zul'Farrak to complete |cRXP_LOOT_Accept The Prophecy of Mosh'aru|r. This can be done solo as a level 60
-			.goto Tanaris,38.73,20.02 >> Travel to Zul'Farrak
-			.zoneskip 1176
-			.isOnQuest 3527
+			#completewith next
+			>>Now you should be looking for a group to Zul'Farrak. This can be done solo as a level 60
+			.goto Tanaris,38.73,20.02,20 >> Travel to Zul'Farrak
 
 		step
 			#completewith next
@@ -2759,7 +2760,7 @@ RXPGuides.RegisterGuide([[
 			.goto Winterspring,69.62,38.31
 			>>Kill |cRXP_ENEMY_High Chief Winterfall|r. Loot him for his |T133740:0|t[|cRXP_LOOT_Crudely-written Log|r]. Do not accept the quest! It is used in |cRXP_WARN_TBC!|r
 			.complete 5121,1 
-			.collect 12842,1,5121
+			.collect 12842,1,5121,1
 			.mob High Chief Winterfall	
 
 		step
