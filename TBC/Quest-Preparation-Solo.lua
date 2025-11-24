@@ -535,7 +535,7 @@ RXPGuides.RegisterGuide([[
 			.complete 3505,4 
 			.turnin 3505 >>Turn in Betrayed
 			.isOnQuest 3505
-
+			
 		step
 			.goto Azshara,59.50,31.20
 			>>Click the |cRXP_PICK_Kaldorei Tome of Summoning|r again
@@ -545,6 +545,7 @@ RXPGuides.RegisterGuide([[
 		step
 			.goto Azshara,59.50,31.40
 			>>Destroy one of the |cRXP_PICK_Arcane Focusing Crystals|r. This will summon a |cRXP_ENEMY_Blood Elf Defender|r
+			>>If the |cRXP_ENEMY_Blood Elf Defender|r did not spawn, wait and destroy another |cRXP_PICK_Arcane Focusing Crystals|r
 			>>After 13 seconds |cRXP_ENEMY_Magus Rimtori|r will spawn. Kill her and loot her for her |cRXP_LOOT_Head|r
 			.complete 3506,1 
 			.isQuestTurnedIn 3505
