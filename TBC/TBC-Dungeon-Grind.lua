@@ -59,6 +59,7 @@ RXPGuides.RegisterGuide([[
         .target Floyd Pinkus  
 
 	step
+		#completewith next
 		.goto Hellfire Peninsula,46.0,58.7,20,0
 		.goto Hellfire Peninsula,46.1,51.7,20 >> Travel to Blood Furnace. At the waypoint look for wooden stairs that lead up to the wall. Riding along this wall will take you to the instance.
 
@@ -162,6 +163,7 @@ RXPGuides.RegisterGuide([[
 		.goto Zangarmarsh,51.9,37.8,20 >>Swim to the center of Coilfang Reservoir until you are over the open drain pipe below. Dive and swim through it until you find the underwater cavern.
 
 	step
+		#completewith next
 		.goto Zangarmarsh,48.9,35.7,20 >> Enter The Slave Pens
 
     step
@@ -170,6 +172,7 @@ RXPGuides.RegisterGuide([[
         .xp 65
 
 	step
+		#completewith next
 		.hs >>Hearth to Shattrath
 		.zoneskip Shattrath City
 
@@ -191,8 +194,8 @@ RXPGuides.RegisterGuide([[
 		.target Kerna
 
 	step
+		.goto Terokkar Forest,39.4,58.6 
 		>>Run to the entrance of Mana Tombs in Auchindoun.
-		.goto Terokkar Forest,39.4,58.6,20
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Artificer Morphalius|r
 		.accept 10216
 		.target Artificer Morphalius
@@ -237,6 +240,7 @@ RXPGuides.RegisterGuide([[
         .xp 66
 
 	step
+		#completewith next
 		.goto Terokkar Forest,43.1,65.6,20 >>Run to the entrance of Sethekk Halls in Auchindoun.
 
 	step
@@ -267,13 +271,14 @@ RXPGuides.RegisterGuide([[
 		.collect 27991
 
 	step
+		#completewith next
 		.hs >> Hearth to Shattrath City
 		.zoneskip Shattrath City
 
 	step
-		+Take the Portal to Orgrimmar
+		#completewith next
 		.goto Shattrath City,52.2,52.8
-		.zone Orgrimmar >> Go to Orgrimmar
+		.zone Orgrimmar >> Take the Portal to Orgrimmar
 		.zoneskip Orgrimmar
 		
 	step << Paladin
@@ -309,23 +314,25 @@ RXPGuides.RegisterGuide([[
 		.trainer >> Go and train your class spells
 
 	step
-		.goto Durotar,50.6,12.6,20
-		>>Take the Zeppelin to Grom'Gol Base Camp in Stranglethorn Vale
+		#completewith next
+		.goto Durotar,50.6,12.6,20 >>Take the Zeppelin to Grom'Gol Base Camp in Stranglethorn Vale
 
 	step
+		#completewith next
 		.goto Stranglethorn Vale,32.5,29.3
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thysta|r
 		.fly Stonard >>Fly to Stonard
 		.target Thysta
 
 	step
-		.goto Deadwind Pass,47.0,75.7,20
+		.goto Deadwind Pass,47.0,75.7
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Archmage Alturus|r
 		.accept 9824
 		.accept 9825
 		.target Archmage Alturus			
 
 	step
+		#completewith next
 		.goto Deadwind Pass,48.7,78.9,20,0
 		.goto Deadwind Pass,51.7,79.3,30 >> Go down the entrance of the cellar
 
@@ -345,6 +352,7 @@ RXPGuides.RegisterGuide([[
 		.complete 9824,1 
 
 	step
+		#completewith next
 		.goto Deadwind Pass,48.7,78.9,20,0
 		.goto Deadwind Pass,45.9,78.1,15 >>Go down the entrance of the other cellar
 
@@ -402,19 +410,17 @@ RXPGuides.RegisterGuide([[
 		.target Archmage Cedric
 
 	step
-		#sticky
-		#completewith ShattAlterac
-		>>Hearth or Mage portal to Shattrath City
+		#completewith next
+		.hs >>Hearth or Mage portal to Shattrath City
 		.zoneskip Shattrath City
 
 	step
-		#sticky
 		#completewith next
 		+If your Hearthstone is on cooldown, ghetto hearth using Shadowfang Keep. Zone into Shadowfang Keep then drop group
 		.goto Silverpine Forest,45.5,68.8
 
 	step
-		#label ShattAlterac
+		#completewith next
 		.zone Shattrath City >> Go to Shattrath City
 		.zoneskip Shattrath City
 
@@ -425,9 +431,9 @@ RXPGuides.RegisterGuide([[
 		.target Khadgar
 
 	step
-		+Take the Portal to Orgrimmar
+		#completewith next
 		.goto Shattrath City,52.2,52.8
-		.zone Orgrimmar >> Go to Orgrimmar
+		.zone Orgrimmar >> Take the Portal to Orgrimmar
 		.zoneskip Orgrimmar
 
 	step
@@ -464,6 +470,7 @@ RXPGuides.RegisterGuide([[
 		.target Andormu
 
 	step
+		#completewith next
 		.goto Tanaris,55.6,53.6,20 >>Enter Old Hillsbrad Foothills Dungeon.
 
 	step
@@ -499,6 +506,7 @@ RXPGuides.RegisterGuide([[
 		.target Andormu
 
 	step
+		#completewith next
 		.goto Tanaris,57.4,62.8,20 >> Enter The Black Morass
 
 	step
@@ -530,12 +538,17 @@ RXPGuides.RegisterGuide([[
         .reputation 989,Honored,11000
 
 	step
+		#completewith next
 		.hs >> Hearth to Shattrath City
 		.zoneskip Shattrath City
 
-	step
-		.goto Shattrath City,64.0,41.1
-		.fly Stonebreaker Hold >>Fly to Stonebreaker Hold
+    step
+        #completewith next
+        .goto Shattrath City,45.12,63.89,5,0
+        >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nutral|r
+        .fly Stonebreaker Hold >>Fly to |cFFfa9602Stonebreaker Hold|r
+        .target Nutral
+        .zoneskip Terokkar Forest
 
 	step
 		#sticky
@@ -544,6 +557,7 @@ RXPGuides.RegisterGuide([[
 		.goto Terokkar Forest,39.7,70.1
 
 	step
+		#completewith next
 		.goto Terokkar Forest,39.7,71.0,30 >> Use the key from Sethekk Halls to open the Shadow Labyrinth Door
 
 	step
@@ -559,6 +573,7 @@ RXPGuides.RegisterGuide([[
         .reputation 1011,Revered
 		
 	step
+		#completewith next
 		.hs >> Hearth to Shattrath City
 		.zoneskip Shattrath City	
 
@@ -589,6 +604,7 @@ RXPGuides.RegisterGuide([[
 		.target Watcher Jhang
 
 	step
+		#completewith next
 		.goto Zangarmarsh,50.4,33.3,20 >> Enter The Steamvaults
 
 	step
@@ -598,7 +614,6 @@ RXPGuides.RegisterGuide([[
 		.mob Second Fragment Guardian		
 
 	step
-		#sticky
 		.complete 9763,1
 		.target Warlord Kalithresh
 	
@@ -615,6 +630,7 @@ RXPGuides.RegisterGuide([[
         .reputation 942,Revered
 
 	step
+		#completewith next
 		.hs >> Hearth to Shattrath City
 		.zoneskip Shattrath City	
 
@@ -647,6 +663,7 @@ RXPGuides.RegisterGuide([[
         .reputation 947,Revered  
 
 	step
+		#completewith next
 		.hs >> Hearth to Shattrath City
 		.zoneskip Shattrath City	
 
@@ -789,6 +806,7 @@ RXPGuides.RegisterGuide([[
 		.target Image of Nexus-Prince Haramad
 
 	step
+		#completewith next
 		.hs >> Hearth to Shattrath City
 		.zoneskip Shattrath City	
 
@@ -800,6 +818,7 @@ RXPGuides.RegisterGuide([[
         .target A'dal
 
 	step
+		#completewith next
 		.goto Netherstorm,71.7,55.1,20 >> Fly to |cFFfa9602The Botanica|r, then go inside
 
 	step
@@ -809,17 +828,19 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		+Exit the dungeon and prepare to run cFFfa9602Mechanar|r. Go back to Cosmowrench if you need to vendor/repair
+		+Exit the dungeon and prepare to run |cFFfa9602Mechanar|r. Go back to Cosmowrench if you need to vendor/repair
 
 	step
-		.goto Netherstorm,70.6,69.8,20 >> Fly to cFFfa9602The Mechanar|r, then go inside
+		#completewith next
+		.goto Netherstorm,70.6,69.8,20 >> Fly to |cFFfa9602The Mechanar|r, then go inside
 
 	step
-		>>Kill |cRXP_ENEMYN_Pathaleon|r and loot him for the |cRXP_LOOT_Bottom Shard of the Arcatraz Key|r
+		>>Kill |cRXP_ENEMY_Pathaleon|r and loot him for the |cRXP_LOOT_Bottom Shard of the Arcatraz Key|r
 		.complete 10704,2
 		.mob Pathaleon
 
 	step
+		#completewith next
 		.hs >> Hearth to Shattrath City
 		.zoneskip Shattrath City	
 
@@ -838,6 +859,7 @@ RXPGuides.RegisterGuide([[
         .subzoneskip 3712
 
 	step
+		#completewith next
 		.goto Netherstorm,74.4,57.7,20 >> Fly to The Arcatraz, unlock the door, then go inside
 
 	step
@@ -854,9 +876,9 @@ RXPGuides.RegisterGuide([[
         .target Khadgar
 
 	step
-		+Take the Portal to Thunder Bluff
+		#completewith next
 		.goto Shattrath City,52.2,52.8
-		.zone Thunder Bluff >> Go to Thunder Bluff
+		.zone Thunder Bluff >> Take the Portal to Thunder Bluff
 		.zoneskip Thunder Bluff
 
 	step
@@ -876,6 +898,7 @@ RXPGuides.RegisterGuide([[
 		+Talk to the Steward Of Time. Accept the ride down to the Master's Lair
 
 	step
+		#completewith next
 		.goto Tanaris,57.4,62.8,20 >> Enter The Black Morass
 
 	step
@@ -887,6 +910,7 @@ RXPGuides.RegisterGuide([[
 		.mob Aeonus
 
 	step
+		#completewith next
 		.hs >> Hearth to Shattrath City
 		.zoneskip Shattrath City	
 
@@ -905,14 +929,15 @@ RXPGuides.RegisterGuide([[
         .subzoneskip 3712
 
 	step
+		#completewith next
 		.goto Netherstorm,71.7,55.1,20 >> Fly to |cFFfa9602The Botanica|r, then go inside
 
 	step
 		>>Clear |cFFfa9602The Botancia|r until you reach revered reputation with |cRXP_FRIENDLY_Sha'tar|r
-		>>This will take around 8 runs with an average of 1600 rep per run
+        >>This will take around 8 runs with an average of 1600 rep per run
         .reputation 935,Revered  
 
 	step
-		+Congratulations, you have now reached Level 70, unlocked 15/15 Heroic Dungeons, got your Flying Mount and are attuned for Karazhan.
+		+Congratulations, you have now reached Level 70, unlocked 15/15 Heroic Dungeons, got your Flying Mount and you are attuned for Karazhan
 
 ]])
