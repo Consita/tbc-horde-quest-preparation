@@ -7,8 +7,8 @@ RXPGuides.RegisterGuide([[
 #version 3
 #group Consita Classic/TBC Launch Guide
 #subgroup 4 - TBC Launch - Turnin
-#name 2-Group Route Turnin
-#displayname Group Route Turnin
+#name 3-Solo Route Turnin
+#displayname Solo Route Turnin
 #next 5 - TBC Dungeon Grind
 
 --- Start in Burning Steppes
