@@ -442,6 +442,7 @@ RXPGuides.RegisterGuide([[
 			.goto The Hinterlands,35.6,74.8,0
 			.goto The Hinterlands,31.0,70.8,0
 			>>Kill |cRXP_ENEMY_Witherbark Broodguards|r. Loot them for an |cRXP_LOOT_Undamaged Venom Sac|r
+			>>|cRXP_WARN_The quest item has a duration of 30min. Make sure to turn it in asap|r
 			.complete 2934,1
 			.mob Witherbark Broodguard
 		
@@ -452,10 +453,11 @@ RXPGuides.RegisterGuide([[
 
 		step
 			.goto Hillsbrad Foothills,61.4,19.2
+			>>|cRXP_WARN_The quest item has a duration of 30min. Make sure to turn it in asap|r
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Apothecary Lydon|r
 			.turnin 2934
 			.accept 2935
-			.target Apothecary Lydon	
+			.target Apothecary Lydon		
 		
 
 	--- Orgrimmar 1
