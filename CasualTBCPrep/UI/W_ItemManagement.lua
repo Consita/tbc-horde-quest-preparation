@@ -39,18 +39,13 @@ local function Display()
     end
     _bankAltCheckValue = isBankAlted
 
-    local playerInvCount = C_Item.GetItemCount(itemID, false)
-    local playerTotalCount = C_Item.GetItemCount(itemID, true)
-    local playerBankCount = playerTotalCount - playerInvCount
-
     -- UI elements
     local yPosition = -52
 
 
 	local iconSize = 38
 	local iconPaddingY = 2
-	local borderSize = iconSize + 2
-    local icon, borderFrame, textRarityColor, item = CasualTBCPrep.UI.CreateItemImage(wItemManagement, iconSize, borderSize, item.id, "TOP", "TOP", 0, yPosition)
+    local icon, border, textRarityColor, item = CasualTBCPrep.UI.CreateItemImage(wItemManagement, iconSize, item.id, "TOP", "TOP", 0, yPosition)
     local itemName = ""
     if item then
         local r,g,b,cHex = CasualTBCPrep.GetRarityColor(item.rarity)
@@ -58,7 +53,7 @@ local function Display()
     end
 
     table.insert(wItemManagement.content, icon)
-    table.insert(wItemManagement.content, borderFrame)
+    table.insert(wItemManagement.content, border)
 
     local itemNameText = textRarityColor .. (itemName or ("Item " .. item.id))
 

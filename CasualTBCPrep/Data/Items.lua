@@ -80,7 +80,7 @@ local itemsMetadata = {
     [16724] = { id=16724, name="Lightforge Gauntlets", rarity=3, texture=132953, quests="10495", sources="Timmy the Cruel in Stratholme Living", auctionHouse=true },
     [16736] = { id=16736, name="Belt of Valor", rarity=3, texture=132523, quests="8944", sources="Smolderthorn Berserker in Lower Blackrock Spire, Patchwerk mobs in Stratholme Undead", auctionHouse=true },
     [16737] = { id=16737, name="Gauntlets of Valor", rarity=3, texture=132960, quests="8944", sources="Ramstein the Gorger in Stratholme Undead", auctionHouse=true },
-    [17114] = { id=17114, name="Araj's Phylactery Shard", rarity=1, texture=132878, quests="105", sources="Araj the Summoner at Ruins of Andorhal, Western Plaguelands " },
+    [17114] = { id=17114, name="Araj's Phylactery Shard", rarity=1, texture=132878, quests="105", sources="Araj the Summoner at Ruins of Andorhal, Western PlagueLands " },
     [18335] = { id=18335, name="Pristine Black Diamond", rarity=3, texture=134072, quests="7667", sources="World Drop", auctionHouse=true },
     [18422] = { id=18422, name="Head of Onyxia", rarity=4, texture=134153, quests="7490,7491", sources="Onyxia, Onyxia's Lair" },
     [18501] = { id=18501, name="Felvine Shard", rarity=1, texture=132884, quests="5526", sources="On the ground at Alzzin the Wildshaper in DM East" },
@@ -170,6 +170,14 @@ local itemsMetadata = {
     [8394] = { id=8394, name="Basilisk Brain", rarity=1, texture=134340, quests="2583,2601", sources="Basilisks in Blasted Lands", auctionHouse=true },
     [8391] = { id=8391, name="Snickerfang Jowl", rarity=1, texture=133972, quests="2581,2603", sources="Hyenas in Blasted Lands", auctionHouse=true },
     [8396] = { id=8396, name="Vulture Gizzard", rarity=1, texture=134342, quests="2601,2585,2603", sources="Vultures in Blasted Lands", auctionHouse=true },
+    [2820] = { id=2820, name="Nifty Stopwatch", rarity=2, texture=134376, sources="Badlands Questline" },
+    [8529] = { id=8529, name="Noggenfogger Elixir", rarity=1, texture=134863, sources="Tanaris Questline" },
+    [4984] = { id=4984, name="Skull of Impending Doom", rarity=2, texture=133729, sources="Questline" },
+    [11122] = { id=11122, name="Carrot on a Stick", rarity=2, texture=134010, sources="Quest in Zul'Farrak" },
+    [20558] = { id=20558, name="Warsong Gulch Mark of Honor", rarity=2, texture=134420, sources="Battlegrounds" },
+    [20559] = { id=20559, name="Arathi Basin Mark of Honor", rarity=2, texture=133282, sources="Battlegrounds" },
+    [20560] = { id=20560, name="Alterac Valley Mark of Honor", rarity=2, texture=133308, sources="Battlegrounds" },
+    [7391] = { id=7391, name="Swift Boots", rarity=2, texture=132542, sources="Leatherworking" },
 }
 
 --local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount, itemEquipLoc, itemTexture = C_Item.GetItemInfo(itemID)
@@ -202,7 +210,7 @@ function CasualTBCPrep.Items.GetItemDetails(itemID)
         else
             result = iData
 
-            local r, g, b = C_Item.GetItemQualityColor(iData.rarity)
+            local r, g, b = C_Item.GetItemQualityColor(iData.rarity or 1)
             result.colorR = r
             result.colorG = g
             result.colorB = b
@@ -312,6 +320,29 @@ function CasualTBCPrep.Items.GetItemDetailsFromWowAPI(itemID)
 	return C_Item.GetItemInfo(itemID) --itemName,itemLink,itemRarity,itemLevel,itemMinLevel,itemType,itemSubType,itemStackCount,itemEquipLoc,itemTexture
 end
 
+---@param itemID number
+---@return string|nil
 function CasualTBCPrep.Items.TryGetItemLink(itemID)
     return select(2, C_Item.GetItemInfo(itemID))
+end
+
+---@param itemID number
+---@param includeEquipCount boolean|nil
+---@return number,number,number,number
+function CasualTBCPrep.Items.GetPlayerItemCount(itemID, includeEquipCount)
+    local playerTotalCount = C_Item.GetItemCount(itemID, true, false) or 0
+    local playerInvCount = C_Item.GetItemCount(itemID, false, false) or 0
+    local playerBankCount = playerTotalCount - playerInvCount
+
+    local playerEquipCount = 0
+    if includeEquipCount then
+        for slot = 1, 19 do
+            if GetInventoryItemID("player", slot) == itemID then
+                playerEquipCount = playerEquipCount + 1
+            end
+        end
+    end
+
+    playerTotalCount = playerTotalCount + playerEquipCount
+    return playerInvCount,playerBankCount,playerTotalCount,playerEquipCount
 end

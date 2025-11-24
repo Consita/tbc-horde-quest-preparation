@@ -1,4 +1,4 @@
-## Interface: 11508, 20504
+## Interface: 11508, 20505
 
 ## Title: TBC Horde Quest Preparation
 ## Notes: TBC Launch Guide by Consita for Horde only
@@ -11,7 +11,12 @@
 ## OptionalDeps: RXPGuides
 # Addon UI
 CasualTBCPrep\Init.lua
+CasualTBCPrep\Data\Classes.lua
 CasualTBCPrep\Data\Faction.lua
+CasualTBCPrep\Data\Professions.lua
+CasualTBCPrep\Data\Skills.lua
+CasualTBCPrep\Data\Locale\Professions.lua
+CasualTBCPrep\Data\Locale\Skills.lua
 CasualTBCPrep\Data\Experience.lua
 CasualTBCPrep\Data\Items.lua
 CasualTBCPrep\Data\Sounds.lua

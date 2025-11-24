@@ -1,7 +1,10 @@
 Changelog:
 
 3.8
-- First 'Extras' tab feature implemented - You can check if you have all needed flightpaths
+- Three 'Extras' tabs implemented
+- > Extra - Flights: You can check if you have all needed flightpaths for the routes
+- > Extra - Items: A list of special vanilla (60) items you can collect before TBC
+- > Extra - Professions: A list of usable professions for your class/specs
 - Fixed UI Layout - Tabs now properly align with the frame border, and the scroll content now fully fills out the frame, so more stuff is visible
 
 3.7

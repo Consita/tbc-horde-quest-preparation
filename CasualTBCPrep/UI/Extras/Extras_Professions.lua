@@ -1,43 +1,321 @@
 CasualTBCPrep = CasualTBCPrep or {}
 CasualTBCPrep.Extras_Professions = CasualTBCPrep.Extras_Professions or {}
 
+local commentEngi = { "Engineering Goggles", " ", "Battle Chicken & Flame Turret", "Grenades & Sapper Charges", " ", "Speedrunning", "- Engi boots for speed", "- Dummies for big trash pulls" }
+local commentEngiHeal = { "Healing Goggles", " ", "Speedrunning", "- Engi boots for speed", "- Dummies for big pulls", "- Grenades & Sapper Charges for big trash pulls" }
+local commentEngiTank = { "Engineering Goggles", " ", "2x +45 Stamina trinkets", "Battle Chicken & Flame Turret", "Grenades & Sapper Charges for AOE threat", " ", "Speedrunning", "- Engi boots for speed", "- Dummies for big trash pulls" }
+local commentEngiFeral  = { "Engineering Goggles", " ", "Battle Chicken", " ", "Speedrunning", "  Engi boots for speed", "  Dummies for big pulls", " ", "Cat", "  Sapper Charges for AOE", "  Gnomish Flame Turret", " ", "Bear", "  +45 Stamina Trinket", "  Sapper Charges for AOE when offtanking" }
+local commentEnchCaster = { "+12 Spell Damage on rings" }
+local commentEnchMelee = { "+2 Weapon Damage on rings", " ", "REMINDER", "+4 Stats on rings is not in Phase 1" }
+local commentEnchHeal = { "+20 Healing on rings" }
+local commentLwDruidFeral = { "Has some decent crafted items.", " ", "Drums", "Drums are meh and have a casttime until Phase4", "In P4 they can also be used in forms."}
+local commentLwHeal = { "Drums for your group", " ", "Windhawk Bracers", "Windhawk Belt", "Windhawk Hauberk", }
+local commentTailHeal = { "Primal Mooncloth Robe", "Primal Mooncloth Shoulders", "Primal Mooncloth Belts", " ", "Whitemend Hood (BoE)", "Whitemend Pants (BoE)" }
+local commentTailSpellfire = { "Spellfire Robe", "Spellfire Gloves", "Spellfire Belt", " ", "Spellstrike Hood (BoE)", "Spellstrike Pants (Boe)"  }
+local commentTailShadoweave = { "Frozen Shadoweave Shoulders", "Frozen Shadoweave Robe", "Frozen Shadoweave Boots", " ", "Spellstrike Hood (BoE)", "Spellstrike Pants (Boe)"  }
+
+local commentBsHunt = { "Mooncleaver (Master Axesmith) is BiS for melee weaving." }
+local commentLwHunt = { "Drums for your group", " ", "You NEED the dungeon 4 set bonus, but the Primalstrike items fit in perfectly to allow both pre-raid.", "Primalstrike is not bis and will be replaced" }
+
+local commentClassSharedSpeedrun = "Engineering is (probably) mandatory for serious speedrunning"
+local commentClassFeral = { "Cat DPS", "Feral was the best druid dps spec", "Warcraftlogs DPS rank: 15/21", }
+
+local specPhaseText = "Phase 1 (Last TBC)"
+local prof = CasualTBCPrep.Professions.PROF
+local professionData = {
+	[CasualTBCPrep.Classes.MageID] = { comments={ commentClassSharedSpeedrun }, specs={
+        { name="Arcane", comments = { }, profs={
+            { id=prof.ENGINEERING, comments=commentEngi },
+            { id=prof.ENCHANTING, comments=commentEnchCaster },
+            { id=prof.TAILORING, comments=commentTailSpellfire }
+        }},
+        { name="Fire", comments = { }, profs={
+            { id=prof.ENGINEERING, comments=commentEngi },
+            { id=prof.ENCHANTING, comments=commentEnchCaster },
+            { id=prof.TAILORING, comments=commentTailSpellfire }
+        }},
+        { name="Frost", comments = { }, profs={
+            { id=prof.ENGINEERING, comments=commentEngi },
+            { id=prof.ENCHANTING, comments=commentEnchCaster },
+            { id=prof.TAILORING, comments=commentTailShadoweave }
+        }}
+	}},
+	[CasualTBCPrep.Classes.PriestID] = { comments={ commentClassSharedSpeedrun, " ", "" }, specs={
+        { name="Discipline", comments = { }, profs={
+            { id=prof.ENGINEERING, comments=commentEngiHeal },
+            { id=prof.ENCHANTING, comments=commentEnchHeal },
+            { id=prof.TAILORING, comments=commentTailHeal }
+        }},
+        { name="Holy", comments = { }, profs={
+            { id=prof.ENGINEERING, comments=commentEngiHeal },
+            { id=prof.ENCHANTING, comments=commentEnchHeal },
+            { id=prof.TAILORING, comments=commentTailHeal }
+        }},
+        { name="Shadow", comments = { }, profs={
+            { id=prof.ENGINEERING, comments=commentEngi },
+            { id=prof.ENCHANTING, comments=commentEnchCaster },
+            { id=prof.TAILORING, comments=commentTailShadoweave }
+        }}
+	}},
+	[CasualTBCPrep.Classes.WarlockID] = { comments={ commentClassSharedSpeedrun, " ", "" }, specs={
+        { name="Affliction", comments = { }, profs={
+            { id=prof.ENGINEERING, comments=commentEngi },
+            { id=prof.ENCHANTING, comments=commentEnchCaster },
+            { id=prof.TAILORING, comments=commentTailShadoweave }
+        }},
+        { name="Demonology", comments = { }, profs={
+            { id=prof.ENGINEERING, comments=commentEngi },
+            { id=prof.ENCHANTING, comments=commentEnchCaster },
+            { id=prof.TAILORING, comments=commentTailShadoweave }
+        }},
+        { name="Destruction", comments = { }, profs={
+            { id=prof.ENGINEERING, comments=commentEngi },
+            { id=prof.ENCHANTING, comments=commentEnchCaster },
+            { id=prof.TAILORING, comments={ "Both 'Shadow' and 'Fire' destruction is viable in Phase1", "Tailoring has a special set for both", "- Spellfire (Fire)", "- Frozen Shadoweave (Shadow)", " ", "Can also craft Spellstrike BoE items" } }
+        }}
+	}},
+	[CasualTBCPrep.Classes.DruidID] = { comments={ commentClassSharedSpeedrun, " ", "" }, specs={
+        { name="Restoration", comments = { }, profs={
+            { id=prof.ENGINEERING, comments=commentEngiHeal },
+            { id=prof.ENCHANTING, comments=commentEnchHeal },
+            { id=prof.LEATHERWORKING, comments=commentLwHeal },
+            { id=prof.TAILORING, comments=commentTailHeal }
+        }},
+        { name="Feral", comments = { }, profs={
+            { id=prof.ENGINEERING, comments=commentEngiFeral },
+            { id=prof.ENCHANTING, comments=commentEnchMelee },
+            { id=prof.LEATHERWORKING, comments=commentLwDruidFeral }
+        }},
+        { name="Balance", comments = {  }, profs={
+            { id=prof.ENGINEERING, comments=commentEngi },
+            { id=prof.ENCHANTING, comments=commentEnchCaster },
+            { id=prof.TAILORING, comments=commentTailSpellfire }
+        }}
+	}},
+	[CasualTBCPrep.Classes.RogueID] = { comments={ commentClassSharedSpeedrun, " ", "" }, specs={
+        { name="Combat", comments = { specPhaseText, "Combat was the only viable rogue spec", " ", "Warcraftlogs DPS rank: 13/21"  }, profs={
+            { id=prof.ENGINEERING, comments=commentEngi },
+            { id=prof.LEATHERWORKING, comments={ "Drums for your group", " ", "Primalstrike is equal to heroic drops and isn't used in P1 BiS, so it's not worth the price", " ", "Bringing drums is the only thing a rogue brings to a raid, so it's highly recommended to go LW" } },
+            { id=prof.BLACKSMITHING, comments={ "In P1, the bs mace is slightly better than the aldor sword and similar to blinkstrike & PvP weapon.", " ", "In future phases it's also not BiS, but it's good until you can get your BiS" } },
+        }}
+	}},
+	[CasualTBCPrep.Classes.HunterID] = { comments={ commentClassSharedSpeedrun, " ", "You may want Enchanting for Phase3, and Jewelcrafting for Phase4" }, specs={
+        { name="Beast Mastery", comments = {  }, profs={
+            { id=prof.BLACKSMITHING, comments=commentBsHunt },
+            { id=prof.ENGINEERING, comments=commentEngi },
+            { id=prof.LEATHERWORKING, comments=commentLwHunt }
+        }},
+        { name="Marksmanship", comments = { }, profs={
+            { id=prof.BLACKSMITHING, comments=commentBsHunt },
+            { id=prof.ENGINEERING, comments=commentEngi },
+            { id=prof.LEATHERWORKING, comments=commentLwHunt }
+        }},
+        { name="Survival", comments = { }, profs={
+            { id=prof.BLACKSMITHING, comments=commentBsHunt },
+            { id=prof.ENGINEERING, comments=commentEngi },
+            { id=prof.LEATHERWORKING, comments=commentLwHunt }
+        }}
+	}},
+	[CasualTBCPrep.Classes.ShamanID] = { comments={ commentClassSharedSpeedrun, " ", "" }, specs={
+		{ name="Elemental", comments = {  }, profs={
+            { id=prof.ENGINEERING, comments=commentEngi },
+            { id=prof.ENCHANTING, comments=commentEnchCaster },
+            { id=prof.LEATHERWORKING, comments={ "Drums for your group", " ", "Netherstrike Breastplate", "Netherstrike Bracers", "Netherstrike Belt" } }
+        }},
+        { name="Enhancement", comments = { }, profs={
+            { id=prof.BLACKSMITHING, comments={ "PvP weapon is great (2.6 speed), but Dragonmaw (2.7) is also good.", " ", "You want your MH and OH to have the same speed, so if you go Dragonmaw, you'll want a 2.7 OH" } },
+            { id=prof.ENGINEERING, comments=commentEngi },
+            { id=prof.LEATHERWORKING, comments={ "Drums for your group", " ", "Ebon Netherscale Breastplate", "Ebon Netherscale Bracers", "Ebon Netherscale Belt" } }
+        }},
+        { name="Restoration", comments = { }, profs={
+            { id=prof.ENGINEERING, comments=commentEngiHeal },
+            { id=prof.ENCHANTING, comments=commentEnchHeal },
+            { id=prof.LEATHERWORKING, comments=commentLwHeal },
+            { id=prof.TAILORING, comments=commentTailHeal }
+        }}
+	}},
+	[CasualTBCPrep.Classes.WarriorID] = { comments={ commentClassSharedSpeedrun, " ", "" }, specs={
+        { name="Arms", comments = { }, profs={
+            { id=prof.BLACKSMITHING, comments={ "Lionheart Champion (Master Swordsmith) is BiS in Phase1 for PvE", " ", "Many warriors will go for the mace for PvP, which is still very good in PvE" } },
+            { id=prof.ENGINEERING, comments=commentEngi },
+            { id=prof.LEATHERWORKING, comments={ "Drums for your group" } }
+        }},
+        { name="Fury", comments = {  }, profs={
+            { id=prof.BLACKSMITHING, comments={ "Dragonmaw is BiS MainHand for Phase1 & 2" } },
+            { id=prof.ENGINEERING, comments=commentEngi },
+            { id=prof.LEATHERWORKING, comments={ "Drums for your group" } }
+        }},
+        { name="Protection", comments = { "There's no great second profession for Protection Warriors", "When the +4 Stats enchant comes out, Enchanting becomes viable " }, profs={
+            { id=prof.BLACKSMITHING, comments={ "No benefits for tanking...", "But with dual-spec, you may want this for your DPS spec" } },
+            { id=prof.ENGINEERING, comments=commentEngiTank },
+            { id=prof.LEATHERWORKING, comments={ "Drums for your group" } }
+        }}
+	}},
+	[CasualTBCPrep.Classes.PaladinID] = { comments={ commentClassSharedSpeedrun, " ", "" }, specs={
+		{ name="Holy", comments = { "Alchemy trinket is very good in the the last Phase", " ", "Leatherworking & Tailoring items are decent in Phase1, but quickly fall off in value" }, profs={
+            { id=prof.ENGINEERING, comments=commentEngiHeal },
+            { id=prof.ENCHANTING, comments=commentEnchHeal },
+            { id=prof.LEATHERWORKING, comments=commentLwHeal },
+            { id=prof.TAILORING, comments=commentTailHeal }
+        }},
+        { name="Protection", comments = { }, profs={
+            { id=prof.ENCHANTING, comments={ "+12 Spell Damage on rings is BIG for threat" } },
+            { id=prof.ENGINEERING, comments=commentEngiTank }
+        }},
+        { name="Retribution", comments = { }, profs={
+            { id=prof.BLACKSMITHING, comments={ "Lionheart Champion (Master Swordsmith) is BiS In Phase1 & 2" } },
+            { id=prof.ENGINEERING, comments=commentEngi },
+            { id=prof.LEATHERWORKING, comments={ "Drums for your group", " ", "You can also make use of some BoP items through the tiers, but none are BiS" } },
+        }}
+	}},
+}
+
 local content, texts = {},{}
+
+---@param parent Frame
+---@param width number
+---@param alignFrame FontString
+---@param yDiff number
+---@param professionID number
+---@param textColor string
+---@param tooltipLines table|nil
+---@return FontString
+local function CreateProfessionString(parent, width, alignFrame, yDiff, professionID, textColor, tooltipLines)
+    local profName = CasualTBCPrep.Locale.Professions.GetProfessionName(professionID)
+    if profName == nil then profName = "Unknown Profession" end
+    local profNameColored = textColor..profName.."|r"
+
+    local txtProf = parent:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    txtProf:SetPoint("CENTER", alignFrame, "CENTER", 0, yDiff)
+    txtProf:SetWidth(width)
+    txtProf:SetJustifyH("CENTER")
+    txtProf:SetText(profNameColored)
+    table.insert(texts, txtProf)
+
+    if tooltipLines ~= nil and #tooltipLines > 0 then
+        if not(#tooltipLines == 1 and tooltipLines[0] == "") then
+            CasualTBCPrep.UI.HookTooltip(txtProf,  profNameColored, tooltipLines, nil, nil, nil)
+        end
+    end
+
+    return txtProf
+end
 
 ---@param frame Frame
 function CasualTBCPrep.Extras_Professions.Clean(frame)
-    if not frame then return end
+	if not frame then return end
 
-    if #texts > 0 then
-        for _, fontString in ipairs(texts) do
-            fontString:Hide()
-            fontString:SetText("")
-            fontString:SetSize(0, 0)
-            fontString:SetParent(nil)
-        end
-    end
+	if #texts > 0 then
+		for _, fontString in ipairs(texts) do
+			fontString:Hide()
+			fontString:SetText("")
+			fontString:SetSize(0, 0)
+			fontString:SetParent(nil)
+		end
+	end
 
-    if #content > 0 then
-        for _, c in ipairs(content) do
-            c:Hide()
-            c:SetSize(0, 0)
-            c:SetParent(nil)
-        end
-    end
+	if #content > 0 then
+		for _, c in ipairs(content) do
+			c:Hide()
+			c:SetSize(0, 0)
+			c:SetParent(nil)
+		end
+	end
 
-    content = {}
-    texts = {}
+	content = {}
+	texts = {}
 end
 
 ---@param frame Frame
 function CasualTBCPrep.Extras_Professions.Load(frame)
-    if not frame then return end
+	if not frame then return end
 
-    CasualTBCPrep.Extras_Flights.Clean(frame)
+	CasualTBCPrep.Extras_Flights.Clean(frame)
 	local parent = frame.scrollChild
 	local yPos = 1
 
-	local txtWIP = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
-	txtWIP:SetPoint("TOP", parent, "TOP", 0, -33)
-	txtWIP:SetText("Work in Progress")
-	table.insert(texts, txtWIP)
+	local playerClassID = CasualTBCPrep.Classes.GetPlayerClassID()
+	local primaryProfs, secondaryProfs, tertiaryProfs = CasualTBCPrep.Professions.GetPlayerProfessions(true, true)
+
+	local profData = professionData[playerClassID]
+	if profData == nil then return end
+
+	local className,classColorHex = CasualTBCPrep.Classes.GetClassNameFromID(playerClassID)
+
+	local parentWidth= parent:GetWidth()
+    local specCount = #profData.specs
+	local columnWidth = parentWidth / specCount
+	local specXs = {} -- Needs to work for classes with 1/2 specs shown, so we need to calculate it
+    for i=1, #profData.specs do
+        specXs[i] = (columnWidth * (i - 1)) - 1
+    end
+
+    local classTextColored = "|c"..classColorHex..className.." Professions|r"
+
+	yPos = yPos - 13
+	local txtHeaderMain = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalHuge")
+	txtHeaderMain:SetPoint("CENTER", parent, "CENTER", 0, yPos)
+	txtHeaderMain:SetText(classTextColored)
+	table.insert(texts, txtHeaderMain)
+
+	yPos = yPos - 22
+	local specIndex = 1
+	for _, spec in ipairs(profData.specs) do
+        local specTextColored = "|c"..classColorHex..spec.name.."|r"
+		local txtHeaderSpec = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
+		txtHeaderSpec:SetPoint("TOPLEFT", parent, "TOPLEFT", specXs[specIndex], yPos)
+		txtHeaderSpec:SetWidth(columnWidth)
+		txtHeaderSpec:SetJustifyH("CENTER")
+		txtHeaderSpec:SetText(specTextColored)
+        table.insert(texts, txtHeaderSpec)
+
+        local wrongProfTooltip = { "Not recommended for "..spec.name.." "..className.."s" }
+        local usedProfessions = {}
+        local specParent = txtHeaderSpec
+        local yDiffProf = -18
+		for _,prof in ipairs(spec.profs) do
+            local profTextColor = "";
+
+            for _,playerProf in ipairs(primaryProfs) do
+                if prof.id == playerProf.id then
+                    if playerProf.level >= CasualTBCPrep.Professions.MAX_PROF_LEVEL then
+                        profTextColor = CasualTBCPrep.ColorRGB_ReadyQuest.hex
+                    else
+                        profTextColor = CasualTBCPrep.ColorRGB_BankedButReadyQuest.hex
+                    end
+                    break
+                end
+            end
+            if profTextColor == nil or profTextColor == "" then
+                profTextColor = CasualTBCPrep.ColorRGB_AvailableQuest.hex
+            end
+
+            usedProfessions[prof.id] = true
+            specParent = CreateProfessionString(parent, columnWidth, specParent, yDiffProf, prof.id, profTextColor, prof.comments)
+            yDiffProf = -14
+		end
+        for _,playerProf in ipairs(primaryProfs) do
+            if not usedProfessions[playerProf.id] then
+                specParent = CreateProfessionString(parent, columnWidth, specParent, yDiffProf, playerProf.id, CasualTBCPrep.ColorRGB_CompletedQuest.hex, wrongProfTooltip)
+            end
+        end
+
+        if spec.comments ~= nil and #spec.comments > 0 then
+            CasualTBCPrep.UI.HookTooltip(txtHeaderSpec, specTextColored, spec.comments, nil,nil,nil)
+        end
+        specIndex = specIndex+1
+	end
+
+    if profData.comments ~= nil and #profData.comments > 0 then
+        CasualTBCPrep.UI.HookTooltip(txtHeaderMain, classTextColored, profData.comments, nil,nil,nil)
+    end
+
+
+    local txtNotice = frame:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+    txtNotice:SetPoint("BOTTOM", frame, "BOTTOM", 0, 10)
+    txtNotice:SetJustifyH("CENTER")
+    txtNotice:SetTextColor(0.7,0.7,0.7,0.8)
+    txtNotice:SetText("Info is based on wowhead guides from last TBC and may be wrong!\rIf you think something is wrong or missing, please let us know.")
+    table.insert(texts, txtNotice)
+
 end

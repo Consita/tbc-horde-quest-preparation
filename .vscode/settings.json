@@ -31,7 +31,10 @@
         "XP",
         "WorldMapFrame",
         "class",
-        "HIGH"
+        "HIGH",
+        "DEFENSE",
+        "RAID_CLASS_COLORS",
+        "NEED"
     ],
     "Lua.type.weakUnionCheck": true
 }

@@ -251,6 +251,6 @@ function CasualTBCPrep.Extras_Flights.Load(frame)
 	txtCommand:SetPoint("BOTTOM", frame, "BOTTOM", 0, 10)
 	txtCommand:SetJustifyH("CENTER")
     txtCommand:SetTextColor(0.7,0.7,0.7,0.8)
-	txtCommand:SetText("You can also check with '/tbcprep flights'")
+	txtCommand:SetText("Temporary UI. You can also check with '/tbcprep flights'")
     table.insert(texts, txtCommand)
 end

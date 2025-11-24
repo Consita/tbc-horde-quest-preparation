@@ -503,6 +503,46 @@ local preQuestMetadata = {
 	[8278] = { name = "Noggle's Last Hope", startZone="Cenarion Hold, Silithus"},
 }
 
+local extraQuestDetailsNeutral = {
+	[2770] = { name = "Gahz'rilla", startZone="Shimmering Flats, Thousand Needles", preQuests=nil},
+	[2662] = { name = "Noggenfogger Elixir", startZone="Gadgetzan, Tanaris", preQuests={2605,2606,2641,2661}},
+	[778] = { name = "This Is Going to Be Hard", startZone="Lotwil Veriatus, Badlands", preQuests={710,711,712, 713,714, 734,777}},
+
+	-- PreQuests Skull of Impending Doom (Neutral)
+	[709] = { name="Solution to Doom", startZone="Theldurin the Lost, South Badlands"},
+
+	-- PreQuests Noggenfogger Elixir
+	[2605] = { name = "Sprinkle's Secret Ingredient", startZone="Gadgetzan, Tanaris"},
+	[2606] = { name = "In Good Taste", startZone="Gadgetzan, Tanaris", preQuests={2605}},
+	[2641] = { name = "Sprinkle's Secret Ingredient", startZone="Gadgetzan, Tanaris", preQuests={2605,2606}},
+	[2661] = { name = "Delivery for Marin", startZone="Gadgetzan, Tanaris", preQuests={2605,2606,2641}},
+
+	-- PreQuests Nifty Stopwatch
+	[710] = { name = "Study of the Elements: Rock", startZone="Lotwil Veriatus, Badlands"},
+	[711] = { name = "Study of the Elements: Rock", startZone="Lotwil Veriatus, Badlands", preQuests={710}},
+	[712] = { name = "Study of the Elements: Rock", startZone="Lotwil Veriatus, Badlands", preQuests={710,711}},
+	[713] = { name = "Coolant Heads Prevail", startZone="Lotwil Veriatus, Badlands" },
+	[714] = { name = "Gyro... What?", startZone="Lotwil Veriatus, Badlands", preQuests={713}},
+	[734] = { name = "This Is Going to Be Hard", startZone="Lotwil Veriatus, Badlands", preQuests={710,711,712, 713,714}},
+	[777] = { name = "This Is Going to Be Hard", startZone="Lucien Tosselwrench, Badlands", preQuests={710,711,712, 713,714, 734}},
+}
+local extraQuestDetailsFaction = {
+	[1] = { -- Horde
+		[737] = { name = "Forbidden Knowledge", startZone="The Apothecarium, The Undercity", preQuests={709,728,736}},
+
+		-- PreQuests Skull of Impending Doom
+		[728] = { name="To the Undercity for Yagyin's Digest", startZone="Theldurin the Lost, South Badlands", preQuests={709}},
+		[736] = { name="The Star, the Hand and the Heart", startZone="The Apothecarium, The Undercity", preQuests={709,728}},
+	},
+	[2] = { -- Alliance
+		[737] = { name = "Forbidden Knowledge", startZone="The Forlorn Cavern, Ironforge", preQuests={709,727,735}},
+
+		-- PreQuests Skull of Impending Doom
+		[727] = { name="To Ironforge for Yagyin's Digest", startZone="Theldurin the Lost, South Badlands", preQuests={709,727}},
+		[735] = { name="The Star, the Hand and the Heart", startZone="The Forlorn Cavern, Ironforge"}, preQuests={709,727,735,737},
+	},
+}
+
 -- Not used yet.
 local benchedQuests = {
 	[3907] = { name="Disharmony of Fire", reason="NPC that ends the quest can go on a 5min patrol. You can't turn it in while he's walking around." },
@@ -1177,10 +1217,8 @@ function CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(ques
 				local neededItemCount = tonumber(countStr)
 
 				isBankAlted, bankAltName = CasualTBCPrep.Settings.IsItemMarkedAsStoredOnBankAlt(itemID)
-				
-				local playerTotalCount = C_Item.GetItemCount(itemID, true)
-				local playerInvCount = C_Item.GetItemCount(itemID, false)
-				local playerBankCount = playerTotalCount - playerInvCount
+
+				local playerInvCount,playerBankCount,playerTotalCount = CasualTBCPrep.Items.GetPlayerItemCount(itemID)
 
 				if isBankAlted == true then
 					fullyPrepared = true
@@ -1275,9 +1313,7 @@ function CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(onlyPrepa
 							dicCurItemStats.requiredAmount = dicCurItemStats.requiredAmount + neededItemCount
 							table.insert(dicCurItemStats.quests, { id=questID, quest=questData })
 						else
-							local playerInvCount = C_Item.GetItemCount(itemID, false)
-							local playerTotalCount = C_Item.GetItemCount(itemID, true)
-							local playerBankCount = playerTotalCount - playerInvCount
+							local playerInvCount,playerBankCount,playerTotalCount = CasualTBCPrep.Items.GetPlayerItemCount(itemID)
 
 							local iName = CasualTBCPrep.Items.GetCachedItemName(itemID)
 							dicItemStats[itemID] = { id=itemID, name=iName, requiredAmount=neededItemCount, playerInvAmount=playerInvCount, playerBankAmount=playerBankCount, playerTotalAmount=playerTotalCount, quests={ { id=questID, quest=questData }} }
@@ -1298,10 +1334,7 @@ function CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(onlyPrepa
 				local itemID = tonumber(itemIDStr)
 				local neededItemCount = tonumber(countStr)
 
-				local playerInvCount = C_Item.GetItemCount(itemID, false)
-				local playerTotalCount = C_Item.GetItemCount(itemID, true)
-				local playerBankCount = playerTotalCount - playerInvCount
-
+				local playerInvCount,playerBankCount,playerTotalCount = CasualTBCPrep.Items.GetPlayerItemCount(itemID)
 				if playerTotalCount >= neededItemCount then
 					userHasCompleted = true
 				end
@@ -1395,16 +1428,13 @@ function CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
 
 			if itemIDStr and countStr then
 				local itemID = tonumber(itemIDStr)
-
-				local playerInvCount = C_Item.GetItemCount(itemID, false)
-				local totalPlayerCount = C_Item.GetItemCount(itemID, true)
-				local playerBankCount = totalPlayerCount - playerInvCount
+				local playerInvCount,playerBankCount,playerTotalCount = CasualTBCPrep.Items.GetPlayerItemCount(itemID)
 
 				table.insert(itemDisplayList, {
 					itemID = itemID,
 					playerInvAmount = playerInvCount,
 					playerBankAmount = playerBankCount,
-					playerTotalAmount = totalPlayerCount,
+					playerTotalAmount = playerTotalCount,
 					requiredAmount = tonumber(countStr)
 				})
 			end
@@ -1801,4 +1831,46 @@ function CasualTBCPrep.QuestData.GetAllQuestsGroup_Normal()
 	end
 
 	return available, completed
+end
+
+local function GetExtraQuestObject(questID)
+	local factionID,_ = CasualTBCPrep.Faction.GetPlayerFactionID()
+	local questObject = extraQuestDetailsNeutral[questID]
+	if questObject == nil then
+		questObject = extraQuestDetailsFaction[factionID][questID]
+	end
+	return questObject
+end
+
+---@param questID number
+---@return table|nil
+function CasualTBCPrep.QuestData.GetExtraQuestDetails(questID)
+	local questObject = GetExtraQuestObject(questID)
+	if questObject == nil then return nil end
+
+	local result = { quest=questObject, nextPreQuest=nil, preQuestCount=0, completedPreQuestCount=0 }
+
+	if questObject.preQuests ~= nil and #questObject.preQuests > 0 then
+		result.preQuestCount = #questObject.preQuests+1--Current quest is also a "prequest"
+
+		local completedCount = 0
+		for _,preQuestID in ipairs(questObject.preQuests) do
+			if CasualTBCPrep.QuestData.HasCharacterCompletedQuest(preQuestID) == false then
+				local preQuestObject = GetExtraQuestObject(preQuestID)
+				if preQuestObject then
+					result.nextPreQuest = { id=preQuestID, name=preQuestObject.name, startZone=preQuestObject.startZone }
+				end
+				break
+			else
+				completedCount = completedCount+1
+			end
+		end
+
+		result.completedPreQuestCount = completedCount+1
+	else
+		result.preQuestCount = 1
+		result.completedPreQuestCount = 0
+		result.nextPreQuest = { id=questID, name=questObject.name, startZone=questObject.startZone }
+	end
+	return result
 end

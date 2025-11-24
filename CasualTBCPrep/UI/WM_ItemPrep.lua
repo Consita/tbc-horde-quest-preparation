@@ -232,7 +232,6 @@ local function LoadItemList(wMain)
 	local iconSize = 26
 	local iconSidePaddingX = 3
 	local iconPaddingY = 2
-	local borderSize = iconSize + 2
 
 	local yPosition = 0
 	local yPosLeft = yPosition
@@ -338,7 +337,7 @@ local function LoadItemList(wMain)
 			local doCreateItem = (isCompleted and not isCollapsedCollected) or (not isCompleted and not isCollapsedMissing)
 
 			if doCreateItem then
-				local icon, borderFrame, textRarityColor, item = CasualTBCPrep.UI.CreateItemImage(frame, iconSize, borderSize, itemDetails.id, anchorPoint, anchorPoint, iconSidePaddingX, yPosition)
+				local icon, border, textRarityColor, item = CasualTBCPrep.UI.CreateItemImage(frame, iconSize, itemDetails.id, anchorPoint, anchorPoint, iconSidePaddingX, yPosition)
 				local itemName = ""
 				if item then
 					local r,g,b,cHex = CasualTBCPrep.GetRarityColor(item.rarity)
@@ -346,7 +345,7 @@ local function LoadItemList(wMain)
 				end
 
 				table.insert(frameItemPrep.content, icon)
-				table.insert(frameItemPrep.content, borderFrame)
+				table.insert(frameItemPrep.content, border)
 
 				local itemNameText = textRarityColor .. (itemName or ("Item " .. itemDetails.id))
 
@@ -400,15 +399,17 @@ local function LoadItemList(wMain)
 				local ttLines = CreateItemTooltip(wMain, textItemName, item, nil)
 				CreateItemTooltip(wMain, textProgress, item, ttLines)
 
-				icon:EnableMouse(true)
-				icon:SetScript("OnEnter", function(self)
-					GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-					GameTooltip:SetHyperlink(CasualTBCPrep.Items.TryGetItemLink(item.id))
-					GameTooltip:Show()
-				end)
-				icon:SetScript("OnLeave", function()
-					GameTooltip:Hide()
-				end)
+				if icon then
+					icon:EnableMouse(true)
+					icon:SetScript("OnEnter", function(self)
+						GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+						GameTooltip:SetHyperlink(CasualTBCPrep.Items.TryGetItemLink(item.id))
+						GameTooltip:Show()
+					end)
+					icon:SetScript("OnLeave", function()
+						GameTooltip:Hide()
+					end)
+				end
 
 				CreateClickableItemFunctionality(icon, item.id)
 				CreateClickableItemFunctionality(textItemName, item.id)
@@ -433,7 +434,7 @@ local function LoadItemList(wMain)
 		yPosition = yPosition - 25
 
 		local anyqImgSpacing = 8
-		local anyqImgSize = 38
+		local anyqImgSize = 36
 		local anyqImgOffsetX = anyqImgSpacing
 
 		if not isCollapsedMultipleQ then
@@ -449,9 +450,9 @@ local function LoadItemList(wMain)
 					yPosition = yPosition - 18
 
 					for _, itemData in ipairs(questWrap.items) do
-						local icon, borderFrame, _, _ = CasualTBCPrep.UI.CreateItemImage(frame, anyqImgSize, anyqImgSize + 3, itemData.id, "TOPLEFT", "BOTTOMLEFT", anyqImgOffsetX, yPosition, true)
+						local icon, border, _, _ = CasualTBCPrep.UI.CreateItemImage(frame, anyqImgSize, itemData.id, "TOPLEFT", "BOTTOMLEFT", anyqImgOffsetX, yPosition, true)
 						table.insert(frameItemPrep.content, icon)
-						table.insert(frameItemPrep.content, borderFrame)
+						table.insert(frameItemPrep.content, border)
 
 						local anyqItemProgText = ""
 						if itemData.playerTotalAmount >= itemData.requiredAmount then
