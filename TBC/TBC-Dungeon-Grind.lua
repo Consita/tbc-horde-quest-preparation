@@ -909,7 +909,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		>>Clear |cFFfa9602The Botancia|r until you reach revered reputation with |cRXP_FRIENDLY_Sha'tar|r
-        >>This will take around 8 runs with an average of 1600 rep per run
+		>>This will take around 8 runs with an average of 1600 rep per run
         .reputation 935,Revered  
 
 	step
