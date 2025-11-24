@@ -1410,6 +1410,7 @@ RXPGuides.RegisterGuide([[
 			.zoneskip Winterspring
 
 		step
+			.goto Winterspring,61.4,37.0
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Izzy Coppergrab|r
 			.bankdeposit 11315,20394,20395,20396,20460,20461,20404 >> Deposit all quest items that are either for TBC or later used
 			.target Izzy Coppergrab
