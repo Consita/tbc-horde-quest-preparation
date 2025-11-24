@@ -2443,8 +2443,6 @@ RXPGuides.RegisterGuide([[
 			.accept 3568 >>Accept Seeping Corruption
 			.target Chemist Cuely
 		
-
-
 	--- Tanaris
 
 		step
