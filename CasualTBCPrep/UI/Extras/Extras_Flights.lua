@@ -36,7 +36,7 @@ local function SelectRoute(routeCode, hasUnlockedAll, taxiList, missingCount, pa
             CasualTBCPrep.UI.HookTooltip(txtTaxi, taxiText, { "You have this flightpath" }, nil,nil,nil)
         else
             taxiText = CasualTBCPrep.ColorRGB_CompletedQuest.hex..taxi.name.."|r"
-            CasualTBCPrep.UI.HookTooltip(txtTaxi, taxiText, { "You need unlcok this flightpath" }, nil,nil,nil)
+            CasualTBCPrep.UI.HookTooltip(txtTaxi, taxiText, { "You need to unlock this flightpath" }, nil,nil,nil)
         end
         txtTaxi:SetText(taxiText)
         table.insert(routeCleanup, txtTaxi)
