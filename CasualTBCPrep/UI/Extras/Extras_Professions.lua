@@ -143,7 +143,7 @@ local professionData = {
             { id=prof.ENGINEERING, comments=commentEngi },
             { id=prof.LEATHERWORKING, comments={ "Drums for your group" } }
         }},
-        { name="Protection", comments = { "There's no great second profession for Protection Warriors", "When the +4 Stats enchant comes out, Enchanting becomes viable " }, profs={
+        { name="Protection", comments = { "When the +4 Stats enchant comes out, Enchanting becomes viable " }, profs={
             { id=prof.BLACKSMITHING, comments={ } }, -- Is set in the getter
             { id=prof.ENGINEERING, comments=commentEngiTank },
             { id=prof.LEATHERWORKING, comments={ "Drums for your group" } }
@@ -232,9 +232,8 @@ end
 function CasualTBCPrep.Extras_Professions.Load(frame)
 	if not frame then return end
 
-	CasualTBCPrep.Extras_Flights.Clean(frame)
+	CasualTBCPrep.Extras_Professions.Clean(frame)
 	local parent = frame.scrollChild
-	local yPos = 1
 
 	local playerClassID = CasualTBCPrep.Classes.GetPlayerClassID()
 	local primaryProfs, secondaryProfs, tertiaryProfs = CasualTBCPrep.Professions.GetPlayerProfessions(true, true)
@@ -254,13 +253,13 @@ function CasualTBCPrep.Extras_Professions.Load(frame)
 
     local classTextColored = "|c"..classColorHex..className.." Professions|r"
 
-	yPos = yPos - 13
+	local yPos = -2
 	local txtHeaderMain = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalHuge")
-	txtHeaderMain:SetPoint("CENTER", parent, "CENTER", 0, yPos)
+	txtHeaderMain:SetPoint("TOP", parent, "TOP", 0, yPos)
 	txtHeaderMain:SetText(classTextColored)
 	table.insert(texts, txtHeaderMain)
 
-	yPos = yPos - 22
+	yPos = yPos - 30
 	local specIndex = 1
 	for _, spec in ipairs(profData.specs) do
         local specTextColored = "|c"..classColorHex..spec.name.."|r"

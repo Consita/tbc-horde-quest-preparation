@@ -119,8 +119,6 @@ CasualTBCPrep.Routing.Routes = {
         {
             ["BurningSteppes"] = { key="BurningSteppes", estTime=30, travelType=0, quests={ } },
             ["Badlands"] = { key="Badlands", estTime=70, travelType=3, quests={ } },
-            ["AV"] = { key="AV", estTime=125, travelType=4, textKey="TarrenMill", quests={ } },
-
 
             ["SilithusNE"] = { key="SilithusNE", estTime=60, travelType=4, quests={ }, canHaveZeroQuests=true },
             ["SilithusHold"] = { key="SilithusHold", estTime=110, travelType=2, quests={ } },
@@ -149,7 +147,6 @@ CasualTBCPrep.Routing.Routes = {
             ["felwoodEmerald"] = { key="felwoodEmerald", estTime=135, travelType=2, quests={ } },
 
             ["Orgrimmar"] = { key="Orgrimmar", estTime=167, travelType=6, quests={ } },
-            ["Undercity"] = { key="Undercity", estTime=70, travelType=8, quests={ } },
             ["SilvermoonCity"] = { key="SilvermoonCity", estTime=115, travelType=9, quests={ } },
             ["BayOfStorms"] = { key="BayOfStorms", estTime=60, travelType=4, quests={ } },
 
@@ -166,6 +163,9 @@ CasualTBCPrep.Routing.Routes = {
             ["WPLBulwark"] = { key="WPLBulwark", estTime=39, travelType=2, quests={ } },
 
             ["zgSTV"] = { key="zgSTV", estTime=60, travelType=4, quests={ } },
+            ["AV"] = { key="AV", estTime=125, travelType=4, textKey="TarrenMill", quests={ } },
+            ["Undercity"] = { key="Undercity", estTime=70, travelType=8, quests={ } },
+
             ["ThunderBluff"] = { key="ThunderBluff", estTime=130, travelType=7, quests={ } },
             ["Stonard"] = { key="Stonard", estTime=20, travelType=10, quests={ }, canHaveZeroQuests=true },
             ["oldhero"] = { key="oldhero", estTime=25, travelType=2, quests={ } },
@@ -206,7 +206,7 @@ CasualTBCPrep.Routing.Routes = {
         {
             ["BurningSteppes"] = { key="BurningSteppes", estTime=30, travelType=0, quests={ } },
             ["Badlands"] = { key="Badlands", estTime=70, travelType=3, quests={ } },
-            ["AV"] = { key="AV", estTime=125, travelType=4, textKey="TarrenMill", quests={ } },
+
             ["SilithusNE"] = { key="SilithusNE", estTime=60, travelType=4, quests={ }, canHaveZeroQuests=true },
             ["SilithusHold"] = { key="SilithusHold", estTime=110, travelType=2, quests={ } },
             ["SilithusCave"] = { key="SilithusCave", estTime=76, travelType=2, quests={ } },
@@ -230,7 +230,7 @@ CasualTBCPrep.Routing.Routes = {
             ["felwoodTown"] = { key="felwoodTown", estTime=165, travelType=3, quests={ } },
             ["felwoodEmerald"] = { key="felwoodEmerald", estTime=135, travelType=2, quests={ } },
             ["Orgrimmar"] = { key="Orgrimmar", estTime=167, travelType=6, quests={ } },
-            ["Undercity"] = { key="Undercity", estTime=70, travelType=8, quests={ } },
+            
             ["SilvermoonCity"] = { key="SilvermoonCity", estTime=115, travelType=9, quests={ } },
             ["BayOfStorms"] = { key="BayOfStorms", estTime=60, travelType=4, quests={ } },
             ["EPLTown"] = { key="EPLTown", estTime=85, travelType=5, textKey="EPLTownMain", quests={ } },
@@ -259,9 +259,13 @@ CasualTBCPrep.Routing.Routes = {
             ["WPLDalsonsTears"] = { key="WPLDalsonsTears", estTime=60, travelType=2, quests={ } },
             ["WPLFelstoneField"] = { key="WPLFelstoneField", estTime=37, travelType=2, quests={ } },
             ["WPLBulwark"] = { key="WPLBulwark", estTime=39, travelType=2, quests={ } },
+
             ["zgSTV"] = { key="zgSTV", estTime=60, travelType=4, quests={ } },
+            ["AV"] = { key="AV", estTime=125, travelType=4, textKey="TarrenMill", quests={ } },
+            ["Undercity"] = { key="Undercity", estTime=70, travelType=8, quests={ } },
             ["ThunderBluff"] = { key="ThunderBluff", estTime=130, travelType=7, quests={ } },
             ["Stonard"] = { key="Stonard", estTime=20, travelType=10, quests={ }, canHaveZeroQuests=true },
+
             ["oldhero"] = { key="oldhero", estTime=25, travelType=2, quests={ } },
             ["BlastedLands"] = { key="BlastedLands", estTime=52, travelType=2, quests={ } },
             ["TheDarkPortal"] = { key="TheDarkPortal", estTime=45, travelType=12, quests={ }, canHaveZeroQuests=true },

@@ -205,11 +205,7 @@ function CasualTBCPrep.Extras_Items.Load(frame)
                 table.insert(ttLines, CasualTBCPrep.CreateZoneText("Comments",""))
                 for _,comment in ipairs(item.comments) do
                     table.insert(ttLines, CasualTBCPrep.CreateZoneText("", comment))
-                end             
-                -- local dotCount = select(2, quest.comments:gsub("%.", ""))
-                -- for i = 1, dotCount do
-                --     table.insert(ttLines, " ")
-                -- end
+                end
             end
 
             if #ttLines > 0 then

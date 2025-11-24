@@ -25,13 +25,7 @@ function CasualTBCPrep.WM_About.Create(wMain)
 	frameAbout = CreateFrame("Frame", nil, wMain)
 	frameAbout:SetAllPoints(wMain)
 
-	frameAbout.scrollFrame = CreateFrame("ScrollFrame", nil, frameAbout, "UIPanelScrollFrameTemplate")
-	frameAbout.scrollFrame:SetPoint("TOPLEFT", frameAbout, "TOPLEFT", 11, -60)
-	frameAbout.scrollFrame:SetPoint("BOTTOMRIGHT", frameAbout, "BOTTOMRIGHT", -31, 8)
-
-	frameAbout.scrollChild = CreateFrame("Frame", nil, frameAbout.scrollFrame)
-	frameAbout.scrollChild:SetSize(frameAbout.scrollFrame:GetWidth(), 1)
-	frameAbout.scrollFrame:SetScrollChild(frameAbout.scrollChild)
+	frameAbout.scrollFrame, frameAbout.scrollChild = CasualTBCPrep.UI.CreateTBCPrepScrollFrame(frameAbout)
 end
 
 function CasualTBCPrep.WM_About.Hide()
@@ -158,8 +152,7 @@ function CasualTBCPrep.WM_About.Load(wMain)
 	local knownIssueList = {
 		"The 'Turn-in' RXP guide is not yet implemented",
 		"Disabling sections on a route doesn't disable attached sections",
-		"The 'Quests' tab doesn't add in extra 'Optional Quests' when a route section with questlog quests is disabled",
-		"Tooltips from the Quest/Item tabs escape the window and can block the cursor"
+		"The 'Quests' tab doesn't add in extra 'Optional Quests' when a route section with questlog quests is disabled"
 	}
 
 	local specialThanks = clrSpecial .. "Thanks to all our guildies that helped test the addon\n"

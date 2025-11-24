@@ -528,13 +528,7 @@ function CasualTBCPrep.WM_Route.Load(wMain)
 			end
 		end)
 
-		frameRoute.scrollFrame = CreateFrame("ScrollFrame", nil, frameRoute, "UIPanelScrollFrameTemplate")
-		frameRoute.scrollFrame:SetPoint("TOPLEFT", frameRoute, "TOPLEFT", 11, -60)
-		frameRoute.scrollFrame:SetPoint("BOTTOMRIGHT", frameRoute, "BOTTOMRIGHT", -31, 8)
-
-		frameRoute.scrollChild = CreateFrame("Frame", nil, frameRoute.scrollFrame)
-		frameRoute.scrollChild:SetSize(frameRoute.scrollFrame:GetWidth(), 1)
-		frameRoute.scrollFrame:SetScrollChild(frameRoute.scrollChild)
+		frameRoute.scrollFrame, frameRoute.scrollChild = CasualTBCPrep.UI.CreateTBCPrepScrollFrame(frameRoute)
 
 		frameRoute.dropdown = dropdown
 	end
