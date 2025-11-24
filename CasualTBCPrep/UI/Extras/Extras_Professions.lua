@@ -18,9 +18,7 @@ local commentBsHunt = { "Mooncleaver (Master Axesmith) is BiS for melee weaving.
 local commentLwHunt = { "Drums for your group", " ", "You NEED the dungeon 4 set bonus, but the Primalstrike items fit in perfectly to allow both pre-raid.", "Primalstrike is not bis and will be replaced" }
 
 local commentClassSharedSpeedrun = "Engineering is (probably) mandatory for serious speedrunning"
-local commentClassFeral = { "Cat DPS", "Feral was the best druid dps spec", "Warcraftlogs DPS rank: 15/21", }
 
-local specPhaseText = "Phase 1 (Last TBC)"
 local prof = CasualTBCPrep.Professions.PROF
 local professionData = {
 	[CasualTBCPrep.Classes.MageID] = { comments={ commentClassSharedSpeedrun }, specs={
@@ -93,7 +91,7 @@ local professionData = {
         }}
 	}},
 	[CasualTBCPrep.Classes.RogueID] = { comments={ commentClassSharedSpeedrun, " ", "" }, specs={
-        { name="Combat", comments = { specPhaseText, "Combat was the only viable rogue spec", " ", "Warcraftlogs DPS rank: 13/21"  }, profs={
+        { name="Combat", comments = { }, profs={
             { id=prof.ENGINEERING, comments=commentEngi },
             { id=prof.LEATHERWORKING, comments={ "Drums for your group", " ", "Primalstrike is equal to heroic drops and isn't used in P1 BiS, so it's not worth the price", " ", "Bringing drums is the only thing a rogue brings to a raid, so it's highly recommended to go LW" } },
             { id=prof.BLACKSMITHING, comments={ "In P1, the bs mace is slightly better than the aldor sword and similar to blinkstrike & PvP weapon.", " ", "In future phases it's also not BiS, but it's good until you can get your BiS" } },
