@@ -481,7 +481,7 @@ RXPGuides.RegisterGuide([[
 		step
 			.goto Orgrimmar,49.58,69.13
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Karus|r
-			.bankdeposit 11315
+			.bankdeposit 11315 >>Deposit |cRXP_LOOT_Bloodpetal Sprout|r for TBC launch
 			.target Karus
 
 		step
@@ -840,7 +840,7 @@ RXPGuides.RegisterGuide([[
 		step
 			.goto Orgrimmar,49.58,69.13
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Karus|r
-			.bankdeposit 12359
+			.bankdeposit 12359 >> Deposit the |T133221:0|t[Thorium Bar] for later use
 			.target Karus
 
 		step
@@ -1470,6 +1470,7 @@ RXPGuides.RegisterGuide([[
 			.zoneskip Winterspring
 
 		step
+			.goto Winterspring,61.4,37.0
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Izzy Coppergrab|r
 			.bankdeposit 11315,20394,20395,20396,20460,20461,20404 >> Deposit all quest items that are either for TBC or later used
 			.target Izzy Coppergrab
