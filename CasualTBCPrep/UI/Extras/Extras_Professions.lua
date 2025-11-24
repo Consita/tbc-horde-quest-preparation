@@ -1,10 +1,10 @@
 CasualTBCPrep = CasualTBCPrep or {}
 CasualTBCPrep.Extras_Professions = CasualTBCPrep.Extras_Professions or {}
 
-local commentEngi = { "Engineering Goggles", " ", "Battle Chicken & Flame Turret", "Grenades & Sapper Charges", " ", "Speedrunning", "- Engi boots for speed", "- Dummies for big trash pulls" }
-local commentEngiHeal = { "Healing Goggles", " ", "Speedrunning", "- Engi boots for speed", "- Dummies for big pulls", "- Grenades & Sapper Charges for big trash pulls" }
-local commentEngiTank = { "Engineering Goggles", " ", "2x +45 Stamina trinkets", "Battle Chicken & Flame Turret", "Grenades & Sapper Charges for AOE threat", " ", "Speedrunning", "- Engi boots for speed", "- Dummies for big trash pulls" }
-local commentEngiFeral  = { "Engineering Goggles", " ", "Battle Chicken", " ", "Speedrunning", "  Engi boots for speed", "  Dummies for big pulls", " ", "Cat", "  Sapper Charges for AOE", "  Gnomish Flame Turret", " ", "Bear", "  +45 Stamina Trinket", "  Sapper Charges for AOE when offtanking" }
+local commentEngi = { "Engineering Goggles", " ", "Battle Chicken & Flame Turret", "Grenades & Sapper Charges", " ", "Speedrunning", "- Engi boots for speed", "- Dummies for big trash pulls", "- Gnomish Cloaking Device", " ", "Note that Battle Chicken was banned by warcraftlogs last TBC" }
+local commentEngiHeal = { "Healing Goggles", " ", "Speedrunning", "- Engi boots for speed", "- Dummies for big pulls", "- Gnomish Cloaking Device", "- Grenades & Sapper Charges for big trash pulls" }
+local commentEngiTank = { "Engineering Goggles", " ", "2x +45 Stamina trinkets", "Battle Chicken & Flame Turret", "Grenades & Sapper Charges for AOE threat", " ", "Speedrunning", "- Engi boots for speed", "- Dummies for big trash pulls", "- Gnomish Cloaking Device", " ", "Note that Battle Chicken was banned by warcraftlogs last TBC" }
+local commentEngiFeral  = { "Engineering Goggles", " ", "Battle Chicken", " ", "Speedrunning", "  Engi boots for speed", "  Dummies for big pulls", "- Gnomish Cloaking Device", " ", "Cat", "  Sapper Charges for AOE", "  Gnomish Flame Turret", " ", "Bear", "  +45 Stamina Trinket", "  Sapper Charges for AOE when offtanking", " ", "Note that Battle Chicken was banned by warcraftlogs last TBC" }
 local commentEnchCaster = { "+12 Spell Damage on rings" }
 local commentEnchMelee = { "+2 Weapon Damage on rings", " ", "REMINDER", "+4 Stats on rings is not in Phase 1" }
 local commentEnchHeal = { "+20 Healing on rings" }
@@ -38,7 +38,7 @@ local professionData = {
             { id=prof.TAILORING, comments=commentTailShadoweave }
         }}
 	}},
-	[CasualTBCPrep.Classes.PriestID] = { comments={ commentClassSharedSpeedrun, " ", "" }, specs={
+	[CasualTBCPrep.Classes.PriestID] = { comments={ commentClassSharedSpeedrun }, specs={
         { name="Discipline", comments = { }, profs={
             { id=prof.ENGINEERING, comments=commentEngiHeal },
             { id=prof.ENCHANTING, comments=commentEnchHeal },
@@ -55,7 +55,7 @@ local professionData = {
             { id=prof.TAILORING, comments=commentTailShadoweave }
         }}
 	}},
-	[CasualTBCPrep.Classes.WarlockID] = { comments={ commentClassSharedSpeedrun, " ", "" }, specs={
+	[CasualTBCPrep.Classes.WarlockID] = { comments={ commentClassSharedSpeedrun }, specs={
         { name="Affliction", comments = { }, profs={
             { id=prof.ENGINEERING, comments=commentEngi },
             { id=prof.ENCHANTING, comments=commentEnchCaster },
@@ -72,7 +72,7 @@ local professionData = {
             { id=prof.TAILORING, comments={ "Both 'Shadow' and 'Fire' destruction is viable in Phase1", "Tailoring has a special set for both", "- Spellfire (Fire)", "- Frozen Shadoweave (Shadow)", " ", "Can also craft Spellstrike BoE items" } }
         }}
 	}},
-	[CasualTBCPrep.Classes.DruidID] = { comments={ commentClassSharedSpeedrun, " ", "" }, specs={
+	[CasualTBCPrep.Classes.DruidID] = { comments={ commentClassSharedSpeedrun }, specs={
         { name="Restoration", comments = { }, profs={
             { id=prof.ENGINEERING, comments=commentEngiHeal },
             { id=prof.ENCHANTING, comments=commentEnchHeal },
@@ -90,11 +90,11 @@ local professionData = {
             { id=prof.TAILORING, comments=commentTailSpellfire }
         }}
 	}},
-	[CasualTBCPrep.Classes.RogueID] = { comments={ commentClassSharedSpeedrun, " ", "" }, specs={
+	[CasualTBCPrep.Classes.RogueID] = { comments={ commentClassSharedSpeedrun }, specs={
         { name="Combat", comments = { }, profs={
             { id=prof.ENGINEERING, comments=commentEngi },
             { id=prof.LEATHERWORKING, comments={ "Drums for your group", " ", "Primalstrike is equal to heroic drops and isn't used in P1 BiS, so it's not worth the price", " ", "Bringing drums is the only thing a rogue brings to a raid, so it's highly recommended to go LW" } },
-            { id=prof.BLACKSMITHING, comments={ "In P1, the bs mace is slightly better than the aldor sword and similar to blinkstrike & PvP weapon.", " ", "In future phases it's also not BiS, but it's good until you can get your BiS" } },
+            { id=prof.BLACKSMITHING, comments={ "In Phase1, Dragonmaw is slightly better than the aldor sword and similar to blinkstrike & PvP weapon.", " ", "In future phases it's also not BiS, but it's good until you get your BiS" } },
         }}
 	}},
 	[CasualTBCPrep.Classes.HunterID] = { comments={ commentClassSharedSpeedrun, " ", "You may want Enchanting for Phase3, and Jewelcrafting for Phase4" }, specs={
@@ -114,7 +114,7 @@ local professionData = {
             { id=prof.LEATHERWORKING, comments=commentLwHunt }
         }}
 	}},
-	[CasualTBCPrep.Classes.ShamanID] = { comments={ commentClassSharedSpeedrun, " ", "" }, specs={
+	[CasualTBCPrep.Classes.ShamanID] = { comments={ commentClassSharedSpeedrun }, specs={
 		{ name="Elemental", comments = {  }, profs={
             { id=prof.ENGINEERING, comments=commentEngi },
             { id=prof.ENCHANTING, comments=commentEnchCaster },
@@ -132,7 +132,7 @@ local professionData = {
             { id=prof.TAILORING, comments=commentTailHeal }
         }}
 	}},
-	[CasualTBCPrep.Classes.WarriorID] = { comments={ commentClassSharedSpeedrun, " ", "" }, specs={
+	[CasualTBCPrep.Classes.WarriorID] = { comments={ commentClassSharedSpeedrun }, specs={
         { name="Arms", comments = { }, profs={
             { id=prof.BLACKSMITHING, comments={ "Lionheart Champion (Master Swordsmith) is BiS in Phase1 for PvE", " ", "Many warriors will go for the mace for PvP, which is still very good in PvE" } },
             { id=prof.ENGINEERING, comments=commentEngi },
@@ -144,12 +144,12 @@ local professionData = {
             { id=prof.LEATHERWORKING, comments={ "Drums for your group" } }
         }},
         { name="Protection", comments = { "There's no great second profession for Protection Warriors", "When the +4 Stats enchant comes out, Enchanting becomes viable " }, profs={
-            { id=prof.BLACKSMITHING, comments={ "No benefits for tanking...", "But with dual-spec, you may want this for your DPS spec" } },
+            { id=prof.BLACKSMITHING, comments={ } }, -- Is set in the getter
             { id=prof.ENGINEERING, comments=commentEngiTank },
             { id=prof.LEATHERWORKING, comments={ "Drums for your group" } }
         }}
 	}},
-	[CasualTBCPrep.Classes.PaladinID] = { comments={ commentClassSharedSpeedrun, " ", "" }, specs={
+	[CasualTBCPrep.Classes.PaladinID] = { comments={ commentClassSharedSpeedrun }, specs={
 		{ name="Holy", comments = { "Alchemy trinket is very good in the the last Phase", " ", "Leatherworking & Tailoring items are decent in Phase1, but quickly fall off in value" }, profs={
             { id=prof.ENGINEERING, comments=commentEngiHeal },
             { id=prof.ENCHANTING, comments=commentEnchHeal },
@@ -192,7 +192,11 @@ local function CreateProfessionString(parent, width, alignFrame, yDiff, professi
 
     if tooltipLines ~= nil and #tooltipLines > 0 then
         if not(#tooltipLines == 1 and tooltipLines[0] == "") then
-            CasualTBCPrep.UI.HookTooltip(txtProf,  profNameColored, tooltipLines, nil, nil, nil)
+            local actualTooltipLines = {}
+            for _,tt in ipairs(tooltipLines) do
+                table.insert(actualTooltipLines, CasualTBCPrep.CreateZoneText(tt, ""))
+            end
+            CasualTBCPrep.UI.HookTooltip(txtProf,  profNameColored, actualTooltipLines, nil, nil, nil)
         end
     end
 
@@ -288,8 +292,21 @@ function CasualTBCPrep.Extras_Professions.Load(frame)
                 profTextColor = CasualTBCPrep.ColorRGB_AvailableQuest.hex
             end
 
+            local tooltipLines = prof.comments
+            if #tooltipLines == 0 and playerClassID == CasualTBCPrep.Classes.WarriorID and spec.name == "Protection" and prof.id == CasualTBCPrep.Professions.PROF.BLACKSMITHING then
+                local playerRace = UnitRace("player")
+
+                if "orc" == playerRace:lower() then
+                    tooltipLines = { "For Orcs, the Thrallmar Exalted axe is Phase1 BiS threat", " ", "As you are an Orc, you won't need blacksmithing for Phase 1" }
+                else
+                    tooltipLines = { "As a non-orc, the Blacksmithing 1H sword is equal to King's Defender for threat" }
+                end
+
+                table.insert(tooltipLines, " ")
+                table.insert(tooltipLines, "For mitigation, you also won't need Blacksmithing")
+            end
             usedProfessions[prof.id] = true
-            specParent = CreateProfessionString(parent, columnWidth, specParent, yDiffProf, prof.id, profTextColor, prof.comments)
+            specParent = CreateProfessionString(parent, columnWidth, specParent, yDiffProf, prof.id, profTextColor, tooltipLines)
             yDiffProf = -14
 		end
         for _,playerProf in ipairs(primaryProfs) do
