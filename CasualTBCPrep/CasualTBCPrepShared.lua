@@ -41,6 +41,11 @@ CasualTBCPrep.ColorRGB_BankedButReadyQuest = { r=0.51, g=0.76, b=0.39, hex="|cFF
 CasualTBCPrep.ColorExpLeft = "|cFFBDBB6C"
 CasualTBCPrep.ColorTooltipStandOut = "|cFF6CBDAB"
 
+CasualTBCPrep.ColorRGB_SpecialHeader = { r=0.40, g=0.35, b=0.72, hex="|cFF6659B7"}
+CasualTBCPrep.ColorRGB_SpecialHeaderHover = { r=0.60, g=0.55, b=0.92, hex="|cFF998CEB"}
+CasualTBCPrep.ColorRGB_SpecialSelected = { r=0.42, g=0.86, b=0.42, hex="|cFF6BDB6B"}
+CasualTBCPrep.ColorRGB_SpecialNotSelected = { r=0.86, g=0.56, b=0.43, hex="|cFFDB8F6B"}
+
 local clrTooltipHeader = "|cFF50608C"
 local clrZoneLeft = "|cFFBDBB6C"
 local clrCurrentStepLeft = "|cFFBDBB6C"
@@ -485,6 +490,41 @@ function CasualTBCPrep.UI.CreateNextPrequestText(step, stepCount, questName, sta
 	end
 	return value
 end
+
+---@param frame Frame
+---@param topleftX number|nil
+---@param topleftY number|nil
+---@param botRightX number|nil
+---@param botRightY number|nil
+---@return Frame,Frame
+function CasualTBCPrep.UI.CreateTBCPrepScrollFrame(frame, topleftX, topleftY, botRightX, botRightY)
+	local scrollFrame = CreateFrame("ScrollFrame", nil, frame, "UIPanelScrollFrameTemplate")
+	scrollFrame:SetPoint("TOPLEFT", frame, "TOPLEFT", topleftX or 11, topleftY or -60)
+	scrollFrame:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", botRightX or -31, botRightY or 8)
+
+	local scrollChild = CreateFrame("Frame", nil, scrollFrame)
+	scrollChild:SetSize(scrollFrame:GetWidth(), 1)
+	scrollFrame:SetScrollChild(scrollChild)
+
+	return scrollFrame,scrollChild
+end
+
+---@param parent Frame
+---@param text string|nil
+---@param font Font
+---@param textJustifyH string|nil
+---@param textJustifyV string|nil
+function CasualTBCPrep.UI.CreateTextButton(parent, text, font, textJustifyH, textJustifyV)
+	local button = CreateFrame("Button", nil, parent)
+	button:SetText(text or "")
+	button:SetNormalFontObject(font)
+	local txtFeatureOption = button:GetFontString()
+	if textJustifyH and textJustifyH ~= "" then txtFeatureOption:SetJustifyH(textJustifyH) end
+	if textJustifyV and textJustifyV ~= "" then txtFeatureOption:SetJustifyV(textJustifyV) end
+	button:SetSize(txtFeatureOption:GetStringWidth(), txtFeatureOption:GetStringHeight())
+
+	return button
+end
 --[Shared UI Functions]
 ---@param parent Frame
 ---@param point string
@@ -672,7 +712,7 @@ end
 ---@param funcOnLeave function|nil
 function CasualTBCPrep.UI.HookTooltip(parent, header, lines, itemDisplayList, funcOnEnter, funcOnLeave)
 	parent:SetScript("OnEnter", function(self)
-		if funcOnEnter then funcOnEnter() end
+		if funcOnEnter then funcOnEnter(parent) end
 
 		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 		GameTooltip:SetText(header or "", 1, 1, 1)
@@ -697,7 +737,7 @@ function CasualTBCPrep.UI.HookTooltip(parent, header, lines, itemDisplayList, fu
 		GameTooltip:Show()
 	end)
 	parent:SetScript("OnLeave", function(self)
-		if funcOnLeave then funcOnLeave() end
+		if funcOnLeave then funcOnLeave(parent) end
 
 		GameTooltip:Hide()
 	end)

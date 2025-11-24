@@ -94,13 +94,7 @@ function CasualTBCPrep.WM_QuestPrep.Create(wMain)
 	frameQuestPrep = CreateFrame("Frame", nil, wMain)
 	frameQuestPrep:SetAllPoints(wMain)
 
-	frameQuestPrep.scrollFrame = CreateFrame("ScrollFrame", nil, frameQuestPrep, "UIPanelScrollFrameTemplate")
-	frameQuestPrep.scrollFrame:SetPoint("TOPLEFT", frameQuestPrep, "TOPLEFT", 11, -67)
-	frameQuestPrep.scrollFrame:SetPoint("BOTTOMRIGHT", frameQuestPrep, "BOTTOMRIGHT", -31, 8)
-
-	frameQuestPrep.scrollChild = CreateFrame("Frame", nil, frameQuestPrep.scrollFrame)
-	frameQuestPrep.scrollChild:SetSize(frameQuestPrep.scrollFrame:GetWidth(), 1)
-	frameQuestPrep.scrollFrame:SetScrollChild(frameQuestPrep.scrollChild)
+	frameQuestPrep.scrollFrame, frameQuestPrep.scrollChild = CasualTBCPrep.UI.CreateTBCPrepScrollFrame(frameQuestPrep, nil, -70, nil, nil)
 
 	frameQuestPrep.content = { }
 
@@ -250,8 +244,9 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 	local isCollapsed = frameQuestPrep.collapsedSections[headerText] or false
 	local collapseIndicator = isCollapsed and "> " or "v "
 
+	local headerColor = CasualTBCPrep.ColorRGB_SpecialHeader
 	headerFrame:SetText(collapseIndicator .. totalCount .. " " .. headerText .. " Quest" .. (totalCount == 1 and "" or "s"))
-	headerFrame:SetTextColor(0.40, 0.35, 0.72)
+	headerFrame:SetTextColor(headerColor.r, headerColor.g, headerColor.b)
 	headerFrame:SetPoint(point, frameQuestPrep.scrollChild, relativePoint, xOffset, yOffset)
 
 	if not headerFrame.clickFrame then
@@ -265,10 +260,11 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 			end
 		end)
 		headerFrame.clickFrame:SetScript("OnEnter", function()
-			headerFrame:SetTextColor(0.60, 0.55, 0.92)
+			local hdrClr = CasualTBCPrep.ColorRGB_SpecialHeaderHover
+			headerFrame:SetTextColor(hdrClr.r, hdrClr.g, hdrClr.b)
 		end)
 		headerFrame.clickFrame:SetScript("OnLeave", function()
-			headerFrame:SetTextColor(0.40, 0.35, 0.72)
+			headerFrame:SetTextColor(headerColor.r, headerColor.g, headerColor.b)
 		end)
 	end
 

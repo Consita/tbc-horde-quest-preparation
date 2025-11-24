@@ -63,14 +63,9 @@ function CasualTBCPrep.WM_ItemPrep.Create(wMain)
 	frameItemPrep = CreateFrame("Frame", nil, wMain)
 	frameItemPrep:SetAllPoints(wMain)
 
-	frameItemPrep.scrollFrame = CreateFrame("ScrollFrame", nil, frameItemPrep, "UIPanelScrollFrameTemplate")
-	frameItemPrep.scrollFrame:SetPoint("TOPLEFT", frameItemPrep, "TOPLEFT", 11, -60)
-	frameItemPrep.scrollFrame:SetPoint("BOTTOMRIGHT", frameItemPrep, "BOTTOMRIGHT", -31, 8)
+	frameItemPrep.scrollFrame, frameItemPrep.scrollChild = CasualTBCPrep.UI.CreateTBCPrepScrollFrame(frameItemPrep)
 
-	frameItemPrep.scrollChild = CreateFrame("Frame", nil, frameItemPrep.scrollFrame)
-	frameItemPrep.scrollChild:SetSize(frameItemPrep.scrollFrame:GetWidth(), 1)
-	frameItemPrep.scrollFrame:SetScrollChild(frameItemPrep.scrollChild)
-
+    frameItemPrep:SetClipsChildren(true)
 	frameItemPrep:Hide()
 
 	-- Search

@@ -17,13 +17,7 @@ function CasualTBCPrep.WM_Extras.Create(wMain)
 	frameExtras = CreateFrame("Frame", nil, wMain)
 	frameExtras:SetAllPoints(wMain)
 
-	frameExtras.scrollFrame = CreateFrame("ScrollFrame", nil, frameExtras, "UIPanelScrollFrameTemplate")
-	frameExtras.scrollFrame:SetPoint("TOPLEFT", frameExtras, "TOPLEFT", 11, -60)
-	frameExtras.scrollFrame:SetPoint("BOTTOMRIGHT", frameExtras, "BOTTOMRIGHT", -31, 8)
-
-	frameExtras.scrollChild = CreateFrame("Frame", nil, frameExtras.scrollFrame)
-	frameExtras.scrollChild:SetSize(frameExtras.scrollFrame:GetWidth(), 1)
-	frameExtras.scrollFrame:SetScrollChild(frameExtras.scrollChild)
+	frameExtras.scrollFrame, frameExtras.scrollChild = CasualTBCPrep.UI.CreateTBCPrepScrollFrame(frameExtras)
 
 	frameExtras.txtSelection = frameExtras:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
 	frameExtras.txtSelection:SetPoint("CENTER", frameExtras, "CENTER", 0, 0)
