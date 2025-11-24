@@ -644,7 +644,7 @@ RXPGuides.RegisterGuide([[
 			.destroy 11107 >>Destroy |T133653:0|t[A Small Pack]
 			.destroy 3108 >>Destroy the |T135427:0|t[Heavy Throwing Daggers]
 			.destroy 11108 >>Destroy the |T134944:0|t[Faded Photograph]				
-			
+
 		step
 			>>Collect |cRXP_LOOT_Un'Goro Soil|r from mobs or |cRXP_PICK_Un'Goro Dirt Piles|r
 			.collect 11018,5 
@@ -956,6 +956,7 @@ RXPGuides.RegisterGuide([[
 		step
 			#completewith next
 			.use 22320 >> Open |cRXP_LOOT_Mux's Quality Goods|r and keep the |T132621:0|t[Goblin Rocket Fuel] for later
+			.collect 9061,8,8924,1
 
 		step
 			.goto Tanaris,66.989,22.354
