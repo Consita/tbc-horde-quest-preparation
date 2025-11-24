@@ -272,13 +272,13 @@ RXPGuides.RegisterGuide([[
 
 	--- Thunder Bluff
 
-		step
+		step 
 			#completewith next
-			.goto Moonglade,32.2,66.6
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Faustron|r
-			.fly Felwood >>Fly to |cFFfa9602Felwood|r
-			.target Faustron
-			.zoneskip Felwood
+			.goto Feralas,75.45,44.36
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shyn|r
+			.fly Thunder Bluff >> Fly to |cFFfa9602Thunder Bluff|r
+			.target Shyn
+			.zoneskip Thunder Bluff
 
 		step
 			#loop
@@ -331,10 +331,10 @@ RXPGuides.RegisterGuide([[
 
 		step
 			#completewith next
-			.goto Winterspring,60.47,36.30
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r
-			.fly Felwood>>Fly to |cFFfa9602Felwood|r
-			.target Yugrek
+			.goto Moonglade,32.2,66.6
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Faustron|r
+			.fly Felwood >>Fly to |cFFfa9602Felwood|r
+			.target Faustron
 			.zoneskip Felwood
 
 		step
