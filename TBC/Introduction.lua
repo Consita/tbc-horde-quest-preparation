@@ -4,7 +4,7 @@ end
 
 RXPGuides.RegisterGuide([[
 
---- Guide based on https://docs.google.com/spreadsheets/d/e/2PACX-1vTLDWAi5irsvgkBUT5ptVzQnydBbuaDVyC5ovJDWG8MhXg-dproqfanEVK2z8Sf9IEk4l6Ptd1fd7P0/pubhtml?gid=1481926889&single=true
+--- Guide based on https://docs.google.com/spreadsheets/d/e/2PACX-1vTLDWAi5irsvgkBUT5ptVzQnydBbuaDVyC5ovJDWG8MhXg-dproqfanEVK2z8Sf9IEk4l6Ptd1fd7P0/pubhtml?gid=1098533708&single=true
 
 #classic
 #version 3
@@ -25,6 +25,7 @@ step
     >>|cffdb696fQuest Preparation|r
     +Use the Quest Prep Guide to complete pre-req quests and prepare all quests for launch day.
     >>Select the correct version for your needs:
+    >>|cRXP_WARN_Strat:|r If you're starting TBC with several friends and have Warlocks for summons and also want to do a Stratholme run and enter Scholomance for one boss.
     >>|cRXP_WARN_Group:|r If you're starting TBC with several friends and have Warlocks for summons.
     >>|cRXP_WARN_Solo:|r If you want a little solo headstart without summons/portals.
 
@@ -36,6 +37,7 @@ step
 step
     >>|cffdb696fLaunch!|r    
     +|cRXP_WARN_ON LAUNCH DAY|r, use the Turn-in Guide.
+    >>|cRXP_WARN_Strat:|r If you're starting TBC with several friends and have Warlocks for summons and also want to do a Stratholme run and enter Scholomance for one boss.
     >>|cRXP_WARN_Group:|r If you're starting TBC with several friends and have Warlocks for summons.
     >>|cRXP_WARN_Solo:|r If you want a little solo headstart without summons/portals.
 
