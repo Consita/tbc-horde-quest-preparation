@@ -167,6 +167,67 @@ local professionData = {
         }}
 	}},
 }
+local secondaryProfessions = { prof.COOKING, prof.FIRSTAID, prof.FISHING }
+local classProfessions = {
+    [CasualTBCPrep.Classes.RogueID] = { prof.LOCKPICKING, prof.POISONS }
+}
+
+local commentCook = { "TBC adds daily cooking quests, which will grant various fish/meat for cooking your raid foods cheaper.", "You may also get BoP recipes you can make some money with" }
+local commentCookPet = {"TBC adds daily cooking quests, which will grant various fish/meat for cooking your raid foods cheaper.", "You may also get BoP recipes you can make some money with", " ", "One of the recipes is +20 Strength to pets, which you will need!", "It'll be much cheaper to craft yourself early on" }
+local commentAid = { "First Aid is always good to have, but TBC has no poison cleansers" }
+local commentAidHeals = { "First Aid is always good to have, but TBC has no poison cleansers", " ", "Your class may have self-heals, but firstaid costs no mana!" }
+
+local commentFish = { "Required for spawning a boss in the SSC raid in Phase2!", "- 305 minimum, 400+ to avoid missing", " ", "TBC also adds daily fishing quests, which is quick money.", "There's also a chance of getting rare pets, a +15 stamina gem and 'The 2 Ring', a VERY good ring for feral druids", " ", "It doesn't take much effort, and you might hit the jackpot!"}
+
+local secondaryTertiaryClassProfessionComments = {
+    [CasualTBCPrep.Classes.MageID] = {
+        [prof.COOKING] = commentCook,
+        [prof.FIRSTAID] = commentAid,
+        [prof.FISHING] = commentFish
+    },
+    [CasualTBCPrep.Classes.PriestID] = {
+        [prof.COOKING] = commentCook,
+        [prof.FIRSTAID] = commentAidHeals,
+        [prof.FISHING] = commentFish
+    },
+    [CasualTBCPrep.Classes.WarlockID] = {
+        [prof.COOKING] = commentCookPet,
+        [prof.FIRSTAID] = commentAid,
+        [prof.FISHING] = commentFish
+    },
+    [CasualTBCPrep.Classes.DruidID] = {
+        [prof.COOKING] = commentCook,
+        [prof.FIRSTAID] = commentAidHeals,
+        [prof.FISHING] = commentFish
+    },
+    [CasualTBCPrep.Classes.RogueID] = {
+        [prof.COOKING] = commentCook,
+        [prof.FIRSTAID] = commentAid,
+        [prof.FISHING] = commentFish,
+        [prof.LOCKPICKING] = { "Your main utility is being able to open lockboxes and locked chests!" },
+        [prof.POISONS] = { "You'll use poisons on your off-hand on bosses not immune to nature damage" }
+    },
+    [CasualTBCPrep.Classes.HunterID] = {
+        [prof.COOKING] = commentCookPet,
+        [prof.FIRSTAID] = commentAid,
+        [prof.FISHING] = commentFish
+    },
+    [CasualTBCPrep.Classes.ShamanID] = {
+        [prof.COOKING] = commentCook,
+        [prof.FIRSTAID] = commentAidHeals,
+        [prof.FISHING] = commentFish
+    },
+    [CasualTBCPrep.Classes.WarriorID] = {
+        [prof.COOKING] = commentCook,
+        [prof.FIRSTAID] = commentAid,
+        [prof.FISHING] = commentFish
+    },
+    [CasualTBCPrep.Classes.PaladinID] = {
+        [prof.COOKING] = commentCook,
+        [prof.FIRSTAID] = commentAidHeals,
+        [prof.FISHING] = commentFish
+    },
+}
 
 local content, texts = {},{}
 
@@ -177,11 +238,17 @@ local content, texts = {},{}
 ---@param professionID number
 ---@param textColor string
 ---@param tooltipLines table|nil
+---@param currentLevel number
 ---@return FontString
-local function CreateProfessionString(parent, width, alignFrame, yDiff, professionID, textColor, tooltipLines)
+local function CreateProfessionString(parent, width, alignFrame, yDiff, professionID, textColor, tooltipLines, currentLevel)
     local profName = CasualTBCPrep.Locale.Professions.GetProfessionName(professionID)
     if profName == nil then profName = "Unknown Profession" end
     local profNameColored = textColor..profName.."|r"
+
+    local tooltipHeader = profNameColored
+    if currentLevel and currentLevel >= 0 then
+        tooltipHeader = textColor..profName.." "..tostring(currentLevel).."/"..tostring(CasualTBCPrep.Professions.MAX_PROF_LEVEL).."|r"
+    end
 
     local txtProf = parent:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     txtProf:SetPoint("CENTER", alignFrame, "CENTER", 0, yDiff)
@@ -196,7 +263,7 @@ local function CreateProfessionString(parent, width, alignFrame, yDiff, professi
             for _,tt in ipairs(tooltipLines) do
                 table.insert(actualTooltipLines, CasualTBCPrep.CreateZoneText(tt, ""))
             end
-            CasualTBCPrep.UI.HookTooltip(txtProf,  profNameColored, actualTooltipLines, nil, nil, nil)
+            CasualTBCPrep.UI.HookTooltip(txtProf,  tooltipHeader, actualTooltipLines, nil, nil, nil)
         end
     end
 
@@ -275,10 +342,12 @@ function CasualTBCPrep.Extras_Professions.Load(frame)
         local specParent = txtHeaderSpec
         local yDiffProf = -18
 		for _,prof in ipairs(spec.profs) do
+            local currentLevel = -1
             local profTextColor = "";
 
             for _,playerProf in ipairs(primaryProfs) do
                 if prof.id == playerProf.id then
+                    currentLevel = playerProf.level
                     if playerProf.level >= CasualTBCPrep.Professions.MAX_PROF_LEVEL then
                         profTextColor = CasualTBCPrep.ColorRGB_ReadyQuest.hex
                     else
@@ -305,12 +374,12 @@ function CasualTBCPrep.Extras_Professions.Load(frame)
                 table.insert(tooltipLines, "For mitigation, you also won't need Blacksmithing")
             end
             usedProfessions[prof.id] = true
-            specParent = CreateProfessionString(parent, columnWidth, specParent, yDiffProf, prof.id, profTextColor, tooltipLines)
-            yDiffProf = -14
+            specParent = CreateProfessionString(parent, columnWidth, specParent, yDiffProf, prof.id, profTextColor, tooltipLines, currentLevel)
+            yDiffProf = -16
 		end
         for _,playerProf in ipairs(primaryProfs) do
             if not usedProfessions[playerProf.id] then
-                specParent = CreateProfessionString(parent, columnWidth, specParent, yDiffProf, playerProf.id, CasualTBCPrep.ColorRGB_CompletedQuest.hex, wrongProfTooltip)
+                specParent = CreateProfessionString(parent, columnWidth, specParent, yDiffProf, playerProf.id, CasualTBCPrep.ColorRGB_CompletedQuest.hex, wrongProfTooltip, -1)
             end
         end
 
@@ -319,6 +388,55 @@ function CasualTBCPrep.Extras_Professions.Load(frame)
         end
         specIndex = specIndex+1
 	end
+
+
+    local txtHeaderSecondary = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
+    txtHeaderSecondary:SetPoint("TOP", txtHeaderMain, "TOP", 0, -140)
+    txtHeaderSecondary:SetJustifyH("CENTER")
+    txtHeaderSecondary:SetText("|c"..classColorHex.."Secondary Professions|r")
+    table.insert(texts, txtHeaderSecondary)
+
+    local finalProfs = {}
+    for _,profID in ipairs(secondaryProfessions) do table.insert(finalProfs, profID) end
+    local myClassProfs = classProfessions[playerClassID]
+    if myClassProfs ~= nil and #myClassProfs > 0 then
+        for _,profID in ipairs(myClassProfs) do
+            table.insert(finalProfs, profID)
+        end
+    end
+
+    local playerFinalProfs = {}
+    for _,playerProfData in ipairs(secondaryProfs) do table.insert(playerFinalProfs, playerProfData) end
+    for _,playerProfData in ipairs(tertiaryProfs) do table.insert(playerFinalProfs, playerProfData) end
+
+    local parentObj = txtHeaderSecondary
+    local yDiffProf = -22
+	for _,profID in ipairs(finalProfs) do
+        local profTextColor = ""
+        local currentLevel = -1
+        local found = false
+        for _,playerProf in ipairs(playerFinalProfs) do
+            if profID == playerProf.id then
+                found = true
+                currentLevel = playerProf.level
+                if playerProf.level >= CasualTBCPrep.Professions.MAX_PROF_LEVEL then
+                    profTextColor = CasualTBCPrep.ColorRGB_ReadyQuest.hex
+                else
+                    profTextColor = CasualTBCPrep.ColorRGB_BankedButReadyQuest.hex
+                end
+                break
+            end
+            if profTextColor == nil or profTextColor == "" then
+                profTextColor = CasualTBCPrep.ColorRGB_AvailableQuest.hex
+            end
+        end
+
+        local tooltipLines = secondaryTertiaryClassProfessionComments[playerClassID][profID]
+        parentObj = CreateProfessionString(parent, columnWidth, parentObj or txtHeaderMain, yDiffProf, profID, profTextColor, tooltipLines, currentLevel)
+        yDiffProf = -16
+    end
+
+
 
     if profData.comments ~= nil and #profData.comments > 0 then
         CasualTBCPrep.UI.HookTooltip(txtHeaderMain, classTextColored, profData.comments, nil,nil,nil)

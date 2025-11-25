@@ -34,7 +34,8 @@
         "HIGH",
         "DEFENSE",
         "RAID_CLASS_COLORS",
-        "NEED"
+        "NEED",
+        "Professions"
     ],
     "Lua.type.weakUnionCheck": true
 }
