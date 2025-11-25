@@ -1322,7 +1322,7 @@ RXPGuides.RegisterGuide([[
 
 		step <<wotlk
 			.goto Silithus,67,69.6
-			>>|cRXP_WARN_This quests can be used as optional turn in quests for TBC. Check /tbcprep to see if you need it|r
+			>>|cRXP_LOOT_The Twilight Lexicon|r |cRXP_WARN_can be used as an optional questlog quest for TBC. Check /tbcprep to see if you need it|r
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hermit Ortell|r
 			.target Hermit Ortell
 			.turnin 8279
@@ -1368,7 +1368,7 @@ RXPGuides.RegisterGuide([[
 			.complete 8310,3		
 
 		step
-			>>|cRXP_WARN_Both of those quests can be used as optional turn in quests for TBC. Check /tbcprep to see if you need these|r
+			>>|cRXP_WARN_Both,|r |cRXP_LOOT_Glyph Chasing|r |cRXP_WARN_and|r |cRXP_LOOT_Unraveling the Mystery|r |cRXP_WARN_can be used as optional questlog quests for TBC. Check /tbcprep to see if you need these|r
 			.goto Silithus,41.30,88.50,10,0
 			.goto Silithus,40.80,88.80
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rutgar|r and |cRXP_FRIENDLY_Frankal|r
@@ -1394,7 +1394,7 @@ RXPGuides.RegisterGuide([[
 
 		step
 			.goto Moonglade,51.70,45.00
-			>>|cRXP_WARN_This quests can be used as optional turn in quests for TBC. Check /tbcprep to see if you need it|r
+			>>|cRXP_LOOT_A Reliquary of Purity|r |cRXP_WARN_can be used as an optional questlog quest for TBC. Check /tbcprep to see if you need it|r
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rabine|r
 			.turnin 5527
 			.target Rabine Saturna
@@ -2765,14 +2765,14 @@ RXPGuides.RegisterGuide([[
 
 		step
 			.goto Winterspring,31.30,45.20
-			>>|cRXP_WARN_This quests can be used as optional turn in quests for TBC. Check /tbcprep to see if you need it|r
+			>>|cRXP_LOOT_High Chief Winterfall|r |cRXP_WARN_can be used as an optional questlog quest for TBC. Check /tbcprep to see if you need it|r
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Donova|r
 			.turnin 5121 >>Turn in High Chief Winterfall
 			.target Donova Snowden
 
 		step
 			.goto Winterspring,61.93,38.37
-			>>|cRXP_WARN_This quests can be used as optional turn in quests for TBC. Check /tbcprep to see if you need it|r
+			>>|cRXP_LOOT_Shy-Rotam|r |cRXP_WARN_can be used as an optional questlog quest for TBC. Check /tbcprep to see if you need it|r
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Storm|r
 			.turnin 5056 >> Turn in Shy-Rotam
 			.target Storm Shadowhoof
@@ -3167,7 +3167,7 @@ RXPGuides.RegisterGuide([[
 			.mob Servant of Razelikh
 
 		step
-			>>|cRXP_WARN_This quests can be used as optional turn in quests for TBC. Check /tbcprep to see if you need it|r
+			>>|cRXP_LOOT_The Stones That Bind Us|r |cRXP_WARN_can be used as an optional questlog quest for TBC. Check /tbcprep to see if you need it|r
 			.goto Swamp of Sorrows,34.3,66.1
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tReturn to the |cRXP_FRIENDLY_Fallen Hero of the Horde|r
 			.turnin 2681 >> Turn in The Stones That Bind Us
@@ -3291,7 +3291,7 @@ RXPGuides.RegisterGuide([[
 			.turnin 5804
 
 		step	
-			>>|cRXP_WARN_This quests can be used as optional turn in quests for TBC. Check /tbcprep to see if you need it|r
+			>>|cRXP_LOOT_Alas, Andorhal|r |cRXP_WARN_can be used as an optional questlog quest for TBC. Check /tbcprep to see if you need it|r
 			.goto Western Plaguelands,26.51,56.02
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_High Executor Derrington|r
 			.target High Executor Derrington
