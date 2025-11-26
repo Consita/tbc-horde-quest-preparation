@@ -6,6 +6,8 @@ Changelog:
 - > Extra - Items: A list of special vanilla (60) items you can collect before TBC
 - > Extra - Professions: A list of usable professions for your class/specs
 - Fixed UI Layout - Tabs now properly align with the frame border, and the scroll content now fully fills out the frame, so more stuff is visible
+- Moved 'AV/Tarren Mill' later to make use of the scaling exp better
+- Fixed a bug where item tooltips were 'escaping' the window and blocking bags
 
 3.7
 - You can now search on the "Quests" and "Items" tab. You can search for a lot of fields. Let us know if you find any issues with this!
