@@ -4,6 +4,7 @@ end
 
 RXPGuides.RegisterGuide([[
 #classic
+#tbc
 #version 3
 #group Consita Classic/TBC Launch Guide
 #subgroup 2.1 - Quest Prep - Strat Group Turnin

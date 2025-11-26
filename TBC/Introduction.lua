@@ -7,6 +7,7 @@ RXPGuides.RegisterGuide([[
 --- Guide based on https://docs.google.com/spreadsheets/d/e/2PACX-1vTLDWAi5irsvgkBUT5ptVzQnydBbuaDVyC5ovJDWG8MhXg-dproqfanEVK2z8Sf9IEk4l6Ptd1fd7P0/pubhtml?gid=1098533708&single=true
 
 #classic
+#tbc
 #version 3
 #group Consita Classic/TBC Launch Guide
 #name 1 - Introduction
