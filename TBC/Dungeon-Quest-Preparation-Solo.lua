@@ -658,6 +658,11 @@ RXPGuides.RegisterGuide([[
 		.skipgossip
 
 	step
+		#completewith next
+		.zone 1583 >>Enter the |cFFfa9602Scholomance|r
+		.zoneskip 1583	
+
+	step
 		#completewith deed
 		>>Kill 20 |cRXP_ENEMY_Plagued Hatchlings|r inside |cFFfa9602Scholomance|r
 		.mob Plagued Hatchling
@@ -686,6 +691,11 @@ RXPGuides.RegisterGuide([[
 		.turnin 5382
 		.accept 5515
 		.target Eva Sarkhoff
+
+	step
+		#completewith next
+		.zone 1583 >>Enter the |cFFfa9602Scholomance|r
+		.zoneskip 1583			
 
 	step
 		>>Kill |cRXP_ENEMY_Jandice Barov|r inside |cFFfa9602Scholomance|r and loot her for |cRXP_LOOT_Krastinov's Bag of Horrors|r
@@ -792,6 +802,11 @@ RXPGuides.RegisterGuide([[
 		.isQuestAvailable 8201
 
 	step
+		#completewith next
+		.zone 1583 >>Enter the |cFFfa9602Zul'Gurub|r
+		.zoneskip 1583	
+
+	step
 		>>Kill |cRXP_ENEMY_High Priests|r inside |cFFfa9602Zul'Gurub|r for 5x |cRXP_LOOT_Channeler's Head|r
 		.mob High Priestess Jeklik
 		.mob High Priest Venoxis
@@ -834,6 +849,11 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
+		.zone 1583 >>Enter the |cFFfa9602Dire Maul East|r
+		.zoneskip 1583	
+
+	step
+		#completewith next
 		>>Kill |cRXP_ENEMY_Lethtendris|r inside |cFFfa9602Dire Maul East|r for |cRXP_LOOT_Lethtendris's Web|r
 		.mob Lethtendris
 		.complete 7489,1
@@ -842,6 +862,11 @@ RXPGuides.RegisterGuide([[
 		>>Collect |cRXP_LOOT_Felvine Shard|r inside |cFFfa9602Dire Maul East|r after you killed |cRXP_ENEMY_Alzzin the Wildshaper|r
 		>>You don't need to have a quest in order to loot it!
 		.collect 18501
+
+	step
+		#completewith next
+		.zone 1583 >>Enter the |cFFfa9602Dire Maul North|r
+		.zoneskip 1583	
 
 	step
 		>>Click the skeleton next to |cRXP_FRIENDLY_Lorekeeper Lydros|r in the Library of Dire Maul North/West

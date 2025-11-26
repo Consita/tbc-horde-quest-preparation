@@ -687,6 +687,11 @@ RXPGuides.RegisterGuide([[
 		.skipgossip
 
 	step
+		#completewith next
+		.zone 1583 >>Enter the |cFFfa9602Scholomance|r
+		.zoneskip 1583		
+
+	step
 		#completewith deed
 		>>Kill 20 |cRXP_ENEMY_Plagued Hatchlings|r inside |cFFfa9602Scholomance|r
 		.mob Plagued Hatchling
@@ -727,6 +732,11 @@ RXPGuides.RegisterGuide([[
 		.turnin 5515
 		.accept 5384
 		.target Eva Sarkhoff	
+
+	step
+		#completewith next
+		.zone 1583 >>Enter the |cFFfa9602Scholomance|r
+		.zoneskip 1583	
 
 	step
 		>>Kill |cRXP_ENEMY_Kirtonos the Herald|r inside |cFFfa9602Scholomance|r
@@ -821,6 +831,11 @@ RXPGuides.RegisterGuide([[
 		.isQuestAvailable 8201
 
 	step
+		#completewith next
+		.zone 1583 >>Enter the |cFFfa9602Zul'Gurub|r
+		.zoneskip 1583	
+
+	step
 		>>Kill |cRXP_ENEMY_High Priests|r inside |cFFfa9602Zul'Gurub|r for 5x |cRXP_LOOT_Channeler's Head|r
 		.mob High Priestess Jeklik
 		.mob High Priest Venoxis
@@ -848,6 +863,11 @@ RXPGuides.RegisterGuide([[
 #next 8-Molten Core-Main
 
 --- DM East
+
+	step
+		#completewith next
+		.zone 1583 >>Enter the |cFFfa9602Dire Maul East|r
+		.zoneskip 1583	
 
 	step			
 		>>Collect |cRXP_LOOT_Felvine Shard|r inside |cFFfa9602Dire Maul East|r after you killed |cRXP_ENEMY_Alzzin the Wildshaper|r
