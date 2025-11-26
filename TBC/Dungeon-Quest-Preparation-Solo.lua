@@ -166,7 +166,7 @@ RXPGuides.RegisterGuide([[
 	step
 		#completewith next
 		#label EnterBRD1
-		.subzone 1584 >>Enter the |cFFfa9602Blackrock Depths|r dungeon
+		.subzone 1584 >>Enter the |cFFfa9602Blackrock Depths|r
 		.subzoneskip 1584
 
 	step
@@ -207,7 +207,7 @@ RXPGuides.RegisterGuide([[
 	step
 		#completewith next
 		#label EnterBRD2
-		.subzone 1584 >>Return to Blackrock Mountain and enter the |cFFfa9602Blackrock Depths|r dungeon
+		.subzone 1584 >>Return to Blackrock Mountain and enter the |cFFfa9602Blackrock Depths|r
 		.subzoneskip 1584
 
 	step
@@ -381,7 +381,7 @@ RXPGuides.RegisterGuide([[
 	step
 		#completewith next
 		#label EnterBRD3
-		.subzone 1584 >>Enter |cFFfa9602Blackrock Depths|r dungeon
+		.subzone 1584 >>Enter |cFFfa9602Blackrock Depths|r
 		.subzoneskip 1584
 
 	step
@@ -513,7 +513,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r dungeon
+		.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r
 		.zoneskip 1583
 
 	step		
@@ -539,7 +539,7 @@ RXPGuides.RegisterGuide([[
 	
 	step
 		#completewith next
-		.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r dungeon
+		.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r
 		.zoneskip 1583
 
 	step
@@ -595,7 +595,7 @@ RXPGuides.RegisterGuide([[
 	
 	step
 		#completewith next
-		.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r dungeon
+		.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r
 		.zoneskip 1583
 
 	step
