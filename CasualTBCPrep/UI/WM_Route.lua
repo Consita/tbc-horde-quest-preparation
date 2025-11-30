@@ -183,11 +183,13 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 			return
 		end
 
+		local isLastStep = i == #route.sectionOrder
 		if section.visible ~= false then
 			local uniqueSectionKey = selectedRouteCode .. "_" .. section.key
 
 			local ignoredRouteSections = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.IgnoredRouteSections) or { }
 			local isEnabled = ignoredRouteSections[uniqueSectionKey] ~= true
+			if isLastStep == true then isEnabled = true end
 
 			if isEnabled then
 				totalEnabled = totalEnabled + 1
@@ -305,6 +307,11 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 			checkbox:SetScript("OnClick", function(self)
 				ToggleIgnoreSection(uniqueSectionKey, not self:GetChecked(), true)
 			end)
+
+			if isLastStep == true then
+				checkbox:SetChecked(true)
+				checkbox:Disable()
+			end
 			table.insert(frameRoute.elements, checkbox)
 
 			local stepNum = sectionFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")

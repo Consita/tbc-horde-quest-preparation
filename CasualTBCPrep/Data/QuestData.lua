@@ -845,7 +845,7 @@ local function LoadRouteQuestSpecifics_Strat()
 
 	-- To accomodate The Twilight Lexicon being annoying
 	UpdateQuestOnForRouteHardcodeFix(4123, "qlog", nil, nil, false) -- The Heart of the Mountain
-	UpdateQuestOnForRouteHardcodeFix(6148, "opt", nil, nil, false) -- The Scarlet Oracle, Demetria
+	--UpdateQuestOnForRouteHardcodeFix(6148, "opt", nil, nil, false) -- The Scarlet Oracle, Demetria
 
 
 	-- Strat Stuff
