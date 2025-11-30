@@ -8,7 +8,7 @@ CasualTBCPrep.QuestData.UpdateRoutesFromQuestData = nil
 
 --[Data]
 local questsMetadata = {
-	[4123] = { id=4123, name="The Heart of the Mountain", baseexp=12250, exp=0, qlvl=55, type="qlog", reqItems="11309-1", routes="Main,Strat,Solo", routeSection="BurningSteppes", areaType="Dungeon", area="Blackrock Depths", },
+	[4123] = { id=4123, name="The Heart of the Mountain", baseexp=12250, exp=0, qlvl=55, type="optional", reqItems="11309-1", routes="Main,Strat,Solo", routeSection="BurningSteppes", areaType="Dungeon", area="Blackrock Depths", },
 	[4862] = { id=4862, name="En-Ay-Es-Tee-Why", baseexp=13950, exp=0, qlvl=59, type="qlog", reqItems="12530-15", routes="Main,Strat,Solo", routeSection="BurningSteppes", areaType="Dungeon", area="Lower Blackrock Spire", },
 	[4729] = { id=4729, name="Kibler's Exotic Pets", baseexp=13950, exp=0, qlvl=59, type="qlog", reqItems="12263-1", routes="Main,Strat,Solo", routeSection="BurningSteppes", areaType="Dungeon", area="Lower Blackrock Spire", },
 	[4866] = { id=4866, name="Mother's Milk", baseexp=14300, exp=0, qlvl=60, type="qlog", routes="Main,Strat,Solo", routeSection="BurningSteppes", areaType="Dungeon", area="Lower Blackrock Spire", },
@@ -18,7 +18,7 @@ local questsMetadata = {
 	[4134] = { id=4134, name="Lost Thunderbrew Recipe", baseexp=12250, exp=0, qlvl=55, type="qlog", reqItems="11312-1", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Blackrock Depths", },
 	[4132] = { id=4132, name="Operation: Death to Angerforge", baseexp=13500, exp=0, qlvl=58, type="qlog", preQuests="4081,4082,4122,4121", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Blackrock Depths", },
 	[4063] = { id=4063, name="The Rise of the Machines", baseexp=13500, exp=0, qlvl=58, type="qlog", reqItems="11268-1,11269-10", preQuests="4061,4062,", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Blackrock Depths", },
-	[8279] = { id=8279, name="The Twilight Lexicon", baseexp=11900, exp=0, qlvl=60, type="turnin", reqItems="20394-1,20395-1,20396-1", preQuests="8284,8285", routes="Main,Strat,Solo", routeSection="SilithusCave", areaType="Zone", area="Silithus", comments="The books can NOT be looted without the quest after the pre-patch" },
+	[8279] = { id=8279, name="The Twilight Lexicon", baseexp=11900, exp=0, qlvl=60, type="qlog", reqItems="20394-1,20395-1,20396-1", preQuests="8284,8285", routes="Main,Strat,Solo", routeSection="SilithusCave", areaType="Zone", area="Silithus", comments="The books can NOT be looted without the quest after the pre-patch. This quest needs to be in the questlog, or completed beforehand, as we need the followups" },
 	[8287] = { id=8287, name="A Terrible Purpose", baseexp=9550, exp=0, qlvl=60, type="turnin", preQuests="8284,8285,8279", routes="Main,Strat,Solo", routeSection="SilithusHold2", areaType="Zone", area="Silithus", },
 	[8314] = { id=8314, name="Unraveling the Mystery", baseexp=7150, exp=0, qlvl=60, type="turnin", preQuests="8304,8309,8310", routes="Main,Strat,Solo", routeSection="SilithusHold2", areaType="Zone", area="Silithus", },
 	[8306] = { id=8306, name="Into The Maw of Madness", baseexp=11900, exp=0, qlvl=60, type="optional", preQuests="8304", routes="Main,Strat,Solo", routeSection="SilithusHold", areaType="Zone", area="Silithus", },
@@ -317,8 +317,8 @@ local questsMetadata = {
 	[2585] = { id=2585, name="The Decisive Striker", baseexp=6800, exp=0, qlvl=50, type="turnin", reqItems="8393-3,8396-2,8392-1", routes="Main,Strat,Solo", routeSection="BlastedLands", areaType="Zone", area="Blasted Lands", comments="This quest gives very little XP. You can skip it, but it's included for completeness" },
 	[2603] = { id=2603, name="Vulture's Vigor", baseexp=6800, exp=0, qlvl=50, type="turnin", reqItems="8396-10,8391-2", routes="Main,Strat,Solo", routeSection="BlastedLands", areaType="Zone", area="Blasted Lands", comments="This quest gives very little XP. You can skip it, but it's included for completeness" },
 	[8282] = { id=8282, name="Noggle's Lost Satchel", baseexp=9000, exp=0, qlvl=58, type="turnin", preQuests="8277,8278", routes="Solo", routeSection="SilithusHold2", areaType="Zone", area="Silithus", comments="This object has a long respawntime (5-9min). If it's not up, skip it" },
-	[2721] = { id=2721, name="Kirith", baseexp=9000, exp=0, qlvl=58, type="turnin", preQuests="2784,2621,2622,2623,2801,2681", routes="Main,Strat,Solo", routeSection="oldhero", areaType="Zone", area="Blasted Lands", comments="The Mob has a long respawntime (5-9min). If it's not up, skip it" },
-	[2743] = { id=2743, name="The Cover of Darkness", baseexp=4750, exp=0, qlvl=60, type="turnin", preQuests="2784,2621,2622,2623,2801,2681", routes="Main,Strat,Solo", routeSection="oldhero", areaType="Zone", area="Blasted Lands", comments="The Mob has a long respawntime (5-9min). If it's not up, skip it" },
+	[2721] = { id=2721, name="Kirith", baseexp=9000, exp=0, qlvl=58, type="turnin", preQuests="2784,2621,2622,2623,2801,2681", routes="Main,Strat,Solo", routeSection="oldhero", areaType="Zone", area="Blasted Lands", comments="The mob has a long respawntime (5-9min). Check if the elite or the spirit is up, you can target it from cave entrance. If it's not up, skip it" },
+	[2743] = { id=2743, name="The Cover of Darkness", baseexp=4750, exp=0, qlvl=60, type="turnin", preQuests="2784,2621,2622,2623,2801,2681", routes="Main,Strat,Solo", routeSection="oldhero", areaType="Zone", area="Blasted Lands", comments="The mob has a long respawntime (5-9min). Check if the elite or the spirit is up, you can target it from cave entrance. If it's not up, skip it" },
 }
 
 local preQuestMetadata = {
@@ -827,7 +827,7 @@ end
 local function LoadRouteQuestSpecifics_Main()
 end
 local function LoadRouteQuestSpecifics_Solo()
-	UpdateQuestOnForRouteHardcodeFix(4123, "optional", nil, nil, false) -- The Heart of the Mountain
+	UpdateQuestOnForRouteHardcodeFix(4134, "optional", nil, nil, false) -- Lost Thunderbrew Recipe
 end
 local function LoadRouteQuestSpecifics_Strat()
 	UpdateQuestOnForRouteHardcodeFix(5212, "turnin", "EPLTown3", nil, true) -- The Flesh Does Not Lie
@@ -843,6 +843,12 @@ local function LoadRouteQuestSpecifics_Strat()
 	UpdateQuestOnForRouteHardcodeFix(5056, "qlog", nil, nil, false) -- Shy-Rotam
 	UpdateQuestOnForRouteHardcodeFix(6148, "qlog", nil, nil, false) -- The Scarlet Oracle, Demetria
 
+	-- To accomodate The Twilight Lexicon being annoying
+	UpdateQuestOnForRouteHardcodeFix(4123, "qlog", nil, nil, false) -- The Heart of the Mountain
+	UpdateQuestOnForRouteHardcodeFix(6148, "opt", nil, nil, false) -- The Scarlet Oracle, Demetria
+
+
+	-- Strat Stuff
 	RemovePrequestFromQuest(5464, 5463) -- Menethil's Gift not a preQ to Menethil's Gift, we do both in strat
 	RemovePrequestFromQuest(5463, 5462) -- The Dying, Ras Frostwhisper removed as Prequest
 	RemovePrequestFromQuest(5464, 5462) -- The Dying, Ras Frostwhisper removed as Prequest
