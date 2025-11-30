@@ -1295,13 +1295,6 @@ RXPGuides.RegisterGuide([[
 			.target Layo Starstrike
 
 		step
-			.goto Silithus,67,69.6
-			>>|cRXP_LOOT_The Twilight Lexicon|r |cRXP_WARN_can be used as an optional questlog quest for TBC. Check /tbcprep to see if you need it|r
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hermit Ortell|r
-			.target Hermit Ortell
-			.turnin 8279
-
-		step
 			#completewith silithusglyph
 			>>Kill |cRXP_ENEMY_Hive'Regal Bugs|r. Loot them for |cRXP_LOOT_Hive'Regal Silithid Brain|r
 			.mob Hive'Ashi Hive Lord
