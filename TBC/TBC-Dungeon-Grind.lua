@@ -107,7 +107,7 @@ RXPGuides.RegisterGuide([[
         
     step
 		.goto Shattrath City,50.36,42.87
-		>>Follow |cRXP_FRIENDLY_Khadgar's Servant|r << wotlk
+		>>Follow |cRXP_FRIENDLY_Khadgar's Servant|r
 		>>Head up to the second floor with |cRXP_FRIENDLY_G'eras|r and wait out the RP. If someone elses |cRXP_FRIENDLY_Khadgar's Servant|r arrives in the meantime, you can target it and it will complete the quest for you. If the quest fails, abandon it, accept the quest from |cRXP_FRIENDLY_Khadgar's Servant|r again, then follow the |cRXP_FRIENDLY_Khadgar's Servant|r around << tbc
 		.complete 10211,1 
 		.target Khadgar's Servant
