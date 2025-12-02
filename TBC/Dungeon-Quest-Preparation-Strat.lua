@@ -687,6 +687,11 @@ RXPGuides.RegisterGuide([[
 		.skipgossip
 
 	step
+		#completewith next
+		.goto 1415,52.8,26.4
+		.subzone 2057 >>Enter |cFFfa9602Scholomance|r
+
+	step
 		#completewith deed
 		>>Kill 20 |cRXP_ENEMY_Plagued Hatchlings|r inside |cFFfa9602Scholomance|r
 		.mob Plagued Hatchling
@@ -717,6 +722,11 @@ RXPGuides.RegisterGuide([[
 		.target Eva Sarkhoff
 
 	step
+		#completewith next
+		.goto 1415,52.8,26.4
+		.subzone 2057 >>Enter |cFFfa9602Scholomance|r
+
+	step
 		>>Kill |cRXP_ENEMY_Jandice Barov|r inside |cFFfa9602Scholomance|r and loot her for |cRXP_LOOT_Krastinov's Bag of Horrors|r
 		.mob Jandice Barov
 		.complete 5515,1
@@ -727,6 +737,11 @@ RXPGuides.RegisterGuide([[
 		.turnin 5515
 		.accept 5384
 		.target Eva Sarkhoff	
+
+	step
+		#completewith next
+		.goto 1415,52.8,26.4
+		.subzone 2057 >>Enter |cFFfa9602Scholomance|r		
 
 	step
 		>>Kill |cRXP_ENEMY_Kirtonos the Herald|r inside |cFFfa9602Scholomance|r
