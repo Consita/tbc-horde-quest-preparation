@@ -167,8 +167,7 @@ RXPGuides.RegisterGuide([[
 		#completewith next
 		#label EnterBRD1
 		.subzone 1584 >>Enter the |cFFfa9602Blackrock Depths|r
-		.subzoneskip 1584
-
+		
 	step
 		>>Kill |cRXP_ENEMY_Anvilrage Dwarves|r
 		.complete 4081,1 
@@ -208,8 +207,7 @@ RXPGuides.RegisterGuide([[
 		#completewith next
 		#label EnterBRD2
 		.subzone 1584 >>Return to Blackrock Mountain and enter the |cFFfa9602Blackrock Depths|r
-		.subzoneskip 1584
-
+		
 	step
 		#completewith next
 		+Complete the Ring of Law boss event, then take the exit up the tunnel and immediately turn right, crossing up over the top of the Ring of Law, making your way to the Vault
@@ -396,8 +394,7 @@ RXPGuides.RegisterGuide([[
 		#completewith next
 		#label EnterBRD3
 		.subzone 1584 >>Enter |cFFfa9602Blackrock Depths|r
-		.subzoneskip 1584
-
+		
 	step
 		>>Kill |cRXP_ENEMY_General Angerforge|r.
 		.complete 4132,1
@@ -528,6 +525,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
+		.goto Eastern Kingdoms,48.9,63.9
 		.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r
 		.zoneskip 1583
 
@@ -554,6 +552,7 @@ RXPGuides.RegisterGuide([[
 	
 	step
 		#completewith next
+		.goto Eastern Kingdoms,48.9,63.9
 		.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r
 		.zoneskip 1583
 
@@ -610,6 +609,7 @@ RXPGuides.RegisterGuide([[
 	
 	step
 		#completewith next
+		.goto Eastern Kingdoms,48.9,63.9
 		.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r
 		.zoneskip 1583
 
@@ -928,6 +928,11 @@ RXPGuides.RegisterGuide([[
 		.accept 6163
 
 	step
+		#completewith next
+		.goto Eastern Plaguelands,47.9,23.9
+		.subzone 2017 >>Enter |cFFfa9602Stratholme|r
+
+	step
 		>>Kill |cRXP_ENEMY_Archivist Galford|r inside |cFFfa9602Stratholme|r and burn the Archives
 		.mob Archivist Galford
 		.complete 5251,1
@@ -948,6 +953,11 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Smokey LaRue|r	
 		.accept 5214
 		.target Smokey LaRue
+
+	step
+		#completewith next
+		.goto Eastern Plaguelands,47.9,23.9
+		.subzone 2017 >>Enter |cFFfa9602Stratholme|r
 
 	step
 		#completewith next
@@ -975,9 +985,9 @@ RXPGuides.RegisterGuide([[
 		.target Betina Bigglezink
 
 	step
-		>>Kill |cRXP_ENEMY_Ramstein|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Head of Ramstein the Gorger|r
-		.mob Ramstein
-		.complete 6163,1
+		#completewith next
+		.goto Eastern Plaguelands,47.9,23.9
+		.subzone 2017 >>Enter |cFFfa9602Stratholme|r
 
 	step
 		#completewith next
@@ -985,9 +995,18 @@ RXPGuides.RegisterGuide([[
 		.complete 5212,1
 
 	step
+		>>Kill |cRXP_ENEMY_Ramstein|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Head of Ramstein the Gorger|r
+		.mob Ramstein
+		.complete 6163,1
+
+	step
 		>>Kill |cRXP_ENEMY_Baron Rivendare|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Head of Baron Rivendare|r
 		.mob Baron Rivendare
 		.complete 5262,1
+
+	step
+		>>Kill |cRXP_ENEMY_any Undead|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Plagued Flesh Sample|r
+		.complete 5212,1		
 
 	step
 		>>|cRXP_WARN_You have now completed all steps within Stratholme. Well done!|r

@@ -166,8 +166,7 @@ RXPGuides.RegisterGuide([[
 	step
 		#completewith next
 		#label EnterBRD1
-		.subzone 1584 >>Enter the |cFFfa9602Blackrock Depths|r
-		.subzoneskip 1584
+		.subzone 1584 >>Enter the |cFFfa9602Blackrock Depths|r		
 
 	step
 		>>Kill |cRXP_ENEMY_Anvilrage Dwarves|r
@@ -208,7 +207,6 @@ RXPGuides.RegisterGuide([[
 		#completewith next
 		#label EnterBRD2
 		.subzone 1584 >>Return to Blackrock Mountain and enter the |cFFfa9602Blackrock Depths|r
-		.subzoneskip 1584
 
 	step
 		#completewith next
@@ -382,8 +380,7 @@ RXPGuides.RegisterGuide([[
 		#completewith next
 		#label EnterBRD3
 		.subzone 1584 >>Enter |cFFfa9602Blackrock Depths|r
-		.subzoneskip 1584
-
+		
 	step
 		>>Kill |cRXP_ENEMY_General Angerforge|r.
 		.complete 4132,1
@@ -525,6 +522,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
+		.goto Eastern Kingdoms,48.9,63.9
 		.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r
 		.zoneskip 1583
 
@@ -557,6 +555,7 @@ RXPGuides.RegisterGuide([[
 	
 	step
 		#completewith next
+		.goto Eastern Kingdoms,48.9,63.9
 		.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r
 		.zoneskip 1583
 
@@ -613,6 +612,7 @@ RXPGuides.RegisterGuide([[
 	
 	step
 		#completewith next
+		.goto Eastern Kingdoms,48.9,63.9
 		.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r
 		.zoneskip 1583
 
@@ -945,6 +945,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
+		.goto Eastern Kingdoms,48.9,63.9
 		.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r
 		.zoneskip 1583
 
@@ -1069,10 +1070,15 @@ RXPGuides.RegisterGuide([[
 		.target Duke Nicholas Zverenhoff
 
 	step
+		#completewith next
+		.goto Eastern Plaguelands,47.9,23.9
+		.subzone 2017 >>Enter |cFFfa9602Stratholme|r
+
+	step
 		>>Kill |cRXP_ENEMY_Archivist Galford|r inside |cFFfa9602Stratholme|r and burn the Archives
 		.mob Archivist Galford
-		.complete -5251,1
-		.complete -5251,2
+		.complete 5251,1
+		.complete 5251,2
 
 	step
 		>>|cRXP_WARN_You have now completed all steps within Stratholme. Well done!|r
