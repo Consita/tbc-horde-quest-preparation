@@ -340,6 +340,13 @@ RXPGuides.RegisterGuide([[
 		.target Lexlort
 
 	step
+		.goto Badlands,3.0,47.6
+		>>|cRXP_LOOT_Lost Thunderbrew Recipe|r |cRXP_WARN_can be used as an optional questlog quest for TBC. Check /tbcprep to see if you need it|r
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shadowmage Vivian Lagrave|r
+		.turnin 4134
+		.target Shadowmage Vivian Lagrave			
+
+	step
 		#completewith next
 		.goto Badlands,3.98,44.76
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gorrik|r
