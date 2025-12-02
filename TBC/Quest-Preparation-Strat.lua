@@ -2414,15 +2414,6 @@ RXPGuides.RegisterGuide([[
 			.target Nathanos Blightcaller
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nathanos Blightcaller|r
 			.turnin 6147
-			.accept 6148
-
-		step
-			.goto Eastern Plaguelands,68.6,77.6
-			>>|cRXP_ENEMY_Warning:|r|cRXP_WARN_ This is a hard quest. Recommended to group up|r
-			>>Kill |cRXP_ENEMY_The Scarlet Oracle, Demetria|r
-			>>She is patrolling from Tyr's Hand towards Stratholme on the road. If you missed her, abandon and retake the quest
-			.complete 6148,1
-			.mob Demetria
 
 		step
 			.goto Western Plaguelands,39.46,66.76
