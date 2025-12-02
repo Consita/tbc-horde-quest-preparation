@@ -348,6 +348,13 @@ RXPGuides.RegisterGuide([[
 		.zoneskip Burning Steppes
 
 	step
+		.goto Burning Steppes,65.2,23.8
+		>>|cRXP_LOOT_The Heart of the Mountain|r |cRXP_WARN_can be used as an optional questlog quest for TBC. Check /tbcprep to see if you need it|r
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maxwort Uberglint|r
+		.turnin 4123	
+		.target Maxwort Uberglint			
+
+	step
 		.goto Burning Steppes,40.2,34.2
 		.use 11286 >> Use |T132507:0|t[Thorium Shackles] on |cRXP_ENEMY_Grark Lorkrub|r and then bring him to 30% (do not stun him)
 		>>|cRXP_WARN_ENSURE ALL PARTY MEMBERS HAVE AUTO ACCEPT OFF FOR THIS STEP! RestedXP HAS AUTO ACCEPT OFF FOR THIS STEP|r	
