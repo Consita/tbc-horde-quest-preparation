@@ -550,7 +550,8 @@ RXPGuides.RegisterGuide([[
 		step
 			#completewith next
 			>>Now you should be looking for a group to Zul'Farrak. This can be done solo as a level 60
-			.goto Tanaris,38.73,20.02,20 >> Travel to Zul'Farrak
+			.goto Tanaris,38.73,20.02
+			.subzone 978 >> Travel to Zul'Farrak
 
 		step
 			#completewith next
