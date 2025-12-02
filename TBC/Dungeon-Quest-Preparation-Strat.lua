@@ -1063,6 +1063,11 @@ RXPGuides.RegisterGuide([[
 
 --- Stratholme
 
+	step
+		#completewith next
+		.zone Eastern Plaguelands >>Travel to |cFFfa9602Eastern Plaguelands|r
+		.zoneskip Eastern Plaguelands
+
 	step	
 		.goto Eastern Plaguelands,81.4,59.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Nicholas Zverenhoff|r	   
@@ -1076,9 +1081,9 @@ RXPGuides.RegisterGuide([[
 
 	step
 		>>Kill |cRXP_ENEMY_Archivist Galford|r inside |cFFfa9602Stratholme|r and burn the Archives
-		.mob Archivist Galford
 		.complete 5251,1
 		.complete 5251,2
+		.mob Archivist Galford
 
 	step
 		>>|cRXP_WARN_You have now completed all steps within Stratholme. Well done!|r
