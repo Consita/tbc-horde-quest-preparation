@@ -165,7 +165,9 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		#label EnterBRD1
+		.goto Eastern Kingdoms,48.4,63.8,0
+		.goto Eastern Kingdoms,48.4,63.8,15,0
+		.goto Eastern Kingdoms,48.1,62.4,15,0
 		.subzone 1584 >>Enter the |cFFfa9602Blackrock Depths|r		
 
 	step
@@ -205,7 +207,9 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		#label EnterBRD2
+		.goto Eastern Kingdoms,48.4,63.8,0
+		.goto Eastern Kingdoms,48.4,63.8,15,0
+		.goto Eastern Kingdoms,48.1,62.4,15,0
 		.subzone 1584 >>Return to Blackrock Mountain and enter the |cFFfa9602Blackrock Depths|r
 
 	step
@@ -378,8 +382,10 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		#label EnterBRD3
-		.subzone 1584 >>Enter |cFFfa9602Blackrock Depths|r
+		.goto Eastern Kingdoms,48.4,63.8,0
+		.goto Eastern Kingdoms,48.4,63.8,15,0
+		.goto Eastern Kingdoms,48.1,62.4,15,0
+		.subzone 1584 >>Enter the |cFFfa9602Blackrock Depths|r
 		
 	step
 		>>Kill |cRXP_ENEMY_General Angerforge|r.
