@@ -549,13 +549,13 @@ RXPGuides.RegisterGuide([[
 
 		step
 			#completewith next
-			>>Now you should be looking for a group to Zul'Farrak. This can be done solo as a level 60
+			>>Now you should be looking for a group to |cFFfa9602Zul'Farrak|r. This can be done solo as a level 60
 			.goto Tanaris,38.73,20.02
-			.subzone 978 >> Travel to Zul'Farrak
+			.subzone 978 >> Enter |cFFfa9602Zul'Farrak|r
 
 		step
 			#completewith next
-			>>Click the |cRXP_PICK_Tablet of Theka|r within Zul'Farrak. You can find it close to |cRXP_ENEMY_Theka the Martyr|r
+			>>Click the |cRXP_PICK_Tablet of Theka|r within |cFFfa9602Zul'Farrak|r. You can find it close to |cRXP_ENEMY_Theka the Martyr|r
 			.complete 2936,1
 			.skipgossip			
 
@@ -568,7 +568,7 @@ RXPGuides.RegisterGuide([[
 			.mob Hydromancer Velratha
 
 		step
-			>>Click the |cRXP_PICK_Tablet of Theka|r within Zul'Farrak. You can find it close to |cRXP_ENEMY_Theka the Martyr|r
+			>>Click the |cRXP_PICK_Tablet of Theka|r within |cFFfa9602Zul'Farrak|r. You can find it close to |cRXP_ENEMY_Theka the Martyr|r
 			.complete 2936,1	
 			.skipgossip		
 
