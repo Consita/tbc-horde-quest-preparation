@@ -1005,16 +1005,24 @@ RXPGuides.RegisterGuide([[
 			.target Yeh'kinya	
 
 		step
-			#completewith sunkentemple
-			.subzone 1417 >> Now you should be looking for a group to Sunken Temple	
-			.subzoneskip 1417
+			#completewith next
+			.goto 1415,56.3,76.5,0
+			.goto 1415,56.3,76.5,15,0
+			.goto 1415,56.3,76.3,15,0
+			.goto 1415,56.7,75.8,15,0
+			.goto 1415,56.8,76.0,15,0
+			.goto 1415,57.0,76.0,15,0
+			.goto 1415,57.1,75.6,15,0
+			.goto 1415,56.8,75.5,15,0
+			.goto 1415,56.8,75.3,15,0 
+			.goto 1415,56.8,75.2,15,0 >>Now you should be looking for a group to |cFFfa9602The Temple of Atal'Hakkar|r. This can be done as a duo on level 60
+			.subzone 1477 >> Enter |cFFfa9602The Temple of Atal'Hakkar|r
 
 		step	
 			#completewith next
 			>>Kill |cRXP_ENEMY_Deep Lurkers|r, |cRXP_ENEMY_Murk Worms|r and |cRXP_ENEMY_Saturated Oozes|r. Loot them for their |cRXP_LOOT_Atal'ai Haze|r
 			>>|cRXP_WARN_Take a right down the stairs at the beginning of the instance to find these mobs|r
 			.complete 4146,1 
-			.isOnQuest 4146	
 
 		step
 			>>|cRXP_WARN_Use the|r |T132834:0|t[Egg of Hakkar] |cRXP_WARN_while next to the Dragonflayer Skeleton, then complete the event|r
@@ -1027,15 +1035,13 @@ RXPGuides.RegisterGuide([[
 			.use 10465 
 			.use 10663 
 			.mob Avatar of Hakkar
-			.isOnQuest 3528
 
 		step
 			#label sunkentemple
 			>>Kill |cRXP_ENEMY_Deep Lurkers|r, |cRXP_ENEMY_Murk Worms|r and |cRXP_ENEMY_Saturated Oozes|r. Loot them for their |cRXP_LOOT_Atal'ai Haze|r
 			>>|cRXP_ENEMY_Take a right down the stairs at the beginning of the instance to find these mobs|r
-			.complete 4146,1 
-			.isOnQuest 4146	
-
+			.complete 4146,1
+			 
 		step	
 			#completewith next
 			.zone Tanaris >>Travel to |cFFfa9602Tanaris|r
