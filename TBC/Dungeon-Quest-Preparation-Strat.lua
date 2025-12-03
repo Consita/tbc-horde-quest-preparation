@@ -1001,10 +1001,10 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.goto 1415,48.4,63.8,10 >>Travel to |cFFfa9602Molten Core|r
+		.goto 1415,48.4,63.8,10 >>Enter |cFFfa9602The Molten Core|r
 
 	step
-		>>Kill 1 |cRXP_ENEMY_Fire Lord|r, 1 |cRXP_ENEMY_Molten Giant|r, 1 |cRXP_ENEMY_Ancient Core Hound|r and 1 |cRXP_ENEMY_Lava Surger|r inside |cFFfa9602Molten Core|r
+		>>Kill 1 |cRXP_ENEMY_Fire Lord|r, 1 |cRXP_ENEMY_Molten Giant|r, 1 |cRXP_ENEMY_Ancient Core Hound|r and 1 |cRXP_ENEMY_Lava Surger|r inside |cFFfa9602The Molten Core|r
 		.mob Molten Giant
 		.complete -6822,1
 		.mob Firelord
@@ -1029,10 +1029,10 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.goto 1415,48.4,63.8,10 >>Travel to |cFFfa9602Molten Core|r
+		.goto 1415,48.4,63.8,10 >>Enter |cFFfa9602The Molten Core|r
 
 	step
-		>>Kill |cRXP_ENEMY_Shazzrah|r, |cRXP_ENEMY_Lucifron|r, |cRXP_ENEMY_Gehennas|r and |cRXP_ENEMY_Sulfuron|r inside |cFFfa9602Molten Core|r
+		>>Kill |cRXP_ENEMY_Shazzrah|r, |cRXP_ENEMY_Lucifron|r, |cRXP_ENEMY_Gehennas|r and |cRXP_ENEMY_Sulfuron|r inside |cFFfa9602The Molten Core|r
 		.mob Shazzrah
 		.complete -6824,1
 		.mob Lucifron
