@@ -836,6 +836,11 @@ RXPGuides.RegisterGuide([[
 		.isQuestAvailable 8201
 
 	step
+		#completewith next
+		.goto Stranglethorn Vale,53.9,17.6
+		.subzone 1977>>Enter |cFFfa9602Zul'Gurub|r
+
+	step
 		>>Kill |cRXP_ENEMY_High Priests|r inside |cFFfa9602Zul'Gurub|r for 5x |cRXP_LOOT_Channeler's Head|r
 		.mob High Priestess Jeklik
 		.mob High Priest Venoxis
@@ -844,7 +849,6 @@ RXPGuides.RegisterGuide([[
 		.mob High Priestess Arlokk
 		.use 12262 >>Then use|r |T133682:0|t[Sacred Cord]
 		.complete 8201,1
-		.isOnQuest 8201
 
 	step
 		>>|cRXP_WARN_You have now completed all steps within Zul'gurub. Well done!|r
