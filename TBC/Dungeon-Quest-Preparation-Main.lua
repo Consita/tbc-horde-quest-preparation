@@ -873,6 +873,13 @@ RXPGuides.RegisterGuide([[
 
 --- DM East
 
+	step
+		#completewith next
+		.goto Feralas,59.1,45.3,15,0
+		.goto Kalimdor,43.0,69.2,15,0
+		.goto Kalimdor,43.5,68.4,15,0
+		.subzone 2577>>Enter |cFFfa9602Dire Maul East|r
+
 	step			
 		>>Collect |cRXP_LOOT_Felvine Shard|r inside |cFFfa9602Dire Maul East|r after you killed |cRXP_ENEMY_Alzzin the Wildshaper|r
 		.collect 18501

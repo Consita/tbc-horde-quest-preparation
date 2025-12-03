@@ -844,11 +844,11 @@ RXPGuides.RegisterGuide([[
 #group Consita Classic/TBC Launch Guide
 #subgroup 2.3 - Quest Prep - Solo Turnin
 #name 7-Dire Maul East-Solo
-#displayname Dire Maul East
+#displayname Dire Maul
 #next 8-Alterac-Solo
 
 --- DM East
-
+			
 	step
 		.goto Feralas,76.0,43.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Talo Thornhoof|r
@@ -863,6 +863,13 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
+		.goto Feralas,59.1,45.3,15,0
+		.goto Kalimdor,43.0,69.2,15,0
+		.goto Kalimdor,43.5,68.4,15,0
+		.subzone 2577>>Enter |cFFfa9602Dire Maul East|r
+
+	step
+		#completewith next
 		>>Kill |cRXP_ENEMY_Lethtendris|r inside |cFFfa9602Dire Maul East|r for |cRXP_LOOT_Lethtendris's Web|r
 		.mob Lethtendris
 		.complete 7489,1
@@ -871,6 +878,10 @@ RXPGuides.RegisterGuide([[
 		>>Collect |cRXP_LOOT_Felvine Shard|r inside |cFFfa9602Dire Maul East|r after you killed |cRXP_ENEMY_Alzzin the Wildshaper|r
 		>>You don't need to have a quest in order to loot it!
 		.collect 18501
+
+	step
+		#completewith next
+		+Make your way into the |cFFfa9602Dire Maul North|r part
 
 	step
 		>>Click the skeleton next to |cRXP_FRIENDLY_Lorekeeper Lydros|r in the Library of Dire Maul North/West
