@@ -3,10 +3,10 @@ if RXPGuides == nil then
 end
 
 
-Stratholme
-Main Door:
-Eastern Plaguelands,30.9,20.2
-Stratholme,55.0,17.4
+---Stratholme
+---Main Door:
+---Eastern Plaguelands,30.9,20.2
+---Stratholme,55.0,17.4
 
 RXPGuides.RegisterGuide([[
 #classic
