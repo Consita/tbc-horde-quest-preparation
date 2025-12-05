@@ -2,6 +2,7 @@ CasualTBCPrep = CasualTBCPrep or {}
 CasualTBCPrep.WM_ItemPrep = CasualTBCPrep.WM_ItemPrep or {}
 
 --[Variables]
+---@class Frame|nil
 local frameItemPrep = nil;
 local _headerY = -31
 
