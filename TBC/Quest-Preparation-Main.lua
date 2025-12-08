@@ -808,6 +808,7 @@ RXPGuides.RegisterGuide([[
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Karus|r
 			.bankdeposit 12359 >> Deposit the |T133221:0|t[Thorium Bar] for later use
 			.target Karus
+			.itemcount 12359,1
 			
 		step
 			.goto Durotar,56.0,74.6	
