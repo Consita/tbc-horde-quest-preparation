@@ -31,7 +31,7 @@ RXPGuides.RegisterGuide([[
 			#completewith next
 			.goto Tanaris,51.60,25.50
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bulkrek|r
-			.fly Un'Goro Crater>>Fly to |cFFfa9602n'Goro Crater|r
+			.fly Un'Goro Crater>>Fly to |cFFfa9602Un'Goro Crater|r
 			.target Bulkrek Ragefist
 			.zoneskip Un'Goro Crater
 
@@ -484,6 +484,7 @@ RXPGuides.RegisterGuide([[
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Karus|r
 			.bankdeposit 11315 >>Deposit |cRXP_LOOT_Bloodpetal Sprout|r for TBC launch
 			.target Karus
+			.itemcount 11315,1
 
 		step
 			.goto Durotar,56.0,74.6	
@@ -844,6 +845,7 @@ RXPGuides.RegisterGuide([[
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Karus|r
 			.bankdeposit 12359 >> Deposit the |T133221:0|t[Thorium Bar] for later use
 			.target Karus
+			.itemcount 12359,1
 
 		step
 			.goto Durotar,56.0,74.6	
@@ -1132,7 +1134,6 @@ RXPGuides.RegisterGuide([[
 		step
 			.goto Silithus,67,69.6
 			>>Find and speak to |cRXP_FRIENDLY_Hermit Ortell|r (The Deserter)
-			.complete 8285,1
 			.target Hermit Ortell
 			.turnin 8285
 			.accept 8279

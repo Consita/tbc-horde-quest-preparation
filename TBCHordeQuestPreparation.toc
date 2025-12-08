@@ -37,7 +37,7 @@ CasualTBCPrep\UI\WM_Extras.lua
 CasualTBCPrep\UI\WM_Settings.lua
 CasualTBCPrep\UI\WM_About.lua
 CasualTBCPrep\UI\W_Main.lua
-CasualTBCPrep\UI\Skin_ElvUI.lua
+## CasualTBCPrep\UI\Skin_ElvUI.lua
 CasualTBCPrep\UI\W_WarningNotice.lua
 CasualTBCPrep\UI\W_ItemManagement.lua
 CasualTBCPrep\UI\W_QuestManagement.lua
