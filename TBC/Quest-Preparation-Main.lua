@@ -1095,7 +1095,6 @@ RXPGuides.RegisterGuide([[
 		step
 			.goto Silithus,67,69.6
 			>>Find and speak to |cRXP_FRIENDLY_Hermit Ortell|r (The Deserter)
-			.complete 8285,1
 			.target Hermit Ortell
 			.turnin 8285
 			.accept 8279
