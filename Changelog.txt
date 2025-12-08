@@ -1,5 +1,15 @@
 Changelog:
 
+3.9
+- Due to PTR tests moved The Twilight Lexicon back to questlog quest.
+- > Moved The Heart of the Mountain to optional (Solo,Main)
+- > Moved The Scarlet Oracle, Demetria to optional and removed steps in Questprep (Strat)
+- Added Secondary Professions in Extras tab
+- Added Optional Tag for Lost Thunderbew Recipe (Solo)
+- Reworked Dungeon waypoints to be more clear
+- Added fully working Horde TBC Dungeon Grind Guide which is available with prepatch/TBC patch
+- Minor bug fixes in the guides and waypoints
+
 3.8
 - Three 'Extras' tabs implemented
 - > Extra - Flights: You can check if you have all needed flightpaths for the routes

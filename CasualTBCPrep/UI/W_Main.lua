@@ -188,6 +188,13 @@ local function Create()
 	--QoL
 	wMain:SetScript("OnShow", function() CasualTBCPrep.Sounds:PlaySound_Click() end)
 	wMain:SetScript("OnHide", function() CasualTBCPrep.Sounds:PlaySound_Click() end)
+
+
+	-- callback for skin addons
+	if _G.CasualTBCPrep_SkinCallback then
+		pcall(_G.CasualTBCPrep_SkinCallback, wMain)
+	end
+
 	wMain:Hide();
 	wMain:Show();
 end

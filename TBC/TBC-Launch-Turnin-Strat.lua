@@ -2,6 +2,12 @@ if RXPGuides == nil then
 	return
 end
 
+
+---Stratholme
+---Main Door:
+---Eastern Plaguelands,30.9,20.2
+---Stratholme,55.0,17.4
+
 RXPGuides.RegisterGuide([[
 #classic
 #tbc

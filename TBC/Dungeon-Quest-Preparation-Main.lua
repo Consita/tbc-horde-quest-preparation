@@ -165,10 +165,11 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		#label EnterBRD1
+		.goto Eastern Kingdoms,48.4,63.8,0
+		.goto Eastern Kingdoms,48.4,63.8,15,0
+		.goto Eastern Kingdoms,48.1,62.4,15,0
 		.subzone 1584 >>Enter the |cFFfa9602Blackrock Depths|r
-		.subzoneskip 1584
-
+		
 	step
 		>>Kill |cRXP_ENEMY_Anvilrage Dwarves|r
 		.complete 4081,1 
@@ -206,10 +207,11 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		#label EnterBRD2
+		.goto Eastern Kingdoms,48.4,63.8,0
+		.goto Eastern Kingdoms,48.4,63.8,15,0
+		.goto Eastern Kingdoms,48.1,62.4,15,0
 		.subzone 1584 >>Return to Blackrock Mountain and enter the |cFFfa9602Blackrock Depths|r
-		.subzoneskip 1584
-
+		
 	step
 		#completewith next
 		+Complete the Ring of Law boss event, then take the exit up the tunnel and immediately turn right, crossing up over the top of the Ring of Law, making your way to the Vault
@@ -348,6 +350,13 @@ RXPGuides.RegisterGuide([[
 		.zoneskip Burning Steppes
 
 	step
+		.goto Burning Steppes,65.2,23.8
+		>>|cRXP_LOOT_The Heart of the Mountain|r |cRXP_WARN_can be used as an optional questlog quest for TBC. Check /tbcprep to see if you need it|r
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maxwort Uberglint|r
+		.turnin 4123	
+		.target Maxwort Uberglint		
+
+	step
 		.goto Burning Steppes,40.2,34.2
 		.use 11286 >> Use |T132507:0|t[Thorium Shackles] on |cRXP_ENEMY_Grark Lorkrub|r and then bring him to 30% (do not stun him)
 		>>|cRXP_WARN_ENSURE ALL PARTY MEMBERS HAVE AUTO ACCEPT OFF FOR THIS STEP! RestedXP HAS AUTO ACCEPT OFF FOR THIS STEP|r	
@@ -380,10 +389,11 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		#label EnterBRD3
-		.subzone 1584 >>Enter |cFFfa9602Blackrock Depths|r
-		.subzoneskip 1584
-
+		.goto Eastern Kingdoms,48.4,63.8,0
+		.goto Eastern Kingdoms,48.4,63.8,15,0
+		.goto Eastern Kingdoms,48.1,62.4,15,0
+		.subzone 1584 >>Enter the |cFFfa9602Blackrock Depths|r
+		
 	step
 		>>Kill |cRXP_ENEMY_General Angerforge|r.
 		.complete 4132,1
@@ -525,6 +535,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
+		.goto Eastern Kingdoms,48.9,63.9
 		.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r
 		.zoneskip 1583
 
@@ -557,6 +568,7 @@ RXPGuides.RegisterGuide([[
 	
 	step
 		#completewith next
+		.goto Eastern Kingdoms,48.9,63.9
 		.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r
 		.zoneskip 1583
 
@@ -613,6 +625,7 @@ RXPGuides.RegisterGuide([[
 	
 	step
 		#completewith next
+		.goto Eastern Kingdoms,48.9,63.9
 		.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r
 		.zoneskip 1583
 
@@ -688,8 +701,8 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.zone 1583 >>Enter the |cFFfa9602Scholomance|r
-		.zoneskip 1583		
+		.goto 1415,52.8,26.4
+		.subzone 2057 >>Enter |cFFfa9602Scholomance|r
 
 	step
 		#completewith deed
@@ -722,6 +735,11 @@ RXPGuides.RegisterGuide([[
 		.target Eva Sarkhoff
 
 	step
+		#completewith next
+		.goto 1415,52.8,26.4
+		.subzone 2057 >>Enter |cFFfa9602Scholomance|r
+
+	step
 		>>Kill |cRXP_ENEMY_Jandice Barov|r inside |cFFfa9602Scholomance|r and loot her for |cRXP_LOOT_Krastinov's Bag of Horrors|r
 		.mob Jandice Barov
 		.complete 5515,1
@@ -735,8 +753,8 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.zone 1583 >>Enter the |cFFfa9602Scholomance|r
-		.zoneskip 1583	
+		.goto 1415,52.8,26.4
+		.subzone 2057 >>Enter |cFFfa9602Scholomance|r
 
 	step
 		>>Kill |cRXP_ENEMY_Kirtonos the Herald|r inside |cFFfa9602Scholomance|r
@@ -832,8 +850,8 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.zone 1583 >>Enter the |cFFfa9602Zul'Gurub|r
-		.zoneskip 1583	
+		.goto Stranglethorn Vale,53.9,17.6
+		.subzone 1977>>Enter |cFFfa9602Zul'Gurub|r
 
 	step
 		>>Kill |cRXP_ENEMY_High Priests|r inside |cFFfa9602Zul'Gurub|r for 5x |cRXP_LOOT_Channeler's Head|r
@@ -844,7 +862,6 @@ RXPGuides.RegisterGuide([[
 		.mob High Priestess Arlokk
 		.use 12262 >>Then use|r |T133682:0|t[Sacred Cord]
 		.complete 8201,1
-		.isOnQuest 8201
 
 	step
 		>>|cRXP_WARN_You have now completed all steps within Zul'Gurub. Well done!|r
@@ -866,8 +883,10 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.zone 1583 >>Enter the |cFFfa9602Dire Maul East|r
-		.zoneskip 1583	
+		.goto Feralas,59.1,45.3,15,0
+		.goto Kalimdor,43.0,69.2,15,0
+		.goto Kalimdor,43.5,68.4,15,0
+		.subzone 2577>>Enter |cFFfa9602Dire Maul East|r
 
 	step			
 		>>Collect |cRXP_LOOT_Felvine Shard|r inside |cFFfa9602Dire Maul East|r after you killed |cRXP_ENEMY_Alzzin the Wildshaper|r
@@ -965,6 +984,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
+		.goto Eastern Kingdoms,48.9,63.9
 		.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r
 		.zoneskip 1583
 
@@ -988,10 +1008,10 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.goto 1415,48.4,63.8,10 >>Travel to |cFFfa9602Molten Core|r
+		.goto 1415,48.4,63.8,10 >>Enter |cFFfa9602The Molten Core|r
 
 	step
-		>>Kill 1 |cRXP_ENEMY_Fire Lord|r, 1 |cRXP_ENEMY_Molten Giant|r, 1 |cRXP_ENEMY_Ancient Core Hound|r and 1 |cRXP_ENEMY_Lava Surger|r inside |cFFfa9602Molten Core|r
+		>>Kill 1 |cRXP_ENEMY_Fire Lord|r, 1 |cRXP_ENEMY_Molten Giant|r, 1 |cRXP_ENEMY_Ancient Core Hound|r and 1 |cRXP_ENEMY_Lava Surger|r inside |cFFfa9602The Molten Core|r
 		.mob Molten Giant
 		.complete -6822,1
 		.mob Firelord
@@ -1016,10 +1036,10 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.goto 1415,48.4,63.8,10 >>Travel to |cFFfa9602Molten Core|r
+		.goto 1415,48.4,63.8,10 >>Enter |cFFfa9602The Molten Core|r
 
 	step
-		>>Kill |cRXP_ENEMY_Shazzrah|r, |cRXP_ENEMY_Lucifron|r, |cRXP_ENEMY_Gehennas|r and |cRXP_ENEMY_Sulfuron|r inside |cFFfa9602Molten Core|r
+		>>Kill |cRXP_ENEMY_Shazzrah|r, |cRXP_ENEMY_Lucifron|r, |cRXP_ENEMY_Gehennas|r and |cRXP_ENEMY_Sulfuron|r inside |cFFfa9602The Molten Core|r
 		.mob Shazzrah
 		.complete -6824,1
 		.mob Lucifron
@@ -1095,6 +1115,11 @@ RXPGuides.RegisterGuide([[
 		.accept 6163
 
 	step
+		#completewith next
+		.goto Eastern Plaguelands,47.9,23.9
+		.subzone 2017 >>Enter |cFFfa9602Stratholme|r
+		
+	step
 		>>Kill |cRXP_ENEMY_Archivist Galford|r inside |cFFfa9602Stratholme|r and burn the Archives
 		.mob Archivist Galford
 		.complete 5251,1
@@ -1115,6 +1140,11 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Smokey LaRue|r	
 		.accept 5214
 		.target Smokey LaRue
+
+	step
+		#completewith next
+		.goto Eastern Plaguelands,47.9,23.9
+		.subzone 2017 >>Enter |cFFfa9602Stratholme|r
 
 	step
 		#completewith next
@@ -1142,9 +1172,9 @@ RXPGuides.RegisterGuide([[
 		.target Betina Bigglezink
 
 	step
-		>>Kill |cRXP_ENEMY_Ramstein|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Head of Ramstein the Gorger|r
-		.mob Ramstein
-		.complete 6163,1
+		#completewith next
+		.goto Eastern Plaguelands,47.9,23.9
+		.subzone 2017 >>Enter |cFFfa9602Stratholme|r
 
 	step
 		#completewith next
@@ -1152,9 +1182,18 @@ RXPGuides.RegisterGuide([[
 		.complete 5212,1
 
 	step
+		>>Kill |cRXP_ENEMY_Ramstein|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Head of Ramstein the Gorger|r
+		.mob Ramstein
+		.complete 6163,1
+
+	step
 		>>Kill |cRXP_ENEMY_Baron Rivendare|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Head of Baron Rivendare|r
 		.mob Baron Rivendare
 		.complete 5262,1
+
+	step
+		>>Kill |cRXP_ENEMY_any Undead|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Plagued Flesh Sample|r
+		.complete 5212,1
 
 	step
 		>>|cRXP_WARN_You have now completed all steps within Stratholme. Well done!|r

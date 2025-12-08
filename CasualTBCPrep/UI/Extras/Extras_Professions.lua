@@ -175,7 +175,7 @@ local classProfessions = {
 local commentCook = { "TBC adds daily cooking quests, which will grant various fish/meat for cooking your raid foods cheaper.", "You may also get BoP recipes you can make some money with" }
 local commentCookPet = {"TBC adds daily cooking quests, which will grant various fish/meat for cooking your raid foods cheaper.", "You may also get BoP recipes you can make some money with", " ", "One of the recipes is +20 Strength to pets, which you will need!", "It'll be much cheaper to craft yourself early on" }
 local commentAid = { "First Aid is always good to have, but TBC has no poison cleansers" }
-local commentAidHeals = { "First Aid is always good to have, but TBC has no poison cleansers", " ", "Your class may have self-heals, but firstaid costs no mana!" }
+local commentAidHeals = { "First Aid is always good to have, but TBC has no poison cleansers", " ", "Your class may have self-heals, but bandages costs no mana!" }
 
 local commentFish = { "Required for spawning a boss in the SSC raid in Phase2!", "- 305 minimum, 400+ to avoid missing", " ", "TBC also adds daily fishing quests, which is quick money.", "There's also a chance of getting rare pets, a +15 stamina gem and 'The 2 Ring', a VERY good ring for feral druids", " ", "It doesn't take much effort, and you might hit the jackpot!"}
 

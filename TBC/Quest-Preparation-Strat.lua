@@ -549,12 +549,13 @@ RXPGuides.RegisterGuide([[
 
 		step
 			#completewith next
-			>>Now you should be looking for a group to Zul'Farrak. This can be done solo as a level 60
-			.goto Tanaris,38.73,20.02,20 >> Travel to Zul'Farrak
-
+			>>Now you should be looking for a group to |cFFfa9602Zul'Farrak|r. This can be done solo as a level 60
+			.goto Tanaris,38.73,20.02
+			.subzone 978 >> Enter |cFFfa9602Zul'Farrak|r
+			
 		step
 			#completewith next
-			>>Click the |cRXP_PICK_Tablet of Theka|r within Zul'Farrak. You can find it close to |cRXP_ENEMY_Theka the Martyr|r
+			>>Click the |cRXP_PICK_Tablet of Theka|r within |cFFfa9602Zul'Farrak|r. You can find it close to |cRXP_ENEMY_Theka the Martyr|r
 			.complete 2936,1
 			.skipgossip			
 
@@ -567,7 +568,7 @@ RXPGuides.RegisterGuide([[
 			.mob Hydromancer Velratha
 
 		step
-			>>Click the |cRXP_PICK_Tablet of Theka|r within Zul'Farrak. You can find it close to |cRXP_ENEMY_Theka the Martyr|r
+			>>Click the |cRXP_PICK_Tablet of Theka|r within |cFFfa9602Zul'Farrak|r. You can find it close to |cRXP_ENEMY_Theka the Martyr|r
 			.complete 2936,1	
 			.skipgossip		
 
@@ -967,16 +968,24 @@ RXPGuides.RegisterGuide([[
 			.target Yeh'kinya	
 
 		step
-			#completewith sunkentemple
-			.subzone 1417 >> Now you should be looking for a group to Sunken Temple	
-			.subzoneskip 1417
+			#completewith next
+			.goto 1415,56.3,76.5,0
+			.goto 1415,56.3,76.5,15,0
+			.goto 1415,56.3,76.3,15,0
+			.goto 1415,56.7,75.8,15,0
+			.goto 1415,56.8,76.0,15,0
+			.goto 1415,57.0,76.0,15,0
+			.goto 1415,57.1,75.6,15,0
+			.goto 1415,56.8,75.5,15,0
+			.goto 1415,56.8,75.3,15,0 
+			.goto 1415,56.8,75.2,15,0 >>Now you should be looking for a group to |cFFfa9602The Temple of Atal'Hakkar|r. This can be done as a duo on level 60
+			.subzone 1477 >> Enter |cFFfa9602The Temple of Atal'Hakkar|r
 
 		step	
 			#completewith next
 			>>Kill |cRXP_ENEMY_Deep Lurkers|r, |cRXP_ENEMY_Murk Worms|r and |cRXP_ENEMY_Saturated Oozes|r. Loot them for their |cRXP_LOOT_Atal'ai Haze|r
 			>>|cRXP_WARN_Take a right down the stairs at the beginning of the instance to find these mobs|r
 			.complete 4146,1 
-			.isOnQuest 4146	
 
 		step
 			>>|cRXP_WARN_Use the|r |T132834:0|t[Egg of Hakkar] |cRXP_WARN_while next to the Dragonflayer Skeleton, then complete the event|r
@@ -989,15 +998,13 @@ RXPGuides.RegisterGuide([[
 			.use 10465 
 			.use 10663 
 			.mob Avatar of Hakkar
-			.isOnQuest 3528
 
 		step
 			#label sunkentemple
 			>>Kill |cRXP_ENEMY_Deep Lurkers|r, |cRXP_ENEMY_Murk Worms|r and |cRXP_ENEMY_Saturated Oozes|r. Loot them for their |cRXP_LOOT_Atal'ai Haze|r
 			>>|cRXP_ENEMY_Take a right down the stairs at the beginning of the instance to find these mobs|r
 			.complete 4146,1 
-			.isOnQuest 4146	
-
+			
 		step	
 			#completewith next
 			.zone Tanaris >>Travel to |cFFfa9602Tanaris|r
@@ -1073,7 +1080,7 @@ RXPGuides.RegisterGuide([[
 			.target Huum Wildmane
 			.accept 8320
 
-		step <<wotlk
+		step
 			.goto Silithus,49.7,37.5,5,0
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Geologist Larksbane|r
 			.target Geologist Larksbane
@@ -1085,7 +1092,7 @@ RXPGuides.RegisterGuide([[
 			.accept 8304
 			.target Commander Mar'alith	
 
-		step <<wotlk
+		step
 			.goto Silithus,67,69.6
 			>>Find and speak to |cRXP_FRIENDLY_Hermit Ortell|r (The Deserter)
 			.complete 8285,1
@@ -1117,7 +1124,7 @@ RXPGuides.RegisterGuide([[
 			.mob Twilight Geolord
 			.complete 8320,1
 
-		step <<wotlk
+		step
 			.goto Silithus,40.86,42.22
 			>>Kill |cRXP_ENEMY_Twilight Keeper Havunth|r. Loot him for his |cRXP_LOOT_Twilight Lexicon Chapter|r
 			>>He patrols the east side of the camp that's just southwest of Cenarion Hold
@@ -1126,7 +1133,7 @@ RXPGuides.RegisterGuide([[
 			.unitscan Twilight Keeper Havunth
 			.mob Twilight Keeper Havunth
 
-		step <<wotlk
+		step
 			.goto Silithus,26.34,36.62
 			>>Kill |cRXP_ENEMY_Twilight Keeper Mayna|r. Loot her for her |cRXP_LOOT_Twilight Lexicon Chapter|r
 			>>She patrols the camp far west of Cenarion Hold
@@ -1135,7 +1142,7 @@ RXPGuides.RegisterGuide([[
 			.unitscan Twilight Keeper Mayna
 			.mob Twilight Keeper Mayna
 
-		step <<wotlk
+		step
 			.goto Silithus,16.08,86.37
 			>>Kill |cRXP_ENEMY_Twilight Keeper Exeter|r. Loot him for his |cRXP_LOOT_Twilight Lexicon Chapter|r
 			>>He's at the back of the camp very far to the southwest of Cenarion Hold/northwest of Ahn'Qiraj
@@ -1143,33 +1150,6 @@ RXPGuides.RegisterGuide([[
 			.complete 8279,2 
 			.unitscan Twilight Keeper Exeter
 			.mob Twilight Keeper Exeter
-
-		step
-			.goto Silithus,40.86,42.22
-			>>Kill |cRXP_ENEMY_Twilight Keeper Havunth|r. Loot him for his |cRXP_LOOT_Twilight Lexicon Chapter|r
-			>>He patrols the east side of the camp that's just southwest of Cenarion Hold
-			>>|cRXP_WARN_Be careful, he has very high burst|r
-			.collect 20396,1 
-			.unitscan Twilight Keeper Havunth
-			.mob Twilight Keeper Havunth
-
-		step
-			.goto Silithus,26.34,36.62
-			>>Kill |cRXP_ENEMY_Twilight Keeper Mayna|r. Loot her for her |cRXP_LOOT_Twilight Lexicon Chapter|r
-			>>She patrols the camp far west of Cenarion Hold
-			>>|cRXP_WARN_Be careful, she has Psychic Scream (instant fear)|r
-			.collect 20394,1 
-			.unitscan Twilight Keeper Mayna
-			.mob Twilight Keeper Mayna
-
-		step
-			.goto Silithus,16.08,86.37
-			>>Kill |cRXP_ENEMY_Twilight Keeper Exeter|r. Loot him for his |cRXP_LOOT_Twilight Lexicon Chapter|r
-			>>He's at the back of the camp very far to the southwest of Cenarion Hold/northwest of Ahn'Qiraj
-			>>|cRXP_WARN_Be careful, he has a stun and mortal strike|r
-			.collect 20395,1 
-			.unitscan Twilight Keeper Exeter
-			.mob Twilight Keeper Exeter			
 
 		step
 			#label TwilightGeolords
@@ -1320,13 +1300,6 @@ RXPGuides.RegisterGuide([[
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Layo|r
 			.turnin 1125 >>Turn in The Spirits of Southwind
 			.target Layo Starstrike
-
-		step <<wotlk
-			.goto Silithus,67,69.6
-			>>|cRXP_LOOT_The Twilight Lexicon|r |cRXP_WARN_can be used as an optional questlog quest for TBC. Check /tbcprep to see if you need it|r
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hermit Ortell|r
-			.target Hermit Ortell
-			.turnin 8279
 
 		step
 			#completewith silithusglyph
@@ -2448,15 +2421,6 @@ RXPGuides.RegisterGuide([[
 			.target Nathanos Blightcaller
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nathanos Blightcaller|r
 			.turnin 6147
-			.accept 6148
-
-		step
-			.goto Eastern Plaguelands,68.6,77.6
-			>>|cRXP_ENEMY_Warning:|r|cRXP_WARN_ This is a hard quest. Recommended to group up|r
-			>>Kill |cRXP_ENEMY_The Scarlet Oracle, Demetria|r
-			>>She is patrolling from Tyr's Hand towards Stratholme on the road. If you missed her, abandon and retake the quest
-			.complete 6148,1
-			.mob Demetria
 
 		step
 			.goto Western Plaguelands,39.46,66.76

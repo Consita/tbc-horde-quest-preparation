@@ -115,7 +115,6 @@ function CasualTBCPrep.WM_Settings.Create(wMain)
 
 	frameSettings = CreateFrame("Frame", nil, wMain)
 	frameSettings:SetAllPoints(wMain)
-
 	frameSettings:Hide()
 end
 
