@@ -31,7 +31,7 @@ RXPGuides.RegisterGuide([[
 			#completewith next
 			.goto Tanaris,51.60,25.50
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bulkrek|r
-			.fly Un'Goro Crater>>Fly to |cFFfa9602n'Goro Crater|r
+			.fly Un'Goro Crater>>Fly to |cFFfa9602Un'Goro Crater|r
 			.target Bulkrek Ragefist
 			.zoneskip Un'Goro Crater
 
@@ -484,6 +484,7 @@ RXPGuides.RegisterGuide([[
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Karus|r
 			.bankdeposit 11315 >>Deposit |cRXP_LOOT_Bloodpetal Sprout|r for TBC launch
 			.target Karus
+			.itemcount 11315,1
 
 		step
 			.goto Durotar,56.0,74.6	

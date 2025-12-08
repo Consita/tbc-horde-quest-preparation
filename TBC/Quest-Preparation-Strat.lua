@@ -494,6 +494,7 @@ RXPGuides.RegisterGuide([[
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Karus|r
 			.bankdeposit 11315 >>Deposit |cRXP_LOOT_Bloodpetal Sprout|r for TBC launch
 			.target Karus
+			.itemcount 11315,1
 
 		step
 			.goto Durotar,56.0,74.6	
