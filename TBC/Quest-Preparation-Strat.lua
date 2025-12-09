@@ -1355,7 +1355,7 @@ RXPGuides.RegisterGuide([[
 
 		step << !Druid
 			#completewith next
-			.goto Silithus,48.69,36.67,0
+			.goto Silithus,48.69,36.67
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Runk|r
 			.fly Moonglade >>Fly to Moonglade
 			.target Runk Windtamer

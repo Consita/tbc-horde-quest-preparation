@@ -195,12 +195,12 @@ CasualTBCPrep.Routing.Routes = {
             "A way to open scholo door (Rogue, BS, Engi, character already inside)",
         },
         sectionOrder = {
-            "BurningSteppes","Badlands","AV","SilithusNE","SilithusHold","SilithusCave","SilithusSouth","SilithusHold2","SilithusNE2","Ungoro","UngoroPylonN","UngoroKrakle",
+            "BurningSteppes","Badlands","SilithusNE","SilithusHold","SilithusCave","SilithusSouth","SilithusHold2","SilithusNE2","Ungoro","UngoroPylonN","UngoroKrakle",
             "UngoroPylonW","UngoroFirePlumeRidge","UngoroKrakle2","UngoroRefuge","TanarisTown","TanarisPort","CavernsOfTime","wsEverlook","wsDonowa","Timbermaw",
             "Moonglade","felwoodTown","felwoodEmerald","Orgrimmar","Undercity","SilvermoonCity","BayOfStorms","EPLTown","EPLDarrowshire","EPLNathanos",
             "EPLTirion","WPLCauldron", "WPLWrithingHaunt", "WPLCaerDarrow","Scholomance","EPLTown2","EPLEgan","StratholmeGates1","Stratholme1","EPLTown3",
             "StratholmeBackdoor","Stratholme2","EPLTown4","StratholmeGates2","EPLEgan2", "EPLTirion2", "EPLNathanos2","WPLWrithingHaunt","WPLSorrowAndorhal",
-            "WPLDalsonsTears","WPLFelstoneField","WPLBulwark","zgSTV","ThunderBluff","Stonard","oldhero","BlastedLands","TheDarkPortal"
+            "WPLDalsonsTears","WPLFelstoneField","WPLBulwark","AV","zgSTV","ThunderBluff","Stonard","oldhero","BlastedLands","TheDarkPortal"
         },
         sections=
         {
