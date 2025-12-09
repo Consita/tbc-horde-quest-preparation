@@ -1,5 +1,11 @@
 Changelog:
 
+3.10
+- Fixed lua error with comment
+- Fixed bankdeposit to only show when item is in the bags
+- Fixed Dire Maul goto for Reliquary
+- Removed .complete for the Deserteur quest
+
 3.9
 - Due to PTR tests moved The Twilight Lexicon back to questlog quest.
 - > Moved The Heart of the Mountain to optional (Solo,Main)
