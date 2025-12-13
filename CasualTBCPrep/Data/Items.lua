@@ -178,6 +178,7 @@ local itemsMetadata = {
     [20559] = { id=20559, name="Arathi Basin Mark of Honor", rarity=2, texture=133282, sources="Battlegrounds" },
     [20560] = { id=20560, name="Alterac Valley Mark of Honor", rarity=2, texture=133308, sources="Battlegrounds" },
     [7391] = { id=7391, name="Swift Boots", rarity=2, texture=132542, sources="Leatherworking" },
+    [11018] = { id=11018, name="Un'Goro Soil", rarity=1, texture=133849, quests="3761", sources="Lootable dirt objects in Un'Goro Crater", auctionHouse=true },
 }
 
 --local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount, itemEquipLoc, itemTexture = C_Item.GetItemInfo(itemID)
