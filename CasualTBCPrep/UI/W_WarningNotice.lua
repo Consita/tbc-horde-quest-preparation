@@ -5,6 +5,7 @@ CasualTBCPrep.W_WarningNotice = CasualTBCPrep.W_WarningNotice or {}
 local mainText_qlog = "This quest is used for TBC Quest Preparation!\nBe careful not to turn it in, it should be in your questlog on release.\n\nTo turn off this warning, disable \"Questlog Warnings\"\nin the /tbcprep settings."
 local mainText_turnin = "This quest is turned in during TBC Release, this quest should NOT be in your questlog until release.\n\nTo turn off this warning, disable \"Quest Turnin Warnings\"\nin the /tbcprep settings."
 local mainText_completing  = "You just tried to complete a quest used on TBC Release for EXP!\nThis is currently being blocked!\n\nTo turn off this warning, disable \"Quest Completion Warnings\"\nin the /tbcprep settings."
+local mainText_itemdelete = "You just tried to delete an Item needed for TBC Prep Quests.\nThis item won't be blocked again for this sesson.\n\nIf you realy want to delete it, do it again"
 
 local w_window_name = "CasualTBCPrep_W_WarningNotice"
 ---@class Frame|nil
@@ -63,7 +64,7 @@ local function Create(type)
 			SelectQuestLogEntry(wAcceptQuestWarning.currentQuestLogEntryID)
 			SetAbandonQuest()
 			AbandonQuest()
-			CasualTBCPrep.NotifyUser("Abandoned quest: " .. wAcceptQuestWarning.currentQuestName)
+			CasualTBCPrep.NotifyUser("Abandoned quest: " .. wAcceptQuestWarning.currentHeaderTextString)
 		end
 		wAcceptQuestWarning:Hide()
 	end)
@@ -93,6 +94,8 @@ local function UpdateElementsFromType(type)
 		messageText = mainText_qlog
 		width = 440
 		height = 205
+		isDangerous = false
+		showAbandonButton = false
 	elseif type == "turnin" then
 		title = "Turnin Warning - Quest Accepted"
 		headerText = "Warning"
@@ -108,6 +111,15 @@ local function UpdateElementsFromType(type)
 		width = 420
 		height = 200
 		isDangerous = true
+		showAbandonButton = false
+	elseif type == "itemdelete" then
+		title = "Item Delete Warning"
+		headerText = "Warning"
+		messageText = mainText_itemdelete
+		width = 420
+		height = 200
+		isDangerous = false
+		showAbandonButton = false
 	end
 
 	wAcceptQuestWarning:SetSize(width, height)
@@ -129,7 +141,7 @@ local function UpdateElementsFromType(type)
 	wAcceptQuestWarning.detailText:SetText(messageText)
 end
 
-function CasualTBCPrep.W_WarningNotice.Show(questID, questName, qLogEntry, type)
+function CasualTBCPrep.W_WarningNotice.Show(headerText, qLogEntry, type)
 	if wAcceptQuestWarning == nil then
 
 		Create(type)
@@ -139,9 +151,9 @@ function CasualTBCPrep.W_WarningNotice.Show(questID, questName, qLogEntry, type)
 	end
 
 	wAcceptQuestWarning.currentQuestLogEntryID = qLogEntry;
-	wAcceptQuestWarning.currentQuestName = questName;
+	wAcceptQuestWarning.currentHeaderTextString = headerText;
 
-	wAcceptQuestWarning.questNameText:SetText(questName)
+	wAcceptQuestWarning.questNameText:SetText(headerText)
 	UpdateElementsFromType(type)
 
 	if not wAcceptQuestWarning:IsShown() then

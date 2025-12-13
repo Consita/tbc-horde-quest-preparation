@@ -22,11 +22,11 @@ SlashCmdList["CASUAL_TBC_PREP"] = function(msg)
 		CasualTBCPrep.W_Main.Show();
 	elseif args[1] == "debug" then
 		if args[2] == "warn1" then
-			CasualTBCPrep.W_WarningNotice.Show(8201, "A Collection of Heads", nil, "qlog")
+			CasualTBCPrep.W_WarningNotice.Show("A Collection of Heads", nil, "qlog")
 		elseif args[2] == "warn2" then
-			CasualTBCPrep.W_WarningNotice.Show(8341, "Lords of the Council", nil, "turnin")
+			CasualTBCPrep.W_WarningNotice.Show("Lords of the Council", nil, "turnin")
 		elseif args[2] == "warn3" then
-			CasualTBCPrep.W_WarningNotice.Show(6163, "Ramstein", nil, "completing")
+			CasualTBCPrep.W_WarningNotice.Show("Ramstein", nil, "completing")
 		elseif args[2] == "witem" then
 			CasualTBCPrep.W_ItemManagement.Show(20644)
 		elseif args[2] == "err" or args[3] == "error" then
@@ -81,11 +81,11 @@ local function OnQuestAcceptedEvent(self, event, questLogIndex)
 
 		if CasualTBCPrep.QuestData.ShouldBeInQuestLog(questID) then
 			if CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(CasualTBCPrep.Settings.Warning_QLOG) == false then
-				CasualTBCPrep.W_WarningNotice.Show(questID, questName, questLogIndex, "qlog");
+				CasualTBCPrep.W_WarningNotice.Show(questName, questLogIndex, "qlog");
 			end
 		elseif CasualTBCPrep.QuestData.IsTurnInQuest(questID) then
 			if CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(CasualTBCPrep.Settings.Warning_TURNIN) == false then
-				CasualTBCPrep.W_WarningNotice.Show(questID, questName, questLogIndex, "turnin");
+				CasualTBCPrep.W_WarningNotice.Show(questName, questLogIndex, "turnin");
 			end
 		end
 
@@ -103,7 +103,7 @@ local function OnQuestAcceptedEvent(self, event, questLogIndex)
 		end
 
 		if CasualTBCPrep.QuestData.ShouldBeInQuestLog(questID) or CasualTBCPrep.QuestData.IsTurnInQuest(questID) then
-			CasualTBCPrep.W_WarningNotice.Show(questID, questName, nil, "completing");
+			CasualTBCPrep.W_WarningNotice.Show(questName, nil, "completing");
 			CloseQuest()
 		end
 
@@ -135,6 +135,39 @@ end
 local function OnTalkToFlightMaster(self, event)
 	CasualTBCPrep.Flights.OnTaxiMapOpened()
 end
+
+
+--[API Function Overrides]
+local _attemptedDeleted = { }
+local _originalFuncDeleteCursorItem = DeleteCursorItem
+DeleteCursorItem = function()
+    local itemType, itemID, itemLink = GetCursorInfo()
+
+	if itemID ~= nil then
+		local item = CasualTBCPrep.Items.GetItemDetails(itemID)
+		if item ~= nil and item.quests ~= nil and item.quests ~= "" then
+			local attemptDeleteCount = _attemptedDeleted[itemID] or 0
+
+			if attemptDeleteCount <= 0 then
+				local qCount = select(2, item.quests:gsub(",", "")) + 1
+				local warningText = "Item Delete Blocked: You just tried to delete an item needed for "..tostring(qCount).." TBC Prep Quest"
+				if qCount ~= 1 then
+					warningText = warningText.."s" 
+				end
+				warningText = warningText..". This item won't be blocked again for this session. If you really want to delete it, do it again."
+
+				CasualTBCPrep.W_WarningNotice.Show(item.name, nil, "itemdelete")
+				CasualTBCPrep.NotifyUserError(warningText)
+				ClearCursor()
+				_attemptedDeleted[itemID] = 1
+				return
+			end
+		end
+	end
+
+    _originalFuncDeleteCursorItem()
+end
+
 
 --[Event Listeners]
 local questEventFrame = CreateFrame("Frame")
