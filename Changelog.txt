@@ -1,5 +1,8 @@
 Changelog:
 
+3.11
+- Added Un'Goro Soil quest
+
 3.10
 - Fixed lua error with comment
 - Fixed bankdeposit to only show when item is in the bags
