@@ -5,7 +5,7 @@ CasualTBCPrep.W_WarningNotice = CasualTBCPrep.W_WarningNotice or {}
 local mainText_qlog = "This quest is used for TBC Quest Preparation!\nBe careful not to turn it in, it should be in your questlog on release.\n\nTo turn off this warning, disable \"Questlog Warnings\"\nin the /tbcprep settings."
 local mainText_turnin = "This quest is turned in during TBC Release, this quest should NOT be in your questlog until release.\n\nTo turn off this warning, disable \"Quest Turnin Warnings\"\nin the /tbcprep settings."
 local mainText_completing  = "You just tried to complete a quest used on TBC Release for EXP!\nThis is currently being blocked!\n\nTo turn off this warning, disable \"Quest Completion Warnings\"\nin the /tbcprep settings."
-local mainText_itemdelete = "You just tried to delete an Item needed for TBC Prep Quests.\nThis item won't be blocked again for this sesson.\n\nIf you realy want to delete it, do it again"
+local mainText_itemdelete = "You just tried to delete an Item needed for TBC Prep Quests.\nThis item won't be blocked again for this sesson.\n\nIf you reaLly want to delete it, do it again"
 
 local w_window_name = "CasualTBCPrep_W_WarningNotice"
 ---@class Frame|nil
