@@ -195,6 +195,11 @@ function CasualTBCPrep.Items.GetCachedItemName(itemID)
 end
 
 ---@param itemID number
+function CasualTBCPrep.Items.IsItemRelevant(itemID)
+    return itemsMetadata[itemID] ~= nil
+end
+
+---@param itemID number
 function CasualTBCPrep.Items.GetItemDetails(itemID)
     local result = nil
 

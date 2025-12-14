@@ -148,7 +148,7 @@ local _originalFuncDeleteCursorItem = DeleteCursorItem
 DeleteCursorItem = function()
     local itemType, itemID, itemLink = GetCursorInfo()
 
-	if itemID ~= nil then
+	if itemID ~= nil and CasualTBCPrep.Items.IsItemRelevant(itemID) then
 		local item = CasualTBCPrep.Items.GetItemDetails(itemID)
 		if item ~= nil and item.quests ~= nil and item.quests ~= "" then
 			local attemptDeleteCount = _attemptedDeleted[itemID] or 0
