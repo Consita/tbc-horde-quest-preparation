@@ -547,6 +547,13 @@ local extraQuestDetailsFaction = {
 	},
 }
 
+local extraCompletionQuestWarnings = {
+	-- Brood Rings
+	[8747] = true, [8748] = true, [8749] = true, [8750] = true, [8751] = true,
+	[8752] = true, [8753] = true, [8754] = true, [8755] = true, [8756] = true,
+	[8757] = true, [8758] = true, [8759] = true, [8760] = true, [8761] = true,
+}
+
 -- Not used yet.
 local benchedQuests = {
 	[3907] = { name="Disharmony of Fire", reason="NPC that ends the quest can go on a 5min patrol. You can't turn it in while he's walking around." },
@@ -611,11 +618,11 @@ end
 tempQuestManagement = nil;
 
 -- Split Quests (Quests that exclude eachother) - Currently Brood of Nozdormu Rings 
-questsMetadata[99001] = { id=99001, name = "Brood Ring - Initial", 	baseexp=9550, exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8747,8752,8757}, reqRep=910, reqRepRank=4, routes="Main,Strat", routeSection="CavernsOfTime", areaType="Raid", area="Temple of Ahn'Qiraji" }
-questsMetadata[99002] = { id=99002, name = "Brood Ring - Friendly",	baseexp=9550, exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8748,8753,8758}, reqRep=910, reqRepRank=5, routes="Main,Strat", routeSection="CavernsOfTime", areaType="Raid", area="Temple of Ahn'Qiraji" }
-questsMetadata[99003] = { id=99003, name = "Brood Ring - Honored", 	baseexp=9550, exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8749,8754,8759}, reqRep=910, reqRepRank=6, routes="Main,Strat", routeSection="CavernsOfTime", areaType="Raid", area="Temple of Ahn'Qiraji" }
-questsMetadata[99004] = { id=99004, name = "Brood Ring - Revered", 	baseexp=9550, exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8750,8755,8760}, reqRep=910, reqRepRank=7, routes="Main,Strat", routeSection="CavernsOfTime", areaType="Raid", area="Temple of Ahn'Qiraji" }
-questsMetadata[99005] = { id=99005, name = "Brood Ring - Exalted", 	baseexp=14300, exp=14300, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8751,8756,8761}, reqRep=910, reqRepRank=8, routes="Main,Strat", routeSection="CavernsOfTime", areaType="Raid", area="Temple of Ahn'Qiraji" }
+questsMetadata[99001] = { id=99001, name = "Brood Ring - Initial", 	baseexp=9550, exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8747,8752,8757}, reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="CavernsOfTime", areaType="Raid", area="Temple of Ahn'Qiraji" }
+questsMetadata[99002] = { id=99002, name = "Brood Ring - Friendly",	baseexp=9550, exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8748,8753,8758}, reqRep=910, reqRepRank=5, routes="Main,Strat,Solo", routeSection="CavernsOfTime", areaType="Raid", area="Temple of Ahn'Qiraji" }
+questsMetadata[99003] = { id=99003, name = "Brood Ring - Honored", 	baseexp=9550, exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8749,8754,8759}, reqRep=910, reqRepRank=6, routes="Main,Strat,Solo", routeSection="CavernsOfTime", areaType="Raid", area="Temple of Ahn'Qiraji" }
+questsMetadata[99004] = { id=99004, name = "Brood Ring - Revered", 	baseexp=9550, exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8750,8755,8760}, reqRep=910, reqRepRank=7, routes="Main,Strat,Solo", routeSection="CavernsOfTime", areaType="Raid", area="Temple of Ahn'Qiraji" }
+questsMetadata[99005] = { id=99005, name = "Brood Ring - Exalted", 	baseexp=14300, exp=14300, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8751,8756,8761}, reqRep=910, reqRepRank=8, routes="Main,Strat,Solo", routeSection="CavernsOfTime", areaType="Raid", area="Temple of Ahn'Qiraji" }
 
 --[Lookup Lists]
 local questLogList = {}
@@ -1160,6 +1167,19 @@ function CasualTBCPrep.QuestData.IsTurnInQuest(questID)
     return (dicTurnQuestList[questID]) and true or false
 end
 
+---@param questID number
+---@return boolean
+function CasualTBCPrep.QuestData.ShouldQuestShowCompletionWarning(questID)
+	if extraCompletionQuestWarnings[questID] == true then
+		return true
+	end
+
+	if not CasualTBCPrep.Routing.IsQuestInCurrentRoute(questID) then
+		return false
+	end
+
+	return CasualTBCPrep.QuestData.ShouldBeInQuestLog(questID) or CasualTBCPrep.QuestData.IsTurnInQuest(questID)
+end
 
 
 ---@param questID number

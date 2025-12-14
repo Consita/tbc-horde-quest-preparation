@@ -98,14 +98,19 @@ local function OnQuestAcceptedEvent(self, event, questLogIndex)
 		local questID = GetQuestID()
 		local questName = GetTitleText()
 
-		if not CasualTBCPrep.Routing.IsQuestInCurrentRoute(questID) then
-			return
-		end
-
-		if CasualTBCPrep.QuestData.ShouldBeInQuestLog(questID) or CasualTBCPrep.QuestData.IsTurnInQuest(questID) then
+		if CasualTBCPrep.QuestData.ShouldQuestShowCompletionWarning(questID) then
 			CasualTBCPrep.W_WarningNotice.Show(questName, nil, "completing");
 			CloseQuest()
 		end
+
+		-- if not CasualTBCPrep.Routing.IsQuestInCurrentRoute(questID) then
+		-- 	return
+		-- end
+
+		-- if CasualTBCPrep.QuestData.ShouldBeInQuestLog(questID) or CasualTBCPrep.QuestData.IsTurnInQuest(questID) then
+		-- 	CasualTBCPrep.W_WarningNotice.Show(questName, nil, "completing");
+		-- 	CloseQuest()
+		-- end
 
 		CasualTBCPrep.W_Main.ReloadActiveTab()
 	elseif event == "QUEST_LOG_UPDATE" then -- Will this spam updates? This happens a lot... But if you have the window open, is it fine?
