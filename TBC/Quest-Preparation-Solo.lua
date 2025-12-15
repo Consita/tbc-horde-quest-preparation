@@ -1705,7 +1705,8 @@ RXPGuides.RegisterGuide([[
 		step
 			.goto Tirisfal Glades,83.2,69.1
 			>>Loot the |cRXP_LOOT_Box of Incendiaries|r next to the fire
-			.collect 12814,1,5096
+			.collect 12814,1
+			.isOnQuest 5096
 
 		step
 			>> Be careful as the mobs are relatively difficult, and can chain-pull each other here
