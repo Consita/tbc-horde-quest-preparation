@@ -33,7 +33,8 @@ CasualTBCPrep.Routing.TravelTypes = {
 }
 
 local targetTexts = {
-    ["BurningSteppes"] = { text="Flame Crest, Burning Steppes", travel="" },
+    ["BurningSteppes"] = { text="Flame Crest, Burning Steppes", travel="to Flame Crest, Burning Steppes" },
+    ["BurningSteppes2"] = { text="Slither Rock, Burning Steppes", travel="east to Slither Rock" },
     ["Badlands"] = { text="Kargath", travel="to Kargath, Badlands" },
     ["TarrenMill"] = { text="Tarren Mill", travel="to Tarren Mill, Hillsbrad Foothills" },
     ["wsEverlook"] = { text="Everlook", travel="to Everlook, Winterspring" },
@@ -101,15 +102,15 @@ CasualTBCPrep.Routing.Routes = {
             info1="This route was made for a 5man group that wants a headstart before entering TBC",
             info2="3 Summons can be skipped for less or slower exp",
             info3="",
-            possibleLevelText="Possible Level: 62 + 77%",
-            estimatedTimeText="Estimated Time:   72 minutes"
+            possibleLevelText="Possible Level: 62 + 78%",
+            estimatedTimeText="Estimated Time:   73 minutes"
         },
         preparation=
         {
             "Set Hearthstone to Light's Hope Chapel, EPL"
         },
         sectionOrder = {
-            "BurningSteppes","Badlands","AV","SilithusNE","SilithusHold","SilithusCave","SilithusSouth","SilithusHold2","SilithusNE2","Ungoro","UngoroPylonN","UngoroKrakle",
+            "Badlands","BurningSteppes","BurningSteppes2","AV","SilithusNE","SilithusHold","SilithusCave","SilithusSouth","SilithusHold2","SilithusNE2","Ungoro","UngoroPylonN","UngoroKrakle",
             "UngoroPylonW","UngoroFirePlumeRidge","UngoroKrakle2","UngoroRefuge","TanarisTown","TanarisPort","CavernsOfTime","wsEverlook","wsDonowa","Timbermaw",
             "Moonglade","felwoodTown","felwoodEmerald","Orgrimmar","Undercity","SilvermoonCity","BayOfStorms","EPLTown","EPLDarrowshire","EPLNathanos",
             "EPLTirion","EPLEgan","WPLCauldron","WPLWrithingHaunt","WPLSorrowAndorhal","WPLDalsonsTears","WPLFelstoneField","WPLBulwark","zgSTV","ThunderBluff","Stonard",
@@ -117,8 +118,9 @@ CasualTBCPrep.Routing.Routes = {
         },
         sections=
         {
-            ["BurningSteppes"] = { key="BurningSteppes", estTime=30, travelType=0, quests={ } },
-            ["Badlands"] = { key="Badlands", estTime=70, travelType=3, quests={ } },
+            ["Badlands"] = { key="Badlands", estTime=30, travelType=0, quests={ } },
+            ["BurningSteppes"] = { key="BurningSteppes", estTime=70, travelType=3, quests={ } },
+            ["BurningSteppes2"] = { key="BurningSteppes", estTime=75, travelType=2, quests={ } },
 
             ["SilithusNE"] = { key="SilithusNE", estTime=60, travelType=4, quests={ }, canHaveZeroQuests=true },
             ["SilithusHold"] = { key="SilithusHold", estTime=110, travelType=2, quests={ } },
@@ -184,8 +186,8 @@ CasualTBCPrep.Routing.Routes = {
             info1="The Main route, but with 1 Living & 1 Undead Stratholme run",
             info2="This opens up more quests, turnins, mob exp and continues the 0.5 questline",
             info3="Each Strat run is assumed to take 20min, but you can definitely go faster",
-            possibleLevelText="Possible Level: 63 + 20%",
-            estimatedTimeText="Estimated Time:  133 minutes"
+            possibleLevelText="Possible Level: 63 + 21%",
+            estimatedTimeText="Estimated Time:  135 minutes"
         },
         preparation=
         {
@@ -195,7 +197,7 @@ CasualTBCPrep.Routing.Routes = {
             "A way to open scholo door (Rogue, BS, Engi, character already inside)",
         },
         sectionOrder = {
-            "BurningSteppes","Badlands","SilithusNE","SilithusHold","SilithusCave","SilithusSouth","SilithusHold2","SilithusNE2","Ungoro","UngoroPylonN","UngoroKrakle",
+            "Badlands","BurningSteppes","BurningSteppes2","SilithusNE","SilithusHold","SilithusCave","SilithusSouth","SilithusHold2","SilithusNE2","Ungoro","UngoroPylonN","UngoroKrakle",
             "UngoroPylonW","UngoroFirePlumeRidge","UngoroKrakle2","UngoroRefuge","TanarisTown","TanarisPort","CavernsOfTime","wsEverlook","wsDonowa","Timbermaw",
             "Moonglade","felwoodTown","felwoodEmerald","Orgrimmar","Undercity","SilvermoonCity","BayOfStorms","EPLTown","EPLDarrowshire","EPLNathanos",
             "EPLTirion","WPLCauldron", "WPLWrithingHaunt", "WPLCaerDarrow","Scholomance","EPLTown2","EPLEgan","StratholmeGates1","Stratholme1","EPLTown3",
@@ -204,8 +206,9 @@ CasualTBCPrep.Routing.Routes = {
         },
         sections=
         {
-            ["BurningSteppes"] = { key="BurningSteppes", estTime=30, travelType=0, quests={ } },
-            ["Badlands"] = { key="Badlands", estTime=70, travelType=3, quests={ } },
+            ["Badlands"] = { key="Badlands", estTime=30, travelType=0, quests={ } },
+            ["BurningSteppes"] = { key="BurningSteppes", estTime=70, travelType=3, quests={ } },
+            ["BurningSteppes2"] = { key="BurningSteppes", estTime=75, travelType=2, quests={ } },
 
             ["SilithusNE"] = { key="SilithusNE", estTime=60, travelType=4, quests={ }, canHaveZeroQuests=true },
             ["SilithusHold"] = { key="SilithusHold", estTime=110, travelType=2, quests={ } },
@@ -230,7 +233,7 @@ CasualTBCPrep.Routing.Routes = {
             ["felwoodTown"] = { key="felwoodTown", estTime=165, travelType=3, quests={ } },
             ["felwoodEmerald"] = { key="felwoodEmerald", estTime=135, travelType=2, quests={ } },
             ["Orgrimmar"] = { key="Orgrimmar", estTime=167, travelType=6, quests={ } },
-            
+
             ["SilvermoonCity"] = { key="SilvermoonCity", estTime=115, travelType=9, quests={ } },
             ["BayOfStorms"] = { key="BayOfStorms", estTime=60, travelType=4, quests={ } },
             ["EPLTown"] = { key="EPLTown", estTime=85, travelType=5, textKey="EPLTownMain", quests={ } },
@@ -282,7 +285,7 @@ CasualTBCPrep.Routing.Routes = {
             info1="This route requires no outside help on TBC Release",
             info2="It takes longer as it has more flying and relies on public transportation :)",
             info3="Waiting for zeppelins is not included in the estimated time",
-            possibleLevelText="Possible Level: 62 + 59%",
+            possibleLevelText="Possible Level: 62 + 68%",
             estimatedTimeText="Estimated Time:   96 minutes"
         },
         preparation=
