@@ -5,6 +5,7 @@ Changelog:
 - Now shows a warning the first time you try to delete an item used by quests in any route (resets on reload)
 - Fixed Brood of Nozdormu rep rings not showing up in Solo route
 - Fixed 'Quest Completion' warnings not showing up for Brood of Nozdormu rep ring quests
+- Fixed Optional quests not checking if actual quest objectives are done, before turning green
 
 3.10
 - Fixed lua error with comment
