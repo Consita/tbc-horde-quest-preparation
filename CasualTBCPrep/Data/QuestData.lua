@@ -1294,7 +1294,7 @@ function CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(ques
 	end
 
 	-- Objective Check
-	if quest.type == "qlog" then
+	if quest.type == "qlog" or quest.type == "optional" then
 		local qlogIndex = GetQuestLogIndexByID(questID)
 
 		if qlogIndex and qlogIndex > 0 then
@@ -1312,12 +1312,6 @@ function CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(ques
 				end
 			end
 		else
-			fullyPrepared = false -- Must be in qLog
-		end
-	elseif quest.type == "optional" then
-		local qlogIndex = GetQuestLogIndexByID(questID)
-
-		if qlogIndex == nil or qlogIndex <= 0 then
 			fullyPrepared = false -- Must be in qLog
 		end
 	end
