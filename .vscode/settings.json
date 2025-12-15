@@ -35,7 +35,11 @@
         "DEFENSE",
         "RAID_CLASS_COLORS",
         "NEED",
-        "Professions"
+        "Professions",
+        "ItemRefTooltip",
+        "ShoppingTooltip1",
+        "ShoppingTooltip2",
+        "OTHER"
     ],
     "Lua.type.weakUnionCheck": true
 }

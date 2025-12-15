@@ -141,6 +141,40 @@ local function OnTalkToFlightMaster(self, event)
 	CasualTBCPrep.Flights.OnTaxiMapOpened()
 end
 
+--[Hook Wrappers]
+local function OnItemTooltip(itemLink, tooltipObject)
+	-- Early exits, don't wanna do work in hooks if we can avoid it, can't easily runtime unhook afaik
+	if CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(CasualTBCPrep.Settings.EnabledItemTooltips) == true then return end
+
+    local itemID = itemLink and tonumber(itemLink:match("item:(%d+)"))
+	if CasualTBCPrep.Items.IsItemRelevant(itemID) == false then return end
+
+	local item = CasualTBCPrep.Items.GetItemDetails(itemID)
+	if item == nil then return end
+	if item.quests == nil or item.quests == "" then return end
+
+	local isInCurrentRoute = false
+	for questIDStr in string.gmatch(item.quests, "[^,]+") do
+		local questID = tonumber(questIDStr)
+
+		if questID > 0 then
+			local loopIsInCurrentRoute = CasualTBCPrep.Routing.IsQuestInCurrentRoute(questID) or false
+			--CasualTBCPrep.NotifyUser("["..tostring(itemID).."]: "..tostring(questID).."="..tostring(loopIsInCurrentRoute))
+			if loopIsInCurrentRoute == true then
+				isInCurrentRoute = true
+				break
+			end
+		end
+	end
+
+	local msg = ""
+	if isInCurrentRoute == true then
+		msg = "Used in "..CasualTBCPrep.ColorRGB_ReadyQuest.hex.."CURRENT|r route ("..CasualTBCPrep.Routing.CurrentRouteCode..")"
+	else
+		msg = "Used in "..CasualTBCPrep.ColorRGB_BankedButReadyQuest.hex.."OTHER|r routes"
+	end
+	tooltipObject:AddLine(CasualTBCPrep.CreateZoneText("TBCPrep: ", msg))
+end
 
 --[API Function Overrides]
 local _attemptedDeleted = { }
@@ -173,6 +207,10 @@ DeleteCursorItem = function()
     _originalFuncDeleteCursorItem()
 end
 
+--[Hooks]
+for _,tt in ipairs({GameTooltip,ItemRefTooltip,ShoppingTooltip1,ShoppingTooltip2}) do
+    tt:HookScript("OnTooltipSetItem", function() OnItemTooltip(select(2,tt:GetItem()),tt) end)
+end
 
 --[Event Listeners]
 local questEventFrame = CreateFrame("Frame")
