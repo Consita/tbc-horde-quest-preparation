@@ -878,6 +878,7 @@ RXPGuides.RegisterGuide([[
 			.accept 4023
 			.target Cyrus Therepentous
 			.isQuestAvailable 4023
+			.skipgossip
 
 		step
 			.abandon 4023	
@@ -888,7 +889,7 @@ RXPGuides.RegisterGuide([[
 			>>Loot |cRXP_LOOT_Volcanic Ash|r on the ground
 			>>|cRXP_WARN_They look like large piles of grey dirt and can be found in mainly in Northern Burning Steppes among the lava pools and rivers|r
 			.collect 22338,25,8921,1 --Volcanic Ash (x25)
-						
+
 		step
 			#loop
 			.goto Burning Steppes,70.8,28.9,0

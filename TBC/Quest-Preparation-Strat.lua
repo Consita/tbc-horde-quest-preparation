@@ -878,6 +878,7 @@ RXPGuides.RegisterGuide([[
 			.accept 4023
 			.target Cyrus Therepentous
 			.isQuestAvailable 4023
+			.skipgossip
 
 		step
 			.abandon 4023	
