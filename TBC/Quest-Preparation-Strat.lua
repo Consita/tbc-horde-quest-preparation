@@ -2778,7 +2778,7 @@ RXPGuides.RegisterGuide([[
 			.goto Winterspring,64.00,20.80,50,0
 			>>Kill |cRXP_ENEMY_Berserk Owlbeasts|r. Loot them for a |T133298:0|t[|cRXP_LOOT_Blue-feathered Necklace|r]. Do not accept the quest! It is used in |cRXP_WARN_TBC!|r
 			.complete 4721,1 
-			.collect 12558,1,4721
+			.collect 12558,1,4721,1
 			.mob Berserk Owlbeast	
 
 		step
