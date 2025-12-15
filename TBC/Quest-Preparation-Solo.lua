@@ -2386,9 +2386,9 @@ RXPGuides.RegisterGuide([[
 
 		step
 			.goto Western Plaguelands,42.5,18.9
-			>>Loot the |cRXP_LOOT_libram|r inside the town hall
+			>>Loot the |cRXP_LOOT_Libram|r inside the town hall
 			>>|cRXP_ENEMY_Warning:|r|cRXP_WARN_ If you die here, it will be a very long corpse run|r
-			>>|cRXP_WARN_Looting the libram takes 5 seconds|r
+			>>|cRXP_WARN_Looting the Libram takes 5 seconds|r
 			.complete 5168,1 
 
 		step
@@ -2449,9 +2449,15 @@ RXPGuides.RegisterGuide([[
 			#completewith next
 			.goto Eastern Plaguelands,80.2,57.0
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Georgia|r
-			.fly Undercity>>Fly to Undercity
+			.fly Undercity>>Fly to |cFFfa9602Undercity|r
 			.target Georgia
 			.zoneskip Undercity
+
+		step
+			.goto Undercity,48.50,71.90
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Cuely|r
+			.accept 3568 >>Accept Seeping Corruption
+			.target Chemist Cuely			
 			
 	--- Tanaris
 
@@ -2931,7 +2937,34 @@ RXPGuides.RegisterGuide([[
 			.complete 5242,2 
 			.mob +Salia
 			.complete 5242,3 
-			.mob +Shadow Lord Felidan	
+			.mob +Shadow Lord Felidan
+			
+	--- Azshara
+
+		step
+			#completewith next
+			.goto Felwood,34.4,53.8
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Brakkar|r
+			.fly Azshara>>Fly to Azshara
+			.target Brakkar
+			.zoneskip Azshara
+
+		step
+			.goto Azshara,47.50,46.20
+			.use 10870 >>Swim in the puddle and use the |T132793:0|t[Empty Vial Labeled #4]
+			.complete 3568,4 
+		step
+			.goto Azshara,48.70,48.50
+			.use 10689 >>Swim in the puddle and use the |T132793:0|t[Empty Vial Labeled #3]
+			.complete 3568,3 
+		step
+			.goto Azshara,47.80,51.30
+			.use 10688 >>Swim in the puddle and use the |T132793:0|t[Empty Vial Labeled #2]
+			.complete 3568,2 
+		step
+			.goto Azshara,47.80,60.80
+			.use 10687 >>Swim in the puddle and use the |T132793:0|t[Empty Vial Labeled #1]
+			.complete 3568,1 			
 
 	--- Back to Burning Steppes
 
@@ -3195,6 +3228,19 @@ RXPGuides.RegisterGuide([[
 			#completewith next
 			.zone Undercity >>Travel to |cFFfa9602Undercity|r
 			.zoneskip Undercity
+
+		step
+			.goto Undercity,48.50,71.90
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Cuely|r
+			.turnin 3568
+			.accept 3569
+			.target Chemist Cuely
+
+		step
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thersa Windsong|r
+			.turnin 3569 >>Turn in Seeping Corruption
+			.target Thersa Windsong
+			.goto Undercity,49.03,70.81			
 			
 		step
 			.goto Undercity,67.62,44.16
