@@ -1421,17 +1421,17 @@ RXPGuides.RegisterGuide([[
 			.zoneskip Moonglade	
 
 		step
+			.goto Moonglade,44.88,35.60
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Umber|r
+			.turnin 6844 >>Turn in Umber, Archivist		
+			.target Umber	
+			
+		step
 			.goto Moonglade,51.70,45.00
 			>>|cRXP_LOOT_A Reliquary of Purity|r |cRXP_WARN_can be used as an optional questlog quest for TBC. Check /tbcprep to see if you need it|r
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rabine|r
 			.turnin 5527
-			.target Rabine Saturna
-
-		step
-			.goto Moonglade,44.88,35.60
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Umber|r
-			.turnin 6844 >>Turn in Umber, Archivist		
-			.target Umber			
+			.target Rabine Saturna			
 
 	--- Winterspring
 
