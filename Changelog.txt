@@ -7,6 +7,7 @@ Changelog:
 - Fixed 'Quest Completion' warnings not showing up for Brood of Nozdormu rep ring quests
 - Fixed Optional quests not checking if actual quest objectives are done, before turning green
 - Added Tooltips to items that are used in TBCPrep routes (Can be toggled in settings)
+- Added Seeping Corruption to the Solo guide
 
 3.10
 - Fixed lua error with comment
