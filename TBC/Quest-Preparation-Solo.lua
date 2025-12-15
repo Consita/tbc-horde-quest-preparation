@@ -2486,7 +2486,7 @@ RXPGuides.RegisterGuide([[
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gimblethorn|r
 			.bankdeposit 12840,12841 >>Deposit unneeded items and grab the 2 Thorium Bars which are needed in Un'Goro soon
 			.bankwithdraw 12359
-			.collect 12359,2,5802,1 --Thorium Bar (2x)
+			.collect 12359,2,5802,1
 			.target Gimblethorn
 
 		step
