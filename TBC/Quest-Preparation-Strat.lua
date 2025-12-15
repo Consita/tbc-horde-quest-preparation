@@ -2340,10 +2340,15 @@ RXPGuides.RegisterGuide([[
 
 		step
 			.goto Western Plaguelands,42.5,18.9
-			>>Loot the |cRXP_LOOT_libram|r inside the town hall
+			>>Loot the |cRXP_LOOT_Libram|r inside the town hall
 			>>|cRXP_ENEMY_Warning:|r|cRXP_WARN_ If you die here, it will be a very long corpse run|r
-			>>|cRXP_WARN_Looting the libram takes 5 seconds|r
+			>>|cRXP_WARN_Looting the Libram takes 5 seconds|r
 			.complete 5168,1 
+
+		step
+			#completewith next
+			.zone Undercity >>Travel to |cFFfa9602Undercity|r
+			.zoneskip Undercity
 
 		step
 			.goto Undercity,56.2,92.6,50,0
@@ -2352,6 +2357,14 @@ RXPGuides.RegisterGuide([[
 			.turnin 6144
 			.accept 6145
 			.target Varimathras
+
+		step	
+			#completewith next
+			.goto Undercity,63.27,48.55
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Michael|r
+			.fly Light's Hope Chapel >> Fly to |cFFfa9602Light's Hope Chapel|r
+			.target Michael Garrett
+			.zoneskip Eastern Plaguelands
 
 		step
 			.goto Eastern Plaguelands,81.5,59.8
@@ -2446,7 +2459,7 @@ RXPGuides.RegisterGuide([[
 			#completewith next
 			.goto Eastern Plaguelands,80.2,57.0
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Georgia|r
-			.fly Undercity>>Fly to Undercity
+			.fly Undercity>>Fly to |cFFfa9602Undercity|r
 			.target Georgia
 			.zoneskip Undercity
 			
