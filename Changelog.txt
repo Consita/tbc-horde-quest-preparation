@@ -6,6 +6,9 @@ Changelog:
 - Fixed Brood of Nozdormu rep rings not showing up in Solo route
 - Fixed 'Quest Completion' warnings not showing up for Brood of Nozdormu rep ring quests
 - Fixed Optional quests not checking if actual quest objectives are done, before turning green
+- Added Tooltips to items that are used in TBCPrep routes (Can be toggled in settings)
+- Added 'Seeping Corruption' to the Solo route
+- Added 'Taste of Flame' to Main/Strat routes, and swapped BurningSteppes<>Kargath start to make this possible
 
 3.10
 - Fixed lua error with comment
