@@ -1755,7 +1755,7 @@ RXPGuides.RegisterGuide([[
 
 		step
 			#completewith next
-			>>Kill |cRXP_ENEMY_Wandering Skeleton|r. Loot him for the |cRXP_LOOT_Outhouse Key|r
+			>>Kill the |cRXP_ENEMY_Wandering Skeleton|r. Loot it for the |cRXP_LOOT_Outhouse Key|r
 			.goto Western Plaguelands,48.0,49.8,70,0
 			.collect 12738,1
 			.isQuestAvailable 5060
