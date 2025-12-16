@@ -9,7 +9,6 @@ Changelog:
 - Added Tooltips to items that are used in TBCPrep routes (Can be toggled in settings)
 - Added 'Seeping Corruption' to the Solo route
 - Added 'Taste of Flame' to Main/Strat routes, and swapped BurningSteppes<>Kargath start to make this possible
-- Attempted to add support for different themes to help with colorblindness. Check the new dropdown in the Settings tab.
 - Fixed Flame in a Bottle step
 - Added tooltips to Bijous in the Items tab
 - Minor notes added to some npc's / quests
@@ -17,6 +16,8 @@ Changelog:
 - Minor GPS waypoint fixes
 - Removed Turnin Guide until it is completed
 - Fixed item icons being too dark, and icons in the ItemManagement window being gone
+- Settings - Attempted to add support for different themes to help with colorblindness.
+- Settings - New 'Item Tooltips' can be toggled on/off
 
 3.10
 - Fixed lua error with comment

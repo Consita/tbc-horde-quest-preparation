@@ -169,9 +169,9 @@ local function OnItemTooltip(itemLink, tooltipObject)
 
 	local msg = ""
 	if isInCurrentRoute == true then
-		msg = "Used in "..CasualTBCPrep.Themes.SelectedTheme.colors.questReady.hex.."CURRENT|r route ("..CasualTBCPrep.Routing.CurrentRouteCode..")"
+		msg = "Used in "..CasualTBCPrep.Themes.SelectedTheme.colors.good.hex.."CURRENT|r route ("..CasualTBCPrep.Routing.CurrentRouteCode..")"
 	else
-		msg = "Used in "..CasualTBCPrep.Themes.SelectedTheme.colors.questReadyBanked.hex.."OTHER|r routes"
+		msg = "Used in "..CasualTBCPrep.Themes.SelectedTheme.colors.warn.hex.."OTHER|r routes"
 	end
 	tooltipObject:AddLine(CasualTBCPrep.CreateZoneText("TBCPrep: ", msg))
 end
