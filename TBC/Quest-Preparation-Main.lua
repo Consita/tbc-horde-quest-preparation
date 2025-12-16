@@ -2827,6 +2827,15 @@ RXPGuides.RegisterGuide([[
 			.subzoneskip 1763
 
 		step
+			#completewith next
+			.goto Felwood,39.4,58.1,20,0
+			.goto Felwood,38.3,60.1,20,0
+			.goto Felwood,36.2,61.5,30,0
+			.goto Felwood,35.3,60.8,30,0
+			.goto Felwood,35.367,58.376
+			.subzone 1770 >> Travel to |cFFfa9602Shadow Hold|r within |cFFfa9602Jaedenar|r
+
+		step
 			>>Click the four |cRXP_PICK_Braziers|r on the ground
 			.complete 5165,1 
 			.goto Felwood,36.267,56.297
@@ -2918,6 +2927,17 @@ RXPGuides.RegisterGuide([[
 			.target Greta Mosshoof		
 
 		step
+			#completewith next
+			.goto Felwood,39.4,58.1,20,0
+			.goto Felwood,38.3,60.1,20,0
+			.goto Felwood,36.2,61.5,30,0
+			.goto Felwood,35.3,60.8,30,0
+			.goto Felwood,35.367,58.376
+			.subzone 1770 >> Travel to |cFFfa9602Shadow Hold|r within |cFFfa9602Jaedenar|r
+
+		step
+			.goto Felwood,35.39,58.74,30,0
+			.goto Felwood,38.30,50.50,30,0
 			.goto Felwood,38.90,46.80
 			>>Kill |cRXP_ENEMY_Shadow Lord Fel'dan|r, |cRXP_ENEMY_Moora|r and |cRXP_ENEMY_Salia|r. Loot |cRXP_ENEMY_Shadow Lord Fel'dan|r for his |cRXP_LOOT_Head|r
 			.complete 5242,1 
