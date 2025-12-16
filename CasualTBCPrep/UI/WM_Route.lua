@@ -415,7 +415,7 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 				-- Tooltip
 				local ttLines = { }
 				if questCountNr > 0 then
-					local ttExpText = CasualTBCPrep.Themes.SelectedTheme.colors.tooltipLeftExp.hex..sectionExp.."Possible XP: |r"..CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex..sectionExp.." / "..possibleExp.."|r"
+					local ttExpText = CasualTBCPrep.Themes.SelectedTheme.colors.tooltipLeftExp.hex.."Possible XP: |r"..CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex..sectionExp.." / "..possibleExp.."|r"
 					table.insert(ttLines, ttExpText)
 					table.insert(ttLines, " ")
 
