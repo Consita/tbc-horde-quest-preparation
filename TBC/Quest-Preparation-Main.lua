@@ -2258,6 +2258,7 @@ RXPGuides.RegisterGuide([[
 			#completewith Scholomancefragments
 			>>Kill |cRXP_ENEMY_Skeletons|r while doing the next quests for 15x |T133724:0|t[|cRXP_LOOT_Skeletal Fragments|r]
 			.collect 14619,15
+			.isQuestAvailable 964
 
 		step
 			.goto Western Plaguelands,49.2,78.6
@@ -2295,7 +2296,8 @@ RXPGuides.RegisterGuide([[
 
 		step	
 			>>Kill |cRXP_ENEMY_Skeletons|r for 15x |T133724:0|t[|cRXP_LOOT_Skeletal Fragments|r]
-			.collect 14619,15,964
+			.collect 14619,15
+			.isQuestAvailable 964
 
 		step
 			.goto Western Plaguelands,26.67,56.33
