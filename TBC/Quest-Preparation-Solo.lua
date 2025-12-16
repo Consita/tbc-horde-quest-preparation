@@ -2966,7 +2966,7 @@ RXPGuides.RegisterGuide([[
 			#completewith next
 			.goto Felwood,34.4,53.8
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Brakkar|r
-			.fly Azshara>>Fly to Azshara
+			.fly Azshara>>Fly to |cFFfa9602Azshara|r
 			.target Brakkar
 			.zoneskip Azshara
 
