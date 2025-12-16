@@ -433,7 +433,7 @@ local function LoadItemList(wMain)
 		yPosition = yPosition - 25
 
 		local anyqImgSpacing = 8
-		local anyqImgSize = 36
+		local anyqImgSize = 26
 		local anyqImgOffsetX = anyqImgSpacing
 
 		if not isCollapsedMultipleQ then
@@ -449,25 +449,51 @@ local function LoadItemList(wMain)
 					yPosition = yPosition - 18
 
 					for _, itemData in ipairs(questWrap.items) do
-						local icon, border, _, _ = CasualTBCPrep.UI.CreateItemImage(frame, anyqImgSize, itemData.id, "TOPLEFT", "BOTTOMLEFT", anyqImgOffsetX, yPosition, true)
-						table.insert(frameItemPrep.content, icon)
-						table.insert(frameItemPrep.content, border)
+						local icon, border = CasualTBCPrep.UI.CreateItemImage(frame, anyqImgSize, itemData.id, "TOPLEFT", "BOTTOMLEFT",	anyqImgOffsetX,	yPosition)
 
-						local anyqItemProgText = ""
-						if itemData.playerTotalAmount >= itemData.requiredAmount then
-							anyqItemProgText = CasualTBCPrep.Themes.SelectedTheme.colors.good.hex .. math.min(itemData.playerTotalAmount, itemData.requiredAmount) .. "/" .. itemData.requiredAmount
-						else
-							anyqItemProgText = CasualTBCPrep.Themes.SelectedTheme.colors.bad.hex .. math.min(itemData.playerTotalAmount, itemData.requiredAmount) .. "/" .. itemData.requiredAmount
+						if icon then
+							table.insert(frameItemPrep.content, icon)
+							if border then
+								table.insert(frameItemPrep.content, border)
+							end
+
+							local clrGreen = CasualTBCPrep.ColorGreen or ""
+							local clrRed   = CasualTBCPrep.ColorRed   or ""
+
+							local anyqItemProgText
+							if itemData.playerTotalAmount >= itemData.requiredAmount then
+								anyqItemProgText = clrGreen ..
+									math.min(itemData.playerTotalAmount, itemData.requiredAmount) ..
+									"/" .. itemData.requiredAmount
+							else
+								anyqItemProgText = clrRed ..
+									math.min(itemData.playerTotalAmount, itemData.requiredAmount) ..
+									"/" .. itemData.requiredAmount
+							end
+
+							local anyqItemProg = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+							anyqItemProg:SetPoint("TOP", icon, "BOTTOM", 0, -1)
+							anyqItemProg:SetText(anyqItemProgText)
+							table.insert(frameItemPrep.itemTexts, anyqItemProg)
+
+							icon:EnableMouse(true)
+							icon:SetScript("OnEnter", function(self)
+								local link = CasualTBCPrep.Items.TryGetItemLink(itemData.id)
+								if link then
+									GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+									GameTooltip:SetHyperlink(link)
+									GameTooltip:Show()
+								end
+							end)
+							icon:SetScript("OnLeave", function()
+								GameTooltip:Hide()
+							end)
+
 						end
-
-						local anyqItemProg = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-						anyqItemProg:SetPoint("TOP", icon, "BOTTOM", 0, -1)
-						anyqItemProg:SetText(anyqItemProgText)
-						table.insert(frameItemPrep.itemTexts, anyqItemProg)
 
 						anyqImgOffsetX = anyqImgOffsetX + anyqImgSize + anyqImgSpacing
 					end
-
+					
 				end
 			end
 		end
