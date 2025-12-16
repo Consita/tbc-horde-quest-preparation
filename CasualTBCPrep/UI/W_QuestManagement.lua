@@ -101,7 +101,7 @@ local function Display()
 
         local txtQuestType = wQuestManagement:CreateFontString(nil, "OVERLAY", "GameFontNormal")
         txtQuestType:SetPoint("TOP", btn, "BOTTOM", 0, -5)
-        txtQuestType:SetText(CasualTBCPrep.ColorTooltipStandOut..qTypText)
+        txtQuestType:SetText(CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex..qTypText)
         table.insert(wQuestManagement.texts, txtQuestType)
         CasualTBCPrep.UI.HookTooltip(txtQuestType, "Quest Type", { "This is the default type for this quest, on your current route" }, nil,nil,nil)
     end

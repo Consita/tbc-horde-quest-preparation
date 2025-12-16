@@ -32,10 +32,10 @@ local function SelectRoute(routeCode, hasUnlockedAll, taxiList, missingCount, pa
         txtTaxi:SetPoint("TOP", nextParent, "BOTTOM", 0, yPos)
         local taxiText = ""
         if taxi.discovered == true then
-            taxiText = CasualTBCPrep.ColorRGB_ReadyQuest.hex..taxi.name.."|r"
+            taxiText = CasualTBCPrep.Themes.SelectedTheme.colors.questReady.hex..taxi.name.."|r"
             CasualTBCPrep.UI.HookTooltip(txtTaxi, taxiText, { "You have this flightpath" }, nil,nil,nil)
         else
-            taxiText = CasualTBCPrep.ColorRGB_CompletedQuest.hex..taxi.name.."|r"
+            taxiText = CasualTBCPrep.Themes.SelectedTheme.colors.questCompleted.hex..taxi.name.."|r"
             CasualTBCPrep.UI.HookTooltip(txtTaxi, taxiText, { "You need to unlock this flightpath" }, nil,nil,nil)
         end
         txtTaxi:SetText(taxiText)

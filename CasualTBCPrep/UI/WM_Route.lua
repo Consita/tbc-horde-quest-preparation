@@ -415,7 +415,7 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 				-- Tooltip
 				local ttLines = { }
 				if questCountNr > 0 then
-					local ttExpText = CasualTBCPrep.ColorExpLeft.."Possible XP: |r"..CasualTBCPrep.ColorTooltipStandOut..sectionExp.." / "..possibleExp.."|r"
+					local ttExpText = CasualTBCPrep.Themes.SelectedTheme.colors.tooltipLeftExp.hex..sectionExp.."Possible XP: |r"..CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex..sectionExp.." / "..possibleExp.."|r"
 					table.insert(ttLines, ttExpText)
 					table.insert(ttLines, " ")
 
@@ -438,12 +438,12 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 							qNameText = questWrap.quest.name
 						end
 						if questWrap.isCompleted == true then
-							table.insert(ttLines, CasualTBCPrep.ColorRGB_CompletedQuest.hex..qNameText)
+							table.insert(ttLines, CasualTBCPrep.Themes.SelectedTheme.colors.questCompleted.hex..qNameText)
 						else
 							if questWrap.isPrepared then
-								table.insert(ttLines, CasualTBCPrep.ColorRGB_ReadyQuest.hex..qNameText)
+								table.insert(ttLines, CasualTBCPrep.Themes.SelectedTheme.colors.questReady.hex..qNameText)
 							else
-								table.insert(ttLines, CasualTBCPrep.ColorRGB_AvailableQuest.hex..qNameText)
+								table.insert(ttLines, CasualTBCPrep.Themes.SelectedTheme.colors.questAvailable.hex..qNameText)
 							end
 						end
 					end

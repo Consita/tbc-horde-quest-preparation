@@ -81,8 +81,8 @@ DrawList = function(frame)
     local parent = frame.scrollChild
     local parentW = parent:GetWidth()
 
-	local headerColor = CasualTBCPrep.ColorRGB_SpecialHeader
-	local headerColorBright = CasualTBCPrep.ColorRGB_SpecialHeaderHover
+	local headerColor = CasualTBCPrep.Themes.SelectedTheme.colors.headerSpecial
+	local headerColorBright = CasualTBCPrep.Themes.SelectedTheme.colors.headerSpecialHover
 
     local storedSelections = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.ExtraTBCPrepSelections)
 
@@ -120,9 +120,9 @@ DrawList = function(frame)
             local optionColor = nil
             local enabled = false
             if storedOption == nil then
-                optionColor = CasualTBCPrep.ColorRGB_SpecialNotSelected
+                optionColor = CasualTBCPrep.Themes.SelectedTheme.colors.specialNotSelected
             else
-                optionColor = CasualTBCPrep.ColorRGB_SpecialSelected
+                optionColor = CasualTBCPrep.Themes.SelectedTheme.colors.specialSelected
                 enabled = true
             end
             btnFeatureOption:GetFontString():SetTextColor(optionColor.r,optionColor.g,optionColor.b,1)

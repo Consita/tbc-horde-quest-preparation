@@ -179,6 +179,7 @@ local itemsMetadata = {
     [20560] = { id=20560, name="Alterac Valley Mark of Honor", rarity=2, texture=133308, sources="Battlegrounds" },
     [7391] = { id=7391, name="Swift Boots", rarity=2, texture=132542, sources="Leatherworking" },
     [11018] = { id=11018, name="Un'Goro Soil", rarity=1, texture=133849, quests="3761", sources="Lootable dirt objects in Un'Goro Crater", auctionHouse=true },
+    [10575] = { id=10575, name="Black Dragonflight Molt", rarity=1, texture=134430, quests="4023", sources="Searing Gorge Quest or dropped by Burning Steppes elite summoned by Cyrus Therepentous" },
 }
 
 --local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount, itemEquipLoc, itemTexture = C_Item.GetItemInfo(itemID)
@@ -286,12 +287,12 @@ function CasualTBCPrep.Items.GetItemDetails(itemID)
                             end
                         end
 
-                        qText = CasualTBCPrep.CreateZoneText("Quests: ", qText)
+                        qText = CasualTBCPrep.CreateExpText("Quests: ", qText)
                     else
                         local questData = CasualTBCPrep.QuestData.GetQuest(tonumber(iData.quests))
                         if questData then
                             if CasualTBCPrep.QuestData.IsQuestValidForUser(questData) then
-                                qText = CasualTBCPrep.CreateZoneText("Quest: ", questData.name)
+                                qText = CasualTBCPrep.CreateExpText("Quest: ", questData.name)
                             end
                         else
                             CasualTBCPrep.NotifyUserError("Item "..tostring(itemID).." has quests' set, but the questID doesnt exist in QuestData, ID="..iData.quests)

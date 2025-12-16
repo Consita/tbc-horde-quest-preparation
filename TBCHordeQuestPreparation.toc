@@ -11,6 +11,7 @@
 ## OptionalDeps: RXPGuides
 # Addon UI
 CasualTBCPrep\Init.lua
+CasualTBCPrep\Data\Themes.lua
 CasualTBCPrep\Data\Classes.lua
 CasualTBCPrep\Data\Faction.lua
 CasualTBCPrep\Data\Professions.lua

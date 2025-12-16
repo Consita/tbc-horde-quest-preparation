@@ -11,47 +11,6 @@ local traceUI = false
 ---@class Frame|nil
 local ttQuestAdvanced = nil;
 
---[Colors]
-local clrNotifyErrStart = "|cFFED6D2D"
-local clrNotifyErrMsg = "|cFFE32020"
-local clrNotifyStart = "|cFF94C8E0"
-local clrNotifyMsg = "|cFFD1E6D4"
-
-
-CasualTBCPrep.ColorRed = "|cFFFF0000"
-CasualTBCPrep.ColorGreen = "|cFF00FF00"
-CasualTBCPrep.ColorBlue = "|cFF0000FF"
-CasualTBCPrep.ColorYellow = "|cFFFFFF00"
-CasualTBCPrep.ColorGold = "|cFFFFD100"
-
-CasualTBCPrep.ColorPoor = "|cFF9D9D9D"
-CasualTBCPrep.ColorCommon = "|cFFFFFFFF"
-CasualTBCPrep.ColorUncommon = "|cFF1EFF00"
-CasualTBCPrep.ColorRare = "|cFF0070DD"
-CasualTBCPrep.ColorEpic = "|cFFA335EE"
-CasualTBCPrep.ColorLegendary = "|cFFFF8000"
-CasualTBCPrep.ColorArtifact = "|cFFE6CC80"
-CasualTBCPrep.ColorHeirloom = "|cFF00CCFF"
-
-CasualTBCPrep.ColorRGB_CompletedQuest = { r=0.95, g=0.09, b=0.11, hex="|cFFF2181C" }
-CasualTBCPrep.ColorRGB_AvailableQuest = { r=0.42, g=0.74, b=0.67, hex="|cFF5BBDAA" }
-CasualTBCPrep.ColorRGB_ReadyQuest = { r=0.02, g=0.99, b=0.03, hex="|cFF05FC08" }
-CasualTBCPrep.ColorRGB_BankedButReadyQuest = { r=0.51, g=0.76, b=0.39, hex="|cFF82C261" }
-
-CasualTBCPrep.ColorExpLeft = "|cFFBDBB6C"
-CasualTBCPrep.ColorTooltipStandOut = "|cFF6CBDAB"
-
-CasualTBCPrep.ColorRGB_SpecialHeader = { r=0.40, g=0.35, b=0.72, hex="|cFF6659B7"}
-CasualTBCPrep.ColorRGB_SpecialHeaderHover = { r=0.60, g=0.55, b=0.92, hex="|cFF998CEB"}
-CasualTBCPrep.ColorRGB_SpecialSelected = { r=0.42, g=0.86, b=0.42, hex="|cFF6BDB6B"}
-CasualTBCPrep.ColorRGB_SpecialNotSelected = { r=0.86, g=0.56, b=0.43, hex="|cFFDB8F6B"}
-
-local clrTooltipHeader = "|cFF50608C"
-local clrZoneLeft = "|cFFBDBB6C"
-local clrCurrentStepLeft = "|cFFBDBB6C"
-local clrCurrentStepProg = "|cFFFFFF00"
-local clrCurrentStepArea = "|cFFC6CAC9"
-
 --[World of Warcraft]
 CasualTBCPrep.ReputationRanks = {
 	[1] = "Hated",
@@ -108,11 +67,11 @@ function CasualTBCPrep.Print(message)
 end
 ---@param message string|nil
 function CasualTBCPrep.NotifyUser(message)
-	print(clrNotifyStart .. "[" .. CasualTBCPrep.AddonName .. "]: " .. clrNotifyMsg .. (message or "???"));
+	print(CasualTBCPrep.Themes.SelectedTheme.colors.notifyInfoStart.hex .. "[" .. CasualTBCPrep.AddonName .. "]: " .. CasualTBCPrep.Themes.SelectedTheme.colors.notifyInfoText.hex .. (message or "???"));
 end
 ---@param message string|nil
 function CasualTBCPrep.NotifyUserError(message)
-	print(clrNotifyErrStart .. "[" .. CasualTBCPrep.AddonName .. "]: " .. clrNotifyErrMsg .. (message or "Unknown Error"));
+	print(CasualTBCPrep.Themes.SelectedTheme.colors.notifyErrorStart.hex .. "[" .. CasualTBCPrep.AddonName .. "]: " .. CasualTBCPrep.Themes.SelectedTheme.colors.notifyErrorText.hex .. (message or "Unknown Error"));
 	CasualTBCPrep.Sounds.PlaySound_WhisperPing()
 end
 
@@ -121,14 +80,14 @@ function CasualTBCPrep.Trace(message)
 	if not trace or message == nil or message == "" then
 		return
 	end
-	print(clrNotifyStart .. "[" .. CasualTBCPrep.AddonName .. "] Trace: " .. clrNotifyMsg .. tostring(message));
+	print(CasualTBCPrep.Themes.SelectedTheme.colors.notifyInfoStart.hex .. "[" .. CasualTBCPrep.AddonName .. "] Trace: " .. CasualTBCPrep.Themes.SelectedTheme.colors.notifyInfoText.hex .. tostring(message));
 end
 ---@param message string|nil
 function CasualTBCPrep.TraceUI(message)
 	if not traceUI or message == nil or message == "" then
 		return
 	end
-	print(clrNotifyStart .. "[" .. CasualTBCPrep.AddonName .. "] Trace: " .. clrNotifyMsg .. tostring(message));
+	print(CasualTBCPrep.Themes.SelectedTheme.colors.notifyInfoStart.hex .. "[" .. CasualTBCPrep.AddonName .. "] Trace: " .. CasualTBCPrep.Themes.SelectedTheme.colors.notifyInfoText.hex .. tostring(message));
 end
 
 --[Text Helpers]
@@ -143,13 +102,13 @@ end
 ---@param left string
 ---@param right string
 function CasualTBCPrep.CreateZoneText(left, right)
-	return CasualTBCPrep.CreateDuoText(left, right, clrZoneLeft, CasualTBCPrep.ColorTooltipStandOut)
+	return CasualTBCPrep.CreateDuoText(left, right, CasualTBCPrep.Themes.SelectedTheme.colors.tooltipLeftZone.hex, CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex)
 end
 
 ---@param left string
 ---@param right string
 function CasualTBCPrep.CreateExpText(left, right)
-	return CasualTBCPrep.CreateDuoText(left, right, CasualTBCPrep.ColorExpLeft, CasualTBCPrep.ColorTooltipStandOut)
+	return CasualTBCPrep.CreateDuoText(left, right, CasualTBCPrep.Themes.SelectedTheme.colors.tooltipLeftExp.hex, CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex)
 end
 
 ---@param repID number
@@ -158,11 +117,11 @@ function CasualTBCPrep.CreateRepRankText(repID, repRank)
 	local repName, _, standingID = GetFactionInfoByID(repID)
 	local repRankTxt = CasualTBCPrep.ReputationRanks[repRank] or "Unknown"
 
-	local clrRepToUse = CasualTBCPrep.ColorRed
+	local clrRepToUse = CasualTBCPrep.Themes.SelectedTheme.colors.bad.hex
 	if standingID >= repRank then
-		clrRepToUse = CasualTBCPrep.ColorGreen
+		clrRepToUse = CasualTBCPrep.Themes.SelectedTheme.colors.good.hex
 	end
-	return clrRepToUse .. "Requires " .. CasualTBCPrep.ColorTooltipStandOut .. repName .. " " .. clrRepToUse .. repRankTxt
+	return clrRepToUse .. "Requires " .. CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex .. repName .. " " .. clrRepToUse .. repRankTxt
 end
 
 ---@param profID number
@@ -181,11 +140,11 @@ function CasualTBCPrep.CreateProfRankText(profID, reqProfLevel)
 		end
 	end
 
-	local clrProfToUse = CasualTBCPrep.ColorRed
+	local clrProfToUse = CasualTBCPrep.Themes.SelectedTheme.colors.bad.hex
 	if playerProfessionSkill >= reqProfLevel then
-		clrProfToUse = CasualTBCPrep.ColorGreen
+		clrProfToUse = CasualTBCPrep.Themes.SelectedTheme.colors.good.hex
 	end
-	return clrProfToUse .. "Requires " .. CasualTBCPrep.ColorTooltipStandOut .. reqProfLevel .. " " .. clrProfToUse .. professionName
+	return clrProfToUse .. "Requires " .. CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex .. reqProfLevel .. " " .. clrProfToUse .. professionName
 end
 
 
@@ -481,10 +440,11 @@ end
 ---@param startZoneText string|nil
 ---@return string
 function CasualTBCPrep.UI.CreateNextPrequestText(step, stepCount, questName, startZoneText)
-	local value = clrCurrentStepLeft .. "Next Prequest: |r" .. clrCurrentStepProg .. step .. "/" .. stepCount .. " |r" .. CasualTBCPrep.ColorTooltipStandOut .. questName
+	local value = CasualTBCPrep.Themes.SelectedTheme.colors.tooltipLeftCurrentStep.hex .. "Next Prequest: |r" .. CasualTBCPrep.Themes.SelectedTheme.colors.currentStepProgress.hex
+	value = value..step.."/"..stepCount.." |r"..CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex..questName
 
 	if startZoneText and startZoneText ~= "" then
-		value = value..clrCurrentStepArea.." ("..startZoneText..")|r"
+		value = value..CasualTBCPrep.Themes.SelectedTheme.colors.currentStepArea.hex.." ("..startZoneText..")|r"
 	else
 		value = value.."|r"
 	end
@@ -536,6 +496,10 @@ function CasualTBCPrep.UI.UpdateAdvancedQuestTooltip(parent, point, width, heigh
 	tooltip:SetPoint(point, parent, point, x, y)
 	tooltip:SetSize(width, height)
 	tooltip:SetScript("OnEnter", function(self)
+	local clrWarn = CasualTBCPrep.Themes.SelectedTheme.colors.warn.hex
+	local clrBad = CasualTBCPrep.Themes.SelectedTheme.colors.bad.hex
+	local clrGood = CasualTBCPrep.Themes.SelectedTheme.colors.good.hex
+
 		local ttFrame = GetOrCreateCustomTooltip()
 
 		for _, contentObj in ipairs(ttFrame.content) do
@@ -645,7 +609,7 @@ function CasualTBCPrep.UI.UpdateAdvancedQuestTooltip(parent, point, width, heigh
 
 				local progressText = ""
 				local needsBank = false
-				local bankTextColor = CasualTBCPrep.ColorYellow
+				local bankTextColor = clrWarn
 				if item.playerInvAmount < item.requiredAmount then
 					if item.playerBankAmount > 0 then
 						needsBank = true
@@ -653,17 +617,17 @@ function CasualTBCPrep.UI.UpdateAdvancedQuestTooltip(parent, point, width, heigh
 				end
 
 				if isBankAlted == true then
-					progressText = item.requiredAmount.."/"..item.requiredAmount..CasualTBCPrep.ColorRed.." ("
+					progressText = item.requiredAmount.."/"..item.requiredAmount..clrBad.." ("
 					if bankAltName == nil or bankAltName == "" then
 						progressText = progressText.."on alt)|r"
 					else
 						progressText = progressText..bankAltName..")|r"
 					end
 				elseif item.playerTotalAmount >= item.requiredAmount then
-					progressText = (needsBank and CasualTBCPrep.ColorYellow or CasualTBCPrep.ColorGreen) .. math.min(item.playerTotalAmount, item.requiredAmount) .. "/" .. item.requiredAmount
+					progressText = (needsBank and clrWarn or clrGood) .. math.min(item.playerTotalAmount, item.requiredAmount) .. "/" .. item.requiredAmount
 				else
-					progressText = CasualTBCPrep.ColorRed .. math.min(item.playerTotalAmount, item.requiredAmount) .. "/" .. item.requiredAmount
-					bankTextColor = CasualTBCPrep.ColorRed
+					progressText = clrBad .. math.min(item.playerTotalAmount, item.requiredAmount) .. "/" .. item.requiredAmount
+					bankTextColor = clrBad
 				end
 
 				if not isBankAlted and needsBank then

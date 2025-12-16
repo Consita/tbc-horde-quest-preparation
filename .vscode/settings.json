@@ -39,7 +39,8 @@
         "ItemRefTooltip",
         "ShoppingTooltip1",
         "ShoppingTooltip2",
-        "OTHER"
+        "OTHER",
+        "DEFAULT"
     ],
     "Lua.type.weakUnionCheck": true
 }

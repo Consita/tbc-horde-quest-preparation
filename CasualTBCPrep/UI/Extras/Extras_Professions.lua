@@ -349,15 +349,15 @@ function CasualTBCPrep.Extras_Professions.Load(frame)
                 if prof.id == playerProf.id then
                     currentLevel = playerProf.level
                     if playerProf.level >= CasualTBCPrep.Professions.MAX_PROF_LEVEL then
-                        profTextColor = CasualTBCPrep.ColorRGB_ReadyQuest.hex
+                        profTextColor = CasualTBCPrep.Themes.SelectedTheme.colors.questReady.hex
                     else
-                        profTextColor = CasualTBCPrep.ColorRGB_BankedButReadyQuest.hex
+                        profTextColor = CasualTBCPrep.Themes.SelectedTheme.colors.questReadyBanked.hex
                     end
                     break
                 end
             end
             if profTextColor == nil or profTextColor == "" then
-                profTextColor = CasualTBCPrep.ColorRGB_AvailableQuest.hex
+                profTextColor = CasualTBCPrep.Themes.SelectedTheme.colors.questAvailable.hex
             end
 
             local tooltipLines = prof.comments
@@ -379,7 +379,7 @@ function CasualTBCPrep.Extras_Professions.Load(frame)
 		end
         for _,playerProf in ipairs(primaryProfs) do
             if not usedProfessions[playerProf.id] then
-                specParent = CreateProfessionString(parent, columnWidth, specParent, yDiffProf, playerProf.id, CasualTBCPrep.ColorRGB_CompletedQuest.hex, wrongProfTooltip, -1)
+                specParent = CreateProfessionString(parent, columnWidth, specParent, yDiffProf, playerProf.id, CasualTBCPrep.Themes.SelectedTheme.colors.questCompleted.hex, wrongProfTooltip, -1)
             end
         end
 
@@ -420,14 +420,14 @@ function CasualTBCPrep.Extras_Professions.Load(frame)
                 found = true
                 currentLevel = playerProf.level
                 if playerProf.level >= CasualTBCPrep.Professions.MAX_PROF_LEVEL then
-                    profTextColor = CasualTBCPrep.ColorRGB_ReadyQuest.hex
+                    profTextColor = CasualTBCPrep.Themes.SelectedTheme.colors.questReady.hex
                 else
-                    profTextColor = CasualTBCPrep.ColorRGB_BankedButReadyQuest.hex
+                    profTextColor = CasualTBCPrep.Themes.SelectedTheme.colors.questReadyBanked.hex
                 end
                 break
             end
             if profTextColor == nil or profTextColor == "" then
-                profTextColor = CasualTBCPrep.ColorRGB_AvailableQuest.hex
+                profTextColor = CasualTBCPrep.Themes.SelectedTheme.colors.questAvailable.hex
             end
         end
 

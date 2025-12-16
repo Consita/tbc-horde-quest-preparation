@@ -40,7 +40,7 @@ local function CreateItemTooltip(wMain, parent, item, ttLines)
 
 			if item.auctionHouse == true then
 				table.insert(ttLines, " ")
-				table.insert(ttLines, CasualTBCPrep.ColorExpLeft.."Can be bought on the|r "..CasualTBCPrep.ColorGold.."Auction House|r")
+				table.insert(ttLines, CasualTBCPrep.Themes.SelectedTheme.colors.tooltipLeftExp.hex.."Can be bought on the|r "..CasualTBCPrep.Themes.SelectedTheme.colors.auctionhouse.hex.."Auction House|r")
 			end
 		end
 	end
@@ -194,6 +194,10 @@ end
 local function LoadItemList(wMain)
 	local itemList, lstQuestsReqAnyAmount = CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(_preparedQuestsOnly)
 
+	local clrWarn = CasualTBCPrep.Themes.SelectedTheme.colors.warn.hex
+	local clrBad = CasualTBCPrep.Themes.SelectedTheme.colors.bad.hex
+	local clrGood = CasualTBCPrep.Themes.SelectedTheme.colors.good.hex
+
 	local src = strtrim(frameItemPrep.searchText or ""):lower()
 	if src ~= "" then
 		local searchedList,searchedListReqAny = {},nil
@@ -346,7 +350,7 @@ local function LoadItemList(wMain)
 
 				local progressText = ""
 				local needsBank = false
-				local bankTextColor = CasualTBCPrep.ColorYellow
+				local bankTextColor = clrWarn
 				if not isBankAlted and itemDetails.playerInvAmount < reqAmount then
 					if itemDetails.playerBankAmount > 0 then
 						needsBank = true
@@ -354,17 +358,17 @@ local function LoadItemList(wMain)
 				end
 
 				if isBankAlted == true then
-					progressText = reqAmount.."/"..reqAmount..CasualTBCPrep.ColorRed.." ("
+					progressText = reqAmount.."/"..reqAmount..clrBad.." ("
 					if bankAltName == nil or bankAltName == "" then
 						progressText = progressText.."on alt)|r"
 					else
 						progressText = progressText..bankAltName..")|r"
 					end
 				elseif itemDetails.playerTotalAmount >= reqAmount then
-					progressText = (needsBank and CasualTBCPrep.ColorYellow or CasualTBCPrep.ColorGreen) .. math.min(itemDetails.playerTotalAmount, reqAmount) .. "/" .. reqAmount
+					progressText = (needsBank and clrWarn or clrGood) .. math.min(itemDetails.playerTotalAmount, reqAmount) .. "/" .. reqAmount
 				else
-					progressText = CasualTBCPrep.ColorRed .. math.min(itemDetails.playerTotalAmount, reqAmount) .. "/" .. reqAmount
-					bankTextColor = CasualTBCPrep.ColorRed
+					progressText = clrBad .. math.min(itemDetails.playerTotalAmount, reqAmount) .. "/" .. reqAmount
+					bankTextColor = clrBad
 				end
 
 				if not isBankAlted and needsBank then
@@ -451,9 +455,9 @@ local function LoadItemList(wMain)
 
 						local anyqItemProgText = ""
 						if itemData.playerTotalAmount >= itemData.requiredAmount then
-							anyqItemProgText = CasualTBCPrep.ColorGreen .. math.min(itemData.playerTotalAmount, itemData.requiredAmount) .. "/" .. itemData.requiredAmount
+							anyqItemProgText = CasualTBCPrep.Themes.SelectedTheme.colors.good.hex .. math.min(itemData.playerTotalAmount, itemData.requiredAmount) .. "/" .. itemData.requiredAmount
 						else
-							anyqItemProgText = CasualTBCPrep.ColorRed .. math.min(itemData.playerTotalAmount, itemData.requiredAmount) .. "/" .. itemData.requiredAmount
+							anyqItemProgText = CasualTBCPrep.Themes.SelectedTheme.colors.bad.hex .. math.min(itemData.playerTotalAmount, itemData.requiredAmount) .. "/" .. itemData.requiredAmount
 						end
 
 						local anyqItemProg = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")

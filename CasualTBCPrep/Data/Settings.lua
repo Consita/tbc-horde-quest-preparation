@@ -6,8 +6,9 @@ CasualTBCPrep.Settings.CurrentMajorVersion = settingsKeyPrefix .. "CurrentMajorV
 CasualTBCPrep.Settings.Warning_QLOG = settingsKeyPrefix .. "PreventAcceptQuestlog"
 CasualTBCPrep.Settings.Warning_TURNIN = settingsKeyPrefix .. "PreventAcceptTurnin"
 CasualTBCPrep.Settings.Warning_COMPLETING = settingsKeyPrefix .. "PreventCompletingQuest"
-CasualTBCPrep.Settings.EnabledSounds = settingsKeyPrefix .. "SoundState"
 CasualTBCPrep.Settings.EnabledItemTooltips = settingsKeyPrefix .. "ItemTooltips"
+CasualTBCPrep.Settings.EnabledSounds = settingsKeyPrefix .. "SoundState"
+CasualTBCPrep.Settings.SelectedTheme = settingsKeyPrefix .. "SelectedTheme"
 
 CasualTBCPrep.Settings.DebugDetails = settingsKeyPrefix .. "DebugDetails"
 CasualTBCPrep.Settings.SelectedRoute = settingsKeyPrefix .. "SelectedRoute"
@@ -22,9 +23,10 @@ CasualTBCPrep.Settings.AllSettings = {
 	{ key=CasualTBCPrep.Settings.Warning_QLOG, 			dataType="bit", 	type="cmb", defaultValueGlobal=0,	defaultValueChar=-1,	values={ { text="Use Global", value=-1}, { text="On", value=1 }, { text="Off", value=0}},	name="Questlog Warnings", 	description={ "This will |cFFD47400WARN|r you when you pick up a quest that should be in your questlog.", "This can be used while leveling to avoid doing anything by mistake.", " ", "Default: Off" }},
 	{ key=CasualTBCPrep.Settings.Warning_TURNIN, 		dataType="bit",		type="cmb", defaultValueGlobal=1,	defaultValueChar=-1,	values={ { text="Use Global", value=-1}, { text="On", value=1 }, { text="Off", value=0}},	name="Turnin Warnings",		description={ "This will |cFFD47400WARN|r you when you pick up a quest that is turned in on TBC Release for exp.", " ", "Turn this off if you're only doing the questlog", " ", "Default: On" } },
 	{ key=CasualTBCPrep.Settings.Warning_COMPLETING, 	dataType="bit",		type="cmb",	defaultValueGlobal=1,	defaultValueChar=-1,	values={ { text="Use Global", value=-1}, { text="On", value=1 }, { text="Off", value=0}},	name="Completion Warnings",	description={ "This will |cFFFF1111PREVENT|r you from completing any quests used for TBC Exp.", " ", "Default: On" } },
-	{ key=CasualTBCPrep.Settings.EnabledItemTooltips, 	dataType="bit",		type="cmb",	defaultValueGlobal=1,	defaultValueChar=-1,	values={ { text="Use Global", value=-1}, { text="On", value=1 }, { text="Off", value=0}},	name="Item Tooltips",		description={ "Item tooltips will show if they are used in your current TBCPRep route, or any TBCPrep route.", " ", "Default: On" } },
+	{ key=CasualTBCPrep.Settings.EnabledItemTooltips, 	dataType="bit",		type="cmb",	defaultValueGlobal=1,	defaultValueChar=-1,	values={ { text="Use Global", value=-1}, { text="On", value=1 }, { text="Off", value=0}},	name="Item Tooltips",		description={ "Item tooltips will show if they are used in any TBCPrep routes\nIt will show if you current route needs it.", " ", "Default: On" } },
 
-	{ key=CasualTBCPrep.Settings.EnabledSounds, 		dataType="text",	type="cmb",	defaultValueGlobal=1,	defaultValueChar=-1,	values={ { text="Use Global", value=-1}, { text="All", value=2 }, { text="SFX Only", value=1}, { text="None", value=0}},	name="Enabled Sounds",	description={ "All: SFX & Raid Warning sound when a popup shows", " ", "SFX: Small sound effects, like opening the window.", " ", "Default: All" } },
+	{ key=CasualTBCPrep.Settings.EnabledSounds, 		dataType="text",	type="cmb",	defaultValueGlobal=1,	defaultValueChar=-1,	values={ { text="Use Global", value=-1}, { text="All", value=2 }, { text="SFX Only", value=1}, { text="None", value=0}},		name="Enabled Sounds",	description={ "All: SFX & Raid Warning sound when a popup shows", " ", "SFX: Small sound effects, like opening the window.", " ", "Default: All" } },
+	{ key=CasualTBCPrep.Settings.SelectedTheme, 		dataType="text",	type="cmb",	defaultValueGlobal=2,	defaultValueChar=-1,	values={ { text="Use Global", value=-1}, { text="Default", value="DEFAULT" }, { text="Distinct", value="DISTINCT"}, { text="Deuteranopia", value="CB_DEUTE"}, { text="DeuteranopiaGPT", value="CB_DEUTE_GPT"}, { text="Tritanopia", value="CB_TRITAN"}, { text="TritanopiaGPT", value="CB_TRITAN_GPT"}},	name="Selected Theme", description={ "Which theme to use for the UI.", " ", "This changes the colors in the UI, but does not affect the RXP guides" } },
 }
 
 CasualTBCPrep.Settings.CurrentMajorVersionValue = 3.2
@@ -149,6 +151,12 @@ function CasualTBCPrep.Settings.LoadDefaults()
 		CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.ExtraTBCPrepSelections, { })
 	end
 
+	-- Set stuff that depends on settings
+	local userThemeCode = CasualTBCPrep.Settings.GetSettingFromCharOrGlobal(CasualTBCPrep.Settings.SelectedTheme)
+	if userThemeCode ~= nil and userThemeCode ~= "" then
+		CasualTBCPrep.Themes.ChangeTheme(userThemeCode)
+	end
+
 	-- Major Version Checks. Use this when we need to force some settings after big changes that could break stuff.
 	-- For example, after adding Route Selection, we want users who had the addon before, to also get the new selection window, so we reset their SelectedRoute
 	local charMajorVersionVal = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.CurrentMajorVersion)
@@ -228,4 +236,11 @@ function CasualTBCPrep.Settings.GetQuestPriority(selectedRouteCode, questID)
 	if qState[selectedRouteCode] == nil then return nil end
 
 	return qState[selectedRouteCode].priorityChanged
+end
+
+function CasualTBCPrep.Settings.OnChange(settingsKey, newValue, isGlobal)
+	if settingsKey == CasualTBCPrep.Settings.SelectedTheme then
+		local storedVal = CasualTBCPrep.Settings.GetSettingFromCharOrGlobal(settingsKey)
+		CasualTBCPrep.Themes.ChangeTheme(storedVal)
+	end
 end

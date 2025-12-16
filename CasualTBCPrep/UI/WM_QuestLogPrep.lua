@@ -27,7 +27,7 @@ local function CreateListQuestTooltip(wMain, quest, btnClickableQuest, questText
 	local ttLines = {}
 	if quest.data then
 		if quest.prioChanged == true then
-			table.insert(ttLines, CasualTBCPrep.ColorRed.."You changed the type of the quest!")
+			table.insert(ttLines, CasualTBCPrep.Themes.SelectedTheme.colors.bad.hex.."You changed the type of the quest!")
 			table.insert(ttLines, " ")
 		end
 

@@ -50,6 +50,7 @@ local function CreateDropdown(parent, anchorPoint, relativeTo, settingsObj, cmbW
 			CasualTBCPrep.Settings.SetCharSetting(settingsObj.key, selValue)
 		end
 
+		CasualTBCPrep.Settings.OnChange(settingsObj.key, selValue, isGlobal)
 		UIDropDownMenu_SetSelectedValue(cmbChar, selValue)
 		UIDropDownMenu_SetText(cmbChar, self:GetText())
 	end

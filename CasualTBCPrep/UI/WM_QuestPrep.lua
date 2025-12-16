@@ -244,7 +244,7 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 	local isCollapsed = frameQuestPrep.collapsedSections[headerText] or false
 	local collapseIndicator = isCollapsed and "> " or "v "
 
-	local headerColor = CasualTBCPrep.ColorRGB_SpecialHeader
+	local headerColor = CasualTBCPrep.Themes.SelectedTheme.colors.headerSpecial
 	headerFrame:SetText(collapseIndicator .. totalCount .. " " .. headerText .. " Quest" .. (totalCount == 1 and "" or "s"))
 	headerFrame:SetTextColor(headerColor.r, headerColor.g, headerColor.b)
 	headerFrame:SetPoint(point, frameQuestPrep.scrollChild, relativePoint, xOffset, yOffset)
@@ -260,7 +260,7 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 			end
 		end)
 		headerFrame.clickFrame:SetScript("OnEnter", function()
-			local hdrClr = CasualTBCPrep.ColorRGB_SpecialHeaderHover
+			local hdrClr = CasualTBCPrep.Themes.SelectedTheme.colors.headerSpecialHover
 			headerFrame:SetTextColor(hdrClr.r, hdrClr.g, hdrClr.b)
 		end)
 		headerFrame.clickFrame:SetScript("OnLeave", function()

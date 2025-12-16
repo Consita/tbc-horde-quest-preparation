@@ -68,6 +68,7 @@ function CasualTBCPrep.Extras_Items.Load(frame)
 
 	local iconSize = 32
 
+    local clrWarn = CasualTBCPrep.Themes.SelectedTheme.colors.questReadyBanked.hex
     for _, item in ipairs(items) do
         local canPlayerUseItem = true
         if item.reqClasses ~= nil and #item.reqClasses > 0 then
@@ -105,14 +106,14 @@ function CasualTBCPrep.Extras_Items.Load(frame)
                 fullyPrepared = false
                 itemProgText = tostring(playerTotalCount).."/"..tostring(item.amount)
                 if playerBankCount > 0 then
-                    itemProgText = itemProgText..CasualTBCPrep.ColorYellow.." ("..tostring(playerBankCount).." in bank)"
+                    itemProgText = itemProgText..clrWarn.." ("..tostring(playerBankCount).." in bank)"
                 end
             else
                 fullyPrepared = true
                 needsItemsFromBank = invOrEquipCount < item.amount and playerTotalCount >= item.amount
                 itemProgText = tostring(playerTotalCount).."/"..tostring(item.amount)
                 if needsItemsFromBank then
-                    itemProgText =  itemProgText..CasualTBCPrep.ColorYellow.."("..tostring(playerBankCount).." in bank)"
+                    itemProgText =  itemProgText..clrWarn.."("..tostring(playerBankCount).." in bank)"
                 end
             end
 
@@ -121,12 +122,12 @@ function CasualTBCPrep.Extras_Items.Load(frame)
                 if CasualTBCPrep.QuestData.HasCharacterCompletedQuest(item.reqQuest) then
                     if not item.unique then
                         if invOrEquipCount > 0 then
-                            itemReadyText = CasualTBCPrep.ColorGreen.."x"..tostring(invOrEquipCount)
+                            itemReadyText = CasualTBCPrep.Themes.SelectedTheme.colors.good.hex.."x"..tostring(invOrEquipCount)
                             if playerBankCount > 0 then
-                                itemReadyText = itemReadyText..CasualTBCPrep.ColorYellow.." ("..tostring(playerBankCount).." in bank)"
+                                itemReadyText = itemReadyText..clrWarn.." ("..tostring(playerBankCount).." in bank)"
                             end
                         elseif playerBankCount > 0 then
-                            itemReadyText = CasualTBCPrep.ColorYellow..tostring(playerBankCount).." in bank"
+                            itemReadyText = clrWarn..tostring(playerBankCount).." in bank"
                         end
                     else
                         if equipCount > 0 then
@@ -136,7 +137,7 @@ function CasualTBCPrep.Extras_Items.Load(frame)
                         elseif playerBankCount > 0 then
                             itemReadyText = "In bank"
                         else
-                            itemReadyText = CasualTBCPrep.ColorRGB_CompletedQuest.hex.."You have prepared this, but deleted it? :(|r"
+                            itemReadyText = CasualTBCPrep.Themes.SelectedTheme.colors.questCompleted.hex.."You have prepared this, but deleted it? :(|r"
                         end
                     end
                 else
@@ -153,21 +154,21 @@ function CasualTBCPrep.Extras_Items.Load(frame)
                 end
             else
                 if invOrEquipCount > 0 then
-                    itemReadyText = CasualTBCPrep.ColorGreen.."x"..tostring(invOrEquipCount)
+                    itemReadyText = CasualTBCPrep.Themes.SelectedTheme.colors.good.hex.."x"..tostring(invOrEquipCount)
                     if playerBankCount > 0 then
-                        itemReadyText = itemReadyText..CasualTBCPrep.ColorYellow.." ("..tostring(playerBankCount).." in bank)"
+                        itemReadyText = itemReadyText..clrWarn.." ("..tostring(playerBankCount).." in bank)"
                     end
                 elseif playerBankCount > 0 then
-                    itemReadyText = CasualTBCPrep.ColorYellow..tostring(playerBankCount).." in bank"
+                    itemReadyText = clrWarn..tostring(playerBankCount).." in bank"
                 elseif item.howToCollect ~= nil and item.howToCollect ~= "" then
                     itemReadyText = itemReadyText..CasualTBCPrep.CreateExpText(item.howToCollect, "")
                 end
             end
 
             if fullyPrepared == true then
-                itemNameText = CasualTBCPrep.ColorRGB_ReadyQuest.hex..itemNameText.."|r"
+                itemNameText = CasualTBCPrep.Themes.SelectedTheme.colors.questReady.hex..itemNameText.."|r"
             else
-                itemNameText = CasualTBCPrep.ColorRGB_AvailableQuest.hex..itemNameText.."|r"
+                itemNameText = CasualTBCPrep.Themes.SelectedTheme.colors.questAvailable.hex..itemNameText.."|r"
             end
 
             -- Finally create ui elements

@@ -1515,18 +1515,18 @@ function CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
 
 	local questTextColorRGB = nil
 	if isQuestCompleted then
-		questTextColorRGB = CasualTBCPrep.ColorRGB_CompletedQuest
+		questTextColorRGB = CasualTBCPrep.Themes.SelectedTheme.colors.questCompleted
 	else
 		if hasFullyPreparedQuest then
 			if isBankAlted then
-				questTextColorRGB = CasualTBCPrep.ColorRGB_BankedButReadyQuest
+				questTextColorRGB = CasualTBCPrep.Themes.SelectedTheme.colors.questReadyBanked
 			elseif hasRequiredItemsInBank then
-				questTextColorRGB = CasualTBCPrep.ColorRGB_BankedButReadyQuest
+				questTextColorRGB = CasualTBCPrep.Themes.SelectedTheme.colors.questReadyBanked
 			else
-				questTextColorRGB = CasualTBCPrep.ColorRGB_ReadyQuest
+				questTextColorRGB = CasualTBCPrep.Themes.SelectedTheme.colors.questReady
 			end
 		else
-			questTextColorRGB = CasualTBCPrep.ColorRGB_AvailableQuest
+			questTextColorRGB = CasualTBCPrep.Themes.SelectedTheme.colors.questAvailable
 		end
 	end
 
