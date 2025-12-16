@@ -865,6 +865,32 @@ RXPGuides.RegisterGuide([[
 			.collect 22338,25,8921,1 --Volcanic Ash (x25)
 
 		step
+			#completewith next
+			.use 12284 >>Use |T133001:0|t[Draco-Incarcinatrix] 900 and Kill |cRXP_ENEMY_Broodlings|r in Burning Steppes
+			.complete 4726,1
+
+		step
+			.goto Burning Steppes,95.061,31.563
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Cyrus Therepentous|r and select the option: "I do not possess any proof, Cyrus."
+			>>This will spawn a level 54 Elite Dragon at the entrance of the small cave. Kill and loot it for the |T134430:0|t[Black Dragonflight Molt]
+			>>|cRXP_ENEMY_Do not turn in|r |cRXP_LOOT_A Taste of Flame|r |cRXP_ENEMY_as it is used for the TBC turnin!|r
+			.collect 10575,1
+			.accept 4023
+			.target Cyrus Therepentous
+			.isQuestAvailable 4023
+			.skipgossip
+
+		step
+			.abandon 4023	
+			.isOnQuest 4023			
+
+		step
+			#completewith next
+			>>Loot |cRXP_LOOT_Volcanic Ash|r on the ground
+			>>|cRXP_WARN_They look like large piles of grey dirt and can be found in mainly in Northern Burning Steppes among the lava pools and rivers|r
+			.collect 22338,25,8921,1 --Volcanic Ash (x25)
+
+		step
 			#loop
 			.goto Burning Steppes,70.8,28.9,0
 			.goto Burning Steppes,78.93,29.24,0
