@@ -24,13 +24,12 @@ local function Display()
 	wItemManagement.texts = {}
 	wItemManagement.content = {}
 
-    local item = wItemManagement.currentItem;
-    if not item then return end
-    local itemID = item.id
-    if not item or item.id <= 0 then return end
+    local curItem = wItemManagement.currentItem;
+    if not curItem or curItem.id <= 0 then return end
+    local itemID = curItem.id
 
 	local itemStates = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.ItemStates)
-    local itemState = itemStates[item.id]
+    local itemState = itemStates[itemID]
 
     local isBankAlted,bankAltName = false,""
     if itemState then
@@ -42,20 +41,19 @@ local function Display()
     -- UI elements
     local yPosition = -52
 
-
 	local iconSize = 38
 	local iconPaddingY = 2
-    local icon, border, textRarityColor, item = CasualTBCPrep.UI.CreateItemImage(wItemManagement, iconSize, item.id, "TOP", "TOP", 0, yPosition)
+    local icon, border, textRarityColor, imgItem = CasualTBCPrep.UI.CreateItemImage(wItemManagement, iconSize, itemID, "TOP", "TOP", 0, yPosition)
     local itemName = ""
-    if item then
-        local r,g,b,cHex = CasualTBCPrep.GetRarityColor(item.rarity)
-        itemName = cHex..item.name.."|r"
+    if imgItem then
+        local r,g,b,cHex = CasualTBCPrep.GetRarityColor(imgItem.rarity)
+        itemName = cHex..imgItem.name.."|r"
     end
 
     table.insert(wItemManagement.content, icon)
     table.insert(wItemManagement.content, border)
 
-    local itemNameText = textRarityColor .. (itemName or ("Item " .. item.id))
+    local itemNameText = textRarityColor .. (itemName or ("Item " .. imgItem.id))
 
     -- Text, Item Name
     local textItemName = wItemManagement:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")

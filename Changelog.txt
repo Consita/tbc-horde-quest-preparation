@@ -16,6 +16,7 @@ Changelog:
 - Minor formatting fixes
 - Minor GPS waypoint fixes
 - Removed Turnin Guide until it is completed
+- Fixed item icons being too dark, and icons in the ItemManagement window being gone
 
 3.10
 - Fixed lua error with comment

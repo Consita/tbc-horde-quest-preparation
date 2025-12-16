@@ -397,19 +397,8 @@ function CasualTBCPrep.UI.CreateItemImage(parentFrame, iconSize, itemID, anchorP
 		return nil,nil,"",nil
 	end
 
-	-- Icon Rarity Border
-	-- local borderFrame = CreateFrame("Frame", nil, parentFrame, "BackdropTemplate")
-	-- borderFrame:SetSize(iconSize+2, iconSize+2)
-	-- borderFrame:SetPoint(anchorPoint, parentFrame, anchorRelativeTo, xOffset, yOffset)
-	-- borderFrame:SetBackdrop({
-	-- 	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-	-- 	edgeSize = 12,
-	-- 	insets = { left = 0, right = 0, top = 0, bottom = 0 }
-	-- })
-	-- borderFrame:SetFrameStrata("HIGH")
-
 	-- Icon
-	local icon = parentFrame:CreateTexture(nil, "BACKGROUND")
+	local icon = parentFrame:CreateTexture(nil, "OVERLAY")
 	icon:SetTexture(itemData.texture)
 	icon:SetSize(iconSize, iconSize)
 	icon:SetPoint(anchorPoint, parentFrame, anchorRelativeTo, xOffset, yOffset)
