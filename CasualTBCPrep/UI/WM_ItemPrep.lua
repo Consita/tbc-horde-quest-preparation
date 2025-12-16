@@ -433,13 +433,12 @@ local function LoadItemList(wMain)
 		yPosition = yPosition - 25
 
 		local anyqImgSpacing = 8
-		local anyqImgSize = 26
+		local anyqImgSize = 30
 		local anyqImgOffsetX = anyqImgSpacing
 
 		if not isCollapsedMultipleQ then
 			for _, questWrap in ipairs(lstQuestsReqAnyAmount) do
 				if questWrap and questWrap.questID > 0 and questWrap.items and #questWrap.items > 0 then
-
 					local questHeaderText = frame:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
 					questHeaderText:SetPoint("TOPLEFT", frame, "TOPLEFT", 5, yPosition)
 					questHeaderText:SetText(questWrap.quest.name)
@@ -449,26 +448,17 @@ local function LoadItemList(wMain)
 					yPosition = yPosition - 18
 
 					for _, itemData in ipairs(questWrap.items) do
-						local icon, border = CasualTBCPrep.UI.CreateItemImage(frame, anyqImgSize, itemData.id, "TOPLEFT", "BOTTOMLEFT",	anyqImgOffsetX,	yPosition)
-
-						if icon then
+						local icon,border,_,item = CasualTBCPrep.UI.CreateItemImage(frame, anyqImgSize, itemData.id, "TOPLEFT", "BOTTOMLEFT",	anyqImgOffsetX,	yPosition)
+						
+						if icon and border then
 							table.insert(frameItemPrep.content, icon)
-							if border then
-								table.insert(frameItemPrep.content, border)
-							end
-
-							local clrGreen = CasualTBCPrep.ColorGreen or ""
-							local clrRed   = CasualTBCPrep.ColorRed   or ""
-
+							table.insert(frameItemPrep.content, border)
+							
 							local anyqItemProgText
 							if itemData.playerTotalAmount >= itemData.requiredAmount then
-								anyqItemProgText = clrGreen ..
-									math.min(itemData.playerTotalAmount, itemData.requiredAmount) ..
-									"/" .. itemData.requiredAmount
+								anyqItemProgText = clrGood..math.min(itemData.playerTotalAmount, itemData.requiredAmount).."/"..itemData.requiredAmount
 							else
-								anyqItemProgText = clrRed ..
-									math.min(itemData.playerTotalAmount, itemData.requiredAmount) ..
-									"/" .. itemData.requiredAmount
+								anyqItemProgText = clrBad..math.min(itemData.playerTotalAmount, itemData.requiredAmount).."/"..itemData.requiredAmount
 							end
 
 							local anyqItemProg = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
@@ -476,7 +466,11 @@ local function LoadItemList(wMain)
 							anyqItemProg:SetText(anyqItemProgText)
 							table.insert(frameItemPrep.itemTexts, anyqItemProg)
 
-							icon:EnableMouse(true)
+							if item ~= nil then
+								CreateItemTooltip(wMain, anyqItemProg, item, nil)
+							end
+
+							--icon:EnableMouse(true)
 							icon:SetScript("OnEnter", function(self)
 								local link = CasualTBCPrep.Items.TryGetItemLink(itemData.id)
 								if link then
@@ -489,11 +483,16 @@ local function LoadItemList(wMain)
 								GameTooltip:Hide()
 							end)
 
+							CreateClickableItemFunctionality(icon, itemData.id)
+							CreateClickableItemFunctionality(anyqItemProg, itemData.id)
+						elseif icon then
+							table.insert(frameItemPrep.content, icon)
+						elseif border then
+							table.insert(frameItemPrep.content, border)
 						end
 
 						anyqImgOffsetX = anyqImgOffsetX + anyqImgSize + anyqImgSpacing
 					end
-					
 				end
 			end
 		end

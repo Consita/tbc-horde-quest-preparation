@@ -11,7 +11,7 @@ Changelog:
 - Added 'Taste of Flame' to Main/Strat routes, and swapped BurningSteppes<>Kargath start to make this possible
 - Attempted to add support for different themes to help with colorblindness. Check the new dropdown in the Settings tab.
 - Fixed Flame in a Bottle step
-- Changed layout for bijou's
+- Added tooltips to Bijous in the Items tab
 - Minor notes added to some npc's / quests
 - Minor formatting fixes
 - Minor GPS waypoint fixes
