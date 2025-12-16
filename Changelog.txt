@@ -3,21 +3,21 @@ Changelog:
 3.11
 - Added Un'Goro Soil quest
 - Now shows a warning the first time you try to delete an item used by quests in any route (resets on reload)
+- Added tooltips to items that are used in TBCPrep routes
+- The Bijous in the Items tab now function like other items. They have tooltips and can be rightclicked
+- Fixed item icons being too dark, and icons in the ItemManagement window being gone
 - Fixed Brood of Nozdormu rep rings not showing up in Solo route
 - Fixed 'Quest Completion' warnings not showing up for Brood of Nozdormu rep ring quests
 - Fixed Optional quests not checking if actual quest objectives are done, before turning green
-- Added Tooltips to items that are used in TBCPrep routes (Can be toggled in settings)
 - Added 'Seeping Corruption' to the Solo route
 - Added 'Taste of Flame' to Main/Strat routes, and swapped BurningSteppes<>Kargath start to make this possible
 - Fixed Flame in a Bottle step
-- Added tooltips to Bijous in the Items tab
 - Minor notes added to some npc's / quests
 - Minor formatting fixes
 - Minor GPS waypoint fixes
 - Removed Turnin Guide until it is completed
-- Fixed item icons being too dark, and icons in the ItemManagement window being gone
 - Settings - Attempted to add support for different themes to help with colorblindness.
-- Settings - New 'Item Tooltips' can be toggled on/off
+- Settings - Item Tooltips' can be toggled on/off
 
 3.10
 - Fixed lua error with comment
