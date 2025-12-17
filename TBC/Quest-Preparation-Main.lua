@@ -3051,7 +3051,7 @@ RXPGuides.RegisterGuide([[
 			#completewith next
 			.goto Burning Steppes,65.6,24.2
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vahgruk|r
-			.fly Badlands >> Fly to |cFFfa9602Badlands|r	
+			.fly Badlands >> Fly to |cFFfa9602Kargath|r	
 			.target Vahgruk
 			.zoneskip Badlands
 
