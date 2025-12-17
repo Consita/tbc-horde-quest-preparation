@@ -104,20 +104,6 @@ RXPGuides.RegisterGuide([[
 		.target Thunderheart
 
 	step
-		.goto Badlands,2.90,47.76
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shadowmage Vivian Lagrave|r
-		.accept 4134 >> Accept Lost Thunderbrew Recipe
-		.target Shadowmage Vivian Lagrave
-		.isQuestTurnedIn 3906 
-
-	step
-		.goto Badlands,5.96,47.73
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Galamav the Marksman|r on top of the tower
-		.accept 3981 >> Accept Commander Gor'shak
-		.target Galamav the Marksman
-		.isQuestTurnedIn 3906
-
-	step
 		#completewith next
 		.goto Badlands,3.98,44.76
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gorrik|r
@@ -191,6 +177,20 @@ RXPGuides.RegisterGuide([[
 		.turnin 3906 >> Turn in Disharmony of Flame
 		.target Thunderheart
 		.isQuestComplete 3906
+
+	step
+		.goto Badlands,2.90,47.76
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shadowmage Vivian Lagrave|r
+		.accept 4134 >> Accept Lost Thunderbrew Recipe
+		.target Shadowmage Vivian Lagrave
+		.isQuestTurnedIn 3906 
+
+	step
+		.goto Badlands,5.96,47.73
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Galamav the Marksman|r on top of the tower
+		.accept 3981 >> Accept Commander Gor'shak
+		.target Galamav the Marksman
+		.isQuestTurnedIn 3906		
 
 	step
 		.goto Badlands,5.81,47.52
