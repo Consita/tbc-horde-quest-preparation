@@ -520,10 +520,353 @@ step
 --- Un'Goro
 
 	step
+		#completewith Ungorolast
+		.zone Un'Goro Crater >>Travel to |cFFfa9602Un'Goro Crater|r
+		.zoneskip Un'Goro Crater
+
+	step
+		.goto Silithus,86.1,12.0,20,0
+		.goto Un'Goro Crater,30.0,10.7,20,0
+		.goto Un'Goro Crater,29.6,14.7,20,0
+		.goto Un'Goro Crater,33.3,21.3,20,0
+		.goto Un'Goro Crater,36.6,20.4,20,0
+		.goto Un'Goro Crater,42.5,16.0,20,0
+		.goto Un'Goro Crater,43.2,12.9,20,0
+		.goto Un'Goro Crater,45.53,8.72
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Larion|r
+		.accept 4148
+		.turnin 4148
+		.target Larion
+		.itemcount 11315,1
+
+	step
+		.goto Un'Goro Crater,41.918,2.703
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_J.D. Collie|r
+		.accept 4284
+		.turnin 4284
+		.target J.D. Collie
+		.itemcount 11186,7
+		.itemcount 11188,7
+		.itemcount 11185,7
+		.itemcount 11184,7
+
+	step
+		.goto Un'Goro Crater,41.918,2.703
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_J.D. Collie|r
+		.accept 4285
+		.accept 4288
+		.target J.D. Collie	
+		.isQuestTurnedIn 4284	
+
+	step
+		.goto Un'Goro Crater,41.918,2.703
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_J.D. Collie|r
+		.accept 3961
+		.target J.D. Collie
+		.isQuestTurnedIn 4005	
+
+	step
+		.goto Un'Goro Crater,44.70,8.10
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Linken|r
+		.turnin -3961
+		.accept 3962
+		.target Linken
+		.isQuestTurnedIn 4005
+
+	step
+		.goto Un'Goro Crater,43.61,8.50
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Spraggle|r
+		.accept 4492
+		.target Spraggle Frock
+
+	step
+		.use 11116 >> Click |T133743:0|t[A Mangled Journal] and accept |cRXP_LOOT_Williden's Journal|r
+		.accept 3884
+		.itemcount 11116,1
+
+	step
+		.goto Un'Goro Crater,43.947,7.137
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Williden Marshal|r
+		.turnin -3884
+		.target Williden Marshal		
+
+	step
+		.goto Un'Goro Crater,56.49,12.44
+		>>Click the |cRXP_PICK_Northern Crystal Pylon|r
+		.complete 4285,1 
+		.isOnQuest 4285
+
+	step	
+		.goto Un'Goro Crater,48.3,20.9,20,0
+		.goto Un'Goro Crater,44.0,34.4,20,0
+		.goto Un'Goro Crater,43.5,34.6,20,0
+		.goto Un'Goro Crater,39.1,42.4,20,0
+		.goto Un'Goro Crater,32.0,48.0,20,0
 		.goto Un'Goro Crater,30.94,50.44
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Krakle|r
 		.accept 974
 		.target Krakle
+
+	step
+		.goto Un'Goro Crater,23.87,59.21
+		>>Click the |cRXP_PICK_Western Crsytal Pylon|r
+		.complete 4288,1
+		.isOnQuest 4288
+		
+	step
+		#completewith next
+		.goto Un'Goro Crater,26.5,59.5,15,0
+		.goto Un'Goro Crater,28.7,60.3,15,0
+		.goto Un'Goro Crater,32.5,60.5,15,0
+		.goto Un'Goro Crater,37.1,59.3,15,0
+		.goto Un'Goro Crater,44.7,55.6,15,0
+		.goto Un'Goro Crater,48.9,53.8,15,0
+		.goto Un'Goro Crater,50.0,52.9,15,0
+		.goto Un'Goro Crater,52.5,51,0,15,0
+		.goto Un'Goro Crater,51.90,49.85 >>Travel to |cFFfa9602Fire Plume Ridge|r
+
+	step
+		.goto Un'Goro Crater,51.90,49.85
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ringo|r
+		.turnin -4492
+		.target Ringo		
+
+	step
+		#completewith next
+		.goto Un'Goro Crater,52.6,51.4,15,0
+		.goto Un'Goro Crater,53.0,50.0,15,0
+		.goto Un'Goro Crater,52.3,47.2,15,0
+		.goto Un'Goro Crater,52.7,45.7,15,0
+		.goto Un'Goro Crater,51.6,45.9,15,0
+		.goto Un'Goro Crater,51.3,47.4,15,0
+		.goto Un'Goro Crater,49.7,45.8 >>Travel to the top of the |cFFfa9602Fire Plume Ridge|r	
+		
+	step	
+		.goto Un'Goro Crater,49.401,49.305
+		.cast 14247 >>|cRXP_WARN_Equip the|r |T135467:0|t[Silver Totem of Aquementas] |cRXP_WARN_in your off-hand|r
+		.use 11522 >>|cRXP_WARN_Use the|r |T135467:0|t[Silver Totem of Aquementas] |cRXP_WARN_on |cRXP_ENEMY_Blazerunner|r to dispel his aura|r
+		>>Kill |cRXP_ENEMY_Blazerunner|r
+		.complete 3962,1
+		.mob Blazerunner
+		.isOnQuest 3962
+
+	step	
+		.goto Un'Goro Crater,50.279,49.973
+		>>Open the |cRXP_PICK_Ornate Chest|r. Loot it for the |cRXP_LOOT_Golden Flame|r
+		.complete 3962,2 
+		.isOnQuest 3962
+
+	step
+		.goto Un'Goro Crater,49.6,45.7
+		.use 12472 >>|cRXP_WARN_Climb up to the top of the volcano, then use|r |T132995:0|t[Krakle's Thermometer]
+		.complete 974,1 
+		.isOnQuest 974
+
+	step	
+		.goto Un'Goro Crater,48.1,47.7,20,0
+		.goto Un'Goro Crater,46.7,46.8,20,0
+		.goto Un'Goro Crater,31.2,48.0,20,0
+		.goto Un'Goro Crater,30.94,50.44
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Krakle|r
+		.turnin -974
+		.accept 980
+		.target Krakle
+		
+	step
+		.goto Un'Goro Crater,43.4,36.4,15,0
+		.goto Un'Goro Crater,44.1,36.2,15,0
+		.goto Un'Goro Crater,44.70,8.10
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Linken|r
+		.turnin -3962
+		.target Linken
+
+	step
+		#label Ungorolast
+		.goto Un'Goro Crater,41.918,2.703
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_J.D. Collie|r
+		.turnin -4285
+		.turnin -4288
+		.target J.D. Collie			
+
+--- Tanaris
+
+	step
+		#completewith Tanarislast
+		.goto Un'Goro Crater,45.23,5.82
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gryfe|r
+		.fly Tanaris >>Fly to |cFFfa9602Tanaris|r
+		.target Gryfe
+		.zoneskip Tanaris
+
+	step
+		.goto Tanaris,52.47,27.23
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mux Manascrambler|r
+		.accept 8928
+		.turnin 8928
+		.target Mux Manascrambler
+		.isQuestTurnedIn 8925
+		.itemcount 21939,1
+
+	step
+		.goto Tanaris,52.47,27.23
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mux Manascrambler|r
+		.accept 8978
+		.target Mux Manascrambler
+		.isQuestTurnedIn 8928	
+		
+	step
+		.goto Tanaris,50.90,27.00
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pestlezugg|r
+		.accept 4509
+		.target Alchemist Pestlezugg	
+		.isQuestTurnedIn 4507
+
+	step
+		.goto Tanaris,66.8,24.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Prospector Ironboot|r
+		.turnin -4788
+		.target Prospector Ironboot
+
+	step
+		.goto Tanaris,66.8,24.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Prospector Ironboot|r
+		.accept 8181
+		.target Prospector Ironboot
+		.isQuestTurnedIn 4788		
+
+	step	
+		.goto Tanaris,67.0,22.4
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yeh'kinya|r
+		.turnin -8181
+		.target Yeh'kinya
+
+	step	
+		.goto Tanaris,67.0,22.4
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yeh'kinya|r
+		.accept 8182
+		.target Yeh'kinya
+		.isQuestTurnedIn 8181
+		
+	step
+		#completewith Tanarislast
+		.goto Tanaris,65.2,50.0
+		>>Travel to |cFFfa9602The Caverns of Time|r	
+		
+	step
+		.goto Tanaris,65.2,50.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
+		.turnin -8802
+		.target Anachronos	
+
+	step
+		.goto Tanaris,65.2,50.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
+		.turninmultiple 8757,8752,8747
+		>>Choose one of the available quests depending on your needs:
+		>>Path of the Conquerer - Agility/Hit
+		>>Path of the Invoker - Spelldmg/Healing
+		>>Path of the Protector - Defensive
+		.target Anachronos
+		.reputation 910,neutral,<0,1 
+
+	step
+		.goto Tanaris,65.2,50.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
+		.turnin 8758
+		.target Anachronos
+		.isQuestTurnedIn 8757
+		.reputation 910,friendly,<0,1 
+
+	step
+		.goto Tanaris,65.2,50.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
+		.turnin 8759
+		.target Anachronos
+		.isQuestTurnedIn 8757
+		.reputation 910,honored,<0,1 		
+
+	step
+		.goto Tanaris,65.2,50.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
+		.turnin 8760
+		.target Anachronos
+		.isQuestTurnedIn 8757
+		.reputation 910,revered,<0,1 	
+		
+	step
+		.goto Tanaris,65.2,50.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
+		.turnin 8761
+		.target Anachronos
+		.isQuestTurnedIn 8757
+		.reputation 910,exalted,<0,1 
+		
+	step
+		.goto Tanaris,65.2,50.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
+		.turnin 8753
+		.target Anachronos
+		.isQuestTurnedIn 8752
+		.reputation 910,friendly,<0,1 
+
+	step
+		.goto Tanaris,65.2,50.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
+		.turnin 8754
+		.target Anachronos
+		.isQuestTurnedIn 8752
+		.reputation 910,honored,<0,1 		
+
+	step
+		.goto Tanaris,65.2,50.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
+		.turnin 8755
+		.target Anachronos
+		.isQuestTurnedIn 8752
+		.reputation 910,revered,<0,1 	
+		
+	step
+		.goto Tanaris,65.2,50.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
+		.turnin 8756
+		.target Anachronos
+		.isQuestTurnedIn 8752
+		.reputation 910,exalted,<0,1 
+		
+	step
+		.goto Tanaris,65.2,50.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
+		.turnin 8748
+		.target Anachronos
+		.isQuestTurnedIn 8747
+		.reputation 910,friendly,<0,1 
+
+	step
+		.goto Tanaris,65.2,50.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
+		.turnin 8749
+		.target Anachronos
+		.isQuestTurnedIn 8747
+		.reputation 910,honored,<0,1 		
+
+	step
+		.goto Tanaris,65.2,50.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
+		.turnin 8750
+		.target Anachronos
+		.isQuestTurnedIn 8747
+		.reputation 910,revered,<0,1 	
+		
+	step
+		#label Tanarislast
+		.goto Tanaris,65.2,50.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
+		.turnin 8751
+		.target Anachronos
+		.isQuestTurnedIn 8747
+		.reputation 910,exalted,<0,1 		
+
+
 
 --- Orgrimmar
 	
