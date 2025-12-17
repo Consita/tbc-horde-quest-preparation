@@ -168,6 +168,8 @@ step
 		.itemcount 20461,1
 
 	step
+		.goto Silithus,62.7,75.1,20,0
+		.goto Silithus,53.2,88.1,20,0
 		.goto Silithus,40.80,88.80
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Frankal|r
 		.turnin -8310
@@ -514,6 +516,14 @@ step
 		.accept 6844
 		.target Layo Starstrike	
 		.isQuestTurnedIn 1126	
+
+--- Un'Goro
+
+	step
+		.goto Un'Goro Crater,30.94,50.44
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Krakle|r
+		.accept 974
+		.target Krakle
 
 --- Orgrimmar
 	
