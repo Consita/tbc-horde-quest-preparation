@@ -18,55 +18,12 @@ RXPGuides.RegisterGuide([[
 #displayname Strat Route Turnin
 #next 5 - TBC Dungeon Grind
 
---- Flame Crest, Burning Steppes
-
-	step
-		#completewith BurningLast
-		.zone Burning Steppes >> Travel to |cFFfa9602Burning Steppes|r
-		.zoneskip Burning Steppes
-				
-	step
-		.goto Burning Steppes,65.2,24.0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkee Steamboil|r
-		.turnin -4735
-		.target Tinkee Steamboil
-
-	step
-		.goto Burning Steppes,65.2,24.0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkee Steamboil|r
-		.accept 5522
-		.target Tinkee Steamboil	
-		.isQuestTurnedIn 4735
-		
-	step
-		.goto Burning Steppes,65.0,23.8
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ragged John|r
-		.turnin -4866	
-		.target Ragged John	
-		
-	step
-		.goto Burning Steppes,65.2,23.8
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maxwort Uberglint|r
-		.turnin -4123	
-		.target Maxwort Uberglint		
-		
-	step
-		#label BurningLast
-		.goto Burning Steppes,65.9,21.9
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kibler|r
-		.turnin -4729	
-		.turnin -4862
-		.target Kibler
-
 --- Kargath
 
 	step	
 		#completewith Kargathlast
-		.goto Burning Steppes,65.6,24.2
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vahgruk|r
-		.fly Badlands >> Fly to |cFFfa9602Kargath|r
+		.fly Badlands >> Travel to |cFFfa9602Kargath|r
 		.zoneskip Badlands
-		.target Vahgruk
 
 	step
 		.goto Badlands,3.0,47.6
@@ -101,6 +58,69 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lotwil Veriatus|r
 		.turnin -4063
 		.target Lotwil Veriatus
+
+--- Flame Crest, Burning Steppes
+
+	step
+		#completewith BurningLast
+		.goto Badlands,3.98,44.76
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gorrik|r
+		.fly Flame Crest >> Fly to |cFFfa9602Flame Crest|r
+		.target Gorrik
+		.zoneskip Burning Steppes
+				
+	step
+		.goto Burning Steppes,65.2,24.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkee Steamboil|r
+		.turnin -4735
+		.target Tinkee Steamboil
+
+	step
+		.goto Burning Steppes,65.2,24.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkee Steamboil|r
+		.accept 5522
+		.target Tinkee Steamboil	
+		.isQuestTurnedIn 4735
+		
+	step
+		.goto Burning Steppes,65.0,23.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ragged John|r
+		.turnin -4866	
+		.target Ragged John	
+		
+	step
+		.goto Burning Steppes,65.2,23.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maxwort Uberglint|r
+		.turnin -4123	
+		.target Maxwort Uberglint		
+		
+	step
+		.goto Burning Steppes,65.9,21.9
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kibler|r
+		.turnin -4729	
+		.turnin -4862
+		.target Kibler
+
+step
+		.goto Burning Steppes,95.061,31.563
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Cyrus Therepentous|r
+		.itemcount 10575,1
+		.accept 4022
+		.turnin 4022
+		.target Cyrus Therepentous
+		.isQuestAvailable 4022
+		.skipgossip			
+
+step
+		#label BurningLast
+		.goto Burning Steppes,95.061,31.563
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Cyrus Therepentous|r
+		.itemcount 10575,1
+		.accept 4023
+		.turnin 4023
+		.target Cyrus Therepentous
+		.isQuestAvailable 4023
+		.skipgossip	
 
 --- Silithus		
 
