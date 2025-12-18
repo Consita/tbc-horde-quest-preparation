@@ -1,6 +1,9 @@
 Changelog:
 
 3.11
+- Route tab now shows which quests are picked up in each section. <<THEY ARE NOT IN ORDER>>
+
+3.11
 - Added Un'Goro Soil quest
 - Now shows a warning the first time you try to delete an item used by quests in any route (resets on reload)
 - Added tooltips to items that are used in TBCPrep routes

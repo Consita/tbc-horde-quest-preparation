@@ -131,6 +131,9 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 		return
 	end
 
+	local showDebugData = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
+	local shouldShowSectionPickupsOnTooltip = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.ShowRouteQuestPickups) or -1
+
 	local yOffset = -15
 	local totalEnabled = 0
 	local totalDisabled = 0
@@ -414,11 +417,29 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 
 				-- Tooltip
 				local ttLines = { }
+				if showDebugData == 1 then
+					table.insert(ttLines, CasualTBCPrep.CreateExpText("SectionID: ", section.key))
+				end
+
 				if questCountNr > 0 then
 					local ttExpText = CasualTBCPrep.Themes.SelectedTheme.colors.tooltipLeftExp.hex.."Possible XP: |r"..CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex..sectionExp.." / "..possibleExp.."|r"
 					table.insert(ttLines, ttExpText)
 					table.insert(ttLines, " ")
+				end
 
+				if section.pickups ~= nil and #section.pickups > 0 and shouldShowSectionPickupsOnTooltip == 1 then
+					for _, questIDStr in ipairs(section.pickups) do
+						if questIDStr ~= nil and questIDStr ~= "" then
+							local questID = tonumber(questIDStr)
+
+							if CasualTBCPrep.QuestData.IsQuestIDValidForUser(questID) and CasualTBCPrep.Routing.IsQuestInCurrentRoute(questID) then
+								local questName = CasualTBCPrep.QuestData.GetQuestName(questID)
+								table.insert(ttLines, CasualTBCPrep.Themes.SelectedTheme.colors.questPickup.hex..questName.." (pickup)")
+							end
+						end
+					end
+				end
+				if questCountNr > 0 then
 					table.sort(listValidQuests, function(aWrap, bWrap)
 						local a = aWrap.quest;
 						local b = bWrap.quest;
@@ -448,6 +469,7 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 						end
 					end
 				end
+
 				CasualTBCPrep.UI.HookTooltip(sectionFrame, target:GetText(), ttLines, nil,nil,nil)
 
 				listValidQuests = nil
@@ -534,10 +556,23 @@ function CasualTBCPrep.WM_Route.Load(wMain)
 				UIDropDownMenu_AddButton(info)
 			end
 		end)
-
 		frameRoute.scrollFrame, frameRoute.scrollChild = CasualTBCPrep.UI.CreateTBCPrepScrollFrame(frameRoute)
 
 		frameRoute.dropdown = dropdown
+	end
+
+	if frameRoute.chbPickups == nil then
+		local chbPickups = CreateFrame("CheckButton", nil, frameRoute, "UICheckButtonTemplate")
+		chbPickups:SetPoint("RIGHT", frameRoute.dropdown, "LEFT", 13, 0)
+		chbPickups:SetSize(26, 26)
+		chbPickups:SetChecked(CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.ShowRouteQuestPickups) == 1)
+		chbPickups:SetScript("OnClick", function(self)
+			local isSelected = self:GetChecked()
+			CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.ShowRouteQuestPickups, isSelected and 1 or -1)
+			CasualTBCPrep.WM_Route.RefreshRoute()
+		end)
+		CasualTBCPrep.UI.HookTooltip(chbPickups, "Section Quest-Pickups", { "If checked, quests picked up at each eaction is shown in the tooltip", "This is NOT in order!!" }, nil,nil,nil)
+		frameRoute.chbPickups = chbPickups
 	end
 
 	CasualTBCPrep.WM_Route.RefreshRoute()

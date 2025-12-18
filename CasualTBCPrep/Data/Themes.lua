@@ -18,6 +18,8 @@ local themeData = {
 			questAvailable=		    {r=0.357, g=0.741, b=0.667, hex="|cFF5BBDAA"},
 			questReady=			    {r=0.02, g=0.99, b=0.03, hex="|cFF05FC08"},
 			questReadyBanked=	    {r=0.51, g=0.76, b=0.38, hex="|cFF82C261"},
+			questIgnored=			{r=0.55, g=0.50, b=0.65, hex="|cFF8C80A6"},
+			questPickup=			{r=0.62, g=0.78, b=0.90, hex="|cFF9EC7E6"},
 
 			tooltipLeftExp=		    {r=0.741, g=0.733, b=0.423, hex="|cFFBDBB6C"},
 			tooltipLeftZone=		{r=0.741, g=0.733, b=0.423, hex="|cFFBDBB6C"},
@@ -51,6 +53,8 @@ local themeData = {
 			questAvailable=		    {r=0.388, g=0.522, b=1, hex="|cFF6385FF"},
 			questReady=			    {r=0., g=1, b=0, hex="|cFF00FF00"},
 			questReadyBanked=	    {r=0.98, g=0.98, b=0.41, hex="|cFFfafc6a"},
+			questIgnored=			{r=0.60, g=0.45, b=0.75, hex="|cFF8CD0D9"},
+			questPickup=			{r=0.55, g=0.80, b=0.85, hex="|cFF8CD0D9"},
 
 			tooltipLeftExp=		    {r=0.741, g=0.733, b=0.423, hex="|cFFBDBB6C"},
 			tooltipLeftZone=		{r=0.741, g=0.733, b=0.423, hex="|cFFBDBB6C"},
@@ -85,6 +89,8 @@ local themeData = {
 			questAvailable=			{r=0.902, g=0.486, b=0.133, hex="|cFFE67E22"},
 			questReady=				{r=0.204, g=0.596, b=0.859, hex="|cFF3498DB"},
 			questReadyBanked=		{r=0.400, g=0.710, b=0.902, hex="|cFF66B5E6"},
+			questIgnored=			{r=0.55, g=0.55, b=0.65, hex="|cFF8C8CA6"},
+			questPickup=			{r=0.45, g=0.70, b=0.90, hex="|cFF73B3E6"},
 
 			-- Tooltip labels: warm tone
 			tooltipLeftExp=			{r=0.953, g=0.612, b=0.071, hex="|cFFF39C12"},
@@ -122,6 +128,8 @@ local themeData = {
 			questAvailable=			{r=1, g=0.4, b=0.502, hex="|cFFFF6680"},
 			questReady=				{r=0, g=0.851, b=0.702, hex="|cFF00D9B3"},
 			questReadyBanked=		{r=0.4, g=0.949, b=0.8, hex="|cFF66F2CC"},
+			questIgnored=			{r=0.65, g=0.65, b=0.65, hex="|cFFA6A6A6"},
+			questPickup=			{r=1.00, g=0.60, b=0.70, hex="|cFFFF99B3"},
 
 			-- Tooltip labels: warm red-pink
 			tooltipLeftExp=			{r=1, g=0.302, b=0.4, hex="|cFFFF4D66"},
@@ -159,6 +167,8 @@ local themeData = {
 			questAvailable=			{r=0.902, g=0.486, b=0.133, hex="|cFFE67E22"},
 			questReady=				{r=0.204, g=0.596, b=0.859, hex="|cFF3498DB"},
 			questReadyBanked=		{r=1, g=0.843, b=0, hex="|cFFFFD700"},
+			questIgnored=			{r=0.60, g=0.60, b=0.60, hex="|cFF999999"},
+			questPickup=			{r=1.00, g=0.75, b=0.45, hex="|cFFFFBF73"},
 
 			-- Tooltip labels: warm tone
 			tooltipLeftExp=			{r=0.953, g=0.612, b=0.071, hex="|cFFF39C12"},
@@ -196,6 +206,8 @@ local themeData = {
 			questAvailable=			{r=1, g=0.4, b=0.6, hex="|cFFFF6699"},
 			questReady=				{r=0.333, g=1, b=0.502, hex="|cFF55FF80"},
 			questReadyBanked=		{r=0.6, g=1, b=0.8, hex="|cFF99FFCC"},
+			questIgnored=			{r=0.55, g=0.55, b=0.55, hex="|cFF8C8C8C"},
+			questPickup=			{r=1.00, g=0.55, b=0.80, hex="|cFFFF8CCC"},
 
 			-- Tooltip labels: warm red/pink
 			tooltipLeftExp=			{r=1, g=0.302, b=0.4, hex="|cFFFF4D66"},
