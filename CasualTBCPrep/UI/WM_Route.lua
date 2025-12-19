@@ -418,7 +418,7 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 				-- Tooltip
 				local ttLines = { }
 				if showDebugData == 1 then
-					table.insert(ttLines, CasualTBCPrep.CreateExpText("SectionID: ", section.key))
+					table.insert(ttLines, CasualTBCPrep.CreateDebugText("SectionID: ", section.key))
 				end
 
 				if questCountNr > 0 then
@@ -571,7 +571,7 @@ function CasualTBCPrep.WM_Route.Load(wMain)
 			CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.ShowRouteQuestPickups, isSelected and 1 or -1)
 			CasualTBCPrep.WM_Route.RefreshRoute()
 		end)
-		CasualTBCPrep.UI.HookTooltip(chbPickups, "Section Quest-Pickups", { "If checked, quests picked up at each eaction is shown in the tooltip", "This is NOT in order!!" }, nil,nil,nil)
+		CasualTBCPrep.UI.HookTooltip(chbPickups, "Section Quest-Pickups", { "If checked, quests picked up at each section is shown in the tooltip", "This is NOT in order!!" }, nil,nil,nil)
 		frameRoute.chbPickups = chbPickups
 	end
 

@@ -111,6 +111,12 @@ function CasualTBCPrep.CreateExpText(left, right)
 	return CasualTBCPrep.CreateDuoText(left, right, CasualTBCPrep.Themes.SelectedTheme.colors.tooltipLeftExp.hex, CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex)
 end
 
+---@param left string
+---@param right string
+function CasualTBCPrep.CreateDebugText(left, right)
+	return CasualTBCPrep.CreateDuoText(left, right, CasualTBCPrep.Themes.SelectedTheme.colors.headerSpecialHover.hex, CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex)
+end
+
 ---@param repID number
 ---@param repRank number
 function CasualTBCPrep.CreateRepRankText(repID, repRank)

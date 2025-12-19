@@ -40,12 +40,12 @@ local function CreateListQuestTooltip(wMain, point, quest, questText, yOffset, n
 						qIds = qIds .. "," .. tostring(qID)
 					end
 				end
-				table.insert(ttLines, CasualTBCPrep.CreateZoneText("SplitQuestIDs: ", qIds))
+				table.insert(ttLines, CasualTBCPrep.CreateDebugText("SplitQuestIDs: ", qIds))
 			else
-				table.insert(ttLines, CasualTBCPrep.CreateZoneText("QuestID: ", tostring(quest.id)))
+				table.insert(ttLines, CasualTBCPrep.CreateDebugText("QuestID: ", tostring(quest.id)))
 			end
 
-			table.insert(ttLines, CasualTBCPrep.CreateZoneText("Type: ", tostring(quest.type)))
+			table.insert(ttLines, CasualTBCPrep.CreateDebugText("Type: ", tostring(quest.type)))
 			table.insert(ttLines, "")
 		end
 

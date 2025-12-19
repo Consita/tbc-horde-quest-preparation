@@ -27,7 +27,7 @@ local function CreateItemTooltip(wMain, parent, item, ttLines)
 		if item then
 			local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
 			if debugger == 1 then
-				table.insert(ttLines, CasualTBCPrep.CreateZoneText("ItemID: ", tostring(item.id)))
+				table.insert(ttLines, CasualTBCPrep.CreateDebugText("ItemID: ", tostring(item.id)))
 			end
 
 			if item.questText ~= nil and item.questText ~= "" then
