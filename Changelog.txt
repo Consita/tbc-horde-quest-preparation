@@ -1,19 +1,17 @@
 Changelog:
 
-3.12
+3.12 - 2025-12-22
 - Fixed Questlog data for solo route only showing 23 quests
 - Added Turnin Guide again (only draft, not finished)
 - Removed Glyphed Oaken Branch from solo route prep
 - Fixed warning for Shy-Rotam and the followup
 - Added a waypoint out of Shadow Hold (Jaednar)
-- Made it possible to ignore quests on the "Questlog" & "Quests" tabs. Right click a quest to try it out. EXP from ignored quests are ignored.
+- Made it possible to ignore quests on the "Questlog" & "Quests" tabs. Right click a quest to try it out. EXP from ignored quests are... ignored.
 -- Example: If you don't plan on doing the C'thun Head questlog quest, you can ignore it instead of making it optional, so it won't show up again on the quests tab as an optional.
 - Updated the function for deciding which Optional quests are shown on the "Quests" tab if you don't have enough questlog quests. It will prioritize prepared quests (green), then the ones giving the most exp.
+- Route tab now shows which quests are picked up in each section. Reminder: The tooltips on the route tab are NOT in order. The RXP turnin guides will be for that
 
-3.11
-- Route tab now shows which quests are picked up in each section. <<THEY ARE NOT IN ORDER>>
-
-3.11
+3.11 - 2025-12-16
 - Added Un'Goro Soil quest
 - Now shows a warning the first time you try to delete an item used by quests in any route (resets on reload)
 - Added tooltips to items that are used in TBCPrep routes
@@ -32,13 +30,13 @@ Changelog:
 - Settings - Attempted to add support for different themes to help with colorblindness.
 - Settings - Item Tooltips' can be toggled on/off
 
-3.10
+3.10 - 2025-12-09
 - Fixed lua error with comment
 - Fixed bankdeposit to only show when item is in the bags
 - Fixed Dire Maul goto for Reliquary
 - Removed .complete for the Deserteur quest
 
-3.9
+3.9 - 2025-12-03
 - Due to PTR tests moved The Twilight Lexicon back to questlog quest.
 - > Moved The Heart of the Mountain to optional (Solo,Main)
 - > Moved The Scarlet Oracle, Demetria to optional and removed steps in Questprep (Strat)
@@ -48,7 +46,7 @@ Changelog:
 - Added fully working Horde TBC Dungeon Grind Guide which is available with prepatch/TBC patch
 - Minor bug fixes in the guides and waypoints
 
-3.8
+3.8 - 2025-11-26
 - Three 'Extras' tabs implemented
 - > Extra - Flights: You can check if you have all needed flightpaths for the routes
 - > Extra - Items: A list of special vanilla (60) items you can collect before TBC
@@ -60,11 +58,11 @@ Changelog:
 - Added tbc tag for all guides
 - Minor bug fixes in the rxp guides
 
-3.7
+3.7 - 2025-11-19
 - You can now search on the "Quests" and "Items" tab. You can search for a lot of fields. Let us know if you find any issues with this!
 - Minor Bug fixes
 
-3.6
+3.6 - 2025-11-18
 - You can now rightclick on quests in the "Questlog" tab to move quests between "Questlog" and "Optional". Please let us know if you find any issues with this!
 - Added comments to "Two Halves Become One",  "The Calling" and "Armaments of War"
 - Removed "The Calling" and "Armaments of War" from Solo route, as it still requires a party in TBC
@@ -77,7 +75,7 @@ Changelog:
 - Added turnin for Portable Power Source as it got lost when removing followup
 - Fixed multiple waypoints and typos
 
-3.5
+3.5 - 2025-11-16
 - Removed Strange Sources turnin in Quest prep
 - Added optional warning for Reliquary of Purity (better optional message for all still pending)
 - Added additional flight step for Flame Crest in UBRS guide
