@@ -21,8 +21,22 @@ local _compactView = true
 local RefreshQuestList
 local CreateExperienceBar
 
+---@param btn Button
+---@param questID number
+local function CreateClickableFunctionality(btn, questID)
+	btn:EnableMouse(true)
+	btn:RegisterForClicks("LeftButtonUp", "RightButtonUp")
+	btn:SetScript("OnClick", function(self, button)
+		if "LeftButton" == button then
+			--
+		elseif "RightButton" == button then
+			CasualTBCPrep.W_QuestManagement.Show("q", questID)
+		end
+	end)
+end
+
 ---@param wMain Frame|nil
-local function CreateListQuestTooltip(wMain, point, quest, questText, nextPreQuest, itemDisplayList, reqAnyItem)
+local function CreateListQuestTooltip(wMain, point, quest, questText, width, height, nextPreQuest, itemDisplayList, reqAnyItem, createClickable)
 	if wMain == nil then
 		return
 	end
@@ -80,26 +94,15 @@ local function CreateListQuestTooltip(wMain, point, quest, questText, nextPreQue
 			end
 		end
 
-		local tooltip = CasualTBCPrep.UI.UpdateAdvancedQuestTooltip(questText, point, questText:GetFontString():GetStringWidth(), questText:GetFontString():GetStringHeight(), 0, 0, dataName, ttLines, nextPreQuest, itemDisplayList, reqAnyItem)
-		table.insert(frameQuestPrep.content, tooltip)
+		local tooltipObj = CasualTBCPrep.UI.UpdateAdvancedQuestTooltip(questText, point, width, height, 0,0, dataName, ttLines, nextPreQuest, itemDisplayList, reqAnyItem)
+		if createClickable == true then
+			CreateClickableFunctionality(tooltipObj, quest.id)
+		end
+		--tooltipObj = CasualTBCPrep.UI.UpdateAdvancedQuestTooltip(f, point, questText:GetFontString():GetStringWidth(), questText:GetFontString():GetStringHeight(), 0, 0, dataName, ttLines, nextPreQuest, itemDisplayList, reqAnyItem)
+		table.insert(frameQuestPrep.content, tooltipObj)
 	end
 end
 
----@param parent any
----@param questID number
-local function CreateClickableFunctionality(parent, questID)
-	parent:EnableMouse(true)
-	parent:SetScript("OnMouseUp", function(self, btn)
-			print("Z")
-		if "LeftButton" == btn then
-			--
-		elseif "RightButton" == btn then
-			print("A")
-			CasualTBCPrep.W_QuestManagement.Show("q", questID)
-			print("B")
-		end
-	end)
-end
 
 ---@param wMain Frame|nil
 function CasualTBCPrep.WM_QuestPrep.Create(wMain)
@@ -168,6 +171,22 @@ local function SortQuestList(questList)
 		local a = aWrap.wrap.quest;
 		local b = bWrap.wrap.quest;
 
+		local aIgnored = CasualTBCPrep.Settings.GetQuestIgnoredState(CasualTBCPrep.Routing.CurrentRouteCode, a.id) == true
+		local bIgnored = CasualTBCPrep.Settings.GetQuestIgnoredState(CasualTBCPrep.Routing.CurrentRouteCode, b.id) == true
+
+		-- Completed quests go to the very bottom
+		if aWrap.completed ~= bWrap.completed then
+			return not aWrap.completed
+		end
+
+		-- For non-completed quests, ignored ones go above completed but below active
+		if not aWrap.completed and not bWrap.completed then
+			if aIgnored ~= bIgnored then
+				return not aIgnored  -- Non-ignored quests come first
+			end
+		end
+
+		-- Rest of the original sorting logic
 		local aHasRep = a.reqRep ~= nil
 		local bHasRep = b.reqRep ~= nil
 
@@ -198,17 +217,12 @@ local function SortQuestList(questList)
 			end
 		end
 
-		if aWrap.completed ~= bWrap.completed then
-			return not aWrap.completed
-		end
-
 		if a.exp == b.exp then
 			return a.name < b.name
 		end
 		return a.exp > b.exp
 	end)
 end
-
 ---@param q any
 ---@param src string|nil
 local function DoesSearchMatchQuest(q, src)
@@ -352,7 +366,7 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 					end
 				end
 
-				local hasFullyPreparedQuest, itemDisplayList, nextPreQuest, questTextColorRGB = CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
+				local hasFullyPreparedQuest, itemDisplayList, nextPreQuest, questTextColorRGB,_,_ = CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
 
 				if hasFullyPreparedQuest then
 					readyQuestCount = readyQuestCount + 1
@@ -370,19 +384,30 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 				end
 
 				--local btnQuestText = CreateFrame("Button", nil, frameQuestPrep.scrollChild)
-				local btnQuestText = CasualTBCPrep.UI.CreateTextButton(frameQuestPrep.scrollChild, questTextColorRGB.hex..questNameText.."|r", GameTooltipTextSmall, "LEFT", nil)
-				btnQuestText:SetPoint(point, frameQuestPrep.scrollChild, relativePoint, xOffsetQuestText, yOffset)
+				--local btnQuestText = CasualTBCPrep.UI.CreateTextButton(frameQuestPrep.scrollChild, questTextColorRGB.hex..questNameText.."|r", GameTooltipTextSmall, "LEFT", nil)
+				--btnQuestText:SetPoint(point, frameQuestPrep.scrollChild, relativePoint, xOffsetQuestText, yOffset)
+				--table.insert(frameQuestPrep.content, btnQuestText)
 
-				CreateListQuestTooltip(wMain, point, quest, btnQuestText, nextPreQuest, itemDisplayList, quest.reqAnyItem)
-				CreateClickableFunctionality(btnQuestText, quest.id)
-				table.insert(frameQuestPrep.content, btnQuestText)
 
+				local questText = frameQuestPrep.scrollChild:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+				--questText:SetPoint("TOPLEFT", frameQuestPrep.scrollChild, "TOPLEFT", 6, yOffset)
+				questText:SetPoint(point, frameQuestPrep.scrollChild, relativePoint, xOffsetQuestText, yOffset)
+				questText:SetText(questNameText)
+				questText:SetTextColor(questTextColorRGB.r, questTextColorRGB.g, questTextColorRGB.b)
+
+				--local btnClickableQuest = CasualTBCPrep.UI.CreateTextButton(frameQuestPrep.scrollChild, "", GameTooltipTextSmall, "LEFT", nil)
+				local btnClickableQuest = CreateFrame("Button", nil, frameQuestPrep.scrollChild)
+				btnClickableQuest:SetAllPoints(questText, true)
+				CreateListQuestTooltip(wMain, point, quest, btnClickableQuest, questText:GetStringWidth(), questText:GetStringHeight(), nextPreQuest, itemDisplayList, quest.reqAnyItem, createClickable)
+
+				table.insert(frameQuestPrep.questTexts, questText)
+				table.insert(frameQuestPrep.content, btnClickableQuest)
 				yOffset = yOffset - 15
 			end
 		else -- Collapsed, but still accumulate exp
 			for i, questWrap in ipairs(newList) do
 				local quest = questWrap.wrap
-				local hasFullyPreparedQuest, _, _, _ = CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
+				local hasFullyPreparedQuest = CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
 
 				if hasFullyPreparedQuest then
 					frameQuestPrep.expectedExperienceTotal = frameQuestPrep.expectedExperienceTotal + quest.exp
@@ -411,7 +436,7 @@ local function LoadQuestlogQuests(wMain, xOffset, yOffset, point, relativePoint)
 	frameQuestPrep.qloglist_header:Show()
 
 	local availableQuests, completedQuests = CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog()
-	return LoadSpecificQuestList(wMain, xOffset, yOffset, "Questlog", frameQuestPrep.qloglist_header, availableQuests, { }, point, relativePoint, false, false)
+	return LoadSpecificQuestList(wMain, xOffset, yOffset, "Questlog", frameQuestPrep.qloglist_header, availableQuests, { }, point, relativePoint, false, true)
 end
 
 ---@param yOffset number
@@ -426,7 +451,7 @@ local function LoadQuestlogOptionalQuests(wMain, xOffset, yOffset, point, relati
 
 	local questList = CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog_Optional()
 
-	return LoadSpecificQuestList(wMain, xOffset, yOffset, "Optional", frameQuestPrep.qlogoptlist_header, questList, { }, point, relativePoint, false, false)
+	return LoadSpecificQuestList(wMain, xOffset, yOffset, "Optional", frameQuestPrep.qlogoptlist_header, questList, { }, point, relativePoint, false, true)
 end
 
 ---@param yOffset number

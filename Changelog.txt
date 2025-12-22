@@ -6,6 +6,8 @@ Changelog:
 - Removed Glyphed Oaken Branch from solo route prep
 - Fixed warning for Shy-Rotam and the followup
 - Added a waypoint out of Shadow Hold (Jaednar)
+- Made it possible to ignore quests on the "Questlog" & "Quests" tabs. Right click a quest to try it out. EXP from ignored quests are ignored.
+-- Example: If you don't plan on doing the C'thun Head questlog quest, you can ignore it instead of making it optional, so it won't show up again on the quests tab as an optional.
 
 3.11
 - Route tab now shows which quests are picked up in each section. <<THEY ARE NOT IN ORDER>>

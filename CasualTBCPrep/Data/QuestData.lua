@@ -19,7 +19,7 @@ local questsMetadata = {
 	[5212] = { id=5212, name="The Flesh Does Not Lie", baseexp=14300, exp=0, qlvl=60, type="qlog", reqItems="13174-10", replacementQuest=5213, routes="Main,Strat,Solo", routeSection="EPLTown", areaType="Zone", area="Stratholme", },
 	[6163] = { id=6163, name="Ramstein", baseexp=14300, exp=0, qlvl=60, type="qlog", reqItems="15880-1", preQuests="6022,6042,6133,6135,6136", routes="Main,Strat,Solo", routeSection="EPLNathanos", areaType="Dungeon", area="Stratholme", },
 	[5848] = { id=5848, name="Of Love and Family", baseexp=14300, exp=0, qlvl=60, type="qlog", reqItems="14679-1", preQuests="5542,5543,5544,5742,5781,5845,5846", routes="Main,Strat,Solo", routeSection="EPLTirion", areaType="Dungeon", area="Stratholme", },
-	[8287] = { id=8287, name="A Terrible Purpose", baseexp=9550, exp=0, qlvl=60, type="turnin", preQuests="8284,8285,8279", routes="Main,Strat,Solo", routePickup="SilithusCave", routeSection="SilithusHold2", areaType="Zone", area="Silithus", },
+	[8287] = { id=8287, name="A Terrible Purpose", baseexp=9550, exp=0, qlvl=60, type="turnin", preQuests="8284,8285", routes="Main,Strat,Solo", routePickup="SilithusCave", routeSection="SilithusHold2", areaType="Zone", area="Silithus", },
 	[8314] = { id=8314, name="Unraveling the Mystery", baseexp=7150, exp=0, qlvl=60, type="turnin", preQuests="8304,8309,8310", routes="Main,Strat,Solo", routePickup="SilithusSouth", routeSection="SilithusHold2", areaType="Zone", area="Silithus", },
 	[8306] = { id=8306, name="Into The Maw of Madness", baseexp=11900, exp=0, qlvl=60, type="optional", preQuests="8304", routes="Main,Strat,Solo", routeSection="SilithusHold2", areaType="Zone", area="Silithus", },
 	[3961] = { id=3961, name="Linken's Adventure", baseexp=3900, exp=0, qlvl=54, type="turnin", preQuests="3844,3845,3908,3909,3912,3913,3914,3941,3942,4084,4005", routes="Main,Strat,Solo", routePickup="Ungoro", routeSection="Ungoro", areaType="Zone", area="Un'Goro", },
@@ -1471,7 +1471,11 @@ end
 
 function CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
 	if quest == nil or quest.id == nil then
-		return false, nil, nil, {r=1,g=1,b=1}
+		return false, nil, nil, CasualTBCPrep.Themes.SelectedTheme.colors.white, false, ""
+	end
+
+	if CasualTBCPrep.Settings.GetQuestIgnoredState(CasualTBCPrep.Routing.CurrentRouteCode, quest.id) == true then
+		return false, nil, nil, CasualTBCPrep.Themes.SelectedTheme.colors.questIgnored, false, ""
 	end
 
 	local isQuestCompleted = CasualTBCPrep.QuestData.HasCharacterCompletedQuest(quest.id)
@@ -1619,7 +1623,8 @@ function CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog()
 	for _, questID in ipairs(questLogList) do
 		local quest = questsMetadata[questID]
 
-		if quest then
+		local isQuestIgnored = CasualTBCPrep.Settings.GetQuestIgnoredState(selectedRoute, questID)
+		if quest and isQuestIgnored ~= true then
 			if CasualTBCPrep.QuestData.IsQuestValidForUser(quest) then
 				local changedPrio = CasualTBCPrep.Settings.GetQuestPriority(selectedRoute, questID) or false
 
@@ -1631,7 +1636,7 @@ function CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog()
 					end
 				end
 			end
-		else
+		elseif not quest then
 			CasualTBCPrep.NotifyUserError("'AllQuests - Questlog List', Quest '" .. questID .. "' was not found in metadate table!!!")
 		end
 	end
@@ -1639,7 +1644,8 @@ function CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog()
 	for _, questID in ipairs(questLogListAlts) do
 		local quest = questsMetadata[questID]
 
-		if quest then
+		local isQuestIgnored = CasualTBCPrep.Settings.GetQuestIgnoredState(selectedRoute, questID)
+		if quest and isQuestIgnored ~= true then
 			if CasualTBCPrep.QuestData.IsQuestValidForUser(quest) then
 				local changedPrio = CasualTBCPrep.Settings.GetQuestPriority(selectedRoute, questID) or false
 
@@ -1649,7 +1655,7 @@ function CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog()
 					end
 				end
 			end
-		else
+		elseif not quest then
 			CasualTBCPrep.NotifyUserError("'AllQuests - Questlog List', Quest '" .. questID .. "' was not found in metadate table!!!")
 		end
 	end
@@ -1676,59 +1682,38 @@ function CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog_Optional()
 	local preparedOptionalQuests = {};
 	local potentialOptionalQuests = {};
 
-	local optionalQuestsNeeded = 0
+	local qlogAvailable,_ = CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog()
+	local optionalQuestsNeeded = math.max(0, 25 - #qlogAvailable)
 
 	local changedQuestLogsToUse = { }
+	local usedQuestIDs = { }
 
 	local selectedRoute = CasualTBCPrep.Routing.CurrentRouteCode
 	for _, questID in ipairs(questLogList) do
 		local quest = questsMetadata[questID]
 
-		if quest then
+		local isQuestIgnored = CasualTBCPrep.Settings.GetQuestIgnoredState(selectedRoute, questID)
+		if quest and isQuestIgnored ~= true then
 			if CasualTBCPrep.QuestData.IsQuestValidForUser(quest) then
 				local changedPrio = CasualTBCPrep.Settings.GetQuestPriority(selectedRoute, questID) or false
-
-				if CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) then
-					optionalQuestsNeeded = optionalQuestsNeeded + 1
-				else
-					if changedPrio == true then
-						table.insert(changedQuestLogsToUse, quest)
-						optionalQuestsNeeded = optionalQuestsNeeded + 1
-					end
+				if changedPrio == true and not CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) then
+					table.insert(changedQuestLogsToUse, quest)
+					usedQuestIDs[questID] = true
 				end
 			end
-		else
-			CasualTBCPrep.NotifyUserError("'AllQuests - Questlog List', Quest '" .. questID .. "' was not found in metadate table!!!")
 		end
 	end
-
-	for _, questID in ipairs(questLogListAlts) do
-		local quest = questsMetadata[questID]
-
-		if quest then
-			if CasualTBCPrep.QuestData.IsQuestValidForUser(quest) then
-				local changedPrio = CasualTBCPrep.Settings.GetQuestPriority(selectedRoute, questID) or false
-
-				if not CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) then
-					if changedPrio == true then
-						optionalQuestsNeeded = optionalQuestsNeeded - 1
-					end
-				end
-			end
-		else
-			CasualTBCPrep.NotifyUserError("'AllQuests - Questlog Optional List', Quest '" .. questID .. "' was not found in metadate table!!!")
-		end
-	end
-
+	
 	if optionalQuestsNeeded > 0 then
 		local preparedOptQuestCount = 0
 
 		for _, changedQlogQuest in ipairs(changedQuestLogsToUse) do
 			if CasualTBCPrep.QuestData.IsQuestValidForUser(changedQlogQuest) then
-				local hasFullyPreparedQuest, _, nextPreQuest, _ = CasualTBCPrep.QuestData.GetQuestProgressionDetails(changedQlogQuest)
+				local hasFullyPreparedQuest, _, nextPreQuest, _ =
+					CasualTBCPrep.QuestData.GetQuestProgressionDetails(changedQlogQuest)
+
 				if hasFullyPreparedQuest and nextPreQuest == nil then
 					table.insert(preparedOptionalQuests, changedQlogQuest)
-
 					preparedOptQuestCount = preparedOptQuestCount + 1
 				else
 					table.insert(potentialOptionalQuests, changedQlogQuest)
@@ -1739,48 +1724,60 @@ function CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog_Optional()
 		for _, questID in ipairs(questLogListAlts) do
 			local quest = questsMetadata[questID]
 
-			if quest then
+			local isQuestIgnored = CasualTBCPrep.Settings.GetQuestIgnoredState(selectedRoute, questID)
+			if quest and isQuestIgnored ~= true and not usedQuestIDs[questID] then
 				if CasualTBCPrep.QuestData.IsQuestValidForUser(quest) then
 					local changedPrio = CasualTBCPrep.Settings.GetQuestPriority(selectedRoute, questID) or false
 					if changedPrio ~= true then
-						local hasFullyPreparedQuest, _, nextPreQuest, _ = CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
+						local hasFullyPreparedQuest, _, nextPreQuest, _ =
+							CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
 
 						if hasFullyPreparedQuest and nextPreQuest == nil then
 							table.insert(preparedOptionalQuests, quest)
-
 							preparedOptQuestCount = preparedOptQuestCount + 1
 						else
 							table.insert(potentialOptionalQuests, quest)
 						end
 					end
 				end
-			else
+			elseif not quest then
 				CasualTBCPrep.NotifyUserError("'AllQuests - Questlog List', Quest '" .. questID .. "' was not found in metadate table!!!")
 			end
 		end
 
-		if preparedOptQuestCount >= optionalQuestsNeeded then
-			potentialOptionalQuests = nil
+		table.sort(preparedOptionalQuests, function(a, b)
+			if a.baseexp == b.baseexp then
+				return a.name < b.name
+			end
+			return a.baseexp > b.baseexp
+		end)
 
+		table.sort(potentialOptionalQuests, function(a, b)
+			if a.baseexp == b.baseexp then
+				return a.name < b.name
+			end
+			return a.baseexp > b.baseexp
+		end)
+
+		if preparedOptQuestCount >= optionalQuestsNeeded then
 			local index = 1
 			while index <= optionalQuestsNeeded do
-				local quest = preparedOptionalQuests[index]
-				table.insert(resultOptionalQuests, { quest=quest })
+				table.insert(resultOptionalQuests, { quest = preparedOptionalQuests[index] })
 				index = index + 1
 			end
+			return resultOptionalQuests
 		else
 			for _, quest in ipairs(preparedOptionalQuests) do
-				table.insert(resultOptionalQuests, { quest=quest })
+				table.insert(resultOptionalQuests, { quest = quest })
 			end
 		end
 
-		optionalQuestsNeeded = optionalQuestsNeeded - preparedOptQuestCount
+		optionalQuestsNeeded = math.max(0, optionalQuestsNeeded - preparedOptQuestCount)
 
-		if optionalQuestsNeeded > 0 and potentialOptionalQuests ~= nil and #potentialOptionalQuests > 0 then
+		if optionalQuestsNeeded > 0 and #potentialOptionalQuests > 0 then
 			local index = 1
 			while index <= math.min(optionalQuestsNeeded, #potentialOptionalQuests) do
-				local quest = potentialOptionalQuests[index]
-				table.insert(resultOptionalQuests, { quest=quest })
+				table.insert(resultOptionalQuests, { quest = potentialOptionalQuests[index] })
 				index = index + 1
 			end
 		end
@@ -1792,6 +1789,7 @@ function CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog_Optional()
 		end
 		return a.quest.baseexp > b.quest.baseexp
 	end)
+
 	return resultOptionalQuests
 end
 

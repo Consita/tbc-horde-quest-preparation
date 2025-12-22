@@ -469,15 +469,15 @@ end
 ---@param font Font
 ---@param textJustifyH string|nil
 ---@param textJustifyV string|nil
+---@return Button
 function CasualTBCPrep.UI.CreateTextButton(parent, text, font, textJustifyH, textJustifyV)
 	local button = CreateFrame("Button", nil, parent)
 	button:SetText(text or "")
 	button:SetNormalFontObject(font)
-	local txtFeatureOption = button:GetFontString()
-	if textJustifyH and textJustifyH ~= "" then txtFeatureOption:SetJustifyH(textJustifyH) end
-	if textJustifyV and textJustifyV ~= "" then txtFeatureOption:SetJustifyV(textJustifyV) end
-	button:SetSize(txtFeatureOption:GetStringWidth(), txtFeatureOption:GetStringHeight())
-
+	local txtFontStr = button:GetFontString()
+	if textJustifyH and textJustifyH ~= "" then txtFontStr:SetJustifyH(textJustifyH) end
+	if textJustifyV and textJustifyV ~= "" then txtFontStr:SetJustifyV(textJustifyV) end
+	button:SetSize(txtFontStr:GetStringWidth(), txtFontStr:GetStringHeight())
 	return button
 end
 --[Shared UI Functions]

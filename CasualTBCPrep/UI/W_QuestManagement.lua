@@ -8,6 +8,46 @@ local _bankAltCheckValue = false
 ---@class Frame|nil
 local wQuestManagement = nil;
 
+
+local function CreateIgnoreQuestButton(selectedRoute, questID, qType, isQuestCompleted, yPosition)
+    local isQuestIgnored = CasualTBCPrep.Settings.GetQuestIgnoredState(selectedRoute, questID)
+
+    local btn = CreateFrame("Button", nil, wQuestManagement, "UIPanelButtonTemplate")
+    btn:SetSize(170, 25)
+    btn:SetPoint("TOP", wQuestManagement, "TOP", 0, yPosition)
+    btn:SetNormalFontObject("GameFontNormal")
+
+    ---@param isQuestIgnoredInner boolean
+    local function funcUpdateButton(isQuestIgnoredInner)
+        if isQuestIgnoredInner == true then
+            btn:SetText("Unignore Quest")
+        else
+            btn:SetText("Ignore Quest")
+        end
+    end
+
+    btn:SetScript("OnClick", function()
+        local isQuestIgnoredInner = not CasualTBCPrep.Settings.GetQuestIgnoredState(selectedRoute, questID)
+        CasualTBCPrep.Settings.SetQuestIgnoredState(selectedRoute, questID, isQuestIgnoredInner)
+
+        funcUpdateButton(isQuestIgnoredInner)
+        CasualTBCPrep.W_Main.ReloadActiveTab()
+    end)
+
+    local btnTooltip = ""
+    if isQuestIgnored == true then
+        btnTooltip = "Click to unignore the current quest from the current route ("..selectedRoute..")"
+    else
+        btnTooltip = "Click to ignore the current quest from the current route ("..selectedRoute..")"
+    end
+    -- Tooltip
+    CasualTBCPrep.UI.HookTooltip(btn, "Quest State", { btnTooltip }, nil,nil,nil)
+
+    funcUpdateButton(isQuestIgnored)
+    table.insert(wQuestManagement.content, btn)
+    return btn
+end
+
 ---@param selectedRoute string
 ---@param questID number
 ---@param qType string
@@ -68,8 +108,11 @@ local function DisplayQuestLog(selectedRoute, questID, qType, isQuestCompleted, 
         funcUpdateButton()
         table.insert(wQuestManagement.content, btn)
 
+        yPosition = yPosition - 32
+        local ignoreButton = CreateIgnoreQuestButton(selectedRoute, questID, qType, isQuestCompleted, yPosition)
+
         local txtQuestType = wQuestManagement:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-        txtQuestType:SetPoint("TOP", btn, "BOTTOM", 0, -5)
+        txtQuestType:SetPoint("TOP", ignoreButton, "BOTTOM", 0, -5)
         txtQuestType:SetText(CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex..qTypText)
         table.insert(wQuestManagement.texts, txtQuestType)
         CasualTBCPrep.UI.HookTooltip(txtQuestType, "Quest Type", { "This is the default type for this quest, on your current route" }, nil,nil,nil)
@@ -87,40 +130,7 @@ local function DisplayQuest(selectedRoute, questID, qType, isQuestCompleted, yPo
         return;
     end
 
-    local isQuestIgnored = not CasualTBCPrep.Settings.GetQuestIgnoredState(selectedRoute, questID)
-
-    local btn = CreateFrame("Button", nil, wQuestManagement, "UIPanelButtonTemplate")
-    btn:SetSize(170, 25)
-    btn:SetPoint("TOP", wQuestManagement, "TOP", 0, yPosition)
-    btn:SetNormalFontObject("GameFontNormal")
-
-    ---@param isQuestIgnored boolean
-    local function funcUpdateButton(isQuestIgnored)
-        if isQuestIgnored == true then
-            btn:SetText("Unignore Quest")
-        else
-            btn:SetText("Ignore Quest")
-        end
-    end
-    btn:SetScript("OnClick", function()
-        local isQuestIgnored = not CasualTBCPrep.Settings.GetQuestIgnoredState(selectedRoute, questID)
-        CasualTBCPrep.Settings.SetQuestIgnoredState(selectedRoute, questID, isQuestIgnored)
-
-        funcUpdateButton(isQuestIgnored)
-        CasualTBCPrep.W_Main.ReloadActiveTab()
-    end)
-
-    local btnTooltip = ""
-    if isQuestIgnored == true then
-        btnTooltip = "Click to unignore the current quest from the current route ("..selectedRoute..")"
-    else
-        btnTooltip = "Click to ignore the current quest from the current route ("..selectedRoute..")"
-    end
-    -- Tooltip
-    CasualTBCPrep.UI.HookTooltip(btn, "Quest State", { btnTooltip }, nil,nil,nil)
-
-    funcUpdateButton(isQuestIgnored)
-    table.insert(wQuestManagement.content, btn)
+    CreateIgnoreQuestButton(selectedRoute, questID, qType, isQuestCompleted, yPosition)
 end
 
 
@@ -212,7 +222,7 @@ function CasualTBCPrep.W_QuestManagement.Show(type, questID)
     wQuestManagement.currentQuestID = questID
     wQuestManagement.currentQuestType = type
 
-	wQuestManagement:SetSize(310, 140)
+	wQuestManagement:SetSize(355, 160)
 	wQuestManagement.title:SetText("TBCPrep - Quest Settings")
 
     Display()

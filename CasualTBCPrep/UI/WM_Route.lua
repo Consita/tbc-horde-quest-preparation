@@ -448,23 +448,27 @@ function CasualTBCPrep.WM_Route.RefreshRoute()
 					end)
 
 					for _, questWrap in ipairs(listValidQuests) do
-						local qNameText = ""
-						if "qlog" == questWrap.quest.type then
-							qNameText = questWrap.quest.name.." (qlog)"
-						elseif "optional" == questWrap.quest.type then
-							qNameText = questWrap.quest.name.." (opt)"
-						elseif "turnin" == questWrap.quest.type then
-							qNameText = questWrap.quest.name.." (turnin)"
-						else
-							qNameText = questWrap.quest.name
-						end
-						if questWrap.isCompleted == true then
-							table.insert(ttLines, CasualTBCPrep.Themes.SelectedTheme.colors.questCompleted.hex..qNameText)
-						else
-							if questWrap.isPrepared then
-								table.insert(ttLines, CasualTBCPrep.Themes.SelectedTheme.colors.questReady.hex..qNameText)
+						local questID = tonumber(questWrap.quest.id)
+
+						if questID > 0 and CasualTBCPrep.Settings.GetQuestIgnoredState(CasualTBCPrep.Routing.CurrentRouteCode, questID) ~= true then
+							local qNameText = ""
+							if "qlog" == questWrap.quest.type then
+								qNameText = questWrap.quest.name.." (qlog)"
+							elseif "optional" == questWrap.quest.type then
+								qNameText = questWrap.quest.name.." (opt)"
+							elseif "turnin" == questWrap.quest.type then
+								qNameText = questWrap.quest.name.." (turnin)"
 							else
-								table.insert(ttLines, CasualTBCPrep.Themes.SelectedTheme.colors.questAvailable.hex..qNameText)
+								qNameText = questWrap.quest.name
+							end
+							if questWrap.isCompleted == true then
+								table.insert(ttLines, CasualTBCPrep.Themes.SelectedTheme.colors.questCompleted.hex..qNameText)
+							else
+								if questWrap.isPrepared then
+									table.insert(ttLines, CasualTBCPrep.Themes.SelectedTheme.colors.questReady.hex..qNameText)
+								else
+									table.insert(ttLines, CasualTBCPrep.Themes.SelectedTheme.colors.questAvailable.hex..qNameText)
+								end
 							end
 						end
 					end
