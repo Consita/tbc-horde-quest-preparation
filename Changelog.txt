@@ -8,6 +8,7 @@ Changelog:
 - Added a waypoint out of Shadow Hold (Jaednar)
 - Made it possible to ignore quests on the "Questlog" & "Quests" tabs. Right click a quest to try it out. EXP from ignored quests are ignored.
 -- Example: If you don't plan on doing the C'thun Head questlog quest, you can ignore it instead of making it optional, so it won't show up again on the quests tab as an optional.
+- Updated the function for deciding which Optional quests are shown on the "Quests" tab if you don't have enough questlog quests. It will prioritize prepared quests (green), then the ones giving the most exp.
 
 3.11
 - Route tab now shows which quests are picked up in each section. <<THEY ARE NOT IN ORDER>>
