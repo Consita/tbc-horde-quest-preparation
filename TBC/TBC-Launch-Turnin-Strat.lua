@@ -749,17 +749,17 @@ step
 		
 	step
 		#completewith Tanarislast
-		.goto Tanaris,65.2,50.0
+		.goto Tanaris,64.2,51.4
 		>>Travel to |cFFfa9602The Caverns of Time|r	
-		
+	
 	step
-		.goto Tanaris,65.2,50.0
+		.goto Tanaris,64.2,51.4
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
 		.turnin -8802
 		.target Anachronos	
 
 	step
-		.goto Tanaris,65.2,50.0
+		.goto Tanaris,64.2,51.4
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
 		.turninmultiple 8757,8752,8747
 		>>Choose one of the available quests depending on your needs:
@@ -770,7 +770,7 @@ step
 		.reputation 910,neutral,<0,1 
 
 	step
-		.goto Tanaris,65.2,50.0
+		.goto Tanaris,64.2,51.4
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
 		.turnin 8758
 		.target Anachronos
@@ -778,7 +778,7 @@ step
 		.reputation 910,friendly,<0,1 
 
 	step
-		.goto Tanaris,65.2,50.0
+		.goto Tanaris,64.2,51.4
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
 		.turnin 8759
 		.target Anachronos
@@ -786,7 +786,7 @@ step
 		.reputation 910,honored,<0,1 		
 
 	step
-		.goto Tanaris,65.2,50.0
+		.goto Tanaris,64.2,51.4
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
 		.turnin 8760
 		.target Anachronos
@@ -794,7 +794,7 @@ step
 		.reputation 910,revered,<0,1 	
 		
 	step
-		.goto Tanaris,65.2,50.0
+		.goto Tanaris,64.2,51.4
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
 		.turnin 8761
 		.target Anachronos
@@ -802,7 +802,7 @@ step
 		.reputation 910,exalted,<0,1 
 		
 	step
-		.goto Tanaris,65.2,50.0
+		.goto Tanaris,64.2,51.4
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
 		.turnin 8753
 		.target Anachronos
@@ -810,7 +810,7 @@ step
 		.reputation 910,friendly,<0,1 
 
 	step
-		.goto Tanaris,65.2,50.0
+		.goto Tanaris,64.2,51.4
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
 		.turnin 8754
 		.target Anachronos
@@ -818,7 +818,7 @@ step
 		.reputation 910,honored,<0,1 		
 
 	step
-		.goto Tanaris,65.2,50.0
+		.goto Tanaris,64.2,51.4
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
 		.turnin 8755
 		.target Anachronos
@@ -826,7 +826,7 @@ step
 		.reputation 910,revered,<0,1 	
 		
 	step
-		.goto Tanaris,65.2,50.0
+		.goto Tanaris,64.2,51.4
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
 		.turnin 8756
 		.target Anachronos
@@ -834,7 +834,7 @@ step
 		.reputation 910,exalted,<0,1 
 		
 	step
-		.goto Tanaris,65.2,50.0
+		.goto Tanaris,64.2,51.4
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
 		.turnin 8748
 		.target Anachronos
@@ -842,7 +842,7 @@ step
 		.reputation 910,friendly,<0,1 
 
 	step
-		.goto Tanaris,65.2,50.0
+		.goto Tanaris,64.2,51.4
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
 		.turnin 8749
 		.target Anachronos
@@ -850,7 +850,7 @@ step
 		.reputation 910,honored,<0,1 		
 
 	step
-		.goto Tanaris,65.2,50.0
+		.goto Tanaris,64.2,51.4
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
 		.turnin 8750
 		.target Anachronos
@@ -859,7 +859,7 @@ step
 		
 	step
 		#label Tanarislast
-		.goto Tanaris,65.2,50.0
+		.goto Tanaris,64.2,51.4
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
 		.turnin 8751
 		.target Anachronos

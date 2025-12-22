@@ -2891,6 +2891,11 @@ RXPGuides.RegisterGuide([[
 			.goto Felwood,37.677,52.685	
 
 		step
+			#completewith next
+			.goto Felwood,35.44,59.1
+			.subzone 1763 >> Get back out of |cFFfa9602Shadow Hold|r to |cFFfa9602Jaedenar|r
+
+		step
 			.isOnQuest 4084
 			#completewith next
 			>>Kill |cRXP_ENEMY_Bears|r and |cRXP_ENEMY_Wolves|r in Felwood on the way north. Loot them for their |cRXP_LOOT_Silvery Claws|r

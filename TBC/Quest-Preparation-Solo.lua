@@ -1827,53 +1827,6 @@ RXPGuides.RegisterGuide([[
 			.accept 5234 >>Accept Return to the Bulwark
 
 		step
-			.goto Western Plaguelands,53.73,64.66
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mulgris|r
-			.accept 4984 >>Accept The Wildlife Suffers Too	
-
-		step
-			#loop
-			.goto Western Plaguelands,46.80,39.60,0
-			.goto Western Plaguelands,46.80,39.60,70,0
-			.goto Western Plaguelands,45.80,46.40,70,0
-			.goto Western Plaguelands,43.40,54.80,70,0
-			.goto Western Plaguelands,46.00,59.20,70,0
-			.goto Western Plaguelands,51.60,61.60,70,0
-			.goto Western Plaguelands,51.00,53.20,70,0
-			.goto Western Plaguelands,50.00,46.60,70,0
-			.goto Western Plaguelands,47.80,43.40,70,0
-			>>Kill |cRXP_ENEMY_Diseased Wolves|r
-			>>|cRXP_ENEMY_Diseased Wolves|r |cRXP_WARN_share spawns with|r |cRXP_ENEMY_Carrion Lurkers|r|cRXP_WARN_. If necessary, kill them to reset the area|r
-			.complete 4984,1 
-			.mob Diseased Wolf	
-
-		step
-			.goto Western Plaguelands,53.73,64.66
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mulgris|r
-			.turnin 4984 >>Turn in The Wildlife Suffers Too
-			.accept 4985 >>Accept The Wildlife Suffers Too
-			.target Mulgris Deepriver	
-			
-		step
-			#loop
-			.goto Western Plaguelands,56.08,63.26,0
-			.goto Western Plaguelands,56.08,63.26,90,0
-			.goto Western Plaguelands,60.15,59.93,90,0
-			.goto Western Plaguelands,59.43,52.40,90,0
-			.goto Western Plaguelands,68.18,46.23,90,0
-			>>Kill |cRXP_ENEMY_Diseased Grizzlies|r
-			>>|cRXP_ENEMY_Diseased Grizzlies|r |cRXP_WARN_share spawns with|r |cRXP_ENEMY_Plague Lurkers|r|cRXP_WARN_. If necessary, kill them to reset the area|r
-			.complete 4985,1 
-			.mob Diseased Grizzly		
-			
-		step
-			.goto Western Plaguelands,53.73,64.66
-			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mulgris|r
-			>>|cRXP_ENEMY_Warning:|r |cRXP_WARN_Do not pick up or complete the followup|r |cRXP_LOOT_Glyphed Oaken Branch|r|cRXP_WARN_, as this is used for TBC|r
-			.turnin 4985 >>Turn in The Wildlife Suffers Too
-			.target Mulgris Deepriver				
-
-		step
 			>>Use the Beacon Torch in your bags on the side of the doorway (do NOT kill the elite inside)
 			.goto Western Plaguelands,46.73,71.14
 			.complete 5098,4 	
@@ -2791,6 +2744,7 @@ RXPGuides.RegisterGuide([[
 		step
 			.goto Winterspring,61.93,38.37
 			>>|cRXP_LOOT_Shy-Rotam|r |cRXP_WARN_can be used as an optional questlog quest for TBC. Check /tbcprep to see if you need it|r
+			>>|cRXP_ENEMY_Do not turn in the follow-up|r |cRXP_LOOT_Past Endeavors|r |cRXP_ENEMY_as it is used for the TBC turnin!|r
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Storm|r
 			.turnin 5056 >> Turn in Shy-Rotam
 			.target Storm Shadowhoof
@@ -2860,6 +2814,11 @@ RXPGuides.RegisterGuide([[
 			.goto Felwood,36.732,53.262
 			.complete 5165,2 
 			.goto Felwood,37.677,52.685	
+
+		step
+			#completewith next
+			.goto Felwood,35.44,59.1
+			.subzone 1763 >> Get back out of |cFFfa9602Shadow Hold|r to |cFFfa9602Jaedenar|r
 
 		step
 			.isOnQuest 4084

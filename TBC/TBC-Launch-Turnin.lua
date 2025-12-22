@@ -432,13 +432,13 @@ RXPGuides.RegisterGuide([[
 			.target Prospector Ironboot
 				
 		step
-			.goto Tanaris,65.2,50.0
+			.goto Tanaris,64.2,51.4
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
 			.turnin -8802
 			.target Anachronos
 
 		step
-			.goto Tanaris,65.2,50.0
+			.goto Tanaris,64.2,51.4
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
 			>>Choose one of the available quests depending on your needs:
 			>>Path of the Conquerer - Agility/Hit

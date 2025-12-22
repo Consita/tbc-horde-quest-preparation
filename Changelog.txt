@@ -1,5 +1,12 @@
 Changelog:
 
+3.12
+- Fixed Questlog data for solo route only showing 23 quests
+- Added Turnin Guide again (only draft, not finished)
+- Removed Glyphed Oaken Branch from solo route prep
+- Fixed warning for Shy-Rotam and the followup
+- Added a waypoint out of Shadow Hold (Jaednar)
+
 3.11
 - Route tab now shows which quests are picked up in each section. <<THEY ARE NOT IN ORDER>>
 

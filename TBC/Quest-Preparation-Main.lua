@@ -2778,6 +2778,7 @@ RXPGuides.RegisterGuide([[
 		step
 			.goto Winterspring,61.93,38.37
 			>>|cRXP_LOOT_Shy-Rotam|r |cRXP_WARN_can be used as an optional questlog quest for TBC. Check /tbcprep to see if you need it|r
+			>>|cRXP_ENEMY_Do not turn in the follow-up|r |cRXP_LOOT_Past Endeavors|r |cRXP_ENEMY_as it is used for the TBC turnin!|r
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Storm|r
 			.turnin 5056 >> Turn in Shy-Rotam
 			.target Storm Shadowhoof
@@ -2847,6 +2848,11 @@ RXPGuides.RegisterGuide([[
 			.goto Felwood,36.732,53.262
 			.complete 5165,2 
 			.goto Felwood,37.677,52.685	
+
+		step
+			#completewith next
+			.goto Felwood,35.44,59.1
+			.subzone 1763 >> Get back out of |cFFfa9602Shadow Hold|r to |cFFfa9602Jaedenar|r
 
 		step
 			.isOnQuest 4084
