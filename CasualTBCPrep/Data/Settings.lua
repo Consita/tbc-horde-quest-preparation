@@ -243,6 +243,32 @@ function CasualTBCPrep.Settings.GetQuestPriority(selectedRouteCode, questID)
 	return qState[selectedRouteCode].priorityChanged
 end
 
+---@param selectedRouteCode string
+---@param questID number
+---@return boolean
+function CasualTBCPrep.Settings.GetQuestIgnoredState(selectedRouteCode, questID)
+	local ignoredState = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.IgnoredQuests)
+	if ignoredState[selectedRouteCode] == nil then
+		return false
+	end
+	return ignoredState[selectedRouteCode][questID] == true
+end
+
+---@param selectedRouteCode string
+---@param questID number
+---@param stateValue boolean
+function CasualTBCPrep.Settings.SetQuestIgnoredState(selectedRouteCode, questID, stateValue)
+	local ignoredState = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.IgnoredQuests)
+	if ignoredState == nil then
+		ignoredState = {}
+	end
+	if ignoredState[selectedRouteCode] == nil then
+		ignoredState[selectedRouteCode] = {}
+	end
+	ignoredState[selectedRouteCode][questID] = stateValue
+	CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.IgnoredQuests, ignoredState)
+end
+
 function CasualTBCPrep.Settings.OnChange(settingsKey, newValue, isGlobal)
 	if settingsKey == CasualTBCPrep.Settings.SelectedTheme then
 		local storedVal = CasualTBCPrep.Settings.GetSettingFromCharOrGlobal(settingsKey)

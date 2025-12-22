@@ -8,45 +8,14 @@ local _bankAltCheckValue = false
 ---@class Frame|nil
 local wQuestManagement = nil;
 
-local function Display()
-	if wQuestManagement.texts then
-		for _, fontString in ipairs(wQuestManagement.texts) do
-			fontString:Hide()
-			fontString:SetText("")
-			fontString:SetSize(0, 0)
-		end
-	end
-	if wQuestManagement.content then
-		for _, borderFrame in ipairs(wQuestManagement.content) do
-			borderFrame:Hide()
-		end
-	end
-	wQuestManagement.texts = {}
-	wQuestManagement.content = {}
-
-    local selectedRoute = CasualTBCPrep.Routing.CurrentRouteCode
-    local questID = wQuestManagement.currentQuestID;
-    if not questID or questID <= 0 then return end
-    if not selectedRoute or selectedRoute == '' then return end
-
-    local quest = CasualTBCPrep.QuestData.GetQuest(questID)
-    local isQuestCompleted = CasualTBCPrep.QuestData.HasCharacterCompletedQuest(quest.id)
-	local _, _, _, questTextColorRGB = CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
-    local currentPriorityChanged = CasualTBCPrep.Settings.GetQuestPriority(selectedRoute, questID)
-
-    local qType = string.lower(quest.type)
-    -- UI elements
-    local yPosition = -34
-
-    -- Text, Item Name
-    local txtQuestName = wQuestManagement:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
-    txtQuestName:SetPoint("TOP", wQuestManagement, "TOP", 0, yPosition)
-    txtQuestName:SetText(quest.name)
-    table.insert(wQuestManagement.texts, txtQuestName)
-    yPosition = yPosition - 21
-    CasualTBCPrep.UI.SetQuestTextColor(txtQuestName, quest, questTextColorRGB.r,questTextColorRGB.g,questTextColorRGB.b)
-
+---@param selectedRoute string
+---@param questID number
+---@param qType string
+---@param isQuestCompleted boolean
+---@param yPosition number
+local function DisplayQuestLog(selectedRoute, questID, qType, isQuestCompleted, yPosition)
     if isQuestCompleted == false and (qType == "qlog" or qType == "opt" or qType == "optional") then
+        local currentPriorityChanged = CasualTBCPrep.Settings.GetQuestPriority(selectedRoute, questID)
         local qTypText = ""
         if "qlog" == qType then
             qTypText = "Questlog Quest"
@@ -107,6 +76,98 @@ local function Display()
     end
 end
 
+---@param selectedRoute string
+---@param questID number
+---@param qType string
+---@param isQuestCompleted boolean
+---@param yPosition number
+local function DisplayQuest(selectedRoute, questID, qType, isQuestCompleted, yPosition)
+    if qType == "qlog" or qType == "opt" or qType == "optional" then
+        DisplayQuestLog(selectedRoute, questID, qType, isQuestCompleted, yPosition)
+        return;
+    end
+
+    local isQuestIgnored = not CasualTBCPrep.Settings.GetQuestIgnoredState(selectedRoute, questID)
+
+    local btn = CreateFrame("Button", nil, wQuestManagement, "UIPanelButtonTemplate")
+    btn:SetSize(170, 25)
+    btn:SetPoint("TOP", wQuestManagement, "TOP", 0, yPosition)
+    btn:SetNormalFontObject("GameFontNormal")
+
+    ---@param isQuestIgnored boolean
+    local function funcUpdateButton(isQuestIgnored)
+        if isQuestIgnored == true then
+            btn:SetText("Unignore Quest")
+        else
+            btn:SetText("Ignore Quest")
+        end
+    end
+    btn:SetScript("OnClick", function()
+        local isQuestIgnored = not CasualTBCPrep.Settings.GetQuestIgnoredState(selectedRoute, questID)
+        CasualTBCPrep.Settings.SetQuestIgnoredState(selectedRoute, questID, isQuestIgnored)
+
+        funcUpdateButton(isQuestIgnored)
+        CasualTBCPrep.W_Main.ReloadActiveTab()
+    end)
+
+    local btnTooltip = ""
+    if isQuestIgnored == true then
+        btnTooltip = "Click to unignore the current quest from the current route ("..selectedRoute..")"
+    else
+        btnTooltip = "Click to ignore the current quest from the current route ("..selectedRoute..")"
+    end
+    -- Tooltip
+    CasualTBCPrep.UI.HookTooltip(btn, "Quest State", { btnTooltip }, nil,nil,nil)
+
+    funcUpdateButton(isQuestIgnored)
+    table.insert(wQuestManagement.content, btn)
+end
+
+
+local function Display()
+	if wQuestManagement.texts then
+		for _, fontString in ipairs(wQuestManagement.texts) do
+			fontString:Hide()
+			fontString:SetText("")
+			fontString:SetSize(0, 0)
+		end
+	end
+	if wQuestManagement.content then
+		for _, borderFrame in ipairs(wQuestManagement.content) do
+			borderFrame:Hide()
+		end
+	end
+	wQuestManagement.texts = {}
+	wQuestManagement.content = {}
+
+    local selectedRoute = CasualTBCPrep.Routing.CurrentRouteCode
+    local questID = wQuestManagement.currentQuestID;
+    if not questID or questID <= 0 then return end
+    if not selectedRoute or selectedRoute == '' then return end
+
+    local quest = CasualTBCPrep.QuestData.GetQuest(questID)
+    local isQuestCompleted = CasualTBCPrep.QuestData.HasCharacterCompletedQuest(quest.id)
+	local _, _, _, questTextColorRGB = CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
+
+    local qType = string.lower(quest.type)
+    -- UI elements
+    local yPosition = -34
+
+    -- Text, Item Name
+    local txtQuestName = wQuestManagement:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
+    txtQuestName:SetPoint("TOP", wQuestManagement, "TOP", 0, yPosition)
+    txtQuestName:SetText(quest.name)
+    table.insert(wQuestManagement.texts, txtQuestName)
+    yPosition = yPosition - 21
+    CasualTBCPrep.UI.SetQuestTextColor(txtQuestName, quest, questTextColorRGB.r,questTextColorRGB.g,questTextColorRGB.b)
+
+    if wQuestManagement.currentQuestType == "qlog" then
+        DisplayQuestLog(selectedRoute, questID, qType, isQuestCompleted, yPosition)
+    elseif wQuestManagement.currentQuestType == "q" then
+        DisplayQuest(selectedRoute, questID, qType, isQuestCompleted, yPosition)
+    end
+end
+
 --@param type string|nil
 local function Create()
 	wQuestManagement = CreateFrame("Frame", w_window_name, UIParent, "BasicFrameTemplateWithInset")
@@ -134,7 +195,7 @@ local function Create()
 	wQuestManagement:Show();
 end
 
-function CasualTBCPrep.W_QuestManagement.Show(questID)
+function CasualTBCPrep.W_QuestManagement.Show(type, questID)
 	if wQuestManagement == nil then
 
 		Create()
@@ -143,7 +204,13 @@ function CasualTBCPrep.W_QuestManagement.Show(questID)
 		end
 	end
 
+    --If not these 2, exit
+    if type ~= "q" and type ~= "qlog" then
+        return
+    end
+
     wQuestManagement.currentQuestID = questID
+    wQuestManagement.currentQuestType = type
 
 	wQuestManagement:SetSize(310, 140)
 	wQuestManagement.title:SetText("TBCPrep - Quest Settings")

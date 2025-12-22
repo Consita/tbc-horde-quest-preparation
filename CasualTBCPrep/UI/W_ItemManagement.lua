@@ -69,7 +69,7 @@ local function Display()
     local chbLabel = CreateFrame("Button", nil, wItemManagement)
     local bankAltHeader = wItemManagement:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     local bankAltInput = CreateFrame("EditBox", nil, wItemManagement, "InputBoxTemplate")
-    local btnSaveBankAlt = CreateFrame("BUtton", nil, wItemManagement, "UIPanelButtonTemplate")
+    local btnSaveBankAlt = CreateFrame("Button", nil, wItemManagement, "UIPanelButtonTemplate")
     local outputText = wItemManagement:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 
     checkbox:SetPoint("TOPLEFT", wItemManagement, "TOPLEFT", 8, yPosition)

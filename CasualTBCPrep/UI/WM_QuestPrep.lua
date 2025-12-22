@@ -22,7 +22,7 @@ local RefreshQuestList
 local CreateExperienceBar
 
 ---@param wMain Frame|nil
-local function CreateListQuestTooltip(wMain, point, quest, questText, yOffset, nextPreQuest, itemDisplayList, reqAnyItem)
+local function CreateListQuestTooltip(wMain, point, quest, questText, nextPreQuest, itemDisplayList, reqAnyItem)
 	if wMain == nil then
 		return
 	end
@@ -80,9 +80,25 @@ local function CreateListQuestTooltip(wMain, point, quest, questText, yOffset, n
 			end
 		end
 
-		local tooltip = CasualTBCPrep.UI.UpdateAdvancedQuestTooltip(frameQuestPrep.scrollChild, point, questText:GetStringWidth(), questText:GetStringHeight(), 0, yOffset, dataName, ttLines, nextPreQuest, itemDisplayList, reqAnyItem)
+		local tooltip = CasualTBCPrep.UI.UpdateAdvancedQuestTooltip(questText, point, questText:GetFontString():GetStringWidth(), questText:GetFontString():GetStringHeight(), 0, 0, dataName, ttLines, nextPreQuest, itemDisplayList, reqAnyItem)
 		table.insert(frameQuestPrep.content, tooltip)
 	end
+end
+
+---@param parent any
+---@param questID number
+local function CreateClickableFunctionality(parent, questID)
+	parent:EnableMouse(true)
+	parent:SetScript("OnMouseUp", function(self, btn)
+			print("Z")
+		if "LeftButton" == btn then
+			--
+		elseif "RightButton" == btn then
+			print("A")
+			CasualTBCPrep.W_QuestManagement.Show("q", questID)
+			print("B")
+		end
+	end)
 end
 
 ---@param wMain Frame|nil
@@ -212,7 +228,7 @@ end
 ---@param yOffset number
 ---@param headerText string
 ---@return number, number, number, number
-local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, headerFrame, availableQuests, completedQuests, point, relativePoint, isReputationList)
+local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, headerFrame, availableQuests, completedQuests, point, relativePoint, isReputationList, createClickable)
 	local src = strtrim(frameQuestPrep.searchText or ""):lower()
 	if src ~= "" then
 		local searchedAvailable, searchedCompleted = {}, {}
@@ -353,13 +369,13 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 					questNameText = quest.name or "Unknown Quest"
 				end
 
-				local questText = frameQuestPrep.scrollChild:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-				questText:SetPoint(point, frameQuestPrep.scrollChild, relativePoint, xOffsetQuestText, yOffset)
-				questText:SetText(questNameText)
-				questText:SetTextColor(questTextColorRGB.r, questTextColorRGB.g, questTextColorRGB.b)
+				--local btnQuestText = CreateFrame("Button", nil, frameQuestPrep.scrollChild)
+				local btnQuestText = CasualTBCPrep.UI.CreateTextButton(frameQuestPrep.scrollChild, questTextColorRGB.hex..questNameText.."|r", GameTooltipTextSmall, "LEFT", nil)
+				btnQuestText:SetPoint(point, frameQuestPrep.scrollChild, relativePoint, xOffsetQuestText, yOffset)
 
-				CreateListQuestTooltip(wMain, point, quest, questText, yOffset, nextPreQuest, itemDisplayList, quest.reqAnyItem)
-				table.insert(frameQuestPrep.questTexts, questText)
+				CreateListQuestTooltip(wMain, point, quest, btnQuestText, nextPreQuest, itemDisplayList, quest.reqAnyItem)
+				CreateClickableFunctionality(btnQuestText, quest.id)
+				table.insert(frameQuestPrep.content, btnQuestText)
 
 				yOffset = yOffset - 15
 			end
@@ -395,7 +411,7 @@ local function LoadQuestlogQuests(wMain, xOffset, yOffset, point, relativePoint)
 	frameQuestPrep.qloglist_header:Show()
 
 	local availableQuests, completedQuests = CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog()
-	return LoadSpecificQuestList(wMain, xOffset, yOffset, "Questlog", frameQuestPrep.qloglist_header, availableQuests, { }, point, relativePoint, false)
+	return LoadSpecificQuestList(wMain, xOffset, yOffset, "Questlog", frameQuestPrep.qloglist_header, availableQuests, { }, point, relativePoint, false, false)
 end
 
 ---@param yOffset number
@@ -410,7 +426,7 @@ local function LoadQuestlogOptionalQuests(wMain, xOffset, yOffset, point, relati
 
 	local questList = CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog_Optional()
 
-	return LoadSpecificQuestList(wMain, xOffset, yOffset, "Optional", frameQuestPrep.qlogoptlist_header, questList, { }, point, relativePoint, false)
+	return LoadSpecificQuestList(wMain, xOffset, yOffset, "Optional", frameQuestPrep.qlogoptlist_header, questList, { }, point, relativePoint, false, false)
 end
 
 ---@param yOffset number
@@ -424,7 +440,7 @@ local function LoadTurninQuests(wMain, xOffset, yOffset, point, relativePoint)
 	frameQuestPrep.turninlist_header:Show()
 
 	local availableQuests, completedQuests = CasualTBCPrep.QuestData.GetAllQuestsGroup_Normal()
-	return LoadSpecificQuestList(wMain,xOffset, yOffset, "Turnin", frameQuestPrep.turninlist_header, availableQuests, completedQuests, point, relativePoint, false)
+	return LoadSpecificQuestList(wMain,xOffset, yOffset, "Turnin", frameQuestPrep.turninlist_header, availableQuests, completedQuests, point, relativePoint, false, true)
 end
 
 ---@param yOffset number
@@ -439,7 +455,7 @@ local function LoadReputationQuests(wMain, xOffset, yOffset, point, relativePoin
 
 
 	local availableQuests, completedQuests = CasualTBCPrep.QuestData.GetAllQuestsGroup_Reputation()
-	return LoadSpecificQuestList(wMain, xOffset, yOffset, "Reputation", frameQuestPrep.replist_header, availableQuests, completedQuests, point, relativePoint, true)
+	return LoadSpecificQuestList(wMain, xOffset, yOffset, "Reputation", frameQuestPrep.replist_header, availableQuests, completedQuests, point, relativePoint, true, true)
 end
 
 ---@param yOffset number
@@ -454,7 +470,7 @@ local function LoadExpensiveQuests(wMain, xOffset, yOffset, point, relativePoint
 
 
 	local availableQuests, completedQuests = CasualTBCPrep.QuestData.GetAllQuestsGroup_Expensive()
-	return LoadSpecificQuestList(wMain, xOffset, yOffset, "Expensive", frameQuestPrep.explist_header, availableQuests, completedQuests, point, relativePoint, false)
+	return LoadSpecificQuestList(wMain, xOffset, yOffset, "Expensive", frameQuestPrep.explist_header, availableQuests, completedQuests, point, relativePoint, false, true)
 end
 
 ---@param yOffset number
@@ -468,7 +484,7 @@ local function LoadItemQuests(wMain, xOffset, yOffset, point, relativePoint)
 	frameQuestPrep.itemlist_header:Show()
 
 	local availableQuests, completedQuests = CasualTBCPrep.QuestData.GetAllQuestsGroup_Items()
-	return LoadSpecificQuestList(wMain, xOffset, yOffset, "Item", frameQuestPrep.itemlist_header, availableQuests, completedQuests, point, relativePoint, false)
+	return LoadSpecificQuestList(wMain, xOffset, yOffset, "Item", frameQuestPrep.itemlist_header, availableQuests, completedQuests, point, relativePoint, false, true)
 end
 
 ---@param wMain Frame|nil

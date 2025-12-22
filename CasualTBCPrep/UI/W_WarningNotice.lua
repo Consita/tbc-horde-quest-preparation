@@ -89,7 +89,7 @@ local function UpdateElementsFromType(type)
 	local messageText = ""
 
 	if type == "qlog" then
-		title = "Questlog Warning - Quest Accepted"
+		title = "Questlog Quest Accepted Warning"
 		headerText = "WARNING!"
 		messageText = mainText_qlog
 		width = 440
@@ -97,7 +97,7 @@ local function UpdateElementsFromType(type)
 		isDangerous = false
 		showAbandonButton = false
 	elseif type == "turnin" then
-		title = "Turnin Warning - Quest Accepted"
+		title = "Turnin Quest Accepted Warning"
 		headerText = "Warning"
 		messageText = mainText_turnin
 		width = 470

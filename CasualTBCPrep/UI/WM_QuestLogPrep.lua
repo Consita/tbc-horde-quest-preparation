@@ -14,7 +14,7 @@ local function CreateClickableFunctionality(parent, questID)
 		if "LeftButton" == btn then
 			--
 		elseif "RightButton" == btn then
-			CasualTBCPrep.W_QuestManagement.Show(questID)
+			CasualTBCPrep.W_QuestManagement.Show("qlog", questID)
 		end
 	end)
 end
