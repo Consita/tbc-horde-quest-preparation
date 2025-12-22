@@ -55,5 +55,5 @@ TBC/Dungeon-Quest-Preparation-Strat.lua
 TBC/Item-Preparation.lua
 ## TBC/TBC-Launch-Turnin-Main.lua
 ## TBC/TBC-Launch-Turnin-Solo.lua
-## TBC/TBC-Launch-Turnin-Strat.lua
+TBC/TBC-Launch-Turnin-Strat.lua
 TBC/TBC-Dungeon-Grind.lua
