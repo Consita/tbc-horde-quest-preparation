@@ -26,6 +26,13 @@ RXPGuides.RegisterGuide([[
 		.zoneskip Badlands
 
 	step
+		#label Kargathlast
+		.goto Badlands,25.8,45.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lotwil Veriatus|r
+		.turnin -4063
+		.target Lotwil Veriatus		
+
+	step
 		.goto Badlands,3.0,47.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shadowmage Vivian Lagrave|r
 		.turnin -4768
@@ -51,13 +58,6 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Galamav the Marksman|r. He is up on the Tower.
 		.turnin -4724
 		.target Galamav the Marksman
-
-	step
-		#label Kargathlast
-		.goto Badlands,25.8,45.0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lotwil Veriatus|r
-		.turnin -4063
-		.target Lotwil Veriatus
 
 --- Flame Crest, Burning Steppes
 
