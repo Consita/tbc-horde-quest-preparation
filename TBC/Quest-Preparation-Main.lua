@@ -2966,17 +2966,29 @@ RXPGuides.RegisterGuide([[
 			.zoneskip Azshara
 
 		step
+			#completewith next
+			.use 10695 >> Open |T132594:0|t[Box of Empty Vials] for the following:
+			.collect 10687,1 
+			.collect 10688,1 
+			.collect 10689,1 
+			.collect 10690,1 
+			.itemcount 10695,1
+
+		step
 			.goto Azshara,47.50,46.20
-			.use 10870 >>Swim in the puddle and use the |T132793:0|t[Empty Vial Labeled #4]
+			.use 10690 >>Swim in the puddle and use the |T132793:0|t[Empty Vial Labeled #4]
 			.complete 3568,4 
+
 		step
 			.goto Azshara,48.70,48.50
 			.use 10689 >>Swim in the puddle and use the |T132793:0|t[Empty Vial Labeled #3]
 			.complete 3568,3 
+
 		step
 			.goto Azshara,47.80,51.30
 			.use 10688 >>Swim in the puddle and use the |T132793:0|t[Empty Vial Labeled #2]
 			.complete 3568,2 
+			
 		step
 			.goto Azshara,47.80,60.80
 			.use 10687 >>Swim in the puddle and use the |T132793:0|t[Empty Vial Labeled #1]
