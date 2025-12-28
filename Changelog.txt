@@ -1,5 +1,9 @@
 Changelog:
 
+3.13
+- Fixed "Kitchen Assistance" having prequests when it shouldn't in all routes
+- Corrected wrong Noggenfogger quest name under Extras > Items
+
 3.12 - 2025-12-22
 - Fixed Questlog data for solo route only showing 23 quests
 - Added Turnin Guide again (only draft, not finished)

@@ -121,7 +121,7 @@ local questsMetadata = {
 	[7489] = { id=7489, name="Lethtendris's Web", baseexp=13050, exp=0, qlvl=57, type="qlog", routes="Solo", routeSection="Feralas", areaType="Dungeon", area="Dire Maul", },
 	[8301] = { id=8301, name="The Path of the Righteous", baseexp=9550, exp=0, qlvl=60, type="turnin", reqItems="20384-200", preQuests="8286,8288", routes="Main,Strat,Solo", routePickup="SilithusHold2", routeSection="SilithusHold2", areaType="Raid", area="Blackwing Lair", },
 	[8791] = { id=8791, name="The Fall of Ossirian", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="21220-1", routes="Main,Strat,Solo", routePickup="SilithusHold2", routeSection="SilithusHold2", areaType="Raid", area="Ruins of Ahn'Qiraj", },
-	[8317] = { id=8317, name="Kitchen Assistance", baseexp=4350, exp=0, qlvl=57, type="turnin", reqItems="20452-10", preQuests="8307,8313", reqProf=185, reqProfSkill=285, routes="Main,Strat,Solo", routePickup="SilithusHold2", routeSection="SilithusHold2", areaType="Zone", area="Silithus", },
+	[8317] = { id=8317, name="Kitchen Assistance", baseexp=4350, exp=0, qlvl=57, type="turnin", reqItems="20452-10", reqProf=185, reqProfSkill=285, routes="Main,Strat,Solo", routePickup="SilithusHold2", routeSection="SilithusHold2", areaType="Zone", area="Silithus", },
 	[8308] = { id=8308, name="Brann Bronzebeard's Lost Letter", baseexp=11900, exp=0, qlvl=60, type="turnin", reqItems="20461-1", routes="Main,Strat,Solo", routePickup="SilithusSouth", routeSection="SilithusSouth", areaType="Zone", area="Silithus", },
 	[8323] = { id=8323, name="True Believers", baseexp=9300, exp=0, qlvl=59, type="turnin", reqItems="20404-10", preQuests="8284,8285", routes="Main,Strat,Solo", routePickup="SilithusCave", routeSection="SilithusCave", areaType="Zone", area="Silithus", },
 	[8318] = { id=8318, name="Secret Communication", baseexp=9550, exp=0, qlvl=60, type="turnin", reqItems="20404-10", routes="Main,Strat,Solo", routePickup="SilithusHold2", routeSection="SilithusHold2", areaType="Zone", area="Silithus", },
@@ -517,7 +517,7 @@ local extraQuestDetailsNeutral = {
 	[709] = { name="Solution to Doom", startZone="Theldurin the Lost, South Badlands"},
 
 	-- PreQuests Noggenfogger Elixir
-	[2605] = { name = "Sprinkle's Secret Ingredient", startZone="Gadgetzan, Tanaris"},
+	[2605] = { name = "The Thirsty Goblin", startZone="Gadgetzan, Tanaris"},
 	[2606] = { name = "In Good Taste", startZone="Gadgetzan, Tanaris", preQuests={2605}},
 	[2641] = { name = "Sprinkle's Secret Ingredient", startZone="Gadgetzan, Tanaris", preQuests={2605,2606}},
 	[2661] = { name = "Delivery for Marin", startZone="Gadgetzan, Tanaris", preQuests={2605,2606,2641}},
