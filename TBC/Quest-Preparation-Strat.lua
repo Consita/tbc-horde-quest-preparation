@@ -3272,12 +3272,20 @@ RXPGuides.RegisterGuide([[
 			.target Mux Manascrambler				
 
 		step
+			#completewith next
+			.use 11617 >> Open |T133647:0|t[Eridan's Supplies] for the following:
+			.collect 11173,1 
+			.collect 11172,11 
+			.collect 11169,1 
+			.itemcount 11617,1			
+
+		step
 			.isQuestTurnedIn 4084
+			.goto Tanaris,68.50,41.40,20,0
 			.goto Tanaris,70.43,49.93
-			>>Kill |cRXP_ENEMY_Aquementas|r
+			.use 11169 >>Summon |cRXP_ENEMY_Aquementas|r using the |T133742:0|t[Book of Aquor] and kill him
+			>>|cRXP_WARN_Stay within the stone circle after you summoned him until the quest completes!|r
 			.complete 4005,1 
-			.use 11617 
-			.use 11169 
 			.mob Aquementas	
 
 	--- Ungoro
