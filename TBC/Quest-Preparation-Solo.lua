@@ -2656,7 +2656,7 @@ RXPGuides.RegisterGuide([[
 			.goto Winterspring,65.30,61.06,70,0
 			.goto Winterspring,64.96,62.68,70,0
 			>>Kill |cRXP_ENEMY_Moontouched Owlbeasts|r
-			>>|cRXP_WARN_Their moonfire hits fairly hard, and their rejuvenation is strong|r
+			>>|cRXP_WARN_They share spawn with|r |cRXP_ENEMY_Berserk Owlbeast|r |cRXP_WARN_and|r |cRXP_ENEMY_Crazed Owlbeast|r|cRXP_WARN_. If necessary, kill them to reset the area|r
 			.complete 4741,1 
 			.mob Moontouched Owlbeast	
 
@@ -2722,6 +2722,7 @@ RXPGuides.RegisterGuide([[
 			.goto Winterspring,65.60,19.60,50,0
 			.goto Winterspring,64.00,20.80,50,0
 			>>Kill |cRXP_ENEMY_Berserk Owlbeasts|r. Loot them for a |T133298:0|t[|cRXP_LOOT_Blue-feathered Necklace|r]. Do not accept the quest! It is used in |cRXP_WARN_TBC!|r
+			>>|cRXP_WARN_They share spawn with|r |cRXP_ENEMY_Moontouched Owlbeast|r |cRXP_WARN_and|r |cRXP_ENEMY_Crazed Owlbeast|r|cRXP_WARN_. If necessary, kill them to reset the area|r
 			.complete 4721,1 
 			.collect 12558,1,4721,1
 			.mob Berserk Owlbeast	
