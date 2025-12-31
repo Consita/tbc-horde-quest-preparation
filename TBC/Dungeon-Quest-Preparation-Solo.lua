@@ -856,7 +856,7 @@ RXPGuides.RegisterGuide([[
 #subgroup 2.3 - Quest Prep - Solo Turnin
 #name 7-Dire Maul East-Solo
 #displayname Dire Maul
-#next 8-Alterac-Solo
+#next 8-Blackwing Lair-Solo
 
 --- DM East
 			
@@ -911,10 +911,77 @@ RXPGuides.RegisterGuide([[
 #tbc
 #version 3
 #group Consita Classic/TBC Launch Guide
+#subgroup 2.1 - Quest Prep - Solo Group Turnin
+#name 8-Blackwing Lair-Solo
+#displayname Blackwing Lair
+#next 9-Alterac-Solo
+
+--- BWL
+
+	step
+		#completewith next
+		.zone Silithus >>Travel to |cFFfa9602Silithus|r
+		.zoneskip Silithus
+
+	step
+		.goto Silithus,49.45,36.44
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Baristolth of the Shifting Sands|r
+		.accept 8286
+		.target Baristolth of the Shifting Sands	
+
+	step
+		#completewith next	
+		.goto Silithus,48.8,36.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Runk Windtamer|r
+		.fly Tanaris >>Fly to |cFFfa9602Tanaris|r
+		.zoneskip Tanaris
+		.target Runk Windtamer
+
+	step
+		.goto Tanaris,64.0,51.0
+		>>Get close to |cRXP_FRIENDLY_Anachronos|r until the quest completes
+		.target Anachronos
+		.complete 8286,1
+
+	step
+		#completewith next
+		.goto Tanaris,51.60,25.50
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bulkrek Ragefist|r
+		.fly Silithus >> Fly to |cFFfa9602Silithus|r
+		.target Bulkrek Ragefist
+		.zoneskip Silithus	
+
+	step
+		.goto Silithus,49.45,36.44
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Baristolth of the Shifting Sands|r
+		.turnin 8286
+		.accept 8288
+		.target Baristolth of the Shifting Sands
+
+	step
+		#completewith next
+		.goto 1415,48.92,64.47,10 >>Enter |cFFfa9602Blackwing Lair|r
+
+	step	
+		>>Kill |cRXP_ENEMY_Broodlord Lashlayer|r inside |cFFfa9602Blackwing Lair|r and loot him for |cRXP_LOOT_Head of the Broodlord Lashlayer|r
+		>>|cRXP_WARN_Be aware that he drops only one head per kill. You might want to reserve the item if possible
+		.complete 8288,1
+
+	step
+		>>|cRXP_WARN_You have now completed all steps within Blackwing Lair. Well done!|r
+		+You can either complete this step to jump to the next guide or select another guide manually			
+
+]])
+
+RXPGuides.RegisterGuide([[
+#classic
+#tbc
+#version 3
+#group Consita Classic/TBC Launch Guide
 #subgroup 2.3 - Quest Prep - Solo Turnin
-#name 8-Alterac-Solo
+#name 9-Alterac-Solo
 #displayname Alterac Valley
-#next 9-Stratholme-Solo
+#next 91-Stratholme-Solo
 
 --- AV
 
@@ -953,7 +1020,7 @@ RXPGuides.RegisterGuide([[
 #version 3
 #group Consita Classic/TBC Launch Guide
 #subgroup 2.3 - Quest Prep - Solo Turnin
-#name 9-Stratholme-Solo
+#name 91-Stratholme-Solo
 #displayname Stratholme
 #next Item Preparation
 
