@@ -868,6 +868,83 @@ step
 
 --- Winterspring
 
+	step
+		#completewith Winterspringlast
+		.zone Winterspring >> Get summon to |cFFfa9602Winterspring|r
+		.zoneskip Winterspring
+
+	step
+		.goto Winterspring,61.93,38.37
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Storm Shadowhoof|r
+		.turnin -5056
+		.accept 5057
+		.target Storm Shadowhoof		
+
+	step
+		.goto Winterspring,61.93,38.37
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Storm Shadowhoof|r
+		.turnin -5057
+		.target Storm Shadowhoof		
+
+	step
+		.goto Winterspring,61.919,38.298
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Witch Doctor Mau'ari|r
+		.turnin -969
+		.target Witch Doctor Mau'ari
+
+	step
+		.goto Winterspring,61.35,38.97
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gregor Greystone|r
+		.accept 6029
+		.accept 6030
+		.target Gregor Greystone
+
+	step
+		.goto Winterspring,61.11,38.44
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Harlo Wigglesworth|r
+		.accept 6605
+		.target Harlo Wigglesworth
+
+	step
+		.goto Winterspring,60.88,37.61
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Umi Rumplesnicker|r
+		.turnin -5163
+		.target Umi Rumplesnicker
+
+	step
+		.use 12842 >>Click |T133740:0|t[Crudely-written Log] and accept |cRXP_LOOT_The Final Piece|r
+		.accept 5123
+		.itemcount 12842,1
+
+	step
+		.goto Winterspring,31.27,45.16
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Donova Snowden|r
+		.turnin -5123
+		.target Donova Snowden
+		.itemcount 12842,1		
+
+	step
+		.goto Winterspring,31.27,45.16
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Donova Snowden|r
+		.accept 5128
+		.target Donova Snowden		
+		.isQuestTurnedIn 5123
+
+	step
+		.goto Winterspring,31.27,45.16
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Donova Snowden|r
+		.turnin -5121
+		.target Donova Snowden		
+
+	step
+		.goto Winterspring,31.27,45.16
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Donova Snowden|r
+		.turnin -980
+		.target Donova Snowden	
+
+
+--- Felwood
+
 
 
 --- Orgrimmar
@@ -885,6 +962,9 @@ step
 		.turnin -4941
 		.target Thrall
 		
+
+
+
 --- Tarren Mill
 
 	step

@@ -904,7 +904,7 @@ RXPGuides.RegisterGuide([[
 #tbc
 #version 3
 #group Consita Classic/TBC Launch Guide
-#subgroup 2.1 - Quest Prep - Strat Group Turnin
+#subgroup 2.2 - Quest Prep - Group Turnin
 #name 8-Blackwing Lair-Main
 #displayname Blackwing Lair
 #next 9-Molten Core-Main
