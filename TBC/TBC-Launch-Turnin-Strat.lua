@@ -1398,62 +1398,6 @@ step
 		.turnin -4511
 		.target High Overlord Saurfang	
 
-
---- Undercity
-
-	step
-		#completewith Undercitylast
-		.zone Undercity >>Take Portal or get summon to |cFFfa9602Undercity|r
-		.zoneskip Undercity
-
-	step
-		.goto Undercity,71.65,29.28
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ralston Farnsley|r
-		.accept 7813
-		.turnin 7813
-		.target Ralston Farnsley
-		.itemcount 2592,60	
-
-	step
-		.goto Undercity,71.65,29.28
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ralston Farnsley|r
-		.accept 7814
-		.turnin 7814
-		.target Ralston Farnsley
-		.itemcount 4306,60		
-		
-	step
-		.goto Undercity,71.65,29.28
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ralston Farnsley|r
-		.accept 7817
-		.turnin 7817
-		.target Ralston Farnsley
-		.itemcount 4338,60	
-		
-	step
-		.goto Undercity,71.65,29.28
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ralston Farnsley|r
-		.accept 7818
-		.turnin 7818
-		.target Ralston Farnsley
-		.itemcount 14047,60	
-		.isQuestTurnedIn 7813
-		.isQuestTurnedIn 7814
-		.isQuestTurnedIn 7817
-
-	step
-		#completewith next
-		.goto Undercity,47.20,59.69,0
-		.goto Undercity,47.20,59.69,12,0
-		.goto Undercity,43.55,68.11,12,0
-		.goto Undercity,45.20,71.67,12 >>Travel toward |cRXP_FRIENDLY_Master Apothecary Faranell|r
-
-	step
-		.goto Undercity,48.80,69.28
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Master Apothecary Faranell|r
-		.turnin 2938
-		.target Master Apothecary Faranell
-
 --- Tarren Mill
 
 	step
@@ -1524,6 +1468,61 @@ step
 		.target Warmaster Laggrond
 		.reputation 729,exalted,<0,1 
 		.isQuestTurnedIn 7161
+
+--- Undercity
+
+	step
+		#completewith Undercitylast
+		.zone Undercity >>Take Portal or get summon to |cFFfa9602Undercity|r
+		.zoneskip Undercity
+
+	step
+		.goto Undercity,71.65,29.28
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ralston Farnsley|r
+		.accept 7813
+		.turnin 7813
+		.target Ralston Farnsley
+		.itemcount 2592,60	
+
+	step
+		.goto Undercity,71.65,29.28
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ralston Farnsley|r
+		.accept 7814
+		.turnin 7814
+		.target Ralston Farnsley
+		.itemcount 4306,60		
+		
+	step
+		.goto Undercity,71.65,29.28
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ralston Farnsley|r
+		.accept 7817
+		.turnin 7817
+		.target Ralston Farnsley
+		.itemcount 4338,60	
+		
+	step
+		.goto Undercity,71.65,29.28
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ralston Farnsley|r
+		.accept 7818
+		.turnin 7818
+		.target Ralston Farnsley
+		.itemcount 14047,60	
+		.isQuestTurnedIn 7813
+		.isQuestTurnedIn 7814
+		.isQuestTurnedIn 7817
+
+	step
+		#completewith next
+		.goto Undercity,47.20,59.69,0
+		.goto Undercity,47.20,59.69,12,0
+		.goto Undercity,43.55,68.11,12,0
+		.goto Undercity,45.20,71.67,12 >>Travel toward |cRXP_FRIENDLY_Master Apothecary Faranell|r
+
+	step
+		.goto Undercity,48.80,69.28
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Master Apothecary Faranell|r
+		.turnin 2938
+		.target Master Apothecary Faranell
 
 --- Go through Portal
 
