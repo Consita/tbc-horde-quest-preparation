@@ -110,10 +110,10 @@ CasualTBCPrep.Routing.Routes = {
             "Set Hearthstone to Light's Hope Chapel, EPL"
         },
         sectionOrder = {
-            "Badlands","BurningSteppes","BurningSteppes2","AV","SilithusNE","SilithusHold","SilithusCave","SilithusSouth","SilithusHold2","SilithusNE2","Ungoro","UngoroPylonN","UngoroKrakle",
+            "Badlands","BurningSteppes","BurningSteppes2","SilithusNE","SilithusHold","SilithusCave","SilithusSouth","SilithusHold2","SilithusNE2","Ungoro","UngoroPylonN","UngoroKrakle",
             "UngoroPylonW","UngoroFirePlumeRidge","UngoroKrakle2","UngoroRefuge","TanarisTown","TanarisPort","CavernsOfTime","wsEverlook","wsDonowa","Timbermaw",
-            "Moonglade","felwoodTown","felwoodEmerald","Orgrimmar","Undercity","SilvermoonCity","BayOfStorms","EPLTown","EPLDarrowshire","EPLNathanos",
-            "EPLTirion","EPLEgan","WPLCauldron","WPLWrithingHaunt","WPLSorrowAndorhal","WPLDalsonsTears","WPLFelstoneField","WPLBulwark","zgSTV","ThunderBluff","Stonard",
+            "Moonglade","felwoodTown","felwoodEmerald","Orgrimmar","SilvermoonCity","BayOfStorms","EPLTown","EPLDarrowshire","EPLNathanos",
+            "EPLTirion","EPLEgan","WPLCauldron","WPLWrithingHaunt","WPLSorrowAndorhal","WPLDalsonsTears","WPLFelstoneField","WPLBulwark","zgSTV","AV","Undercity","ThunderBluff","Stonard",
             "oldhero","BlastedLands","TheDarkPortal"
         },
         sections=
@@ -199,10 +199,10 @@ CasualTBCPrep.Routing.Routes = {
         sectionOrder = {
             "Badlands","BurningSteppes","BurningSteppes2","SilithusNE","SilithusHold","SilithusCave","SilithusSouth","SilithusHold2","SilithusNE2","Ungoro","UngoroPylonN","UngoroKrakle",
             "UngoroPylonW","UngoroFirePlumeRidge","UngoroKrakle2","UngoroRefuge","TanarisTown","TanarisPort","CavernsOfTime","wsEverlook","wsDonowa","Timbermaw",
-            "Moonglade","felwoodTown","felwoodEmerald","Orgrimmar","Undercity","SilvermoonCity","BayOfStorms","EPLTown","EPLDarrowshire","EPLNathanos",
+            "Moonglade","felwoodTown","felwoodEmerald","Orgrimmar","SilvermoonCity","BayOfStorms","EPLTown","EPLDarrowshire","EPLNathanos",
             "EPLTirion","WPLCauldron", "WPLWrithingHaunt", "WPLCaerDarrow","Scholomance","EPLTown2","EPLEgan","StratholmeGates1","Stratholme1","EPLTown3",
             "StratholmeBackdoor","Stratholme2","EPLTown4","StratholmeGates2","EPLEgan2", "EPLTirion2", "EPLNathanos2","WPLWrithingHaunt","WPLSorrowAndorhal",
-            "WPLDalsonsTears","WPLFelstoneField","WPLBulwark","AV","zgSTV","ThunderBluff","Stonard","oldhero","BlastedLands","TheDarkPortal"
+            "WPLDalsonsTears","WPLFelstoneField","WPLBulwark","AV","Undercity","zgSTV","ThunderBluff","Stonard","oldhero","BlastedLands","TheDarkPortal"
         },
         sections=
         {
