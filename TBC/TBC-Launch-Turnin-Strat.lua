@@ -912,6 +912,7 @@ step
 		.target Umi Rumplesnicker
 
 	step
+		#completewith next
 		.use 12842 >>Click |T133740:0|t[Crudely-written Log] and accept |cRXP_LOOT_The Final Piece|r
 		.accept 5123
 		.itemcount 12842,1
@@ -919,7 +920,7 @@ step
 	step
 		.goto Winterspring,31.27,45.16
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Donova Snowden|r
-		.turnin -5123
+		.turnin 5123
 		.target Donova Snowden
 		.itemcount 12842,1		
 
@@ -937,18 +938,347 @@ step
 		.target Donova Snowden		
 
 	step
+		#label Winterspringlast
 		.goto Winterspring,31.27,45.16
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Donova Snowden|r
 		.turnin -980
 		.target Donova Snowden	
 
+	step
+		.goto Winterspring,27.91,34.45,20,0
+		.goto Felwood,65.69,2.82
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Meilosh|r
+		.accept 6031 
+		.turnin 6031
+		.target Meilosh
+		.itemcount 14047,30
+		.reputation 576,friendly,<0,1
 
+	step
+		.goto Winterspring,27.91,34.45,20,0
+		.goto Felwood,65.69,2.82
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Meilosh|r
+		.accept 6032 
+		.turnin 6032
+		.target Meilosh
+		.itemcount 14342,2
+		.reputation 576,friendly,<0,1
+		.skill tailoring,<280,1
+		
+	step
+		#completewith next
+		.use 20741 >>Click |T136232:0|t[Deadwood Ritual Totem] and accept |cRXP_LOOT_Deadwood Ritual Totem|r
+		.accept 8470
+		.reputation 576,neutral,<0,1
+		.itemcount 20741,1
+		
+	step
+		.goto Felwood,65.48,3.47,20,0
+		.goto Felwood,65.35,1.37
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kernda|r
+		>>|cRXP_FRIENDLY_Kernda|r |cRXP_WARN_patrols the lower Timbermaw Hold path|r
+		.turnin 8470
+		.reputation 576,neutral,<0,1 
+		.itemcount 20741,1 
+		.target Kernda		
+
+	step
+		#completewith next
+		.use 20742 >>Click |T135816:0|t[Winterfall Ritual Totem] and accept |cRXP_LOOT_Winterfall Ritual Totem|r
+		.accept 8471
+		.reputation 576,neutral,<0,1
+		.itemcount 20742,1
+		
+	step
+		.goto Felwood,65.48,3.47,20,0
+		.goto Felwood,65.35,1.37
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kernda|r
+		>>|cRXP_FRIENDLY_Kernda|r |cRXP_WARN_patrols the lower Timbermaw Hold path|r
+		.turnin 8471
+		.reputation 576,neutral,<0,1 
+		.itemcount 20742,1 
+		.target Kernda			
+
+	step
+		.goto Felwood,65.19,2.68
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gorn One Eye|r
+		.accept 8485
+		.reputation 576,exalted,<0,1 
+		.target Gorn One Eye	
+
+	step
+		#completewith next
+		.use 20644 >>Click |T136163:0|t[Nightmare Engulfed Object] and accept |cRXP_LOOT_Shrouded in Nightmare|r
+		.accept 8446
+		.itemcount 20644,1
+
+	step
+		.goto Felwood,65.5,0.9,15,0
+		.goto Moonglade,35.7,72.4,15,0
+		.goto Moonglade,36.19,41.78
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Keeper Remulos|r
+		.turnin 8446
+		.itemcount 20644,1
+		.target Keeper Remulos
+
+	step
+		#completewith next
+		.goto Felwood,65.5,0.9,15,0
+		.goto Moonglade,35.7,72.4,15,0
+		.goto Moonglade,40.00,43.59,15,0
+		.goto Moonglade,42.13,34.94,5 >>Travel to |cFFfa9602Nighthaven|r
+		.subzoneskip Nighthaven
+		.subzoneskip 2362
+
+	step
+		.goto Moonglade,44.7,35.5
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Umber|r
+		.turnin -6844
+		.target Umber
+
+	step
+		.goto Moonglade,44.7,35.5
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Umber|r
+		.accept 6845
+		.target Umber		
+		.isQuestTurnedIn 6844
+
+	step
+		.goto Moonglade,51.70,45.00
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rabine|r
+		.turnin -5527
+		.target Rabine Saturna
+
+	step
+		.goto Moonglade,51.70,45.00
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rabine|r
+		.turnin -6845
+		.target Rabine Saturna
+		
+	step
+		.goto Moonglade,51.70,45.00
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rabine|r
+		.accept 5526
+		.turnin 5526
+		.target Rabine Saturna	
+		.itemcount 18501,1
+		.isQuestTurnedIn 5527
+		
+	step
+		.goto Moonglade,44.7,35.5
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Umber|r
+		.accept 1185
+		.turnin 1185
+		.target Umber		
+		.isQuestTurnedIn 6845
+	
 --- Felwood
 
+	step
+		#completewith Felwoodlast
+		.goto Moonglade,32.2,66.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Faustron|r
+		.fly Felwood >>Fly to |cFFfa9602Felwood|r
+		.target Faustron
+		.zoneskip Felwood
 
+	step
+		#completewith next
+		.use 12558 >>Click |T133298:0|t[Blue-feathered Necklace] and accept |cRXP_LOOT_Guarding Secrets|r
+		.accept 4882
+		.itemcount 12558,1
+
+	step
+		.goto Felwood,34.80,52.80
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Trull|r
+		.target Trull Failbane
+		.turnin 4882
+		.accept 4883
+		.itemcount 12558,1	
+
+	step
+		.goto Felwood,34.20,52.30
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Winna Hazzard|r
+		.turnin -6605
+		.target Winna Hazzard	
+		
+	step
+		.goto Felwood,35.23,50.25,15,0
+		.goto Felwood,37.0,49.0,15,0
+		.goto Felwood,37.4,49.1,15,0
+		.goto Felwood,39.8,53.0,15,0
+		.goto Felwood,41.0,57.3,15,0
+		.goto Felwood,43.4,74.4,15,0
+		.goto Felwood,46.75,83.08,40 >>Travel to |cRXP_FRIENDLY_Maybess Riverbreeze|r
+
+	step
+		.goto Felwood,46.75,83.08
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maybess Riverbreeze|r
+		.accept 5891
+		.turnin 5891
+		.target Maybess Riverbreeze
+		.skill enchanting,<205,1
+		.itemcount 11174,1
+
+	step
+		.goto Felwood,46.75,83.08
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maybess Riverbreeze|r
+		.accept 5889
+		.turnin 5889
+		.target Maybess Riverbreeze
+		.skill herbalism,<250,1
+		.itemcount 11514,4	
+
+	step
+		.goto Felwood,46.75,83.08
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maybess Riverbreeze|r
+		.accept 5887
+		.turnin 5887
+		.target Maybess Riverbreeze
+		.itemcount 11515,6
+		
+	step
+		.goto Felwood,46.75,83.08
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maybess Riverbreeze|r
+		.accept 5888
+		.turnin 5888
+		.target Maybess Riverbreeze
+		.skill mining,<200,1
+		.itemcount 11513,4	
+		
+	step
+		.goto Felwood,46.75,83.08
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maybess Riverbreeze|r
+		.accept 5890
+		.turnin 5890
+		.target Maybess Riverbreeze
+		.skill skinning,<250,1
+		.itemcount 11512,5	
+
+	step
+		.goto Felwood,51.18,82.22
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Greta Mosshoof|r
+		.turnin -5242
+		.target Greta Mosshoof			
+		
+	step
+		.goto Felwood,51.14,81.76
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kelek Skykeeper|r
+		.turnin -5128
+		.target Kelek Skykeeper	
+
+	step
+		#label Felwoodlast
+		.goto Felwood,51.35,82.01
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jessir Moonbow|r
+		.turnin -5385
+		.target Jessir Moonbow	
 
 --- Orgrimmar
 	
+	step
+		#completewith Orgrimmarlast
+		.zone Orgrimmar >>Take Portal or get summon to |cFFfa9602Orgrimmar|r
+		.zoneskip Orgrimmar
+
+	step
+		.goto Orgrimmar,37.70,87.90
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vehena|r
+		.accept 7833
+		.turnin 7833
+		.target Vehena
+		.itemcount 2592,60	
+
+	step
+		.goto Orgrimmar,37.70,87.90
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vehena|r
+		.accept 7834
+		.turnin 7834
+		.target Vehena
+		.itemcount 4306,60		
+		
+	step
+		.goto Orgrimmar,37.70,87.90
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vehena|r
+		.accept 7835
+		.turnin 7835
+		.target Vehena
+		.itemcount 4338,60	
+		
+	step
+		.goto Orgrimmar,37.70,87.90
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vehena|r
+		.accept 7836
+		.turnin 7836
+		.target Vehena
+		.itemcount 14047,60	
+		.isQuestTurnedIn 7833
+		.isQuestTurnedIn 7834
+		.isQuestTurnedIn 7835
+		
+	step
+		.goto Orgrimmar,35.0,38.3
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mokvar|r
+		.turnin -8978
+		.target Mokvar
+
+	step
+		.goto Orgrimmar,35.0,38.3
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mokvar|r
+		.accept 8927 << Druid
+		.accept 8938 << Hunter
+		.accept 8939 << Mage
+		.accept 8940 << Priest
+		.accept 8941 << Rogue
+		.accept 8942 << Shaman
+		.accept 8943 << Warlock
+		.accept 8944 << Warrior
+		.accept 10495 << Paladin
+		.turnin 8927 << Druid
+		.turnin 8938 << Hunter
+		.turnin 8939 << Mage
+		.turnin 8940 << Priest
+		.turnin 8941 << Rogue
+		.turnin 8942 << Shaman
+		.turnin 8943 << Warlock
+		.turnin 8944 << Warrior
+		.turnin 10495 << Paladin
+		.itemcount 16716,1 << Horde Druid
+		.itemcount 16717,1 << Horde Druid
+		.itemcount 16680,1 << Horde Hunter
+		.itemcount 16676,1 << Horde Hunter
+		.itemcount 16685,1 << Horde Mage
+		.itemcount 16684,1 << Horde Mage
+		.itemcount 16696,1 << Horde Priest 
+		.itemcount 16692,1 << Horde Priest
+		.itemcount 16713,1 << Horde Rogue
+		.itemcount 16712,1 << Horde Rogue
+		.itemcount 16673,1 << Horde Shaman
+		.itemcount 16672,1 << Horde Shaman
+		.itemcount 16702,1 << Horde Warlock 
+		.itemcount 16705,1 << Horde Warlock 
+		.itemcount 16736,1 << Horde Warrior
+		.itemcount 16737,1 << Horde Warrior
+		.itemcount 16723,1 << Horde Paladin
+		.itemcount 16724,1 << Horde Paladin
+		.isQuestTurnedIn 8978
+		.target Mokvar
+	
+	step
+		.goto Orgrimmar,35.0,38.3
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mokvar|r
+		.accept 8930
+		.target Mokvar
+		.isQuestTurnedIn 8927 << Druid
+		.isQuestTurnedIn 8938 << Hunter
+		.isQuestTurnedIn 8939 << Mage
+		.isQuestTurnedIn 8940 << Priest
+		.isQuestTurnedIn 8941 << Rogue
+		.isQuestTurnedIn 8942 << Shaman
+		.isQuestTurnedIn 8943 << Warlock
+		.isQuestTurnedIn 8944 << Warrior
+		.isQuestTurnedIn 10495 << Paladin
+
 	step
 		.goto Orgrimmar,34.27,39.35
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eitrigg|r
@@ -957,13 +1287,115 @@ step
 		.skipgossip
 
 	step
+		.use 18422 >>Click |T134153:0|t[Head of Onyxia] and accept |cRXP_LOOT_Victory for the Horde|r
+		.accept 7490
+		.itemcount 18422,1
+
+	step
+		.use 19002 >>Click |T134154:0|t[Head of Nefarian] and accept |cRXP_LOOT_The Lord of Blackrock|r
+		.accept 7783
+		.itemcount 19002,1		
+
+	step
 		.goto Orgrimmar,31.74,37.82
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thrall|r
 		.turnin -4941
+		.turnin -4004
+		.turnin -7490
+		.turnin -7783
+		.turnin -8485
 		.target Thrall
+
+	step
+		.goto Orgrimmar,31.74,37.82
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thrall|r
+		.accept 7491
+		.target Thrall
+		.isQuestTurnedIn 7490
+
+	step
+		.goto Orgrimmar,31.74,37.82
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thrall|r
+		.accept 7784
+		.target Thrall
+		.isQuestTurnedIn 7783	
 		
+	step << Shaman
+		.goto Orgrimmar,38.66,35.93
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sagorne Crestrider|r
+		.accept 7667
+		.turnin 7667
+		.target Sagorne Crestrider
+		.itemcount 12800,1
+		.itemcount 18335,1
+		
+	step
+		.goto Orgrimmar,63.61,51.22
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rashona Straglash|r
+		.accept 7826
+		.turnin 7826
+		.target Rashona Straglash
+		.itemcount 2592,60	
 
+	step
+		.goto Orgrimmar,63.61,51.22
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rashona Straglash|r
+		.accept 7827
+		.turnin 7827
+		.target Rashona Straglash
+		.itemcount 4306,60		
+		
+	step
+		.goto Orgrimmar,63.61,51.22
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rashona Straglash|r
+		.accept 7831
+		.turnin 7831
+		.target Rashona Straglash
+		.itemcount 4338,60	
+		
+	step
+		.goto Orgrimmar,63.61,51.22
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rashona Straglash|r
+		.accept 7824
+		.turnin 7824
+		.target Rashona Straglash
+		.itemcount 14047,60	
+		.isQuestTurnedIn 7826
+		.isQuestTurnedIn 7827
+		.isQuestTurnedIn 7831
 
+	step
+		.goto Orgrimmar,55.9,57.5,8,0
+		.goto Orgrimmar,56.26,46.68
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Zilzibin Drumlore|r
+		.turnin -4509
+		.target Zilzibin Drumlore
+
+	step
+		.goto Orgrimmar,55.9,57.5,8,0
+		.goto Orgrimmar,56.26,46.68
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Zilzibin Drumlore|r
+		.accept 4511
+		.target Zilzibin Drumlore
+		.isQuestTurnedIn 4509		
+
+	step
+		.goto Orgrimmar,51.70,75.49
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Overlord Runthak|r
+		.turnin -7491
+		.target Overlord Runthak
+
+	step
+		.goto Orgrimmar,50.93,75.67
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_High Overlord Saurfang|r
+		.turnin -7784
+		.target High Overlord Saurfang	
+
+	step
+		.goto Orgrimmar,49.58,69.15
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_High Overlord Saurfang|r
+		.turnin -4511
+		.target High Overlord Saurfang	
 
 --- Tarren Mill
 
