@@ -2,12 +2,6 @@ if RXPGuides == nil then
 	return
 end
 
-
----Stratholme
----Main Door:
----Eastern Plaguelands,30.9,20.2
----Stratholme,55.0,17.4
-
 RXPGuides.RegisterGuide([[
 #classic
 #tbc
@@ -1027,7 +1021,7 @@ step
 		.goto Moonglade,35.7,72.4,15,0
 		.goto Moonglade,40.00,43.59,15,0
 		.goto Moonglade,42.13,34.94,5 >>Travel to |cFFfa9602Nighthaven|r
-		.subzoneskip Nighthaven
+		.subzoneskip 2361
 		.subzoneskip 2362
 
 	step
@@ -1398,6 +1392,48 @@ step
 		.turnin -4511
 		.target High Overlord Saurfang	
 
+--- Silvermoon City
+
+	step <<tbc
+		#completewith Silvermoonlast
+		.zone Silvermoon City >>Take Portal or get summon to |cFFfa9602Silvermoon City|r
+		.zoneskip Silvermoon City
+
+	step <<tbc
+		.goto Silvermoon City,56.6,52.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sorim Lightsong|r
+		.accept 10359
+		.turnin 10359
+		.target Sorim Lightsong
+		.itemcount 2592,60	
+
+	step <<tbc
+		.goto Silvermoon City,56.6,52.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sorim Lightsong|r
+		.accept 10360
+		.turnin 10360
+		.target Sorim Lightsong
+		.itemcount 4306,60		
+		
+	step <<tbc
+		.goto Silvermoon City,56.6,52.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sorim Lightsong|r
+		.accept 10361
+		.turnin 10361
+		.target Sorim Lightsong
+		.itemcount 4338,60	
+		
+	step <<tbc
+		.goto Silvermoon City,56.6,52.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sorim Lightsong|r
+		.accept 10362
+		.turnin 10362
+		.target Sorim Lightsong
+		.itemcount 14047,60	
+		.isQuestTurnedIn 10359
+		.isQuestTurnedIn 10360
+		.isQuestTurnedIn 10361		
+
 --- Tarren Mill
 
 	step
@@ -1521,13 +1557,17 @@ step
 	step
 		.goto Undercity,48.80,69.28
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Master Apothecary Faranell|r
-		.turnin 2938
+		.turnin -2938
 		.target Master Apothecary Faranell
 
---- Go through Portal
-
 	step
-		+test
+		.goto Undercity,48.74,71.36
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Chemist Cuely|r
+		.turnin 3570
+		.target Chemist Cuely
+		.isQuestAvailable 3570
+
+--- Go through Portal
 
 	step <<tbc
 		.goto Blasted Lands,58.0,55.8
@@ -1542,6 +1582,5 @@ step
 
 	step <<tbc
 		.zone Hellfire Peninsula >> Go through the Portal to |cFFfa9602Hellfire Peninsula|r and enjoy leveling! :)
-
 
 ]])
