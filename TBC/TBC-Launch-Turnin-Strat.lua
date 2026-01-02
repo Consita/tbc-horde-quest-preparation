@@ -1746,8 +1746,6 @@ step
 		.complete 4771,2
 		.isOnQuest 4771
 
-
-
 	step
 		#completewith EPL2
 		.zone Eastern Plaguelands >> Hearth to |cFFfa9602Lights Hope Chapel|r
@@ -1773,6 +1771,33 @@ step
 		.target Leonid Barthalomew the Revered	
 		.isQuestTurnedIn 5462		
 
+	step
+		.goto Eastern Plaguelands,14.45,33.74
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Egan|r
+		.turnin -5281
+		.target Egan
+
+	step
+		.goto Eastern Plaguelands,14.45,33.74
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Egan|r
+		.accept 5282
+		.target Egan
+		.isQuestTurnedIn 5281		
+
+	step
+		.goto Eastern Kingdoms,55.06,17.51
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anthion Harmon|r
+		.use 22115 >>|cRXP_WARN_Use the|r |T133878:0|t[Extra-Dimensional Ghost Revealer] |cRXP_WARN_to reveal|r |cRXP_FRIENDLY_Anthion|r
+		.turnin -8930
+		.target Anthion Harmon
+
+	step
+		.goto Eastern Kingdoms,55.06,17.51
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anthion Harmon|r
+		.use 22115 >>|cRXP_WARN_Use the|r |T133878:0|t[Extra-Dimensional Ghost Revealer] |cRXP_WARN_to reveal|r |cRXP_FRIENDLY_Anthion|r
+		.accept 8945
+		.target Anthion Harmon
+		.isQuestTurnedIn 8930		
 
 strat living
 
@@ -1992,6 +2017,293 @@ strat undead
 		.turnin 3570
 		.target Chemist Cuely
 		.isQuestAvailable 3570
+
+--- STV
+
+	step
+		.zone Stranglethorn Vale >> Get summon to |cFFfa9602Stranglethorn Vale|r
+		.zoneskip Stranglethorn Vale
+		
+	step
+		.use 19802
+		.accept 8183
+		
+	step	
+		.goto Stranglethorn Vale,15.0,15.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Molthor|r
+		.turnin -8182
+		.turnin -8183
+		.target Molthor
+
+	step	
+		.goto Stranglethorn Vale,15.2,15.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Exzhal|r
+		.turnin -8201	
+		.target Exzhal	
+		
+	step
+		.goto Stranglethorn Vale,14.4,15.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vinchaxa|r
+		.accept 8240
+		.target Vinchaxa
+
+	step
+		.goto Stranglethorn Vale,13.4,15.1
+		.goto Stranglethorn Vale,13.4,15.1 >> Got to the altar and destroy any Bijou
+		>>|cRXP_WARN_Destroy any Bijou|r
+		.complete 8240,1
+
+	step
+		.goto Stranglethorn Vale,14.4,15.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vinchaxa|r
+		.turnin -8240
+		.target Vinchaxa
+		
+	step << Rogue
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r
+		.accept 8141
+		.turnin 8141
+		.accept 8142
+		.turnin 8142
+		.accept 8143
+		.turnin 8143	
+		.accept 8144
+		.turnin 8144	
+		.accept 8063
+		.turnin 8063	
+		.accept 8072
+		.turnin 8072	
+		.accept 8073
+		.turnin 8073	
+		.target Falthir the Sightless
+		
+	step << Hunter
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r
+		.accept 8145
+		.turnin 8145
+		.accept 8146
+		.turnin 8146
+		.accept 8147
+		.turnin 8147	
+		.accept 8148
+		.turnin 8148	
+		.accept 8066
+		.turnin 8066	
+		.accept 8062
+		.turnin 8062	
+		.accept 8067
+		.turnin 8067	
+		.target Falthir the Sightless	
+		
+	step << Paladin
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r
+		.accept 8045
+		.turnin 8045
+		.accept 8046
+		.turnin 8046
+		.accept 8047
+		.turnin 8047	
+		.accept 8048
+		.turnin 8048	
+		.accept 8053
+		.turnin 8053	
+		.accept 8054
+		.turnin 8054	
+		.accept 8055
+		.turnin 8055	
+		.target Jin'rokh the Breaker
+		
+	step << Warrior
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r
+		.accept 8041
+		.turnin 8041
+		.accept 8042
+		.turnin 8042
+		.accept 8043
+		.turnin 8043
+		.accept 8044
+		.turnin 8044
+		.accept 8058
+		.turnin 8058	
+		.accept 8078
+		.turnin 8078	
+		.accept 8079
+		.turnin 8079
+		.target Jin'rokh the Breaker
+		
+	step << Warlock
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r
+		.accept 8106
+		.turnin 8106
+		.accept 8107
+		.turnin 8107
+		.accept 8108
+		.turnin 8108	
+		.accept 8109
+		.turnin 8109	
+		.accept 8076
+		.turnin 8076	
+		.accept 8077
+		.turnin 8077	
+		.accept 8059
+		.turnin 8059	
+		.target Al'tabim the All-Seeing
+
+	step << Priest
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r
+		.accept 8049
+		.turnin 8049
+		.accept 8050
+		.turnin 8050
+		.accept 8051
+		.turnin 8051	
+		.accept 8052
+		.turnin 8052	
+		.accept 8070
+		.turnin 8070	
+		.accept 8071
+		.turnin 8071	
+		.accept 8061
+		.turnin 8061
+		.target Al'tabim the All-Seeing	
+
+	step << Mage
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r
+		.accept 8101
+		.turnin 8101
+		.accept 8102
+		.turnin 8102
+		.accept 8103
+		.turnin 8103	
+		.accept 8104
+		.turnin 8104	
+		.accept 8068
+		.turnin 8068	
+		.accept 8069
+		.turnin 8069	
+		.accept 8060
+		.turnin 8060	
+		.target Al'tabim the All-Seeing
+
+	step << Shaman
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r
+		.accept 8116
+		.turnin 8116
+		.accept 8117
+		.turnin 8117
+		.accept 8118
+		.turnin 8118	
+		.accept 8119
+		.turnin 8119	
+		.accept 8074
+		.turnin 8074	
+		.accept 8056
+		.turnin 8056	
+		.accept 8075
+		.turnin 8075
+		.target Maywiki of Zuldazar
+
+	step << Druid
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r
+		.accept 8110
+		.turnin 8110
+		.accept 8111
+		.turnin 8111
+		.accept 8112
+		.turnin 8112	
+		.accept 8113
+		.turnin 8113	
+		.accept 8064
+		.turnin 8064	
+		.accept 8057
+		.turnin 8057	
+		.accept 8065
+		.turnin 8065
+		.target Maywiki of Zuldazar
+
+--- Thunder Bluff
+
+	step
+		.zone Thunder Bluff >> Take Portal to |cFFfa9602Thunder Bluff|r
+		.zoneskip Thunder Bluff
+
+	step
+		.goto Thunder Bluff,43.2,42.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rumstag Proudstrider|r
+		.accept 7820
+		.turnin 7820
+		.accept 7821
+		.turnin 7821
+		.accept 7822
+		.turnin 7822
+		.accept 7823
+		.turnin 7823
+		.target Rumstag Proudstrider
+
+--- Swamp of Sorrows		
+
+	step
+		.zone Swamp of Sorrows >> Take Portal to |cFFfa9602Swamp of Sorrows|r
+		.zoneskip Swamp of Sorrows
+
+	step
+		.goto Swamp of Sorrows,34.2,66.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Fallen Hero of the Horde|r
+		.turnin -2681
+		.accept 2702
+		.target Fallen Hero of the Horde
+
+	step
+		.goto Swamp of Sorrows,33.6,66.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Corporal Thund Splithoof|r
+		.turnin -2702
+		.accept 2701
+		.target Corporal Thund Splithoof
+		
+	step	
+		.goto Swamp of Sorrows,33.5,66.0
+		>>Click |cRXP_PICK_Spectral Lockbox|r
+		.turnin -2701
+
+--- Blasted Lands
+
+	step
+		#completewith next
+		.zone Blasted Lands >> Travel to |cFFfa9602Blasted Lands|r
+		.zoneskip Blasted Lands
+
+	step
+		.goto Blasted Lands,50.6,14.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bloodmage Drazial|r
+		.accept 2583
+		.turnin 2583
+		.accept 2603
+		.turnin 2603
+		.accept 2601
+		.turnin 2601
+		.accept 2585
+		.turnin 2585
+		.accept 2581
+		.turnin 2581
+		.target Bloodmage Drazial
+
+	step
+		.goto Blasted Lands,51.8,35.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kum'isha the Collector|r
+		.accept 2521
+		.turnin 2521
+		.accept 3501
+		.turnin 3501
+		.target Kum'isha the Collector
 
 --- Go through Portal
 
