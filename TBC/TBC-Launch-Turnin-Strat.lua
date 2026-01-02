@@ -157,6 +157,7 @@ step
 		.itemcount 20404,10	
 
 	step
+		#completewith RutgarTurnin
 		.use 20461 >> Click |T133463:0|t[Brann Bronzebeard's Lost Letter] and accept |cRXP_LOOT_Brann Bronzebeard's Lost Letter|r
 		.accept 8308
 		.itemcount 20461,1
@@ -170,6 +171,7 @@ step
 		.target Frankal Stonebridge
 
 	step
+		#label RutgarTurnin
 		.goto Silithus,41.3,88.5
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rutgar|r
 		.turnin -8308
@@ -1432,7 +1434,431 @@ step
 		.itemcount 14047,60	
 		.isQuestTurnedIn 10359
 		.isQuestTurnedIn 10360
-		.isQuestTurnedIn 10361		
+		.isQuestTurnedIn 10361	
+
+--- Azshara
+
+	step
+		#completewith Azsharalast
+		.zone Azshara >> Get summon to |cFFfa9602Azshara|r
+		.zoneskip Azshara
+
+	step
+		.goto Azshara,79.2,73.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
+		.turnin 6822
+		.accept 6823
+		.target Duke Hydraxis		
+		.isQuestComplete 6822
+
+	step
+		.goto Azshara,79.2,73.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
+		.turnin 6823
+		.target Duke Hydraxis	
+		.reputation 749,honored,<0,1	
+		.isQuestTurnedIn 6822			
+
+	step
+		.goto Azshara,79.2,73.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
+		.turnin 6824
+		.accept 7486
+		.target Duke Hydraxis		
+		.isQuestComplete 6824
+	
+	step
+		#label Azsharalast
+		.goto Azshara,79.2,74.8
+		>>Click the |cRXP_PICK_Hydraxis' Coffer|r and turn in |cRXP_LOOT_A Hero's Reward|r
+		.turnin 7486
+		.isQuestTurnedIn 6824
+
+--- Go to LHC/EPL	
+
+	step
+		#completewith EPL1
+		.zone Eastern Plaguelands >> Hearth to |cFFfa9602Lights Hope Chapel|r
+		.use 6948
+		.zoneskip Eastern Plaguelands
+		
+	step	
+		.goto Eastern Plaguelands,81.6,60.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Quartermaster Miranda Breechlock|r
+		.accept 5513
+		.turnin 5513
+		.target Quartermaster Miranda Breechlock
+		.itemcount 12844,10
+		.reputation 529,revered,<0,1
+
+	step	
+		.goto Eastern Plaguelands,81.6,60.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Quartermaster Miranda Breechlock|r
+		.accept 5517
+		.turnin 5517
+		.target Quartermaster Miranda Breechlock	
+		.itemcount 12844,25	
+		.reputation 529,exalted,<0,1
+
+	step	
+		.goto Eastern Plaguelands,81.4,59.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Nicholas Zverenhoff|r	
+		.turnin -5251
+		.turnin -6030
+		.target Duke Nicholas Zverenhoff		
+
+	step	
+		.goto Eastern Plaguelands,81.00,59.61
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Craftsman Wilhelm|r	
+		.accept 9232
+		.turnin 9232
+		.target Craftsman Wilhelm
+		.reputation 529,revered,<0,1
+		.itemcount 22682,2
+		.itemcount 7080,2
+		.itemcount 12361,2
+		.isQuestTurnedIn 9233
+
+	step	
+		.goto Eastern Plaguelands,81.4,58.5
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rayne|r	
+		.accept 9136
+		.turnin 9136
+		.target Rayne
+		.itemcount 22529,30
+
+	step	
+		.goto Eastern Plaguelands,81.4,58.5
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rohan the Assassin|r	
+		.accept 9126
+		.turnin 9126
+		.target Rohan the Assassin		
+		.itemcount 22526,30
+
+	step	
+		.goto Eastern Plaguelands,81.5,58.5
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Huntsman Leopold|r	
+		.accept 9124
+		.turnin 9124
+		.target Huntsman Leopold		
+		.itemcount 22525,30
+
+	step	
+		.goto Eastern Plaguelands,81.5,58.3
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Archmage Angela Dosantos|r	
+		.accept 9128
+		.turnin 9128
+		.target Archmage Angela Dosantos
+		.itemcount 22527,30
+
+	step
+		#completewith next
+		.use 22520 >> Click |T134514:0|t[The Phylactery of Kel'Thuzad] and accept |cRXP_LOOT_The Fall of Kel'Thuzad|r
+		.accept 9120
+		.itemcount 22520,1
+
+	step	
+		.goto Eastern Plaguelands,81.5,58.1
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Father Inigo Montoy|r	
+		.turnin 9120	
+		.target Father Inigo Montoy	
+		.itemcount 22520,1	
+
+	step	
+		.goto Eastern Plaguelands,81.8,58.1
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Korfax, Champion of the Light|r	
+		.accept 9131
+		.turnin 9131
+		.target Korfax, Champion of the Light
+		.itemcount 22528,30
+
+	step	
+		.goto Eastern Plaguelands,81.8,58.1
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Korfax, Champion of the Light|r	
+		.turnin -9229
+		.target Korfax, Champion of the Light
+		.isQuestComplete 9033	
+		
+	step	
+		.goto Eastern Plaguelands,81.8,58.1
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Korfax, Champion of the Light|r	
+		.accept 9230
+		.turnin 9230
+		.target Korfax, Champion of the Light
+		.isQuestComplete 9229
+		.itemcount 22682,1
+		.itemcount 12361,1
+		.itemcount 12360,1
+		
+	step	
+		.goto Eastern Plaguelands,81.7,57.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Leonid Barthalomew the Revered|r	
+		.accept 5243
+		.turnin 5243
+		.target Leonid Barthalomew the Revered
+		.itemcount 13180,5	
+
+	step	
+		.goto Eastern Plaguelands,81.7,57.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Leonid Barthalomew the Revered|r	
+		.turnin -5522
+		.target Leonid Barthalomew the Revered		
+
+	step	
+		.goto Eastern Plaguelands,81.7,57.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Leonid Barthalomew the Revered|r	
+		.accept 5531
+		.target Leonid Barthalomew the Revered	
+		.isQuestTurnedIn 5522	
+
+	step	
+		.goto Eastern Plaguelands,80.6,58.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Smokey LaRue|r	
+		.accept 6026
+		.turnin 6026
+		.target Smokey LaRue
+		.itemcount 11128,1
+		.itemcount 12359,2
+		.itemcount 10562,8
+		.itemcount 10560,8
+
+	step	
+		.goto Eastern Plaguelands,81.0,57.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dispatch Commander Metz|r	
+		.accept 9141
+		.turnin 9141
+		.target Dispatch Commander Metz		
+		.itemcount 12844,1
+
+	step	
+		.goto Eastern Plaguelands,80.0,57.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Emissary Gormok|r	
+		.turnin -9665
+		.target Emissary Gormok
+
+	step	
+		.goto Eastern Plaguelands,81.5,59.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r	
+		.turnin -5529
+		.turnin -5531
+		.accept 5212
+		.target Betina Bigglezink
+
+	step	
+		.goto Eastern Plaguelands,81.5,59.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r	
+		.accept 4771
+		.target Betina Bigglezink
+		.isQuestTurnedIn 5531		
+
+	step
+		.goto Eastern Plaguelands,79.60,63.87
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Caretaker Alen|r
+		.accept 5281
+		.target Caretaker Alen
+
+	step
+		.goto Eastern Plaguelands,36.4,90.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pamela Redpath|r
+		.turnin -5721
+		.target Pamela Redpath
+
+	step
+		.goto Eastern Plaguelands,36.4,90.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pamela Redpath|r
+		.accept 5942
+		.target Pamela Redpath
+		.isQuestTurnedIn 5721	
+		
+	step	
+		.goto Eastern Plaguelands,36.2,90.4
+		>>Click |cRXP_PICK_Joseph's Chest|r
+		.turnin -5942		
+
+	step	
+		.goto Eastern Plaguelands,28.1,86.1
+		>>Click |cRXP_PICK_Mound of Dirt|r
+		.turnin -6024
+		
+	step	
+		.goto Eastern Plaguelands,26.6,74.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nathanos Blightcaller|r
+		.turnin -6148
+		.target Nathanos Blightcaller
+		
+	step	
+		.goto Eastern Plaguelands,26.6,74.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nathanos Blightcaller|r
+		.accept 6163
+		.target Nathanos Blightcaller	
+		.isQuestTurnedIn 6136		
+
+	step	
+		#label EPL1
+		.goto Eastern Plaguelands,7.6,43.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tirion Fordring|r
+		.accept 5846
+		.target Tirion Fordring
+		.isQuestTurnedIn 5845
+
+	step
+		.goto Western Plaguelands,62.59,58.55
+		>>Click the |cRXP_PICK_Scourge Cauldron|r
+		.accept 5236
+		.isQuestTurnedIn 5235
+
+	step
+		.goto Western Plaguelands,53.73,64.66
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mulgris|r
+		.accept 4987
+		.target Mulgris Deepriver	
+		.isQuestTurnedIn 4985
+
+	step
+		.goto Western Plaguelands,65.7,75.4
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Artist Renfray|r
+		.turnin -5846
+		.target Artist Renfray
+
+	step
+		.goto Western Plaguelands,65.7,75.4
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Artist Renfray|r
+		.accept 5848	
+		.target Artist Renfray
+		.isQuestTurnedIn 5846	
+
+	step
+		.goto Western Plaguelands,70.6,74.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Magistrate Marduke|r
+		.equip 13,206382 >> |cRXP_WARN_Equip the|r |T134337:0|t|cRXP_LOOT_[Spectral Essence]|r
+		.accept 5462
+		.target Magistrate Marduke
+		.isQuestTurnedIn 5461
+
+	step
+		#completewith next
+		.goto 1415,52.8,26.4
+		.subzone 2057 >>Enter |cFFfa9602Scholomance|r
+
+	step
+		.use 12368 >>Place |T132596:0|t[Dawn's Gambit] in the Viewing Room of |cFFfa9602Scholomance|r and kill |cRXP_ENEMY_Vectus|r
+		.complete 4771,1
+		.complete 4771,2
+		.isOnQuest 4771
+
+
+
+	step
+		#completewith EPL2
+		.zone Eastern Plaguelands >> Hearth to |cFFfa9602Lights Hope Chapel|r
+		.use 6948
+		.zoneskip Eastern Plaguelands
+
+	step	
+		.goto Eastern Plaguelands,81.5,59.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r	
+		.turnin -4771
+		.target Betina Bigglezink
+
+	step	
+		.goto Eastern Plaguelands,81.7,57.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Leonid Barthalomew the Revered|r	
+		.turnin -5462
+		.target Leonid Barthalomew the Revered	
+		
+	step	
+		.goto Eastern Plaguelands,81.7,57.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Leonid Barthalomew the Revered|r	
+		.accept 5463
+		.target Leonid Barthalomew the Revered	
+		.isQuestTurnedIn 5462		
+
+
+strat living
+
+	step
+		#completewith EPL3
+		.zone Eastern Plaguelands >> Hearth to |cFFfa9602Lights Hope Chapel|r
+		.use 6948
+		.zoneskip Eastern Plaguelands
+
+	step
+		#completewith next
+		.use 13250 >> Click |T136183:0|t[Head of Balnazzar] and accept |cRXP_LOOT_The Truth Comes Crashing Down|r
+		.accept 5262
+		.itemcount 13250,1
+
+	step	
+		.goto Eastern Plaguelands,81.4,59.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Nicholas Zverenhoff|r	
+		.turnin 5262
+		.accept 5263
+		.target Duke Nicholas Zverenhoff	
+		.itemcount 13250,1
+
+	step	
+		.goto Eastern Plaguelands,81.5,59.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r	
+		.turnin -5212
+		.accept 5213
+		.target Betina Bigglezink
+	
+	step	
+		#label EPL3
+		.goto Eastern Plaguelands,80.6,58.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Smokey LaRue|r	
+		.turnin -5214
+		.target Smokey LaRue		
+				
+
+
+
+strat undead
+
+	step
+		#completewith EPL4
+		.zone Eastern Plaguelands >> Hearth to |cFFfa9602Lights Hope Chapel|r
+		.use 6948
+		.zoneskip Eastern Plaguelands
+
+	step	
+		.goto Eastern Plaguelands,81.4,59.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Nicholas Zverenhoff|r	
+		.turnin -5263
+		.target Duke Nicholas Zverenhoff	
+
+	step	
+		.goto Eastern Plaguelands,81.4,59.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Nicholas Zverenhoff|r	
+		.accept 5264
+		.target Duke Nicholas Zverenhoff
+		.isQuestTurnedIn 5263
+
+	step	
+		.goto Eastern Plaguelands,81.5,59.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r	
+		.turnin -5213
+		.target Betina Bigglezink
+
+	step	
+		.goto Eastern Plaguelands,81.7,58.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lord Maxwell Tyrosus|r
+		.target Lord Maxwell Tyrosus	
+		.turnin -5264
+		.accept 5265
+		.isQuestTurnedIn 5263	
+		
+	step	
+		.goto Eastern Plaguelands,81.8,58.0
+		>>Click |cRXP_PICK_the Argent Hold|r
+		.turnin -5265	
+		
+	step	
+		#label EPL4
+		.goto Eastern Plaguelands,81.7,57.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Leonid Barthalomew the Revered|r	
+		.turnin -5464
+		.target Leonid Barthalomew the Revered		
 
 --- Tarren Mill
 
