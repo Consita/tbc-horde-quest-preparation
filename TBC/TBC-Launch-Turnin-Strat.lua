@@ -2021,19 +2021,29 @@ strat undead
 --- STV
 
 	step
+		#completewith Stranglethornlast
 		.zone Stranglethorn Vale >> Get summon to |cFFfa9602Stranglethorn Vale|r
 		.zoneskip Stranglethorn Vale
-		
-	step
-		.use 19802
-		.accept 8183
 		
 	step	
 		.goto Stranglethorn Vale,15.0,15.2
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Molthor|r
 		.turnin -8182
-		.turnin -8183
+		.target Molthor	
+
+	step
+		#completewith next
+		.use 19802 >>Click |T134085:0|t[Heart of Hakkar] and accept |cRXP_LOOT_The Heart of Hakkar|r
+		.accept 8183
+		.itemcount 19802,1
+		
+	step	
+		.goto Stranglethorn Vale,15.0,15.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Molthor|r
+		>>|cRXP_WARN_This starts a 1:30min RP, so try to have everyone turn this in at the same time, before the RP|r
+		.turnin 8183
 		.target Molthor
+		.itemcount 19802,1
 
 	step	
 		.goto Stranglethorn Vale,15.2,15.6
@@ -2048,10 +2058,10 @@ strat undead
 		.target Vinchaxa
 
 	step
-		.goto Stranglethorn Vale,13.4,15.1
 		.goto Stranglethorn Vale,13.4,15.1 >> Got to the altar and destroy any Bijou
 		>>|cRXP_WARN_Destroy any Bijou|r
 		.complete 8240,1
+		.isOnQuest 8240
 
 	step
 		.goto Stranglethorn Vale,14.4,15.8
