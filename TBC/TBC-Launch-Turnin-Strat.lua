@@ -1239,24 +1239,24 @@ step
 		.turnin 8943 << Warlock
 		.turnin 8944 << Warrior
 		.turnin 10495 << Paladin
-		.itemcount 16716,1 << Horde Druid
-		.itemcount 16717,1 << Horde Druid
-		.itemcount 16680,1 << Horde Hunter
-		.itemcount 16676,1 << Horde Hunter
-		.itemcount 16685,1 << Horde Mage
-		.itemcount 16684,1 << Horde Mage
-		.itemcount 16696,1 << Horde Priest 
-		.itemcount 16692,1 << Horde Priest
-		.itemcount 16713,1 << Horde Rogue
-		.itemcount 16712,1 << Horde Rogue
-		.itemcount 16673,1 << Horde Shaman
-		.itemcount 16672,1 << Horde Shaman
-		.itemcount 16702,1 << Horde Warlock 
-		.itemcount 16705,1 << Horde Warlock 
-		.itemcount 16736,1 << Horde Warrior
-		.itemcount 16737,1 << Horde Warrior
-		.itemcount 16723,1 << Horde Paladin
-		.itemcount 16724,1 << Horde Paladin
+		.itemcount 16716,1 << Druid
+		.itemcount 16717,1 << Druid
+		.itemcount 16680,1 << Hunter
+		.itemcount 16676,1 << Hunter
+		.itemcount 16685,1 << Mage
+		.itemcount 16684,1 << Mage
+		.itemcount 16696,1 << Priest
+		.itemcount 16692,1 << Priest
+		.itemcount 16713,1 << Rogue
+		.itemcount 16712,1 << Rogue
+		.itemcount 16673,1 << Shaman
+		.itemcount 16672,1 << Shaman
+		.itemcount 16702,1 << Warlock 
+		.itemcount 16705,1 << Warlock 
+		.itemcount 16736,1 << Warrior
+		.itemcount 16737,1 << Warrior
+		.itemcount 16723,1 << Paladin
+		.itemcount 16724,1 << Paladin
 		.isQuestTurnedIn 8978
 		.target Mokvar
 	
@@ -2012,6 +2012,7 @@ strat undead
 		.target Master Apothecary Faranell
 
 	step
+		#label Undercitylast
 		.goto Undercity,48.74,71.36
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Chemist Cuely|r
 		.turnin 3570
@@ -2058,8 +2059,17 @@ strat undead
 		.target Vinchaxa
 
 	step
-		.goto Stranglethorn Vale,13.4,15.1 >> Got to the altar and destroy any Bijou
-		>>|cRXP_WARN_Destroy any Bijou|r
+		.goto Stranglethorn Vale,13.4,15.1 
+		>> Got to the altar and destroy any Bijou
+		.use 19708 >>|cRXP_WARN_Destroy any Bijou|r
+		.use 19713
+		.use 19715
+		.use 19711
+		.use 19710
+		.use 19712
+		.use 19707
+		.use 19714
+		.use 19709
 		.complete 8240,1
 		.isOnQuest 8240
 
@@ -2068,200 +2078,602 @@ strat undead
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vinchaxa|r
 		.turnin -8240
 		.target Vinchaxa
-		
+
 	step << Rogue
 		.goto Stranglethorn Vale,14.0,13.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r
 		.accept 8141
 		.turnin 8141
+		.target Falthir the Sightless
+		.reputation 270,friendly,<0,1
+
+	step << Rogue
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r
 		.accept 8142
 		.turnin 8142
+		.target Falthir the Sightless
+		.reputation 270,honored,<0,1	
+		
+	step << Rogue
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r
 		.accept 8143
-		.turnin 8143	
+		.turnin 8143
+		.target Falthir the Sightless
+		.reputation 270,revered,<0,1	
+		
+	step << Rogue
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r	
 		.accept 8144
-		.turnin 8144	
+		.turnin 8144
+		.target Falthir the Sightless
+		.reputation 270,exalted,<0,1	
+		
+	step << Rogue
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r	
 		.accept 8063
-		.turnin 8063	
+		.turnin 8063
+		.target Falthir the Sightless
+		.reputation 270,friendly,>=1
+		.itemcount 19717,1
+
+	step << Rogue
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r	
 		.accept 8072
-		.turnin 8072	
+		.turnin 8072
+		.target Falthir the Sightless
+		.reputation 270,honored,>=1
+		.itemcount 19719,1
+
+	step << Rogue
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r	
 		.accept 8073
 		.turnin 8073	
 		.target Falthir the Sightless
-		
+		.reputation 270,revered,>=1
+		.itemcount 19724,1
+
 	step << Hunter
 		.goto Stranglethorn Vale,14.0,13.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r
 		.accept 8145
 		.turnin 8145
+		.target Falthir the Sightless
+		.reputation 270,friendly,<0,1	
+		
+	step << Hunter
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r
 		.accept 8146
 		.turnin 8146
+		.target Falthir the Sightless
+		.reputation 270,honored,<0,1	
+		
+	step << Hunter
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r
 		.accept 8147
-		.turnin 8147	
+		.turnin 8147
+		.target Falthir the Sightless
+		.reputation 270,revered,<0,1	
+		
+	step << Hunter
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r	
 		.accept 8148
-		.turnin 8148	
-		.accept 8066
-		.turnin 8066	
+		.turnin 8148
+		.target Falthir the Sightless
+		.reputation 270,exalted,<0,1
+		
+	step << Hunter
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r		
 		.accept 8062
-		.turnin 8062	
+		.turnin 8062
+		.target Falthir the Sightless
+		.reputation 270,friendly,>=1
+		.itemcount 19716,1	
+		
+	step << Hunter
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r		
+		.accept 8066
+		.turnin 8066
+		.target Falthir the Sightless
+		.reputation 270,honored,>=1
+		.itemcount 19721,1
+	
+	step << Hunter
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r		
 		.accept 8067
 		.turnin 8067	
-		.target Falthir the Sightless	
-		
+		.target Falthir the Sightless
+		.reputation 270,revered,>=1
+		.itemcount 19724,1	
+
 	step << Paladin
 		.goto Stranglethorn Vale,15.2,14.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r
 		.accept 8045
-		.turnin 8045
+		.turnin 8045	
+		.reputation 270,friendly,<0,1
+		.target Jin'rokh the Breaker
+
+	step << Paladin
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r
 		.accept 8046
 		.turnin 8046
+		.reputation 270,honored,<0,1
+		.target Jin'rokh the Breaker	
+		
+	step << Paladin
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r
 		.accept 8047
-		.turnin 8047	
+		.turnin 8047
+		.reputation 270,revered,<0,1
+		.target Jin'rokh the Breaker
+		
+	step << Paladin
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r	
 		.accept 8048
-		.turnin 8048	
+		.turnin 8048
+		.reputation 270,exalted,<0,1
+		.target Jin'rokh the Breaker		
+		
+	step << Paladin
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r		
 		.accept 8053
-		.turnin 8053	
+		.turnin 8053
+		.target Jin'rokh the Breaker
+		.reputation 270,friendly,<0,1
+		.itemcount 19716,1
+
+	step << Paladin
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r		
 		.accept 8054
-		.turnin 8054	
+		.turnin 8054
+		.target Jin'rokh the Breaker
+		.reputation 270,honored,<0,1
+		.itemcount 19721,1		
+
+	step << Paladin
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r			
 		.accept 8055
 		.turnin 8055	
 		.target Jin'rokh the Breaker
-		
+		.reputation 270,revered,<0,1
+		.itemcount 19722,1
+
 	step << Warrior
 		.goto Stranglethorn Vale,15.2,14.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r
 		.accept 8041
 		.turnin 8041
+		.target Jin'rokh the Breaker
+		.reputation 270,friendly,<0,1
+
+	step << Warrior
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r
 		.accept 8042
 		.turnin 8042
+		.target Jin'rokh the Breaker
+		.reputation 270,honored,<0,1
+		
+	step << Warrior
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r
 		.accept 8043
 		.turnin 8043
+		.target Jin'rokh the Breaker
+		.reputation 270,revered,<0,1
+		
+	step << Warrior
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r
 		.accept 8044
 		.turnin 8044
+		.target Jin'rokh the Breaker
+		.reputation 270,exalted,<0,1		
+				
+	step << Warrior
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r
 		.accept 8058
-		.turnin 8058	
+		.turnin 8058
+		.target Jin'rokh the Breaker
+		.reputation 270,friendly,<0,1
+		.itemcount 19717,1
+		
+	step << Warrior
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r	
 		.accept 8078
-		.turnin 8078	
+		.turnin 8078
+		.target Jin'rokh the Breaker
+		.reputation 270,honored,<0,1
+		.itemcount 19719,1
+
+	step << Warrior
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r		
 		.accept 8079
 		.turnin 8079
 		.target Jin'rokh the Breaker
+		.reputation 270,revered,<0,1
+		.itemcount 19723,1
 		
 	step << Warlock
 		.goto Stranglethorn Vale,15.2,16.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r
 		.accept 8106
 		.turnin 8106
+		.target Al'tabim the All-Seeing
+		.reputation 270,friendly,<0,1
+
+	step << Warlock
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r
 		.accept 8107
 		.turnin 8107
+		.target Al'tabim the All-Seeing
+		.reputation 270,honored,<0,1
+
+	step << Warlock
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r
 		.accept 8108
 		.turnin 8108	
+		.target Al'tabim the All-Seeing
+		.reputation 270,revered,<0,1
+
+	step << Warlock
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r	
 		.accept 8109
-		.turnin 8109	
-		.accept 8076
-		.turnin 8076	
-		.accept 8077
-		.turnin 8077	
+		.turnin 8109
+		.target Al'tabim the All-Seeing
+		.reputation 270,exalted,<0,1
+
+	step << Warlock
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r	
 		.accept 8059
 		.turnin 8059	
 		.target Al'tabim the All-Seeing
+		.reputation 270,friendly,>=1
+		.itemcount 19718,1
 
+	step << Warlock
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r		
+		.accept 8076
+		.turnin 8076
+		.target Al'tabim the All-Seeing
+		.reputation 270,honored,>=1
+		.itemcount 19720,1
+
+	step << Warlock
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r		
+		.accept 8077
+		.turnin 8077		
+		.target Al'tabim the All-Seeing
+		.reputation 270,revered,>=1
+		.itemcount 19723,1
+		
 	step << Priest
 		.goto Stranglethorn Vale,15.2,16.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r
 		.accept 8049
 		.turnin 8049
+		.target Al'tabim the All-Seeing
+		.reputation 270,friendly,<0,1
+
+	step << Priest
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r
 		.accept 8050
 		.turnin 8050
+		.target Al'tabim the All-Seeing
+		.reputation 270,honored,<0,1
+
+	step << Priest
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r
 		.accept 8051
-		.turnin 8051	
+		.turnin 8051
+		.target Al'tabim the All-Seeing
+		.reputation 270,revered,<0,1
+
+	step << Priest
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r	
 		.accept 8052
-		.turnin 8052	
-		.accept 8070
-		.turnin 8070	
-		.accept 8071
-		.turnin 8071	
+		.turnin 8052
+		.target Al'tabim the All-Seeing
+		.reputation 270,exalted,<0,1
+
+	step << Priest
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r
 		.accept 8061
 		.turnin 8061
 		.target Al'tabim the All-Seeing	
+		.reputation 270,friendly,>=1
+		.itemcount 19718,1
+
+	step << Priest
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r	
+		.accept 8070
+		.turnin 8070
+		.target Al'tabim the All-Seeing
+		.reputation 270,honored,>=1
+		.itemcount 19720,1		
+
+	step << Priest
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r		
+		.accept 8071
+		.turnin 8071	
+		.target Al'tabim the All-Seeing	
+		.reputation 270,revered,>=1
+		.itemcount 19724,1
 
 	step << Mage
 		.goto Stranglethorn Vale,15.2,16.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r
 		.accept 8101
 		.turnin 8101
+		.target Al'tabim the All-Seeing
+		.reputation 270,friendly,<0,1
+
+	step << Mage
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r
 		.accept 8102
 		.turnin 8102
+		.target Al'tabim the All-Seeing
+		.reputation 270,honored,<0,1
+
+	step << Mage
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r
 		.accept 8103
-		.turnin 8103	
+		.turnin 8103
+		.target Al'tabim the All-Seeing
+		.reputation 270,revered,<0,1
+
+	step << Mage
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r	
 		.accept 8104
 		.turnin 8104	
-		.accept 8068
-		.turnin 8068	
-		.accept 8069
-		.turnin 8069	
+		.target Al'tabim the All-Seeing
+		.reputation 270,exalted,<0,1
+
+	step << Mage
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r	
 		.accept 8060
 		.turnin 8060	
 		.target Al'tabim the All-Seeing
+		.reputation 270,friendly,>=1
+		.itemcount 19716,1
+
+	step << Mage
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r		
+		.accept 8068
+		.turnin 8068
+		.target Al'tabim the All-Seeing
+		.reputation 270,honored,>=1
+		.itemcount 19721,1
+
+	step << Mage
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r			
+		.accept 8069
+		.turnin 8069		
+		.target Al'tabim the All-Seeing
+		.reputation 270,revered,>=1
+		.itemcount 19723,1
 
 	step << Shaman
 		.goto Stranglethorn Vale,15.2,16.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r
 		.accept 8116
 		.turnin 8116
+		.target Maywiki of Zuldazar
+		.reputation 270,friendly,<0,1
+
+	step << Shaman
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r
 		.accept 8117
 		.turnin 8117
+		.target Maywiki of Zuldazar
+		.reputation 270,honored,<0,1
+
+	step << Shaman
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r
 		.accept 8118
-		.turnin 8118	
+		.turnin 8118
+		.target Maywiki of Zuldazar
+		.reputation 270,revered,<0,1
+
+	step << Shaman
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r	
 		.accept 8119
-		.turnin 8119	
-		.accept 8074
-		.turnin 8074	
+		.turnin 8119
+		.target Maywiki of Zuldazar
+		.reputation 270,exalted,<0,1
+
+	step << Shaman
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r	
 		.accept 8056
-		.turnin 8056	
+		.turnin 8056
+		.target Maywiki of Zuldazar
+		.reputation 270,friendly,>=1
+		.itemcount 19717,1
+
+	step << Shaman
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r		
+		.accept 8074
+		.turnin 8074
+		.target Maywiki of Zuldazar
+		.reputation 270,honored,>=1
+		.itemcount 19719,1
+
+	step << Shaman
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r				
 		.accept 8075
 		.turnin 8075
 		.target Maywiki of Zuldazar
+		.reputation 270,revered,>=1
+		.itemcount 19722,1
 
 	step << Druid
 		.goto Stranglethorn Vale,15.2,16.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r
 		.accept 8110
 		.turnin 8110
+		.target Maywiki of Zuldazar
+		.reputation 270,friendly,<0,1
+
+	step << Druid
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r
 		.accept 8111
 		.turnin 8111
+		.target Maywiki of Zuldazar
+		.reputation 270,honored,<0,1
+
+	step << Druid
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r
 		.accept 8112
-		.turnin 8112	
+		.turnin 8112
+		.target Maywiki of Zuldazar
+		.reputation 270,revered,<0,1
+
+	step << Druid
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r	
 		.accept 8113
 		.turnin 8113	
-		.accept 8064
-		.turnin 8064	
+		.target Maywiki of Zuldazar
+		.reputation 270,exalted,<0,1
+
+	step << Druid
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r
 		.accept 8057
-		.turnin 8057	
+		.turnin 8057
+		.target Maywiki of Zuldazar
+		.reputation 270,friendly,>=1
+		.itemcount 19718,1
+
+	step << Druid
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r	
+		.accept 8064
+		.turnin 8064
+		.target Maywiki of Zuldazar
+		.reputation 270,honored,>=1
+		.itemcount 19720,1
+
+	step << Druid
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r		
 		.accept 8065
 		.turnin 8065
 		.target Maywiki of Zuldazar
+		.reputation 270,revered,>=1
+		.itemcount 19722,1
+
+	step
+		#label Stranglethornlast
 
 --- Thunder Bluff
 
 	step
+		#completewith Thunderlast
 		.zone Thunder Bluff >> Take Portal to |cFFfa9602Thunder Bluff|r
 		.zoneskip Thunder Bluff
 
 	step
-		.goto Thunder Bluff,43.2,42.8
+		.goto Thunder Bluff,43.1,42.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rumstag Proudstrider|r
 		.accept 7820
 		.turnin 7820
+		.target Rumstag Proudstrider
+		.itemcount 2592,60	
+
+	step
+		.goto Thunder Bluff,43.1,42.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rumstag Proudstrider|r
 		.accept 7821
 		.turnin 7821
+		.target Rumstag Proudstrider
+		.itemcount 4306,60		
+		
+	step
+		.goto Thunder Bluff,43.1,42.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rumstag Proudstrider|r
 		.accept 7822
 		.turnin 7822
+		.target Rumstag Proudstrider
+		.itemcount 4338,60	
+		
+	step
+		.goto Thunder Bluff,43.1,42.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rumstag Proudstrider|r
 		.accept 7823
 		.turnin 7823
 		.target Rumstag Proudstrider
+		.itemcount 14047,60	
+		.isQuestTurnedIn 7820
+		.isQuestTurnedIn 7821
+		.isQuestTurnedIn 7822
+
+	step
+		.goto Thunder Bluff,75.7,31.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nara Wildmane|r
+		.turnin -4987
+		.target Nara Wildmane
+
+	step
+		#label Thunderlast
+		.goto Thunder Bluff,78.50,28.60
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Arch Druid Hamuul Runetotem|r
+		.accept 3761
+		.turnin 3761
+		.target Arch Druid Hamuul Runetotem		
+		.itemcount 11018,20
 
 --- Swamp of Sorrows		
 
 	step
+		#completewith Swamplast
 		.zone Swamp of Sorrows >> Take Portal to |cFFfa9602Swamp of Sorrows|r
 		.zoneskip Swamp of Sorrows
 
@@ -2287,7 +2699,7 @@ strat undead
 --- Blasted Lands
 
 	step
-		#completewith next
+		#completewith Blastedlast
 		.zone Blasted Lands >> Travel to |cFFfa9602Blasted Lands|r
 		.zoneskip Blasted Lands
 
