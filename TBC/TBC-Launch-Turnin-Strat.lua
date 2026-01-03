@@ -2,12 +2,6 @@ if RXPGuides == nil then
 	return
 end
 
-
----Stratholme
----Main Door:
----Eastern Plaguelands,30.9,20.2
----Stratholme,55.0,17.4
-
 RXPGuides.RegisterGuide([[
 #classic
 #tbc
@@ -163,6 +157,7 @@ step
 		.itemcount 20404,10	
 
 	step
+		#completewith RutgarTurnin
 		.use 20461 >> Click |T133463:0|t[Brann Bronzebeard's Lost Letter] and accept |cRXP_LOOT_Brann Bronzebeard's Lost Letter|r
 		.accept 8308
 		.itemcount 20461,1
@@ -176,6 +171,7 @@ step
 		.target Frankal Stonebridge
 
 	step
+		#label RutgarTurnin
 		.goto Silithus,41.3,88.5
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rutgar|r
 		.turnin -8308
@@ -868,10 +864,417 @@ step
 
 --- Winterspring
 
+	step
+		#completewith Winterspringlast
+		.zone Winterspring >> Get summon to |cFFfa9602Winterspring|r
+		.zoneskip Winterspring
 
+	step
+		.goto Winterspring,61.93,38.37
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Storm Shadowhoof|r
+		.turnin -5056
+		.accept 5057
+		.target Storm Shadowhoof		
+
+	step
+		.goto Winterspring,61.93,38.37
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Storm Shadowhoof|r
+		.turnin -5057
+		.target Storm Shadowhoof		
+
+	step
+		.goto Winterspring,61.919,38.298
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Witch Doctor Mau'ari|r
+		.turnin -969
+		.target Witch Doctor Mau'ari
+
+	step
+		.goto Winterspring,61.35,38.97
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gregor Greystone|r
+		.accept 6029
+		.accept 6030
+		.target Gregor Greystone
+
+	step
+		.goto Winterspring,61.11,38.44
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Harlo Wigglesworth|r
+		.accept 6605
+		.target Harlo Wigglesworth
+
+	step
+		.goto Winterspring,60.88,37.61
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Umi Rumplesnicker|r
+		.turnin -5163
+		.target Umi Rumplesnicker
+
+	step
+		#completewith next
+		.use 12842 >>Click |T133740:0|t[Crudely-written Log] and accept |cRXP_LOOT_The Final Piece|r
+		.accept 5123
+		.itemcount 12842,1
+
+	step
+		.goto Winterspring,31.27,45.16
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Donova Snowden|r
+		.turnin 5123
+		.target Donova Snowden
+		.itemcount 12842,1		
+
+	step
+		.goto Winterspring,31.27,45.16
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Donova Snowden|r
+		.accept 5128
+		.target Donova Snowden		
+		.isQuestTurnedIn 5123
+
+	step
+		.goto Winterspring,31.27,45.16
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Donova Snowden|r
+		.turnin -5121
+		.target Donova Snowden		
+
+	step
+		#label Winterspringlast
+		.goto Winterspring,31.27,45.16
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Donova Snowden|r
+		.turnin -980
+		.target Donova Snowden	
+
+	step
+		.goto Winterspring,27.91,34.45,20,0
+		.goto Felwood,65.69,2.82
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Meilosh|r
+		.accept 6031 
+		.turnin 6031
+		.target Meilosh
+		.itemcount 14047,30
+		.reputation 576,friendly,<0,1
+
+	step
+		.goto Winterspring,27.91,34.45,20,0
+		.goto Felwood,65.69,2.82
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Meilosh|r
+		.accept 6032 
+		.turnin 6032
+		.target Meilosh
+		.itemcount 14342,2
+		.reputation 576,friendly,<0,1
+		.skill tailoring,<280,1
+		
+	step
+		#completewith next
+		.use 20741 >>Click |T136232:0|t[Deadwood Ritual Totem] and accept |cRXP_LOOT_Deadwood Ritual Totem|r
+		.accept 8470
+		.reputation 576,neutral,<0,1
+		.itemcount 20741,1
+		
+	step
+		.goto Felwood,65.48,3.47,20,0
+		.goto Felwood,65.35,1.37
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kernda|r
+		>>|cRXP_FRIENDLY_Kernda|r |cRXP_WARN_patrols the lower Timbermaw Hold path|r
+		.turnin 8470
+		.reputation 576,neutral,<0,1 
+		.itemcount 20741,1 
+		.target Kernda		
+
+	step
+		#completewith next
+		.use 20742 >>Click |T135816:0|t[Winterfall Ritual Totem] and accept |cRXP_LOOT_Winterfall Ritual Totem|r
+		.accept 8471
+		.reputation 576,neutral,<0,1
+		.itemcount 20742,1
+		
+	step
+		.goto Felwood,65.48,3.47,20,0
+		.goto Felwood,65.35,1.37
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kernda|r
+		>>|cRXP_FRIENDLY_Kernda|r |cRXP_WARN_patrols the lower Timbermaw Hold path|r
+		.turnin 8471
+		.reputation 576,neutral,<0,1 
+		.itemcount 20742,1 
+		.target Kernda			
+
+	step
+		.goto Felwood,65.19,2.68
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gorn One Eye|r
+		.accept 8485
+		.reputation 576,exalted,<0,1 
+		.target Gorn One Eye	
+
+	step
+		#completewith next
+		.use 20644 >>Click |T136163:0|t[Nightmare Engulfed Object] and accept |cRXP_LOOT_Shrouded in Nightmare|r
+		.accept 8446
+		.itemcount 20644,1
+
+	step
+		.goto Felwood,65.5,0.9,15,0
+		.goto Moonglade,35.7,72.4,15,0
+		.goto Moonglade,36.19,41.78
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Keeper Remulos|r
+		.turnin 8446
+		.itemcount 20644,1
+		.target Keeper Remulos
+
+	step
+		#completewith next
+		.goto Felwood,65.5,0.9,15,0
+		.goto Moonglade,35.7,72.4,15,0
+		.goto Moonglade,40.00,43.59,15,0
+		.goto Moonglade,42.13,34.94,5 >>Travel to |cFFfa9602Nighthaven|r
+		.subzoneskip 2361
+		.subzoneskip 2362
+
+	step
+		.goto Moonglade,44.7,35.5
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Umber|r
+		.turnin -6844
+		.target Umber
+
+	step
+		.goto Moonglade,44.7,35.5
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Umber|r
+		.accept 6845
+		.target Umber		
+		.isQuestTurnedIn 6844
+
+	step
+		.goto Moonglade,51.70,45.00
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rabine|r
+		.turnin -5527
+		.target Rabine Saturna
+
+	step
+		.goto Moonglade,51.70,45.00
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rabine|r
+		.turnin -6845
+		.target Rabine Saturna
+		
+	step
+		.goto Moonglade,51.70,45.00
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rabine|r
+		.accept 5526
+		.turnin 5526
+		.target Rabine Saturna	
+		.itemcount 18501,1
+		.isQuestTurnedIn 5527
+		
+	step
+		.goto Moonglade,44.7,35.5
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Umber|r
+		.accept 1185
+		.turnin 1185
+		.target Umber		
+		.isQuestTurnedIn 6845
+	
+--- Felwood
+
+	step
+		#completewith Felwoodlast
+		.goto Moonglade,32.2,66.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Faustron|r
+		.fly Felwood >>Fly to |cFFfa9602Felwood|r
+		.target Faustron
+		.zoneskip Felwood
+
+	step
+		#completewith next
+		.use 12558 >>Click |T133298:0|t[Blue-feathered Necklace] and accept |cRXP_LOOT_Guarding Secrets|r
+		.accept 4882
+		.itemcount 12558,1
+
+	step
+		.goto Felwood,34.80,52.80
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Trull|r
+		.target Trull Failbane
+		.turnin 4882
+		.accept 4883
+		.itemcount 12558,1	
+
+	step
+		.goto Felwood,34.20,52.30
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Winna Hazzard|r
+		.turnin -6605
+		.target Winna Hazzard	
+		
+	step
+		.goto Felwood,35.23,50.25,15,0
+		.goto Felwood,37.0,49.0,15,0
+		.goto Felwood,37.4,49.1,15,0
+		.goto Felwood,39.8,53.0,15,0
+		.goto Felwood,41.0,57.3,15,0
+		.goto Felwood,43.4,74.4,15,0
+		.goto Felwood,46.75,83.08,40 >>Travel to |cRXP_FRIENDLY_Maybess Riverbreeze|r
+
+	step
+		.goto Felwood,46.75,83.08
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maybess Riverbreeze|r
+		.accept 5891
+		.turnin 5891
+		.target Maybess Riverbreeze
+		.skill enchanting,<205,1
+		.itemcount 11174,1
+
+	step
+		.goto Felwood,46.75,83.08
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maybess Riverbreeze|r
+		.accept 5889
+		.turnin 5889
+		.target Maybess Riverbreeze
+		.skill herbalism,<250,1
+		.itemcount 11514,4	
+
+	step
+		.goto Felwood,46.75,83.08
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maybess Riverbreeze|r
+		.accept 5887
+		.turnin 5887
+		.target Maybess Riverbreeze
+		.itemcount 11515,6
+		
+	step
+		.goto Felwood,46.75,83.08
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maybess Riverbreeze|r
+		.accept 5888
+		.turnin 5888
+		.target Maybess Riverbreeze
+		.skill mining,<200,1
+		.itemcount 11513,4	
+		
+	step
+		.goto Felwood,46.75,83.08
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maybess Riverbreeze|r
+		.accept 5890
+		.turnin 5890
+		.target Maybess Riverbreeze
+		.skill skinning,<250,1
+		.itemcount 11512,5	
+
+	step
+		.goto Felwood,51.18,82.22
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Greta Mosshoof|r
+		.turnin -5242
+		.target Greta Mosshoof			
+		
+	step
+		.goto Felwood,51.14,81.76
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kelek Skykeeper|r
+		.turnin -5128
+		.target Kelek Skykeeper	
+
+	step
+		#label Felwoodlast
+		.goto Felwood,51.35,82.01
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jessir Moonbow|r
+		.turnin -5385
+		.target Jessir Moonbow	
 
 --- Orgrimmar
 	
+	step
+		#completewith Orgrimmarlast
+		.zone Orgrimmar >>Take Portal or get summon to |cFFfa9602Orgrimmar|r
+		.zoneskip Orgrimmar
+
+	step
+		.goto Orgrimmar,37.70,87.90
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vehena|r
+		.accept 7833
+		.turnin 7833
+		.target Vehena
+		.itemcount 2592,60	
+
+	step
+		.goto Orgrimmar,37.70,87.90
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vehena|r
+		.accept 7834
+		.turnin 7834
+		.target Vehena
+		.itemcount 4306,60		
+		
+	step
+		.goto Orgrimmar,37.70,87.90
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vehena|r
+		.accept 7835
+		.turnin 7835
+		.target Vehena
+		.itemcount 4338,60	
+		
+	step
+		.goto Orgrimmar,37.70,87.90
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vehena|r
+		.accept 7836
+		.turnin 7836
+		.target Vehena
+		.itemcount 14047,60	
+		.isQuestTurnedIn 7833
+		.isQuestTurnedIn 7834
+		.isQuestTurnedIn 7835
+		
+	step
+		.goto Orgrimmar,35.0,38.3
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mokvar|r
+		.turnin -8978
+		.target Mokvar
+
+	step
+		.goto Orgrimmar,35.0,38.3
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mokvar|r
+		.accept 8927 << Druid
+		.accept 8938 << Hunter
+		.accept 8939 << Mage
+		.accept 8940 << Priest
+		.accept 8941 << Rogue
+		.accept 8942 << Shaman
+		.accept 8943 << Warlock
+		.accept 8944 << Warrior
+		.accept 10495 << Paladin
+		.turnin 8927 << Druid
+		.turnin 8938 << Hunter
+		.turnin 8939 << Mage
+		.turnin 8940 << Priest
+		.turnin 8941 << Rogue
+		.turnin 8942 << Shaman
+		.turnin 8943 << Warlock
+		.turnin 8944 << Warrior
+		.turnin 10495 << Paladin
+		.itemcount 16716,1 << Druid
+		.itemcount 16717,1 << Druid
+		.itemcount 16680,1 << Hunter
+		.itemcount 16676,1 << Hunter
+		.itemcount 16685,1 << Mage
+		.itemcount 16684,1 << Mage
+		.itemcount 16696,1 << Priest
+		.itemcount 16692,1 << Priest
+		.itemcount 16713,1 << Rogue
+		.itemcount 16712,1 << Rogue
+		.itemcount 16673,1 << Shaman
+		.itemcount 16672,1 << Shaman
+		.itemcount 16702,1 << Warlock 
+		.itemcount 16705,1 << Warlock 
+		.itemcount 16736,1 << Warrior
+		.itemcount 16737,1 << Warrior
+		.itemcount 16723,1 << Paladin
+		.itemcount 16724,1 << Paladin
+		.isQuestTurnedIn 8978
+		.target Mokvar
+	
+	step
+		.goto Orgrimmar,35.0,38.3
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mokvar|r
+		.accept 8930
+		.target Mokvar
+		.isQuestTurnedIn 8927 << Druid
+		.isQuestTurnedIn 8938 << Hunter
+		.isQuestTurnedIn 8939 << Mage
+		.isQuestTurnedIn 8940 << Priest
+		.isQuestTurnedIn 8941 << Rogue
+		.isQuestTurnedIn 8942 << Shaman
+		.isQuestTurnedIn 8943 << Warlock
+		.isQuestTurnedIn 8944 << Warrior
+		.isQuestTurnedIn 10495 << Paladin
+
 	step
 		.goto Orgrimmar,34.27,39.35
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eitrigg|r
@@ -880,11 +1283,608 @@ step
 		.skipgossip
 
 	step
+		.use 18422 >>Click |T134153:0|t[Head of Onyxia] and accept |cRXP_LOOT_Victory for the Horde|r
+		.accept 7490
+		.itemcount 18422,1
+
+	step
+		.use 19002 >>Click |T134154:0|t[Head of Nefarian] and accept |cRXP_LOOT_The Lord of Blackrock|r
+		.accept 7783
+		.itemcount 19002,1		
+
+	step
 		.goto Orgrimmar,31.74,37.82
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thrall|r
 		.turnin -4941
+		.turnin -4004
+		.turnin -7490
+		.turnin -7783
+		.turnin -8485
 		.target Thrall
+
+	step
+		.goto Orgrimmar,31.74,37.82
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thrall|r
+		.accept 7491
+		.target Thrall
+		.isQuestTurnedIn 7490
+
+	step
+		.goto Orgrimmar,31.74,37.82
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thrall|r
+		.accept 7784
+		.target Thrall
+		.isQuestTurnedIn 7783	
 		
+	step << Shaman
+		.goto Orgrimmar,38.66,35.93
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sagorne Crestrider|r
+		.accept 7667
+		.turnin 7667
+		.target Sagorne Crestrider
+		.itemcount 12800,1
+		.itemcount 18335,1
+		
+	step
+		.goto Orgrimmar,63.61,51.22
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rashona Straglash|r
+		.accept 7826
+		.turnin 7826
+		.target Rashona Straglash
+		.itemcount 2592,60	
+
+	step
+		.goto Orgrimmar,63.61,51.22
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rashona Straglash|r
+		.accept 7827
+		.turnin 7827
+		.target Rashona Straglash
+		.itemcount 4306,60		
+		
+	step
+		.goto Orgrimmar,63.61,51.22
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rashona Straglash|r
+		.accept 7831
+		.turnin 7831
+		.target Rashona Straglash
+		.itemcount 4338,60	
+		
+	step
+		.goto Orgrimmar,63.61,51.22
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rashona Straglash|r
+		.accept 7824
+		.turnin 7824
+		.target Rashona Straglash
+		.itemcount 14047,60	
+		.isQuestTurnedIn 7826
+		.isQuestTurnedIn 7827
+		.isQuestTurnedIn 7831
+
+	step
+		.goto Orgrimmar,55.9,57.5,8,0
+		.goto Orgrimmar,56.26,46.68
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Zilzibin Drumlore|r
+		.turnin -4509
+		.target Zilzibin Drumlore
+
+	step
+		.goto Orgrimmar,55.9,57.5,8,0
+		.goto Orgrimmar,56.26,46.68
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Zilzibin Drumlore|r
+		.accept 4511
+		.target Zilzibin Drumlore
+		.isQuestTurnedIn 4509		
+
+	step
+		.goto Orgrimmar,51.70,75.49
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Overlord Runthak|r
+		.turnin -7491
+		.target Overlord Runthak
+
+	step
+		.goto Orgrimmar,50.93,75.67
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_High Overlord Saurfang|r
+		.turnin -7784
+		.target High Overlord Saurfang	
+
+	step
+		#label Orgrimmarlast
+		.goto Orgrimmar,49.58,69.15
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_High Overlord Saurfang|r
+		.turnin -4511
+		.target High Overlord Saurfang	
+
+--- Silvermoon City
+
+	step <<tbc
+		#completewith Silvermoonlast
+		.zone Silvermoon City >>Take Portal or get summon to |cFFfa9602Silvermoon City|r
+		.zoneskip Silvermoon City
+
+	step <<tbc
+		.goto Silvermoon City,56.6,52.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sorim Lightsong|r
+		.accept 10359
+		.turnin 10359
+		.target Sorim Lightsong
+		.itemcount 2592,60	
+
+	step <<tbc
+		.goto Silvermoon City,56.6,52.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sorim Lightsong|r
+		.accept 10360
+		.turnin 10360
+		.target Sorim Lightsong
+		.itemcount 4306,60		
+		
+	step <<tbc
+		.goto Silvermoon City,56.6,52.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sorim Lightsong|r
+		.accept 10361
+		.turnin 10361
+		.target Sorim Lightsong
+		.itemcount 4338,60	
+		
+	step <<tbc
+		.goto Silvermoon City,56.6,52.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sorim Lightsong|r
+		.accept 10362
+		.turnin 10362
+		.target Sorim Lightsong
+		.itemcount 14047,60	
+		.isQuestTurnedIn 10359
+		.isQuestTurnedIn 10360
+		.isQuestTurnedIn 10361	
+
+--- Azshara
+
+	step
+		#completewith Azsharalast
+		.zone Azshara >> Get summon to |cFFfa9602Azshara|r
+		.zoneskip Azshara
+
+	step
+		.goto Azshara,79.2,73.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
+		.turnin 6822
+		.accept 6823
+		.target Duke Hydraxis		
+		.isQuestComplete 6822
+
+	step
+		.goto Azshara,79.2,73.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
+		.turnin 6823
+		.target Duke Hydraxis	
+		.reputation 749,honored,<0,1	
+		.isQuestTurnedIn 6822			
+
+	step
+		.goto Azshara,79.2,73.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
+		.turnin 6824
+		.accept 7486
+		.target Duke Hydraxis		
+		.isQuestComplete 6824
+	
+	step
+		#label Azsharalast
+		.goto Azshara,79.2,74.8
+		>>Click the |cRXP_PICK_Hydraxis' Coffer|r and turn in |cRXP_LOOT_A Hero's Reward|r
+		.turnin 7486
+		.isQuestTurnedIn 6824
+
+--- Go to LHC/EPL	
+
+	step
+		#completewith EPL1
+		.zone Eastern Plaguelands >> Hearth to |cFFfa9602Lights Hope Chapel|r
+		.use 6948
+		.zoneskip Eastern Plaguelands
+		
+	step	
+		.goto Eastern Plaguelands,81.6,60.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Quartermaster Miranda Breechlock|r
+		.accept 5513
+		.turnin 5513
+		.target Quartermaster Miranda Breechlock
+		.itemcount 12844,10
+		.reputation 529,revered,<0,1
+
+	step	
+		.goto Eastern Plaguelands,81.6,60.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Quartermaster Miranda Breechlock|r
+		.accept 5517
+		.turnin 5517
+		.target Quartermaster Miranda Breechlock	
+		.itemcount 12844,25	
+		.reputation 529,exalted,<0,1
+
+	step	
+		.goto Eastern Plaguelands,81.4,59.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Nicholas Zverenhoff|r	
+		.turnin -5251
+		.turnin -6030
+		.target Duke Nicholas Zverenhoff		
+
+	step	
+		.goto Eastern Plaguelands,81.00,59.61
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Craftsman Wilhelm|r	
+		.accept 9232
+		.turnin 9232
+		.target Craftsman Wilhelm
+		.reputation 529,revered,<0,1
+		.itemcount 22682,2
+		.itemcount 7080,2
+		.itemcount 12361,2
+		.isQuestTurnedIn 9233
+
+	step	
+		.goto Eastern Plaguelands,81.4,58.5
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rayne|r	
+		.accept 9136
+		.turnin 9136
+		.target Rayne
+		.itemcount 22529,30
+
+	step	
+		.goto Eastern Plaguelands,81.4,58.5
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rohan the Assassin|r	
+		.accept 9126
+		.turnin 9126
+		.target Rohan the Assassin		
+		.itemcount 22526,30
+
+	step	
+		.goto Eastern Plaguelands,81.5,58.5
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Huntsman Leopold|r	
+		.accept 9124
+		.turnin 9124
+		.target Huntsman Leopold		
+		.itemcount 22525,30
+
+	step	
+		.goto Eastern Plaguelands,81.5,58.3
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Archmage Angela Dosantos|r	
+		.accept 9128
+		.turnin 9128
+		.target Archmage Angela Dosantos
+		.itemcount 22527,30
+
+	step
+		#completewith next
+		.use 22520 >> Click |T134514:0|t[The Phylactery of Kel'Thuzad] and accept |cRXP_LOOT_The Fall of Kel'Thuzad|r
+		.accept 9120
+		.itemcount 22520,1
+
+	step	
+		.goto Eastern Plaguelands,81.5,58.1
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Father Inigo Montoy|r	
+		.turnin 9120	
+		.target Father Inigo Montoy	
+		.itemcount 22520,1	
+
+	step	
+		.goto Eastern Plaguelands,81.8,58.1
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Korfax, Champion of the Light|r	
+		.accept 9131
+		.turnin 9131
+		.target Korfax, Champion of the Light
+		.itemcount 22528,30
+
+	step	
+		.goto Eastern Plaguelands,81.8,58.1
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Korfax, Champion of the Light|r	
+		.turnin -9229
+		.target Korfax, Champion of the Light
+		.isQuestComplete 9033	
+		
+	step	
+		.goto Eastern Plaguelands,81.8,58.1
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Korfax, Champion of the Light|r	
+		.accept 9230
+		.turnin 9230
+		.target Korfax, Champion of the Light
+		.isQuestComplete 9229
+		.itemcount 22682,1
+		.itemcount 12361,1
+		.itemcount 12360,1
+		
+	step	
+		.goto Eastern Plaguelands,81.7,57.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Leonid Barthalomew the Revered|r	
+		.accept 5243
+		.turnin 5243
+		.target Leonid Barthalomew the Revered
+		.itemcount 13180,5	
+
+	step	
+		.goto Eastern Plaguelands,81.7,57.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Leonid Barthalomew the Revered|r	
+		.turnin -5522
+		.target Leonid Barthalomew the Revered		
+
+	step	
+		.goto Eastern Plaguelands,81.7,57.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Leonid Barthalomew the Revered|r	
+		.accept 5531
+		.target Leonid Barthalomew the Revered	
+		.isQuestTurnedIn 5522	
+
+	step	
+		.goto Eastern Plaguelands,80.6,58.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Smokey LaRue|r	
+		.accept 6026
+		.turnin 6026
+		.target Smokey LaRue
+		.itemcount 11128,1
+		.itemcount 12359,2
+		.itemcount 10562,8
+		.itemcount 10560,8
+
+	step	
+		.goto Eastern Plaguelands,81.0,57.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dispatch Commander Metz|r	
+		.accept 9141
+		.turnin 9141
+		.target Dispatch Commander Metz		
+		.itemcount 12844,1
+
+	step	
+		.goto Eastern Plaguelands,80.0,57.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Emissary Gormok|r	
+		.turnin -9665
+		.target Emissary Gormok
+
+	step	
+		.goto Eastern Plaguelands,81.5,59.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r	
+		.turnin -5529
+		.turnin -5531
+		.accept 5212
+		.target Betina Bigglezink
+
+	step	
+		.goto Eastern Plaguelands,81.5,59.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r	
+		.accept 4771
+		.target Betina Bigglezink
+		.isQuestTurnedIn 5531		
+
+	step
+		.goto Eastern Plaguelands,79.60,63.87
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Caretaker Alen|r
+		.accept 5281
+		.target Caretaker Alen
+
+	step
+		.goto Eastern Plaguelands,36.4,90.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pamela Redpath|r
+		.turnin -5721
+		.target Pamela Redpath
+
+	step
+		.goto Eastern Plaguelands,36.4,90.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pamela Redpath|r
+		.accept 5942
+		.target Pamela Redpath
+		.isQuestTurnedIn 5721	
+		
+	step	
+		.goto Eastern Plaguelands,36.2,90.4
+		>>Click |cRXP_PICK_Joseph's Chest|r
+		.turnin -5942		
+
+	step	
+		.goto Eastern Plaguelands,28.1,86.1
+		>>Click |cRXP_PICK_Mound of Dirt|r
+		.turnin -6024
+		
+	step	
+		.goto Eastern Plaguelands,26.6,74.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nathanos Blightcaller|r
+		.turnin -6148
+		.target Nathanos Blightcaller
+		
+	step	
+		.goto Eastern Plaguelands,26.6,74.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nathanos Blightcaller|r
+		.accept 6163
+		.target Nathanos Blightcaller	
+		.isQuestTurnedIn 6136		
+
+	step	
+		#label EPL1
+		.goto Eastern Plaguelands,7.6,43.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tirion Fordring|r
+		.accept 5846
+		.target Tirion Fordring
+		.isQuestTurnedIn 5845
+
+	step
+		.goto Western Plaguelands,62.59,58.55
+		>>Click the |cRXP_PICK_Scourge Cauldron|r
+		.accept 5236
+		.isQuestTurnedIn 5235
+
+	step
+		.goto Western Plaguelands,53.73,64.66
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mulgris|r
+		.accept 4987
+		.target Mulgris Deepriver	
+		.isQuestTurnedIn 4985
+
+	step
+		.goto Western Plaguelands,65.7,75.4
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Artist Renfray|r
+		.turnin -5846
+		.target Artist Renfray
+
+	step
+		.goto Western Plaguelands,65.7,75.4
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Artist Renfray|r
+		.accept 5848	
+		.target Artist Renfray
+		.isQuestTurnedIn 5846	
+
+	step
+		.goto Western Plaguelands,70.6,74.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Magistrate Marduke|r
+		.equip 13,206382 >> |cRXP_WARN_Equip the|r |T134337:0|t|cRXP_LOOT_[Spectral Essence]|r
+		.accept 5462
+		.target Magistrate Marduke
+		.isQuestTurnedIn 5461
+
+	step
+		#completewith next
+		.goto 1415,52.8,26.4
+		.subzone 2057 >>Enter |cFFfa9602Scholomance|r
+
+	step
+		.use 12368 >>Place |T132596:0|t[Dawn's Gambit] in the Viewing Room of |cFFfa9602Scholomance|r and kill |cRXP_ENEMY_Vectus|r
+		.complete 4771,1
+		.complete 4771,2
+		.isOnQuest 4771
+
+	step
+		#completewith EPL2
+		.zone Eastern Plaguelands >> Hearth to |cFFfa9602Lights Hope Chapel|r
+		.use 6948
+		.zoneskip Eastern Plaguelands
+
+	step	
+		.goto Eastern Plaguelands,81.5,59.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r	
+		.turnin -4771
+		.target Betina Bigglezink
+
+	step	
+		.goto Eastern Plaguelands,81.7,57.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Leonid Barthalomew the Revered|r	
+		.turnin -5462
+		.target Leonid Barthalomew the Revered	
+		
+	step	
+		.goto Eastern Plaguelands,81.7,57.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Leonid Barthalomew the Revered|r	
+		.accept 5463
+		.target Leonid Barthalomew the Revered	
+		.isQuestTurnedIn 5462		
+
+	step
+		.goto Eastern Plaguelands,14.45,33.74
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Egan|r
+		.turnin -5281
+		.target Egan
+
+	step
+		.goto Eastern Plaguelands,14.45,33.74
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Egan|r
+		.accept 5282
+		.target Egan
+		.isQuestTurnedIn 5281		
+
+	step
+		.goto Eastern Kingdoms,55.06,17.51
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anthion Harmon|r
+		.use 22115 >>|cRXP_WARN_Use the|r |T133878:0|t[Extra-Dimensional Ghost Revealer] |cRXP_WARN_to reveal|r |cRXP_FRIENDLY_Anthion|r
+		.turnin -8930
+		.target Anthion Harmon
+
+	step
+		.goto Eastern Kingdoms,55.06,17.51
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anthion Harmon|r
+		.use 22115 >>|cRXP_WARN_Use the|r |T133878:0|t[Extra-Dimensional Ghost Revealer] |cRXP_WARN_to reveal|r |cRXP_FRIENDLY_Anthion|r
+		.accept 8945
+		.target Anthion Harmon
+		.isQuestTurnedIn 8930		
+
+strat living
+
+	step
+		#completewith EPL3
+		.zone Eastern Plaguelands >> Hearth to |cFFfa9602Lights Hope Chapel|r
+		.use 6948
+		.zoneskip Eastern Plaguelands
+
+	step
+		#completewith next
+		.use 13250 >> Click |T136183:0|t[Head of Balnazzar] and accept |cRXP_LOOT_The Truth Comes Crashing Down|r
+		.accept 5262
+		.itemcount 13250,1
+
+	step	
+		.goto Eastern Plaguelands,81.4,59.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Nicholas Zverenhoff|r	
+		.turnin 5262
+		.accept 5263
+		.target Duke Nicholas Zverenhoff	
+		.itemcount 13250,1
+
+	step	
+		.goto Eastern Plaguelands,81.5,59.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r	
+		.turnin -5212
+		.accept 5213
+		.target Betina Bigglezink
+	
+	step	
+		#label EPL3
+		.goto Eastern Plaguelands,80.6,58.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Smokey LaRue|r	
+		.turnin -5214
+		.target Smokey LaRue		
+				
+
+
+
+strat undead
+
+	step
+		#completewith EPL4
+		.zone Eastern Plaguelands >> Hearth to |cFFfa9602Lights Hope Chapel|r
+		.use 6948
+		.zoneskip Eastern Plaguelands
+
+	step	
+		.goto Eastern Plaguelands,81.4,59.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Nicholas Zverenhoff|r	
+		.turnin -5263
+		.target Duke Nicholas Zverenhoff	
+
+	step	
+		.goto Eastern Plaguelands,81.4,59.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Nicholas Zverenhoff|r	
+		.accept 5264
+		.target Duke Nicholas Zverenhoff
+		.isQuestTurnedIn 5263
+
+	step	
+		.goto Eastern Plaguelands,81.5,59.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r	
+		.turnin -5213
+		.target Betina Bigglezink
+
+	step	
+		.goto Eastern Plaguelands,81.7,58.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lord Maxwell Tyrosus|r
+		.target Lord Maxwell Tyrosus	
+		.turnin -5264
+		.accept 5265
+		.isQuestTurnedIn 5263	
+		
+	step	
+		.goto Eastern Plaguelands,81.8,58.0
+		>>Click |cRXP_PICK_the Argent Hold|r
+		.turnin -5265	
+		
+	step	
+		#label EPL4
+		.goto Eastern Plaguelands,81.7,57.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Leonid Barthalomew the Revered|r	
+		.turnin -5464
+		.target Leonid Barthalomew the Revered		
+
 --- Tarren Mill
 
 	step
@@ -956,10 +1956,778 @@ step
 		.reputation 729,exalted,<0,1 
 		.isQuestTurnedIn 7161
 
---- Go through Portal
+--- Undercity
 
 	step
-		+test
+		#completewith Undercitylast
+		.zone Undercity >>Take Portal or get summon to |cFFfa9602Undercity|r
+		.zoneskip Undercity
+
+	step
+		.goto Undercity,71.65,29.28
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ralston Farnsley|r
+		.accept 7813
+		.turnin 7813
+		.target Ralston Farnsley
+		.itemcount 2592,60	
+
+	step
+		.goto Undercity,71.65,29.28
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ralston Farnsley|r
+		.accept 7814
+		.turnin 7814
+		.target Ralston Farnsley
+		.itemcount 4306,60		
+		
+	step
+		.goto Undercity,71.65,29.28
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ralston Farnsley|r
+		.accept 7817
+		.turnin 7817
+		.target Ralston Farnsley
+		.itemcount 4338,60	
+		
+	step
+		.goto Undercity,71.65,29.28
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ralston Farnsley|r
+		.accept 7818
+		.turnin 7818
+		.target Ralston Farnsley
+		.itemcount 14047,60	
+		.isQuestTurnedIn 7813
+		.isQuestTurnedIn 7814
+		.isQuestTurnedIn 7817
+
+	step
+		#completewith next
+		.goto Undercity,47.20,59.69,0
+		.goto Undercity,47.20,59.69,12,0
+		.goto Undercity,43.55,68.11,12,0
+		.goto Undercity,45.20,71.67,12 >>Travel toward |cRXP_FRIENDLY_Master Apothecary Faranell|r
+
+	step
+		.goto Undercity,48.80,69.28
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Master Apothecary Faranell|r
+		.turnin -2938
+		.target Master Apothecary Faranell
+
+	step
+		#label Undercitylast
+		.goto Undercity,48.74,71.36
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Chemist Cuely|r
+		.turnin 3570
+		.target Chemist Cuely
+		.isQuestAvailable 3570
+
+--- STV
+
+	step
+		#completewith Stranglethornlast
+		.zone Stranglethorn Vale >> Get summon to |cFFfa9602Stranglethorn Vale|r
+		.zoneskip Stranglethorn Vale
+		
+	step	
+		.goto Stranglethorn Vale,15.0,15.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Molthor|r
+		.turnin -8182
+		.target Molthor	
+
+	step
+		#completewith next
+		.use 19802 >>Click |T134085:0|t[Heart of Hakkar] and accept |cRXP_LOOT_The Heart of Hakkar|r
+		.accept 8183
+		.itemcount 19802,1
+		
+	step	
+		.goto Stranglethorn Vale,15.0,15.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Molthor|r
+		>>|cRXP_WARN_This starts a 1:30min RP, so try to have everyone turn this in at the same time, before the RP|r
+		.turnin 8183
+		.target Molthor
+		.itemcount 19802,1
+
+	step	
+		.goto Stranglethorn Vale,15.2,15.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Exzhal|r
+		.turnin -8201	
+		.target Exzhal	
+		
+	step
+		.goto Stranglethorn Vale,14.4,15.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vinchaxa|r
+		.accept 8240
+		.target Vinchaxa
+
+	step
+		.goto Stranglethorn Vale,13.4,15.1 
+		>> Got to the altar and destroy any Bijou
+		.use 19708 >>|cRXP_WARN_Destroy any Bijou|r
+		.use 19713
+		.use 19715
+		.use 19711
+		.use 19710
+		.use 19712
+		.use 19707
+		.use 19714
+		.use 19709
+		.complete 8240,1
+		.isOnQuest 8240
+
+	step
+		.goto Stranglethorn Vale,14.4,15.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vinchaxa|r
+		.turnin -8240
+		.target Vinchaxa
+
+	step << Rogue
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r
+		.accept 8141
+		.turnin 8141
+		.target Falthir the Sightless
+		.reputation 270,friendly,<0,1
+
+	step << Rogue
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r
+		.accept 8142
+		.turnin 8142
+		.target Falthir the Sightless
+		.reputation 270,honored,<0,1	
+		
+	step << Rogue
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r
+		.accept 8143
+		.turnin 8143
+		.target Falthir the Sightless
+		.reputation 270,revered,<0,1	
+		
+	step << Rogue
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r	
+		.accept 8144
+		.turnin 8144
+		.target Falthir the Sightless
+		.reputation 270,exalted,<0,1	
+		
+	step << Rogue
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r	
+		.accept 8063
+		.turnin 8063
+		.target Falthir the Sightless
+		.reputation 270,friendly,>=1
+		.itemcount 19717,1
+
+	step << Rogue
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r	
+		.accept 8072
+		.turnin 8072
+		.target Falthir the Sightless
+		.reputation 270,honored,>=1
+		.itemcount 19719,1
+
+	step << Rogue
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r	
+		.accept 8073
+		.turnin 8073	
+		.target Falthir the Sightless
+		.reputation 270,revered,>=1
+		.itemcount 19724,1
+
+	step << Hunter
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r
+		.accept 8145
+		.turnin 8145
+		.target Falthir the Sightless
+		.reputation 270,friendly,<0,1	
+		
+	step << Hunter
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r
+		.accept 8146
+		.turnin 8146
+		.target Falthir the Sightless
+		.reputation 270,honored,<0,1	
+		
+	step << Hunter
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r
+		.accept 8147
+		.turnin 8147
+		.target Falthir the Sightless
+		.reputation 270,revered,<0,1	
+		
+	step << Hunter
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r	
+		.accept 8148
+		.turnin 8148
+		.target Falthir the Sightless
+		.reputation 270,exalted,<0,1
+		
+	step << Hunter
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r		
+		.accept 8062
+		.turnin 8062
+		.target Falthir the Sightless
+		.reputation 270,friendly,>=1
+		.itemcount 19716,1	
+		
+	step << Hunter
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r		
+		.accept 8066
+		.turnin 8066
+		.target Falthir the Sightless
+		.reputation 270,honored,>=1
+		.itemcount 19721,1
+	
+	step << Hunter
+		.goto Stranglethorn Vale,14.0,13.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falthir the Sightless|r		
+		.accept 8067
+		.turnin 8067	
+		.target Falthir the Sightless
+		.reputation 270,revered,>=1
+		.itemcount 19724,1	
+
+	step << Paladin
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r
+		.accept 8045
+		.turnin 8045	
+		.reputation 270,friendly,<0,1
+		.target Jin'rokh the Breaker
+
+	step << Paladin
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r
+		.accept 8046
+		.turnin 8046
+		.reputation 270,honored,<0,1
+		.target Jin'rokh the Breaker	
+		
+	step << Paladin
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r
+		.accept 8047
+		.turnin 8047
+		.reputation 270,revered,<0,1
+		.target Jin'rokh the Breaker
+		
+	step << Paladin
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r	
+		.accept 8048
+		.turnin 8048
+		.reputation 270,exalted,<0,1
+		.target Jin'rokh the Breaker		
+		
+	step << Paladin
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r		
+		.accept 8053
+		.turnin 8053
+		.target Jin'rokh the Breaker
+		.reputation 270,friendly,<0,1
+		.itemcount 19716,1
+
+	step << Paladin
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r		
+		.accept 8054
+		.turnin 8054
+		.target Jin'rokh the Breaker
+		.reputation 270,honored,<0,1
+		.itemcount 19721,1		
+
+	step << Paladin
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r			
+		.accept 8055
+		.turnin 8055	
+		.target Jin'rokh the Breaker
+		.reputation 270,revered,<0,1
+		.itemcount 19722,1
+
+	step << Warrior
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r
+		.accept 8041
+		.turnin 8041
+		.target Jin'rokh the Breaker
+		.reputation 270,friendly,<0,1
+
+	step << Warrior
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r
+		.accept 8042
+		.turnin 8042
+		.target Jin'rokh the Breaker
+		.reputation 270,honored,<0,1
+		
+	step << Warrior
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r
+		.accept 8043
+		.turnin 8043
+		.target Jin'rokh the Breaker
+		.reputation 270,revered,<0,1
+		
+	step << Warrior
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r
+		.accept 8044
+		.turnin 8044
+		.target Jin'rokh the Breaker
+		.reputation 270,exalted,<0,1		
+				
+	step << Warrior
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r
+		.accept 8058
+		.turnin 8058
+		.target Jin'rokh the Breaker
+		.reputation 270,friendly,<0,1
+		.itemcount 19717,1
+		
+	step << Warrior
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r	
+		.accept 8078
+		.turnin 8078
+		.target Jin'rokh the Breaker
+		.reputation 270,honored,<0,1
+		.itemcount 19719,1
+
+	step << Warrior
+		.goto Stranglethorn Vale,15.2,14.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jin'rokh the Breaker|r		
+		.accept 8079
+		.turnin 8079
+		.target Jin'rokh the Breaker
+		.reputation 270,revered,<0,1
+		.itemcount 19723,1
+		
+	step << Warlock
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r
+		.accept 8106
+		.turnin 8106
+		.target Al'tabim the All-Seeing
+		.reputation 270,friendly,<0,1
+
+	step << Warlock
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r
+		.accept 8107
+		.turnin 8107
+		.target Al'tabim the All-Seeing
+		.reputation 270,honored,<0,1
+
+	step << Warlock
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r
+		.accept 8108
+		.turnin 8108	
+		.target Al'tabim the All-Seeing
+		.reputation 270,revered,<0,1
+
+	step << Warlock
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r	
+		.accept 8109
+		.turnin 8109
+		.target Al'tabim the All-Seeing
+		.reputation 270,exalted,<0,1
+
+	step << Warlock
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r	
+		.accept 8059
+		.turnin 8059	
+		.target Al'tabim the All-Seeing
+		.reputation 270,friendly,>=1
+		.itemcount 19718,1
+
+	step << Warlock
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r		
+		.accept 8076
+		.turnin 8076
+		.target Al'tabim the All-Seeing
+		.reputation 270,honored,>=1
+		.itemcount 19720,1
+
+	step << Warlock
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r		
+		.accept 8077
+		.turnin 8077		
+		.target Al'tabim the All-Seeing
+		.reputation 270,revered,>=1
+		.itemcount 19723,1
+		
+	step << Priest
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r
+		.accept 8049
+		.turnin 8049
+		.target Al'tabim the All-Seeing
+		.reputation 270,friendly,<0,1
+
+	step << Priest
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r
+		.accept 8050
+		.turnin 8050
+		.target Al'tabim the All-Seeing
+		.reputation 270,honored,<0,1
+
+	step << Priest
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r
+		.accept 8051
+		.turnin 8051
+		.target Al'tabim the All-Seeing
+		.reputation 270,revered,<0,1
+
+	step << Priest
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r	
+		.accept 8052
+		.turnin 8052
+		.target Al'tabim the All-Seeing
+		.reputation 270,exalted,<0,1
+
+	step << Priest
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r
+		.accept 8061
+		.turnin 8061
+		.target Al'tabim the All-Seeing	
+		.reputation 270,friendly,>=1
+		.itemcount 19718,1
+
+	step << Priest
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r	
+		.accept 8070
+		.turnin 8070
+		.target Al'tabim the All-Seeing
+		.reputation 270,honored,>=1
+		.itemcount 19720,1		
+
+	step << Priest
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r		
+		.accept 8071
+		.turnin 8071	
+		.target Al'tabim the All-Seeing	
+		.reputation 270,revered,>=1
+		.itemcount 19724,1
+
+	step << Mage
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r
+		.accept 8101
+		.turnin 8101
+		.target Al'tabim the All-Seeing
+		.reputation 270,friendly,<0,1
+
+	step << Mage
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r
+		.accept 8102
+		.turnin 8102
+		.target Al'tabim the All-Seeing
+		.reputation 270,honored,<0,1
+
+	step << Mage
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r
+		.accept 8103
+		.turnin 8103
+		.target Al'tabim the All-Seeing
+		.reputation 270,revered,<0,1
+
+	step << Mage
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r	
+		.accept 8104
+		.turnin 8104	
+		.target Al'tabim the All-Seeing
+		.reputation 270,exalted,<0,1
+
+	step << Mage
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r	
+		.accept 8060
+		.turnin 8060	
+		.target Al'tabim the All-Seeing
+		.reputation 270,friendly,>=1
+		.itemcount 19716,1
+
+	step << Mage
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r		
+		.accept 8068
+		.turnin 8068
+		.target Al'tabim the All-Seeing
+		.reputation 270,honored,>=1
+		.itemcount 19721,1
+
+	step << Mage
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Al'tabim the All-Seeing|r			
+		.accept 8069
+		.turnin 8069		
+		.target Al'tabim the All-Seeing
+		.reputation 270,revered,>=1
+		.itemcount 19723,1
+
+	step << Shaman
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r
+		.accept 8116
+		.turnin 8116
+		.target Maywiki of Zuldazar
+		.reputation 270,friendly,<0,1
+
+	step << Shaman
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r
+		.accept 8117
+		.turnin 8117
+		.target Maywiki of Zuldazar
+		.reputation 270,honored,<0,1
+
+	step << Shaman
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r
+		.accept 8118
+		.turnin 8118
+		.target Maywiki of Zuldazar
+		.reputation 270,revered,<0,1
+
+	step << Shaman
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r	
+		.accept 8119
+		.turnin 8119
+		.target Maywiki of Zuldazar
+		.reputation 270,exalted,<0,1
+
+	step << Shaman
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r	
+		.accept 8056
+		.turnin 8056
+		.target Maywiki of Zuldazar
+		.reputation 270,friendly,>=1
+		.itemcount 19717,1
+
+	step << Shaman
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r		
+		.accept 8074
+		.turnin 8074
+		.target Maywiki of Zuldazar
+		.reputation 270,honored,>=1
+		.itemcount 19719,1
+
+	step << Shaman
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r				
+		.accept 8075
+		.turnin 8075
+		.target Maywiki of Zuldazar
+		.reputation 270,revered,>=1
+		.itemcount 19722,1
+
+	step << Druid
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r
+		.accept 8110
+		.turnin 8110
+		.target Maywiki of Zuldazar
+		.reputation 270,friendly,<0,1
+
+	step << Druid
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r
+		.accept 8111
+		.turnin 8111
+		.target Maywiki of Zuldazar
+		.reputation 270,honored,<0,1
+
+	step << Druid
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r
+		.accept 8112
+		.turnin 8112
+		.target Maywiki of Zuldazar
+		.reputation 270,revered,<0,1
+
+	step << Druid
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r	
+		.accept 8113
+		.turnin 8113	
+		.target Maywiki of Zuldazar
+		.reputation 270,exalted,<0,1
+
+	step << Druid
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r
+		.accept 8057
+		.turnin 8057
+		.target Maywiki of Zuldazar
+		.reputation 270,friendly,>=1
+		.itemcount 19718,1
+
+	step << Druid
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r	
+		.accept 8064
+		.turnin 8064
+		.target Maywiki of Zuldazar
+		.reputation 270,honored,>=1
+		.itemcount 19720,1
+
+	step << Druid
+		.goto Stranglethorn Vale,15.2,16.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maywiki of Zuldazar|r		
+		.accept 8065
+		.turnin 8065
+		.target Maywiki of Zuldazar
+		.reputation 270,revered,>=1
+		.itemcount 19722,1
+
+	step
+		#label Stranglethornlast
+
+--- Thunder Bluff
+
+	step
+		#completewith Thunderlast
+		.zone Thunder Bluff >> Take Portal to |cFFfa9602Thunder Bluff|r
+		.zoneskip Thunder Bluff
+
+	step
+		.goto Thunder Bluff,43.1,42.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rumstag Proudstrider|r
+		.accept 7820
+		.turnin 7820
+		.target Rumstag Proudstrider
+		.itemcount 2592,60	
+
+	step
+		.goto Thunder Bluff,43.1,42.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rumstag Proudstrider|r
+		.accept 7821
+		.turnin 7821
+		.target Rumstag Proudstrider
+		.itemcount 4306,60		
+		
+	step
+		.goto Thunder Bluff,43.1,42.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rumstag Proudstrider|r
+		.accept 7822
+		.turnin 7822
+		.target Rumstag Proudstrider
+		.itemcount 4338,60	
+		
+	step
+		.goto Thunder Bluff,43.1,42.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rumstag Proudstrider|r
+		.accept 7823
+		.turnin 7823
+		.target Rumstag Proudstrider
+		.itemcount 14047,60	
+		.isQuestTurnedIn 7820
+		.isQuestTurnedIn 7821
+		.isQuestTurnedIn 7822
+
+	step
+		.goto Thunder Bluff,75.7,31.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nara Wildmane|r
+		.turnin -4987
+		.target Nara Wildmane
+
+	step
+		#label Thunderlast
+		.goto Thunder Bluff,78.50,28.60
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Arch Druid Hamuul Runetotem|r
+		.accept 3761
+		.turnin 3761
+		.target Arch Druid Hamuul Runetotem		
+		.itemcount 11018,20
+
+--- Swamp of Sorrows		
+
+	step
+		#completewith Swamplast
+		.zone Swamp of Sorrows >> Take Portal to |cFFfa9602Swamp of Sorrows|r
+		.zoneskip Swamp of Sorrows
+
+	step
+		.goto Swamp of Sorrows,34.2,66.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Fallen Hero of the Horde|r
+		.turnin -2681
+		.accept 2702
+		.target Fallen Hero of the Horde
+
+	step
+		.goto Swamp of Sorrows,33.6,66.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Corporal Thund Splithoof|r
+		.turnin -2702
+		.accept 2701
+		.target Corporal Thund Splithoof
+		
+	step	
+		.goto Swamp of Sorrows,33.5,66.0
+		>>Click |cRXP_PICK_Spectral Lockbox|r
+		.turnin -2701
+
+--- Blasted Lands
+
+	step
+		#completewith Blastedlast
+		.zone Blasted Lands >> Travel to |cFFfa9602Blasted Lands|r
+		.zoneskip Blasted Lands
+
+	step
+		.goto Blasted Lands,50.6,14.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bloodmage Drazial|r
+		.accept 2583
+		.turnin 2583
+		.accept 2603
+		.turnin 2603
+		.accept 2601
+		.turnin 2601
+		.accept 2585
+		.turnin 2585
+		.accept 2581
+		.turnin 2581
+		.target Bloodmage Drazial
+
+	step
+		.goto Blasted Lands,51.8,35.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kum'isha the Collector|r
+		.accept 2521
+		.turnin 2521
+		.accept 3501
+		.turnin 3501
+		.target Kum'isha the Collector
+
+--- Go through Portal
 
 	step <<tbc
 		.goto Blasted Lands,58.0,55.8
@@ -974,6 +2742,5 @@ step
 
 	step <<tbc
 		.zone Hellfire Peninsula >> Go through the Portal to |cFFfa9602Hellfire Peninsula|r and enjoy leveling! :)
-
 
 ]])
