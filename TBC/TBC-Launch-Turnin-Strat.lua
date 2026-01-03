@@ -10,7 +10,7 @@ RXPGuides.RegisterGuide([[
 #subgroup 4 - TBC Launch - Turnin
 #name 1-Strat Route Turnin
 #displayname Strat Route Turnin
-#next 5 - TBC Dungeon Grind
+#next Dungeon Grind to 70
 
 --- Kargath
 
@@ -1447,13 +1447,13 @@ step
 		.goto Azshara,79.2,73.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
 		.turnin 6822
-		.accept 6823
 		.target Duke Hydraxis		
 		.isQuestComplete 6822
 
 	step
 		.goto Azshara,79.2,73.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
+		.accept 6823
 		.turnin 6823
 		.target Duke Hydraxis	
 		.reputation 749,honored,<0,1	
@@ -1463,9 +1463,15 @@ step
 		.goto Azshara,79.2,73.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
 		.turnin 6824
-		.accept 7486
 		.target Duke Hydraxis		
 		.isQuestComplete 6824
+
+	step
+		.goto Azshara,79.2,73.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
+		.accept 7486
+		.target Duke Hydraxis		
+		.isQuestTurnedIn 6824		
 	
 	step
 		#label Azsharalast
@@ -1708,13 +1714,6 @@ step
 		.isQuestTurnedIn 5235
 
 	step
-		.goto Western Plaguelands,53.73,64.66
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mulgris|r
-		.accept 4987
-		.target Mulgris Deepriver	
-		.isQuestTurnedIn 4985
-
-	step
 		.goto Western Plaguelands,65.7,75.4
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Artist Renfray|r
 		.turnin -5846
@@ -1792,6 +1791,7 @@ step
 		.target Anthion Harmon
 
 	step
+		#label EPL2
 		.goto Eastern Kingdoms,55.06,17.51
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anthion Harmon|r
 		.use 22115 >>|cRXP_WARN_Use the|r |T133878:0|t[Extra-Dimensional Ghost Revealer] |cRXP_WARN_to reveal|r |cRXP_FRIENDLY_Anthion|r
@@ -1870,8 +1870,13 @@ strat undead
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lord Maxwell Tyrosus|r
 		.target Lord Maxwell Tyrosus	
 		.turnin -5264
-		.accept 5265
-		.isQuestTurnedIn 5263	
+
+	step	
+		.goto Eastern Plaguelands,81.7,58.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lord Maxwell Tyrosus|r
+		.accept 5465
+		.target Lord Maxwell Tyrosus	
+		.isQuestTurnedIn 5264	
 		
 	step	
 		.goto Eastern Plaguelands,81.8,58.0
@@ -1883,7 +1888,63 @@ strat undead
 		.goto Eastern Plaguelands,81.7,57.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Leonid Barthalomew the Revered|r	
 		.turnin -5464
-		.target Leonid Barthalomew the Revered		
+		.target Leonid Barthalomew the Revered	
+		
+	step
+		.goto Western Plaguelands,53.73,64.66
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mulgris|r
+		.accept 4987
+		.target Mulgris Deepriver	
+		.isQuestTurnedIn 4985		
+
+--- Tirisfal Glades
+
+	step
+		#completewith Tirisfallast
+		.zone Tirisfal Glades >> Travel to |cFFfa9602Tirisfal Glades|r
+		.zoneskip Tirisfal Glades
+
+	step
+		.goto Tirisfal Glades,83.0,71.9
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shadow Priestess Vandis|r
+		.turnin -5236
+		.target Shadow Priestess Vandis
+
+	step
+		.goto Tirisfal Glades,83.1,71.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Alexi Barov|r
+		.turnin -5341	
+		.turnin -5342
+		.target Alexi Barov
+
+	step
+		.goto Tirisfal Glades,83.2,71.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mehlar Dawnblade|r
+		.turnin -9444
+		.target Mehlar Dawnblade			
+		
+	step
+		.goto Tirisfal Glades,83.3,69.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Apothecary Dithers|r
+		.accept 5511
+		.turnin 5511
+		.target Apothecary Dithers
+		.isQuestTurnedIn 5804
+
+	step	
+		.goto Tirisfal Glades,83.1,68.9
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_High Executor Derrington|r
+		.turnin -105	
+		.target High Executor Derrington
+
+	step	
+		#label Tirisfallast
+		.goto Tirisfal Glades,83.1,68.9
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_High Executor Derrington|r	
+		.accept 5238
+		.turnin 5238
+		.target High Executor Derrington	
+		.isQuestTurnedIn 5236	
 
 --- Tarren Mill
 
@@ -2659,6 +2720,7 @@ strat undead
 		.goto Thunder Bluff,75.7,31.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nara Wildmane|r
 		.turnin -4987
+		.turnin -4883
 		.target Nara Wildmane
 
 	step
@@ -2678,24 +2740,45 @@ strat undead
 		.zoneskip Swamp of Sorrows
 
 	step
-		.goto Swamp of Sorrows,34.2,66.0
+		.goto Swamp of Sorrows,34.28,66.17
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Fallen Hero of the Horde|r
 		.turnin -2681
-		.accept 2702
 		.target Fallen Hero of the Horde
 
 	step
-		.goto Swamp of Sorrows,33.6,66.0
+		.goto Swamp of Sorrows,34.28,66.17
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Fallen Hero of the Horde|r
+		.accept 2702
+		.target Fallen Hero of the Horde	
+		.isQuestTurnedIn 2681	
+
+	step
+		.goto Swamp of Sorrows,33.36,66.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Corporal Thund Splithoof|r
 		.turnin -2702
-		.accept 2701
 		.target Corporal Thund Splithoof
+
+	step
+		.goto Swamp of Sorrows,33.36,66.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Corporal Thund Splithoof|r
+		.accept 2701
+		.target Corporal Thund Splithoof	
+		.isQuestTurnedIn 2702	
 		
 	step	
 		.goto Swamp of Sorrows,33.5,66.0
 		>>Click |cRXP_PICK_Spectral Lockbox|r
 		.turnin -2701
-
+		
+	step
+		#label Swamplast
+		.goto Swamp of Sorrows,34.28,66.17
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Fallen Hero of the Horde|r
+		.accept 2721
+		.target Fallen Hero of the Horde	
+		.isQuestTurnedIn 2701	
+		
+		
 --- Blasted Lands
 
 	step
@@ -2704,28 +2787,92 @@ strat undead
 		.zoneskip Blasted Lands
 
 	step
-		.goto Blasted Lands,50.6,14.2
+		.goto Blasted Lands,50.4,14.2
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bloodmage Drazial|r
 		.accept 2583
 		.turnin 2583
-		.accept 2603
-		.turnin 2603
-		.accept 2601
-		.turnin 2601
-		.accept 2585
-		.turnin 2585
+		.target Bloodmage Drazial
+		.itemcount 8392,3
+		.itemcount 8393,2
+		.itemcount 8394,1
+
+	step
+		.goto Blasted Lands,50.4,14.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bloodmage Drazial|r
 		.accept 2581
 		.turnin 2581
 		.target Bloodmage Drazial
+		.itemcount 8391,3
+		.itemcount 8392,2
+		.itemcount 8393,1
+
+	step
+		.goto Blasted Lands,50.4,14.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bloodmage Drazial|r
+		.accept 2585
+		.turnin 2585
+		.target Bloodmage Drazial
+		.itemcount 8393,3
+		.itemcount 8396,2
+		.itemcount 8392,1
+
+	step
+		.goto Blasted Lands,50.6,14.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bloodmage Lynnore|r
+		.accept 2601
+		.turnin 2601
+		.target Bloodmage Lynnore
+		.itemcount 8394,10
+		.itemcount 8396,2
+
+	step
+		.goto Blasted Lands,50.6,14.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bloodmage Lynnore|r
+		.accept 2603
+		.turnin 2603
+		.target Bloodmage Lynnore
+		.itemcount 8396,10
+		.itemcount 8391,2
+
+	step
+		.goto Blasted Lands,69.6,30.8
+		>>Kill |cRXP_ENEMY_Kirith the Damned|r inside the cave
+		>>|cRXP_WARN_Skip if he or the spirit is not up as the respawntimer is 5-9min|r
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Spirit of Kirith|r
+		.turnin 2721
+		.target Spirit of Kirith
+		.mob Kirith the Damned
+		.isOnQuest 2721
+
+	step
+		.goto Blasted Lands,69.6,30.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Spirit of Kirith|r
+		.accept 2743
+		.target Spirit of Kirith
+		.mob Kirith the Damned
+		.isQuestTurnedIn 2721
+
+	step
+		.goto Swamp of Sorrows,34.28,66.17
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Fallen Hero of the Horde|r
+		.turnin -2743
+		.target Fallen Hero of the Horde
 
 	step
 		.goto Blasted Lands,51.8,35.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kum'isha the Collector|r
 		.accept 2521
 		.turnin 2521
+		.target Kum'isha the Collector
+		.itemcount 8244,1
+
+	step
+		.goto Blasted Lands,51.8,35.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kum'isha the Collector|r
 		.accept 3501
 		.turnin 3501
 		.target Kum'isha the Collector
+		.itemcount 10593,1
 
 --- Go through Portal
 
