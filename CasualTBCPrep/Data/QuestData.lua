@@ -1464,6 +1464,13 @@ function CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(onlyPrepa
 end
 
 ---@param questID number
+---@return string
+function CasualTBCPrep.QuestData.GetQuestRequiredItemsString(questID)
+	local questObj = questsMetadata[questID]
+	return questObj.reqItems or ""
+end
+
+---@param questID number
 function CasualTBCPrep.QuestData.GetQuestProgressionDetailsFromID(questID)
 	local questObj = questsMetadata[questID]
 	return CasualTBCPrep.QuestData.GetQuestProgressionDetails(questObj)

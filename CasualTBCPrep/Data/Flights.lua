@@ -134,7 +134,10 @@ function CasualTBCPrep.Flights.OnTaxiMapOpened()
 
         local taxiMetadata = taxiMetadata[taxiName]
         if taxiMetadata == nil then
-            CasualTBCPrep.NotifyUserError("Couldn't find metadata for taxi: "..taxiName)
+            local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
+            if debugger == 1 then
+                CasualTBCPrep.NotifyUserError("Couldn't find metadata for taxi: "..taxiName)
+            end
             return
         end
         CasualTBCPrep.TableInsertUnique(storedTaxiData.checkedContinents, taxiMetadata.continent)

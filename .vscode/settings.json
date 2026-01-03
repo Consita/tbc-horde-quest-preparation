@@ -40,7 +40,9 @@
         "ShoppingTooltip1",
         "ShoppingTooltip2",
         "OTHER",
-        "DEFAULT"
+        "DEFAULT",
+        "ZONE",
+        "QUEST_COMPLETE"
     ],
     "Lua.type.weakUnionCheck": true
 }

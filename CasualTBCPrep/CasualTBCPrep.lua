@@ -61,6 +61,8 @@ SlashCmdList["CASUAL_TBC_PREP"] = function(msg)
 				end
 			end
 		end
+	elseif args[1] == "mail" or args[1] == "companion" then
+		CasualTBCPrep.W_Companion.Toggle()
 	else
 		CasualTBCPrep.W_Main.Show();
 	end
@@ -134,11 +136,30 @@ local function OnAddonLoadedEvent(self, event, addonName)
 			return
 		end
 		CasualTBCPrep.Routing.ChangeCurrentRoute(selRouteCode)
+
+		local companionSettings = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.CompanionSettings)
+		if companionSettings ~= nil and companionSettings.open == true then
+			C_Timer.After(2, function()
+				CasualTBCPrep.W_Companion:Show()
+			end)
+		end
 	end
 end
 
 local function OnTalkToFlightMaster(self, event)
 	CasualTBCPrep.Flights.OnTaxiMapOpened()
+end
+local function OnZoneChangedEvent(self, event)
+    local mapID = C_Map.GetBestMapForUnit("player")
+    local zoneName = GetZoneText()
+    local subzoneName = GetSubZoneText()
+
+	local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
+	if debugger == 1 then
+		CasualTBCPrep.NotifyUser("DebugNavigation : mapID="..tostring(mapID)..", zone="..tostring(zoneName)..", subZone="..tostring(subzoneName))
+	end
+
+	CasualTBCPrep.MessageBroker.Send(CasualTBCPrep.MessageBroker.TYPE.ZONE_CHANGED, { mapID=mapID, zoneName=zoneName, subzoneName=subzoneName })
 end
 
 --[Hook Wrappers]
@@ -231,3 +252,8 @@ basicEventFrame:SetScript("OnEvent", OnAddonLoadedEvent)
 local taxiFrame = CreateFrame("Frame")
 taxiFrame:RegisterEvent("TAXIMAP_OPENED")
 taxiFrame:SetScript("OnEvent", OnTalkToFlightMaster)
+
+local zoneEventFrame = CreateFrame("Frame")
+zoneEventFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
+zoneEventFrame:RegisterEvent("PLAYER_ENTERING_WORLD") --Login,Reload,Teleport,Portal,Instance, more?
+zoneEventFrame:SetScript("OnEvent", OnZoneChangedEvent)
