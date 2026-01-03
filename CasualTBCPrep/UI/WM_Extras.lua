@@ -87,11 +87,12 @@ local function CreateTab(wMain)
 	local h = wMain:GetSizeHeight()
 	local imgW,imgH = 28,28
 
-	local headerCount = 4
+	local headerCount = 5
 	local header1Offset = (w / (headerCount + 1)) * 1 - (imgW / 2)
 	local header2Offset = (w / (headerCount + 1)) * 2 - (imgW / 2)
 	local header3Offset = (w / (headerCount + 1)) * 3 - (imgW / 2)
 	local header4Offset = (w / (headerCount + 1)) * 4 - (imgW / 2)
+	local header5Offset = (w / (headerCount + 1)) * 5 - (imgW / 2)
 
 	local yPosition = -26
 
@@ -123,6 +124,13 @@ local function CreateTab(wMain)
 	headerProfsTexture:SetAllPoints(headerProfs)
 	headerProfsTexture:SetTexture(basePath .. "header_prof")
 
+	local headerMails = CreateFrame("Button", nil, frameExtras)
+	headerMails:SetPoint("TOPLEFT", frameExtras, "TOPLEFT", header5Offset, yPosition)
+	headerMails:SetSize(imgW, imgH)
+	local headerMailsTexture = headerMails:CreateTexture(nil, "BORDER")
+	headerMailsTexture:SetAllPoints(headerMails)
+	headerMailsTexture:SetTexture(133471)
+
 	frameExtras.tabTextures = {}
 	frameExtras.tabTextures[1] = { ttHeader="Extra TBC Prep", ttLines={"Extra things you can prepare for TBC"},
 		btn=headerTbcPrep, texture=headerTbcPrepTexture, funcLoad=CasualTBCPrep.Extras_ExtraPrep.Load, funcClean=CasualTBCPrep.Extras_ExtraPrep.Clean }
@@ -135,6 +143,9 @@ local function CreateTab(wMain)
 
 	frameExtras.tabTextures[4] = { ttHeader="Professions", ttLines={"Shows the best/common professions for your class"},
 		btn=headerProfs, texture=headerProfsTexture, funcLoad=CasualTBCPrep.Extras_Professions.Load, funcClean=CasualTBCPrep.Extras_Professions.Clean }
+
+	frameExtras.tabTextures[5] = { ttHeader="Mailbox", ttLines={"Helps you by managing all the turnin items in your mailbox, and with opening the mails on release."},
+		btn=headerMails, texture=headerMailsTexture, funcLoad=CasualTBCPrep.Extras_Mailbox.Load, funcClean=CasualTBCPrep.Extras_Mailbox.Clean }
 
 	for tabID, tabDetails in pairs(frameExtras.tabTextures) do
 		local funcOnEnter = function(self) tabDetails.texture:SetVertexColor(0.6, 0.6, 0.6, 1) end

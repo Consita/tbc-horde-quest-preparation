@@ -19,6 +19,7 @@ CasualTBCPrep.Settings.QuestStates = settingsKeyPrefix .. "QuestStates"
 CasualTBCPrep.Settings.TaxiState = settingsKeyPrefix .. "TaxiState"
 CasualTBCPrep.Settings.ExtraTBCPrepSelections = settingsKeyPrefix .. "ExtraTBCPrepSelections"
 CasualTBCPrep.Settings.ShowRouteQuestPickups = settingsKeyPrefix .. "ShowRouteQuestPickups"
+CasualTBCPrep.Settings.CompanionSettings = settingsKeyPrefix .. "CompanionSettings"
 
 CasualTBCPrep.Settings.AllSettings = {
 	{ key=CasualTBCPrep.Settings.Warning_QLOG, 			dataType="bit", 	type="cmb", defaultValueGlobal=0,	defaultValueChar=-1,	values={ { text="Use Global", value=-1}, { text="On", value=1 }, { text="Off", value=0}},	name="Questlog Warnings", 	description={ "This will |cFFD47400WARN|r you when you pick up a quest that should be in your questlog.", "This can be used while leveling to avoid doing anything by mistake.", " ", "Default: Off" }},
@@ -150,6 +151,10 @@ function CasualTBCPrep.Settings.LoadDefaults()
 	tempCharSetting = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.ExtraTBCPrepSelections)
 	if tempCharSetting == nil then
 		CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.ExtraTBCPrepSelections, { })
+	end
+	tempCharSetting = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.CompanionSettings)
+	if tempCharSetting == nil then
+		CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.CompanionSettings, { })
 	end
 	tempCharSetting = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.ShowRouteQuestPickups)
 	if tempCharSetting == nil then

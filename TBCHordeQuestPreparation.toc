@@ -11,6 +11,7 @@
 ## OptionalDeps: RXPGuides
 # Addon UI
 CasualTBCPrep\Init.lua
+CasualTBCPrep\MessageBroker.lua
 CasualTBCPrep\Data\Themes.lua
 CasualTBCPrep\Data\Classes.lua
 CasualTBCPrep\Data\Faction.lua
@@ -24,6 +25,7 @@ CasualTBCPrep\Data\Sounds.lua
 CasualTBCPrep\Data\Settings.lua
 CasualTBCPrep\CasualTBCPrepShared.lua
 CasualTBCPrep\Data\QuestData.lua
+CasualTBCPrep\Data\Navigation.lua
 CasualTBCPrep\Data\Routing.lua
 CasualTBCPrep\Data\Flights.lua
 CasualTBCPrep\UI\WM_QuestLogPrep.lua
@@ -34,6 +36,7 @@ CasualTBCPrep\UI\Extras\Extras_ExtraPrep.lua
 CasualTBCPrep\UI\Extras\Extras_Flights.lua
 CasualTBCPrep\UI\Extras\Extras_Items.lua
 CasualTBCPrep\UI\Extras\Extras_Professions.lua
+CasualTBCPrep\UI\Extras\Extras_Mailbox.lua
 CasualTBCPrep\UI\WM_Extras.lua
 CasualTBCPrep\UI\WM_Settings.lua
 CasualTBCPrep\UI\WM_About.lua
@@ -42,6 +45,7 @@ CasualTBCPrep\UI\W_Main.lua
 CasualTBCPrep\UI\W_WarningNotice.lua
 CasualTBCPrep\UI\W_ItemManagement.lua
 CasualTBCPrep\UI\W_QuestManagement.lua
+CasualTBCPrep\UI\W_Companion.lua
 CasualTBCPrep\CasualTBCPrep.lua
 
 # Guide

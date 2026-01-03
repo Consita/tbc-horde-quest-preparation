@@ -216,14 +216,15 @@ end
 
 function CasualTBCPrep.W_Main.Toggle()
 	if wMain == nil then
-		Create()
-	else
-		if wMain:IsShown() then
-			CasualTBCPrep.W_Main.Hide()
-		else
-			CasualTBCPrep.W_Main.Show()
-		end
-	end
+        CasualTBCPrep.W_Companion.Show()
+        return
+    end
+
+    if wMain:IsShown() then
+        CasualTBCPrep.W_Main.Hide()
+    else
+        CasualTBCPrep.W_Main.Show()
+    end
 end
 
 function CasualTBCPrep.W_Main.ReloadActiveTab()
