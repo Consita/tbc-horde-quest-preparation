@@ -8,6 +8,7 @@ Changelog:
 - Added BWL guide for prep in all routes
 - Fixed several waypoints in Prep guide
 - Fixed Baron Rivendare step in solo/Main
+- Fixed Spectral Essence equip step
 - Fixed routing issue with Strat route
 
 3.13 - 2025-12-29
