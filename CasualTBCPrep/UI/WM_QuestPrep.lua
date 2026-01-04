@@ -241,7 +241,14 @@ end
 ---@param xOffset number
 ---@param yOffset number
 ---@param headerText string
----@return number, number, number, number
+---@param headerFrame FontString
+---@param availableQuests table
+---@param completedQuests table
+---@param point string
+---@param relativePoint string
+---@param isReputationList boolean
+---@param createClickable boolean
+---@return number, number, number, number, number
 local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, headerFrame, availableQuests, completedQuests, point, relativePoint, isReputationList, createClickable)
 	local src = strtrim(frameQuestPrep.searchText or ""):lower()
 	if src ~= "" then
@@ -251,31 +258,25 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
                 table.insert(searchedAvailable, q)
             end
         end
-
         for _, q in ipairs(completedQuests) do
             if DoesSearchMatchQuest(q.quest, src) then
                 table.insert(searchedCompleted, q)
             end
         end
-
 		availableQuests = searchedAvailable
 		completedQuests = searchedCompleted
 	end
 
-	local aCount = #availableQuests
-	local cCount = #completedQuests
-	local totalCount = aCount + cCount
 	local readyQuestCount = 0
+	local totalCountNonIgnored = 0 -- NEW: only count quests that are NOT ignored
 
 	if not frameQuestPrep.collapsedSections then
 		frameQuestPrep.collapsedSections = {}
 	end
-
 	local isCollapsed = frameQuestPrep.collapsedSections[headerText] or false
 	local collapseIndicator = isCollapsed and "> " or "v "
-
 	local headerColor = CasualTBCPrep.Themes.SelectedTheme.colors.headerSpecial
-	headerFrame:SetText(collapseIndicator .. totalCount .. " " .. headerText .. " Quest" .. (totalCount == 1 and "" or "s"))
+	headerFrame:SetText(collapseIndicator .. (#availableQuests + #completedQuests) .. " " .. headerText .. " Quest" .. ((#availableQuests + #completedQuests) == 1 and "" or "s"))
 	headerFrame:SetTextColor(headerColor.r, headerColor.g, headerColor.b)
 	headerFrame:SetPoint(point, frameQuestPrep.scrollChild, relativePoint, xOffset, yOffset)
 
@@ -298,24 +299,30 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 		end)
 	end
 
-	if totalCount > 0 then
+	if (#availableQuests + #completedQuests) > 0 then
 		yOffset = yOffset - 20
 
-		local xOffsetQuestText = 0
-		if xOffset >= 0 then
-			xOffsetQuestText = xOffset + 4
-		else
-			xOffsetQuestText = xOffset - 4
-		end
+		local xOffsetQuestText = xOffset >= 0 and xOffset + 4 or xOffset - 4
+		local newList = {}
 
-		local newList = { }
+		-- Process available quests
 		for i, quest in ipairs(availableQuests) do
-			frameQuestPrep.totalExpTest = frameQuestPrep.totalExpTest + quest.quest.exp
+			local isIgnored = CasualTBCPrep.Settings.GetQuestIgnoredState(CasualTBCPrep.Routing.CurrentRouteCode, quest.quest.id) == true
+			if not isIgnored then
+				totalCountNonIgnored = totalCountNonIgnored + 1
+			end
 
+			frameQuestPrep.totalExpTest = frameQuestPrep.totalExpTest + quest.quest.exp
 			table.insert(newList, { wrap=quest, completed=false })
 		end
 
+		-- Process completed quests
 		for i, quest in ipairs(completedQuests) do
+			local isIgnored = CasualTBCPrep.Settings.GetQuestIgnoredState(CasualTBCPrep.Routing.CurrentRouteCode, quest.quest.id) == true
+			if not isIgnored then
+				totalCountNonIgnored = totalCountNonIgnored + 1
+			end
+
 			table.insert(newList, { wrap=quest, completed=true })
 		end
 
@@ -326,76 +333,38 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 			local currentSeparator = nil
 			for i, questWrap in ipairs(newList) do
 				local quest = questWrap.wrap.quest
+				local isIgnored = CasualTBCPrep.Settings.GetQuestIgnoredState(CasualTBCPrep.Routing.CurrentRouteCode, quest.id) == true
 
 				if not _compactView then
-					if isReputationList == true then
+					if isReputationList then
 						if currentSeparator ~= quest.reqRep then
-							if currentSeparator == nil then
-								yOffset = yOffset - 5
-							else
-								yOffset = yOffset - 2
-							end
 							currentFactionName = GetFactionInfoByID(quest.reqRep) or ""
 							currentSeparator = quest.reqRep
-
-							local repHeaderText = frameQuestPrep.scrollChild:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-							repHeaderText:SetPoint(point, frameQuestPrep.scrollChild, relativePoint, xOffset, yOffset)
-							repHeaderText:SetText(currentFactionName or currentSeparator)
-							repHeaderText:SetTextColor(0.59, 0.39, 0.77)
-							table.insert(frameQuestPrep.questTexts, repHeaderText)
-
 							yOffset = yOffset - 15
 						end
 					else
 						if currentSeparator ~= quest.area then
-							if currentSeparator == nil then
-								yOffset = yOffset - 5
-							else
-								yOffset = yOffset - 2
-							end
 							currentSeparator = quest.area
-
-							local zoneHeaderText = frameQuestPrep.scrollChild:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-							zoneHeaderText:SetPoint(point, frameQuestPrep.scrollChild, relativePoint, xOffset, yOffset)
-							zoneHeaderText:SetText(currentSeparator)
-							zoneHeaderText:SetTextColor(0.59, 0.39, 0.77)
-							table.insert(frameQuestPrep.questTexts, zoneHeaderText)
-
 							yOffset = yOffset - 15
 						end
 					end
 				end
 
-				local hasFullyPreparedQuest, itemDisplayList, nextPreQuest, questTextColorRGB,_,_ = CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
+				local hasFullyPreparedQuest, itemDisplayList, nextPreQuest, questTextColorRGB = CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
 
-				if hasFullyPreparedQuest then
+				if hasFullyPreparedQuest and not isIgnored then
 					readyQuestCount = readyQuestCount + 1
 					frameQuestPrep.expectedExperienceTotal = frameQuestPrep.expectedExperienceTotal + quest.exp
 					frameQuestPrep.expectedQuestCompletion = frameQuestPrep.expectedQuestCompletion + 1
 				end
 
-				local questNameText = ""
-				local overrideTooltip = nil
-
-				if questWrap.wrap.notice ~= nil and questWrap.wrap.header ~= nil then
-					questNameText = questWrap.wrap.header
-				else
-					questNameText = quest.name or "Unknown Quest"
-				end
-
-				--local btnQuestText = CreateFrame("Button", nil, frameQuestPrep.scrollChild)
-				--local btnQuestText = CasualTBCPrep.UI.CreateTextButton(frameQuestPrep.scrollChild, questTextColorRGB.hex..questNameText.."|r", GameTooltipTextSmall, "LEFT", nil)
-				--btnQuestText:SetPoint(point, frameQuestPrep.scrollChild, relativePoint, xOffsetQuestText, yOffset)
-				--table.insert(frameQuestPrep.content, btnQuestText)
-
+				local questNameText = questWrap.wrap.header or quest.name or "Unknown Quest"
 
 				local questText = frameQuestPrep.scrollChild:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-				--questText:SetPoint("TOPLEFT", frameQuestPrep.scrollChild, "TOPLEFT", 6, yOffset)
 				questText:SetPoint(point, frameQuestPrep.scrollChild, relativePoint, xOffsetQuestText, yOffset)
 				questText:SetText(questNameText)
 				questText:SetTextColor(questTextColorRGB.r, questTextColorRGB.g, questTextColorRGB.b)
 
-				--local btnClickableQuest = CasualTBCPrep.UI.CreateTextButton(frameQuestPrep.scrollChild, "", GameTooltipTextSmall, "LEFT", nil)
 				local btnClickableQuest = CreateFrame("Button", nil, frameQuestPrep.scrollChild)
 				btnClickableQuest:SetAllPoints(questText, true)
 				CreateListQuestTooltip(wMain, point, quest, btnClickableQuest, questText:GetStringWidth(), questText:GetStringHeight(), nextPreQuest, itemDisplayList, quest.reqAnyItem, createClickable)
@@ -404,14 +373,16 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 				table.insert(frameQuestPrep.content, btnClickableQuest)
 				yOffset = yOffset - 15
 			end
-		else -- Collapsed, but still accumulate exp
+		else -- Collapsed
 			for i, questWrap in ipairs(newList) do
 				local quest = questWrap.wrap
+				local isIgnored = CasualTBCPrep.Settings.GetQuestIgnoredState(CasualTBCPrep.Routing.CurrentRouteCode, quest.quest.id) == true
 				local hasFullyPreparedQuest = CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
 
-				if hasFullyPreparedQuest then
+				if hasFullyPreparedQuest and not isIgnored then
 					frameQuestPrep.expectedExperienceTotal = frameQuestPrep.expectedExperienceTotal + quest.exp
 					frameQuestPrep.expectedQuestCompletion = frameQuestPrep.expectedQuestCompletion + 1
+					readyQuestCount = readyQuestCount + 1
 				end
 			end
 		end
@@ -422,8 +393,9 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 		end
 	end
 
-	return yOffset, aCount, cCount, readyQuestCount
+	return yOffset, #availableQuests, #completedQuests, readyQuestCount, totalCountNonIgnored
 end
+
 
 ---@param yOffset number
 ---@param point string
@@ -517,12 +489,14 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 	if wMain == nil then
 		return
 	end
+
 	local selectedRoute = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.SelectedRoute)
 	if selectedRoute == nil or selectedRoute == "" then
 		CasualTBCPrep.UI.CreateRouteSelection(wMain, frameQuestPrep)
 		frameQuestPrep.scrollFrame:Hide()
 		return
 	end
+
 	CasualTBCPrep.UI.ClearRouteSelectionUI(frameQuestPrep)
 	frameQuestPrep.scrollFrame:Show()
 
@@ -533,6 +507,7 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 	local runningAvailableCount = 0
 	local runningTotalCount = 0
 	local runningReadyCount = 0
+	local runningTotalNonIgnored = 0
 
 	if frameQuestPrep.questTexts then
 		for _, fontString in ipairs(frameQuestPrep.questTexts) do
@@ -556,13 +531,14 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 			frame:SetParent(nil)
 		end
 	end
+
 	frameQuestPrep.questTexts = {}
 	frameQuestPrep.content = {}
 	frameQuestPrep.expBar = {}
 	frameQuestPrep.expectedExperienceTotal = 0
 	frameQuestPrep.expectedQuestCompletion = 0
 
-	local routeObj = CasualTBCPrep.Routing.Routes[selectedRoute];
+	local routeObj = CasualTBCPrep.Routing.Routes[selectedRoute]
 	if routeObj ~= nil then
 		frameQuestPrep.expectedExperienceTotal = routeObj.extraExperience or 0
 	end
@@ -577,7 +553,6 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 		chbLabel:SetText("Compact")
 
 		checkbox:SetChecked(_compactView)
-
 		checkbox:SetScript("OnClick", function(self)
 			_compactView = self:GetChecked()
 			if RefreshQuestList then
@@ -585,45 +560,51 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 			end
 		end)
 
-		CasualTBCPrep.UI.HookTooltip(checkbox, "Compact View", { "When unchecked, all quests are grouped per zone or faction." }, nil,nil,nil)
-		CasualTBCPrep.UI.HookTooltip(chbLabel, "Compact View", { "When unchecked, all quests are grouped per zone or faction." }, nil,nil,nil)
+		CasualTBCPrep.UI.HookTooltip(checkbox, "Compact View", { "When unchecked, all quests are grouped per zone or faction." })
+		CasualTBCPrep.UI.HookTooltip(chbLabel, "Compact View", { "When unchecked, all quests are grouped per zone or faction." })
 
 		frameQuestPrep.chbCompact = checkbox
 	end
 
 	-- Left Side
 	xOffset = 2
-	local newYOffset, aCount, cCount, readyCount = LoadTurninQuests(wMain, xOffset, yOffset, "TOPLEFT", "TOPLEFT")
+	local newYOffset, aCount, cCount, readyCount, totalNonIgnored = LoadTurninQuests(wMain, xOffset, yOffset, "TOPLEFT", "TOPLEFT")
 	runningAvailableCount = runningAvailableCount + aCount
 	runningTotalCount = runningTotalCount + aCount + cCount
 	runningReadyCount = runningReadyCount + readyCount
+	runningTotalNonIgnored = runningTotalNonIgnored + totalNonIgnored
 
-	newYOffset, aCount, cCount, readyCount = LoadItemQuests(wMain, xOffset, newYOffset, "TOPLEFT", "TOPLEFT")
+	newYOffset, aCount, cCount, readyCount, totalNonIgnored = LoadItemQuests(wMain, xOffset, newYOffset, "TOPLEFT", "TOPLEFT")
 	runningAvailableCount = runningAvailableCount + aCount
 	runningTotalCount = runningTotalCount + aCount + cCount
 	runningReadyCount = runningReadyCount + readyCount
+	runningTotalNonIgnored = runningTotalNonIgnored + totalNonIgnored
 
 	-- Right Side
 	xOffset = -1
-	newYOffset, aCount, cCount, readyCount = LoadReputationQuests(wMain, xOffset, yOffset, "TOPRIGHT", "TOPRIGHT")
+	newYOffset, aCount, cCount, readyCount, totalNonIgnored = LoadReputationQuests(wMain, xOffset, yOffset, "TOPRIGHT", "TOPRIGHT")
 	runningAvailableCount = runningAvailableCount + aCount
 	runningTotalCount = runningTotalCount + aCount + cCount
 	runningReadyCount = runningReadyCount + readyCount
+	runningTotalNonIgnored = runningTotalNonIgnored + totalNonIgnored
 
-	newYOffset, aCount, cCount, readyCount = LoadExpensiveQuests(wMain, xOffset, newYOffset, "TOPRIGHT", "TOPRIGHT")
+	newYOffset, aCount, cCount, readyCount, totalNonIgnored = LoadExpensiveQuests(wMain, xOffset, newYOffset, "TOPRIGHT", "TOPRIGHT")
 	runningAvailableCount = runningAvailableCount + aCount
 	runningTotalCount = runningTotalCount + aCount + cCount
 	runningReadyCount = runningReadyCount + readyCount
+	runningTotalNonIgnored = runningTotalNonIgnored + totalNonIgnored
 
-	newYOffset, aCount, cCount, readyCount = LoadQuestlogQuests(wMain, xOffset, newYOffset, "TOPRIGHT", "TOPRIGHT")
+	newYOffset, aCount, cCount, readyCount, totalNonIgnored = LoadQuestlogQuests(wMain, xOffset, newYOffset, "TOPRIGHT", "TOPRIGHT")
 	runningAvailableCount = runningAvailableCount + aCount
 	runningTotalCount = runningTotalCount + aCount + cCount
 	runningReadyCount = runningReadyCount + readyCount
+	runningTotalNonIgnored = runningTotalNonIgnored + totalNonIgnored
 
-	newYOffset, aCount, cCount, readyCount = LoadQuestlogOptionalQuests(wMain, xOffset, newYOffset, "TOPRIGHT", "TOPRIGHT")
+	newYOffset, aCount, cCount, readyCount, totalNonIgnored = LoadQuestlogOptionalQuests(wMain, xOffset, newYOffset, "TOPRIGHT", "TOPRIGHT")
 	runningAvailableCount = runningAvailableCount + aCount
 	runningTotalCount = runningTotalCount + aCount + cCount
 	runningReadyCount = runningReadyCount + readyCount
+	runningTotalNonIgnored = runningTotalNonIgnored + totalNonIgnored
 
 	CreateExperienceBar(wMain, frameQuestPrep)
 
@@ -633,8 +614,10 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 		frameQuestPrep.headerText:SetPoint("TOP", frameQuestPrep, "TOP", 0, _headerY)
 	end
 
-	frameQuestPrep.headerText:SetText("Prepared " .. runningReadyCount .. " / " .. runningTotalCount .. " quests")
+	-- Use totalNonIgnored for header
+	frameQuestPrep.headerText:SetText("Prepared " .. runningReadyCount .. " / " .. runningTotalNonIgnored .. " quests")
 end
+
 
 ---@param wMain Frame|nil
 function CasualTBCPrep.WM_QuestPrep.Selected(wMain)
