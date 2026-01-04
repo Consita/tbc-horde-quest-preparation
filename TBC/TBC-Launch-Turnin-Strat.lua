@@ -20,7 +20,6 @@ RXPGuides.RegisterGuide([[
 		.zoneskip Badlands
 
 	step
-		#label Kargathlast
 		.goto Badlands,25.8,45.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lotwil Veriatus|r
 		.turnin -4063
@@ -48,6 +47,7 @@ RXPGuides.RegisterGuide([[
 		.isQuestTurnedIn 4903	
 
 	step
+		#label Kargathlast
 		.goto Badlands,5.8,47.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Galamav the Marksman|r. He is up on the Tower.
 		.turnin -4724
@@ -1738,7 +1738,7 @@ step
 	step
 		.goto Western Plaguelands,70.6,74.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Magistrate Marduke|r
-		.equip 13,206382 >> |cRXP_WARN_Equip the|r |T134337:0|t|cRXP_LOOT_[Spectral Essence]|r
+		.equip 13,13544 >> |cRXP_WARN_Equip the|r |T134337:0|t|cRXP_LOOT_[Spectral Essence]|r
 		.accept 5462
 		.target Magistrate Marduke
 		.isQuestTurnedIn 5461

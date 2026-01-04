@@ -772,7 +772,7 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Western Plaguelands,70.6,74.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Magistrate Marduke|r
-		.equip 13,206382 >> |cRXP_WARN_Equip the|r |T134337:0|t|cRXP_LOOT_[Spectral Essence]|r
+		.equip 13,13544 >> |cRXP_WARN_Equip the|r |T134337:0|t|cRXP_LOOT_[Spectral Essence]|r
 		.accept 5461
 		.target Magistrate Marduke	
 
@@ -816,7 +816,7 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Western Plaguelands,70.6,74.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Magistrate Marduke|r
-		.equip 13,206382 >> |cRXP_WARN_Equip the|r |T134337:0|t|cRXP_LOOT_[Spectral Essence]|r
+		.equip 13,13544 >> |cRXP_WARN_Equip the|r |T134337:0|t|cRXP_LOOT_[Spectral Essence]|r
 		.turnin 5461
 		.target Magistrate Marduke	
 
