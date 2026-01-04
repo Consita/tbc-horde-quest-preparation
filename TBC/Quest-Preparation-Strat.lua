@@ -2970,6 +2970,14 @@ RXPGuides.RegisterGuide([[
 			.target Maybess Riverbreeze	
 
 		step
+			.goto Felwood,46.60,83.00
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Maybess|r and get your |T134249:0|t[Cenarion Beacon]
+			.collect 11511
+			.gossip 9529,0
+			.skipgossip 9529,1
+			.target Maybess Riverbreeze				
+
+		step
 			.goto Felwood,51.20,82.10
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Greta|r
 			.turnin 5165 >>Turn in Dousing the Flames of Protection

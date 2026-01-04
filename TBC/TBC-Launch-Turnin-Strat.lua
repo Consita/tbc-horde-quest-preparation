@@ -181,7 +181,8 @@ step
 		
 	step
 		.goto Silithus,45.00,92.20
-		>>Kill |cRXP_ENEMY_Deathclasp|r an loot him for his |cRXP_LOOT_Pincer|r.
+		>>Kill |cRXP_ENEMY_Deathclasp|r an loot him for his |cRXP_LOOT_Pincer|r
+		>>|cRXP_WARN_Has a short 2 min respawn timer. The quest is worth ~4½ minutes of SlavePens|r
 		.complete 8283,1 
 		.unitscan Deathclasp
 
@@ -733,6 +734,7 @@ step
 	step	
 		.goto Tanaris,67.0,22.4
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yeh'kinya|r
+		>>|cRXP_WARN_This starts a 1:30-5min respawn, so try to have everyone turn this in at the same time|r
 		.turnin -8181
 		.target Yeh'kinya
 
@@ -1645,9 +1647,9 @@ step
 	step	
 		.goto Eastern Plaguelands,81.5,59.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r	
-		.turnin -5529
 		.turnin -5531
 		.accept 5212
+		.accept 5529
 		.target Betina Bigglezink
 
 	step	
@@ -1740,10 +1742,23 @@ step
 		.subzone 2057 >>Enter |cFFfa9602Scholomance|r
 
 	step
+		>>Kill 20 |cRXP_ENEMY_Plagued Hatchlings|r inside |cFFfa9602Scholomance|r
+		.mob Plagued Hatchling
+		.complete 5529,1
+		.isOnQuest 5529
+
+	step
+		#completewith next
+		>>At least one person in your group needs to have the |cRXP_LOOT_Viewing Room Key|r. If you did not prefarm it you have to kill |cRXP_ENEMY_Rattlegore|r
+		.collect 13873
+		.mob Rattlegore
+
+	step
 		.use 12368 >>Place |T132596:0|t[Dawn's Gambit] in the Viewing Room of |cFFfa9602Scholomance|r and kill |cRXP_ENEMY_Vectus|r
 		.complete 4771,1
 		.complete 4771,2
 		.isOnQuest 4771
+		.mob Vectus
 
 	step
 		#completewith EPL2
@@ -1755,6 +1770,7 @@ step
 		.goto Eastern Plaguelands,81.5,59.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r	
 		.turnin -4771
+		.turnin -5529
 		.target Betina Bigglezink
 
 	step	
