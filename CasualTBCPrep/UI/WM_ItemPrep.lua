@@ -189,11 +189,39 @@ local function DoesSearchMatchItem(item, src)
 	return false
 end
 
+local function ItemHasNonIgnoredQuest(item)
+    if not item or not item.quests then
+        return true
+    end
+
+    local route = CasualTBCPrep.Routing.CurrentRouteCode
+    if not route then
+        return true
+    end
+
+    for _, qWrap in ipairs(item.quests) do
+        local q = qWrap.quest
+        if q and not CasualTBCPrep.Settings.GetQuestIgnoredState(route, q.id) then
+            return true
+        end
+    end
+
+    return false
+end
+
 ---@param wMain Frame|nil
 ---@return  number, number, number, number, number
 local function LoadItemList(wMain)
 	local itemList, lstQuestsReqAnyAmount = CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(_preparedQuestsOnly)
-
+	if _preparedQuestsOnly then
+		local filtered = {}
+		for _, item in ipairs(itemList) do
+			if ItemHasNonIgnoredQuest(item) then
+				table.insert(filtered, item)
+			end
+		end
+		itemList = filtered
+	end
 	local clrWarn = CasualTBCPrep.Themes.SelectedTheme.colors.warn.hex
 	local clrBad = CasualTBCPrep.Themes.SelectedTheme.colors.bad.hex
 	local clrGood = CasualTBCPrep.Themes.SelectedTheme.colors.good.hex
@@ -415,6 +443,19 @@ local function LoadItemList(wMain)
 				CreateClickableItemFunctionality(textProgress, item.id)
 			end
 		end
+	end
+
+	if _preparedQuestsOnly and lstQuestsReqAnyAmount then
+		local filteredAny = {}
+		local route = CasualTBCPrep.Routing.CurrentRouteCode
+
+		for _, questWrap in ipairs(lstQuestsReqAnyAmount) do
+			if not CasualTBCPrep.Settings.GetQuestIgnoredState(route, questWrap.questID) then
+				table.insert(filteredAny, questWrap)
+			end
+		end
+
+		lstQuestsReqAnyAmount = filteredAny
 	end
 
 	if #lstQuestsReqAnyAmount > 0 then
