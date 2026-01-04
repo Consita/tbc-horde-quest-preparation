@@ -1264,7 +1264,7 @@ RXPGuides.RegisterGuide([[
 	step
 		>>Kill |cRXP_ENEMY_Baron Rivendare|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Head of Baron Rivendare|r
 		.mob Baron Rivendare
-		.complete 5262,1
+		.complete 5263,1
 
 	step
 		>>Kill |cRXP_ENEMY_any Undead|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Plagued Flesh Sample|r
