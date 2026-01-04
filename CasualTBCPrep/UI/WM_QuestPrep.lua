@@ -486,12 +486,9 @@ end
 
 ---@param wMain Frame|nil
 function CasualTBCPrep.WM_QuestPrep.Load(wMain)
-	if wMain == nil then
-		return
-	end
-
+	if wMain == nil then return end
 	local selectedRoute = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.SelectedRoute)
-	if selectedRoute == nil or selectedRoute == "" then
+	if not selectedRoute or selectedRoute == "" then
 		CasualTBCPrep.UI.CreateRouteSelection(wMain, frameQuestPrep)
 		frameQuestPrep.scrollFrame:Hide()
 		return
@@ -507,115 +504,99 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 	local runningAvailableCount = 0
 	local runningTotalCount = 0
 	local runningReadyCount = 0
-	local runningTotalNonIgnored = 0
 
-	if frameQuestPrep.questTexts then
-		for _, fontString in ipairs(frameQuestPrep.questTexts) do
-			fontString:Hide()
-			fontString:SetText("")
-			fontString:SetSize(0, 0)
-			fontString:SetParent(nil)
-		end
+	-- Clear previous UI elements
+	for _, fontString in ipairs(frameQuestPrep.questTexts or {}) do
+		fontString:Hide()
+		fontString:SetText("")
+		fontString:SetSize(0,0)
+		fontString:SetParent(nil)
 	end
-	if frameQuestPrep.content then
-		for _, ttFrame in ipairs(frameQuestPrep.content) do
-			ttFrame:Hide()
-			ttFrame:SetSize(0, 0)
-			ttFrame:SetParent(nil)
-		end
+	for _, ttFrame in ipairs(frameQuestPrep.content or {}) do
+		ttFrame:Hide()
+		ttFrame:SetSize(0,0)
+		ttFrame:SetParent(nil)
 	end
-	if frameQuestPrep.expBar then
-		for _, frame in ipairs(frameQuestPrep.expBar) do
-			frame:Hide()
-			frame:SetSize(0, 0)
-			frame:SetParent(nil)
-		end
+	for _, frame in ipairs(frameQuestPrep.expBar or {}) do
+		frame:Hide()
+		frame:SetSize(0,0)
+		frame:SetParent(nil)
 	end
-
 	frameQuestPrep.questTexts = {}
 	frameQuestPrep.content = {}
 	frameQuestPrep.expBar = {}
 	frameQuestPrep.expectedExperienceTotal = 0
 	frameQuestPrep.expectedQuestCompletion = 0
+	frameQuestPrep.questLists = {} -- NEW: track all loaded quests
 
-	local routeObj = CasualTBCPrep.Routing.Routes[selectedRoute]
-	if routeObj ~= nil then
+	local routeObj = CasualTBCPrep.Routing.Routes[selectedRoute];
+	if routeObj then
 		frameQuestPrep.expectedExperienceTotal = routeObj.extraExperience or 0
 	end
 
-	if frameQuestPrep.chbCompact == nil then
+	-- Compact checkbox
+	if not frameQuestPrep.chbCompact then
 		local checkbox = CreateFrame("CheckButton", nil, frameQuestPrep, "UICheckButtonTemplate")
 		checkbox:SetPoint("TOPRIGHT", frameQuestPrep, "TOPRIGHT", -5, -30)
-		checkbox:SetSize(24, 24)
-
+		checkbox:SetSize(24,24)
 		local chbLabel = checkbox:CreateFontString(nil, "OVERLAY", "GameTooltipTextSmall")
-		chbLabel:SetPoint("RIGHT", checkbox, "LEFT", -2, 1)
+		chbLabel:SetPoint("RIGHT", checkbox, "LEFT", -2,1)
 		chbLabel:SetText("Compact")
-
 		checkbox:SetChecked(_compactView)
 		checkbox:SetScript("OnClick", function(self)
 			_compactView = self:GetChecked()
-			if RefreshQuestList then
-				RefreshQuestList(wMain, frameQuestPrep.searchText)
-			end
+			if RefreshQuestList then RefreshQuestList(wMain, frameQuestPrep.searchText) end
 		end)
-
 		CasualTBCPrep.UI.HookTooltip(checkbox, "Compact View", { "When unchecked, all quests are grouped per zone or faction." })
 		CasualTBCPrep.UI.HookTooltip(chbLabel, "Compact View", { "When unchecked, all quests are grouped per zone or faction." })
-
 		frameQuestPrep.chbCompact = checkbox
 	end
 
-	-- Left Side
+	-- Load all quest sections
 	xOffset = 2
-	local newYOffset, aCount, cCount, readyCount, totalNonIgnored = LoadTurninQuests(wMain, xOffset, yOffset, "TOPLEFT", "TOPLEFT")
+	local newYOffset, aCount, cCount, readyCount
+
+	newYOffset, aCount, cCount, readyCount = LoadTurninQuests(wMain, xOffset, yOffset, "TOPLEFT", "TOPLEFT")
 	runningAvailableCount = runningAvailableCount + aCount
 	runningTotalCount = runningTotalCount + aCount + cCount
 	runningReadyCount = runningReadyCount + readyCount
-	runningTotalNonIgnored = runningTotalNonIgnored + totalNonIgnored
 
-	newYOffset, aCount, cCount, readyCount, totalNonIgnored = LoadItemQuests(wMain, xOffset, newYOffset, "TOPLEFT", "TOPLEFT")
+	newYOffset, aCount, cCount, readyCount = LoadItemQuests(wMain, xOffset, newYOffset, "TOPLEFT", "TOPLEFT")
 	runningAvailableCount = runningAvailableCount + aCount
 	runningTotalCount = runningTotalCount + aCount + cCount
 	runningReadyCount = runningReadyCount + readyCount
-	runningTotalNonIgnored = runningTotalNonIgnored + totalNonIgnored
 
-	-- Right Side
+	-- Right side
 	xOffset = -1
-	newYOffset, aCount, cCount, readyCount, totalNonIgnored = LoadReputationQuests(wMain, xOffset, yOffset, "TOPRIGHT", "TOPRIGHT")
+	newYOffset, aCount, cCount, readyCount = LoadReputationQuests(wMain, xOffset, yOffset, "TOPRIGHT", "TOPRIGHT")
 	runningAvailableCount = runningAvailableCount + aCount
 	runningTotalCount = runningTotalCount + aCount + cCount
 	runningReadyCount = runningReadyCount + readyCount
-	runningTotalNonIgnored = runningTotalNonIgnored + totalNonIgnored
 
-	newYOffset, aCount, cCount, readyCount, totalNonIgnored = LoadExpensiveQuests(wMain, xOffset, newYOffset, "TOPRIGHT", "TOPRIGHT")
+	newYOffset, aCount, cCount, readyCount = LoadExpensiveQuests(wMain, xOffset, newYOffset, "TOPRIGHT", "TOPRIGHT")
 	runningAvailableCount = runningAvailableCount + aCount
 	runningTotalCount = runningTotalCount + aCount + cCount
 	runningReadyCount = runningReadyCount + readyCount
-	runningTotalNonIgnored = runningTotalNonIgnored + totalNonIgnored
 
-	newYOffset, aCount, cCount, readyCount, totalNonIgnored = LoadQuestlogQuests(wMain, xOffset, newYOffset, "TOPRIGHT", "TOPRIGHT")
+	newYOffset, aCount, cCount, readyCount = LoadQuestlogQuests(wMain, xOffset, newYOffset, "TOPRIGHT", "TOPRIGHT")
 	runningAvailableCount = runningAvailableCount + aCount
 	runningTotalCount = runningTotalCount + aCount + cCount
 	runningReadyCount = runningReadyCount + readyCount
-	runningTotalNonIgnored = runningTotalNonIgnored + totalNonIgnored
 
-	newYOffset, aCount, cCount, readyCount, totalNonIgnored = LoadQuestlogOptionalQuests(wMain, xOffset, newYOffset, "TOPRIGHT", "TOPRIGHT")
+	newYOffset, aCount, cCount, readyCount = LoadQuestlogOptionalQuests(wMain, xOffset, newYOffset, "TOPRIGHT", "TOPRIGHT")
 	runningAvailableCount = runningAvailableCount + aCount
 	runningTotalCount = runningTotalCount + aCount + cCount
 	runningReadyCount = runningReadyCount + readyCount
-	runningTotalNonIgnored = runningTotalNonIgnored + totalNonIgnored
 
+	-- Experience bar
 	CreateExperienceBar(wMain, frameQuestPrep)
 
-	-- Main Header Text
+	-- Main header
 	if not frameQuestPrep.headerText then
 		frameQuestPrep.headerText = frameQuestPrep:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
 		frameQuestPrep.headerText:SetPoint("TOP", frameQuestPrep, "TOP", 0, _headerY)
 	end
-
-	-- Use totalNonIgnored for header
-	frameQuestPrep.headerText:SetText("Prepared " .. runningReadyCount .. " / " .. runningTotalNonIgnored .. " quests")
+	frameQuestPrep.headerText:SetText("Prepared " .. runningReadyCount .. " / " .. runningTotalCount .. " quests")
 end
 
 
@@ -639,123 +620,131 @@ CreateExperienceBar = function(wMain, parent)
 	local barWidth = wMain.GetSizeWidth() - 14
 	local barHeight = 11
 	local chunks = 20
-
 	local xOffset = 0
 	local yOffset = -57
 
 	local expectedExpTotal = frameQuestPrep.expectedExperienceTotal or 0
-	local targetLevel, targetExp, expPercentProgress = CasualTBCPrep.Experience.GetLevelProgress(60, 0, expectedExpTotal)-- Could use player values, but no point rn? UnitLevel("player") and UnitXP("player")
+	local targetLevel, targetExp, expPercentProgress = CasualTBCPrep.Experience.GetLevelProgress(60, 0, expectedExpTotal)
 	local thisLevelTotalExp = CasualTBCPrep.Experience.GetRequiredExperienceFor(targetLevel, targetLevel + 1)
 
 	local expBarFrame = CreateFrame("StatusBar", nil, parent)
 	expBarFrame:SetSize(barWidth, barHeight)
-    expBarFrame:SetPoint("TOP", parent, "TOP", xOffset, yOffset)
+	expBarFrame:SetPoint("TOP", parent, "TOP", xOffset, yOffset)
 	expBarFrame:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar")
-	--expBarFrame:SetStatusBarColor(0.64, 0.68, 0.17) -- Yellow, Energy
 	expBarFrame:SetStatusBarColor(0.45, 0.02, 0.42)
 	expBarFrame:SetMinMaxValues(0, 100)
 	expBarFrame:SetValue(expPercentProgress)
 	table.insert(frameQuestPrep.expBar, expBarFrame)
 
+	-- Background and chunk separators
 	local bgFrame = expBarFrame:CreateTexture(nil, "BACKGROUND")
 	bgFrame:SetTexture("Interface\\PaperDollInfoFrame\\UI-Character-Skills-Bar")
 	bgFrame:SetAllPoints(expBarFrame)
-	bgFrame:SetVertexColor(0.3, 0.3, 0.3, 0.8)
+	bgFrame:SetVertexColor(0.3,0.3,0.3,0.8)
 	table.insert(frameQuestPrep.expBar, bgFrame)
-
-	for i = 1, chunks - 1 do
-		local segmentFrame = expBarFrame:CreateTexture(nil, "OVERLAY")
-		segmentFrame:SetColorTexture(0, 0, 0, 0.2)
+	for i=1,chunks-1 do
+		local segmentFrame = expBarFrame:CreateTexture(nil,"OVERLAY")
+		segmentFrame:SetColorTexture(0,0,0,0.2)
 		segmentFrame:SetWidth(2)
-		segmentFrame:SetHeight(expBarFrame:GetHeight() - 2)
-		segmentFrame:SetPoint("LEFT", expBarFrame, "LEFT", i * (expBarFrame:GetWidth() / chunks), 0)
+		segmentFrame:SetHeight(expBarFrame:GetHeight()-2)
+		segmentFrame:SetPoint("LEFT", expBarFrame, "LEFT", i*(expBarFrame:GetWidth()/chunks),0)
 		table.insert(frameQuestPrep.expBar, segmentFrame)
 	end
 
-	-- Make it look like the expbar blends in well...
-	-- Zoomed in for edge colors, make it seem like it blends in naturally... ish
-	local tBrdClrR = 0.161
-	local tBrdClrG = 0.149
-	local tBrdClrB = 0.137
-	local lBrdClrR = 0.247
-	local lBrdClrG = 0.220
-	local lBrdClrB = 0.188
-	local rBrdClrR = 0.086
-	local rBrdClrG = 0.094
-	local rBrdClrB = 0.086
-
-	local texTopBorder = expBarFrame:CreateTexture(nil, "OVERLAY")
-	texTopBorder:SetColorTexture(tBrdClrR, tBrdClrG, tBrdClrB, 0.8)
+	-- Borders
+	local tBrdClrR,tBrdClrG,tBrdClrB = 0.161,0.149,0.137
+	local lBrdClrR,lBrdClrG,lBrdClrB = 0.247,0.220,0.188
+	local rBrdClrR,rBrdClrG,rBrdClrB = 0.086,0.094,0.086
+	local texTopBorder = expBarFrame:CreateTexture(nil,"OVERLAY")
+	texTopBorder:SetColorTexture(tBrdClrR,tBrdClrG,tBrdClrB,0.8)
 	texTopBorder:SetHeight(2)
 	texTopBorder:SetWidth(expBarFrame:GetWidth())
-	texTopBorder:SetPoint("TOP", expBarFrame, "TOP", 0, 1)
+	texTopBorder:SetPoint("TOP", expBarFrame, "TOP", 0,1)
 	table.insert(frameQuestPrep.expBar, texTopBorder)
-
-	local texLeftBorder = expBarFrame:CreateTexture(nil, "OVERLAY")
-	texLeftBorder:SetColorTexture(lBrdClrR, lBrdClrG, lBrdClrB, 0.8)
+	local texLeftBorder = expBarFrame:CreateTexture(nil,"OVERLAY")
+	texLeftBorder:SetColorTexture(lBrdClrR,lBrdClrG,lBrdClrB,0.8)
 	texLeftBorder:SetWidth(2)
 	texLeftBorder:SetHeight(expBarFrame:GetHeight())
-	texLeftBorder:SetPoint("LEFT", expBarFrame, "LEFT", -2, 0)
+	texLeftBorder:SetPoint("LEFT", expBarFrame, "LEFT", -2,0)
 	table.insert(frameQuestPrep.expBar, texLeftBorder)
-
-	local texRightBorder = expBarFrame:CreateTexture(nil, "OVERLAY")
-	texRightBorder:SetColorTexture(rBrdClrR, rBrdClrG, rBrdClrB, 0.8)
+	local texRightBorder = expBarFrame:CreateTexture(nil,"OVERLAY")
+	texRightBorder:SetColorTexture(rBrdClrR,rBrdClrG,rBrdClrB,0.8)
 	texRightBorder:SetWidth(2)
 	texRightBorder:SetHeight(expBarFrame:GetHeight())
-	texRightBorder:SetPoint("RIGHT", expBarFrame, "RIGHT", 1, 0)
+	texRightBorder:SetPoint("RIGHT", expBarFrame, "RIGHT", 1,0)
 	table.insert(frameQuestPrep.expBar, texRightBorder)
 
-	if expPercentProgress > 1 then
-		local sparkStrength = math.ceil(expPercentProgress / 20) * 7 --7/14/21/28 at 20/40/60/80 %
-
-		local texExpSpark = expBarFrame:CreateTexture(nil, "OVERLAY")
+	-- Sparks
+	if expPercentProgress>1 then
+		local sparkStrength = math.ceil(expPercentProgress/20)*7
+		local texExpSpark = expBarFrame:CreateTexture(nil,"OVERLAY")
 		texExpSpark:SetTexture("Interface\\CastingBar\\UI-CastingBar-Spark")
 		texExpSpark:SetBlendMode("ADD")
 		texExpSpark:SetWidth(sparkStrength)
 		texExpSpark:SetHeight(26)
-		texExpSpark:SetPoint("CENTER", expBarFrame:GetStatusBarTexture(), "RIGHT", 0, 0)
+		texExpSpark:SetPoint("CENTER", expBarFrame:GetStatusBarTexture(), "RIGHT",0,0)
 		table.insert(frameQuestPrep.expBar, texExpSpark)
 	end
 
-	local txtClrR = 0.9
-	local txtClrG = 0.9
-	local txtClrB = 0.9
-
-	-- Visuals done, add progression text
-	local rawExpText = tostring(targetExp) .. " / " .. tostring(thisLevelTotalExp)
-	local expPercentText = tostring(math.floor(expPercentProgress + 0.5)) .. "%"
+	local txtClrR,txtClrG,txtClrB = 0.9,0.9,0.9
+	local rawExpText = tostring(targetExp).." / "..tostring(thisLevelTotalExp)
+	local expPercentText = tostring(math.floor(expPercentProgress+0.5)).."%"
 	local targetLevelText = tostring(targetLevel)
-	local nextLevelText = tostring((targetLevel + 1))
+	local nextLevelText = tostring(targetLevel+1)
 
-	local txtExpValue = expBarFrame:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-	txtExpValue:SetPoint("CENTER", expBarFrame, "CENTER", 0, 0)
+	local txtExpValue = expBarFrame:CreateFontString(nil,"OVERLAY","GameFontNormalSmall")
+	txtExpValue:SetPoint("CENTER", expBarFrame, "CENTER",0,0)
 	txtExpValue:SetText(rawExpText)
-	txtExpValue:SetTextColor(txtClrR, txtClrG, txtClrB)
+	txtExpValue:SetTextColor(txtClrR,txtClrG,txtClrB)
 	table.insert(frameQuestPrep.expBar, txtExpValue)
 
-	local txtCurLvl = expBarFrame:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-	txtCurLvl:SetPoint("LEFT", expBarFrame, "LEFT", 3, 0)
+	local txtCurLvl = expBarFrame:CreateFontString(nil,"OVERLAY","GameFontNormalSmall")
+	txtCurLvl:SetPoint("LEFT", expBarFrame, "LEFT",3,0)
 	txtCurLvl:SetText(targetLevelText)
-	txtCurLvl:SetTextColor(txtClrR, txtClrG, txtClrB)
+	txtCurLvl:SetTextColor(txtClrR,txtClrG,txtClrB)
 	table.insert(frameQuestPrep.expBar, txtCurLvl)
 
-	local txtNextLvl = expBarFrame:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-	txtNextLvl:SetPoint("RIGHT", expBarFrame, "RIGHT", -4, 0)
+	local txtNextLvl = expBarFrame:CreateFontString(nil,"OVERLAY","GameFontNormalSmall")
+	txtNextLvl:SetPoint("RIGHT", expBarFrame, "RIGHT",-4,0)
 	txtNextLvl:SetText(nextLevelText)
-	txtNextLvl:SetTextColor(txtClrR, txtClrG, txtClrB)
+	txtNextLvl:SetTextColor(txtClrR,txtClrG,txtClrB)
 	table.insert(frameQuestPrep.expBar, txtNextLvl)
 
+	-- Tooltip
 	local qCount = (frameQuestPrep.expectedQuestCompletion or 0)
 	local ttLines = {
-		"You will hit level " .. targetLevelText .. " with " .. expPercentText .. " exp",
-		"|cFFB4C2B8If you complete your " .. tostring(qCount) .. " quest" .. (qCount == 1 and "" or "s") .. "|r"
+		"You will hit level "..targetLevelText.." with "..expPercentText.." exp",
+		"|cFFB4C2B8If you complete your "..tostring(qCount).." quest"..(qCount==1 and "" or "s").."|r"
 	}
-	local currentRoute = CasualTBCPrep.Routing.GetCurrentRoute()
-	if currentRoute ~= nil and frameQuestPrep.totalExpTest ~= nil and frameQuestPrep.totalExpTest > 0 then
-		local maxPossLevel, maxPossExp, maxPossPercent = CasualTBCPrep.Experience.GetLevelProgress(60, 0, frameQuestPrep.totalExpTest + (currentRoute.extraExperience or 0))
 
+	local nonIgnoredExpTotal = 0
+	local currentRoute = CasualTBCPrep.Routing.GetCurrentRoute()
+	if currentRoute then
+
+		local allQuestGroups = {
+			CasualTBCPrep.QuestData.GetAllQuestsGroup_Normal(),
+			CasualTBCPrep.QuestData.GetAllQuestsGroup_Items(),
+			CasualTBCPrep.QuestData.GetAllQuestsGroup_Reputation(),
+			CasualTBCPrep.QuestData.GetAllQuestsGroup_Expensive(),
+			CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog(),
+			CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog_Optional()
+		}
+
+		for _, group in ipairs(allQuestGroups) do
+			for _, questWrap in ipairs(group) do
+				local questObj = questWrap.quest or questWrap.wrap and questWrap.wrap.quest
+				if questObj and not CasualTBCPrep.Settings.GetQuestIgnoredState(CasualTBCPrep.Routing.CurrentRouteCode, questObj.id) then
+					nonIgnoredExpTotal = nonIgnoredExpTotal + (questObj.exp or 0)
+				end
+			end
+		end
+
+		nonIgnoredExpTotal = nonIgnoredExpTotal + (currentRoute.extraExperience or 0)
+
+		local maxPossLevel, _, maxPossPercent = CasualTBCPrep.Experience.GetLevelProgress(60, 0, nonIgnoredExpTotal)
 		table.insert(ttLines, " ")
-		table.insert(ttLines, "Max Possible: |cFFFFFFFF" .. maxPossLevel .. " +" .. tostring(math.floor(maxPossPercent + 0.5)) .. "%|r")
+		table.insert(ttLines, "Max Possible: |cFFFFFFFF"..maxPossLevel.." +"..tostring(math.floor(maxPossPercent+0.5)).."%|r")
 	end
-	CasualTBCPrep.UI.HookTooltip(expBarFrame, "Experience Progress", ttLines, nil,nil,nil)
+
+	CasualTBCPrep.UI.HookTooltip(expBarFrame, "Experience Progress", ttLines)
 end
