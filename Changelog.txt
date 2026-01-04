@@ -3,6 +3,7 @@ Changelog:
 3.14 - 2026-01-05
 - Added first draft of turnin guide for Strat route
 -- We need help on testing this as we cannot copy. Try to grab some items and just run through the guide. It is highly dynamic based on rep/items/quests. We can expect issues here. It is currently missing the item pickup steps. Those and the other routes will be added at a later point.
+- Added missing items for Anthion's Strange Request (strat route only relevant)
 - Added step to gather Cenarion Beacon
 - Added BWL guide for prep in all routes
 - Fixed several waypoints in Prep guide
