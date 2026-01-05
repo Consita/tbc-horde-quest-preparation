@@ -7,8 +7,16 @@ local mainText_optional = "This quest can be used for TBC Quest Preparation as a
 local mainText_turnin = "This quest is turned in during TBC Release, this quest should NOT be in your questlog until release.\n\nTo turn off this warning, disable \"Quest Turnin Warnings\"\nin the /tbcprep settings."
 local mainText_completing  = "You just tried to complete a quest used on TBC Release for EXP!\nThis is currently being blocked!\n\nTo turn off this warning, disable \"Quest Completion Warnings\"\nin the /tbcprep settings."
 local mainText_itemdelete = "You just tried to delete an Item needed for TBC Prep Quests.\nThis item won't be blocked again for this sesson.\n\nIf you really want to delete it, do it again"
+local QUEST_TEXT_OVERRIDES = {
+    -- [questID] = { title = "...", header = "...", message = "..." }
+
+    [123] = {header = "IMPORTANT!", message = "This quest is REQUIRED for optimal TBC launch routing.\n\nDo NOT abandon or turn it in."},
+    [321] = {message = "This quest is optional and can be skipped if your quest log is full.\n\nCheck /tbcprep first."},
+}
+
 
 local w_window_name = "CasualTBCPrep_W_WarningNotice"
+
 ---@class Frame|nil
 local wAcceptQuestWarning = nil;
 
@@ -148,9 +156,28 @@ local function UpdateElementsFromType(type)
 
 	wAcceptQuestWarning.warningText:SetText(headerText)
 	wAcceptQuestWarning.detailText:SetText(messageText)
+
+	local questID = wAcceptQuestWarning.currentQuestID
+	local override = questID and QUEST_TEXT_OVERRIDES[questID]
+
+	if override then
+		if override.title then
+			wAcceptQuestWarning.title:SetText(override.title)
+		end
+
+		if override.header then
+			wAcceptQuestWarning.warningText:SetText(override.header)
+		end
+
+		if override.message then
+			wAcceptQuestWarning.detailText:SetText(override.message)
+		end
 end
 
-function CasualTBCPrep.W_WarningNotice.Show(headerText, qLogEntry, type)
+
+end
+
+function CasualTBCPrep.W_WarningNotice.Show(headerText, qLogEntry, type, questID)
 	if wAcceptQuestWarning == nil then
 
 		Create(type)
@@ -161,6 +188,7 @@ function CasualTBCPrep.W_WarningNotice.Show(headerText, qLogEntry, type)
 
 	wAcceptQuestWarning.currentQuestLogEntryID = qLogEntry;
 	wAcceptQuestWarning.currentHeaderTextString = headerText;
+	wAcceptQuestWarning.currentQuestID = questID;
 
 	wAcceptQuestWarning.questNameText:SetText(headerText)
 	UpdateElementsFromType(type)
