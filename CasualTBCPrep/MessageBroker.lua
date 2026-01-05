@@ -7,7 +7,9 @@ CasualTBCPrep.MessageBroker.TYPE = {
     QUEST_LOG_UPDATE = 3,
     BAG_OR_INVENTORY_UPDATE = 4,
     ON_TALK_TO_FLIGHT = 5,
-    ZONE_CHANGED = 6
+    ZONE_CHANGED = 6,
+    MAILBOX_INTERACT = 7,
+    BANK_INTERACT = 8
 }
 setmetatable(CasualTBCPrep.MessageBroker.TYPE, {
     __newindex = function(table, key, value)

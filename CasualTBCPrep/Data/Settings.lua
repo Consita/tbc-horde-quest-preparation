@@ -121,14 +121,20 @@ function CasualTBCPrep.Settings.LoadDefaults()
         end
     end
 
+	local tempCharSetting = nil
 	-- Global Defaults
 	local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails)
 	if debugger == nil then
 		CasualTBCPrep.Settings.SetGlobalSetting(CasualTBCPrep.Settings.DebugDetails, -1)
 	end
 
+	tempCharSetting = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.CompanionSettings)
+	if tempCharSetting == nil then
+		CasualTBCPrep.Settings.SetGlobalSetting(CasualTBCPrep.Settings.CompanionSettings, { })
+	end
+
 	-- Character Defaults
-	local tempCharSetting = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.IgnoredQuests)
+	tempCharSetting = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.IgnoredQuests)
 	if tempCharSetting == nil then
 		CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.IgnoredQuests, { })
 	end

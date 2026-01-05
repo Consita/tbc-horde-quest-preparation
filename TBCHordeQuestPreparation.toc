@@ -12,6 +12,8 @@
 # Addon UI
 CasualTBCPrep\Init.lua
 CasualTBCPrep\MessageBroker.lua
+CasualTBCPrep\MailboxInteraction.lua
+CasualTBCPrep\BankInteraction.lua
 CasualTBCPrep\Data\Themes.lua
 CasualTBCPrep\Data\Classes.lua
 CasualTBCPrep\Data\Faction.lua
@@ -46,6 +48,7 @@ CasualTBCPrep\UI\W_WarningNotice.lua
 CasualTBCPrep\UI\W_ItemManagement.lua
 CasualTBCPrep\UI\W_QuestManagement.lua
 CasualTBCPrep\UI\W_Companion.lua
+CasualTBCPrep\UI\W_FeatureManual.lua
 CasualTBCPrep\CasualTBCPrep.lua
 
 # Guide

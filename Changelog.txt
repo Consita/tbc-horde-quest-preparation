@@ -1,5 +1,8 @@
 Changelog:
 
+3.14
+- Added in missing items from the quest "Anthion's Strange Request" (8947). This is the last T0.5 Quest which only the STRAT route does. Expensive 9k exp.
+
 3.13 - 2025-12-29
 - Fixed "Kitchen Assistance" having prequests when it shouldn't in all routes
 - Corrected wrong Noggenfogger quest name under Extras > Items

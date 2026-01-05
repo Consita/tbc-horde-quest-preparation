@@ -174,7 +174,7 @@ CasualTBCPrep.Routing.Routes = {
             ["BlastedLands"] = { key="BlastedLands", estTime=52, travelType=2, quests={ }, pickups={} },
             ["TheDarkPortal"] = { key="TheDarkPortal", estTime=45, travelType=12, quests={ }, pickups={}, canHaveZeroQuests=true },
         },
-        mailboxCount = 3,
+        mailboxCount = 4,
         mailboxData = {
             [1] = { -- Bags
                 from = "Badlands",
@@ -407,6 +407,15 @@ for routeKey, route in pairs(CasualTBCPrep.Routing.Routes) do
     end
 end
 
+local function GetTurninItemsForCurrentRoute_AddOrCombineItem(itemList, itemID, count)
+    for _, existingItem in ipairs(itemList) do
+        if existingItem.itemID == itemID then
+            existingItem.count = existingItem.count + count
+            return
+        end
+    end
+    table.insert(itemList, {itemID = itemID, count = count})
+end
 
 ---@return table,table, table
 function CasualTBCPrep.Routing.GetTurninItemsForCurrentRoute()
@@ -423,54 +432,73 @@ function CasualTBCPrep.Routing.GetTurninItemsForCurrentRoute()
         return {},{},{}
     end
 
-    local sectionsUsed,expectedSectionsUsed = 0, #route.sectionOrder
+    -- Get the CORRECT list of all items needed
+    local allItemsNeeded, _ = CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(true)
+    
+    -- Build a lookup table: questID -> list of items for that quest
+    local questItemsLookup = {}
+    for _, itemData in ipairs(allItemsNeeded) do
+        for _, questInfo in ipairs(itemData.quests) do
+            local questID = questInfo.id
+            if not questItemsLookup[questID] then
+                questItemsLookup[questID] = {}
+            end
+            table.insert(questItemsLookup[questID], {
+                itemID = itemData.id,
+                count = itemData.requiredAmount / #itemData.quests -- Split evenly if multiple quests need same item
+            })
+        end
+    end
 
-    local currentBankGroup,currentMailGroup = 1,1
+    local sectionsUsed, expectedSectionsUsed = 0, #route.sectionOrder
+    local currentBankGroup, currentMailGroup = 1, 1
     local currentMailboxData = route.mailboxData[1]
     local nextBankSection = route.bankSections[1]
+    local lastBankSection = "BAGS"
 
-    local tempBankData, tempMailData = {},{}
-    local mbStarted,mbExit = false,false
-    for _,sectionName in ipairs(route.sectionOrder) do
+    local tempBankData, tempMailData = {}, {}
+    local mbStarted, mbExit = false, false
+
+    for _, sectionName in ipairs(route.sectionOrder) do
         if mbStarted == false then
             if sectionName == currentMailboxData.from then
-                mbStarted = true -- start with this one
-                table.insert(resultOrder, { type="MAIL", section=sectionName, targetID=currentMailGroup})
+                mbStarted = true
+                if #resultOrder == 0 then
+                    table.insert(resultOrder, { type="MAIL", section="BAGS", targetID=currentMailGroup})
+                else
+                    table.insert(resultOrder, { type="MAIL", section=sectionName, targetID=currentMailGroup})
+                end
             end
         elseif sectionName == currentMailboxData.to then
-            mbExit = true -- exit after this one
+            mbExit = true
         end
 
         if sectionName == nextBankSection then
             table.insert(resultBank, { id=currentBankGroup, section=sectionName, items=tempBankData})
-            table.insert(resultOrder, { type="BANK", section=sectionName, targetID=currentBankGroup})
+            if #resultBank == 1 then
+                table.insert(resultOrder, 1, { type="BANK", section=lastBankSection, targetID=currentBankGroup})
+            else
+                table.insert(resultOrder, { type="BANK", section=lastBankSection, targetID=currentBankGroup})
+            end
             tempBankData = {}
-            currentBankGroup =  currentBankGroup + 1
+            currentBankGroup = currentBankGroup + 1
+            lastBankSection = nextBankSection
             nextBankSection = route.bankSections[currentBankGroup]
         end
 
         if mbStarted == true then
             sectionsUsed = sectionsUsed + 1
             for _, questID in ipairs(route.sections[sectionName].quests) do
-                if CasualTBCPrep.QuestData.IsQuestIDValidForUser(questID) == true then
-                    local questReqItemsStr = CasualTBCPrep.QuestData.GetQuestRequiredItemsString(questID) or ""
-                    if questReqItemsStr ~= "" then
-                        for itemPair in string.gmatch(questReqItemsStr, "([^,]+)") do
-                            local itemIDStr, countStr = string.match(itemPair, "(%d+)-(%d+)")
-
-                            if itemIDStr and countStr and itemIDStr ~= "" and countStr ~= "" then
-                                local insItem = { itemID=tonumber(itemIDStr), count=tonumber(countStr)}
-
-                                local itemObj = CasualTBCPrep.Items.GetItemDetails(insItem.itemID)
-
-                                if itemObj == nil then
-                                    CasualTBCPrep.NotifyUserError("Routing.GetTurninItemsForCurrentRoute couldn't find ItemDetails for ItemID="..itemIDStr)
+                if CasualTBCPrep.QuestData.IsQuestIDValidForUser(questID) and not CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) then
+                    local questItems = questItemsLookup[questID]
+                    if questItems then
+                        for _, item in ipairs(questItems) do
+                            local itemObj = CasualTBCPrep.Items.GetItemDetails(item.itemID)
+                            if itemObj then
+                                if itemObj.auctionHouse == true then
+                                    GetTurninItemsForCurrentRoute_AddOrCombineItem(tempMailData, item.itemID, item.count)
                                 else
-                                    if itemObj.auctionHouse == true then
-                                        table.insert(tempMailData, insItem)
-                                    else
-                                        table.insert(tempBankData, insItem)
-                                    end
+                                    GetTurninItemsForCurrentRoute_AddOrCombineItem(tempBankData, item.itemID, item.count)
                                 end
                             end
                         end
@@ -484,38 +512,24 @@ function CasualTBCPrep.Routing.GetTurninItemsForCurrentRoute()
             tempMailData = {}
             mbStarted = false
             mbExit = false
-            currentMailGroup = currentMailGroup+1
+            currentMailGroup = currentMailGroup + 1
             currentMailboxData = route.mailboxData[currentMailGroup]
         end
     end
 
     if #tempBankData > 0 then
         table.insert(resultBank, { id=currentBankGroup, items=tempBankData})
-        table.insert(resultOrder, { type="BANK", section=nextBankSection, targetID=currentBankGroup})
+        table.insert(resultOrder, { type="BANK", section=lastBankSection, targetID=currentBankGroup})
         tempBankData = {}
-    end
-
-    for _,data in ipairs(resultMail) do
-        print("Mail: "..tostring(data.id)..": "..tostring(#data.items))
-
-        for index2,item in ipairs(data.items) do
-            --print("B: "..tostring(index2)..", ID="..tostring(item.itemID)..": "..tostring(item.count))
-        end
-    end
-
-    for _,data in ipairs(resultBank) do
-        print("Bank: "..tostring(data.id)..": "..tostring(#data.items))
-
-        for index2,item in ipairs(data.items) do
-            --print("B: "..tostring(index2)..", ID="..tostring(item.itemID)..": "..tostring(item.count))
-        end
     end
 
     if sectionsUsed ~= expectedSectionsUsed then
         CasualTBCPrep.NotifyUserError("(Routing.GetMailboxItemsForCurrentRoute_"..routeCode.."): Expected to see "..tostring(expectedSectionsUsed).." but only checked "..tostring(sectionsUsed))
     end
+
     return resultMail, resultBank, resultOrder
 end
+
 function CasualTBCPrep.Routing.GetCurrentRoute()
     return CasualTBCPrep.Routing.Routes[CasualTBCPrep.Routing.CurrentRouteCode]
 end

@@ -62,7 +62,11 @@ SlashCmdList["CASUAL_TBC_PREP"] = function(msg)
 			end
 		end
 	elseif args[1] == "mail" or args[1] == "companion" then
-		CasualTBCPrep.W_Companion.Toggle()
+		if args[2] == "help" then
+        	CasualTBCPrep.W_FeatureManual.Show(CasualTBCPrep.W_FeatureManual.TYPE.EXTRA_MAIL)
+		else
+			CasualTBCPrep.W_Companion.Toggle()
+		end
 	else
 		CasualTBCPrep.W_Main.Show();
 	end
@@ -150,16 +154,28 @@ local function OnTalkToFlightMaster(self, event)
 	CasualTBCPrep.Flights.OnTaxiMapOpened()
 end
 local function OnZoneChangedEvent(self, event)
-    local mapID = C_Map.GetBestMapForUnit("player")
-    local zoneName = GetZoneText()
-    local subzoneName = GetSubZoneText()
+	local mapID, zoneName, subZoneName = CasualTBCPrep.GetMapAndZoneInfo()
 
 	local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
 	if debugger == 1 then
-		CasualTBCPrep.NotifyUser("DebugNavigation : mapID="..tostring(mapID)..", zone="..tostring(zoneName)..", subZone="..tostring(subzoneName))
+		CasualTBCPrep.NotifyUser("DebugNavigation : mapID="..tostring(mapID)..", zone="..tostring(zoneName)..", subZone="..tostring(subZoneName))
 	end
 
-	CasualTBCPrep.MessageBroker.Send(CasualTBCPrep.MessageBroker.TYPE.ZONE_CHANGED, { mapID=mapID, zoneName=zoneName, subzoneName=subzoneName })
+	CasualTBCPrep.MessageBroker.Send(CasualTBCPrep.MessageBroker.TYPE.ZONE_CHANGED, { mapID=mapID, zoneName=zoneName, subzoneName=subZoneName })
+end
+local function OnMailboxAndBankEvent(self, event,...)
+	if event == "MAIL_SHOW" then
+		CasualTBCPrep.MessageBroker.Send(CasualTBCPrep.MessageBroker.TYPE.MAILBOX_INTERACT, { open=true })
+	elseif event == "BANKFRAME_OPENED" then
+		CasualTBCPrep.MessageBroker.Send(CasualTBCPrep.MessageBroker.TYPE.BANK_INTERACT, { open=true })
+	elseif event == "BANKFRAME_CLOSED" then
+		CasualTBCPrep.MessageBroker.Send(CasualTBCPrep.MessageBroker.TYPE.BANK_INTERACT, { open=false })
+	elseif event == "PLAYER_INTERACTION_MANAGER_FRAME_HIDE" then
+        local interactionType = ...
+        if interactionType == Enum.PlayerInteractionType.MailInfo then
+			CasualTBCPrep.MessageBroker.Send(CasualTBCPrep.MessageBroker.TYPE.MAILBOX_INTERACT, { open=false })
+        end
+	end
 end
 
 --[Hook Wrappers]
@@ -255,5 +271,14 @@ taxiFrame:SetScript("OnEvent", OnTalkToFlightMaster)
 
 local zoneEventFrame = CreateFrame("Frame")
 zoneEventFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
+zoneEventFrame:RegisterEvent("ZONE_CHANGED")
+zoneEventFrame:RegisterEvent("ZONE_CHANGED_INDOORS")
 zoneEventFrame:RegisterEvent("PLAYER_ENTERING_WORLD") --Login,Reload,Teleport,Portal,Instance, more?
 zoneEventFrame:SetScript("OnEvent", OnZoneChangedEvent)
+
+local mailAndBankEventFrame = CreateFrame("Frame")
+mailAndBankEventFrame:RegisterEvent("MAIL_SHOW")
+mailAndBankEventFrame:RegisterEvent("BANKFRAME_OPENED")
+mailAndBankEventFrame:RegisterEvent("BANKFRAME_CLOSED")
+mailAndBankEventFrame:RegisterEvent("PLAYER_INTERACTION_MANAGER_FRAME_HIDE")
+mailAndBankEventFrame:SetScript("OnEvent", OnMailboxAndBankEvent)

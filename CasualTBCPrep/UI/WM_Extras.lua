@@ -129,7 +129,7 @@ local function CreateTab(wMain)
 	headerMails:SetSize(imgW, imgH)
 	local headerMailsTexture = headerMails:CreateTexture(nil, "BORDER")
 	headerMailsTexture:SetAllPoints(headerMails)
-	headerMailsTexture:SetTexture(133471)
+	headerMailsTexture:SetTexture(basePath .. "header_mailbox")
 
 	frameExtras.tabTextures = {}
 	frameExtras.tabTextures[1] = { ttHeader="Extra TBC Prep", ttLines={"Extra things you can prepare for TBC"},

@@ -42,7 +42,17 @@
         "OTHER",
         "DEFAULT",
         "ZONE",
-        "QUEST_COMPLETE"
+        "QUEST_COMPLETE",
+        "BANK",
+        "MailFrame",
+        "NUM_BAG_SLOTS",
+        "ATTACHMENTS_MAX_SEND",
+        "SendMailNameEditBox",
+        "SendMailSubjectEditBox",
+        "SendMailFrame",
+        "InboxFrame",
+        "MailFrameTab_OnClick",
+        "MailFrameTab2"
     ],
     "Lua.type.weakUnionCheck": true
 }

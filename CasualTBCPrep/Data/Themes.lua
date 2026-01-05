@@ -29,6 +29,7 @@ local themeData = {
 			tooltipLeftCurrentStep= {r=0.741, g=0.733, b=0.423, hex="|cFFBDBB6C"},
 
 			standoutText=		    {r=0.423, g=0.741, b=0.67, hex="|cFF6CBDAB"},
+			manualText=				{r=0.86, g=0.85, b=0.75, hex="|cFFD8D9BF"},
 
 			headerSpecial=		    {r=0.40, g=0.35, b=0.72, hex="|cFF6659B7"},
 			headerSpecialHover=	    {r=0.60, g=0.55, b=0.92, hex="|cFF998CEB"},
@@ -67,6 +68,7 @@ local themeData = {
 			tooltipLeftCurrentStep= {r=0.741, g=0.733, b=0.423, hex="|cFFBDBB6C"},
 
 			standoutText=		    {r=0.423, g=0.741, b=0.67, hex="|cFF6CBDAB"},
+			manualText=				{r=0.86, g=0.85, b=0.75, hex="|cFFD8D9BF"},
 
 			headerSpecial=		    {r=0.40, g=0.35, b=0.72, hex="|cFF6659B7"},
 			headerSpecialHover=	    {r=0.60, g=0.55, b=0.92, hex="|cFF998CEB"},
@@ -108,6 +110,7 @@ local themeData = {
 
 			-- Standout text: cool blue
 			standoutText=			{r=0.204, g=0.596, b=0.859, hex="|cFF3498DB"},
+			manualText=				{r=0.86, g=0.85, b=0.75, hex="|cFFD8D9BF"},
 
 			headerSpecial=			{r=0.40, g=0.35, b=0.72, hex="|cFF6659B7"},
 			headerSpecialHover=		{r=0.60, g=0.55, b=0.92, hex="|cFF998CEB"},
@@ -150,6 +153,7 @@ local themeData = {
 
 			-- Standout text: bright cyan
 			standoutText=			{r=0, g=0.902, b=0.8, hex="|cFF00E6CC"},
+			manualText=				{r=0.86, g=0.85, b=0.75, hex="|cFFD8D9BF"},
 
 			headerSpecial=			{r=0.40, g=0.35, b=0.72, hex="|cFF6659B7"},
 			headerSpecialHover=		{r=0.60, g=0.55, b=0.92, hex="|cFF998CEB"},

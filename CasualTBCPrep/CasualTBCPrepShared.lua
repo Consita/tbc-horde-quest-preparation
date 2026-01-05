@@ -74,6 +74,20 @@ function CasualTBCPrep.NotifyUserError(message)
 	print(CasualTBCPrep.Themes.SelectedTheme.colors.notifyErrorStart.hex .. "[" .. CasualTBCPrep.AddonName .. "]: " .. CasualTBCPrep.Themes.SelectedTheme.colors.notifyErrorText.hex .. (message or "Unknown Error"));
 	CasualTBCPrep.Sounds.PlaySound_WhisperPing()
 end
+---@param message string|nil
+function CasualTBCPrep.NotifyUserCompanion(message)
+	print(CasualTBCPrep.Themes.SelectedTheme.colors.notifyInfoStart.hex .. "[" .. CasualTBCPrep.AddonName .. " Companion]: " .. CasualTBCPrep.Themes.SelectedTheme.colors.notifyInfoText.hex .. (message or "???"));
+end
+---@param message string|nil
+function CasualTBCPrep.NotifyUserCompanionWarning(message)
+	print(CasualTBCPrep.Themes.SelectedTheme.colors.notifyErrorStart.hex .. "[" .. CasualTBCPrep.AddonName .. " Companion]: " .. CasualTBCPrep.Themes.SelectedTheme.colors.warn.hex .. (message or "Unknown Error"));
+	CasualTBCPrep.Sounds.PlaySound_WhisperPing()
+end
+---@param message string|nil
+function CasualTBCPrep.NotifyUserCompanionError(message)
+	print(CasualTBCPrep.Themes.SelectedTheme.colors.notifyErrorStart.hex .. "[" .. CasualTBCPrep.AddonName .. " Companion]: " .. CasualTBCPrep.Themes.SelectedTheme.colors.notifyErrorText.hex .. (message or "Unknown Error"));
+	CasualTBCPrep.Sounds.PlaySound_WhisperPing()
+end
 
 ---@param message string|nil
 function CasualTBCPrep.Trace(message)
@@ -153,6 +167,25 @@ function CasualTBCPrep.CreateProfRankText(profID, reqProfLevel)
 	return clrProfToUse .. "Requires " .. CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex .. reqProfLevel .. " " .. clrProfToUse .. professionName
 end
 
+---@return integer,string,string
+function CasualTBCPrep.GetMapAndZoneInfo()
+    local mapID = C_Map.GetBestMapForUnit("player")
+    local zoneName = GetZoneText() or ""
+    local subzoneName = GetSubZoneText() or ""
+	return mapID, zoneName, subzoneName
+end
+
+---@return integer
+function CasualTBCPrep.GetPlayerFreeBagSlots()
+    local freeBagSlots = 0
+    for bag = 0, NUM_BAG_SLOTS do
+        local numFreeSlots, bagType = C_Container.GetContainerNumFreeSlots(bag)
+        if numFreeSlots then
+            freeBagSlots = freeBagSlots + numFreeSlots
+        end
+    end
+    return freeBagSlots or 0
+end
 
 function CasualTBCPrep.TableInsertUnique(list, value)
 	for _, v in ipairs(list) do
