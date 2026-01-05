@@ -681,12 +681,6 @@ RXPGuides.RegisterGuide([[
 		.target Alexi Barov
 
 	step
-		.goto Eastern Plaguelands,81.4,59.8
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r
-		.accept 5529 >> Accept Plagued Hatchlings
-		.target Betina Bigglezink
-
-	step
 		.goto Western Plaguelands,70.2,73.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Eva Sarkhoff|r
 		.accept 5382
@@ -697,12 +691,6 @@ RXPGuides.RegisterGuide([[
 		#completewith next
 		.goto 1415,52.8,26.4
 		.subzone 2057 >>Enter |cFFfa9602Scholomance|r
-
-	step
-		#completewith deed
-		>>Kill 20 |cRXP_ENEMY_Plagued Hatchlings|r inside |cFFfa9602Scholomance|r
-		.mob Plagued Hatchling
-		.complete 5529,1
 
 	step
 		#completewith deed
