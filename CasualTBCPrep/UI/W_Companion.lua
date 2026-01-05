@@ -204,6 +204,11 @@ local function LoadStepDetails()
     local parent = wCompanion.scrollChild
     local yPos = -5
 
+    if debugger == 1 then
+        local debugMailsToOpen, debugItemsFromBank, debugMailItemStackCount, debugBankItemStackCount = GetStepDetails_ItemsNeeded(currentStep)
+        CasualTBCPrep.NotifyUserCompanion("[DEBUG] Mail slots needed: " .. debugMailItemStackCount)
+        CasualTBCPrep.NotifyUserCompanion("[DEBUG] Bank slots needed: " .. debugBankItemStackCount)
+    end
     if currentStep.reached == false then
         -- Not reached, show text to go there
 
@@ -215,7 +220,7 @@ local function LoadStepDetails()
 
         local txtReach = parent:CreateFontString(nil, "OVERLAY", "GameFontNormal")
         txtReach:SetPoint("TOP", txtReachStatic, "BOTTOM", 0, -2)
-        
+
         if currentStep.shortZoneText ~= nil and currentStep.shortZoneText ~= "" then
             txtReach:SetText(currentStep.shortZoneText)
         else
@@ -285,6 +290,7 @@ local function LoadStepDetails()
                 -- Gotta call it everytime sadly, to see if user got some items from a previous click.
                 GetTurninData()
                 btnCollect.mailsToOpen, btnCollect.itemsFromBank, btnCollect.mailItemStackCount, btnCollect.bankItemStackCount = GetStepDetails_ItemsNeeded(currentStep)
+
                 if mailID > 0 and isInteractingWithMail == true and self.mailsToOpen ~= nil then
                     local playerFreeBagSlots = CasualTBCPrep.GetPlayerFreeBagSlots()
 

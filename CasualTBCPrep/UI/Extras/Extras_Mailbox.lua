@@ -119,7 +119,7 @@ function CasualTBCPrep.Extras_Mailbox.GetStepDetails_ItemsNeeded(dataMail, dataB
         local mails = dataMail[targetMailID]
         for _,mail in pairs(mails.mails) do
             local filteredItems = {}
-
+    
             for _,item in ipairs(mail.items) do
                 local playerInvCount = CasualTBCPrep.Items.GetPlayerItemCount(item.itemID, false)
                 if playerInvCount < item.count then
