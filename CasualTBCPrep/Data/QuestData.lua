@@ -861,11 +861,13 @@ local function LoadRouteQuestSpecifics_Strat()
 	UpdateQuestOnForRouteHardcodeFix(5213, "turnin", "EPLTown4", nil, true) -- The Active Agent
 	UpdateQuestOnForRouteHardcodeFix(6163, "turnin", "EPLNathanos2", nil, true) -- Ramstein
 	UpdateQuestOnForRouteHardcodeFix(5848, "turnin", "EPLTirion2", nil, true) -- Of Love and Family
+	UpdateQuestOnForRouteHardcodeFix(5529, "turnin", nil, nil, true) -- Plagued Hatchlings
 
 	-- The new 'qlog' quests
 	UpdateQuestOnForRouteHardcodeFix(105, "qlog", nil, nil, false) -- Alas, Andorhal
 	UpdateQuestOnForRouteHardcodeFix(8306, "qlog", nil, nil, false) -- Into The Maw of Madness
 	UpdateQuestOnForRouteHardcodeFix(5056, "qlog", nil, nil, false) -- Shy-Rotam
+	UpdateQuestOnForRouteHardcodeFix(6148, "qlog", nil, nil, false) -- The Scarlet Oracle, Demetria
 
 	-- To accomodate The Twilight Lexicon being annoying
 	UpdateQuestOnForRouteHardcodeFix(4123, "qlog", nil, nil, false) -- The Heart of the Mountain
