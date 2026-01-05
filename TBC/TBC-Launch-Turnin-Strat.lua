@@ -10,7 +10,7 @@ RXPGuides.RegisterGuide([[
 #subgroup 4 - TBC Launch - Turnin
 #name 1-Strat Route Turnin
 #displayname Strat Route Turnin
-#next 5 - TBC Dungeon Grind
+#next Dungeon Grind to 70
 
 --- Kargath
 
@@ -20,7 +20,6 @@ RXPGuides.RegisterGuide([[
 		.zoneskip Badlands
 
 	step
-		#label Kargathlast
 		.goto Badlands,25.8,45.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lotwil Veriatus|r
 		.turnin -4063
@@ -48,6 +47,7 @@ RXPGuides.RegisterGuide([[
 		.isQuestTurnedIn 4903	
 
 	step
+		#label Kargathlast
 		.goto Badlands,5.8,47.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Galamav the Marksman|r. He is up on the Tower.
 		.turnin -4724
@@ -181,7 +181,8 @@ step
 		
 	step
 		.goto Silithus,45.00,92.20
-		>>Kill |cRXP_ENEMY_Deathclasp|r an loot him for his |cRXP_LOOT_Pincer|r.
+		>>Kill |cRXP_ENEMY_Deathclasp|r an loot him for his |cRXP_LOOT_Pincer|r
+		>>|cRXP_WARN_Has a short 2 min respawn timer. The quest is worth ~4½ minutes of SlavePens|r
 		.complete 8283,1 
 		.unitscan Deathclasp
 
@@ -733,6 +734,7 @@ step
 	step	
 		.goto Tanaris,67.0,22.4
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yeh'kinya|r
+		>>|cRXP_WARN_This starts a 1:30-5min respawn, so try to have everyone turn this in at the same time|r
 		.turnin -8181
 		.target Yeh'kinya
 
@@ -1099,6 +1101,7 @@ step
 		.target Winna Hazzard	
 		
 	step
+		#completewith Felwoodlast
 		.goto Felwood,35.23,50.25,15,0
 		.goto Felwood,37.0,49.0,15,0
 		.goto Felwood,37.4,49.1,15,0
@@ -1447,13 +1450,13 @@ step
 		.goto Azshara,79.2,73.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
 		.turnin 6822
-		.accept 6823
 		.target Duke Hydraxis		
 		.isQuestComplete 6822
 
 	step
 		.goto Azshara,79.2,73.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
+		.accept 6823
 		.turnin 6823
 		.target Duke Hydraxis	
 		.reputation 749,honored,<0,1	
@@ -1463,9 +1466,15 @@ step
 		.goto Azshara,79.2,73.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
 		.turnin 6824
-		.accept 7486
 		.target Duke Hydraxis		
 		.isQuestComplete 6824
+
+	step
+		.goto Azshara,79.2,73.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Hydraxis|r
+		.accept 7486
+		.target Duke Hydraxis		
+		.isQuestTurnedIn 6824		
 	
 	step
 		#label Azsharalast
@@ -1623,6 +1632,12 @@ step
 		.itemcount 10560,8
 
 	step	
+		.goto Eastern Plaguelands,80.6,58.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Smokey LaRue|r	
+		.accept 5214
+		.target Smokey LaRue		
+
+	step	
 		.goto Eastern Plaguelands,81.0,57.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dispatch Commander Metz|r	
 		.accept 9141
@@ -1639,9 +1654,9 @@ step
 	step	
 		.goto Eastern Plaguelands,81.5,59.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r	
-		.turnin -5529
 		.turnin -5531
 		.accept 5212
+		.accept 5529
 		.target Betina Bigglezink
 
 	step	
@@ -1708,13 +1723,6 @@ step
 		.isQuestTurnedIn 5235
 
 	step
-		.goto Western Plaguelands,53.73,64.66
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mulgris|r
-		.accept 4987
-		.target Mulgris Deepriver	
-		.isQuestTurnedIn 4985
-
-	step
 		.goto Western Plaguelands,65.7,75.4
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Artist Renfray|r
 		.turnin -5846
@@ -1730,7 +1738,7 @@ step
 	step
 		.goto Western Plaguelands,70.6,74.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Magistrate Marduke|r
-		.equip 13,206382 >> |cRXP_WARN_Equip the|r |T134337:0|t|cRXP_LOOT_[Spectral Essence]|r
+		.equip 13,13544 >> |cRXP_WARN_Equip the|r |T134337:0|t|cRXP_LOOT_[Spectral Essence]|r
 		.accept 5462
 		.target Magistrate Marduke
 		.isQuestTurnedIn 5461
@@ -1741,10 +1749,23 @@ step
 		.subzone 2057 >>Enter |cFFfa9602Scholomance|r
 
 	step
+		>>Kill 20 |cRXP_ENEMY_Plagued Hatchlings|r inside |cFFfa9602Scholomance|r
+		.mob Plagued Hatchling
+		.complete 5529,1
+		.isOnQuest 5529
+
+	step
+		#completewith next
+		>>At least one person in your group needs to have the |cRXP_LOOT_Viewing Room Key|r. If you did not prefarm it you have to kill |cRXP_ENEMY_Rattlegore|r
+		.collect 13873
+		.mob Rattlegore
+
+	step
 		.use 12368 >>Place |T132596:0|t[Dawn's Gambit] in the Viewing Room of |cFFfa9602Scholomance|r and kill |cRXP_ENEMY_Vectus|r
 		.complete 4771,1
 		.complete 4771,2
 		.isOnQuest 4771
+		.mob Vectus
 
 	step
 		#completewith EPL2
@@ -1756,6 +1777,7 @@ step
 		.goto Eastern Plaguelands,81.5,59.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r	
 		.turnin -4771
+		.turnin -5529
 		.target Betina Bigglezink
 
 	step	
@@ -1785,6 +1807,7 @@ step
 		.isQuestTurnedIn 5281		
 
 	step
+		.goto Eastern Plaguelands,30.86,20.13,0
 		.goto Eastern Kingdoms,55.06,17.51
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anthion Harmon|r
 		.use 22115 >>|cRXP_WARN_Use the|r |T133878:0|t[Extra-Dimensional Ghost Revealer] |cRXP_WARN_to reveal|r |cRXP_FRIENDLY_Anthion|r
@@ -1792,6 +1815,8 @@ step
 		.target Anthion Harmon
 
 	step
+		#label EPL2
+		.goto Eastern Plaguelands,30.86,20.13,0
 		.goto Eastern Kingdoms,55.06,17.51
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anthion Harmon|r
 		.use 22115 >>|cRXP_WARN_Use the|r |T133878:0|t[Extra-Dimensional Ghost Revealer] |cRXP_WARN_to reveal|r |cRXP_FRIENDLY_Anthion|r
@@ -1799,7 +1824,43 @@ step
 		.target Anthion Harmon
 		.isQuestTurnedIn 8930		
 
-strat living
+	step
+		#completewith StratholmeLive
+		.goto Eastern Kingdoms,55.12,17.36,8 >> Enter |cFFfa9602Stratholme|r
+	
+	step
+		#completewith StratholmeLive
+		.use 13289 >>Use |T135614:0|t[Egan's Blaster] on the |cRXP_WARN_Ghostly Citizen|r and |cRXP_WARN_Spectral Citizen|r inside |cFFfa9602Stratholme|r
+		>>When the |cRXP_WARN_Restless Soul|r break free, use the blaster again
+		.complete 5282,1
+		.isOnQuest 5282
+		.mob Spectral Citizen
+		.mob Ghostly Citizen
+		.mob Restless Soul
+
+	step
+		#sticky
+		>>Kill |cRXP_ENEMY_any Undead|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Plagued Flesh Sample|r
+		.complete 5212,1
+		.isOnQuest 5212			
+
+	step
+		>>Kill |cRXP_ENEMY_Ezra Grimm|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Grimm's Premium Tobacco|r
+		.mob Ezra Grimm
+		.complete 5214,1
+
+	step
+		>>Loot the painting |cRXP_LOOT_Of Love and Family|r inside |cFFfa9602Stratholme|r
+		.complete 5848,1
+		.isOnQuest 5848
+
+	step
+		#label StratholmeLive
+		>>Kill |cRXP_ENEMY_Baron Rivendare|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Head of Baron Rivendare|r
+		.mob Baron Rivendare
+		.collect 13250,1
+		.isQuestTurnedIn 5251
+		.isQuestAvailable 5262
 
 	step
 		#completewith EPL3
@@ -1835,10 +1896,84 @@ strat living
 		.turnin -5214
 		.target Smokey LaRue		
 				
+	step
+		#completewith StratholmeUndead
+		.goto Eastern Plaguelands,47.9,23.9
+		.subzone 2017 >>Enter |cFFfa9602Stratholme|r
+	
+	step
+		#completewith StratholmeUndead
+		.use 13289 >>Use |T135614:0|t[Egan's Blaster] on the |cRXP_WARN_Ghostly Citizen|r and |cRXP_WARN_Spectral Citizen|r inside |cFFfa9602Stratholme|r
+		>>When the |cRXP_WARN_Restless Soul|r break free, use the blaster again
+		.complete 5282,1
+		.isOnQuest 5282
+		.mob Spectral Citizen
+		.mob Ghostly Citizen
+		.mob Restless Soul
 
+	step
+		#completewith StratholmeUndead
+		>>Kill |cRXP_ENEMY_Baron Rivendare|r within 45 minutes to save |cRXP_FRIENDLY_Ysida Harmon|r
+    	>>|cRXP_WARN_The timer starts as you get the|r |T136129:0|t[The Baron's Ultimatum] |cRXP_WARN_debuff upon entering the undead side|r
+		.complete 8945
+		.isOnQuest 8945	
+		.target Ysida Harmon	
 
+	step
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Aurius|r inside |cFFfa9602Stratholme|r
+		.turnin 5122
+		.itemcount 12845,1
+		.target Aurius
 
-strat undead
+	step
+		>>Enter the ziggurats you gain access to after killing |cRXP_ENEMY_Nerub'enkan|r, |cRXP_ENEMY_Baroness Anastari|r and |cRXP_ENEMY_Maleki the Pallid|r. Kill the cultists inside and look for a small box inside. It will randomly spawn in one of the three ziggurats
+		>>Loot the box for |T134420:0|t[Scourge Data]
+		.complete 5213,1 
+		.isOnQuest 5213
+		.mob Nerub'enkan
+		.mob Baroness Anastari
+		.mob Maleki the Pallid
+
+	step
+		>>Kill |cRXP_ENEMY_Ramstein|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Head of Ramstein the Gorger|r
+		.mob Ramstein
+		.complete 6163,1
+		.isOnQuest 6163		
+
+	step
+		>>Kill |cRXP_ENEMY_Baron Rivendare|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Head of Baron Rivendare|r
+		.mob Baron Rivendare
+		.complete 5263,1
+		.isOnQuest 5263
+
+	step
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Aurius|r inside |cFFfa9602Stratholme|r
+		>>|cRXP_WARN_This quest is only available if you handed|r |cRXP_FRIENDLY_Aurius|r |cRXP_WARN_a |r|cRXP_LOOT_Medallion of Faith|r |cRXP_WARN_before starting|r
+		.accept 5125
+		.turnin 5125
+		.target Aurius	
+		
+	step
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ysida Harmon|r
+		.turnin -8945
+		.target Ysida Harmon	
+
+	step
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ysida Harmon|r
+		.accept 8946
+		.target Ysida Harmon
+		.isQuestTurnedIn 8945		
+
+	step
+		>>Click on the big symbol on the floor in |cRXP_ENEMY_Baron Rivendare's|r room to turn in the quest
+		.turnin -5463
+		.mob Baron Rivendare
+
+	step
+		#label StratholmeUndead
+		>>Click on the big symbol on the floor in |cRXP_ENEMY_Baron Rivendare's|r room to accept the quest
+		.accept 5464
+		.isQuestTurnedIn 5463
 
 	step
 		#completewith EPL4
@@ -1870,8 +2005,13 @@ strat undead
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lord Maxwell Tyrosus|r
 		.target Lord Maxwell Tyrosus	
 		.turnin -5264
-		.accept 5265
-		.isQuestTurnedIn 5263	
+
+	step	
+		.goto Eastern Plaguelands,81.7,58.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lord Maxwell Tyrosus|r
+		.accept 5465
+		.target Lord Maxwell Tyrosus	
+		.isQuestTurnedIn 5264	
 		
 	step	
 		.goto Eastern Plaguelands,81.8,58.0
@@ -1883,7 +2023,158 @@ strat undead
 		.goto Eastern Plaguelands,81.7,57.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Leonid Barthalomew the Revered|r	
 		.turnin -5464
-		.target Leonid Barthalomew the Revered		
+		.target Leonid Barthalomew the Revered	
+
+	step
+		.goto Eastern Plaguelands,30.86,20.13,0
+		.goto Eastern Kingdoms,55.06,17.51
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anthion Harmon|r
+		.use 22115 >>|cRXP_WARN_Use the|r |T133878:0|t[Extra-Dimensional Ghost Revealer] |cRXP_WARN_to reveal|r |cRXP_FRIENDLY_Anthion|r
+		.turnin -8946
+		.target Anthion Harmon
+
+	step
+		.goto Eastern Plaguelands,30.86,20.13,0
+		.goto Eastern Kingdoms,55.06,17.51
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anthion Harmon|r
+		.use 22115 >>|cRXP_WARN_Use the|r |T133878:0|t[Extra-Dimensional Ghost Revealer] |cRXP_WARN_to reveal|r |cRXP_FRIENDLY_Anthion|r
+		.accept 8947
+		.turnin 8947
+		.target Anthion Harmon	
+		.isQuestTurnedIn 8946
+		.itemcount 11371,3
+		.itemcount 12810,20
+		.itemcount 14342,3
+		.itemcount 15407,4
+		
+	step
+		.goto Eastern Plaguelands,14.45,33.74
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Egan|r
+		.turnin -5282
+		.target Egan
+
+	step	
+		.goto Eastern Plaguelands,7.6,43.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tirion Fordring|r
+		.turnin -5848
+		.target Tirion Fordring	
+
+	step	
+		.goto Eastern Plaguelands,7.6,43.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tirion Fordring|r
+		.accept 5861
+		.target Tirion Fordring		
+		.isQuestTurnedIn 5848	
+
+	step	
+		.goto Eastern Plaguelands,26.6,74.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nathanos Blightcaller|r
+		.turnin -6163
+		.target Nathanos Blightcaller		
+
+	step
+		.goto Western Plaguelands,53.73,64.66
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mulgris|r
+		.accept 4987
+		.target Mulgris Deepriver	
+		.isQuestTurnedIn 4985
+		
+	step
+		.goto Western Plaguelands,50.79,77.85
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Myranda the Hag|r
+		.turnin -5861
+		.target Myranda the Hag	
+		
+	step
+		.goto Western Plaguelands,48.16,49.64
+		>>Click the outhouse and turn in |cRXP_WARN_Locked Away|r
+		.turnin 5060
+		.itemcount 12739,1
+
+	step
+		.goto Western Plaguelands,38.40,54.05
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Janice Felstone|r
+		>>|cRXP_WARN_Skip this quest if |cRXP_ENEMY_Jabbering Ghoul|r is not up
+		.accept 5051
+		.target Janice Felstone
+		.isQuestTurnedIn 5050
+
+	step
+		#loop
+		.line Western Plaguelands,36.8,58.6,36.4,56.4,37.4,55.6,38.6,56.2,37.8,57.6,36.8,58.6
+		.goto Western Plaguelands,36.80,58.60,0
+		.goto Western Plaguelands,36.80,58.60,50,0
+		.goto Western Plaguelands,36.40,56.40,50,0
+		.goto Western Plaguelands,37.40,55.60,50,0
+		.goto Western Plaguelands,38.60,56.20,50,0
+		.goto Western Plaguelands,37.80,57.60,50,0
+		>>Kill the |cRXP_ENEMY_Jabbering Ghoul|r. Loot it for the |cRXP_LOOT_Good Luck Other-Half-Charm|r
+		>>|cRXP_WARN_Skip this quest if |cRXP_ENEMY_Jabbering Ghoul|r is not up
+		.use 12722 >> Use it to create the |cRXP_LOOT_Good Luck Good Luck Charm|r
+		.complete 5051,1 
+		.unitscan Jabbering Ghoul
+		.isOnQuest 5051	
+
+	step
+		.goto Western Plaguelands,38.40,54.05
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Janice Felstone|r
+		.turnin -5051
+		.target Janice Felstone
+
+--- Tirisfal Glades
+
+	step
+		#completewith Tirisfallast
+		.zone Tirisfal Glades >> Travel to |cFFfa9602Tirisfal Glades|r
+		.zoneskip Tirisfal Glades
+
+	step
+		.goto Tirisfal Glades,83.0,71.9
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shadow Priestess Vandis|r
+		.turnin -5236
+		.target Shadow Priestess Vandis
+
+	step
+		.goto Tirisfal Glades,83.1,71.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Alexi Barov|r
+		.turnin -5341	
+		.turnin -5342
+		.target Alexi Barov
+
+	step
+		.goto Tirisfal Glades,83.2,71.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mehlar Dawnblade|r
+		.turnin -9444
+		.target Mehlar Dawnblade			
+		
+	step
+		.goto Tirisfal Glades,83.3,69.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Apothecary Dithers|r
+		.accept 5511
+		.turnin 5511
+		.target Apothecary Dithers
+		.isQuestTurnedIn 5804
+
+	step	
+		.goto Tirisfal Glades,83.1,68.9
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_High Executor Derrington|r
+		.turnin -105	
+		.target High Executor Derrington
+
+	step	
+		#label Tirisfallast
+		.goto Tirisfal Glades,83.1,68.9
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_High Executor Derrington|r	
+		.accept 5238
+		.turnin 5238
+		.target High Executor Derrington	
+		.isQuestTurnedIn 5236	
+
+	step
+		.goto Tirisfal Glades,83.19,68.45
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Argent Officer Garush|r
+		.turnin -6029
+		.target Argent Officer Garush	
 
 --- Tarren Mill
 
@@ -2659,6 +2950,7 @@ strat undead
 		.goto Thunder Bluff,75.7,31.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nara Wildmane|r
 		.turnin -4987
+		.turnin -4883
 		.target Nara Wildmane
 
 	step
@@ -2678,24 +2970,44 @@ strat undead
 		.zoneskip Swamp of Sorrows
 
 	step
-		.goto Swamp of Sorrows,34.2,66.0
+		.goto Swamp of Sorrows,34.28,66.17
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Fallen Hero of the Horde|r
 		.turnin -2681
-		.accept 2702
 		.target Fallen Hero of the Horde
 
 	step
-		.goto Swamp of Sorrows,33.6,66.0
+		.goto Swamp of Sorrows,34.28,66.17
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Fallen Hero of the Horde|r
+		.accept 2702
+		.target Fallen Hero of the Horde	
+		.isQuestTurnedIn 2681	
+
+	step
+		.goto Swamp of Sorrows,33.36,66.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Corporal Thund Splithoof|r
 		.turnin -2702
-		.accept 2701
 		.target Corporal Thund Splithoof
+
+	step
+		.goto Swamp of Sorrows,33.36,66.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Corporal Thund Splithoof|r
+		.accept 2701
+		.target Corporal Thund Splithoof	
+		.isQuestTurnedIn 2702	
 		
 	step	
 		.goto Swamp of Sorrows,33.5,66.0
 		>>Click |cRXP_PICK_Spectral Lockbox|r
 		.turnin -2701
-
+		
+	step
+		#label Swamplast
+		.goto Swamp of Sorrows,34.28,66.17
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Fallen Hero of the Horde|r
+		.accept 2721
+		.target Fallen Hero of the Horde	
+		.isQuestTurnedIn 2701	
+		
 --- Blasted Lands
 
 	step
@@ -2704,28 +3016,92 @@ strat undead
 		.zoneskip Blasted Lands
 
 	step
-		.goto Blasted Lands,50.6,14.2
+		.goto Blasted Lands,50.4,14.2
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bloodmage Drazial|r
 		.accept 2583
 		.turnin 2583
-		.accept 2603
-		.turnin 2603
-		.accept 2601
-		.turnin 2601
-		.accept 2585
-		.turnin 2585
+		.target Bloodmage Drazial
+		.itemcount 8392,3
+		.itemcount 8393,2
+		.itemcount 8394,1
+
+	step
+		.goto Blasted Lands,50.4,14.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bloodmage Drazial|r
 		.accept 2581
 		.turnin 2581
 		.target Bloodmage Drazial
+		.itemcount 8391,3
+		.itemcount 8392,2
+		.itemcount 8393,1
+
+	step
+		.goto Blasted Lands,50.4,14.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bloodmage Drazial|r
+		.accept 2585
+		.turnin 2585
+		.target Bloodmage Drazial
+		.itemcount 8393,3
+		.itemcount 8396,2
+		.itemcount 8392,1
+
+	step
+		.goto Blasted Lands,50.6,14.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bloodmage Lynnore|r
+		.accept 2601
+		.turnin 2601
+		.target Bloodmage Lynnore
+		.itemcount 8394,10
+		.itemcount 8396,2
+
+	step
+		.goto Blasted Lands,50.6,14.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bloodmage Lynnore|r
+		.accept 2603
+		.turnin 2603
+		.target Bloodmage Lynnore
+		.itemcount 8396,10
+		.itemcount 8391,2
+
+	step
+		.goto Blasted Lands,69.6,30.8
+		>>Kill |cRXP_ENEMY_Kirith the Damned|r inside the cave
+		>>|cRXP_WARN_Skip if he or the spirit is not up as the respawntimer is 5-9min|r
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Spirit of Kirith|r
+		.turnin 2721
+		.target Spirit of Kirith
+		.mob Kirith the Damned
+		.isOnQuest 2721
+
+	step
+		.goto Blasted Lands,69.6,30.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Spirit of Kirith|r
+		.accept 2743
+		.target Spirit of Kirith
+		.mob Kirith the Damned
+		.isQuestTurnedIn 2721
+
+	step
+		.goto Swamp of Sorrows,34.28,66.17
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Fallen Hero of the Horde|r
+		.turnin -2743
+		.target Fallen Hero of the Horde
 
 	step
 		.goto Blasted Lands,51.8,35.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kum'isha the Collector|r
 		.accept 2521
 		.turnin 2521
+		.target Kum'isha the Collector
+		.itemcount 8244,1
+
+	step
+		.goto Blasted Lands,51.8,35.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kum'isha the Collector|r
 		.accept 3501
 		.turnin 3501
 		.target Kum'isha the Collector
+		.itemcount 10593,1
 
 --- Go through Portal
 

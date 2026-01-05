@@ -4,6 +4,7 @@ CasualTBCPrep.Settings = CasualTBCPrep.Settings or {}
 local settingsKeyPrefix = "CasualPrepTBC_"
 CasualTBCPrep.Settings.CurrentMajorVersion = settingsKeyPrefix .. "CurrentMajorVersion"
 CasualTBCPrep.Settings.Warning_QLOG = settingsKeyPrefix .. "PreventAcceptQuestlog"
+CasualTBCPrep.Settings.Warning_OPTIONAL = settingsKeyPrefix .. "PreventAcceptOptional"
 CasualTBCPrep.Settings.Warning_TURNIN = settingsKeyPrefix .. "PreventAcceptTurnin"
 CasualTBCPrep.Settings.Warning_COMPLETING = settingsKeyPrefix .. "PreventCompletingQuest"
 CasualTBCPrep.Settings.EnabledItemTooltips = settingsKeyPrefix .. "ItemTooltips"
@@ -23,6 +24,7 @@ CasualTBCPrep.Settings.CompanionSettings = settingsKeyPrefix .. "CompanionSettin
 
 CasualTBCPrep.Settings.AllSettings = {
 	{ key=CasualTBCPrep.Settings.Warning_QLOG, 			dataType="bit", 	type="cmb", defaultValueGlobal=0,	defaultValueChar=-1,	values={ { text="Use Global", value=-1}, { text="On", value=1 }, { text="Off", value=0}},	name="Questlog Warnings", 	description={ "This will |cFFD47400WARN|r you when you pick up a quest that should be in your questlog.", "This can be used while leveling to avoid doing anything by mistake.", " ", "Default: Off" }},
+	{ key=CasualTBCPrep.Settings.Warning_OPTIONAL, 		dataType="bit", 	type="cmb", defaultValueGlobal=0,	defaultValueChar=-1,	values={ { text="Use Global", value=-1}, { text="On", value=1 }, { text="Off", value=0}},	name="Optional Warnings", 	description={ "This will |cFFD47400WARN|r you when you pick up a quest that can be used as an optional questlog quest.", "This can be used if you completed questlog quests already and are looking for alternatives on the way.", " ", "Default: Off" }},
 	{ key=CasualTBCPrep.Settings.Warning_TURNIN, 		dataType="bit",		type="cmb", defaultValueGlobal=1,	defaultValueChar=-1,	values={ { text="Use Global", value=-1}, { text="On", value=1 }, { text="Off", value=0}},	name="Turnin Warnings",		description={ "This will |cFFD47400WARN|r you when you pick up a quest that is turned in on TBC Release for exp.", " ", "Turn this off if you're only doing the questlog", " ", "Default: On" } },
 	{ key=CasualTBCPrep.Settings.Warning_COMPLETING, 	dataType="bit",		type="cmb",	defaultValueGlobal=1,	defaultValueChar=-1,	values={ { text="Use Global", value=-1}, { text="On", value=1 }, { text="Off", value=0}},	name="Completion Warnings",	description={ "This will |cFFFF1111PREVENT|r you from completing any quests used for TBC Exp.", " ", "Default: On" } },
 	{ key=CasualTBCPrep.Settings.EnabledItemTooltips, 	dataType="bit",		type="cmb",	defaultValueGlobal=1,	defaultValueChar=-1,	values={ { text="Use Global", value=-1}, { text="On", value=1 }, { text="Off", value=0}},	name="Item Tooltips",		description={ "Item tooltips will show if they are used in any TBCPrep routes\nIt will show if your current route needs it.", " ", "Default: On" } },

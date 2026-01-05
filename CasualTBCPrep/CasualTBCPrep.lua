@@ -81,19 +81,27 @@ local function OnQuestAcceptedEvent(self, event, questLogIndex)
 	if event == "QUEST_ACCEPTED" then
 		local questName, _, _, _, _, _, _, questID = GetQuestLogTitle(questLogIndex)
 
-		if not CasualTBCPrep.Routing.IsQuestInCurrentRoute(questID) then
-			return
+	if CasualTBCPrep.QuestData.ShouldBeInQuestLog(questID) then
+		if not CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(
+			CasualTBCPrep.Settings.Warning_QLOG
+		) then
+			CasualTBCPrep.W_WarningNotice.Show(questName, questLogIndex, "qlog", questID)
 		end
 
-		if CasualTBCPrep.QuestData.ShouldBeInQuestLog(questID) then
-			if CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(CasualTBCPrep.Settings.Warning_QLOG) == false then
-				CasualTBCPrep.W_WarningNotice.Show(questName, questLogIndex, "qlog");
-			end
-		elseif CasualTBCPrep.QuestData.IsTurnInQuest(questID) then
-			if CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(CasualTBCPrep.Settings.Warning_TURNIN) == false then
-				CasualTBCPrep.W_WarningNotice.Show(questName, questLogIndex, "turnin");
-			end
+	elseif not CasualTBCPrep.QuestData.IsTurnInQuest(questID) then
+		if not CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(
+			CasualTBCPrep.Settings.Warning_OPTIONAL
+		) then
+			CasualTBCPrep.W_WarningNotice.Show(questName, questLogIndex, "optional", questID)
 		end
+
+	elseif CasualTBCPrep.QuestData.IsTurnInQuest(questID) then
+		if not CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(
+			CasualTBCPrep.Settings.Warning_TURNIN
+		) then
+			CasualTBCPrep.W_WarningNotice.Show(questName, questLogIndex, "turnin", questID)
+		end
+	end
 
 		CasualTBCPrep.W_Main.ReloadActiveTab()
 	elseif event == "QUEST_COMPLETE" then
@@ -105,7 +113,7 @@ local function OnQuestAcceptedEvent(self, event, questLogIndex)
 		local questName = GetTitleText()
 
 		if CasualTBCPrep.QuestData.ShouldQuestShowCompletionWarning(questID) then
-			CasualTBCPrep.W_WarningNotice.Show(questName, nil, "completing");
+			CasualTBCPrep.W_WarningNotice.Show(questName, nil, "completing", questID);
 			CloseQuest()
 		end
 

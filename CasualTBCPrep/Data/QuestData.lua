@@ -1168,7 +1168,7 @@ function CasualTBCPrep.QuestData.ShouldBeInQuestLog(questID)
 
 	if not shouldBe then
 		local quest = questsMetadata[questID]
-		if quest and "opt" == quest.type or "optional" == quest.type then
+		if (quest and "opt" == quest.type) or ("optional" == quest.type) then
 			local changedPrio = CasualTBCPrep.Settings.GetQuestPriority(CasualTBCPrep.Routing.CurrentRouteCode, questID) or false
 
 			if changedPrio == true then

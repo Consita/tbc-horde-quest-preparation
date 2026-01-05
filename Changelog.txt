@@ -1,7 +1,15 @@
 Changelog:
 
 3.14
+- Added first draft of turnin guide for Strat route
+-- We need help on testing this as we cannot copy. Try to grab some items and just run through the guide. It is highly dynamic based on rep/items/quests. We can expect issues here. It is currently missing the item pickup steps. Those and the other routes will be added at a later point.
 - Added in missing items from the quest "Anthion's Strange Request" (8947). This is the last T0.5 Quest which only the STRAT route does. Expensive 9k exp.
+- Added step to gather Cenarion Beacon
+- Added BWL guide for prep in all routes
+- Fixed several waypoints in Prep guide
+- Fixed Baron Rivendare step in solo/Main
+- Fixed Spectral Essence equip step
+- Fixed routing issue with Strat route
 
 3.13 - 2025-12-29
 - Fixed "Kitchen Assistance" having prequests when it shouldn't in all routes
