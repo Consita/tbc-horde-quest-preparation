@@ -116,11 +116,6 @@ local function GenerateContent_Extra_Mailbox(parent)
 	txt = QuickText(parent, "You can now proceed following the RXP turnin guides.\rIf you want to know the area of the next step, use the topright arrow, but the Companion should do it itself when you enter the area.\r\r"
 	.."", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
 
-
-
-
-
-
 	txt = QuickText(parent, "Test Example", "GameFontNormalLarge", "TOPLEFT", txt, "BOTTOMLEFT", 0, -22, clrHeader)
 	txt = QuickText(parent, "This does not explain everything in detail. Check the guides if you need help.", "GameFontNormalSmall", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrWarn)
 	txt = QuickText(parent, "This specific example requires having the Main City 'Cloth' turnins available.", "GameFontNormalSmall", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrWarn)

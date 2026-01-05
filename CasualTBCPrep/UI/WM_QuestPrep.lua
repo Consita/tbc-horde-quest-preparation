@@ -268,7 +268,8 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 	end
 
 	local readyQuestCount = 0
-	local totalCountNonIgnored = 0 -- NEW: only count quests that are NOT ignored
+	local totalCountNonIgnored = 0
+	local totalCount = #availableQuests + #completedQuests
 
 	if not frameQuestPrep.collapsedSections then
 		frameQuestPrep.collapsedSections = {}
@@ -276,7 +277,7 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 	local isCollapsed = frameQuestPrep.collapsedSections[headerText] or false
 	local collapseIndicator = isCollapsed and "> " or "v "
 	local headerColor = CasualTBCPrep.Themes.SelectedTheme.colors.headerSpecial
-	headerFrame:SetText(collapseIndicator .. (#availableQuests + #completedQuests) .. " " .. headerText .. " Quest" .. ((#availableQuests + #completedQuests) == 1 and "" or "s"))
+	headerFrame:SetText(collapseIndicator .. tostring(totalCount) .. " " .. headerText .. " Quest" .. (tostring(totalCount) == 1 and "" or "s"))
 	headerFrame:SetTextColor(headerColor.r, headerColor.g, headerColor.b)
 	headerFrame:SetPoint(point, frameQuestPrep.scrollChild, relativePoint, xOffset, yOffset)
 
@@ -299,7 +300,7 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 		end)
 	end
 
-	if (#availableQuests + #completedQuests) > 0 then
+	if totalCount > 0 then
 		yOffset = yOffset - 20
 
 		local xOffsetQuestText = xOffset >= 0 and xOffset + 4 or xOffset - 4
@@ -310,9 +311,9 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 			local isIgnored = CasualTBCPrep.Settings.GetQuestIgnoredState(CasualTBCPrep.Routing.CurrentRouteCode, quest.quest.id) == true
 			if not isIgnored then
 				totalCountNonIgnored = totalCountNonIgnored + 1
+				frameQuestPrep.totalExpPossible = frameQuestPrep.totalExpPossible + quest.quest.exp
 			end
 
-			frameQuestPrep.totalExpTest = frameQuestPrep.totalExpTest + quest.quest.exp
 			table.insert(newList, { wrap=quest, completed=false })
 		end
 
@@ -338,13 +339,36 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 				if not _compactView then
 					if isReputationList then
 						if currentSeparator ~= quest.reqRep then
+							if currentSeparator == nil then
+								yOffset = yOffset - 5
+							else
+								yOffset = yOffset - 2
+							end
 							currentFactionName = GetFactionInfoByID(quest.reqRep) or ""
 							currentSeparator = quest.reqRep
+
+							local repHeaderText = frameQuestPrep.scrollChild:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+							repHeaderText:SetPoint(point, frameQuestPrep.scrollChild, relativePoint, xOffset, yOffset)
+							repHeaderText:SetText(currentFactionName or currentSeparator)
+							repHeaderText:SetTextColor(0.59, 0.39, 0.77)
+							table.insert(frameQuestPrep.questTexts, repHeaderText)
 							yOffset = yOffset - 15
 						end
 					else
 						if currentSeparator ~= quest.area then
+							if currentSeparator == nil then
+								yOffset = yOffset - 5
+							else
+								yOffset = yOffset - 2
+							end
+
 							currentSeparator = quest.area
+
+							local zoneHeaderText = frameQuestPrep.scrollChild:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+							zoneHeaderText:SetPoint(point, frameQuestPrep.scrollChild, relativePoint, xOffset, yOffset)
+							zoneHeaderText:SetText(currentSeparator)
+							zoneHeaderText:SetTextColor(0.59, 0.39, 0.77)
+							table.insert(frameQuestPrep.questTexts, zoneHeaderText)
 							yOffset = yOffset - 15
 						end
 					end
@@ -358,7 +382,12 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 					frameQuestPrep.expectedQuestCompletion = frameQuestPrep.expectedQuestCompletion + 1
 				end
 
-				local questNameText = questWrap.wrap.header or quest.name or "Unknown Quest"
+				local questNameText,overrideTooltip = "",nil
+				if questWrap.wrap.notice ~= nil and questWrap.wrap.header ~= nil then
+					questNameText = questWrap.wrap.header
+				else
+					questNameText = quest.name or "Unknown Quest"
+				end
 
 				local questText = frameQuestPrep.scrollChild:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
 				questText:SetPoint(point, frameQuestPrep.scrollChild, relativePoint, xOffsetQuestText, yOffset)
@@ -500,7 +529,7 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 	CasualTBCPrep.UI.ClearRouteSelectionUI(frameQuestPrep)
 	frameQuestPrep.scrollFrame:Show()
 
-	frameQuestPrep.totalExpTest = 0
+	frameQuestPrep.totalExpPossible = 0
 	local xOffset = 0
 	local yOffset = -3
 
@@ -543,6 +572,7 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 		frameQuestPrep.expectedExperienceTotal = routeObj.extraExperience or 0
 	end
 
+	-- Compact Checkbox
 	if frameQuestPrep.chbCompact == nil then
 		local checkbox = CreateFrame("CheckButton", nil, frameQuestPrep, "UICheckButtonTemplate")
 		checkbox:SetPoint("TOPRIGHT", frameQuestPrep, "TOPRIGHT", -5, -30)
@@ -560,8 +590,8 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 			end
 		end)
 
-		CasualTBCPrep.UI.HookTooltip(checkbox, "Compact View", { "When unchecked, all quests are grouped per zone or faction." })
-		CasualTBCPrep.UI.HookTooltip(chbLabel, "Compact View", { "When unchecked, all quests are grouped per zone or faction." })
+		CasualTBCPrep.UI.HookTooltip(checkbox, "Compact View", { "When unchecked, all quests are grouped per zone or faction." },nil,nil,nil)
+		CasualTBCPrep.UI.HookTooltip(chbLabel, "Compact View", { "When unchecked, all quests are grouped per zone or faction." },nil,nil,nil)
 
 		frameQuestPrep.chbCompact = checkbox
 	end
@@ -606,6 +636,7 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 	runningReadyCount = runningReadyCount + readyCount
 	runningTotalNonIgnored = runningTotalNonIgnored + totalNonIgnored
 
+	-- Experience Bar
 	CreateExperienceBar(wMain, frameQuestPrep)
 
 	-- Main Header Text
@@ -614,10 +645,8 @@ function CasualTBCPrep.WM_QuestPrep.Load(wMain)
 		frameQuestPrep.headerText:SetPoint("TOP", frameQuestPrep, "TOP", 0, _headerY)
 	end
 
-	-- Use totalNonIgnored for header
 	frameQuestPrep.headerText:SetText("Prepared " .. runningReadyCount .. " / " .. runningTotalNonIgnored .. " quests")
 end
-
 
 ---@param wMain Frame|nil
 function CasualTBCPrep.WM_QuestPrep.Selected(wMain)
@@ -674,15 +703,9 @@ CreateExperienceBar = function(wMain, parent)
 
 	-- Make it look like the expbar blends in well...
 	-- Zoomed in for edge colors, make it seem like it blends in naturally... ish
-	local tBrdClrR = 0.161
-	local tBrdClrG = 0.149
-	local tBrdClrB = 0.137
-	local lBrdClrR = 0.247
-	local lBrdClrG = 0.220
-	local lBrdClrB = 0.188
-	local rBrdClrR = 0.086
-	local rBrdClrG = 0.094
-	local rBrdClrB = 0.086
+	local tBrdClrR,tBrdClrG,tBrdClrB = 0.161,0.149,0.137
+	local lBrdClrR,lBrdClrG,lBrdClrB = 0.247,0.220,0.188
+	local rBrdClrR,rBrdClrG,rBrdClrB = 0.086,0.094,0.086
 
 	local texTopBorder = expBarFrame:CreateTexture(nil, "OVERLAY")
 	texTopBorder:SetColorTexture(tBrdClrR, tBrdClrG, tBrdClrB, 0.8)
@@ -705,6 +728,7 @@ CreateExperienceBar = function(wMain, parent)
 	texRightBorder:SetPoint("RIGHT", expBarFrame, "RIGHT", 1, 0)
 	table.insert(frameQuestPrep.expBar, texRightBorder)
 
+	-- Sparks
 	if expPercentProgress > 1 then
 		local sparkStrength = math.ceil(expPercentProgress / 20) * 7 --7/14/21/28 at 20/40/60/80 %
 
@@ -717,9 +741,7 @@ CreateExperienceBar = function(wMain, parent)
 		table.insert(frameQuestPrep.expBar, texExpSpark)
 	end
 
-	local txtClrR = 0.9
-	local txtClrG = 0.9
-	local txtClrB = 0.9
+	local txtClrR,txtClrG,txtClrB = 0.9, 0.9, 0.9
 
 	-- Visuals done, add progression text
 	local rawExpText = tostring(targetExp) .. " / " .. tostring(thisLevelTotalExp)
@@ -750,33 +772,11 @@ CreateExperienceBar = function(wMain, parent)
 		"You will hit level " .. targetLevelText .. " with " .. expPercentText .. " exp",
 		"|cFFB4C2B8If you complete your " .. tostring(qCount) .. " quest" .. (qCount == 1 and "" or "s") .. "|r"
 	}
-	local currentRoute = CasualTBCPrep.Routing.GetCurrentRoute()
-	local nonIgnoredExpTotal = 0
+
 	local currentRoute = CasualTBCPrep.Routing.GetCurrentRoute()
 	if currentRoute then
-		-- Gather all quest groups
-		local allQuestGroups = {
-			CasualTBCPrep.QuestData.GetAllQuestsGroup_Normal(),
-			CasualTBCPrep.QuestData.GetAllQuestsGroup_Items(),
-			CasualTBCPrep.QuestData.GetAllQuestsGroup_Reputation(),
-			CasualTBCPrep.QuestData.GetAllQuestsGroup_Expensive(),
-			CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog(),
-			CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog_Optional()
-		}
-
-		for _, group in ipairs(allQuestGroups) do
-			for _, questWrap in ipairs(group) do
-				local questObj = questWrap.quest or questWrap.wrap and questWrap.wrap.quest
-				if questObj and not CasualTBCPrep.Settings.GetQuestIgnoredState(CasualTBCPrep.Routing.CurrentRouteCode, questObj.id) then
-					nonIgnoredExpTotal = nonIgnoredExpTotal + (questObj.exp or 0)
-				end
-			end
-		end
-
-		-- Include extra route experience
-		nonIgnoredExpTotal = nonIgnoredExpTotal + (currentRoute.extraExperience or 0)
-
-		local maxPossLevel, _, maxPossPercent = CasualTBCPrep.Experience.GetLevelProgress(60, 0, nonIgnoredExpTotal)
+		local totalPossibleExp = frameQuestPrep.totalExpPossible + (currentRoute.extraExperience or 0)
+		local maxPossLevel, _, maxPossPercent = CasualTBCPrep.Experience.GetLevelProgress(60, 0, totalPossibleExp)
 		table.insert(ttLines, " ")
 		table.insert(ttLines, "Max Possible: |cFFFFFFFF"..maxPossLevel.." +"..tostring(math.floor(maxPossPercent+0.5)).."%|r")
 	end

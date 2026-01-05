@@ -191,17 +191,12 @@ end
 
 local function ItemHasNonIgnoredQuest(item)
     if not item or not item.quests then
-        return true
+        return false
     end
 
-    local route = CasualTBCPrep.Routing.CurrentRouteCode
-    if not route then
-        return true
-    end
-
+    local routeCode = CasualTBCPrep.Routing.CurrentRouteCode
     for _, qWrap in ipairs(item.quests) do
-        local q = qWrap.quest
-        if q and not CasualTBCPrep.Settings.GetQuestIgnoredState(route, q.id) then
+        if qWrap.quest and not CasualTBCPrep.Settings.GetQuestIgnoredState(routeCode, qWrap.quest.id) then
             return true
         end
     end
@@ -447,10 +442,10 @@ local function LoadItemList(wMain)
 
 	if _preparedQuestsOnly and lstQuestsReqAnyAmount then
 		local filteredAny = {}
-		local route = CasualTBCPrep.Routing.CurrentRouteCode
+		local routeCode = CasualTBCPrep.Routing.CurrentRouteCode
 
 		for _, questWrap in ipairs(lstQuestsReqAnyAmount) do
-			if not CasualTBCPrep.Settings.GetQuestIgnoredState(route, questWrap.questID) then
+			if not CasualTBCPrep.Settings.GetQuestIgnoredState(routeCode, questWrap.questID) then
 				table.insert(filteredAny, questWrap)
 			end
 		end
