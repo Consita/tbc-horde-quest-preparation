@@ -3,6 +3,7 @@ CasualTBCPrep.W_WarningNotice = CasualTBCPrep.W_WarningNotice or {}
 
 --[Variables]
 local mainText_qlog = "This quest is used for TBC Quest Preparation!\nBe careful not to turn it in, it should be in your questlog on release.\n\nTo turn off this warning, disable \"Questlog Warnings\"\nin the /tbcprep settings."
+local mainText_optional = "This quest can be used for TBC Quest Preparation as an optional questlog quest!\n\nBe sure to check with /tbcprep that you don't need it before turning it in.\n\nTo turn off this warning, disable \"Optional Warnings\"\nin the /tbcprep settings."
 local mainText_turnin = "This quest is turned in during TBC Release, this quest should NOT be in your questlog until release.\n\nTo turn off this warning, disable \"Quest Turnin Warnings\"\nin the /tbcprep settings."
 local mainText_completing  = "You just tried to complete a quest used on TBC Release for EXP!\nThis is currently being blocked!\n\nTo turn off this warning, disable \"Quest Completion Warnings\"\nin the /tbcprep settings."
 local mainText_itemdelete = "You just tried to delete an Item needed for TBC Prep Quests.\nThis item won't be blocked again for this sesson.\n\nIf you really want to delete it, do it again"
@@ -96,6 +97,14 @@ local function UpdateElementsFromType(type)
 		height = 205
 		isDangerous = false
 		showAbandonButton = false
+	elseif type == "optional" then
+		title = "Optional Questlog Quest Warning"
+		headerText = "Warning"
+		messageText = mainText_optional
+		width = 470
+		height = 235
+		isDangerous = false
+		showAbandonButton = false	
 	elseif type == "turnin" then
 		title = "Turnin Quest Accepted Warning"
 		headerText = "Warning"
