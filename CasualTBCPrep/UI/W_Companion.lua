@@ -3,14 +3,14 @@ CasualTBCPrep.W_Companion = CasualTBCPrep.W_Companion or {}
 
 --[Variables]
 local w_window_name = "CasualTBCPrep_W_Companion"
-local msgZoneChangedID,msgBankID,msgMailID = 0,0,0
+local msgZoneChangedID,msgBankID,msgMailID,msgRouteChanged = 0,0,0,0
 
 local lastZoneChangedEventData = {}
 local dataMail,dataBank = {},{}
 local minWidth,minHeight = 150,200
 
 local isInteractingWithMail, isInteractingWithBank = false,false
-local stepCurrent,stepMax = 1,CasualTBCPrep.Extras_Mailbox.GetTurninStepCount()
+local stepCurrent,stepMax = 1,1
 
 --[Forward Declarations]
 local IncrementStep
@@ -57,6 +57,7 @@ end
 local function LoadStepDetails_Bags()
     local currentStep = CasualTBCPrep.Extras_Mailbox.GetTurninStep(stepCurrent)
     if currentStep == nil then return end
+
     local mailsToOpen, itemsFromBank = GetStepDetails_ItemsNeeded(currentStep)
 
     local itemsNeededInBags = {}
@@ -204,11 +205,6 @@ local function LoadStepDetails()
     local parent = wCompanion.scrollChild
     local yPos = -5
 
-    if debugger == 1 then
-        local debugMailsToOpen, debugItemsFromBank, debugMailItemStackCount, debugBankItemStackCount = GetStepDetails_ItemsNeeded(currentStep)
-        CasualTBCPrep.NotifyUserCompanion("[DEBUG] Mail slots needed: " .. debugMailItemStackCount)
-        CasualTBCPrep.NotifyUserCompanion("[DEBUG] Bank slots needed: " .. debugBankItemStackCount)
-    end
     if currentStep.reached == false then
         -- Not reached, show text to go there
 
@@ -522,6 +518,14 @@ IncrementStep = function()
     local newValue = stepCurrent + 1
     if newValue > stepMax then newValue = 1 end
     SetStep(newValue, true)
+
+    local currentStep = CasualTBCPrep.Extras_Mailbox.GetTurninStep(stepCurrent)
+    local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
+    if debugger == 1 and currentStep then
+        local debugMailsToOpen, debugItemsFromBank, debugMailItemStackCount, debugBankItemStackCount = GetStepDetails_ItemsNeeded(currentStep)
+        CasualTBCPrep.NotifyUserCompanion("[DEBUG] Mail slots needed: " .. debugMailItemStackCount)
+        CasualTBCPrep.NotifyUserCompanion("[DEBUG] Bank slots needed: " .. debugBankItemStackCount)
+    end
 end
 DecrementStep = function()
     local newValue = stepCurrent - 1
@@ -529,15 +533,28 @@ DecrementStep = function()
     SetStep(newValue, true)
 end
 
+local function UpdateStepCounts()
+    stepCurrent,stepMax =stepCurrent,CasualTBCPrep.Extras_Mailbox.GetTurninStepCount()
+    if stepCurrent > stepMax or stepCurrent < 1 then stepCurrent = 1 end
+end
+
 local function Display()
     CleanupElements()
 
+    UpdateStepCounts()
     GetTurninData()
 
     LoadStepHeader()
     LoadStepDetails()
 
 	wCompanion.scrollChild:SetSize(wCompanion.scrollFrame:GetWidth(), 1)
+end
+
+local function OnRouteChanged(data)
+    GetTurninData()
+    UpdateStepCounts()
+    stepCurrent = 1
+    LoadStepHeader()
 end
 
 --@param type string|nil
@@ -727,12 +744,15 @@ function CasualTBCPrep.W_Companion.Show()
             if debugger == 1 then CasualTBCPrep.NotifyUserCompanion(CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex.."[DEBUG] Companion registering MAILBOX_INTERACT event") end
 	        msgMailID = CasualTBCPrep.MessageBroker.Register(CasualTBCPrep.MessageBroker.TYPE.MAILBOX_INTERACT, OnMailInteraction)
         end
+        if msgRouteChanged <= 0 then
+            if debugger == 1 then CasualTBCPrep.NotifyUserCompanion(CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex.."[DEBUG] Companion registering ROUTE_CHANGED event") end
+	        msgRouteChanged = CasualTBCPrep.MessageBroker.Register(CasualTBCPrep.MessageBroker.TYPE.ROUTE_CHANGED, OnRouteChanged)
+        end
 		wCompanion:Show()
 	end
 
     CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.CompanionSettings, companionSettings)
 end
-
 function CasualTBCPrep.W_Companion.Hide()
 	local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
 	if wCompanion ~= nil and wCompanion:IsShown() then
@@ -752,6 +772,11 @@ function CasualTBCPrep.W_Companion.Hide()
             if debugger == 1 then CasualTBCPrep.NotifyUserCompanion(CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex.."[DEBUG] Companion Unregistering MAILBOX_INTERACT event") end
             CasualTBCPrep.MessageBroker.Unregister(CasualTBCPrep.MessageBroker.TYPE.MAILBOX_INTERACT, msgMailID)
             msgMailID = 0
+        end
+        if msgRouteChanged > 0 then
+            if debugger == 1 then CasualTBCPrep.NotifyUserCompanion(CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex.."[DEBUG] Companion Unregistering ROUTE_CHANGED event") end
+            CasualTBCPrep.MessageBroker.Unregister(CasualTBCPrep.MessageBroker.TYPE.ROUTE_CHANGED, msgRouteChanged)
+            msgRouteChanged = 0
         end
 	end
 

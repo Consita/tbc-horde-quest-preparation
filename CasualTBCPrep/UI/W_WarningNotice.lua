@@ -7,8 +7,10 @@ local mainText_optional = "This quest can be used for TBC Quest Preparation as a
 local mainText_turnin = "This quest is turned in during TBC Release, this quest should NOT be in your questlog until release.\n\nTo turn off this warning, disable \"Quest Turnin Warnings\"\nin the /tbcprep settings."
 local mainText_completing  = "You just tried to complete a quest used on TBC Release for EXP!\nThis is currently being blocked!\n\nTo turn off this warning, disable \"Quest Completion Warnings\"\nin the /tbcprep settings."
 local mainText_itemdelete = "You just tried to delete an Item needed for TBC Prep Quests.\nThis item won't be blocked again for this sesson.\n\nIf you really want to delete it, do it again"
--- [questID] = { title = "...", header = "...", message = "..." }
-local QUEST_TEXT_OVERRIDES = {[4023] = {message = "This quest is turned in during TBC Release.\nMake sure that you abandon it after you gathered the\nBlack Dragonflight Molt\nTo turn off this warning, disable \"Questlog Warnings\"\nin the /tbcprep settings."},}
+
+local warningSpecificQuestOverrides = {
+	[4023] = {message = "This quest is turned in during TBC Release.\nMake sure that you abandon it after you gathered the\nBlack Dragonflight Molt\nTo turn off this warning, disable \"Questlog Warnings\"\nin the /tbcprep settings."},
+}
 
 
 local w_window_name = "CasualTBCPrep_W_WarningNotice"
@@ -154,7 +156,7 @@ local function UpdateElementsFromType(type)
 	wAcceptQuestWarning.detailText:SetText(messageText)
 
 	local questID = wAcceptQuestWarning.currentQuestID
-	local override = QUEST_TEXT_OVERRIDES and questID and QUEST_TEXT_OVERRIDES[questID]
+	local override = warningSpecificQuestOverrides and questID and warningSpecificQuestOverrides[questID]
 
 	if override then
 		if override.title then

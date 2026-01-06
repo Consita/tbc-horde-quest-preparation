@@ -174,7 +174,7 @@ CasualTBCPrep.Routing.Routes = {
             ["BlastedLands"] = { key="BlastedLands", estTime=52, travelType=2, quests={ }, pickups={} },
             ["TheDarkPortal"] = { key="TheDarkPortal", estTime=45, travelType=12, quests={ }, pickups={}, canHaveZeroQuests=true },
         },
-        mailboxCount = 4,
+        mailboxCount = 5,
         mailboxData = {
             [1] = { -- Bags
                 from = "Badlands",
@@ -186,9 +186,13 @@ CasualTBCPrep.Routing.Routes = {
             },
             [3] = {
                 from = "TanarisTown",
-                to = "BayOfStorms"
+                to = "felwoodEmerald"
             },
             [4] = {
+                from = "Orgrimmar",
+                to = "BayOfStorms"
+            },
+            [5] = {
                 from = "EPLTown",
                 to = "TheDarkPortal"
             }
@@ -292,7 +296,31 @@ CasualTBCPrep.Routing.Routes = {
             ["oldhero"] = { key="oldhero", estTime=25, travelType=2, quests={ }, pickups={} },
             ["BlastedLands"] = { key="BlastedLands", estTime=52, travelType=2, quests={ }, pickups={} },
             ["TheDarkPortal"] = { key="TheDarkPortal", estTime=45, travelType=12, quests={ }, pickups={}, canHaveZeroQuests=true },
-        }
+        },
+        mailboxCount = 5,
+        mailboxData = {
+            [1] = { -- Bags
+                from = "Badlands",
+                to = "SilithusNE"
+            },
+            [2] = {
+                from = "SilithusHold",
+                to = "UngoroRefuge"
+            },
+            [3] = {
+                from = "TanarisTown",
+                to = "felwoodEmerald"
+            },
+            [4] = {
+                from = "Orgrimmar",
+                to = "BayOfStorms"
+            },
+            [5] = {
+                from = "EPLTown",
+                to = "TheDarkPortal"
+            },
+        },
+        bankSections = { "TanarisTown", "Orgrimmar" }
     },
     [CasualTBCPrep.Routing.RouteCodeSolo] =
     {
@@ -378,7 +406,39 @@ CasualTBCPrep.Routing.Routes = {
             ["oldhero"] = { key="oldhero", estTime=25, travelType=2, quests={ }, pickups={} },
             ["BlastedLands"] = { key="BlastedLands", estTime=52, travelType=2, quests={ }, pickups={} },
             ["TheDarkPortal"] = { key="TheDarkPortal", estTime=45, travelType=12, quests={ }, pickups={}, canHaveZeroQuests=true },
-        }
+        },
+        mailboxCount = 7,
+        mailboxData = {
+            [1] = { -- Bags
+                from = "BurningSteppes",
+                to = "Badlands"
+            },
+            [2] = {
+                from = "SilithusHold",
+                to = "UngoroRefuge"
+            },
+            [3] = {
+                from = "TanarisTown",
+                to = "ThunderBluff"
+            },
+            [4] = {
+                from = "wsEverlook",
+                to = "AzsharaFP"
+            },
+            [5] = {
+                from = "Orgrimmar",
+                to = "AV"
+            },
+            [6] = {
+                from = "Undercity2",
+                to = "SilvermoonCity"
+            },
+            [7] = {
+                from = "EPLTown",
+                to = "TheDarkPortal"
+            }
+        },
+        bankSections = { "TanarisTown", "wsEverlook", "Orgrimmar" , "Undercity2" }
     },
 }
 
@@ -580,11 +640,13 @@ function CasualTBCPrep.Routing.OnSectionIgnoreToggled()
 end
 
 function CasualTBCPrep.Routing.ChangeCurrentRoute(routeCode)
+    local oldRouteCode = CasualTBCPrep.Routing.CurrentRouteCode
     CasualTBCPrep.Routing.CurrentRouteCode = routeCode
-
 	CasualTBCPrep.QuestData.LoadRoute(routeCode)
     cachedRouteQuestDic = CasualTBCPrep.Routing.GetQuestsInCurrentRoute()
 	CasualTBCPrep.WM_Route.RefreshRoute()
+
+    CasualTBCPrep.MessageBroker.Send(CasualTBCPrep.MessageBroker.TYPE.ROUTE_CHANGED, { from=oldRouteCode, to=routeCode })
 end
 
 ---@return boolean

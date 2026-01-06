@@ -9,7 +9,8 @@ CasualTBCPrep.MessageBroker.TYPE = {
     ON_TALK_TO_FLIGHT = 5,
     ZONE_CHANGED = 6,
     MAILBOX_INTERACT = 7,
-    BANK_INTERACT = 8
+    BANK_INTERACT = 8,
+    ROUTE_CHANGED = 9
 }
 setmetatable(CasualTBCPrep.MessageBroker.TYPE, {
     __newindex = function(table, key, value)

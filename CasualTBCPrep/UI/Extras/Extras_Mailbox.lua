@@ -3,11 +3,30 @@ CasualTBCPrep.Extras_Mailbox = CasualTBCPrep.Extras_Mailbox or {}
 CasualTBCPrep.Extras_Mailbox.MAIL_PREFIX = "TBCPrepMail"
 
 local turninSteps = {
-    { id=1, text="Items in bags", header="Bags", targetMailID=1, targetBankID=1, section=nil, mapID=nil, zone=nil, subZone=nil, reached=false, interactedWithMail=false, interactedWithBank=false },
-    { id=2, text="Cenarion Hold", header="Mail", targetMailID=2, targetBankID=nil, section="SilithusHold", mapID=1451, zone="Silithus", subZone="Cenarion Hold", reached=false, interactedWithMail=false, interactedWithBank=false },
-    { id=3, text="Gadgetzan", header="Mail & Bank", targetMailID=3, targetBankID=2, section="TanarisTown", mapID=1446, zone="Tanaris", subZone="Gadgetzan", reached=false, interactedWithMail=false, interactedWithBank=false },
-    { id=4, text="Light's Hope Chapel", header="Mail", targetMailID=4, targetBankID=nil, section="EPLTown", mapID=1423, zone="Eastern Plaguelands", subZone="Light's Hope Chapel", shortZoneText="EPL, Light's Hope Chapel", reached=false, interactedWithMail=false, interactedWithBank=false },
-    { id=5, text="Orgrimmar", header="Bank", targetMailID=nil, targetBankID=3, section="Orgrimmar", mapID=1454, zone="Orgrimmar", subZone="Valley of Strength", reached=false, interactedWithMail=false, interactedWithBank=false }
+    [CasualTBCPrep.Routing.RouteCodeMain] = {
+        { id=1, text="Items in bags", header="Bags", targetMailID=1, targetBankID=1, section=nil, mapID=nil, zone=nil, subZone=nil, reached=false, interactedWithMail=false, interactedWithBank=false },
+        { id=2, text="Cenarion Hold", header="Mail", targetMailID=2, targetBankID=nil, section="SilithusHold", mapID=1451, zone="Silithus", subZone="Cenarion Hold", reached=false, interactedWithMail=false, interactedWithBank=false },
+        { id=3, text="Gadgetzan", header="Mail & Bank", targetMailID=3, targetBankID=2, section="TanarisTown", mapID=1446, zone="Tanaris", subZone="Gadgetzan", reached=false, interactedWithMail=false, interactedWithBank=false },
+        { id=4, text="Orgrimmar", header="Bank", targetMailID=4, targetBankID=3, section="Orgrimmar", mapID=1454, zone="Orgrimmar", subZone="Valley of Strength", reached=false, interactedWithMail=false, interactedWithBank=false },
+        { id=5, text="Light's Hope Chapel", header="Mail", targetMailID=5, targetBankID=nil, section="EPLTown", mapID=1423, zone="Eastern Plaguelands", subZone="Light's Hope Chapel", shortZoneText="EPL, Light's Hope Chapel", reached=false, interactedWithMail=false, interactedWithBank=false },
+
+    },
+    [CasualTBCPrep.Routing.RouteCodeStrat] = {
+        { id=1, text="Items in bags", header="Bags", targetMailID=1, targetBankID=1, section=nil, mapID=nil, zone=nil, subZone=nil, reached=false, interactedWithMail=false, interactedWithBank=false },
+        { id=2, text="Cenarion Hold", header="Mail", targetMailID=2, targetBankID=nil, section="SilithusHold", mapID=1451, zone="Silithus", subZone="Cenarion Hold", reached=false, interactedWithMail=false, interactedWithBank=false },
+        { id=3, text="Gadgetzan", header="Mail & Bank", targetMailID=3, targetBankID=2, section="TanarisTown", mapID=1446, zone="Tanaris", subZone="Gadgetzan", reached=false, interactedWithMail=false, interactedWithBank=false },
+        { id=4, text="Orgrimmar", header="Mail & Bank", targetMailID=4, targetBankID=3, section="Orgrimmar", mapID=1454, zone="Orgrimmar", subZone="Valley of Strength", reached=false, interactedWithMail=false, interactedWithBank=false },
+        { id=5, text="Light's Hope Chapel", header="Mail", targetMailID=5, targetBankID=nil, section="EPLTown", mapID=1423, zone="Eastern Plaguelands", subZone="Light's Hope Chapel", shortZoneText="EPL, Light's Hope Chapel", reached=false, interactedWithMail=false, interactedWithBank=false },
+    },
+    [CasualTBCPrep.Routing.RouteCodeSolo] = {
+        { id=1, text="Items in bags", header="Bags", targetMailID=1, targetBankID=1, section=nil, mapID=nil, zone=nil, subZone=nil, reached=false, interactedWithMail=false, interactedWithBank=false },
+        { id=2, text="Cenarion Hold", header="Mail", targetMailID=2, targetBankID=nil, section="SilithusHold", mapID=1451, zone="Silithus", subZone="Cenarion Hold", reached=false, interactedWithMail=false, interactedWithBank=false },
+        { id=3, text="Gadgetzan", header="Mail & Bank", targetMailID=3, targetBankID=2, section="TanarisTown", mapID=1446, zone="Tanaris", subZone="Gadgetzan", reached=false, interactedWithMail=false, interactedWithBank=false },
+        { id=4, text="Everlook", header="Mail & Bank", targetMailID=4, targetBankID=3, section="wsEverlook", mapID=1452, zone="Winterspring", subZone="Everlook", reached=false, interactedWithMail=false, interactedWithBank=false },
+        { id=5, text="Orgrimmar", header="Mail & Bank", targetMailID=5, targetBankID=4, section="Orgrimmar", mapID=1454, zone="Orgrimmar", subZone="Valley of Strength", reached=false, interactedWithMail=false, interactedWithBank=false },
+        { id=6, text="Undercity", header="Bank", targetMailID=6, targetBankID=5, section="Undercity2", mapID=1458, zone="Undercity", subZone="Trade Quarter", reached=false, interactedWithMail=false, interactedWithBank=false },
+        { id=7, text="Light's Hope Chapel", header="Mail", targetMailID=7, targetBankID=nil, section="EPLTown", mapID=1423, zone="Eastern Plaguelands", subZone="Light's Hope Chapel", shortZoneText="EPL, Light's Hope Chapel", reached=false, interactedWithMail=false, interactedWithBank=false },
+    }
 }
 
 local content, texts = {},{}
@@ -41,18 +60,18 @@ function CasualTBCPrep.Extras_Mailbox.Clean(frame)
 end
 
 ---@param index integer
-function CasualTBCPrep.Extras_Mailbox.GetTurninStep(index) return turninSteps[index] end
-function CasualTBCPrep.Extras_Mailbox.GetTurninSteps() return turninSteps end
-function CasualTBCPrep.Extras_Mailbox.GetTurninStepCount() return #turninSteps end
+function CasualTBCPrep.Extras_Mailbox.GetTurninStep(index) return turninSteps[CasualTBCPrep.Routing.CurrentRouteCode][index] end
+function CasualTBCPrep.Extras_Mailbox.GetTurninSteps() return turninSteps[CasualTBCPrep.Routing.CurrentRouteCode] end
+function CasualTBCPrep.Extras_Mailbox.GetTurninStepCount() return #turninSteps[CasualTBCPrep.Routing.CurrentRouteCode] end
 ---@param index integer
 ---@param value boolean
-function CasualTBCPrep.Extras_Mailbox.SetTurninInteractedWithMail(index,value) turninSteps[index].interactedWithMail = value end
+function CasualTBCPrep.Extras_Mailbox.SetTurninInteractedWithMail(index,value) turninSteps[CasualTBCPrep.Routing.CurrentRouteCode][index].interactedWithMail = value end
 ---@param index integer
 ---@param value boolean
-function CasualTBCPrep.Extras_Mailbox.SetTurninInteractedWithBank(index,value) turninSteps[index].interactedWithBank = value end
+function CasualTBCPrep.Extras_Mailbox.SetTurninInteractedWithBank(index,value) turninSteps[CasualTBCPrep.Routing.CurrentRouteCode][index].interactedWithBank = value end
 ---@param index integer
 ---@param value boolean
-function CasualTBCPrep.Extras_Mailbox.SetTurninReached(index,value) turninSteps[index].reached = value end
+function CasualTBCPrep.Extras_Mailbox.SetTurninReached(index,value) turninSteps[CasualTBCPrep.Routing.CurrentRouteCode][index].reached = value end
 
 ---@return table,table
 function CasualTBCPrep.Extras_Mailbox.GetTurninData()
@@ -117,9 +136,13 @@ function CasualTBCPrep.Extras_Mailbox.GetStepDetails_ItemsNeeded(dataMail, dataB
 
     if targetMailID > 0 then
         local mails = dataMail[targetMailID]
+
+        if mails == nil then
+            CasualTBCPrep.NotifyUserCompanionError("ERR, Extras_Mailbox.GetStepDetails_ItemsNeeded has nil 'mails' from dataMail["..tostring(targetMailID.."]"))
+        end
         for _,mail in pairs(mails.mails) do
             local filteredItems = {}
-    
+
             for _,item in ipairs(mail.items) do
                 local playerInvCount = CasualTBCPrep.Items.GetPlayerItemCount(item.itemID, false)
                 if playerInvCount < item.count then
@@ -139,6 +162,9 @@ function CasualTBCPrep.Extras_Mailbox.GetStepDetails_ItemsNeeded(dataMail, dataB
 
     if currentStep.targetBankID ~= nil and currentStep.targetBankID > 0 then
         local bank = dataBank[currentStep.targetBankID]
+        if bank == nil then
+            CasualTBCPrep.NotifyUserCompanionError("ERR, Extras_Mailbox.GetStepDetails_ItemsNeeded has nil 'bank' from dataBank["..tostring(targetBankID.."]"))
+        end
         for _,item in ipairs(bank.items) do
             local playerInvCount = CasualTBCPrep.Items.GetPlayerItemCount(item.itemID, false)
             if playerInvCount < item.count then
