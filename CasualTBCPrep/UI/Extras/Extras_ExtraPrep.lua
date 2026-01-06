@@ -229,5 +229,5 @@ function CasualTBCPrep.Extras_ExtraPrep.Load(frame)
     if not frame then return end
     CasualTBCPrep.Extras_ExtraPrep.Clean(frame)
 
-    DrawList(frame)
+    --DrawList(frame)
 end

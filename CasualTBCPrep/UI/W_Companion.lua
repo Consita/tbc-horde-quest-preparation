@@ -54,11 +54,11 @@ local function GetStepDetails_ItemsNeeded(currentStep)
     return CasualTBCPrep.Extras_Mailbox.GetStepDetails_ItemsNeeded(dataMail, dataBank, currentStep)
 end
 
-local function LoadStepDetails_Bags()
+local function LoadStepDetailsItems(startY)
     local currentStep = CasualTBCPrep.Extras_Mailbox.GetTurninStep(stepCurrent)
     if currentStep == nil then return end
 
-    local mailsToOpen, itemsFromBank = GetStepDetails_ItemsNeeded(currentStep)
+    local mailsToOpen, itemsFromBank, mailItemStackCount, bankItemStackCount = GetStepDetails_ItemsNeeded(currentStep)
 
     local itemsNeededInBags = {}
     local mailItemGrouping = {} -- Since multiple mailslots may have the same itemstack, gotta  group them first to get one final count (fx Runecloth 20/300)
@@ -130,10 +130,17 @@ local function LoadStepDetails_Bags()
 
     local parent = wCompanion.scrollChild
 
-    local yPos = -5
+    local stackSlotsNeeded = 0
+    if currentStep.targetMailID and currentStep.targetMailID > 0 then stackSlotsNeeded = stackSlotsNeeded+(mailItemStackCount or 0) end
+    if currentStep.targetBankID and currentStep.targetBankID > 0 then stackSlotsNeeded = stackSlotsNeeded+(bankItemStackCount or 0) end
+
+    local missingStr = tostring(#missing).." ITEMS"
+    if stackSlotsNeeded > 0 then missingStr=missingStr.." ("..tostring(stackSlotsNeeded).." bagslots)" end
+
+    local yPos = startY
     local txtBagHeader = parent:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     txtBagHeader:SetPoint("TOP", parent, "TOP", 0, yPos)
-    txtBagHeader:SetText(tostring(#missing).." ITEMS MISSING")
+    txtBagHeader:SetText(missingStr)
     txtBagHeader:SetTextColor(clrBad.r, clrBad.g, clrBad.b)
     table.insert(wCompanion.texts, txtBagHeader)
 
@@ -189,7 +196,7 @@ local function LoadStepDetails()
     if currentStep == nil then return end
 
     if stepCurrent == 1 then
-        LoadStepDetails_Bags()
+        LoadStepDetailsItems(-5)
         return
     end
 
@@ -205,11 +212,12 @@ local function LoadStepDetails()
     local parent = wCompanion.scrollChild
     local yPos = -5
 
+    local showButton = true
     if currentStep.reached == false then
         -- Not reached, show text to go there
 
         local txtReachStatic = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
-        txtReachStatic:SetPoint("TOP", parent, "TOP", 0, yPos)
+        txtReachStatic:SetPoint("TOP", wCompanion.txtHeaderText, "BOTTOM", 0, yPos)
         txtReachStatic:SetText("Waiting For")
         txtReachStatic:SetTextColor(clrWarn.r, clrWarn.g, clrWarn.b)
         table.insert(wCompanion.texts, txtReachStatic)
@@ -224,12 +232,12 @@ local function LoadStepDetails()
         end
         txtReach:SetTextColor(clrGood.r, clrGood.g, clrGood.b)
         table.insert(wCompanion.texts, txtReach)
-        return
+        yPos = yPos - 45
     end
 
     local mailID,bankID = currentStep.targetMailID or 0, currentStep.targetBankID or 0
 
-    if (mailID+bankID) > 0 then
+    if (mailID+bankID) > 0 and showButton == true then
         local txtInteractHeader = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
         txtInteractHeader:SetPoint("TOP", wCompanion.txtHeaderText, "BOTTOM", 0, yPos)
         txtInteractHeader:SetText("Interact With")
@@ -264,9 +272,10 @@ local function LoadStepDetails()
             table.insert(wCompanion.texts, txtInteractBank)
             yPos = yPos - 15
         end
-        yPos = yPos - 10
+        yPos = yPos - 5
 
-        if (mailID > 0 and isInteractingWithMail == true) or (bankID > 0 and isInteractingWithBank == true) then
+        if (mailID > 0 or bankID > 0) then
+        --if (mailID > 0 and isInteractingWithMail == true) or (bankID > 0 and isInteractingWithBank == true) then
             local targetMailSubject = CasualTBCPrep.Extras_Mailbox.MAIL_PREFIX..tostring(mailID)
             local targetSender = globalCompanionSettings.mailCharacterName or ""
             local funcNotify = function(text) CasualTBCPrep.NotifyUserCompanion(text) end
@@ -283,6 +292,9 @@ local function LoadStepDetails()
             btnCollect:SetScript("OnClick", function(self)
                 if self.isCollecting == true then return end
 
+                if not isInteractingWithMail or not isInteractingWithBank then
+                    CasualTBCPrep.NotifyUserCompanionError("Cannot Collect - Must be interacting with the Mailbox or Bank")
+                end
                 -- Gotta call it everytime sadly, to see if user got some items from a previous click.
                 GetTurninData()
                 btnCollect.mailsToOpen, btnCollect.itemsFromBank, btnCollect.mailItemStackCount, btnCollect.bankItemStackCount = GetStepDetails_ItemsNeeded(currentStep)
@@ -335,13 +347,13 @@ local function LoadStepDetails()
                     end
                     self.isCollecting = true
                     self:Disable()
-                    
+
                     if debugger == 1 then
                         funcNotify(clrDebugMsg.."[DEBUG] Grabbing up to "..tostring(toGrab).." stacks.")
                     else
                         funcNotify("Trying to collect "..tostring(toGrab).." stacks from the bank...")
                     end
-                    
+
                     local funcComplete = function(collectedCount, missingCount)
                         if collectedCount == 0 then
                             funcNotifyWarn("Found no relevant items in bank")
@@ -363,28 +375,8 @@ local function LoadStepDetails()
             table.insert(wCompanion.content, btnCollect)
         end
     end
-    -- Reached step area/zone, update text to interact with mail/bank etc.
-    -- stepCurrent = stepCurrent + 1
-    -- LoadStepHeader()
-    
-    -- local itemsNeededInBags = {}
-    -- for _,mail in ipairs(mailsToOpen) do
-    --     if mail ~= nil and mail.id ~= nil and mail.id > 0 then
-    --        for _,item in ipairs(mail.items) do
-    --             table.insert(itemsNeededInBags, item)
-    --         end
-    --     end
-    -- end
 
-    -- for _,item in ipairs(itemsFromBank) do
-    --     if item ~= nil and item.itemID ~= nil and item.itemID > 0 then
-    --         table.insert(itemsNeededInBags, item)
-    --     end
-    -- end
-
-    -- for _, item in ipairs(itemsNeededInBags) do
-    --     local inventoryCount,bankCount,totalCount = CasualTBCPrep.Items.GetPlayerItemCount(item.itemID, false)
-    -- end
+    LoadStepDetailsItems(yPos-35)
 end
 
 local function LoadStepHeader()
@@ -711,6 +703,8 @@ local function Create()
 end
 
 function CasualTBCPrep.W_Companion.Show()
+end
+function CasualTBCPrep.W_Companion.Show2()
 	local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
 	if wCompanion == nil then
 

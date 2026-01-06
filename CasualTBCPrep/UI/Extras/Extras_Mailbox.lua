@@ -7,23 +7,26 @@ local turninSteps = {
         { id=1, text="Items in bags", header="Bags", targetMailID=1, targetBankID=1, section=nil, mapID=nil, zone=nil, subZone=nil, reached=false, interactedWithMail=false, interactedWithBank=false },
         { id=2, text="Cenarion Hold", header="Mail", targetMailID=2, targetBankID=nil, section="SilithusHold", mapID=1451, zone="Silithus", subZone="Cenarion Hold", reached=false, interactedWithMail=false, interactedWithBank=false },
         { id=3, text="Gadgetzan", header="Mail & Bank", targetMailID=3, targetBankID=2, section="TanarisTown", mapID=1446, zone="Tanaris", subZone="Gadgetzan", reached=false, interactedWithMail=false, interactedWithBank=false },
-        { id=4, text="Orgrimmar", header="Bank", targetMailID=4, targetBankID=3, section="Orgrimmar", mapID=1454, zone="Orgrimmar", subZone="Valley of Strength", reached=false, interactedWithMail=false, interactedWithBank=false },
+        { id=4, text="Orgrimmar", header="Bank", targetMailID=4, targetBankID=3, section="OrgrimmarBank", mapID=1454, zone="Orgrimmar", subZone="Valley of Strength", reached=false, interactedWithMail=false, interactedWithBank=false },
         { id=5, text="Light's Hope Chapel", header="Mail", targetMailID=5, targetBankID=nil, section="EPLTown", mapID=1423, zone="Eastern Plaguelands", subZone="Light's Hope Chapel", shortZoneText="EPL, Light's Hope Chapel", reached=false, interactedWithMail=false, interactedWithBank=false },
-
+        { id=6, text="Tarren Mill", header="Mail", targetMailID=6, targetBankID=nil, section="AV", mapID=1424, zone="Hillsbrad Foothills", subZone="Tarren Mill", shortZoneText="Hillsbrad, Tarren Mill", reached=false, interactedWithMail=false, interactedWithBank=false },
+        { id=7, text="Stonard", header="Mail", targetMailID=7, targetBankID=nil, section="Stonard", mapID=1435, zone="Swamp of Sorrows", subZone="Stonard", shortZoneText="Swamp of Sorrows, Stonard", reached=false, interactedWithMail=false, interactedWithBank=false },
     },
     [CasualTBCPrep.Routing.RouteCodeStrat] = {
         { id=1, text="Items in bags", header="Bags", targetMailID=1, targetBankID=1, section=nil, mapID=nil, zone=nil, subZone=nil, reached=false, interactedWithMail=false, interactedWithBank=false },
         { id=2, text="Cenarion Hold", header="Mail", targetMailID=2, targetBankID=nil, section="SilithusHold", mapID=1451, zone="Silithus", subZone="Cenarion Hold", reached=false, interactedWithMail=false, interactedWithBank=false },
         { id=3, text="Gadgetzan", header="Mail & Bank", targetMailID=3, targetBankID=2, section="TanarisTown", mapID=1446, zone="Tanaris", subZone="Gadgetzan", reached=false, interactedWithMail=false, interactedWithBank=false },
-        { id=4, text="Orgrimmar", header="Mail & Bank", targetMailID=4, targetBankID=3, section="Orgrimmar", mapID=1454, zone="Orgrimmar", subZone="Valley of Strength", reached=false, interactedWithMail=false, interactedWithBank=false },
+        { id=4, text="Orgrimmar", header="Mail & Bank", targetMailID=4, targetBankID=3, section="OrgrimmarBank", mapID=1454, zone="Orgrimmar", subZone="Valley of Strength", reached=false, interactedWithMail=false, interactedWithBank=false },
         { id=5, text="Light's Hope Chapel", header="Mail", targetMailID=5, targetBankID=nil, section="EPLTown", mapID=1423, zone="Eastern Plaguelands", subZone="Light's Hope Chapel", shortZoneText="EPL, Light's Hope Chapel", reached=false, interactedWithMail=false, interactedWithBank=false },
+        { id=6, text="Tarren Mill", header="Mail", targetMailID=6, targetBankID=nil, section="AV", mapID=1424, zone="Hillsbrad Foothills", subZone="Tarren Mill", shortZoneText="Hillsbrad, Tarren Mill", reached=false, interactedWithMail=false, interactedWithBank=false },
+        { id=7, text="Stonard", header="Mail", targetMailID=7, targetBankID=nil, section="Stonard", mapID=1435, zone="Swamp of Sorrows", subZone="Stonard", shortZoneText="Swamp of Sorrows, Stonard", reached=false, interactedWithMail=false, interactedWithBank=false },
     },
     [CasualTBCPrep.Routing.RouteCodeSolo] = {
         { id=1, text="Items in bags", header="Bags", targetMailID=1, targetBankID=1, section=nil, mapID=nil, zone=nil, subZone=nil, reached=false, interactedWithMail=false, interactedWithBank=false },
         { id=2, text="Cenarion Hold", header="Mail", targetMailID=2, targetBankID=nil, section="SilithusHold", mapID=1451, zone="Silithus", subZone="Cenarion Hold", reached=false, interactedWithMail=false, interactedWithBank=false },
         { id=3, text="Gadgetzan", header="Mail & Bank", targetMailID=3, targetBankID=2, section="TanarisTown", mapID=1446, zone="Tanaris", subZone="Gadgetzan", reached=false, interactedWithMail=false, interactedWithBank=false },
         { id=4, text="Everlook", header="Mail & Bank", targetMailID=4, targetBankID=3, section="wsEverlook", mapID=1452, zone="Winterspring", subZone="Everlook", reached=false, interactedWithMail=false, interactedWithBank=false },
-        { id=5, text="Orgrimmar", header="Mail & Bank", targetMailID=5, targetBankID=4, section="Orgrimmar", mapID=1454, zone="Orgrimmar", subZone="Valley of Strength", reached=false, interactedWithMail=false, interactedWithBank=false },
+        { id=5, text="Orgrimmar", header="Mail & Bank", targetMailID=5, targetBankID=4, section="OrgrimmarBank", mapID=1454, zone="Orgrimmar", subZone="Valley of Strength", reached=false, interactedWithMail=false, interactedWithBank=false },
         { id=6, text="Undercity", header="Bank", targetMailID=6, targetBankID=5, section="Undercity2", mapID=1458, zone="Undercity", subZone="Trade Quarter", reached=false, interactedWithMail=false, interactedWithBank=false },
         { id=7, text="Light's Hope Chapel", header="Mail", targetMailID=7, targetBankID=nil, section="EPLTown", mapID=1423, zone="Eastern Plaguelands", subZone="Light's Hope Chapel", shortZoneText="EPL, Light's Hope Chapel", reached=false, interactedWithMail=false, interactedWithBank=false },
     }
@@ -183,6 +186,8 @@ end
 ---@param parent Frame
 local function Display(parent)
 	local yPos = -1
+
+
 
 	local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
 
@@ -529,5 +534,11 @@ function CasualTBCPrep.Extras_Mailbox.Load(frame)
     if not frame then return end
     CasualTBCPrep.Extras_Mailbox.Clean(frame)
 
-    Display(frame.scrollChild)
+    --Display(frame.scrollChild)
+
+	local txtNotYetBuddy = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+	txtNotYetBuddy:SetPoint("TOP", frame, "TOP", 0, -75)
+	txtNotYetBuddy:SetText("Coming soon... (next update)")
+    txtNotYetBuddy:SetTextColor(1,1,1)
+	table.insert(texts, txtNotYetBuddy)
 end
