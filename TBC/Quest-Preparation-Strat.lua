@@ -2463,6 +2463,14 @@ RXPGuides.RegisterGuide([[
 			.target Nathanos Blightcaller
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nathanos Blightcaller|r
 			.turnin 6147
+			.accept 6148
+
+		step
+			.line Eastern Plaguelands,30.92,16.69,30.92,22.05,31.89,26.64,33.62,29.11,35.91,29.77,37.88,29.77,39.08,28.63,51.55,34.90,57.30,36.71,61.20,41.71,63.81,49.73,62.32,54.68,63.29,61.07,63.00,63.60,60.03,68.48,61.26,70.75,63.55,72.00,65.26,75.44,71.67,78.89,77.53,81.97,84.91,83.58
+			>>Travel towards Tyr's Hand and look for |cRXP_ENEMY_Demetria|r on the road leading to Stratholme. |cRXP_WARN_If you fail to kill her before reaching Stratholme, someone else kills her or she despawns for any other reason you will need to abandon and retake this quest to spawn her again|r
+			>>Don't bother killing her guards as she will ressurect them qickly
+			.complete 6148,1 
+			.mob Demetria
 
 		step
 			.goto Western Plaguelands,39.46,66.76
