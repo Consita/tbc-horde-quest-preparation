@@ -1348,80 +1348,80 @@ function CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(onlyPrepa
 	for questID, _ in pairs(CasualTBCPrep.Routing.GetQuestsInCurrentRoute()) do
 		local questData = questsMetadata[questID]
 
-		if questData.reqItems and (not questData.reqAnyItem or questData.reqAnyItem ~= 1) and (not questData.ignoreReqItemsForPrep or questData.ignoreReqItemsForPrep ~= 1) then
 			local isValidQuest = false
+		if onlyPreparedQuests == true then
+			local hasFullyPreparedQuest, _, _, _ = CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(questID, false, false, true)
+			isValidQuest = hasFullyPreparedQuest
+		else
+			isValidQuest = (CasualTBCPrep.QuestData.IsQuestValidForUser(questData) == true and CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) == false) or false
+		end
 
-			if onlyPreparedQuests == true then
-				local hasFullyPreparedQuest, _, _, _ = CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(questID, false, false, true)
-				isValidQuest = hasFullyPreparedQuest
-			else
-				isValidQuest = (CasualTBCPrep.QuestData.IsQuestValidForUser(questData) == true and CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) == false) or false
-			end
+		if isValidQuest then
+			if questData.reqItems and (not questData.reqAnyItem or questData.reqAnyItem ~= 1) and (not questData.ignoreReqItemsForPrep or questData.ignoreReqItemsForPrep ~= 1) then
 
-			if isValidQuest then
+					for itemPair in string.gmatch(questData.reqItems, "([^,]+)") do
+						local itemIDStr, countStr = string.match(itemPair, "(%d+)-(%d+)")
+
+						local itemID = tonumber(itemIDStr)
+						local neededItemCount = tonumber(countStr)
+
+						if itemID ~= nil and neededItemCount ~= nil and itemID > 0 and neededItemCount > 0 then
+							local dicCurItemStats = dicItemStats[itemID]
+
+							if dicCurItemStats ~= nil then
+								dicCurItemStats.requiredAmount = dicCurItemStats.requiredAmount + neededItemCount
+								table.insert(dicCurItemStats.quests, { id=questID, quest=questData })
+							else
+								local playerInvCount,playerBankCount,playerTotalCount = CasualTBCPrep.Items.GetPlayerItemCount(itemID)
+
+								local iName = CasualTBCPrep.Items.GetCachedItemName(itemID)
+								dicItemStats[itemID] = { id=itemID, name=iName, requiredAmount=neededItemCount, playerInvAmount=playerInvCount, playerBankAmount=playerBankCount, playerTotalAmount=playerTotalCount, quests={ { id=questID, quest=questData }} }
+							end
+						else
+							CasualTBCPrep.NotifyUserError("Unknown error in GetAllRequiredItemsForAvailableQuests. questID=" .. (questID or "") .. ", itemID=" .. (itemIDStr or "") .. "; neededItemCount=" .. (countStr or ""))
+						end
+					end
+			elseif questData.reqAnyItem then
+				local questItemDetails = { }
+
+				local userHasCompleted = false
+				local completedItemData = nil
+
 				for itemPair in string.gmatch(questData.reqItems, "([^,]+)") do
 					local itemIDStr, countStr = string.match(itemPair, "(%d+)-(%d+)")
-
 					local itemID = tonumber(itemIDStr)
 					local neededItemCount = tonumber(countStr)
 
+					local playerInvCount,playerBankCount,playerTotalCount = CasualTBCPrep.Items.GetPlayerItemCount(itemID)
+					if playerTotalCount >= neededItemCount then
+						userHasCompleted = true
+					end
+
 					if itemID ~= nil and neededItemCount ~= nil and itemID > 0 and neededItemCount > 0 then
-						local dicCurItemStats = dicItemStats[itemID]
-
-						if dicCurItemStats ~= nil then
-							dicCurItemStats.requiredAmount = dicCurItemStats.requiredAmount + neededItemCount
-							table.insert(dicCurItemStats.quests, { id=questID, quest=questData })
+						local iName = CasualTBCPrep.Items.GetCachedItemName(itemID)
+						if userHasCompleted then
+							completedItemData = { id=itemID, name=iName, requiredAmount=neededItemCount, playerInvAmount=playerInvCount, playerBankAmount=playerBankCount, playerTotalAmount=playerTotalCount, quests={{ id=questID, quest=questData}} }
+							break
 						else
-							local playerInvCount,playerBankCount,playerTotalCount = CasualTBCPrep.Items.GetPlayerItemCount(itemID)
-
-							local iName = CasualTBCPrep.Items.GetCachedItemName(itemID)
-							dicItemStats[itemID] = { id=itemID, name=iName, requiredAmount=neededItemCount, playerInvAmount=playerInvCount, playerBankAmount=playerBankCount, playerTotalAmount=playerTotalCount, quests={ { id=questID, quest=questData }} }
+							table.insert(questItemDetails, { id=itemID, name=iName, requiredAmount=neededItemCount, playerInvAmount=playerInvCount, playerBankAmount=playerBankCount, playerTotalAmount=playerTotalCount, quests={{ id=questID, quest=questData}} })
 						end
 					else
 						CasualTBCPrep.NotifyUserError("Unknown error in GetAllRequiredItemsForAvailableQuests. questID=" .. (questID or "") .. ", itemID=" .. (itemIDStr or "") .. "; neededItemCount=" .. (countStr or ""))
 					end
 				end
-			end
-		elseif questData.reqAnyItem then
-			local questItemDetails = { }
 
-			local userHasCompleted = false
-			local completedItemData = nil
+				if completedItemData ~= nil then
+					local dicCurItemStats = dicItemStats[completedItemData.id]
 
-			for itemPair in string.gmatch(questData.reqItems, "([^,]+)") do
-				local itemIDStr, countStr = string.match(itemPair, "(%d+)-(%d+)")
-				local itemID = tonumber(itemIDStr)
-				local neededItemCount = tonumber(countStr)
-
-				local playerInvCount,playerBankCount,playerTotalCount = CasualTBCPrep.Items.GetPlayerItemCount(itemID)
-				if playerTotalCount >= neededItemCount then
-					userHasCompleted = true
-				end
-
-				if itemID ~= nil and neededItemCount ~= nil and itemID > 0 and neededItemCount > 0 then
-					local iName = CasualTBCPrep.Items.GetCachedItemName(itemID)
-					if userHasCompleted then
-						completedItemData = { id=itemID, name=iName, requiredAmount=neededItemCount, playerInvAmount=playerInvCount, playerBankAmount=playerBankCount, playerTotalAmount=playerTotalCount, quests={{ id=questID, quest=questData}} }
-						break
+					if dicCurItemStats ~= nil then
+						dicCurItemStats.requiredAmount = dicCurItemStats.requiredAmount + completedItemData.requiredAmount
+						table.insert(dicCurItemStats.quests, { id=questID, quest=questData })
 					else
-						table.insert(questItemDetails, { id=itemID, name=iName, requiredAmount=neededItemCount, playerInvAmount=playerInvCount, playerBankAmount=playerBankCount, playerTotalAmount=playerTotalCount, quests={{ id=questID, quest=questData}} })
+						dicItemStats[completedItemData.id] = completedItemData
 					end
 				else
-					CasualTBCPrep.NotifyUserError("Unknown error in GetAllRequiredItemsForAvailableQuests. questID=" .. (questID or "") .. ", itemID=" .. (itemIDStr or "") .. "; neededItemCount=" .. (countStr or ""))
+					table.insert(lstQuestsReqAnyAmount, { questID=questID, quest=questData, items=questItemDetails })
 				end
-			end
-
-			if completedItemData ~= nil then
-				local dicCurItemStats = dicItemStats[completedItemData.id]
-
-				if dicCurItemStats ~= nil then
-					dicCurItemStats.requiredAmount = dicCurItemStats.requiredAmount + completedItemData.requiredAmount
-					table.insert(dicCurItemStats.quests, { id=questID, quest=questData })
-				else
-					dicItemStats[completedItemData.id] = completedItemData
-				end
-			else
-				table.insert(lstQuestsReqAnyAmount, { questID=questID, quest=questData, items=questItemDetails })
 			end
 		end
 	end

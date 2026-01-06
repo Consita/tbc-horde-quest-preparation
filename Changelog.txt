@@ -1,10 +1,13 @@
 Changelog:
 
+3.15 (later)
+- Implemented 'alpha' version of a new 'Extras - Mailbox' feature. This feature can help you manage your items with your bank & mailbox, but is optional.
+-- This is pretty complex and a separate description window has been made, please read through it thoroughly if you're interested. We're still testing it, but it's published in case you want to texs it or try it out
+
 3.14
 - Added first draft of turnin guide for Strat route
 -- We need help on testing this as we cannot copy. Try to grab some items and just run through the guide. It is highly dynamic based on rep/items/quests. We can expect issues here. It is currently missing the item pickup steps. Those and the other routes will be added at a later point.
-- Implemented 'alpha' version of a new 'Extras - Mailbox' feature. This feature can help you manage your items with your bank & mailbox, but is optional.
--- This is pretty complex and a separate description window has been made, please read through it thoroughly if you're interested. We're still testing it, but it's published in case you want to texs it or try it out
+- A new 'Extras - Mailbox' feature is coming soonTM.
 
 - UI, Max Possible EXP on the experience bar now ignores ignored quests
 - UI, Items tab now shouldn't show items from ignored quests if 'Relevant' is checked
@@ -15,6 +18,7 @@ Changelog:
 - Fixed Baron Rivendare step in solo/Main
 - Fixed Spectral Essence equip step
 - Fixed routing issue with Strat route
+- Fixed 'A Bijou for Zansa' items still showing on the 'Items' tab when the quest is completed.
 - For STRAT Route, 'Plagued Hatchlings' is now a turnin quest done inside scholo, the QuestLog slot is now used by 'The Scarlet Oracle, Demetria'
 
 3.13 - 2025-12-29
