@@ -1631,7 +1631,7 @@ step
 		.itemcount 10562,8
 		.itemcount 10560,8
 
-	.step
+	step
 		.goto Eastern Plaguelands,80.6,58.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Smokey LaRue|r	
 		.accept 6041
@@ -1934,7 +1934,7 @@ step
 		#completewith StratholmeUndead
 		>>Kill |cRXP_ENEMY_Baron Rivendare|r within 45 minutes to save |cRXP_FRIENDLY_Ysida Harmon|r
     	>>|cRXP_WARN_The timer starts as you get the|r |T136129:0|t[The Baron's Ultimatum] |cRXP_WARN_debuff upon entering the undead side|r
-		.complete 8945
+		.complete 8945,1
 		.isOnQuest 8945	
 		.target Ysida Harmon	
 
@@ -2044,7 +2044,7 @@ step
 		.turnin -5464
 		.target Leonid Barthalomew the Revered	
 
-	.step
+	step
 		.goto Eastern Plaguelands,80.6,58.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Smokey LaRue|r	
 		.turnin -6041
