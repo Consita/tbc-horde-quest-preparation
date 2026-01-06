@@ -1631,6 +1631,13 @@ step
 		.itemcount 10562,8
 		.itemcount 10560,8
 
+	.step
+		.goto Eastern Plaguelands,80.6,58.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Smokey LaRue|r	
+		.accept 6041
+		.target Smokey LaRue
+		.isQuestTurnedIn 6026
+
 	step	
 		.goto Eastern Plaguelands,80.6,58.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Smokey LaRue|r	
@@ -1794,6 +1801,12 @@ step
 		.isQuestTurnedIn 5462		
 
 	step
+		#completewith StratholmeEntry1
+		.use 15736 >>Use |T133715:0|t[Smokey's Special Compound] to destroy |cRXP_ENEMY_Scourge Ziggurats|r
+		>>Try to destroy at least 4 before entering Stratholme
+		.complete 6041,1
+		
+	step
 		.goto Eastern Plaguelands,14.45,33.74
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Egan|r
 		.turnin -5281
@@ -1826,6 +1839,7 @@ step
 
 	step
 		#completewith StratholmeLive
+		#label StratholmeEntry1
 		.goto Eastern Kingdoms,55.12,17.36,8 >> Enter |cFFfa9602Stratholme|r
 	
 	step
@@ -1895,7 +1909,12 @@ step
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Smokey LaRue|r	
 		.turnin -5214
 		.target Smokey LaRue		
-				
+	
+	step
+		#completewith next
+		.use 15736 >>Use |T133715:0|t[Smokey's Special Compound] to destroy |cRXP_ENEMY_Scourge Ziggurats|r
+		.complete 6041,1	
+
 	step
 		#completewith StratholmeUndead
 		.goto Eastern Plaguelands,47.9,23.9
@@ -2024,6 +2043,12 @@ step
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Leonid Barthalomew the Revered|r	
 		.turnin -5464
 		.target Leonid Barthalomew the Revered	
+
+	.step
+		.goto Eastern Plaguelands,80.6,58.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Smokey LaRue|r	
+		.turnin -6041
+		.target Smokey LaRue
 
 	step
 		.goto Eastern Plaguelands,30.86,20.13,0
