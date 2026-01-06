@@ -1870,8 +1870,8 @@ step
 
 	step
 		#label StratholmeLive
-		>>Kill |cRXP_ENEMY_Baron Rivendare|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Head of Baron Rivendare|r
-		.mob Baron Rivendare
+		>>Kill |cRXP_ENEMY_Balnazzar|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Head of Balnazzar|r
+		.mob Balnazzar
 		.collect 13250,1
 		.isQuestTurnedIn 5251
 		.isQuestAvailable 5262
