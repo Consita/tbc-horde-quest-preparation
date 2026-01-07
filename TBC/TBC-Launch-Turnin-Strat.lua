@@ -2111,8 +2111,9 @@ step
 		.target Myranda the Hag	
 		
 	step
-		.goto Western Plaguelands,48.16,49.64
-		>>Click the outhouse and turn in |cRXP_WARN_Locked Away|r
+		step
+		.goto Western Plaguelands,47.4,49.7
+		>>Click the |cRXP_PICK_Locked Cabinet|r on the top floor of the house
 		.turnin 5060
 		.itemcount 12739,1
 
