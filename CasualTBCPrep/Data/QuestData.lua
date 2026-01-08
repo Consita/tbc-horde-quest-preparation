@@ -321,7 +321,42 @@ local questsMetadata = {
 	[2743] = { id=2743, name="The Cover of Darkness", baseexp=4750, exp=0, qlvl=60, type="turnin", preQuests="2784,2621,2622,2623,2801,2681", routes="Main,Strat,Solo", routePickup="oldhero", routeSection="oldhero", areaType="Zone", area="Blasted Lands", comments="The mob has a long respawntime (5-9min). Check if the elite or the spirit is up, you can target it from cave entrance. If it's not up, skip it" },
 	[3761] = { id=3761, name="Un'Goro Soil", baseexp=6800, exp=0, qlvl=50, type="turnin", reqItems="11018-20", routes="Main,Strat,Solo", routePickup="ThunderBluff", routeSection="ThunderBluff", areaType="Zone", area="Thunder Bluff", comments="This quest gives very little XP. You can skip it, but it's included for completeness" },
 	[4023] = { id=4023, name="A Taste of Flame", baseexp=7900, exp=0, qlvl=54, type="turnin", reqItems="10575-1", routes="Main,Strat", routePickup="BurningSteppes2", routeSection="BurningSteppes2", areaType="Zone", area="Burning Steppes", comments="This quest gives very little XP. You can skip it, but it's included for completeness" },
+	[8303] = { id=8303, name="Anachronos", baseexp=0, exp=0, qlvl=60, type="disabled", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Silithus", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8305] = { id=8305, name="Long Forgotten Memories", baseexp=9550, exp=0, qlvl=60, type="disabled", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8519] = { id=8519, name="A Pawn on the Eternal Board", baseexp=9550, exp=0, qlvl=60, type="disabled", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Silithus", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8555] = { id=8555, name="The Charge of the Dragonflights", baseexp=960, exp=0, qlvl=60, type="disabled", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8575] = { id=8575, name="Azuregos's Magical Ledger", baseexp=9550, exp=0, qlvl=60, type="disabled", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8576] = { id=8576, name="Translating the Ledger", baseexp=960, exp=0, qlvl=60, type="disabled", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8597] = { id=8597, name="Draconic for Dummies", baseexp=9550, exp=0, qlvl=60, type="disabled", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8598] = { id=8598, name="rAnS0m", baseexp=4750, exp=0, qlvl=60, type="disabled", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8606] = { id=8606, name="Decoy!", baseexp=9550, exp=0, qlvl=60, type="disabled", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8584] = { id=8584, name="Never Ask Me About My Business", baseexp=960, exp=0, qlvl=60, type="disabled", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8585] = { id=8585, name="The Isle of Dread!", baseexp=9550, exp=0, qlvl=60, type="disabled", reqItems="21024-20", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8586] = { id=8586, name="Dirge's Kickin' Chimaerok Chops", baseexp=9550, exp=0, qlvl=60, type="disabled", reqItems="9061-20,8150-20", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8587] = { id=8587, name="Return to Narain", baseexp=9550, exp=0, qlvl=60, type="disabled", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8728] = { id=8728, name="The Good News and The Bad News", baseexp=9550, exp=0, qlvl=60, type="disabled", reqItems="12360-20,18562-10,12800-10,12361-10", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8741] = { id=8741, name="The Champion Returns", baseexp=9550, exp=0, qlvl=60, type="disabled", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8730] = { id=8730, name="Nefarius's Corruption", baseexp=14300, exp=0, qlvl=60, type="disabled", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8430] = { id=8430, name="Battle of Warsong Gulch", baseexp=9550, exp=0, qlvl=60, type="disabled", reqItems="20558-3", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8439] = { id=8439, name="Conquering Arathi Basin", baseexp=9550, exp=0, qlvl=60, type="disabled", reqItems="20559-3", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8369] = { id=8369, name="Invaders of Alterac Valley", baseexp=11900, exp=0, qlvl=60, type="disabled", reqItems="20560-3", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
 }
+
+function CasualTBCPrep.QuestData.SetQuestType(questID, newType)
+    if questsMetadata[questID] then
+        if questsMetadata[questID]._origType == nil then
+            questsMetadata[questID]._origType = questsMetadata[questID].type
+        end
+
+        questsMetadata[questID].type = newType
+    end
+end
+
+function CasualTBCPrep.QuestData.RestoreQuestType(questID)
+    if questsMetadata[questID] and questsMetadata[questID]._origType then
+        questsMetadata[questID].type = questsMetadata[questID]._origType
+    end
+end
 
 local preQuestMetadata = {
 	[838] = { name = "Scholomance", startZone = "The Bulwark, Tirisfal Glades" },
@@ -637,7 +672,7 @@ local dicTurnQuestList = {}
 
 local dicReplacementQuests = {}
 
-local function CreateAndSortLookupLists()
+function CasualTBCPrep.QuestData.CreateAndSortLookupLists()
 	aqgl_reqRep = {}
 	aqgl_reqItems = {}
 	aqgl_questPrep = {}
@@ -1065,7 +1100,7 @@ function CasualTBCPrep.QuestData.LoadRoute(routeCode)
 
 	lastLoadedRouteCode = routeCode
 	LoadRouteQuestSpecifics(routeCode)
-	CreateAndSortLookupLists()
+	CasualTBCPrep.QuestData.CreateAndSortLookupLists()
 end
 
 ---@param questID number
@@ -1880,7 +1915,6 @@ function CasualTBCPrep.QuestData.GetAllQuestsGroup_Normal()
 
 	for _, questID in ipairs(aqgl_questPrep) do
 		local quest = questsMetadata[questID]
-
 		if quest then
 			if CasualTBCPrep.QuestData.IsQuestValidForUser(quest) and not aqgl_expensiveQuests[questID] then
 				if CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) then
@@ -1937,4 +1971,19 @@ function CasualTBCPrep.QuestData.GetExtraQuestDetails(questID)
 		result.nextPreQuest = { id=questID, name=questObject.name, startZone=questObject.startZone }
 	end
 	return result
+end
+
+do
+    local Orig_UpdateRoutesFromQuestData = CasualTBCPrep.QuestData.UpdateRoutesFromQuestData
+
+    CasualTBCPrep.QuestData.UpdateRoutesFromQuestData = function(...)
+        if Orig_UpdateRoutesFromQuestData then
+            Orig_UpdateRoutesFromQuestData(...)
+        end
+
+        if CasualTBCPrep.Extras_ExtraPrep
+           and CasualTBCPrep.Extras_ExtraPrep.ApplyAllStoredExtras then
+            CasualTBCPrep.Extras_ExtraPrep.ApplyAllStoredExtras()
+        end
+    end
 end

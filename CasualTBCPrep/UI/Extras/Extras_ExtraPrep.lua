@@ -1,6 +1,34 @@
 CasualTBCPrep = CasualTBCPrep or {}
 CasualTBCPrep.Extras_ExtraPrep = CasualTBCPrep.Extras_ExtraPrep or {}
 
+local function ApplyQuestTypeChange(optionData, enable)
+    if optionData.addedQuests then
+        for _, questInfo in ipairs(optionData.addedQuests) do
+            local questID, newType = questInfo[1], questInfo[2]
+
+            if enable then
+                CasualTBCPrep.QuestData.SetQuestType(questID, newType)
+            else
+                CasualTBCPrep.QuestData.RestoreQuestType(questID)
+            end
+        end
+    end
+
+    if optionData.removedQuests then
+        for _, questID in ipairs(optionData.removedQuests) do
+            if enable then
+                CasualTBCPrep.QuestData.SetQuestType(questID, "disabled")
+            else
+                CasualTBCPrep.QuestData.RestoreQuestType(questID)
+            end
+        end
+    end
+
+    CasualTBCPrep.QuestData.CreateAndSortLookupLists()
+    CasualTBCPrep.W_Main.ReloadActiveTab()
+end
+
+
 --[Forward Declarations]
 local DrawList
 
@@ -8,21 +36,21 @@ local extraData = {
     { code="SCEPTER", name="Scepter of the Sands Questline", desc={"This contains quests from the long 'Scepter of the Sands' questline from the opening of AQ"}, options={
         { id=2, name="Simple", summonsNeeded=0, estExtraExp=16150, reqQuests={8286,8288,8301}, removedQuests={8301}, addedQuests={
                 {8586,"turnin"},{8587,"turnin"}, --Blue Shard, 9550+9550
-                {8736,"qlog"}, --Green Shard, 14300 (instead of a 11k)
-                {8730,"qlog"} --Red Shard, 14300 (instead of a 11k)
+                {8736,"optional"}, --Green Shard, 14300 (instead of a 11k)
+                {8730,"optional"} --Red Shard, 14300 (instead of a 11k)
             }, desc={"Uses the Scepter quests that line up with our existing routes.", "This opens up some better QuestLog quests, and extra turnins, but also loses the Silithid Carapace Fragment quest.", "This is mainly worth it if you're missing a lot of questlog quests.", " ", "You will need to enter BWL multiple times."}
         },
         { id=3, name="Full", summonsNeeded=7, estExtraExp=119280, selectionWarning="Are you sure you want to enable this?\rThis is A LOT of additional steps, and is not supported in our addon except showing the exp on the Quests tab.\r\rYou are on your own.", reqQuests={8286,8288}, removedQuests={}, addedQuests={
-                {8301,"turnin"},{8303,"turnin"},{8305,"turnin"},{8519,"turnin"},{8555,"turnin"}, -- Initial, 9550+9550+9550+960
+                {8303,"turnin"},{8305,"turnin"},{8519,"turnin"},{8555,"turnin"}, -- Initial, 9550+9550+9550+960
                 {8575,"turnin"},{8576,"turnin"},{8597,"turnin"},{8598,"turnin"},{8606,"turnin"}, --Blue Shard1, 9550+960+9550+4750+9550+
                 {8584,"turnin"},{8585,"turnin"},{8586,"turnin"},{8587,"turnin"},{8728,"turnin"}, --Blue Shard2, 960+9550+9550+9550+9550
-                {8736,"qlog"},{8741,"turnin"}, --Green Shard, 14300-11000+9550
-                {8730,"qlog"} --Red Shard, 14300-11000
+                {8736,"optional"},{8741,"turnin"}, --Green Shard, 14300-11000+9550
+                {8730,"optional"} --Red Shard, 14300-11000
             }, desc={"<UNSUPPORTED>", " ", "Adds as many quests from the Scepter questline as possible with summons.", " ", "Quests will be shown on the quests tab, but our routes/guides will not update", " ", "We only added this so you can see the exp on the expbar - You'll need to manage this on your own", "If you don't understand what that means, don't enable this." }
         }
     }},
     { code="BLACKSMITH", name="Blacksmithing Quests", desc={"This contains blacksmithing specific quests"}, options={
-        { id=4, name="Simple", summonsNeeded=0, estExtraExp=0, reqQuests={}, removedQuests={}, addedQuests={}, addedQuestsAlly={}, addedQuestsHorde={},
+        { id=4, name="Winterspring", summonsNeeded=0, estExtraExp=0, reqQuests={}, removedQuests={}, addedQuests={},
             desc={ }
         },
         { id=5, name="Diremaul", summonsNeeded=1, estExtraExp=0, reqQuests={}, removedQuests={}, addedQuests={ },
@@ -30,11 +58,35 @@ local extraData = {
         }
     }},
     { code="QUEST_SHARING", name="Quest Sharing", desc={"This contains quests that must be shared from another character"}, multipleSelect=true, options={
-        { id=6, name="Battleground Marks", summonsNeeded=0, estExtraExp=32000, reqQuests={}, removedQuests={}, addedQuests={}, addedQuestsAlly={8403,8396,8375}, addedQuestsHorde={8430,8439,8369},
+        { id=6, name="Battleground Marks", summonsNeeded=0, estExtraExp=32000, reqQuests={}, removedQuests={}, addedQuests={{8430,"turnin"},{8439,"turnin"},{8369,"turnin"}},
             desc={"The quests for turning in 3x AB,WSG,AV marks are removed with TBC.", "If you keep them on another character, you can share them to yourself while turning in the other AV quests for free exp"}
         }
     }},
 }
+
+function CasualTBCPrep.Extras_ExtraPrep.ApplyAllStoredExtras()
+    local storedSelections =
+        CasualTBCPrep.Settings.GetCharSetting(
+            CasualTBCPrep.Settings.ExtraTBCPrepSelections
+        )
+    if not storedSelections then return end
+
+    for _, extraFeature in ipairs(extraData) do
+        local stored = storedSelections[extraFeature.code]
+
+        for _, optionData in ipairs(extraFeature.options) do
+            local enabled = false
+
+            if extraFeature.multiSelect == true then
+                enabled = stored and stored[optionData.id] ~= nil
+            else
+                enabled = stored and stored.id == optionData.id
+            end
+
+            ApplyQuestTypeChange(optionData, enabled)
+        end
+    end
+end
 
 local content, texts = {},{}
 
@@ -47,7 +99,7 @@ local function ToggleStoredSetting(frame, featureData, optionData, reloadRoute)
 
     local featureCode = featureData.code
 
-    if featureCode.multiSelect == true then
+    if featureData.multiSelect == true then
         local optionList = storedSelections[featureCode] or { }
 
         if optionList[optionData.id] then
@@ -73,6 +125,24 @@ local function ToggleStoredSetting(frame, featureData, optionData, reloadRoute)
         CasualTBCPrep.Extras_ExtraPrep.Clean(frame)
         DrawList(frame)
 	end
+
+    local enabledNow = false
+
+    if featureData.multiSelect == true then
+        local optionList = storedSelections[featureData.code]
+        enabledNow = optionList and optionList[optionData.id] ~= nil
+    else
+        local storedOption = storedSelections[featureData.code]
+        enabledNow = storedOption and storedOption.id == optionData.id
+    end
+
+    ApplyQuestTypeChange(optionData, enabledNow)
+
+    if CasualTBCPrep.QuestData
+    and CasualTBCPrep.QuestData.UpdateRoutesFromQuestData then
+        CasualTBCPrep.QuestData.UpdateRoutesFromQuestData()
+    end
+
 end
 
 ---@param frame Frame
@@ -130,11 +200,6 @@ DrawList = function(frame)
             local funcOptionHoverLeave = function(btn) if not btn then return end btn:GetFontString():SetTextColor(optionColor.r,optionColor.g,optionColor.b,1) end
 
             local addedQuestCount = #optionData.addedQuests
-            if CasualTBCPrep.Faction.GetPlayerFactionID() == CasualTBCPrep.Faction.ALLIANCE then
-                addedQuestCount = addedQuestCount + (optionData.addedQuestsAlly and #optionData.addedQuestsAlly or 0)
-            else
-                addedQuestCount = addedQuestCount + (optionData.addedQuestsHorde and #optionData.addedQuestsHorde or 0)
-            end
 
             local ttLines = {}
             if optionData.estExtraExp and optionData.estExtraExp > 0 then
@@ -185,20 +250,6 @@ DrawList = function(frame)
 end
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ---@param frame Frame
 function CasualTBCPrep.Extras_ExtraPrep.Clean(frame)
     if not frame then return end
@@ -229,5 +280,5 @@ function CasualTBCPrep.Extras_ExtraPrep.Load(frame)
     if not frame then return end
     CasualTBCPrep.Extras_ExtraPrep.Clean(frame)
 
-    --DrawList(frame)
+    DrawList(frame)
 end
