@@ -1,32 +1,50 @@
 CasualTBCPrep = CasualTBCPrep or {}
 CasualTBCPrep.Extras_ExtraPrep = CasualTBCPrep.Extras_ExtraPrep or {}
 
+local function CalculatePreviewExpForQuest(quest)
+    if not quest then return end
+
+    local charLvl = UnitLevel("player")
+    if not charLvl or charLvl <= 0 then
+        charLvl = 60
+    end
+
+    if quest.isScaling == true and quest.scaleRank and quest.scaleRank > 0 then
+        quest.exp =
+            CasualTBCPrep.Experience.GetActualScalingQuestExperienceValue(
+                charLvl,
+                quest.scaleRank
+            )
+    elseif quest.baseexp and quest.baseexp > 0 then
+        quest.exp =
+            CasualTBCPrep.Experience.GetActualQuestExperienceValue(
+                quest.qlvl or charLvl,
+                quest.baseexp,
+                charLvl
+            )
+    else
+        quest.exp = 0
+    end
+end
+
 local function ApplyQuestTypeChange(optionData, enable)
     if optionData.addedQuests then
         for _, questInfo in ipairs(optionData.addedQuests) do
             local questID, newType = questInfo[1], questInfo[2]
+            local quest = CasualTBCPrep.QuestData.GetQuest(questID)
 
             if enable then
                 CasualTBCPrep.QuestData.SetQuestType(questID, newType)
+
+                local quest = CasualTBCPrep.QuestData.GetQuest(questID)
+                if quest then
+                    CalculatePreviewExpForQuest(quest)
+                end
             else
                 CasualTBCPrep.QuestData.RestoreQuestType(questID)
             end
         end
     end
-
-    if optionData.removedQuests then
-        for _, questID in ipairs(optionData.removedQuests) do
-            if enable then
-                CasualTBCPrep.QuestData.SetQuestType(questID, "disabled")
-            else
-                CasualTBCPrep.QuestData.RestoreQuestType(questID)
-            end
-        end
-    end
-
-    CasualTBCPrep.QuestData.CreateAndSortLookupLists()
-    CasualTBCPrep.W_Main.ReloadActiveTab()
-end
 
     if optionData.removedQuests then
         for _, questID in ipairs(optionData.removedQuests) do
