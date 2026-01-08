@@ -65,6 +65,14 @@ local taxiMetadata = {
     ["Sentinel Hill, Westfall"] = { continent=1, isHorde=false, isAlly=true },
     ["Darkshire, Duskwood"] = { continent=1, isHorde=false, isAlly=true },
     ["Nethergarde Keep, Blasted Lands"] = { continent=1, isHorde=false, isAlly=true },
+
+    -- TBC Horde
+    ["Hellfire Peninsula, The Dark Portal, Horde"] = { continent=1, isHorde=true, isAlly=false },
+    ["Thrallmar, Hellfire Peninsula"] = { continent=2, isHorde=true, isAlly=false },
+
+    -- TBC Ally
+    ["Hellfire Peninsula, The Dark Portal, Alliance"] = { continent=1, isHorde=false, isAlly=true },
+    ["Honor Hold, Hellfire Peninsula"] = { continent=2, isHorde=false, isAlly=true },
 }
 
 local neededTaxiNodes = {
@@ -159,6 +167,7 @@ function CasualTBCPrep.Flights.GetPlayerFlightPathState(routeCode)
 	if not routeCode or routeCode == "" then
 		return false,{},0
 	end
+
 	local flightDicToCheck = neededTaxiNodes[routeCode]
 	if flightDicToCheck == nil then
 		return false,{},0

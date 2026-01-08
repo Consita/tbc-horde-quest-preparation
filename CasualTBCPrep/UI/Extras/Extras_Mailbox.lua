@@ -534,11 +534,11 @@ function CasualTBCPrep.Extras_Mailbox.Load(frame)
     if not frame then return end
     CasualTBCPrep.Extras_Mailbox.Clean(frame)
 
-    --Display(frame.scrollChild)
+    Display(frame.scrollChild)
 
-	local txtNotYetBuddy = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-	txtNotYetBuddy:SetPoint("TOP", frame, "TOP", 0, -75)
-	txtNotYetBuddy:SetText("Coming soon... (next update)")
-    txtNotYetBuddy:SetTextColor(1,1,1)
-	table.insert(texts, txtNotYetBuddy)
+	-- local txtNotYetBuddy = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+	-- txtNotYetBuddy:SetPoint("TOP", frame, "TOP", 0, -75)
+	-- txtNotYetBuddy:SetText("Coming soon... (next update)")
+    -- txtNotYetBuddy:SetTextColor(1,1,1)
+	-- table.insert(texts, txtNotYetBuddy)
 end
