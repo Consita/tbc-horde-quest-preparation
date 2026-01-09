@@ -1160,27 +1160,7 @@ function CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID)
 		end
 	end
 
-	-- 1) Turned-in quests
-	if isCompleted or C_QuestLog.IsQuestFlaggedCompleted(questID) == true then
-		return true
-	end
-
-	-- 2) OPTIONAL (route-dependent) quests completed but not turned in
-	if quest and quest.type == "optional" then
-		for i = 1, GetNumQuestLogEntries() do
-			local _, _, _, isHeader, _, isComplete, _, questLogQuestID =
-				GetQuestLogTitle(i)
-
-			if not isHeader and questLogQuestID == questID then
-				if isComplete == 1 then
-					return true
-				end
-				break
-			end
-		end
-	end
-
-	return false
+	return isCompleted or (C_QuestLog.IsQuestFlaggedCompleted(questID) == true) or false	
 end
 
 ---@return boolean

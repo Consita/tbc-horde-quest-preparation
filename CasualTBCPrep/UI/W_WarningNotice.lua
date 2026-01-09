@@ -15,11 +15,6 @@ local warningSpecificQuestOverrides = {
 
 local w_window_name = "CasualTBCPrep_W_WarningNotice"
 
-local optionalQuestIgnoreList = {
-	[1126] = true, -- Hive in the Tower
-	[6844] = true, -- Umber, Archivist
-}
-
 ---@class Frame|nil
 local wAcceptQuestWarning = nil;
 
@@ -181,9 +176,6 @@ end
 end
 
 function CasualTBCPrep.W_WarningNotice.Show(headerText, qLogEntry, type, questID)
-	if type == "optional" and questID and optionalQuestIgnoreList[questID] then
-		return
-	end
 
 	if wAcceptQuestWarning == nil then
 
