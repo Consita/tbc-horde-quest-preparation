@@ -546,6 +546,7 @@ local preQuestMetadata = {
 	[8277] = { name = "Deadly Desert Venom", startZone="Cenarion Hold, Silithus"},
 	[8278] = { name = "Noggle's Last Hope", startZone="Cenarion Hold, Silithus"},
 	[3762] = { name = "Assisting Arch Druid Runetotem", startZone="The Elder Rise, Thunder Bluff"},
+	[1126] = { name = "Hive in the Tower", startZone="Cenarion Hold, Silithus"},
 
 	[8301] = { name = "The Path of the Righteous", startZone = "Cenarion Hold, Silithus" },
 	[8303] = { name = "Anachronos", startZone = "Cenarion Hold, Silithus" },
@@ -913,6 +914,9 @@ local function LoadRouteQuestSpecifics_Main()
 end
 local function LoadRouteQuestSpecifics_Solo()
 	UpdateQuestOnForRouteHardcodeFix(4134, "optional", nil, nil, false) -- Lost Thunderbrew Recipe
+	UpdateQuestOnForRouteHardcodeFix(1126, "disabled", nil, nil, false) -- Hive in the Tower
+	AddPrequestToQuest(6845, 1126) -- Add Hive in the Tower to Uncovering Past Secrets
+
 end
 local function LoadRouteQuestSpecifics_Strat()
 	UpdateQuestOnForRouteHardcodeFix(5212, "turnin", "EPLTown3", nil, true) -- The Flesh Does Not Lie
