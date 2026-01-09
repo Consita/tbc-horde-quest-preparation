@@ -29,7 +29,7 @@ local questsMetadata = {
 	[8802] = { id=8802, name="The Savior of Kalimdor", baseexp=14300, exp=0, qlvl=60, type="qlog", reqItems="21221-1", preQuests="8801", routes="Main,Strat,Solo", routeSection="CavernsOfTime", areaType="Raid", area="Temple of Ahn'Qiraj", comments="Unlike other raid boss 'heads', The first quest is turned in inside AQ40, then the next quest goes outside. Therefore it has to be a questlog quest. It's only slightly more exp than optional quests, making this the worst boss-drop quest." },
 	[7481] = { id=7481, name="Elven Legends", baseexp=14300, exp=0, qlvl=60, type="qlog", routes="Solo", routeSection="Feralas", areaType="Dungeon", area="Dire Maul", },
 	[4509] = { id=4509, name="Calm Before the Storm", baseexp=790, exp=0, qlvl=54, type="turnin", preQuests="4494,4496,4507", routes="Main,Strat,Solo", routePickup="TanarisTown", routeSection="Orgrimmar", areaType="Zone", area="Tanaris", },
-	[4511] = { id=4511, name="Calm Before the Storm", baseexp=11800, exp=0, qlvl=54, type="turnin", preQuests="4494,4496,4507", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
+	[4511] = { id=4511, name="Calm Before the Storm", baseexp=11800, exp=0, qlvl=54, type="turnin", preQuests="4494,4496,4507", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="OrgrimmarBank", areaType="City", area="Orgrimmar", },
 	[6822] = { id=6822, name="The Molten Core", baseexp=14300, exp=0, qlvl=60, type="qlog", preQuests="6804,6805,6821", replacementQuest=6824, routes="Main,Strat", routeSection="BayOfStorms", areaType="Raid", area="Molten Core", },
 	[6823] = { id=6823, name="Agent of Hydraxis", baseexp=14300, exp=0, qlvl=60, type="turnin", preQuests="6804,6805,6821", reqRep=749, reqRepRank=6, replacementQuest=7486, routes="Main,Strat", routePickup="BayOfStorms", routeSection="BayOfStorms", areaType="Raid", area="The Molten Core", },
 	[5522] = { id=5522, name="Leonid Barthalomew", baseexp=7150, exp=0, qlvl=60, type="turnin", preQuests="4726,4808,4809,4810,4734", routes="Main,Strat,Solo", routePickup="BurningSteppes", routeSection="EPLTown", areaType="Dungeon", area="Upper Blackrock Spire", },
@@ -104,20 +104,20 @@ local questsMetadata = {
 	[9232] = { id=9232, name="The Only Song I Know...", baseexp=9550, exp=0, qlvl=60, type="turnin", reqItems="22682-2,7080-2,12361-2", preQuests="9033", reqRep=529, reqRepRank=7, routes="Main,Strat,Solo", routePickup="EPLTown", routeSection="EPLTown", areaType="Raid", area="Naxxramas", comments="Requires Raiding Naxxramas. Is not included in the RXP guides" },
 	[9230] = { id=9230, name="Ramaladni's Icy Grasp", baseexp=9550, exp=0, qlvl=60, type="turnin", reqItems="22682-1,12361-1,12360-1", preQuests="9033,9229", routes="Main,Strat,Solo", routePickup="EPLTown", routeSection="EPLTown", areaType="Raid", area="Naxxramas", comments="Requires Raiding Naxxramas. Is not included in the RXP guides" },
 	[7490] = { id=7490, name="Victory for the Horde", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="18422-1", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="Raid", area="Onyxia's Lair", },
-	[7491] = { id=7491, name="For All To See", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="18422-1", ignoreReqItemsForPrep=1, routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="Raid", area="Onyxia's Lair", },
+	[7491] = { id=7491, name="For All To See", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="18422-1", ignoreReqItemsForPrep=1, routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="OrgrimmarBank", areaType="Raid", area="Onyxia's Lair", },
 	[7783] = { id=7783, name="The Lord of Blackrock", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="19002-1", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="Raid", area="Blackwing Lair", },
-	[7784] = { id=7784, name="The Lord of Blackrock", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="19002-1", ignoreReqItemsForPrep=1, routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="Raid", area="Blackwing Lair", },
-	[8928] = { id=8928, name="A Shifty Merchant", baseexp=4750, exp=0, qlvl=60, type="turnin", reqItems="21939-1", preQuests="8920,8923,8921,8924,8925", routes="Main,Strat,Solo", routePickup="TanarisTown", routeSection="TanarisTown", areaType="Zone", area="Tanaris", },
+	[7784] = { id=7784, name="The Lord of Blackrock", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="19002-1", ignoreReqItemsForPrep=1, routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="OrgrimmarBank", areaType="Raid", area="Blackwing Lair", },
+	[8928] = { id=8928, name="A Shifty Merchant", baseexp=4750, exp=0, qlvl=60, type="turnin", reqItems="21939-1", preQuests="OVERWRITTEN_IN_ADDON", routes="Main,Strat,Solo", routePickup="TanarisTown", routeSection="TanarisTown", areaType="Zone", area="Tanaris", },
 	[8978] = { id=8978, name="Return to Mokvar", baseexp=9550, exp=0, qlvl=60, type="turnin", preQuests="OVERWRITTEN_IN_ADDON", routes="Main,Strat,Solo", routePickup="TanarisTown", routeSection="Orgrimmar", areaType="Zone", area="Tanaris", },
 	[8944] = { id=8944, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16736-1,16737-1", preQuests="8920,8923,8921,8924,8925", playerClass="WARRIOR", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
-	[8927] = { id=8927, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16716-1,16717-1", preQuests="8920,8923,8921,8924,8925", playerClass="DRUID", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
-	[8939] = { id=8939, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16685-1,16684-1", preQuests="8920,8923,8921,8924,8925", playerClass="MAGE", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
-	[8943] = { id=8943, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16702-1,16705-1", preQuests="8920,8923,8921,8924,8925", playerClass="WARLOCK", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
-	[8940] = { id=8940, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16696-1,16692-1", preQuests="8920,8923,8921,8924,8925", playerClass="PRIEST", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
-	[8942] = { id=8942, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16673-1,16672-1", preQuests="8920,8923,8921,8924,8925", playerClass="SHAMAN", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
-	[10495] = { id=10495, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16723-1,16724-1", preQuests="8920,8923,8921,8924,8925", playerClass="PALADIN", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
-	[8938] = { id=8938, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16680-1,16676-1", preQuests="8920,8923,8921,8924,8925", playerClass="HUNTER", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
-	[8941] = { id=8941, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16713-1,16712-1", preQuests="8920,8923,8921,8924,8925", playerClass="ROGUE", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
+	[8927] = { id=8927, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16716-1,16717-1", preQuests="8913,8923,8921,8924,8925", playerClass="DRUID", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
+	[8939] = { id=8939, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16685-1,16684-1", preQuests="8915,8923,8921,8924,8925", playerClass="MAGE", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
+	[8943] = { id=8943, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16702-1,16705-1", preQuests="8919,8923,8921,8924,8925", playerClass="WARLOCK", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
+	[8940] = { id=8940, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16696-1,16692-1", preQuests="8916,8923,8921,8924,8925", playerClass="PRIEST", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
+	[8942] = { id=8942, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16673-1,16672-1", preQuests="8918,8923,8921,8924,8925", playerClass="SHAMAN", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
+	[10495] = { id=10495, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16723-1,16724-1", preQuests="10493,8923,8921,8924,8925", playerClass="PALADIN", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
+	[8938] = { id=8938, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16680-1,16676-1", preQuests="8914,8923,8921,8924,8925", playerClass="HUNTER", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
+	[8941] = { id=8941, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16713-1,16712-1", preQuests="8917,8923,8921,8924,8925", playerClass="ROGUE", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
 	[7489] = { id=7489, name="Lethtendris's Web", baseexp=13050, exp=0, qlvl=57, type="qlog", routes="Solo", routeSection="Feralas", areaType="Dungeon", area="Dire Maul", },
 	[8301] = { id=8301, name="The Path of the Righteous", baseexp=9550, exp=0, qlvl=60, type="turnin", reqItems="20384-200", preQuests="8286,8288", routes="Main,Strat,Solo", routePickup="SilithusHold2", routeSection="SilithusHold2", areaType="Raid", area="Blackwing Lair", },
 	[8791] = { id=8791, name="The Fall of Ossirian", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="21220-1", routes="Main,Strat,Solo", routePickup="SilithusHold2", routeSection="SilithusHold2", areaType="Raid", area="Ruins of Ahn'Qiraj", },
@@ -264,12 +264,12 @@ local questsMetadata = {
 	[5122] = { id=5122, name="The Medallion of Faith", baseexp=0, exp=0, qlvl=60, type="turnin", reqItems="12845-1", routes="Strat", routePickup="Stratholme2", routeSection="Stratholme2", areaType="Dungeon", area="Stratholme", },
 	[5125] = { id=5125, name="Aurius' Reckoning", baseexp=14300, exp=0, qlvl=60, type="turnin", routes="Strat", routePickup="Stratholme2", routeSection="Stratholme2", areaType="Dungeon", area="Stratholme", },
 	[1126] = { id=1126, name="Hive in the Tower", baseexp=8750, exp=0, qlvl=57, type="turnin", preQuests="1123,1124,1125", routes="Main,Strat", routePickup="SilithusNE", routeSection="SilithusNE2", areaType="Zone", area="Silithus", },
-	[6844] = { id=6844, name="Umber, Archivist", baseexp=4350, exp=0, qlvl=57, type="turnin", routes="Main,Strat", routePickup="SilithusNE2", routeSection="Moonglade", areaType="Zone", area="Silithus", },
+	[6844] = { id=6844, name="Umber, Archivist", baseexp=4350, exp=0, qlvl=57, type="turnin", preQuests="1123,1124,1125", routes="Main,Strat", routePickup="SilithusNE2", routeSection="Moonglade", areaType="Zone", area="Silithus", },
 	[7667] = { id=7667, name="Material Assistance", baseexp=7150, exp=0, qlvl=60, type="turnin", reqItems="12800-1,18335-1", playerClass="SHAMAN", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="Zone", area="Orgrimmar", },
-	[8930] = { id=8930, name="In Search of Anthion", baseexp=9550, exp=0, qlvl=60, type="turnin", preQuests="8920,8923,8921,8924,8925", routes="Strat", routePickup="Orgrimmar", routeSection="StratholmeGates1", areaType="Zone", area="Stratholme", },
-	[8945] = { id=8945, name="Dead Man's Plea", baseexp=11900, exp=0, qlvl=60, type="turnin", preQuests="8920,8923,8921,8924,8925", routes="Strat", routePickup="StratholmeGates1", routeSection="Stratholme2", areaType="Dungeon", area="Stratholme", },
-	[8946] = { id=8946, name="Proof of Life", baseexp=9550, exp=0, qlvl=60, type="turnin", preQuests="8920,8923,8921,8924,8925", routes="Strat", routePickup="Stratholme2", routeSection="StratholmeGates2", areaType="Dungeon", area="Stratholme", },
-	[8947] = { id=8947, name="Anthion's Strange Request", baseexp=9550, exp=0, qlvl=60, type="turnin", reqItems="11371-3,12810-20,14342-3,15407-4", preQuests="8920,8923,8921,8924,8925", routes="Strat", routePickup="StratholmeGates2", routeSection="StratholmeGates2", areaType="Zone", area="Orgrimmar", },
+	[8930] = { id=8930, name="In Search of Anthion", baseexp=9550, exp=0, qlvl=60, type="turnin", preQuests="OVERWRITTEN_IN_ADDON", routes="Strat", routePickup="Orgrimmar", routeSection="StratholmeGates1", areaType="Zone", area="Stratholme", },
+	[8945] = { id=8945, name="Dead Man's Plea", baseexp=11900, exp=0, qlvl=60, type="turnin", preQuests="OVERWRITTEN_IN_ADDON", routes="Strat", routePickup="StratholmeGates1", routeSection="Stratholme2", areaType="Dungeon", area="Stratholme", },
+	[8946] = { id=8946, name="Proof of Life", baseexp=9550, exp=0, qlvl=60, type="turnin", preQuests="OVERWRITTEN_IN_ADDON", routes="Strat", routePickup="Stratholme2", routeSection="StratholmeGates2", areaType="Dungeon", area="Stratholme", },
+	[8947] = { id=8947, name="Anthion's Strange Request", baseexp=9550, exp=0, qlvl=60, type="turnin", reqItems="11371-3,12810-20,14342-3,15407-4", preQuests="OVERWRITTEN_IN_ADDON", routes="Strat", routePickup="StratholmeGates2", routeSection="StratholmeGates2", areaType="Zone", area="Orgrimmar", },
 	[4882] = { id=4882, name="Guarding Secrets", baseexp=4650, exp=0, qlvl=59, type="turnin", reqItems="12558-1", routes="Main,Strat,Solo", routePickup="felwoodTown", routeSection="felwoodTown", areaType="Zone", area="Winterspring", },
 	[4883] = { id=4883, name="Guarding Secrets", baseexp=9300, exp=0, qlvl=59, type="turnin", reqItems="12558-1", ignoreReqItemsForPrep=1, routes="Main,Strat,Solo", routePickup="felwoodTown", routeSection="ThunderBluff", areaType="Zone", area="Thunder Bluff", },
 	[5121] = { id=5121, name="High Chief Winterfall", baseexp=11600, exp=0, qlvl=59, type="optional", preQuests="5083,5084,5085,5086,5087", routes="Main,Strat,Solo", routeSection="wsDonowa", areaType="Zone", area="Winterspring", },
@@ -321,25 +321,30 @@ local questsMetadata = {
 	[2743] = { id=2743, name="The Cover of Darkness", baseexp=4750, exp=0, qlvl=60, type="turnin", preQuests="2784,2621,2622,2623,2801,2681", routes="Main,Strat,Solo", routePickup="oldhero", routeSection="oldhero", areaType="Zone", area="Blasted Lands", comments="The mob has a long respawntime (5-9min). Check if the elite or the spirit is up, you can target it from cave entrance. If it's not up, skip it" },
 	[3761] = { id=3761, name="Un'Goro Soil", baseexp=6800, exp=0, qlvl=50, type="turnin", reqItems="11018-20", routes="Main,Strat,Solo", routePickup="ThunderBluff", routeSection="ThunderBluff", areaType="Zone", area="Thunder Bluff", comments="This quest gives very little XP. You can skip it, but it's included for completeness" },
 	[4023] = { id=4023, name="A Taste of Flame", baseexp=7900, exp=0, qlvl=54, type="turnin", reqItems="10575-1", routes="Main,Strat", routePickup="BurningSteppes2", routeSection="BurningSteppes2", areaType="Zone", area="Burning Steppes", comments="This quest gives very little XP. You can skip it, but it's included for completeness" },
-	[8303] = { id=8303, name="Anachronos", baseexp=0, exp=0, qlvl=60, type="disabled", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Silithus", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
-	[8305] = { id=8305, name="Long Forgotten Memories", baseexp=9550, exp=0, qlvl=60, type="disabled", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
-	[8519] = { id=8519, name="A Pawn on the Eternal Board", baseexp=9550, exp=0, qlvl=60, type="disabled", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Silithus", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
-	[8555] = { id=8555, name="The Charge of the Dragonflights", baseexp=960, exp=0, qlvl=60, type="disabled", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
-	[8575] = { id=8575, name="Azuregos's Magical Ledger", baseexp=9550, exp=0, qlvl=60, type="disabled", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
-	[8576] = { id=8576, name="Translating the Ledger", baseexp=960, exp=0, qlvl=60, type="disabled", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
-	[8597] = { id=8597, name="Draconic for Dummies", baseexp=9550, exp=0, qlvl=60, type="disabled", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
-	[8598] = { id=8598, name="rAnS0m", baseexp=4750, exp=0, qlvl=60, type="disabled", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
-	[8606] = { id=8606, name="Decoy!", baseexp=9550, exp=0, qlvl=60, type="disabled", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
-	[8584] = { id=8584, name="Never Ask Me About My Business", baseexp=960, exp=0, qlvl=60, type="disabled", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
-	[8585] = { id=8585, name="The Isle of Dread!", baseexp=9550, exp=0, qlvl=60, type="disabled", reqItems="21024-20", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
-	[8586] = { id=8586, name="Dirge's Kickin' Chimaerok Chops", baseexp=9550, exp=0, qlvl=60, type="disabled", reqItems="9061-20,8150-20", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
-	[8587] = { id=8587, name="Return to Narain", baseexp=9550, exp=0, qlvl=60, type="disabled", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
-	[8728] = { id=8728, name="The Good News and The Bad News", baseexp=9550, exp=0, qlvl=60, type="disabled", reqItems="12360-20,18562-10,12800-10,12361-10", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
-	[8741] = { id=8741, name="The Champion Returns", baseexp=9550, exp=0, qlvl=60, type="disabled", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
-	[8730] = { id=8730, name="Nefarius's Corruption", baseexp=14300, exp=0, qlvl=60, type="disabled", preQuests="8286,8288", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
-	[8430] = { id=8430, name="Battle of Warsong Gulch", baseexp=9550, exp=0, qlvl=60, type="disabled", reqItems="20558-3", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
-	[8439] = { id=8439, name="Conquering Arathi Basin", baseexp=9550, exp=0, qlvl=60, type="disabled", reqItems="20559-3", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
-	[8369] = { id=8369, name="Invaders of Alterac Valley", baseexp=11900, exp=0, qlvl=60, type="disabled", reqItems="20560-3", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+
+	[8586] = { id=8586, name="Dirge's Kickin' Chimaerok Chops", baseexp=9550, exp=0, qlvl=60, type="disabled", reqItems="9061-20,8150-20", preQuests="8286,8288,8301,8303,8305,8519,8555,8575,8576,8584,8585", routes="Main,Strat,Solo", routeSection="TanarisTown", areaType="Zone", area="Silithus", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8587] = { id=8587, name="Return to Narain", baseexp=9550, exp=0, qlvl=60, type="disabled", preQuests="8286,8288,8301,8303,8305,8519,8555,8575,8576,8584,8585", routes="Main,Strat,Solo", routeSection="TanarisTown", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8620] = { id=8620, name="The Only Prescription", baseexp=9550, exp=0, qlvl=60, type="disabled", reqItems="21111-1,21112-1", preQuests="8286,8288,8301,8303,8305,8519,8555,8575,8576,8597,8599,8598,8606", routes="Main,Strat,Solo", routeSection="TanarisTown", areaType="Zone", area="Silithus", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8578] = { id=8578, name="Scrying Goggles? No Problem!", baseexp=11900, exp=0, qlvl=60, type="disabled", reqItems="20951-1", preQuests="8286,8288,8301,8303,8305,8519,8555,8575,8576,8577", routes="Main,Strat,Solo", routeSection="TanarisTown", areaType="Raid", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8728] = { id=8728, name="The Good News and The Bad News", baseexp=9550, exp=0, qlvl=60, type="disabled", reqItems="12360-20,18562-10,12800-10,12361-10", preQuests="8286,8288,8301,8303,8305,8519,8555,8575,8576,8597,8599,8598,8606,8584,8585,8577", routes="Main,Strat,Solo", routeSection="TanarisTown", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8736] = { id=8736, name="The Nightmare Manifests", baseexp=14300, exp=0, qlvl=60, type="disabled", preQuests="8286,8288,8301,8303,8305,8519,8555,8575,8576,8733,8734,8735", routes="Main,Strat,Solo", routeSection="TanarisTown", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8741] = { id=8741, name="The Champion Returns", baseexp=9550, exp=0, qlvl=60, type="disabled", reqItems="21139-1", preQuests="8286,8288,8301,8303,8305,8519,8555,8575,8576,8733,8734,8735", routes="Main,Strat,Solo", routeSection="TanarisTown", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8730] = { id=8730, name="Nefarius's Corruption", baseexp=14300, exp=0, qlvl=60, type="disabled", reqItems="21138-1", preQuests="8286,8288,8301,8303,8305,8519,8555,8575,8576", routes="Main,Strat,Solo", routeSection="TanarisTown", areaType="Raid", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8430] = { id=8430, name="Battle of Warsong Gulch", baseexp=9550, exp=0, qlvl=60, type="disabled", reqItems="20558-3", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8439] = { id=8439, name="Conquering Arathi Basin", baseexp=9550, exp=0, qlvl=60, type="disabled", reqItems="20559-3", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8369] = { id=8369, name="Invaders of Alterac Valley", baseexp=11900, exp=0, qlvl=60, type="disabled", reqItems="20560-3", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", area="Alterac Valley", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[5306] = { id=5306, name="Snakestone of the Shadow Huntress", baseexp=14300, exp=0, qlvl=60, type="disabled", reqItems="13352-1", reqProf=164, reqProfSkill=280, routes="Main,Strat,Solo", routeSection="wsEverlook", areaType="Dungeon", area="Winterspring", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[5305] = { id=5305, name="Sweet Serenity", baseexp=14300, exp=0, qlvl=60, type="disabled", reqItems="13351-1", reqProf=164, reqProfSkill=280, routes="Main,Strat,Solo", routeSection="wsEverlook", areaType="Dungeon", area="Winterspring", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[5307] = { id=5307, name="Corruption", baseexp=14300, exp=0, qlvl=60, type="disabled", reqItems="13350-1", reqProf=164, reqProfSkill=280, routes="Main,Strat,Solo", routeSection="wsEverlook", areaType="Dungeon", area="Winterspring", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[7649] = { id=7649, name="Enchanted Thorium Platemail: Volume I", baseexp=14300, exp=0, qlvl=60, type="disabled", reqItems="18769-1", reqProf=164, reqProfSkill=300, routes="Main,Strat,Solo", routeSection="Feralas", areaType="Dungeon", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[7650] = { id=7650, name="Enchanted Thorium Platemail: Volume II", baseexp=14300, exp=0, qlvl=60, type="disabled", reqItems="18770-1", reqProf=164, reqProfSkill=300, routes="Main,Strat,Solo", routeSection="Feralas", areaType="Dungeon", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[7651] = { id=7651, name="Enchanted Thorium Platemail: Volume III", baseexp=14300, exp=0, qlvl=60, type="disabled", reqItems="18771-1", reqProf=164, reqProfSkill=300, routes="Main,Strat,Solo", routeSection="Feralas", areaType="Dungeon", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[7142] = { id=7142, name="The Battle for Alterac", baseexp=0, exp=0, qlvl=51, type="disabled", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=3, comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[8272] = { id=8272, name="Hero of the Frostwolf", baseexp=0, exp=0, qlvl=51, type="disabled", preQuests="7142", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=1, },
+	[7101] = { id=7101, name="Towers and Bunkers", baseexp=0, exp=0, qlvl=51, type="disabled", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=1, comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[7124] = { id=7124, name="Capture a Mine", baseexp=0, exp=0, qlvl=51, type="disabled", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=1, comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[7082] = { id=7082, name="The Graveyards of Alterac", baseexp=0, exp=0, qlvl=51, type="disabled", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=1, comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+
 }
 
 local preQuestMetadata = {
@@ -525,6 +530,28 @@ local preQuestMetadata = {
 	[8277] = { name = "Deadly Desert Venom", startZone="Cenarion Hold, Silithus"},
 	[8278] = { name = "Noggle's Last Hope", startZone="Cenarion Hold, Silithus"},
 	[3762] = { name = "Assisting Arch Druid Runetotem", startZone="The Elder Rise, Thunder Bluff"},
+	[1126] = { name = "Hive in the Tower", startZone="Cenarion Hold, Silithus"},
+
+	[8301] = { name = "The Path of the Righteous", startZone = "Cenarion Hold, Silithus" },
+	[8303] = { name = "Anachronos", startZone = "Cenarion Hold, Silithus" },
+	[8305] = { name = "Long Forgotten Memories", startZone = "Cenarion Hold, Silithus" },
+	[8519] = { name = "A Pawn on the Eternal Board", startZone = "Cenarion Hold, Silithus" },
+	[8555] = { name = "The Charge of the Dragonflights", startZone = "Cenarion Hold, Silithus" },
+	[8575] = { name = "Azuregos's Magical Ledger", startZone = "Cenarion Hold, Silithus" },
+	[8576] = { name = "Translating the Ledger", startZone = "Cenarion Hold, Silithus" },
+	[8597] = { name = "Draconic for Dummies", startZone = "Cenarion Hold, Silithus" },
+	[8599] = { name = "Love Song for Narain", startZone = "Cenarion Hold, Silithus" },
+	[8598] = { name = "rAnS0m", startZone = "Cenarion Hold, Silithus" },
+	[8606] = { name = "Decoy!", startZone = "Cenarion Hold, Silithus" },
+	[8584] = { name = "Never Ask Me About My Business", startZone = "Cenarion Hold, Silithus" },
+	[8585] = { name = "The Isle of Dread!", startZone = "Cenarion Hold, Silithus" },
+	[8577] = { name = "Stewvul, Ex-B.F.F.", startZone = "Cenarion Hold, Silithus" },
+	[8733] = { name = "Eranikus, Tyrant of the Dream", startZone = "Cenarion Hold, Silithus" },
+	[8734] = { name = "Tyrande and Remulos", startZone = "Cenarion Hold, Silithus" },
+	[8735] = { name = "The Nightmare's Corruption", startZone = "Cenarion Hold, Silithus" },
+
+	[7142] = { name = "The Battle for Alterac", startZone = "Alterac Mountains" },
+
 }
 
 local extraQuestDetailsNeutral = {
@@ -602,39 +629,49 @@ local aqgl_expensiveQuests = {
 	[8352] = { name="Scepter of the Council", notice="The Abyssal Scepter can cost several hundred gold. Check your Auction House, or farm it in a guild group." },
 	[9248] = { name="A Humble Offering", notice="The Abyssal Scepter can cost several hundred gold. Check your Auction House, or farm it in a guild group." },
 	[9230] = { name="Ramaladni's Icy Grasp", notice="The materials can be very expensive" },
-	[9232] = { name="The Only Song I Know...", notice="The materials can be very expensive" }
+	[9232] = { name="The Only Song I Know...", notice="The materials can be very expensive" },
+	[8947] = { name="Anthion's Strange Request", notice="The materials can be very expensive" }
 }
 
 -- [Hardcoded fixes for complex quest metadata]
 -- Tier 0.5
-local tempQuestManagement = questsMetadata[8978] -- Return to Mokvar, Tier 0.5 quest
-if tempQuestManagement ~= nil then
-	if cachedPlayerClass == nil then
-		_, cachedPlayerClass = UnitClass("player")
-	end
+local tier05Quests = {8928, 8978, 8930, 8945, 8946, 8947}
 
-	if cachedPlayerClass == "MAGE" then
-		tempQuestManagement.preQuests = "8915,"
-	elseif cachedPlayerClass == "PRIEST" then
-		tempQuestManagement.preQuests = "8916,"
-	elseif cachedPlayerClass == "WARLOCK" then
-		tempQuestManagement.preQuests = "8919,"
-	elseif cachedPlayerClass == "DRUID" then
-		tempQuestManagement.preQuests = "8913,"
-	elseif cachedPlayerClass == "ROGUE" then
-		tempQuestManagement.preQuests = "8917,"
-	elseif cachedPlayerClass == "HUNTER" then
-		tempQuestManagement.preQuests = "8914,"
-	elseif cachedPlayerClass == "SHAMAN" then
-		tempQuestManagement.preQuests = "8918,"
-	elseif cachedPlayerClass == "WARRIOR" then
-		tempQuestManagement.preQuests = "8920,"
-	elseif cachedPlayerClass == "PALADIN" then
-		tempQuestManagement.preQuests = "10493,"
-	end
+local tempQuestManagement
+for _, questID in ipairs(tier05Quests) do
+    tempQuestManagement = questsMetadata[questID]
+    if tempQuestManagement then
+        if tempQuestManagement ~= nil then
+			if cachedPlayerClass == nil then
+				_, cachedPlayerClass = UnitClass("player")
+			end
 
-	tempQuestManagement.preQuests = tempQuestManagement.preQuests .. "8923,8921,8924,8925"
+			if cachedPlayerClass == "MAGE" then
+				tempQuestManagement.preQuests = "8915,"
+			elseif cachedPlayerClass == "PRIEST" then
+				tempQuestManagement.preQuests = "8916,"
+			elseif cachedPlayerClass == "WARLOCK" then
+				tempQuestManagement.preQuests = "8919,"
+			elseif cachedPlayerClass == "DRUID" then
+				tempQuestManagement.preQuests = "8913,"
+			elseif cachedPlayerClass == "ROGUE" then
+				tempQuestManagement.preQuests = "8917,"
+			elseif cachedPlayerClass == "HUNTER" then
+				tempQuestManagement.preQuests = "8914,"
+			elseif cachedPlayerClass == "SHAMAN" then
+				tempQuestManagement.preQuests = "8918,"
+			elseif cachedPlayerClass == "WARRIOR" then
+				tempQuestManagement.preQuests = "8920,"
+			elseif cachedPlayerClass == "PALADIN" then
+				tempQuestManagement.preQuests = "10493,"
+			end
+
+			tempQuestManagement.preQuests = tempQuestManagement.preQuests .. "8923,8921,8924,8925"
+		end
+    end
 end
+
+
 tempQuestManagement = nil;
 
 -- Split Quests (Quests that exclude eachother) - Currently Brood of Nozdormu Rings 
@@ -890,6 +927,9 @@ local function LoadRouteQuestSpecifics_Main()
 end
 local function LoadRouteQuestSpecifics_Solo()
 	UpdateQuestOnForRouteHardcodeFix(4134, "optional", nil, nil, false) -- Lost Thunderbrew Recipe
+	AddPrequestToQuest(6845, 1126) -- Add Hive in the Tower to Uncovering Past Secrets
+	AddPrequestToQuest(6845, 6844) -- Add Umber, Archivist to Uncovering Past Secrets
+
 end
 local function LoadRouteQuestSpecifics_Strat()
 	UpdateQuestOnForRouteHardcodeFix(5212, "turnin", "EPLTown3", nil, true) -- The Flesh Does Not Lie
@@ -1123,7 +1163,7 @@ function CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID)
 		end
 	end
 
-	return isCompleted or (C_QuestLog.IsQuestFlaggedCompleted(questID) == true) or false
+	return isCompleted or (C_QuestLog.IsQuestFlaggedCompleted(questID) == true) or false	
 end
 
 ---@return boolean
@@ -1215,7 +1255,7 @@ function CasualTBCPrep.QuestData.ShouldBeInQuestLog(questID)
 
 	if not shouldBe then
 		local quest = questsMetadata[questID]
-		if (quest and "opt" == quest.type) or ("optional" == quest.type) then
+		if quest and (quest.type == "opt" or quest.type == "optional") then
 			local changedPrio = CasualTBCPrep.Settings.GetQuestPriority(CasualTBCPrep.Routing.CurrentRouteCode, questID) or false
 
 			if changedPrio == true then

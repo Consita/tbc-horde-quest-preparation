@@ -1,13 +1,45 @@
 CasualTBCPrep = CasualTBCPrep or {}
 CasualTBCPrep.Extras_ExtraPrep = CasualTBCPrep.Extras_ExtraPrep or {}
 
+local function CalculatePreviewExpForQuest(quest)
+    if not quest then return end
+
+    local charLvl = UnitLevel("player")
+    if not charLvl or charLvl <= 0 then
+        charLvl = 60
+    end
+
+    if quest.isScaling == true and quest.scaleRank and quest.scaleRank > 0 then
+        quest.exp =
+            CasualTBCPrep.Experience.GetActualScalingQuestExperienceValue(
+                charLvl,
+                quest.scaleRank
+            )
+    elseif quest.baseexp and quest.baseexp > 0 then
+        quest.exp =
+            CasualTBCPrep.Experience.GetActualQuestExperienceValue(
+                quest.qlvl or charLvl,
+                quest.baseexp,
+                charLvl
+            )
+    else
+        quest.exp = 0
+    end
+end
+
 local function ApplyQuestTypeChange(optionData, enable)
     if optionData.addedQuests then
         for _, questInfo in ipairs(optionData.addedQuests) do
             local questID, newType = questInfo[1], questInfo[2]
+            local quest = CasualTBCPrep.QuestData.GetQuest(questID)
 
             if enable then
                 CasualTBCPrep.QuestData.SetQuestType(questID, newType)
+
+                local quest = CasualTBCPrep.QuestData.GetQuest(questID)
+                if quest then
+                    CalculatePreviewExpForQuest(quest)
+                end
             else
                 CasualTBCPrep.QuestData.RestoreQuestType(questID)
             end
@@ -16,10 +48,18 @@ local function ApplyQuestTypeChange(optionData, enable)
 
     if optionData.removedQuests then
         for _, questID in ipairs(optionData.removedQuests) do
+            local quest = CasualTBCPrep.QuestData.GetQuest(questID)
+
             if enable then
                 CasualTBCPrep.QuestData.SetQuestType(questID, "disabled")
+                if quest then
+                    quest.ignoreReqItemsForPrep = 1
+                end
             else
                 CasualTBCPrep.QuestData.RestoreQuestType(questID)
+                if quest then
+                    quest.ignoreReqItemsForPrep = nil
+                end
             end
         end
     end
@@ -29,37 +69,43 @@ local function ApplyQuestTypeChange(optionData, enable)
 end
 
 
+
 --[Forward Declarations]
 local DrawList
 
 local extraData = {
     { code="SCEPTER", name="Scepter of the Sands Questline", desc={"This contains quests from the long 'Scepter of the Sands' questline from the opening of AQ"}, options={
-        { id=2, name="Simple", summonsNeeded=0, estExtraExp=16150, reqQuests={8286,8288,8301}, removedQuests={8301}, addedQuests={
-                {8586,"turnin"},{8587,"turnin"}, --Blue Shard, 9550+9550
-                {8736,"optional"}, --Green Shard, 14300 (instead of a 11k)
-                {8730,"optional"} --Red Shard, 14300 (instead of a 11k)
-            }, desc={"Uses the Scepter quests that line up with our existing routes.", "This opens up some better QuestLog quests, and extra turnins, but also loses the Silithid Carapace Fragment quest.", "This is mainly worth it if you're missing a lot of questlog quests.", " ", "You will need to enter BWL multiple times."}
-        },
-        { id=3, name="Full", summonsNeeded=7, estExtraExp=119280, selectionWarning="Are you sure you want to enable this?\rThis is A LOT of additional steps, and is not supported in our addon except showing the exp on the Quests tab.\r\rYou are on your own.", reqQuests={8286,8288}, removedQuests={}, addedQuests={
-                {8303,"turnin"},{8305,"turnin"},{8519,"turnin"},{8555,"turnin"}, -- Initial, 9550+9550+9550+960
-                {8575,"turnin"},{8576,"turnin"},{8597,"turnin"},{8598,"turnin"},{8606,"turnin"}, --Blue Shard1, 9550+960+9550+4750+9550+
-                {8584,"turnin"},{8585,"turnin"},{8586,"turnin"},{8587,"turnin"},{8728,"turnin"}, --Blue Shard2, 960+9550+9550+9550+9550
-                {8736,"optional"},{8741,"turnin"}, --Green Shard, 14300-11000+9550
-                {8730,"optional"} --Red Shard, 14300-11000
-            }, desc={"<UNSUPPORTED>", " ", "Adds as many quests from the Scepter questline as possible with summons.", " ", "Quests will be shown on the quests tab, but our routes/guides will not update", " ", "We only added this so you can see the exp on the expbar - You'll need to manage this on your own", "If you don't understand what that means, don't enable this." }
+        { id=2, name="Full", summonsNeeded=0, estExtraExp=0, reqQuests={8286,8288,8301,8303,8305,8519,8555}, removedQuests={8288,8301}, addedQuests={
+                {8620,"optional"},{8586,"turnin"},{8587,"turnin"},{8578,"optional"},{8728,"turnin"}, --Blue Shard
+                {8736,"optional"},{8741,"optional"}, --Green Shard
+                {8730,"optional"} --Red Shard
+            }, desc={"Uses the Scepter quests that line up with our existing routes.", "This opens up some better QuestLog quests, and extra turnins, but also loses the Silithid Carapace Fragment quest.", "This is mainly worth it if you're missing a lot of questlog quests."}
         }
     }},
-    { code="BLACKSMITH", name="Blacksmithing Quests", desc={"This contains blacksmithing specific quests"}, options={
-        { id=4, name="Winterspring", summonsNeeded=0, estExtraExp=0, reqQuests={}, removedQuests={}, addedQuests={},
-            desc={ }
+    { code="BLACKSMITH", name="Blacksmithing Quests", desc={"This contains blacksmithing specific quests"}, multiSelect=true, options={
+        { id=4, name="Winterspring", summonsNeeded=0, estExtraExp=0, reqQuests={}, removedQuests={}, addedQuests={
+                {5305,"optional"},{5306,"optional"},{5307,"optional"},
         },
-        { id=5, name="Diremaul", summonsNeeded=1, estExtraExp=0, reqQuests={}, removedQuests={}, addedQuests={ },
-            desc={}
+            desc={"Uses the Blacksmithing quests that line up with our existing routes. This includes only optional quests that can be used as QuestLog quests instead."}
+        },
+        { id=5, name="Diremaul", summonsNeeded=1, estExtraExp=42900, reqQuests={}, removedQuests={}, addedQuests={ 
+                {7649,"turnin"},{7650,"turnin"},{7651,"turnin"},
+        },
+            desc={"Uses the Blacksmithing quests that are turned in in Diremaul. This requires a summon for most but it contains only turnin quests. Can also be combined with the class book in Diremaul for additional exp."}
         }
     }},
-    { code="QUEST_SHARING", name="Quest Sharing", desc={"This contains quests that must be shared from another character"}, multipleSelect=true, options={
-        { id=6, name="Battleground Marks", summonsNeeded=0, estExtraExp=32000, reqQuests={}, removedQuests={}, addedQuests={{8430,"turnin"},{8439,"turnin"},{8369,"turnin"}},
+    { code="QUEST_SHARING", name="Quest Sharing", desc={"This contains quests that must be shared from another character"}, options={
+        { id=6, name="Battleground Marks", summonsNeeded=0, estExtraExp=32000, reqQuests={}, removedQuests={}, addedQuests={
+                {8430,"turnin"},{8439,"turnin"},{8369,"turnin"}
+        },
             desc={"The quests for turning in 3x AB,WSG,AV marks are removed with TBC.", "If you keep them on another character, you can share them to yourself while turning in the other AV quests for free exp"}
+        }
+    }},
+    { code="EXPERIMENTAL", name="EXPERIMENTAL", desc={"This contains quests where the exp value is not 100% known and can be used on your own risk!"}, options={
+        { id=7, name="Alterac Valley", summonsNeeded=0, estExtraExp=0, reqQuests={}, removedQuests={}, addedQuests={
+                {7142,"optional"},{8272,"turnin"},{7101,"optional"},{7124,"optional"},{7082,"optional"}
+        },
+            desc={"!!!HIGHLY EXPERIMENTAL OPTIONAL QUESTLOG QUESTS. USE AT YOUR OWN RISK! THE VALUE IS NOT KNOWN FOR SURE!!!"}
         }
     }},
 }

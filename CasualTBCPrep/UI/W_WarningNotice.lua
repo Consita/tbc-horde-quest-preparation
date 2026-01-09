@@ -176,6 +176,7 @@ end
 end
 
 function CasualTBCPrep.W_WarningNotice.Show(headerText, qLogEntry, type, questID)
+
 	if wAcceptQuestWarning == nil then
 
 		Create(type)

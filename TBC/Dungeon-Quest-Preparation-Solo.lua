@@ -510,6 +510,13 @@ RXPGuides.RegisterGuide([[
 		.zoneskip Burning Steppes
 
 	step
+		.goto Burning Steppes,65.2,24.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkee Steamboil|r
+		.turnin 4810
+		.accept 4734
+		.target Tinkee Steamboil
+
+	step
 		.goto Burning Steppes,65.0,23.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ragged John|r
 		.accept 4866	
@@ -626,9 +633,10 @@ RXPGuides.RegisterGuide([[
 		.isOnQuest 4862
 
 	step
-		.use 12262 >>|cRXP_WARN_Use the|r |T132599:0|t[Empty Worg Pup Cage] on |cRXP_ENEMY_Bloodaxe Worg Pup|r
+		.use 12262 >>|cRXP_WARN_Use the|r |T132599:0|t[Empty Worg Pup Cage]|cRXP_WARN_ on|r |cRXP_ENEMY_Bloodaxe Worg Pup|r
 		.complete 4729,1 
-		.isOnQuest 4729	
+		.isOnQuest 4729
+		.mob Bloodaxe Worg Pup
 	
 	step
 		>>Kill |cRXP_ENEMY_Halycon|r

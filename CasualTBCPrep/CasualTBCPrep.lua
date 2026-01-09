@@ -84,20 +84,23 @@ local function OnQuestAcceptedEvent(self, event, questLogIndex)
 		local questName, _, _, _, _, _, _, questID = GetQuestLogTitle(questLogIndex)
 
 		if questID ~= nil and questID > 0 then
-			if CasualTBCPrep.QuestData.ShouldBeInQuestLog(questID) then
-				if CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(CasualTBCPrep.Settings.Warning_QLOG) == false then
-					CasualTBCPrep.W_WarningNotice.Show(questName, questLogIndex, "qlog", questID)
-				end
-			elseif not CasualTBCPrep.QuestData.IsTurnInQuest(questID) then
-				if CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(CasualTBCPrep.Settings.Warning_OPTIONAL) == false then
-					CasualTBCPrep.W_WarningNotice.Show(questName, questLogIndex, "optional", questID)
-				end
-			elseif CasualTBCPrep.QuestData.IsTurnInQuest(questID) then
-				if CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(CasualTBCPrep.Settings.Warning_TURNIN) == false then
-					CasualTBCPrep.W_WarningNotice.Show(questName, questLogIndex, "turnin", questID)
+			if CasualTBCPrep.Routing.IsQuestInCurrentRoute(questID) then
+				if CasualTBCPrep.QuestData.ShouldBeInQuestLog(questID) then
+					if CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(CasualTBCPrep.Settings.Warning_QLOG) == false then
+						CasualTBCPrep.W_WarningNotice.Show(questName, questLogIndex, "qlog", questID)
+					end
+				elseif not CasualTBCPrep.QuestData.IsTurnInQuest(questID) then
+					if CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(CasualTBCPrep.Settings.Warning_OPTIONAL) == false then
+						CasualTBCPrep.W_WarningNotice.Show(questName, questLogIndex, "optional", questID)
+					end
+				elseif CasualTBCPrep.QuestData.IsTurnInQuest(questID) then
+					if CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(CasualTBCPrep.Settings.Warning_TURNIN) == false then
+						CasualTBCPrep.W_WarningNotice.Show(questName, questLogIndex, "turnin", questID)
+					end
 				end
 			end
 		end
+	
 
 		CasualTBCPrep.W_Main.ReloadActiveTab()
 	elseif event == "QUEST_COMPLETE" then
