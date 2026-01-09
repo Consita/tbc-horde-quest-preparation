@@ -17,6 +17,7 @@ local w_window_name = "CasualTBCPrep_W_WarningNotice"
 
 local optionalQuestIgnoreList = {
 	[1126] = true, -- Hive in the Tower
+	[6844] = true, -- Umber, Archivist
 }
 
 ---@class Frame|nil

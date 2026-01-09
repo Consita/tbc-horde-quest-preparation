@@ -915,7 +915,9 @@ end
 local function LoadRouteQuestSpecifics_Solo()
 	UpdateQuestOnForRouteHardcodeFix(4134, "optional", nil, nil, false) -- Lost Thunderbrew Recipe
 	UpdateQuestOnForRouteHardcodeFix(1126, "disabled", nil, nil, false) -- Hive in the Tower
+	UpdateQuestOnForRouteHardcodeFix(6844, "disabled", nil, nil, false) -- Umber, Archivist
 	AddPrequestToQuest(6845, 1126) -- Add Hive in the Tower to Uncovering Past Secrets
+	AddPrequestToQuest(6845, 6844) -- Add Umber, Archivist
 
 end
 local function LoadRouteQuestSpecifics_Strat()
