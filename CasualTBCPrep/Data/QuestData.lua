@@ -1197,6 +1197,13 @@ function CasualTBCPrep.QuestData.GetQuestName(questID)
 end
 
 ---@param questID number
+---@return string
+function CasualTBCPrep.QuestData.GetQuestType(questID)
+    local q = questsMetadata[questID]
+	return q and q.type or ""
+end
+
+---@param questID number
 function CasualTBCPrep.QuestData.GetQuest(questID)
     return questsMetadata[questID]
 end
@@ -1554,21 +1561,30 @@ function CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
     	local currentStep = 0
         local foundQuest = nil
 
-        for questIDStr in string.gmatch(quest.preQuests, "([^,]+)") do
+        for preQuestIDStr in string.gmatch(quest.preQuests, "([^,]+)") do
         	questCount = questCount + 1
 
             if foundQuest == nil then
             	currentStep = currentStep + 1
-                local questID = tonumber(questIDStr)
-                local preQuestObj = CasualTBCPrep.QuestData.GetPreQuest(questID)
-
+                local preQuestID = tonumber(preQuestIDStr)
+                local preQuestObj = CasualTBCPrep.QuestData.GetPreQuest(preQuestID)
                 if preQuestObj then
-                	if not CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) then
-                    	foundQuest = preQuestObj
-            		currentStep = currentStep - 1
+                	if not CasualTBCPrep.QuestData.HasCharacterCompletedQuest(preQuestID) then
+						local preqQuestType = CasualTBCPrep.QuestData.GetQuestType(preQuestID)
+						if preqQuestType and preqQuestType == "optional" then
+							-- preQuests that are optional doesn't have to be completed, if they are fully prepared (and in the questlog)
+							local isPreQuestFullyPrepared = CasualTBCPrep.QuestData.GetQuestProgressionDetailsFromID(preQuestID)
+							if not isPreQuestFullyPrepared then
+								foundQuest = preQuestObj
+								currentStep = currentStep - 1
+							end
+						else
+							foundQuest = preQuestObj
+							currentStep = currentStep - 1
+						end
                     end
                 else
-                	CasualTBCPrep.NotifyUserError("Couldn't find preQuest metadata for PreQuest with ID '" .. questIDStr .. "'")
+                	CasualTBCPrep.NotifyUserError("Couldn't find preQuest metadata for PreQuest with ID '" .. preQuestIDStr .. "'")
                 end
 			end
 		end

@@ -6,7 +6,7 @@ Changelog:
 
 -- The 'A Bijou for Zanza' fix was lost in the 3.14b update. It's now back again ^_^
 
-- Added a '/tbcprep ghetto' command to ghetto HS in dungeons, without needing a macro
+- Added a '/tbcprep ghetto' command to ghetto HS in dungeons, without needing a macro. It will leave your current party first too.
 
 3.14 - 2025-01-06
 - Added first draft of turnin guide for Strat route
