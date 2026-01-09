@@ -514,6 +514,13 @@ RXPGuides.RegisterGuide([[
 		.zoneskip Burning Steppes
 
 	step
+		.goto Burning Steppes,65.2,24.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tinkee Steamboil|r
+		.turnin 4810
+		.accept 4734
+		.target Tinkee Steamboil
+
+	step
 		.goto Burning Steppes,65.0,23.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ragged John|r
 		.accept 4866	

@@ -107,17 +107,17 @@ local questsMetadata = {
 	[7491] = { id=7491, name="For All To See", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="18422-1", ignoreReqItemsForPrep=1, routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="OrgrimmarBank", areaType="Raid", area="Onyxia's Lair", },
 	[7783] = { id=7783, name="The Lord of Blackrock", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="19002-1", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="Raid", area="Blackwing Lair", },
 	[7784] = { id=7784, name="The Lord of Blackrock", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="19002-1", ignoreReqItemsForPrep=1, routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="OrgrimmarBank", areaType="Raid", area="Blackwing Lair", },
-	[8928] = { id=8928, name="A Shifty Merchant", baseexp=4750, exp=0, qlvl=60, type="turnin", reqItems="21939-1", preQuests="8920,8923,8921,8924,8925", routes="Main,Strat,Solo", routePickup="TanarisTown", routeSection="TanarisTown", areaType="Zone", area="Tanaris", },
+	[8928] = { id=8928, name="A Shifty Merchant", baseexp=4750, exp=0, qlvl=60, type="turnin", reqItems="21939-1", preQuests="OVERWRITTEN_IN_ADDON", routes="Main,Strat,Solo", routePickup="TanarisTown", routeSection="TanarisTown", areaType="Zone", area="Tanaris", },
 	[8978] = { id=8978, name="Return to Mokvar", baseexp=9550, exp=0, qlvl=60, type="turnin", preQuests="OVERWRITTEN_IN_ADDON", routes="Main,Strat,Solo", routePickup="TanarisTown", routeSection="Orgrimmar", areaType="Zone", area="Tanaris", },
 	[8944] = { id=8944, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16736-1,16737-1", preQuests="8920,8923,8921,8924,8925", playerClass="WARRIOR", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
-	[8927] = { id=8927, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16716-1,16717-1", preQuests="8920,8923,8921,8924,8925", playerClass="DRUID", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
-	[8939] = { id=8939, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16685-1,16684-1", preQuests="8920,8923,8921,8924,8925", playerClass="MAGE", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
-	[8943] = { id=8943, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16702-1,16705-1", preQuests="8920,8923,8921,8924,8925", playerClass="WARLOCK", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
-	[8940] = { id=8940, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16696-1,16692-1", preQuests="8920,8923,8921,8924,8925", playerClass="PRIEST", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
-	[8942] = { id=8942, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16673-1,16672-1", preQuests="8920,8923,8921,8924,8925", playerClass="SHAMAN", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
-	[10495] = { id=10495, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16723-1,16724-1", preQuests="8920,8923,8921,8924,8925", playerClass="PALADIN", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
-	[8938] = { id=8938, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16680-1,16676-1", preQuests="8920,8923,8921,8924,8925", playerClass="HUNTER", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
-	[8941] = { id=8941, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16713-1,16712-1", preQuests="8920,8923,8921,8924,8925", playerClass="ROGUE", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
+	[8927] = { id=8927, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16716-1,16717-1", preQuests="8913,8923,8921,8924,8925", playerClass="DRUID", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
+	[8939] = { id=8939, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16685-1,16684-1", preQuests="8915,8923,8921,8924,8925", playerClass="MAGE", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
+	[8943] = { id=8943, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16702-1,16705-1", preQuests="8919,8923,8921,8924,8925", playerClass="WARLOCK", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
+	[8940] = { id=8940, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16696-1,16692-1", preQuests="8916,8923,8921,8924,8925", playerClass="PRIEST", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
+	[8942] = { id=8942, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16673-1,16672-1", preQuests="8918,8923,8921,8924,8925", playerClass="SHAMAN", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
+	[10495] = { id=10495, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16723-1,16724-1", preQuests="10493,8923,8921,8924,8925", playerClass="PALADIN", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
+	[8938] = { id=8938, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16680-1,16676-1", preQuests="8914,8923,8921,8924,8925", playerClass="HUNTER", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
+	[8941] = { id=8941, name="Just Compensation", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="16713-1,16712-1", preQuests="8917,8923,8921,8924,8925", playerClass="ROGUE", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="City", area="Orgrimmar", },
 	[7489] = { id=7489, name="Lethtendris's Web", baseexp=13050, exp=0, qlvl=57, type="qlog", routes="Solo", routeSection="Feralas", areaType="Dungeon", area="Dire Maul", },
 	[8301] = { id=8301, name="The Path of the Righteous", baseexp=9550, exp=0, qlvl=60, type="turnin", reqItems="20384-200", preQuests="8286,8288", routes="Main,Strat,Solo", routePickup="SilithusHold2", routeSection="SilithusHold2", areaType="Raid", area="Blackwing Lair", },
 	[8791] = { id=8791, name="The Fall of Ossirian", baseexp=14300, exp=0, qlvl=60, type="turnin", reqItems="21220-1", routes="Main,Strat,Solo", routePickup="SilithusHold2", routeSection="SilithusHold2", areaType="Raid", area="Ruins of Ahn'Qiraj", },
@@ -264,12 +264,12 @@ local questsMetadata = {
 	[5122] = { id=5122, name="The Medallion of Faith", baseexp=0, exp=0, qlvl=60, type="turnin", reqItems="12845-1", routes="Strat", routePickup="Stratholme2", routeSection="Stratholme2", areaType="Dungeon", area="Stratholme", },
 	[5125] = { id=5125, name="Aurius' Reckoning", baseexp=14300, exp=0, qlvl=60, type="turnin", routes="Strat", routePickup="Stratholme2", routeSection="Stratholme2", areaType="Dungeon", area="Stratholme", },
 	[1126] = { id=1126, name="Hive in the Tower", baseexp=8750, exp=0, qlvl=57, type="turnin", preQuests="1123,1124,1125", routes="Main,Strat", routePickup="SilithusNE", routeSection="SilithusNE2", areaType="Zone", area="Silithus", },
-	[6844] = { id=6844, name="Umber, Archivist", baseexp=4350, exp=0, qlvl=57, type="turnin", routes="Main,Strat", routePickup="SilithusNE2", routeSection="Moonglade", areaType="Zone", area="Silithus", },
+	[6844] = { id=6844, name="Umber, Archivist", baseexp=4350, exp=0, qlvl=57, type="turnin", preQuests="1123,1124,1125", routes="Main,Strat", routePickup="SilithusNE2", routeSection="Moonglade", areaType="Zone", area="Silithus", },
 	[7667] = { id=7667, name="Material Assistance", baseexp=7150, exp=0, qlvl=60, type="turnin", reqItems="12800-1,18335-1", playerClass="SHAMAN", routes="Main,Strat,Solo", routePickup="Orgrimmar", routeSection="Orgrimmar", areaType="Zone", area="Orgrimmar", },
-	[8930] = { id=8930, name="In Search of Anthion", baseexp=9550, exp=0, qlvl=60, type="turnin", preQuests="8920,8923,8921,8924,8925", routes="Strat", routePickup="Orgrimmar", routeSection="StratholmeGates1", areaType="Zone", area="Stratholme", },
-	[8945] = { id=8945, name="Dead Man's Plea", baseexp=11900, exp=0, qlvl=60, type="turnin", preQuests="8920,8923,8921,8924,8925", routes="Strat", routePickup="StratholmeGates1", routeSection="Stratholme2", areaType="Dungeon", area="Stratholme", },
-	[8946] = { id=8946, name="Proof of Life", baseexp=9550, exp=0, qlvl=60, type="turnin", preQuests="8920,8923,8921,8924,8925", routes="Strat", routePickup="Stratholme2", routeSection="StratholmeGates2", areaType="Dungeon", area="Stratholme", },
-	[8947] = { id=8947, name="Anthion's Strange Request", baseexp=9550, exp=0, qlvl=60, type="turnin", reqItems="11371-3,12810-20,14342-3,15407-4", preQuests="8920,8923,8921,8924,8925", routes="Strat", routePickup="StratholmeGates2", routeSection="StratholmeGates2", areaType="Zone", area="Orgrimmar", },
+	[8930] = { id=8930, name="In Search of Anthion", baseexp=9550, exp=0, qlvl=60, type="turnin", preQuests="OVERWRITTEN_IN_ADDON", routes="Strat", routePickup="Orgrimmar", routeSection="StratholmeGates1", areaType="Zone", area="Stratholme", },
+	[8945] = { id=8945, name="Dead Man's Plea", baseexp=11900, exp=0, qlvl=60, type="turnin", preQuests="OVERWRITTEN_IN_ADDON", routes="Strat", routePickup="StratholmeGates1", routeSection="Stratholme2", areaType="Dungeon", area="Stratholme", },
+	[8946] = { id=8946, name="Proof of Life", baseexp=9550, exp=0, qlvl=60, type="turnin", preQuests="OVERWRITTEN_IN_ADDON", routes="Strat", routePickup="Stratholme2", routeSection="StratholmeGates2", areaType="Dungeon", area="Stratholme", },
+	[8947] = { id=8947, name="Anthion's Strange Request", baseexp=9550, exp=0, qlvl=60, type="turnin", reqItems="11371-3,12810-20,14342-3,15407-4", preQuests="OVERWRITTEN_IN_ADDON", routes="Strat", routePickup="StratholmeGates2", routeSection="StratholmeGates2", areaType="Zone", area="Orgrimmar", },
 	[4882] = { id=4882, name="Guarding Secrets", baseexp=4650, exp=0, qlvl=59, type="turnin", reqItems="12558-1", routes="Main,Strat,Solo", routePickup="felwoodTown", routeSection="felwoodTown", areaType="Zone", area="Winterspring", },
 	[4883] = { id=4883, name="Guarding Secrets", baseexp=9300, exp=0, qlvl=59, type="turnin", reqItems="12558-1", ignoreReqItemsForPrep=1, routes="Main,Strat,Solo", routePickup="felwoodTown", routeSection="ThunderBluff", areaType="Zone", area="Thunder Bluff", },
 	[5121] = { id=5121, name="High Chief Winterfall", baseexp=11600, exp=0, qlvl=59, type="optional", preQuests="5083,5084,5085,5086,5087", routes="Main,Strat,Solo", routeSection="wsDonowa", areaType="Zone", area="Winterspring", },
@@ -645,39 +645,49 @@ local aqgl_expensiveQuests = {
 	[8352] = { name="Scepter of the Council", notice="The Abyssal Scepter can cost several hundred gold. Check your Auction House, or farm it in a guild group." },
 	[9248] = { name="A Humble Offering", notice="The Abyssal Scepter can cost several hundred gold. Check your Auction House, or farm it in a guild group." },
 	[9230] = { name="Ramaladni's Icy Grasp", notice="The materials can be very expensive" },
-	[9232] = { name="The Only Song I Know...", notice="The materials can be very expensive" }
+	[9232] = { name="The Only Song I Know...", notice="The materials can be very expensive" },
+	[8947] = { name="Anthion's Strange Request", notice="The materials can be very expensive" }
 }
 
 -- [Hardcoded fixes for complex quest metadata]
 -- Tier 0.5
-local tempQuestManagement = questsMetadata[8978] -- Return to Mokvar, Tier 0.5 quest
-if tempQuestManagement ~= nil then
-	if cachedPlayerClass == nil then
-		_, cachedPlayerClass = UnitClass("player")
-	end
+local tier05Quests = {8928, 8978, 8930, 8945, 8946, 8947}
 
-	if cachedPlayerClass == "MAGE" then
-		tempQuestManagement.preQuests = "8915,"
-	elseif cachedPlayerClass == "PRIEST" then
-		tempQuestManagement.preQuests = "8916,"
-	elseif cachedPlayerClass == "WARLOCK" then
-		tempQuestManagement.preQuests = "8919,"
-	elseif cachedPlayerClass == "DRUID" then
-		tempQuestManagement.preQuests = "8913,"
-	elseif cachedPlayerClass == "ROGUE" then
-		tempQuestManagement.preQuests = "8917,"
-	elseif cachedPlayerClass == "HUNTER" then
-		tempQuestManagement.preQuests = "8914,"
-	elseif cachedPlayerClass == "SHAMAN" then
-		tempQuestManagement.preQuests = "8918,"
-	elseif cachedPlayerClass == "WARRIOR" then
-		tempQuestManagement.preQuests = "8920,"
-	elseif cachedPlayerClass == "PALADIN" then
-		tempQuestManagement.preQuests = "10493,"
-	end
+local tempQuestManagement
+for _, questID in ipairs(tier05Quests) do
+    tempQuestManagement = questsMetadata[questID]
+    if tempQuestManagement then
+        if tempQuestManagement ~= nil then
+			if cachedPlayerClass == nil then
+				_, cachedPlayerClass = UnitClass("player")
+			end
 
-	tempQuestManagement.preQuests = tempQuestManagement.preQuests .. "8923,8921,8924,8925"
+			if cachedPlayerClass == "MAGE" then
+				tempQuestManagement.preQuests = "8915,"
+			elseif cachedPlayerClass == "PRIEST" then
+				tempQuestManagement.preQuests = "8916,"
+			elseif cachedPlayerClass == "WARLOCK" then
+				tempQuestManagement.preQuests = "8919,"
+			elseif cachedPlayerClass == "DRUID" then
+				tempQuestManagement.preQuests = "8913,"
+			elseif cachedPlayerClass == "ROGUE" then
+				tempQuestManagement.preQuests = "8917,"
+			elseif cachedPlayerClass == "HUNTER" then
+				tempQuestManagement.preQuests = "8914,"
+			elseif cachedPlayerClass == "SHAMAN" then
+				tempQuestManagement.preQuests = "8918,"
+			elseif cachedPlayerClass == "WARRIOR" then
+				tempQuestManagement.preQuests = "8920,"
+			elseif cachedPlayerClass == "PALADIN" then
+				tempQuestManagement.preQuests = "10493,"
+			end
+
+			tempQuestManagement.preQuests = tempQuestManagement.preQuests .. "8923,8921,8924,8925"
+		end
+    end
 end
+
+
 tempQuestManagement = nil;
 
 -- Split Quests (Quests that exclude eachother) - Currently Brood of Nozdormu Rings 
