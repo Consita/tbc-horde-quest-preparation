@@ -143,17 +143,30 @@ function CasualTBCPrep.Extras_Mailbox.GetStepDetails_ItemsNeeded(dataMail, dataB
         if mails == nil then
             CasualTBCPrep.NotifyUserCompanionError("ERR, Extras_Mailbox.GetStepDetails_ItemsNeeded has nil 'mails' from dataMail["..tostring(targetMailID.."]"))
         end
+        
         for _,mail in pairs(mails.mails) do
             local filteredItems = {}
+            local playerInvCountRemaining = {}  -- Track remaining per itemID
 
             for _,item in ipairs(mail.items) do
-                local playerInvCount = CasualTBCPrep.Items.GetPlayerItemCount(item.itemID, false)
+                -- Get remaining inventory (subtract what we've already allocated)
+                local playerInvCount = playerInvCountRemaining[item.itemID]
+                if playerInvCount == nil then
+                    playerInvCount = CasualTBCPrep.Items.GetPlayerItemCount(item.itemID, false)
+                    playerInvCountRemaining[item.itemID] = playerInvCount
+                end
+                
                 if playerInvCount < item.count then
+                    local needed = item.count - playerInvCount
                     table.insert(filteredItems, {
                         itemID = item.itemID,
-                        count = item.count - playerInvCount
+                        count = needed
                     })
                     mailItemStackCount = mailItemStackCount + 1
+                    playerInvCountRemaining[item.itemID] = 0  -- We've allocated all available
+                else
+                    -- We have enough for this stack, subtract it
+                    playerInvCountRemaining[item.itemID] = playerInvCount - item.count
                 end
             end
 
@@ -239,20 +252,20 @@ local function Display(parent)
         CasualTBCPrep.W_FeatureManual.Show(CasualTBCPrep.W_FeatureManual.TYPE.EXTRA_MAIL)
     end)
 
-	local txtWarning = parent:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-	txtWarning:SetPoint("TOP", parent, "TOP", 0, yPos)
-	txtWarning:SetText("Do not use this feature until you are done prepping")
-    txtWarning:SetTextColor(clrBad.r, clrBad.g, clrBad.b)
-	table.insert(texts, txtWarning)
+	local txtNoticeA = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+    txtNoticeA:SetPoint("TOP", parent, "TOP", 0, -1)
+	txtNoticeA:SetText("Click the whistle on the left to open the companion")
+    txtNoticeA:SetTextColor(clrWarn.r, clrWarn.g, clrWarn.b)
+	table.insert(texts, txtNoticeA)
 
-	local txtWarning2 = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-	txtWarning2:SetText("Click the scroll on the right for a detailed explanation")
-    txtWarning2:SetTextColor(clrWarn.r, clrWarn.g, clrWarn.b)
-	table.insert(texts, txtWarning2)
+	local txtNoticeB = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+    txtNoticeB:SetPoint("TOP", txtNoticeA, "BOTTOM", 0, -1)
+	txtNoticeB:SetText("Click the scroll on the right for a detailed explanation")
+    txtNoticeB:SetTextColor(clrWarn.r, clrWarn.g, clrWarn.b)
+	table.insert(texts, txtNoticeB)
 
     if companionSettingsGlobal.playerWarningAcceptance ~= true then
-        txtWarning:SetText(" ")
-        txtWarning2:SetPoint("CENTER", txtWarning, "CENTER", 0, 0)
+        txtNoticeA:SetText(" ")
         local wallOfText = clrWarn.hex.."THIS FEATURE IS A WORK IN PROGRESS|r\r\r\r"
             ..clrWarn.hex.."When returned mails expire, they are\r"
             ..clrBad.hex.."PERMANENTLY DESTROYED|r\r"
@@ -284,168 +297,12 @@ local function Display(parent)
         txtWarningLast:SetTextColor(0.7,0.7,0.7)
         table.insert(texts, txtWarningLast)
         return
-    else
-	    txtWarning2:SetPoint("TOP", txtWarning, "BOTTOM", 0, -1)
     end
 
     local yPosStart = -60
     yPos = yPosStart
 
     local loadCharName = companionSettingsGlobal.mailCharacterName or ""
-
-    -- Char Input
-    local charNameInput = CreateFrame("EditBox", nil, parent, "InputBoxTemplate")
-    local charNameInputHeader = parent:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-    local btnSaveCharacter = CreateFrame("Button", nil, parent, "UIPanelButtonTemplate")
-    local btnReturnMails = CreateFrame("Button", nil, parent, "UIPanelButtonTemplate")
-    local btnSendMailsToReturn = CreateFrame("Button", nil, parent, "UIPanelButtonTemplate")
-
-    table.insert(texts, charNameInputHeader)
-    table.insert(content, charNameInput)
-    table.insert(content, btnSaveCharacter)
-    table.insert(content, btnReturnMails)
-    table.insert(content, btnSendMailsToReturn)
-
-    local funcUpdateButtons = function()
-        local globalSettings = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.CompanionSettings)
-        if globalSettings.mailCharacterName == UnitName("player") then
-            btnReturnMails:Enable()
-            btnSendMailsToReturn:Disable()
-        else
-            btnReturnMails:Disable()
-            btnSendMailsToReturn:Enable()
-        end
-    end
-    local funcSaveName = function()
-        local newCharName = charNameInput:GetText() or ""
-        if newCharName == nil then newCharName = "" end
-
-        local globalSettings = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.CompanionSettings)
-        globalSettings.mailCharacterName = newCharName
-        CasualTBCPrep.Settings.SetGlobalSetting(CasualTBCPrep.Settings.CompanionSettings, globalSettings)
-        CasualTBCPrep.NotifyUser("Saved '"..newCharName.."' as new 'return' character name")
-        charNameInput:ClearFocus()
-        btnSaveCharacter:Hide()
-        funcUpdateButtons()
-        CasualTBCPrep.W_Main.ReloadActiveTab()
-    end
-
-    local funcSendEmailsToReturnChar = function(self)
-        local globalSettings = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.CompanionSettings)
-        if globalSettings.mailCharacterName == UnitName("player") then
-            CasualTBCPrep.NotifyUserCompanionError("'Send Emails' cannot be used by the 'Return Character'")
-            return
-        end
-
-        self:Disable()
-        local mailsNeeded = CasualTBCPrep.Extras_Mailbox.GetTurninData()
-
-        local inventoryTracker = {}
-        for _, mailGroup in ipairs(mailsNeeded) do
-            local itemsToSend = {}
-
-            for _, mail in ipairs(mailGroup.mails) do
-                for _, item in ipairs(mail.items) do
-                    if #itemsToSend >= 12 then break end
-
-                    if not inventoryTracker[item.itemID] then
-                        inventoryTracker[item.itemID] = CasualTBCPrep.Items.GetPlayerItemCount(item.itemID, false)
-                    end
-
-                    if inventoryTracker[item.itemID] >= item.count then
-                        table.insert(itemsToSend, {itemID = item.itemID, count = item.count})
-                        inventoryTracker[item.itemID] = inventoryTracker[item.itemID] - item.count
-                    end
-                end
-                if #itemsToSend >= 12 then break end
-            end
-
-            if #itemsToSend > 0 then
-                local recipient = globalSettings.mailCharacterName
-                local subject = CasualTBCPrep.Extras_Mailbox.MAIL_PREFIX..mailGroup.id
-
-                CasualTBCPrep.MailboxInteraction.PrepareOutgoingMail(recipient, subject, itemsToSend, function(attached, missing)
-                    if attached > 0 then
-                        CasualTBCPrep.NotifyUserCompanion("Prepared mail with "..attached.." attachments. You need to send it yourself (wow security)")
-                    else
-                        CasualTBCPrep.NotifyUserCompanionError("Could not attach items - check stack sizes match exactly")
-                    end
-                    self:Enable()
-                end)
-
-                return
-            end
-        end
-
-        CasualTBCPrep.NotifyUserCompanionWarning("No items ready to send")
-        self:Enable()
-    end
-
-    local funcReturnEmails = function(self)
-        local globalSettings = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.CompanionSettings)
-        if globalSettings.mailCharacterName ~= UnitName("player") then
-            CasualTBCPrep.NotifyUserCompanionError("'Return Emails' can only be used by the 'Return Character'")
-            return
-        end
-
-        self:Disable()
-        CasualTBCPrep.MailboxInteraction.ReturnMailsWhereSubjectStartsWith(CasualTBCPrep.Extras_Mailbox.MAIL_PREFIX, function(returnCount)
-            if returnCount == 0 then
-                CasualTBCPrep.NotifyUserCompanionWarning("Returned "..tostring(returnCount).." mails. Was the Mailbox open on the correct tab?")
-            else
-                CasualTBCPrep.NotifyUserCompanion("Returned "..tostring(returnCount).." mails")
-            end
-            self:Enable()
-        end)
-    end
-
-    charNameInput:SetSize(105, 20)
-    charNameInput:SetPoint("TOPRIGHT", parent, "TOPRIGHT", 0, yPos)
-    charNameInput:SetAutoFocus(false)
-    charNameInput:SetText(loadCharName)
-    charNameInput:SetMaxLetters(12)
-    charNameInput:SetScript("OnEnterPressed", funcSaveName)
-    charNameInput:SetScript("OnEscapePressed", function(self)
-        local globalSettings = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.CompanionSettings)
-        self:ClearFocus()
-        self:SetText(globalSettings.mailCharacterName or "")
-        btnSaveCharacter:Hide()
-    end)
-
-    charNameInputHeader:SetPoint("BOTTOMLEFT", charNameInput, "TOPLEFT", -5, 0)
-    charNameInputHeader:SetText("Return character")
-
-    btnSaveCharacter:SetSize(60,24)
-    btnSaveCharacter:SetPoint("TOP", charNameInput, "BOTTOM", -5, 0)
-    btnSaveCharacter:SetText("Save")
-    btnSaveCharacter:Hide()
-    btnSaveCharacter:SetScript("OnClick", funcSaveName)
-
-    charNameInput:SetScript("OnTextChanged", function(self, userInput) if userInput then btnSaveCharacter:Show() end end)
-    charNameInput:SetScript("OnEditFocusLost", function(self) btnSaveCharacter:Hide() end)
-
-    local editLinesTT = { "Enter the name of the character you will 'return' the mails from, then click save" }
-    CasualTBCPrep.UI.HookTooltip(charNameInputHeader, "Character Name", editLinesTT , nil,nil,nil)
-    CasualTBCPrep.UI.HookTooltip(charNameInput, "Character Name", editLinesTT , nil,nil,nil)
-    CasualTBCPrep.UI.HookTooltip(btnSaveCharacter, "Character Name", editLinesTT , nil,nil,nil)
-
-    -- Send to Return Button
-    btnSendMailsToReturn:SetSize(100,25)
-    btnSendMailsToReturn:SetPoint("TOP", btnSaveCharacter, "BOTTOM", 0, -1)
-    btnSendMailsToReturn:SetText("Send Mails")
-    btnSendMailsToReturn:SetScript("OnClick", funcSendEmailsToReturnChar)
-    CasualTBCPrep.UI.HookTooltip(btnSendMailsToReturn, "Send Mails to Return", { "Make sure the mailbox is open!", "This button will go through your items and send them to the 'Return Character'", " ", "The 'Return Mails' button can only be used by'Return Character'"} , nil,nil,nil)
-
-    -- Return Button
-    btnReturnMails:SetSize(100,25)
-    btnReturnMails:SetPoint("TOP", btnSendMailsToReturn, "BOTTOM", 0, -1)
-    btnReturnMails:SetText("Return Mails")
-    btnReturnMails:SetScript("OnClick", funcReturnEmails)
-    CasualTBCPrep.UI.HookTooltip(btnReturnMails, "Return Emails", { "Make sure the mailbox is open!", "This button will go through your mails and return any that belong to TBCPrep", " ", "The 'Send Mails' button cannot be used by the 'Return Character'"} , nil,nil,nil)
-
-
-    funcUpdateButtons()
-
 
     -- Items
     yPos = yPosStart
@@ -464,54 +321,54 @@ local function Display(parent)
         end
     end
 
-    local clrHeader1 = CasualTBCPrep.Themes.SelectedTheme.colors.headerSpecialHover
-    local txtHeader = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
-    txtHeader:SetPoint("TOPLEFT", parent, "TOPLEFT", 0, yPos)
-    txtHeader:SetText("Missing Items for Mails")
-    txtHeader:SetTextColor(clrHeader1.r, clrHeader1.g, clrHeader1.b)
-    table.insert(texts, txtHeader)
-    yPos = yPos - 20
+    -- local clrHeader1 = CasualTBCPrep.Themes.SelectedTheme.colors.headerSpecialHover
+    -- local txtHeader = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
+    -- txtHeader:SetPoint("TOPLEFT", parent, "TOPLEFT", 0, yPos)
+    -- txtHeader:SetText("Missing Items for Mails")
+    -- txtHeader:SetTextColor(clrHeader1.r, clrHeader1.g, clrHeader1.b)
+    -- table.insert(texts, txtHeader)
+    -- yPos = yPos - 20
 
-    local itemIconSize = 28
+    -- local itemIconSize = 28
 
-    for itemID, totalNeeded in pairs(allCombinedItems) do
-        local inventoryCount = CasualTBCPrep.Items.GetPlayerItemCount(itemID, false)
-        local missing = math.max(0, totalNeeded - inventoryCount)
+    -- for itemID, totalNeeded in pairs(allCombinedItems) do
+    --     local inventoryCount = CasualTBCPrep.Items.GetPlayerItemCount(itemID, false)
+    --     local missing = math.max(0, totalNeeded - inventoryCount)
 
-        if missing > 0 then
-            local icon, border, textRarityColor, imgItem = CasualTBCPrep.UI.CreateItemImage(parent, itemIconSize, itemID, "TOPLEFT", "TOPLEFT", 4, yPos)
-            table.insert(content, icon)
-            table.insert(content, border)
+    --     if missing > 0 then
+    --         local icon, border, textRarityColor, imgItem = CasualTBCPrep.UI.CreateItemImage(parent, itemIconSize, itemID, "TOPLEFT", "TOPLEFT", 4, yPos)
+    --         table.insert(content, icon)
+    --         table.insert(content, border)
 
-            local itemName = imgItem and imgItem.name or ("Item " .. itemID)
-            local r,g,b,cHex = CasualTBCPrep.GetRarityColor(imgItem and imgItem.rarity or 0)
+    --         local itemName = imgItem and imgItem.name or ("Item " .. itemID)
+    --         local r,g,b,cHex = CasualTBCPrep.GetRarityColor(imgItem and imgItem.rarity or 0)
 
-            local txtItemName = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-            txtItemName:SetPoint("TOPLEFT", icon, "TOPRIGHT", 2, -1)
-            txtItemName:SetText(cHex .. itemName .. "|r")
-            table.insert(texts, txtItemName)
+    --         local txtItemName = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+    --         txtItemName:SetPoint("TOPLEFT", icon, "TOPRIGHT", 2, -1)
+    --         txtItemName:SetText(cHex .. itemName .. "|r")
+    --         table.insert(texts, txtItemName)
 
-            local txtMissing = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-            txtMissing:SetPoint("BOTTOMLEFT", icon, "BOTTOMRIGHT", 2, 1)
-            txtMissing:SetText(clrMissing.hex .. "Missing: " .. missing .. "|r")
-            table.insert(texts, txtMissing)
+    --         local txtMissing = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+    --         txtMissing:SetPoint("BOTTOMLEFT", icon, "BOTTOMRIGHT", 2, 1)
+    --         txtMissing:SetText(clrMissing.hex .. "Missing: " .. missing .. "|r")
+    --         table.insert(texts, txtMissing)
 
-            if icon then
-                icon:SetScript("OnEnter", function(self)
-                    local link = CasualTBCPrep.Items.TryGetItemLink(itemID)
-                    if link then
-                        GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-                        GameTooltip:SetHyperlink(link)
-                        GameTooltip:Show()
-                    end
-                end)
-                icon:SetScript("OnLeave", function()
-                    GameTooltip:Hide()
-                end)
-            end
-            yPos = yPos - (itemIconSize + 5)
-        end
-    end
+    --         if icon then
+    --             icon:SetScript("OnEnter", function(self)
+    --                 local link = CasualTBCPrep.Items.TryGetItemLink(itemID)
+    --                 if link then
+    --                     GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+    --                     GameTooltip:SetHyperlink(link)
+    --                     GameTooltip:Show()
+    --                 end
+    --             end)
+    --             icon:SetScript("OnLeave", function()
+    --                 GameTooltip:Hide()
+    --             end)
+    --         end
+    --         yPos = yPos - (itemIconSize + 5)
+    --     end
+    -- end
 
     -----LEFT
     -- List of all needed items, different header for each mailGroup

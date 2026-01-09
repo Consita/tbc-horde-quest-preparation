@@ -268,3 +268,129 @@ function CasualTBCPrep.MailboxInteraction.ReturnMailsWhereSubjectStartsWith(subj
     ProcessNextMail()
     return true
 end
+
+
+
+
+
+
+
+
+
+
+---@param itemsNeeded table {[itemID] = {itemID=number, count=number}}
+---@param funcOnComplete function|nil
+function CasualTBCPrep.MailboxInteraction.TryGetItemsFromMailbox(itemsNeeded, funcOnComplete)
+    if itemsNeeded == nil or next(itemsNeeded) == nil then
+        if funcOnComplete then funcOnComplete({}, {}) end
+        return
+    end
+
+    local remainingNeeds, collectedItems = {},{}
+    for itemID, item in pairs(itemsNeeded) do
+        remainingNeeds[itemID] = item.count
+    end
+
+    local mailIndex, lastItemCount = 1,0
+    local isCancelled,waitingForUpdate = false, false
+
+    local registryID = 0
+    local funcCleanupRegistry = function()
+        if registryID > 0 then
+            CasualTBCPrep.MessageBroker.Unregister(CasualTBCPrep.MessageBroker.TYPE.MAILBOX_INTERACT, registryID)
+        end
+    end
+
+    registryID = CasualTBCPrep.MessageBroker.Register(CasualTBCPrep.MessageBroker.TYPE.MAILBOX_INTERACT, function(data)
+        if not data.open then
+            isCancelled = true
+            if funcOnComplete then funcOnComplete(collectedItems, remainingNeeds) end
+            funcCleanupRegistry()
+        end
+    end)
+
+    local function CountRelevantItems()
+        local count = 0
+        for itemID, need in pairs(remainingNeeds) do
+            if need > 0 then
+                local playerCount = CasualTBCPrep.Items.GetPlayerItemCount(itemID, false)
+                count = count + playerCount
+            end
+        end
+        return count
+    end
+
+    local function ProcessNext()
+        if isCancelled then return end
+
+        local allDone = true
+        for _, need in pairs(remainingNeeds) do
+            if need > 0 then
+                allDone = false
+                break
+            end
+        end
+        if allDone then
+            if funcOnComplete then funcOnComplete(collectedItems, remainingNeeds) end
+            funcCleanupRegistry()
+            return
+        end
+
+        if waitingForUpdate then
+            local currentCount = CountRelevantItems()
+            if currentCount ~= lastItemCount then
+                waitingForUpdate = false
+                lastItemCount = currentCount
+            else
+                C_Timer.After(0.1, ProcessNext)
+                return
+            end
+        end
+
+        CheckInbox()
+        local inboxCount = GetInboxNumItems()
+        if mailIndex > inboxCount then
+            if funcOnComplete then funcOnComplete(collectedItems, remainingNeeds) end
+            funcCleanupRegistry()
+            return
+        end
+
+        local _, _, _, _, money, moneyCOD, _, _, _, _, _, _, isGM = GetInboxHeaderInfo(mailIndex)
+        if isGM or (moneyCOD and moneyCOD > 0) then
+            mailIndex = mailIndex + 1
+            C_Timer.After(0.1, ProcessNext)
+            return
+        end
+
+        local tookSomething = false
+        for attachIndex = 1, 12 do
+            local itemName, itemID, texture, count = GetInboxItem(mailIndex, attachIndex)
+            if itemName then
+                local itemLink = GetInboxItemLink(mailIndex, attachIndex)
+                if itemLink then
+                    local itemID = tonumber(string.match(itemLink, "item:(%d+)"))
+                    if itemID and remainingNeeds[itemID] and remainingNeeds[itemID] > 0 then
+                        TakeInboxItem(mailIndex, attachIndex)
+
+                        remainingNeeds[itemID] = remainingNeeds[itemID] - count
+                        collectedItems[itemID] = (collectedItems[itemID] or 0) + count
+
+                        tookSomething = true
+                        waitingForUpdate = true
+
+                        if money and money > 0 then TakeInboxMoney(mailIndex) end
+
+                        C_Timer.After(0.3, ProcessNext)
+                        return
+                    end
+                end
+            end
+        end
+
+        if not tookSomething then
+            mailIndex = mailIndex + 1
+            C_Timer.After(0.1, ProcessNext)
+        end
+    end
+    ProcessNext()
+end

@@ -75,11 +75,14 @@ local function LoadStepDetailsItems(startY)
     end
 
     for _, mailItem in pairs(mailItemGrouping) do
+        local playerInvCount = CasualTBCPrep.Items.GetPlayerItemCount(mailItem.itemID, false)
+        mailItem.totalNeeded = mailItem.count + playerInvCount
         table.insert(itemsNeededInBags, mailItem)
     end
 
     for _,item in ipairs(itemsFromBank) do
         if item ~= nil and item.itemID ~= nil and item.itemID > 0 then
+            item.totalNeeded = item.count
             table.insert(itemsNeededInBags, item)
         end
     end
@@ -98,17 +101,19 @@ local function LoadStepDetailsItems(startY)
             playerTrack = { invOrig = inventoryCount, inv = inventoryCount, bankOrig=bankCount, bank=bankCount}
         end
 
-        if item.count <= inventoryCount then
+        if item.totalNeeded <= inventoryCount then
             -- Yay we have enough
-            inventoryCount = inventoryCount - item.count
+            inventoryCount = inventoryCount - item.totalNeeded
         else
-            if item.count <= (inventoryCount+bankCount) then
+            if item.totalNeeded <= (inventoryCount+bankCount) then
                 -- Not enough but has in bank, go get em
                 item.invCount = inventoryCount
                 item.bankCount = bankCount
                 table.insert(missing, item)
             else
                 -- Not enough in inventory or bank
+                item.invCount = inventoryCount
+                item.bankCount = bankCount
                 table.insert(missing, item)
             end
         end
@@ -169,7 +174,8 @@ local function LoadStepDetailsItems(startY)
             txtItemName:SetText(itemNameText)
             table.insert(wCompanion.texts, txtItemName)
 
-            local progressText = tostring(playerTrackedCount.invOrig).."/"..item.count
+            --local progressText = tostring(playerTrackedCount.invOrig).."/"..item.count
+            local progressText = tostring(playerTrackedCount.invOrig).."/"..(item.totalNeeded or item.count)
             if playerTrackedCount.bankOrig > 0 then
                 progressText = clrBanked.hex..progressText.." ("..tostring(playerTrackedCount.bankOrig).." in bank)|r"
             else
@@ -208,6 +214,7 @@ local function LoadStepDetails()
     local clrBanked = CasualTBCPrep.Themes.SelectedTheme.colors.questReadyBanked
     local clrMissing = CasualTBCPrep.Themes.SelectedTheme.colors.questCompleted
     local clrDebugMsg = CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex
+    local clrWaitingForZone = { r=0.7, g=0.7, b=0.7 }
 
     local parent = wCompanion.scrollChild
     local yPos = -5
@@ -230,7 +237,7 @@ local function LoadStepDetails()
         else
             txtReach:SetText(currentStep.zone..", "..currentStep.subZone)
         end
-        txtReach:SetTextColor(clrGood.r, clrGood.g, clrGood.b)
+        txtReach:SetTextColor(clrWaitingForZone.r, clrWaitingForZone.g, clrWaitingForZone.b)
         table.insert(wCompanion.texts, txtReach)
         yPos = yPos - 45
     end
@@ -300,8 +307,20 @@ local function LoadStepDetails()
                 btnCollect.mailsToOpen, btnCollect.itemsFromBank, btnCollect.mailItemStackCount, btnCollect.bankItemStackCount = GetStepDetails_ItemsNeeded(currentStep)
 
                 if mailID > 0 and isInteractingWithMail == true and self.mailsToOpen ~= nil then
-                    local playerFreeBagSlots = CasualTBCPrep.GetPlayerFreeBagSlots()
+                    local itemsToCollect = {} -- [itemID] = {itemID=X, count=Y}
+                    for _, mail in ipairs(self.mailsToOpen) do
+                        if mail ~= nil and mail.id ~= nil and mail.id > 0 then
+                            for _, item in ipairs(mail.items) do
+                                if itemsToCollect[item.itemID] ~= nil then
+                                    itemsToCollect[item.itemID].count = itemsToCollect[item.itemID].count + item.count
+                                else
+                                    itemsToCollect[item.itemID] = {itemID = item.itemID, count = item.count}
+                                end
+                            end
+                        end
+                    end
 
+                    local playerFreeBagSlots = CasualTBCPrep.GetPlayerFreeBagSlots()
                     local toGrab = btnCollect.mailItemStackCount
                     if debugger == 1 then
                         funcNotify(clrDebugMsg.."[DEBUG] Player has room for "..tostring(playerFreeBagSlots).." stacks, "..tostring(toGrab).." required...")
@@ -319,20 +338,32 @@ local function LoadStepDetails()
                     else
                         funcNotify("Trying to collect "..tostring(toGrab).." stacks from the mailbox...")
                     end
-                    local funcComplete = function(itemCount)
-                        if itemCount == 0 then
-                            local errMsg = "Found no mails with subject '"..targetMailSubject.."'"
-                            if targetSender and targetSender ~= "" then
-                                errMsg = errMsg.." from sender '"..targetSender.."'"
-                            end
-                            funcNotifyErr(errMsg)
-                        else
-                            funcNotify("Collected "..tostring(itemCount).." items")
+                    local funcComplete = function(collectedItems, remainingNeeds)
+                        local totalCollected = 0
+                        for itemID, count in pairs(collectedItems) do
+                            totalCollected = totalCollected + count
                         end
+
+                        if totalCollected == 0 then
+                            funcNotifyErr("Found no relevant items in mailbox")
+                        else
+                            funcNotify("Collected "..tostring(totalCollected).." items")
+                            if #remainingNeeds > 0 then
+                                funcNotifyWarn("ToDO: Some items still needed - check mailbox")
+                            end
+                        end
+
                         self.isCollecting = false
                         self:Enable()
                     end
-                    CasualTBCPrep.MailboxInteraction.TryGetAllMailsFromName(targetMailSubject, targetSender, toGrab, funcComplete)
+
+                    if debugger == 1 then
+                        funcNotify(clrDebugMsg.."[DEBUG] Mail 'Collect' - Trying to find the following in mailbox:")
+                        for itemID, item in pairs(itemsToCollect) do
+                            funcNotify(clrDebugMsg.."[DEBUG] x"..tostring(item.count).." "..CasualTBCPrep.Items.GetCachedItemName(itemID))
+                        end
+                    end
+                    CasualTBCPrep.MailboxInteraction.TryGetItemsFromMailbox(itemsToCollect, funcComplete)
                 elseif bankID > 0 and isInteractingWithBank == true and self.itemsFromBank ~= nil then
                     local playerFreeBagSlots = CasualTBCPrep.GetPlayerFreeBagSlots()
 
@@ -703,8 +734,6 @@ local function Create()
 end
 
 function CasualTBCPrep.W_Companion.Show()
-end
-function CasualTBCPrep.W_Companion.Show2()
 	local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
 	if wCompanion == nil then
 
