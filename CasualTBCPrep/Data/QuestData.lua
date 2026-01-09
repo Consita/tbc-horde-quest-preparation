@@ -1150,7 +1150,27 @@ function CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID)
 		end
 	end
 
-	return isCompleted or (C_QuestLog.IsQuestFlaggedCompleted(questID) == true) or false
+	-- 1) Turned-in quests
+	if isCompleted or C_QuestLog.IsQuestFlaggedCompleted(questID) == true then
+		return true
+	end
+
+	-- 2) OPTIONAL (route-dependent) quests completed but not turned in
+	if quest and quest.type == "optional" then
+		for i = 1, GetNumQuestLogEntries() do
+			local _, _, _, isHeader, _, isComplete, _, questLogQuestID =
+				GetQuestLogTitle(i)
+
+			if not isHeader and questLogQuestID == questID then
+				if isComplete == 1 then
+					return true
+				end
+				break
+			end
+		end
+	end
+
+	return false
 end
 
 ---@return boolean
@@ -1235,7 +1255,7 @@ function CasualTBCPrep.QuestData.ShouldBeInQuestLog(questID)
 
 	if not shouldBe then
 		local quest = questsMetadata[questID]
-		if (quest and "opt" == quest.type) or ("optional" == quest.type) then
+		if quest and (quest.type == "opt" or quest.type == "optional") then
 			local changedPrio = CasualTBCPrep.Settings.GetQuestPriority(CasualTBCPrep.Routing.CurrentRouteCode, questID) or false
 
 			if changedPrio == true then
