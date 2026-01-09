@@ -1080,7 +1080,7 @@ RXPGuides.RegisterGuide([[
 		.isOnQuest 6822
 
 	step
-		>>Clear |cFFfa9602Molten Core|r until you reach honored repuration with |cRXP_FRIENDLY_Hydraxian Waterlords|r
+		>>Clear |cFFfa9602Molten Core|r until you reach honored reputation with |cRXP_FRIENDLY_Hydraxian Waterlords|r
         .reputation 749,Honored  
 		.isQuestTurnedIn 6822	
 
@@ -1158,6 +1158,11 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warmaster Laggrond|r
 		.turnin 7161
 		.target Warmaster Laggrond		
+
+	step
+		>>Queue for |cFFfa9602Alterac Valley|r until you reach exalted reputation with the |cRXP_FRIENDLY_Frostwolf Clan|r
+        .reputation 729,Exalted,999  
+		.isQuestTurnedIn 7161
 
 	step
 		>>|cRXP_WARN_You have now completed all steps within Alterac Valley. Well done!|r
