@@ -626,9 +626,10 @@ RXPGuides.RegisterGuide([[
 		.isOnQuest 4862
 
 	step
-		.use 12262 >>|cRXP_WARN_Use the|r |T132599:0|t[Empty Worg Pup Cage] on |cRXP_ENEMY_Bloodaxe Worg Pup|r
+		.use 12262 >>|cRXP_WARN_Use the|r |T132599:0|t[Empty Worg Pup Cage]|cRXP_WARN_ on|r |cRXP_ENEMY_Bloodaxe Worg Pup|r
 		.complete 4729,1 
-		.isOnQuest 4729	
+		.isOnQuest 4729
+		.mob Bloodaxe Worg Pup
 	
 	step
 		>>Kill |cRXP_ENEMY_Halycon|r

@@ -629,9 +629,10 @@ RXPGuides.RegisterGuide([[
 		.isOnQuest 4862
 
 	step
-		.use 12262 >>|cRXP_WARN_Use the|r |T132599:0|t[Empty Worg Pup Cage] on |cRXP_ENEMY_Bloodaxe Worg Pup|r
+		.use 12262 >>|cRXP_WARN_Use the|r |T132599:0|t[Empty Worg Pup Cage]|cRXP_WARN_ on|r |cRXP_ENEMY_Bloodaxe Worg Pup|r
 		.complete 4729,1 
-		.isOnQuest 4729	
+		.isOnQuest 4729
+		.mob Bloodaxe Worg Pup
 	
 	step
 		>>Kill |cRXP_ENEMY_Halycon|r
@@ -1072,6 +1073,16 @@ RXPGuides.RegisterGuide([[
 		.isOnQuest 6822
 
 	step
+		>>Clear |cFFfa9602Molten Core|r until you reach honored repuration with |cRXP_FRIENDLY_Hydraxian Waterlords|r
+        .reputation 749,Honored  
+		.isQuestTurnedIn 6822	
+
+	step
+		#completewith MoltencoreEnd
+		+You can do either the combination of |cRXP_LOOT_Molten Core|r and |cRXP_LOOT_Agent of Hydraxis|r OR |cRXP_LOOT_Hands of the Enemy|r and |cRXP_LOOT_A Hero's Reward|r quests
+		>>They are equivalent in terms of experience. We added both in case you completed |cRXP_LOOT_Molten Core|r already		
+
+	step
 		#completewith next
 		.zone Azshara >>Travel to |cFFfa9602Azshara|r
 		.zoneskip Azshara
@@ -1100,6 +1111,7 @@ RXPGuides.RegisterGuide([[
 		.isOnQuest 6824
 
 	step
+		#label MoltencoreEnd
 		>>|cRXP_WARN_You have now completed all steps within Molten Core. Well done!|r
 		+You can either complete this step to jump to the next guide or select another guide manually
 	

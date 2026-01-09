@@ -2033,13 +2033,13 @@ RXPGuides.RegisterGuide([[
 			.goto Eastern Plaguelands,66.13,80.21,0
 			.goto Eastern Plaguelands,62.17,83.83,0
 			.goto Eastern Plaguelands,58.75,82.08,0
-			.goto Eastern Plaguelands,89.06,76.25,0
+			.goto Eastern Plaguelands,59.06,76.25,0
 			.goto Eastern Plaguelands,62.8,80.4,60,0
 			.goto Eastern Plaguelands,61.31,76.72,60,0
 			.goto Eastern Plaguelands,66.13,80.21,60,0
 			.goto Eastern Plaguelands,62.17,83.83,60,0
 			.goto Eastern Plaguelands,58.75,82.08,60,0
-			.goto Eastern Plaguelands,89.06,76.25,60,0
+			.goto Eastern Plaguelands,59.06,76.25,60,0
 			>>Use the |T134856:0|t[Aspect of Neptulon] on |cRXP_ENEMY_Plague Ravager|r and |cRXP_ENEMY_Blighted Surge|r, kill them and loot them for |T132606:0|t[Discordant Bracers]
 			.use 17310
 			.mob Plague Ravager
