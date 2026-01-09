@@ -2031,18 +2031,3 @@ function CasualTBCPrep.QuestData.GetExtraQuestDetails(questID)
 	end
 	return result
 end
-
-do
-    local Orig_UpdateRoutesFromQuestData = CasualTBCPrep.QuestData.UpdateRoutesFromQuestData
-
-    CasualTBCPrep.QuestData.UpdateRoutesFromQuestData = function(...)
-        if Orig_UpdateRoutesFromQuestData then
-            Orig_UpdateRoutesFromQuestData(...)
-        end
-
-        if CasualTBCPrep.Extras_ExtraPrep
-           and CasualTBCPrep.Extras_ExtraPrep.ApplyAllStoredExtras then
-            CasualTBCPrep.Extras_ExtraPrep.ApplyAllStoredExtras()
-        end
-    end
-end

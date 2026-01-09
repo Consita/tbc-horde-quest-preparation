@@ -1,6 +1,72 @@
 CasualTBCPrep = CasualTBCPrep or {}
 CasualTBCPrep.Extras_ExtraPrep = CasualTBCPrep.Extras_ExtraPrep or {}
 
+-- Variables
+local disabledType = "disabled"
+
+-- Data
+local extraData = {
+    {
+        code="SCEPTER", name="Scepter of the Sands Questline", desc={"This contains quests from the long 'Scepter of the Sands' questline from the opening of AQ"},
+        options=
+        {
+            {
+                id=2, name="Full", summonsNeeded=0, estExtraExp=0, reqQuests={8286,8288,8301,8303,8305,8519,8555}, removedQuests={8288,8301},
+                addedQuests=
+                {
+                    {8620,"optional"},{8586,"turnin"},{8587,"turnin"},{8578,"optional"},{8728,"turnin"}, --Blue Shard
+                    {8736,"optional"},{8741,"optional"}, --Green Shard
+                    {8730,"optional"} --Red Shard
+                },
+                desc={"Uses the Scepter quests that line up with our existing routes.", "This opens up some better QuestLog quests, and extra turnins, but also loses the Silithid Carapace Fragment quest.", " ", "This is mainly worth it if you're missing a lot of questlog quests, and the exp gained depends on that."},
+            }
+        }
+    },
+    {
+        code="BLACKSMITH", name="Blacksmithing Quests", desc={"This contains blacksmithing specific quests"}, multiSelect=true,
+        options=
+        {
+            {
+                id=4, name="Winterspring", summonsNeeded=0, estExtraExp=0, reqQuests={}, removedQuests={},
+                addedQuests={ {5305,"optional"},{5306,"optional"},{5307,"optional"}, },
+                desc={"Uses the Blacksmithing quests that line up with our existing routes. This includes only optional quests.", " ", "This is mainly worth it if you're missing a lot of questlog quests, and the exp gained depends on that."},
+            },
+            {
+                id=5, name="Diremaul", summonsNeeded=1, estExtraExp=42900, reqQuests={}, removedQuests={},
+                addedQuests={ {7649,"turnin"},{7650,"turnin"},{7651,"turnin"}, },
+                desc={"Uses the Blacksmithing quests that are turned in in Diremaul. This requires a summon but it contains only turnin quests.", "Can also be combined with the class book in Diremaul for additional exp."}
+            }
+        }
+    },
+    {
+        code="QUEST_SHARING", name="Quest Sharing", desc={"This contains quests that must be shared from another character"},
+        options=
+        {
+            {
+                id=6, name="Battleground Marks", summonsNeeded=0, estExtraExp=32000, reqQuests={}, removedQuests={},
+                addedQuests={{8430,"turnin"},{8439,"turnin"},{8369,"turnin"}},
+                desc={"The quests for turning in 3x AB, WSG & AV marks are removed with TBC.", "If you keep them on another character, you can share them to yourself while turning in the other AV quests for free exp.", " ", "The actual exp value of these in TBC is unknown, but we assume it's 32k total."}
+            }
+        }
+    },
+    {
+        code="EXPERIMENTAL", name="EXPERIMENTAL", desc={"This contains quests where the exp value is not 100% known and can be used on your own risk!"},
+        options=
+        {
+            {
+                id=7, name="Alterac Valley", summonsNeeded=0, estExtraExp=0, reqQuests={}, removedQuests={},
+                addedQuests={{7142,"optional"},{8272,"turnin"},{7101,"optional"},{7124,"optional"},{7082,"optional"} },
+                desc={"!!!HIGHLY EXPERIMENTAL OPTIONAL QUESTLOG QUESTS. USE AT YOUR OWN RISK!", "THE VALUE IS NOT KNOWN FOR SURE!!!"}
+            }
+        }
+    }
+}
+
+local content, texts = {},{}
+
+--[Forward Declarations]
+local DrawList
+
 local function CalculatePreviewExpForQuest(quest)
     if not quest then return end
 
@@ -10,31 +76,34 @@ local function CalculatePreviewExpForQuest(quest)
     end
 
     if quest.isScaling == true and quest.scaleRank and quest.scaleRank > 0 then
-        quest.exp =
-            CasualTBCPrep.Experience.GetActualScalingQuestExperienceValue(
-                charLvl,
-                quest.scaleRank
-            )
+        quest.exp = CasualTBCPrep.Experience.GetActualScalingQuestExperienceValue(charLvl, quest.scaleRank)
     elseif quest.baseexp and quest.baseexp > 0 then
-        quest.exp =
-            CasualTBCPrep.Experience.GetActualQuestExperienceValue(
-                quest.qlvl or charLvl,
-                quest.baseexp,
-                charLvl
-            )
+        quest.exp = CasualTBCPrep.Experience.GetActualQuestExperienceValue(quest.qlvl or charLvl, quest.baseexp, charLvl)
     else
         quest.exp = 0
     end
 end
 
-local function ApplyQuestTypeChange(optionData, enable)
+local countTemp = 1
+---@param optionData table
+---@param enable boolean
+---@param printQuestChanges boolean
+local function ApplyQuestTypeChange(optionData, enable, printQuestChanges)
+    local addedPrintString, removedPrintString = "", ""
     if optionData.addedQuests then
         for _, questInfo in ipairs(optionData.addedQuests) do
             local questID, newType = questInfo[1], questInfo[2]
-            local quest = CasualTBCPrep.QuestData.GetQuest(questID)
 
             if enable then
                 CasualTBCPrep.QuestData.SetQuestType(questID, newType)
+
+                if printQuestChanges == true then
+                    if addedPrintString == "" then
+                        addedPrintString = CasualTBCPrep.QuestData.GetQuestName(questID)
+                    else
+                        addedPrintString = addedPrintString..", "..CasualTBCPrep.QuestData.GetQuestName(questID)
+                    end
+                end
 
                 local quest = CasualTBCPrep.QuestData.GetQuest(questID)
                 if quest then
@@ -49,15 +118,20 @@ local function ApplyQuestTypeChange(optionData, enable)
     if optionData.removedQuests then
         for _, questID in ipairs(optionData.removedQuests) do
             local quest = CasualTBCPrep.QuestData.GetQuest(questID)
-
-            if enable then
-                CasualTBCPrep.QuestData.SetQuestType(questID, "disabled")
-                if quest then
+            if quest then
+                if enable then
+                    CasualTBCPrep.QuestData.SetQuestType(questID, disabledType)
                     quest.ignoreReqItemsForPrep = 1
-                end
-            else
-                CasualTBCPrep.QuestData.RestoreQuestType(questID)
-                if quest then
+
+                    if printQuestChanges == true then
+                        if removedPrintString == "" then
+                            removedPrintString = CasualTBCPrep.QuestData.GetQuestName(questID)
+                        else
+                            removedPrintString = removedPrintString..", "..CasualTBCPrep.QuestData.GetQuestName(questID)
+                        end
+                    end
+                else
+                    CasualTBCPrep.QuestData.RestoreQuestType(questID)
                     quest.ignoreReqItemsForPrep = nil
                 end
             end
@@ -66,55 +140,21 @@ local function ApplyQuestTypeChange(optionData, enable)
 
     CasualTBCPrep.QuestData.CreateAndSortLookupLists()
     CasualTBCPrep.W_Main.ReloadActiveTab()
+
+    if printQuestChanges == true then
+        if addedPrintString and addedPrintString ~= "" then
+            CasualTBCPrep.NotifyUser("Added the following quests:\r"..addedPrintString)
+        end
+
+        if removedPrintString and removedPrintString ~= "" then
+            CasualTBCPrep.NotifyUser("Removed the following quests:\r"..removedPrintString)
+        end
+    end
 end
 
-
-
---[Forward Declarations]
-local DrawList
-
-local extraData = {
-    { code="SCEPTER", name="Scepter of the Sands Questline", desc={"This contains quests from the long 'Scepter of the Sands' questline from the opening of AQ"}, options={
-        { id=2, name="Full", summonsNeeded=0, estExtraExp=0, reqQuests={8286,8288,8301,8303,8305,8519,8555}, removedQuests={8288,8301}, addedQuests={
-                {8620,"optional"},{8586,"turnin"},{8587,"turnin"},{8578,"optional"},{8728,"turnin"}, --Blue Shard
-                {8736,"optional"},{8741,"optional"}, --Green Shard
-                {8730,"optional"} --Red Shard
-            }, desc={"Uses the Scepter quests that line up with our existing routes.", "This opens up some better QuestLog quests, and extra turnins, but also loses the Silithid Carapace Fragment quest.", "This is mainly worth it if you're missing a lot of questlog quests."}
-        }
-    }},
-    { code="BLACKSMITH", name="Blacksmithing Quests", desc={"This contains blacksmithing specific quests"}, multiSelect=true, options={
-        { id=4, name="Winterspring", summonsNeeded=0, estExtraExp=0, reqQuests={}, removedQuests={}, addedQuests={
-                {5305,"optional"},{5306,"optional"},{5307,"optional"},
-        },
-            desc={"Uses the Blacksmithing quests that line up with our existing routes. This includes only optional quests that can be used as QuestLog quests instead."}
-        },
-        { id=5, name="Diremaul", summonsNeeded=1, estExtraExp=42900, reqQuests={}, removedQuests={}, addedQuests={ 
-                {7649,"turnin"},{7650,"turnin"},{7651,"turnin"},
-        },
-            desc={"Uses the Blacksmithing quests that are turned in in Diremaul. This requires a summon for most but it contains only turnin quests. Can also be combined with the class book in Diremaul for additional exp."}
-        }
-    }},
-    { code="QUEST_SHARING", name="Quest Sharing", desc={"This contains quests that must be shared from another character"}, options={
-        { id=6, name="Battleground Marks", summonsNeeded=0, estExtraExp=32000, reqQuests={}, removedQuests={}, addedQuests={
-                {8430,"turnin"},{8439,"turnin"},{8369,"turnin"}
-        },
-            desc={"The quests for turning in 3x AB,WSG,AV marks are removed with TBC.", "If you keep them on another character, you can share them to yourself while turning in the other AV quests for free exp"}
-        }
-    }},
-    { code="EXPERIMENTAL", name="EXPERIMENTAL", desc={"This contains quests where the exp value is not 100% known and can be used on your own risk!"}, options={
-        { id=7, name="Alterac Valley", summonsNeeded=0, estExtraExp=0, reqQuests={}, removedQuests={}, addedQuests={
-                {7142,"optional"},{8272,"turnin"},{7101,"optional"},{7124,"optional"},{7082,"optional"}
-        },
-            desc={"!!!HIGHLY EXPERIMENTAL OPTIONAL QUESTLOG QUESTS. USE AT YOUR OWN RISK! THE VALUE IS NOT KNOWN FOR SURE!!!"}
-        }
-    }},
-}
-
-function CasualTBCPrep.Extras_ExtraPrep.ApplyAllStoredExtras()
-    local storedSelections =
-        CasualTBCPrep.Settings.GetCharSetting(
-            CasualTBCPrep.Settings.ExtraTBCPrepSelections
-        )
+---@param printAddedQuests boolean
+function CasualTBCPrep.Extras_ExtraPrep.ApplyAllStoredExtras(printAddedQuests)
+    local storedSelections = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.ExtraTBCPrepSelections)
     if not storedSelections then return end
 
     for _, extraFeature in ipairs(extraData) do
@@ -129,12 +169,10 @@ function CasualTBCPrep.Extras_ExtraPrep.ApplyAllStoredExtras()
                 enabled = stored and stored.id == optionData.id
             end
 
-            ApplyQuestTypeChange(optionData, enabled)
+            ApplyQuestTypeChange(optionData, enabled, printAddedQuests)
         end
     end
 end
-
-local content, texts = {},{}
 
 ---@param frame Frame
 ---@param featureData table
@@ -182,13 +220,11 @@ local function ToggleStoredSetting(frame, featureData, optionData, reloadRoute)
         enabledNow = storedOption and storedOption.id == optionData.id
     end
 
-    ApplyQuestTypeChange(optionData, enabledNow)
+    ApplyQuestTypeChange(optionData, enabledNow, true)
 
-    if CasualTBCPrep.QuestData
-    and CasualTBCPrep.QuestData.UpdateRoutesFromQuestData then
+    if CasualTBCPrep.QuestData.UpdateRoutesFromQuestData then
         CasualTBCPrep.QuestData.UpdateRoutesFromQuestData()
     end
-
 end
 
 ---@param frame Frame
@@ -243,7 +279,7 @@ DrawList = function(frame)
             end
             btnFeatureOption:GetFontString():SetTextColor(optionColor.r,optionColor.g,optionColor.b,1)
             local funcOptionHoverEnter = function(btn) if not btn then return end btn:GetFontString():SetTextColor(optionColor.r,optionColor.g,optionColor.b, 0.6) end
-            local funcOptionHoverLeave = function(btn) if not btn then return end btn:GetFontString():SetTextColor(optionColor.r,optionColor.g,optionColor.b,1) end
+            local funcOptionHoverLeave = function(btn) if not btn then return end btn:GetFontString():SetTextColor(optionColor.r,optionColor.g,optionColor.b, 1) end
 
             local addedQuestCount = #optionData.addedQuests
 

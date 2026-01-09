@@ -147,6 +147,7 @@ local function OnAddonLoadedEvent(self, event, addonName)
 			return
 		end
 		CasualTBCPrep.Routing.ChangeCurrentRoute(selRouteCode)
+		CasualTBCPrep.Extras_ExtraPrep.ApplyAllStoredExtras(false)
 
 		local companionSettings = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.CompanionSettings)
 		if companionSettings ~= nil and companionSettings.open == true then
