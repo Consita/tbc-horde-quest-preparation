@@ -59,6 +59,14 @@ function CasualTBCPrep.GetRarityColor(rarity)
 	return r,g,b,hex
 end
 
+function CasualTBCPrep.GhettoHearth()
+    LeaveParty()
+    InviteUnit("abcd")
+    C_Timer.After(1, function()
+        LeaveParty()
+    end)
+end
+
 --[Info/Error Handling]
 function CasualTBCPrep.Print(message)
 	if message then

@@ -20,6 +20,8 @@ SlashCmdList["CASUAL_TBC_PREP"] = function(msg)
 
 	if #args == 0 then
 		CasualTBCPrep.W_Main.Show();
+	elseif args[1] == "ghetto" then
+		CasualTBCPrep.GhettoHearth()
 	elseif args[1] == "debug" then
 		if args[2] == "warn1" then
 			CasualTBCPrep.W_WarningNotice.Show("A Collection of Heads", nil, "qlog")

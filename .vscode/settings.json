@@ -52,7 +52,8 @@
         "SendMailFrame",
         "InboxFrame",
         "MailFrameTab_OnClick",
-        "MailFrameTab2"
+        "MailFrameTab2",
+        "ATTACHMENTS_MAX_RECEIVE"
     ],
     "Lua.type.weakUnionCheck": true
 }

@@ -6,6 +6,8 @@ Changelog:
 
 -- The 'A Bijou for Zanza' fix was lost in the 3.14b update. It's now back again ^_^
 
+- Added a '/tbcprep ghetto' command to ghetto HS in dungeons, without needing a macro
+
 3.14 - 2025-01-06
 - Added first draft of turnin guide for Strat route
 -- We need help on testing this as we cannot copy. Try to grab some items and just run through the guide. It is highly dynamic based on rep/items/quests. We can expect issues here. It is currently missing the item pickup steps. Those and the other routes will be added at a later point.

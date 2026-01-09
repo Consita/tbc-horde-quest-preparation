@@ -342,22 +342,6 @@ local questsMetadata = {
 	[8369] = { id=8369, name="Invaders of Alterac Valley", baseexp=11900, exp=0, qlvl=60, type="disabled", reqItems="20560-3", reqRep=910, reqRepRank=4, routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
 }
 
-function CasualTBCPrep.QuestData.SetQuestType(questID, newType)
-    if questsMetadata[questID] then
-        if questsMetadata[questID]._origType == nil then
-            questsMetadata[questID]._origType = questsMetadata[questID].type
-        end
-
-        questsMetadata[questID].type = newType
-    end
-end
-
-function CasualTBCPrep.QuestData.RestoreQuestType(questID)
-    if questsMetadata[questID] and questsMetadata[questID]._origType then
-        questsMetadata[questID].type = questsMetadata[questID]._origType
-    end
-end
-
 local preQuestMetadata = {
 	[838] = { name = "Scholomance", startZone = "The Bulwark, Tirisfal Glades" },
     [964] = { name = "The Key to Scholomance", startZone = "The Bulwark, Tirisfal Glades" },
@@ -758,6 +742,25 @@ function CasualTBCPrep.QuestData.CreateAndSortLookupLists()
 	questLogListPreSort = nil
 	questLogListAltsPreSort = nil
 	turnQuestListPreSort = nil
+end
+
+---@param questID integer
+---@param newType string
+function CasualTBCPrep.QuestData.SetQuestType(questID, newType)
+    if questsMetadata[questID] then
+        if questsMetadata[questID]._origType == nil then
+            questsMetadata[questID]._origType = questsMetadata[questID].type
+        end
+
+        questsMetadata[questID].type = newType
+    end
+end
+
+---@param questID integer
+function CasualTBCPrep.QuestData.RestoreQuestType(questID)
+    if questsMetadata[questID] and questsMetadata[questID]._origType then
+        questsMetadata[questID].type = questsMetadata[questID]._origType
+    end
 end
 
 
