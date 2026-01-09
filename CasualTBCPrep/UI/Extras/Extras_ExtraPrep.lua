@@ -147,7 +147,7 @@ local function ApplyQuestTypeChange(optionData, enable, printQuestChanges)
         end
 
         if removedPrintString and removedPrintString ~= "" then
-            CasualTBCPrep.NotifyUser("Removed the following quests:\r"..removedPrintString)
+            CasualTBCPrep.NotifyUserWarning("Removed the following quests:\r"..removedPrintString)
         end
     end
 end

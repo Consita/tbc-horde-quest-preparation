@@ -78,6 +78,11 @@ function CasualTBCPrep.NotifyUser(message)
 	print(CasualTBCPrep.Themes.SelectedTheme.colors.notifyInfoStart.hex .. "[" .. CasualTBCPrep.AddonName .. "]: " .. CasualTBCPrep.Themes.SelectedTheme.colors.notifyInfoText.hex .. (message or "???"));
 end
 ---@param message string|nil
+function CasualTBCPrep.NotifyUserWarning(message)
+	print(CasualTBCPrep.Themes.SelectedTheme.colors.notifyErrorStart.hex .. "[" .. CasualTBCPrep.AddonName .. "]: " .. CasualTBCPrep.Themes.SelectedTheme.colors.warn.hex .. (message or "Unknown Error"));
+	CasualTBCPrep.Sounds.PlaySound_WhisperPing()
+end
+---@param message string|nil
 function CasualTBCPrep.NotifyUserError(message)
 	print(CasualTBCPrep.Themes.SelectedTheme.colors.notifyErrorStart.hex .. "[" .. CasualTBCPrep.AddonName .. "]: " .. CasualTBCPrep.Themes.SelectedTheme.colors.notifyErrorText.hex .. (message or "Unknown Error"));
 	CasualTBCPrep.Sounds.PlaySound_WhisperPing()
