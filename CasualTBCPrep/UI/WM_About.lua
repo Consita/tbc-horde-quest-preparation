@@ -145,17 +145,10 @@ function CasualTBCPrep.WM_About.Load(wMain)
 	local msg = clrNormal.."Version: "..clrSpecial..tostring(CasualTBCPrep.Settings.CurrentMajorVersionValue).."|r\n"
 	msg = msg .. clrNormal .. "Created by: " .. clrSpecial .. "<Casual> " .. clrConsita .. "Consita|r & " .. clrPawa .. "Pawaox|r on Spineshatter-EU\n\n"
 	msg = msg .. clrNormal .. "Currently only supports " .. clrHorde .. "HORDE|r characters\n"
-	msg = msg .. clrSpecial .. "- We probably won't be adding " .. clrAlly .. "Alliance|r support :(\n\n"
 
 	msg = msg .. clrNormal .. "Join our guild's discord to ask questions or suggest changes... or say hi\n"
 
-	local knownIssueList = {
-		"The 'Turn-in' RXP guide is not yet implemented",
-		"Disabling sections on a route doesn't disable attached sections",
-		"The 'Quests' tab doesn't add in extra 'Optional Quests' when a route section with questlog quests is disabled"
-	}
-
-	local specialThanks = clrSpecial .. "Thanks to all our guildies that helped test the addon\n"
+	local specialThanks = clrSpecial .. "Thanks to everyone who helped test the addon\n"
 	specialThanks = specialThanks .. clrSpecial .. "And special thanks to you, " .. playerName .. ", for using our guide!\n\n"
 	specialThanks = specialThanks .. clrSpecial .. "We hope you enjoy TBC as much as we will!"
 

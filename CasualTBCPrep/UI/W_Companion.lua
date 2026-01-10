@@ -282,9 +282,6 @@ local function LoadStepDetails()
         yPos = yPos - 5
 
         if (mailID > 0 or bankID > 0) then
-        --if (mailID > 0 and isInteractingWithMail == true) or (bankID > 0 and isInteractingWithBank == true) then
-            local targetMailSubject = CasualTBCPrep.Extras_Mailbox.MAIL_PREFIX..tostring(mailID)
-            local targetSender = globalCompanionSettings.mailCharacterName or ""
             local funcNotify = function(text) CasualTBCPrep.NotifyUserCompanion(text) end
             local funcNotifyWarn = function(text) CasualTBCPrep.NotifyUserCompanionWarning(text) end
             local funcNotifyErr = function(text) CasualTBCPrep.NotifyUserCompanionError(text) end

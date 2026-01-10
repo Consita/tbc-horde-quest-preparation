@@ -66,11 +66,7 @@ SlashCmdList["CASUAL_TBC_PREP"] = function(msg)
 			end
 		end
 	elseif args[1] == "mail" or args[1] == "companion" then
-		if args[2] == "help" then
-        	CasualTBCPrep.W_FeatureManual.Show(CasualTBCPrep.W_FeatureManual.TYPE.EXTRA_MAIL)
-		else
-			CasualTBCPrep.W_Companion.Toggle()
-		end
+		CasualTBCPrep.W_Companion.Toggle()
 	else
 		CasualTBCPrep.W_Main.Show();
 	end
@@ -159,8 +155,7 @@ local function OnAddonLoadedEvent(self, event, addonName)
 		end
 
 		local playerLevel = UnitLevel("player") or 1
-		if playerLevel < CasualTBCPrep.MaxLevel then -- If player isn't 70, show Companion button on Mail & Bank
-			local iconSize = 42
+		if playerLevel < CasualTBCPrep.MaxLevel then -- If player isn't 70 yet, show Companion button on Mail & Bank
 			local tooltipHeader = "Toggle TBCPrep Companion"
 			local ttCompanion = { "Opens or closes the Mail Companion", " ", "Can also be toggled with /tbcprep companion" }
 			local funcCallHoverEnter = function(btn) if not btn or not btn.textureObj then return end btn.textureObj:SetAlpha(0.5) end
@@ -169,7 +164,7 @@ local function OnAddonLoadedEvent(self, event, addonName)
 			-- Button Mail
 			local btnMail = CreateFrame("Button", nil, MailFrame)
 			btnMail:SetPoint("BOTTOMLEFT", MailFrame, "BOTTOMRIGHT", 0,0)
-			btnMail:SetSize(iconSize, iconSize)
+			btnMail:SetSize(42, 42)
 			local btnMailTexture = btnMail:CreateTexture(nil, "BORDER")
 			btnMailTexture:SetAllPoints(btnMail)
 			btnMailTexture:SetTexture(CasualTBCPrep.AddonLogoTexture)
@@ -179,7 +174,7 @@ local function OnAddonLoadedEvent(self, event, addonName)
 			-- Button Bank
 			local btnBank = CreateFrame("Button", nil, BankFrameMoneyFrame)
 			btnBank:SetPoint("BOTTOMRIGHT", BankFrameMoneyFrame, "TOPRIGHT", -7,6)
-			btnBank:SetSize(iconSize, iconSize)
+			btnBank:SetSize(32, 32)
 			local btnBankTexture = btnBank:CreateTexture(nil, "BORDER")
 			btnBankTexture:SetAllPoints(btnBank)
 			btnBankTexture:SetTexture(CasualTBCPrep.AddonLogoTexture)

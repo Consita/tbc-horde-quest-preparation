@@ -1,6 +1,6 @@
 CasualTBCPrep = CasualTBCPrep or {}
 CasualTBCPrep.Extras_Mailbox = CasualTBCPrep.Extras_Mailbox or {}
-CasualTBCPrep.Extras_Mailbox.MAIL_PREFIX = "TBCPrepMail"
+--CasualTBCPrep.Extras_Mailbox.MAIL_PREFIX = "TBCPrepMail"
 
 local turninSteps = {
     [CasualTBCPrep.Routing.RouteCodeMain] = {
@@ -60,6 +60,18 @@ end
 function CasualTBCPrep.Extras_Mailbox.Clean(frame)
     if not frame then return end
     CleanElements()
+end
+
+local function QuickText(parent, text, font, anchorPoint, relativeTo, relativePoint, xOffset, yOffset, clrRGB)
+	local txt = parent:CreateFontString(nil, "OVERLAY", font)
+	txt:SetPoint(anchorPoint, relativeTo, relativePoint, xOffset, yOffset)
+	txt:SetWidth(455)
+	txt:SetText(text)
+    txt:SetTextColor(clrRGB.r, clrRGB.g, clrRGB.b)
+	txt:SetJustifyH("LEFT")
+	txt:SetJustifyV("TOP")
+	table.insert(texts, txt)
+	return txt
 end
 
 ---@param index integer
@@ -200,8 +212,6 @@ end
 local function Display(parent)
 	local yPos = -1
 
-
-
 	local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
 
     local clrBad = CasualTBCPrep.Themes.SelectedTheme.colors.bad
@@ -212,7 +222,7 @@ local function Display(parent)
 
     local companionSettingsGlobal = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.CompanionSettings)
     if companionSettingsGlobal == nil then
-        companionSettingsGlobal = { mailCharacterName = "", playerWarningAcceptance = false }
+        companionSettingsGlobal = { mailCharacterName = "" }
         CasualTBCPrep.Settings.SetGlobalSetting(CasualTBCPrep.Settings.CompanionSettings, companionSettingsGlobal)
     end
 
@@ -241,16 +251,6 @@ local function Display(parent)
 	btnExplanation:SetPoint("TOPRIGHT", parent, "TOPRIGHT", -1, yPos)
 	btnExplanation:SetSize(28, 28)
 	table.insert(content, btnExplanation)
-	local btnExplanationTexture = btnExplanation:CreateTexture(nil, "BORDER")
-	btnExplanationTexture:SetAllPoints(btnExplanation)
-	btnExplanationTexture:SetTexture(134939)
-	btnExplanation.textureObj = btnExplanationTexture
-	table.insert(content, btnExplanationTexture)
-
-    CasualTBCPrep.UI.HookTooltip(btnExplanation, "Detailed explanation", {"Opens a window with a detailed explanation of how to use this feature.", " ", "Can also be opened with /tbcprep companion help" }, nil, funcCallHoverEnter, funcCallHoverLeave)
-    btnExplanation:SetScript("OnClick", function(self)
-        CasualTBCPrep.W_FeatureManual.Show(CasualTBCPrep.W_FeatureManual.TYPE.EXTRA_MAIL)
-    end)
 
 	local txtNoticeA = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
     txtNoticeA:SetPoint("TOP", parent, "TOP", 0, -1)
@@ -264,62 +264,104 @@ local function Display(parent)
     txtNoticeB:SetTextColor(clrWarn.r, clrWarn.g, clrWarn.b)
 	table.insert(texts, txtNoticeB)
 
-    if companionSettingsGlobal.playerWarningAcceptance ~= true then
-        txtNoticeA:SetText(" ")
-        local wallOfText = clrWarn.hex.."THIS FEATURE IS A WORK IN PROGRESS|r\r\r\r"
-            ..clrWarn.hex.."When returned mails expire, they are\r"
-            ..clrBad.hex.."PERMANENTLY DESTROYED|r\r"
-            ..clrWarn.hex.."They expire after 30 days|r\r\r\r"
-            ..clrAcceptanceText.hex.."If you want to try it out, or help us test it\rwe would really appreciate it!\rBut please don't grief yourself|r"
-        local txtWarningAccept = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
-        txtWarningAccept:SetPoint("TOP", parent, "TOP", 0, -35)
-        txtWarningAccept:SetText(wallOfText)
-        txtWarningAccept:SetTextColor(1,1,1)
-        table.insert(texts, txtWarningAccept)
-
-        local btnAcceptWarning = CreateFrame("Button", nil, parent, "UIPanelButtonTemplate")
-        btnAcceptWarning:SetSize(275,30)
-        btnAcceptWarning:SetPoint("TOP", txtWarningAccept, "BOTTOM", 0, -80)
-        btnAcceptWarning:SetText("I understand and I will not be stupid")
-        btnAcceptWarning:SetScript("OnClick", function()
-            CleanElements()
-            local globalCompSetting = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.CompanionSettings)
-            globalCompSetting.playerWarningAcceptance = true
-            CasualTBCPrep.Settings.SetGlobalSetting(CasualTBCPrep.Settings.CompanionSettings, companionSettingsGlobal)
-            Display(parent)
-        end)
-        table.insert(content, btnAcceptWarning)
-        CasualTBCPrep.UI.HookTooltip(btnAcceptWarning, "Warning Acceptance", { "If you decide to be stupid anyways, please don't blame us", "We did warn you O_O", " ", "If you click this button, your account will not see it again"}, nil,nil,nil)
-
-        local txtWarningLast = parent:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-        txtWarningLast:SetPoint("BOTTOM", btnAcceptWarning, "TOP", 0, 2)
-        txtWarningLast:SetText("This warning will be removed when we know the TBC Launch date\rand when there is less than 30 days left")
-        txtWarningLast:SetTextColor(0.7,0.7,0.7)
-        table.insert(texts, txtWarningLast)
-        return
-    end
-
-    local yPosStart = -60
+    local yPosStart = -50
     yPos = yPosStart
 
-    local loadCharName = companionSettingsGlobal.mailCharacterName or ""
+	local clrWarn = CasualTBCPrep.Themes.SelectedTheme.colors.warn
+	local clrHeader = CasualTBCPrep.Themes.SelectedTheme.colors.headerSpecialHover
+	local clrText = CasualTBCPrep.Themes.SelectedTheme.colors.manualText
+	local clrStep = CasualTBCPrep.Themes.SelectedTheme.colors.standoutText
+	local txt = QuickText(parent, "What does this feature do?", "GameFontNormalLarge", "TOPLEFT", parent, "TOPLEFT", 0, yPos, clrHeader)
+	txt = QuickText(parent, "The Extras - Mailbox feature is to help you manage all your items on release day.\rIf you prepared a lot of quests, you can't have all the items in your bags from the beginning.\r\r"
+		.."The companion helps you withdrawing items when they are needed.\r\rThis feature is OPTIONAL, you can do this yourself as well!\rIf this seems too complicated, or if you don't want to read, please don't use this feature - you might accidentally grief yourself and that's not fun.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
 
+	txt = QuickText(parent, "How does it work?", "GameFontNormalLarge", "TOPLEFT", txt, "BOTTOMLEFT", 0, -13, clrHeader)
+	txt = QuickText(parent, "Using the whistle button in the topleft, you can open the Companion.\r"
+        .."A button with 'The Dark Portal' texture has been added to the Mailbox & Bank, which also toggles the Companion.\r\r"
+        .."The companion shows steps depending on you current route. Below it you can see the all the possible items you 'might' need to get out of the mail/bank at this step\r\rThe first step is always your bags, which is the items you should have in your bags on release!\r"
+        .."When entering an area with a step, the Companion 'should' change the current step automatically.\rIf it doesn't, or if you want to look ahead, you can use the arrows at the top to manually change the current step.\r\r"
+        .."'Waiting For' shows what zone this step is for and disappears when you get there.\r'Interact With' shows where to get items from (Mail and/or bank)\r\r"
+        .."Below that, there is a collect button.\rWhen clicking this button, if the mail or bank is open, the companion tries to collect all the items listed even for quests you haven't prepared.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+
+	txt = QuickText(parent, "Can I try it out?", "GameFontNormalLarge", "TOPLEFT", txt, "BOTTOMLEFT", 0, -13, clrHeader)
+	txt = QuickText(parent, "Yep! We would even recommend it :)\r\rYou can find a test example at the bottom of this page.\rUse the guides if you get stuck.\r\r'/tbcprep companion' opens the Companion Window\r'/tbcprep companion help' opens this help window.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+
+	txt = QuickText(parent, "Bank Preparation Guide", "GameFontNormalLarge", "TOPLEFT", txt, "BOTTOMLEFT", 0, -13, clrHeader)
+	txt = QuickText(parent, "Step 1", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrStep)
+	txt = QuickText(parent, "Put all bound quest items in the bank, the location doesn't matter.\rYou will take some out again in the 'Bags Preparation Guide' below.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+
+	txt = QuickText(parent, "Mailbox Preparation Guide", "GameFontNormalLarge", "TOPLEFT", txt, "BOTTOMLEFT", 0, -13, clrHeader)
+	txt = QuickText(parent, "Step 1", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrStep)
+	txt = QuickText(parent, "You need to send all BoE items needed to your character.\rYou can either send them to an alt and return them, or you can send them from other characters\r"
+        .."We initially made a tool to help with sending the mails, but it was very confusing, so we removed it\r\r"
+        .."Please keep in mind that 'returned' mails DISAPPEAR after 30 days.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+	txt = QuickText(parent, "Step 2", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -9, clrStep)
+	txt = QuickText(parent, "Make sure you don't have too many mails. If you have more than the limit (100?) they can't be opened.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+
+	txt = QuickText(parent, "Bags Preparation Guide", "GameFontNormalLarge", "TOPLEFT", txt, "BOTTOMLEFT", 0, -13, clrHeader)
+	txt = QuickText(parent, "Step 1", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrStep)
+	txt = QuickText(parent, "In the Companion Window, 'Step 1' is always what you need to have in your bags when you log in on release.\rThese items are used before reaching a convenient bank/mailbox.\r\rNow that you have prepared you bank and mailbox, take out items from both the bank and mailbox until you no longer see any items displayed under Step 1 in the Companion Window.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+
+	txt = QuickText(parent, "Before Release Day", "GameFontNormalLarge", "TOPLEFT", txt, "BOTTOMLEFT", 0, -13, clrHeader)
+	txt = QuickText(parent, "Step 1", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrStep)
+	txt = QuickText(parent, "Open the Companion.\rMake sure the first step is not showing any items. You should have all the items in your bags by now.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+	txt = QuickText(parent, "Step 2", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -9, clrStep)
+	txt = QuickText(parent, "Head to the start of the route. You can check the RXP turnin guide, or the 'Route' tab in the /tbcprep window.\rLog out or wait here until release.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+
+	txt = QuickText(parent, "Release Day - Companion Guide", "GameFontNormalLarge", "TOPLEFT", txt, "BOTTOMLEFT", 0, -13, clrHeader)
+	txt = QuickText(parent, "Step 1", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrStep)
+	txt = QuickText(parent, "Open the Companion. You should already have prepared your bags, so Step 1 in the Companion should show no items.\rYou can manually go to Step 2 if you want to see when you next need to retrieve items.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+	txt = QuickText(parent, "Step 2", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -9, clrStep)
+	txt = QuickText(parent, "When you enter the correct area for a step, the Companion automatically jumps to that Step.\rIf for some reason it doesn't, you can manually navigate with the topleft/right arrows.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+
+    txt = QuickText(parent, "Step 3", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -9, clrStep)
+	txt = QuickText(parent, "Check what you need to do here.\r'Bank' & 'Mailbox' text is shown in red depending on what you need from this area.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+	txt = QuickText(parent, "Step 4", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -9, clrStep)
+	txt = QuickText(parent, "Interact with the bank/mailbox in the area. When you do, the text should turn green.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+    txt = QuickText(parent, "Step 5", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -9, clrStep)
+	txt = QuickText(parent, "Click the 'Collect' button, it will start collecting the items you need.\rFor the bank, it will write in chat what it found, and what it couldn't find.\r"
+        .."It may try to pick up items from quests you didn't do, but you can ignore that.\rThe companion will show what items you're missing, but remember it also includes quests you may not have prepared.\r\r"
+        .."The companion 'list of items' updates after closing the bank", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+	txt = QuickText(parent, "Step 6", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -9, clrStep)
+	txt = QuickText(parent, "You can now continue following the RXP turnin guides.\rIf you want to know the area of the next 'mail/bank' step, use the topright arrow.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+
+	txt = QuickText(parent, "Test Example", "GameFontNormalLarge", "TOPLEFT", txt, "BOTTOMLEFT", 0, -22, clrHeader)
+	txt = QuickText(parent, "This does not explain everything in detail. Check the guides if you need help.", "GameFontNormalSmall", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrWarn)
+	txt = QuickText(parent, "This specific example requires having the Main City 'Cloth' turnins available.", "GameFontNormalSmall", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrWarn)
+	txt = QuickText(parent, "Step 1", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -9, clrStep)
+	txt = QuickText(parent, "Make sure you have sent yourself some Silk, Mageweave & Runecloth.\rThe mails should be in your mailbox already.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+	txt = QuickText(parent, "Step 2", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -9, clrStep)
+	txt = QuickText(parent, "Now fly to Gadgetzan, it's the bankstep before Orgrimmar.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+	txt = QuickText(parent, "Step 3", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -9, clrStep)
+	txt = QuickText(parent, "When you enter Gadgetzan, the Compaion should update.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+	txt = QuickText(parent, "Step 4", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -9, clrStep)
+	txt = QuickText(parent, "Interact with the mailbox, the 'Mailbox' text in the Companion should turn green.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+	txt = QuickText(parent, "Step 5", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -9, clrStep)
+	txt = QuickText(parent, "Click the collect button, it should loot the amount of cloth needed for the Orgrimmar turnins. If you sent more than needed, it should only loot the amount needed.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+	txt = QuickText(parent, "Further Testing", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -9, clrStep)
+	txt = QuickText(parent, "If you leave town, the Companion should update and tell you to go back to town.\r\rIf you leave town, go to any other step than Tanaris and then enter town again, it should automatically select the correct step for you.\r\r"
+	    .."You don't have to test at Gadgetzan, you can test any step with any item needed on release.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+
+	txt = QuickText(parent, "Feedback", "GameFontNormalLarge", "TOPLEFT", txt, "BOTTOMLEFT", 0, -28, clrHeader)
+	txt = QuickText(parent, "If you find something here confusing, or find any errors, please let us know on Discord.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+	txt = QuickText(parent, "Discord Invite: Click the discord link in the /tbcprep 'About' tab, you can copy it :)", "GameFontNormalSmall", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrWarn)
+	txt = QuickText(parent, " ", "GameFontNormalSmall", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrWarn)
     -- Items
-    yPos = yPosStart
-    local mailsNeeded, bankItems = CasualTBCPrep.Extras_Mailbox.GetTurninData()
+    -- yPos = yPosStart
+    -- local mailsNeeded, bankItems = CasualTBCPrep.Extras_Mailbox.GetTurninData()
 
-    local allCombinedItems = {}
-    for _,mailGroup in ipairs(mailsNeeded) do
-        for _,mail in ipairs(mailGroup.mails) do
-            for _,item in ipairs(mail.items) do
-                if allCombinedItems[item.itemID] then
-                    allCombinedItems[item.itemID] = allCombinedItems[item.itemID] + item.count
-                else
-                    allCombinedItems[item.itemID] = item.count
-                end
-            end
-        end
-    end
+    -- local allCombinedItems = {}
+    -- for _,mailGroup in ipairs(mailsNeeded) do
+    --     for _,mail in ipairs(mailGroup.mails) do
+    --         for _,item in ipairs(mail.items) do
+    --             if allCombinedItems[item.itemID] then
+    --                 allCombinedItems[item.itemID] = allCombinedItems[item.itemID] + item.count
+    --             else
+    --                 allCombinedItems[item.itemID] = item.count
+    --             end
+    --         end
+    --     end
+    -- end
 
     -- local clrHeader1 = CasualTBCPrep.Themes.SelectedTheme.colors.headerSpecialHover
     -- local txtHeader = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
@@ -369,22 +411,6 @@ local function Display(parent)
     --         yPos = yPos - (itemIconSize + 5)
     --     end
     -- end
-
-    -----LEFT
-    -- List of all needed items, different header for each mailGroup
-    --> MailGroup #1
-    --> > Items
-    --> MailGroup #2
-    --> > Items
-
-
-    -----RIGHT
-
-    -- Send Mail Button, go through groups from 1 to 4. When there's 0 items in player bags from 1, go to 2 etc. Means looping through everything at the end, but is fine.
-
-
-
-
 end
 ---@param frame Frame
 function CasualTBCPrep.Extras_Mailbox.Load(frame)
@@ -392,10 +418,4 @@ function CasualTBCPrep.Extras_Mailbox.Load(frame)
     CasualTBCPrep.Extras_Mailbox.Clean(frame)
 
     Display(frame.scrollChild)
-
-	-- local txtNotYetBuddy = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-	-- txtNotYetBuddy:SetPoint("TOP", frame, "TOP", 0, -75)
-	-- txtNotYetBuddy:SetText("Coming soon... (next update)")
-    -- txtNotYetBuddy:SetTextColor(1,1,1)
-	-- table.insert(texts, txtNotYetBuddy)
 end

@@ -188,7 +188,7 @@ function CasualTBCPrep.Settings.LoadDefaults()
 		CasualTBCPrep.NotifyUserWarning("WARNING. In this update we realized questlog quests didn't calculate the correct exp based on your level.\rPlease check that your questlog quests are still good! If quests now give low exp, you need to fix it!")
 
 		C_Timer.After(10, function()
-			CasualTBCPrep.W_WarningNotice.Show("3.15 Update (2026-01-10)", nil, "warn_qlog_overhaul", nil)
+			CasualTBCPrep.W_WarningNotice.Show("3.15 Update (2026-01-11)", nil, "warn_qlog_overhaul", nil)
 		end)
 	end
 
