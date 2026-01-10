@@ -59,6 +59,23 @@ local extraData = {
                 desc={"!!!HIGHLY EXPERIMENTAL OPTIONAL QUESTLOG QUESTS. USE AT YOUR OWN RISK!", "THE VALUE IS NOT KNOWN FOR SURE!!!"}
             }
         }
+    },
+    {
+        code="HUNTER_RHOK", name="Hunter Rhok'delar Quests", reqClass=CasualTBCPrep.Classes.HunterID, desc={"This contains quests related to the Ancient Petrified Leaf MC quest for hunters"},
+        options=
+        {
+            {
+                id=8, name="Ancient Petrified Leaf", summonsNeeded=0, estExtraExp=14300, reqQuests={}, removedQuests={},
+                addedQuests={{18703,"turnin"} },
+                desc={"This adds the 'Ancient Petrified Leaf' quest from MC, it's a 'free' 14300 exp, but you have to run north from felwood town to turn in it"}
+            },
+            {
+                id=9, name="Rhok'delar Questline", summonsNeeded=0, estExtraExp=30000, reqQuests={}, removedQuests={},
+                addedQuests={{7634,"turnin"},{7635,"turnin"},{7636,"optional"} },
+                desc={"This will add the 3 quests that unlocks Rhok'delar. You need a sinew drop from onyxia and to grind a lot of azure dragons in winterspring, this is a lot of work!",
+                "The Sinews can drop WITHOUT being on the quests.", " ", "This adds 2 turnin quests (28k), and a 14.3k optional quest you can use to replace a lower exp questlog quest."}
+            },
+        }
     }
 }
 
@@ -238,96 +255,99 @@ DrawList = function(frame)
 
     local storedSelections = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.ExtraTBCPrepSelections)
 
+    local playerClassID = CasualTBCPrep.Classes.GetPlayerClassID()
     yPos = -5
     local lastElement = nil
     for _, extraFeature in ipairs(extraData) do
-        local txtFeature = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalHuge")
-        txtFeature:SetPoint("TOP", lastElement or parent , "TOP", 0, yPos)
-        txtFeature:SetText(extraFeature.name)
-        txtFeature:SetTextColor(headerColor.r, headerColor.g, headerColor.b, 1)
-        table.insert(texts, txtFeature)
-        lastElement = txtFeature
-        yPos = -27
+        if extraFeature.reqClass == nil or extraFeature.reqClass == playerClassID then
+            local txtFeature = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalHuge")
+            txtFeature:SetPoint("TOP", lastElement or parent , "TOP", 0, yPos)
+            txtFeature:SetText(extraFeature.name)
+            txtFeature:SetTextColor(headerColor.r, headerColor.g, headerColor.b, 1)
+            table.insert(texts, txtFeature)
+            lastElement = txtFeature
+            yPos = -27
 
-        for _, optionData in ipairs(extraFeature.options) do
-            local storedOption = nil
+            for _, optionData in ipairs(extraFeature.options) do
+                local storedOption = nil
 
-            if extraFeature.multiSelect == true then
-                local storedOptionList = storedSelections[extraFeature.code]
-                if storedOptionList then
-                    storedOption = storedOptionList[optionData.id]
+                if extraFeature.multiSelect == true then
+                    local storedOptionList = storedSelections[extraFeature.code]
+                    if storedOptionList then
+                        storedOption = storedOptionList[optionData.id]
+                    end
+                else
+                    local storedSelectedOption = storedSelections[extraFeature.code]
+                    if storedSelectedOption and optionData.id == storedSelectedOption.id then
+                        storedOption = storedSelectedOption
+                    end
                 end
-            else
-                local storedSelectedOption = storedSelections[extraFeature.code]
-                if storedSelectedOption and optionData.id == storedSelectedOption.id then
-                    storedOption = storedSelectedOption
+
+                local btnFeatureOption = CasualTBCPrep.UI.CreateTextButton(parent, optionData.name, GameFontNormalLarge, "CENTER", nil)
+                btnFeatureOption:SetPoint("TOP", lastElement, "TOP", 0, yPos)
+                table.insert(content, btnFeatureOption)
+                lastElement = btnFeatureOption
+
+                local optionColor = nil
+                local enabled = false
+                if storedOption == nil then
+                    optionColor = CasualTBCPrep.Themes.SelectedTheme.colors.specialNotSelected
+                else
+                    optionColor = CasualTBCPrep.Themes.SelectedTheme.colors.specialSelected
+                    enabled = true
                 end
+                btnFeatureOption:GetFontString():SetTextColor(optionColor.r,optionColor.g,optionColor.b,1)
+                local funcOptionHoverEnter = function(btn) if not btn then return end btn:GetFontString():SetTextColor(optionColor.r,optionColor.g,optionColor.b, 0.6) end
+                local funcOptionHoverLeave = function(btn) if not btn then return end btn:GetFontString():SetTextColor(optionColor.r,optionColor.g,optionColor.b, 1) end
+
+                local addedQuestCount = #optionData.addedQuests
+
+                local ttLines = {}
+                if optionData.estExtraExp and optionData.estExtraExp > 0 then
+                    table.insert(ttLines, CasualTBCPrep.CreateZoneText("Estimated Exp: ", tostring(optionData.estExtraExp)))
+                end
+                if optionData.summonsNeeded and optionData.summonsNeeded > 0 then
+                    table.insert(ttLines, CasualTBCPrep.CreateZoneText("Extra Summons Needed: ", tostring(optionData.summonsNeeded)))
+                end
+                if addedQuestCount and addedQuestCount > 0 then
+                    table.insert(ttLines, CasualTBCPrep.CreateZoneText("New Quests: ", tostring(addedQuestCount)))
+                end
+
+                if optionData.desc and #optionData.desc > 0 then
+                    table.insert(ttLines, " ")
+                    table.insert(ttLines, CasualTBCPrep.CreateZoneText("Description: ", ""))
+                    for _,ttLine in ipairs(optionData.desc) do
+                        table.insert(ttLines, CasualTBCPrep.CreateZoneText("", ttLine))
+                    end
+                end
+
+                local optionDataTooltipHeaderText = optionColor.hex..optionData.name
+                if enabled == true then
+                    optionDataTooltipHeaderText = optionDataTooltipHeaderText.." (Enabled)|r"
+                else
+                    optionDataTooltipHeaderText = optionDataTooltipHeaderText.." (Disabled)|r"
+                end
+                CasualTBCPrep.UI.HookTooltip(btnFeatureOption, optionDataTooltipHeaderText, ttLines, nil, funcOptionHoverEnter, funcOptionHoverLeave)
+                btnFeatureOption:SetScript("OnClick", function(self)
+                    ToggleStoredSetting(frame, extraFeature, optionData, true)
+                end)
+                yPos = -26
             end
 
-            local btnFeatureOption = CasualTBCPrep.UI.CreateTextButton(parent, optionData.name, GameFontNormalLarge, "CENTER", nil)
-            btnFeatureOption:SetPoint("TOP", lastElement, "TOP", 0, yPos)
-            table.insert(content, btnFeatureOption)
-            lastElement = btnFeatureOption
-
-            local optionColor = nil
-            local enabled = false
-            if storedOption == nil then
-                optionColor = CasualTBCPrep.Themes.SelectedTheme.colors.specialNotSelected
-            else
-                optionColor = CasualTBCPrep.Themes.SelectedTheme.colors.specialSelected
-                enabled = true
-            end
-            btnFeatureOption:GetFontString():SetTextColor(optionColor.r,optionColor.g,optionColor.b,1)
-            local funcOptionHoverEnter = function(btn) if not btn then return end btn:GetFontString():SetTextColor(optionColor.r,optionColor.g,optionColor.b, 0.6) end
-            local funcOptionHoverLeave = function(btn) if not btn then return end btn:GetFontString():SetTextColor(optionColor.r,optionColor.g,optionColor.b, 1) end
-
-            local addedQuestCount = #optionData.addedQuests
-
-            local ttLines = {}
-            if optionData.estExtraExp and optionData.estExtraExp > 0 then
-                table.insert(ttLines, CasualTBCPrep.CreateZoneText("Estimated Exp: ", tostring(optionData.estExtraExp)))
-            end
-            if optionData.summonsNeeded and optionData.summonsNeeded > 0 then
-                table.insert(ttLines, CasualTBCPrep.CreateZoneText("Extra Summons Needed: ", tostring(optionData.summonsNeeded)))
-            end
-            if addedQuestCount and addedQuestCount > 0 then
-                table.insert(ttLines, CasualTBCPrep.CreateZoneText("New Quests: ", tostring(addedQuestCount)))
-            end
-
-            if optionData.desc and #optionData.desc > 0 then
-                table.insert(ttLines, " ")
-                table.insert(ttLines, CasualTBCPrep.CreateZoneText("Description: ", ""))
-                for _,ttLine in ipairs(optionData.desc) do
+            if extraFeature.desc and #extraFeature.desc > 0 then
+                local ttLines = {}
+                if extraFeature.multipleSelect == true then
+                    table.insert(ttLines, CasualTBCPrep.CreateZoneText("MultiSelect: ", "Yes"))
+                    table.insert(ttLines, " ")
+                end
+                for _,ttLine in ipairs(extraFeature.desc) do
                     table.insert(ttLines, CasualTBCPrep.CreateZoneText("", ttLine))
                 end
-            end
 
-            local optionDataTooltipHeaderText = optionColor.hex..optionData.name
-            if enabled == true then
-                optionDataTooltipHeaderText = optionDataTooltipHeaderText.." (Enabled)|r"
-            else
-                optionDataTooltipHeaderText = optionDataTooltipHeaderText.." (Disabled)|r"
+                CasualTBCPrep.UI.HookTooltip(txtFeature, headerColor.hex..extraFeature.name.."|r", ttLines, nil)
             end
-            CasualTBCPrep.UI.HookTooltip(btnFeatureOption, optionDataTooltipHeaderText, ttLines, nil, funcOptionHoverEnter, funcOptionHoverLeave)
-            btnFeatureOption:SetScript("OnClick", function(self)
-                ToggleStoredSetting(frame, extraFeature, optionData, true)
-            end)
-            yPos = -26
+            yPos = -35
         end
-
-        if extraFeature.desc and #extraFeature.desc > 0 then
-            local ttLines = {}
-            if extraFeature.multipleSelect == true then
-                table.insert(ttLines, CasualTBCPrep.CreateZoneText("MultiSelect: ", "Yes"))
-                table.insert(ttLines, " ")
-            end
-            for _,ttLine in ipairs(extraFeature.desc) do
-                table.insert(ttLines, CasualTBCPrep.CreateZoneText("", ttLine))
-            end
-
-            CasualTBCPrep.UI.HookTooltip(txtFeature, headerColor.hex..extraFeature.name.."|r", ttLines, nil)
-        end
-        yPos = -35
     end
 end
 

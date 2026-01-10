@@ -197,6 +197,13 @@ local itemsMetadata = {
     [18769] = { id=18769, name="Enchanted Thorium Platemail", rarity=3, stackSize=1, texture=133733, quests="7649", sources="Goraluk Anvilcrack, Lower Blackrock Spire and King Gordok, Dire Maul" },
     [18770] = { id=18770, name="Enchanted Thorium Platemail", rarity=3, stackSize=1, texture=133733, quests="7650", sources="Crimson Hammersmith, Stratholme and Rattlegore, Stratholme" },
     [18771] = { id=18771, name="Enchanted Thorium Platemail", rarity=3, stackSize=1, texture=133733, quests="7651", sources="Black Guard Swordsmith, Stratholme and Urok Doomhowl, Lower Blackrock Spire" },
+    [18703] = { id=18703, name="Ancient Petrified Leaf", rarity=4, stackSize=1, texture=136085, quests="7632,7634,7635,7630", sources="Drops from Majordomo Executus in The Molten Core" },
+    [18705] = { id=18705, name="Mature Black Dragon Sinew", rarity=4, stackSize=1, texture=135894, quests="7632,7634,7635,7630", sources="Drops from Onyxia from Onyxia's Lair. Is not a 100% drop, you don't need a quest to loot it" },
+    [18704] = { id=18704, name="Mature Blue Dragon Sinew", rarity=4, stackSize=1, texture=133674, quests="7632,7634,7635,7630", sources="World drop from Azuregos of blue elite dragonkin in Winterspring. This has a very low droprate!" },
+    [18952] = { id=18952, name="Simone's Head", rarity=1, stackSize=1, texture=136220, quests="7632,7634,7635,7630", sources="Drops from a special elite from the hunter quest that must be soloed" },
+    [18953] = { id=18953, name="Klinfran's Head", rarity=1, stackSize=1, texture=136221, quests="7632,7634,7635,7630", sources="Drops from a special elite from the hunter quest that must be soloed" },
+    [18954] = { id=18954, name="Solenor's Head", rarity=1, stackSize=1, texture=136221, quests="7632,7634,7635,7630", sources="Drops from a special elite from the hunter quest that must be soloed" },
+    [18955] = { id=18955, name="Artorius's Head", rarity=1, stackSize=1, texture=136221, quests="7632,7634,7635,7630", sources="Drops from a special elite from the hunter quest that must be soloed" },
 }
 
 --local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount, itemEquipLoc, itemTexture = C_Item.GetItemInfo(itemID)

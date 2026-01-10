@@ -9,6 +9,7 @@ Changelog:
 -- This is pretty complex and a separate description window has been made, please read through it thoroughly if you're interested. We're still testing it, but it's published in case you want to test it or try it out
 
 - Implemented the 'Extras - Extra TBC Prep' feature. A selection of quests can be added to the 'Quests' tab from here, but they are not 'fully' supported everywhere. You should make sure to manage these yourself!
+-- Hunters can enable their Rhok'delar class quests here.
 
 - The 'A Bijou for Zanza' fix was lost in the 3.14b update. It's now back again ^_^
 - Added a '/tbcprep ghetto' command to ghetto HS in dungeons, without needing a macro. It will leave your current party first if you're in one.

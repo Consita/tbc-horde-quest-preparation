@@ -342,6 +342,10 @@ local questsMetadata = {
 	[7649] = { id=7649, name="Enchanted Thorium Platemail: Volume I", baseexp=14300, exp=0, qlvl=60, type="disabled", reqItems="18769-1", reqProf=164, reqProfSkill=300, routes="Main,Strat,Solo", routeSection="Feralas", areaType="Dungeon", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
 	[7650] = { id=7650, name="Enchanted Thorium Platemail: Volume II", baseexp=14300, exp=0, qlvl=60, type="disabled", reqItems="18770-1", reqProf=164, reqProfSkill=300, routes="Main,Strat,Solo", routeSection="Feralas", areaType="Dungeon", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
 	[7651] = { id=7651, name="Enchanted Thorium Platemail: Volume III", baseexp=14300, exp=0, qlvl=60, type="disabled", reqItems="18771-1", reqProf=164, reqProfSkill=300, routes="Main,Strat,Solo", routeSection="Feralas", areaType="Dungeon", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[7635] = { id=7635, name="A Proper String", baseexp=14300, exp=0, qlvl=60, type="disabled", reqItems="18705-1", preQuests="7632,7633", playerClass="HUNTER", routes="Main,Strat,Solo", routePickup="Felwood", routeSection="felwoodTown", areaType="Raid", area="Onyxia's Lair", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[7634] = { id=7634, name="Ancient Sinew Wrapped Lamina", baseexp=14300, exp=0, qlvl=60, type="disabled", reqItems="18704-1", preQuests="7632,7633", playerClass="HUNTER", routes="Main,Strat,Solo", routePickup="Felwood", routeSection="felwoodTown", areaType="Zone", area="Winterspring", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[7636] = { id=7636, name="Stave of the Ancients", baseexp=14300, exp=0, qlvl=60, type="disabled", reqItems="18952-1,18953-1,18954-1,18955-1", preQuests="7632,7633", playerClass="HUNTER", routes="Main,Strat,Solo", routePickup="Felwood", routeSection="felwoodTown", areaType="Zone", area="Felwood", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
+
 }
 
 local preQuestMetadata = {
@@ -548,7 +552,8 @@ local preQuestMetadata = {
 	[8735] = { name = "The Nightmare's Corruption", startZone = "Cenarion Hold, Silithus" },
 
 	[7142] = { name = "The Battle for Alterac", startZone = "Alterac Mountains" },
-
+	[7632] = { name = "The Ancient Leaf", startZone = "'Ancient Petrified Leaf' Item drop from Molten COre" },
+	[7633] = { name = "An Introduction", startZone = "Irontree Woods, Felwood" },
 }
 
 local extraQuestDetailsNeutral = {
