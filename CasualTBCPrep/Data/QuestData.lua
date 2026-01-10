@@ -295,7 +295,7 @@ local questsMetadata = {
 	[5282] = { id=5282, name="The Restless Souls", baseexp=14300, exp=0, qlvl=60, type="turnin", routes="Strat", routePickup="EPLEgan", routeSection="EPLEgan2", areaType="Zone", area="Stratholme", comments="Unsure if everyone can complete this in the 2 strat runs - you need to zap 75 ghosts total" },
 	[5262] = { id=5262, name="The Truth Comes Crashing Down", baseexp=14300, exp=0, qlvl=60, type="turnin", routes="Strat", routePickup="EPLTown2", routeSection="EPLTown2", areaType="Dungeon", area="Stratholme", },
 	[5251] = { id=5251, name="The Archivist", baseexp=14300, exp=0, qlvl=60, type="qlog", routes="Strat", routeSection="EPLTown", areaType="Dungeon", area="Stratholme", },
-	[2937] = { id=2937, name="Summoning Shadra", baseexp=12250, exp=0, qlvl=55, type="qlog", reqItems="9324-1", preQuests="2933,2934,2935,2936", routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tarren Mill", },
+	[2937] = { id=2937, name="Summoning Shadra", baseexp=12250, exp=0, qlvl=55, type="disabled", reqItems="9324-1", preQuests="2933,2934,2935,2936", routes="Main,Strat,Solo", routeSection="AV", areaType="Zone", area="Tarren Mill", },
 	[8279] = { id=8279, name="The Twilight Lexicon", baseexp=11900, exp=0, qlvl=60, type="qlog", reqItems="20394-1,20395-1,20396-1", preQuests="8284,8285", routes="Main,Strat,Solo", routePickup="SilithusCave", routeSection="SilithusCave", areaType="Zone", area="Silithus", comments="The books can NOT be looted without the quest after the pre-patch. This quest needs to be in the questlog, or completed beforehand, as we need the followups" },
 	[7441] = { id=7441, name="Pusillin and the Elder Azj'Tordin", baseexp=13500, exp=0, qlvl=58, type="optional", routes="Solo", routeSection="Feralas", areaType="Dungeon", area="Dire Maul", comments="This quest requires too much running for the little ext boost, but if you need it as optional, It's turned in north of Camp Mojache" },
 	[4771] = { id=4771, name="Dawn's Gambit", baseexp=14300, exp=0, qlvl=60, type="turnin", preQuests="4726,4808,4809,4810,4734", routes="Strat", routePickup="EPLTown", routeSection="EPLTown2", areaType="Dungeon", area="Scholomance", },
@@ -321,7 +321,11 @@ local questsMetadata = {
 	[2743] = { id=2743, name="The Cover of Darkness", baseexp=4750, exp=0, qlvl=60, type="turnin", preQuests="2784,2621,2622,2623,2801,2681", routes="Main,Strat,Solo", routePickup="oldhero", routeSection="oldhero", areaType="Zone", area="Blasted Lands", comments="The mob has a long respawntime (5-9min). Check if the elite or the spirit is up, you can target it from cave entrance. If it's not up, skip it" },
 	[3761] = { id=3761, name="Un'Goro Soil", baseexp=6800, exp=0, qlvl=50, type="turnin", reqItems="11018-20", routes="Main,Strat,Solo", routePickup="ThunderBluff", routeSection="ThunderBluff", areaType="Zone", area="Thunder Bluff", comments="This quest gives very little XP. You can skip it, but it's included for completeness" },
 	[4023] = { id=4023, name="A Taste of Flame", baseexp=7900, exp=0, qlvl=54, type="turnin", reqItems="10575-1", routes="Main,Strat", routePickup="BurningSteppes2", routeSection="BurningSteppes2", areaType="Zone", area="Burning Steppes", comments="This quest gives very little XP. You can skip it, but it's included for completeness" },
-
+	[7142] = { id=7142, name="The Battle for Alterac", baseexp=0, exp=0, qlvl=51, type="qlog", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=3, comments="bla bla battleground ptr yikes" },
+	[8272] = { id=8272, name="Hero of the Frostwolf", baseexp=0, exp=0, qlvl=51, type="turnin", routes="Main,Strat,Solo", routePickup="AV", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=1, comments="bla bla battleground ptr yikes" },
+	[7101] = { id=7101, name="Towers and Bunkers", baseexp=0, exp=0, qlvl=51, type="optional", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=1, comments="bla bla battleground ptr yikes" },
+	[7124] = { id=7124, name="Capture a Mine", baseexp=0, exp=0, qlvl=51, type="optional", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=1, comments="bla bla battleground ptr yikes" },
+	[7082] = { id=7082, name="The Graveyards of Alterac", baseexp=0, exp=0, qlvl=51, type="optional", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=1, comments="bla bla battleground ptr yikes" },
 	[8586] = { id=8586, name="Dirge's Kickin' Chimaerok Chops", baseexp=9550, exp=0, qlvl=60, type="disabled", reqItems="9061-20,8150-20", preQuests="8286,8288,8301,8303,8305,8519,8555,8575,8576,8584,8585", routes="Main,Strat,Solo", routeSection="TanarisTown", areaType="Zone", area="Silithus", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
 	[8587] = { id=8587, name="Return to Narain", baseexp=9550, exp=0, qlvl=60, type="disabled", preQuests="8286,8288,8301,8303,8305,8519,8555,8575,8576,8584,8585", routes="Main,Strat,Solo", routeSection="TanarisTown", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
 	[8620] = { id=8620, name="The Only Prescription", baseexp=9550, exp=0, qlvl=60, type="disabled", reqItems="21111-1,21112-1", preQuests="8286,8288,8301,8303,8305,8519,8555,8575,8576,8597,8599,8598,8606", routes="Main,Strat,Solo", routeSection="TanarisTown", areaType="Zone", area="Silithus", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
@@ -339,12 +343,6 @@ local questsMetadata = {
 	[7649] = { id=7649, name="Enchanted Thorium Platemail: Volume I", baseexp=14300, exp=0, qlvl=60, type="disabled", reqItems="18769-1", reqProf=164, reqProfSkill=300, routes="Main,Strat,Solo", routeSection="Feralas", areaType="Dungeon", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
 	[7650] = { id=7650, name="Enchanted Thorium Platemail: Volume II", baseexp=14300, exp=0, qlvl=60, type="disabled", reqItems="18770-1", reqProf=164, reqProfSkill=300, routes="Main,Strat,Solo", routeSection="Feralas", areaType="Dungeon", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
 	[7651] = { id=7651, name="Enchanted Thorium Platemail: Volume III", baseexp=14300, exp=0, qlvl=60, type="disabled", reqItems="18771-1", reqProf=164, reqProfSkill=300, routes="Main,Strat,Solo", routeSection="Feralas", areaType="Dungeon", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
-	[7142] = { id=7142, name="The Battle for Alterac", baseexp=0, exp=0, qlvl=51, type="disabled", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=3, comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
-	[8272] = { id=8272, name="Hero of the Frostwolf", baseexp=0, exp=0, qlvl=51, type="disabled", preQuests="7142", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=1, },
-	[7101] = { id=7101, name="Towers and Bunkers", baseexp=0, exp=0, qlvl=51, type="disabled", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=1, comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
-	[7124] = { id=7124, name="Capture a Mine", baseexp=0, exp=0, qlvl=51, type="disabled", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=1, comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
-	[7082] = { id=7082, name="The Graveyards of Alterac", baseexp=0, exp=0, qlvl=51, type="disabled", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=1, comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turin guide will NOT turn in this quest, you MUST plan this yourself" },
-
 }
 
 local preQuestMetadata = {
@@ -1709,6 +1707,18 @@ function CasualTBCPrep.QuestData.GetCharacterQuestLogStates_Main()
 			CasualTBCPrep.NotifyUserError("Optional Quest '" .. questID .. "' was not found in metadate table!!!")
 		end
 	end
+
+	local funcSort = function(a, b)
+		if a.data.exp == b.data.exp then
+			return a.data.name < b.data.name
+		end
+		return a.data.exp > b.data.exp
+	end
+
+	table.sort(available, funcSort)
+	table.sort(completed, funcSort)
+	table.sort(optAvailable, funcSort)
+	table.sort(optCompleted, funcSort)
 
 	return available, completed, optAvailable, optCompleted
 end

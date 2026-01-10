@@ -1,12 +1,27 @@
 Changelog:
 
 3.15
+- We realized 'questlog' quests didn't calculate the correct exp based on your level. Please check that your questlog quests are still good! If quests now give low exp, you need to fix it!
+-- 'Summoning Shadra' has been removed as a questlog quest because of this. If you already prepared it, please turn it in (don't abandon)
+-- Addon will show a warning as well the first time you log in after updating
+
 - Implemented first version of the new 'Extras - Mailbox' feature. This feature helps manage your items with your bank & mailbox, but is optional.
 -- This is pretty complex and a separate description window has been made, please read through it thoroughly if you're interested. We're still testing it, but it's published in case you want to test it or try it out
 
 - Implemented the 'Extras - Extra TBC Prep' feature. A selection of quests can be added to the 'Quests' tab from here, but they are not 'fully' supported everywhere. You should make sure to manage these yourself!
+
 - The 'A Bijou for Zanza' fix was lost in the 3.14b update. It's now back again ^_^
-- Added a '/tbcprep ghetto' command to ghetto HS in dungeons, without needing a macro. It will leave your current party first too.
+- Added a '/tbcprep ghetto' command to ghetto HS in dungeons, without needing a macro. It will leave your current party first if you're in one.
+- Updated the 'About' tab with correct version number and the 3.15 questlog warning.
+- Added level 62 trainers to the turnin guides.
+- Added exalted requirement for AV quests as a step in the preparation guides
+- Fixed several Molten Core raid steps
+- Fixed prequest issues with the Tier 0.5 questline
+- Fixed warning popups showing for quests that aren't relevant for your selected route.
+- Added Egg Freezing steps to UBRS preparation guides
+- Added 'The Scarlet Oracle, Demetria' steps to the strat preparation guide
+- Several formatting changes to the RXP guides
+- Small bugfixes to the RXP guides
 
 3.14 - 2025-01-06
 - Added first draft of turnin guide for Strat route
