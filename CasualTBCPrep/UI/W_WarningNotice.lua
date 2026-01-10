@@ -147,7 +147,7 @@ local function UpdateElementsFromType(type)
 		headerText = "Important TBCPrep Update"
 		messageText = mainText_warn_qlog_overhaul
 		width = 520
-		height = 310
+		height = 320
 		isDangerous = true
 		showAbandonButton = false
 	end

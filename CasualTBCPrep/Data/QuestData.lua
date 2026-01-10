@@ -1022,6 +1022,12 @@ function CasualTBCPrep.QuestData.UpdateRoutesFromQuestData(routeCode)
 			for _, splitQuestID in ipairs(quest.splitQuests) do
 				if C_QuestLog.IsQuestFlaggedCompleted(splitQuestID) == true then
 					isSplitQuestCompleted = true
+					if routeObj ~= nil then
+						local routeSectionObj = routeObj.sections[quest.routeSection]
+						if routeSectionObj ~= nil and routeSectionObj.quests ~= nil then
+							CasualTBCPrep.TableInsertUnique(routeSectionObj.quests, quest.id)
+						end
+					end
 					break
 				end
 			end
@@ -1162,7 +1168,7 @@ function CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID)
 		end
 	end
 
-	return isCompleted or (C_QuestLog.IsQuestFlaggedCompleted(questID) == true) or false	
+	return isCompleted or (C_QuestLog.IsQuestFlaggedCompleted(questID) == true) or false
 end
 
 ---@return boolean

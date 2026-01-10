@@ -20,10 +20,10 @@ Changelog:
 - Fixed warning popups showing for quests that aren't relevant for your selected route.
 - Added Egg Freezing steps to UBRS preparation guides
 - Added 'The Scarlet Oracle, Demetria' steps to the strat preparation guide
-- Several formatting changes to the RXP guides
-- Small bugfixes to the RXP guides
 - 'Taste of Flame' is now properly handled, whether you did the Searing Gorge quests or not.
 - Solo Route now also starts in Kargath and flies to Burning Steppes, so it can turn in 'Taste of Flame' before hearthstoning
+- Several formatting changes to the RXP guides
+- Small bugfixes to the RXP guides
 
 3.14 - 2025-01-06
 - Added first draft of turnin guide for Strat route
