@@ -15,6 +15,8 @@ Changelog:
 - The 'A Bijou for Zanza' fix was lost in the 3.14b update. It's now back again ^_^
 - Added a '/tbcprep ghetto' command to ghetto HS in dungeons, without needing a macro. It will leave your current party first if you're in one.
 - Updated the 'About' tab with correct version number and the 3.15 questlog warning.
+- AV Quests have been added, thanks to everyone who helped pop AV on PTR! It turns out Battle for Azeroth is the best QuestLog quest in the game, so it has been added. Please check your questlog and ensure you have the 25 you want
+
 - Added level 62 trainers to the turnin guides.
 - Added exalted requirement for AV quests as a step in the preparation guides
 - Fixed several Molten Core raid steps
