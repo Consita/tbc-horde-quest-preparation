@@ -678,9 +678,8 @@ questsMetadata[99003] = { id=99003, name = "Brood Ring - Honored", 	baseexp=9550
 questsMetadata[99004] = { id=99004, name = "Brood Ring - Revered", 	baseexp=9550, exp=9550, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8750,8755,8760}, reqRep=910, reqRepRank=7, routes="Main,Strat,Solo", routePickup="CavernsOfTime", routeSection="CavernsOfTime", areaType="Raid", area="Temple of Ahn'Qiraji" }
 questsMetadata[99005] = { id=99005, name = "Brood Ring - Exalted", 	baseexp=14300, exp=14300, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={8751,8756,8761}, reqRep=910, reqRepRank=8, routes="Main,Strat,Solo", routePickup="CavernsOfTime", routeSection="CavernsOfTime", areaType="Raid", area="Temple of Ahn'Qiraji" }
 
-questsMetadata[99019] = { id=99019, name = "A Taste of Flame", 	baseexp=7900, exp=6300, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={4022,4023}, routes="Main,Strat,Solo", routePickup="BurningSteppes2", routeSection="BurningSteppes2", areaType="Zone", area="Burning Steppes" }
---[4023] = { id=4023, name="A Taste of Flame", baseexp=7900, exp=0, qlvl=54, type="turnin", reqItems="10575-1", routes="Main,Strat", routePickup="BurningSteppes2", routeSection="BurningSteppes2", areaType="Zone", area="Burning Steppes", comments="This quest gives very little XP. You can skip it, but it's included for completeness" },
-	
+questsMetadata[99019] = { id=99019, name = "A Taste of Flame", 	baseexp=7900, exp=6300, 	qlvl=60, type="turnin", isSplitQuest=true, splitQuests={4022,4023}, reqItems="10575-1", routes="Main,Strat,Solo", routePickup="BurningSteppes2", routeSection="BurningSteppes2", areaType="Zone", area="Burning Steppes" }
+
 --[Lookup Lists]
 local questLogList = {}
 local dicQuestLogList = {}
