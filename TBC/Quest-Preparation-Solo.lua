@@ -902,6 +902,27 @@ RXPGuides.RegisterGuide([[
 			.collect 22338,25,8921,1 --Volcanic Ash (x25)
 
 		step
+			#completewith next
+			.use 12284 >>Use |T133001:0|t[Draco-Incarcinatrix] 900 and Kill |cRXP_ENEMY_Broodlings|r in Burning Steppes
+			.complete 4726,1			
+
+		step
+			.goto Burning Steppes,95.061,31.563
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Cyrus Therepentous|r and select the option: "I do not possess any proof, Cyrus."
+			>>This will spawn a level 54 Elite Dragon at the entrance of the small cave. Kill and loot it for the |T134430:0|t[Black Dragonflight Molt]
+			>>|cRXP_ENEMY_Do not turn in|r |cRXP_LOOT_A Taste of Flame|r |cRXP_ENEMY_as it is used for the TBC turnin!|r
+			.collect 10575,1
+			.accept 4023
+			.target Cyrus Therepentous
+			.isQuestAvailable 4022
+			.isQuestAvailable 4023
+			.skipgossip
+
+		step
+			.abandon 4023	
+			.isOnQuest 4023			
+
+		step
 			#loop
 			.goto Burning Steppes,70.8,28.9,0
 			.goto Burning Steppes,78.93,29.24,0
@@ -974,6 +995,13 @@ RXPGuides.RegisterGuide([[
 			.use 9323 >> Use |T134937:0|t[Gadrin's Parchment] to summon |cRXP_ENEMY_Shadra|r. Kill and then loot her for |cRXP_LOOT_Shadra's Venom|r
 			.complete 2937,1
 			.mob Shadra		
+
+		step
+			.goto Hillsbrad Foothills,61.4,19.2
+			>>|cRXP_LOOT_Summoning Shadra|r |cRXP_WARN_can be used as an optional questlog quest for TBC. Check /tbcprep to see if you need it|r
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Apothecary Lydon|r
+			.turnin 2937
+			.target Apothecary Lydon				
 			
 	--- Tanaris 2
 
