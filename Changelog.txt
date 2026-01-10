@@ -20,6 +20,7 @@ Changelog:
 - Fixed several Molten Core raid steps
 - Fixed prequest issues with the Tier 0.5 questline
 - Fixed warning popups showing for quests that aren't relevant for your selected route.
+- Fixed many 'pickup' quests not being shown in section tooltips on the 'Route' tab
 - Added Egg Freezing steps to UBRS preparation guides
 - Added 'The Scarlet Oracle, Demetria' steps to the strat preparation guide
 - 'Taste of Flame' is now properly handled, whether you did the Searing Gorge quests or not.

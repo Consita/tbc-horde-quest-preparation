@@ -1047,8 +1047,11 @@ function CasualTBCPrep.QuestData.UpdateRoutesFromQuestData(routeCode)
 					end
 
 					if quest.routePickup ~= nil and quest.routePickup ~= "" then
-						if routeSectionObj.pickups == nil then routeSectionObj.pickups = {} end
-						CasualTBCPrep.TableInsertUnique(routeSectionObj.pickups, quest.id)
+						local routePickupSectionObj = routeObj.sections[quest.routePickup]
+						if routePickupSectionObj then
+							if routePickupSectionObj.pickups == nil then routePickupSectionObj.pickups = {} end
+							CasualTBCPrep.TableInsertUnique(routePickupSectionObj.pickups, quest.id)
+						end
 					end
 				end
 			else
