@@ -179,8 +179,8 @@ local function Create()
 	wMain.title:SetJustifyV("MIDDLE")
 
 	--Portrait
-	SetPortraitToTexture(wMain.portrait, "255348") -- The Dark Portal
-	
+	SetPortraitToTexture(wMain.portrait, CasualTBCPrep.AddonLogoTexture) -- The Dark Portal
+
 	--Tabs
 	CreateTabs()
 	CasualTBCPrep.W_Main.ShowTab(1);

@@ -1,6 +1,8 @@
 CasualTBCPrep = CasualTBCPrep or {}
 
 CasualTBCPrep.BlockSlashCommandsUntillReloaded = false
+CasualTBCPrep.AddonLogoTexture = "255348"
+CasualTBCPrep.MaxLevel = 70
 
 --[Slash Commands]
 SLASH_CASUAL_TBC_PREP1 = "/tbc"
@@ -154,6 +156,36 @@ local function OnAddonLoadedEvent(self, event, addonName)
 			C_Timer.After(2, function()
 				CasualTBCPrep.W_Companion:Show()
 			end)
+		end
+
+		local playerLevel = UnitLevel("player") or 1
+		if playerLevel < CasualTBCPrep.MaxLevel then -- If player isn't 70, show Companion button on Mail & Bank
+			local iconSize = 42
+			local tooltipHeader = "Toggle TBCPrep Companion"
+			local ttCompanion = { "Opens or closes the Mail Companion", " ", "Can also be toggled with /tbcprep companion" }
+			local funcCallHoverEnter = function(btn) if not btn or not btn.textureObj then return end btn.textureObj:SetAlpha(0.5) end
+			local funcCallHoverLeave = function(btn) if not btn or not btn.textureObj then return end btn.textureObj:SetAlpha(1) end
+			local funcToggleCompanion = function() CasualTBCPrep.W_Companion.Toggle() end
+			-- Button Mail
+			local btnMail = CreateFrame("Button", nil, MailFrame)
+			btnMail:SetPoint("BOTTOMLEFT", MailFrame, "BOTTOMRIGHT", 0,0)
+			btnMail:SetSize(iconSize, iconSize)
+			local btnMailTexture = btnMail:CreateTexture(nil, "BORDER")
+			btnMailTexture:SetAllPoints(btnMail)
+			btnMailTexture:SetTexture(CasualTBCPrep.AddonLogoTexture)
+			btnMail.textureObj = btnMailTexture
+			CasualTBCPrep.UI.HookTooltip(btnMail, tooltipHeader, ttCompanion, nil, funcCallHoverEnter, funcCallHoverLeave)
+			btnMail:SetScript("OnClick", funcToggleCompanion)
+			-- Button Bank
+			local btnBank = CreateFrame("Button", nil, BankFrameMoneyFrame)
+			btnBank:SetPoint("BOTTOMRIGHT", BankFrameMoneyFrame, "TOPRIGHT", -7,6)
+			btnBank:SetSize(iconSize, iconSize)
+			local btnBankTexture = btnBank:CreateTexture(nil, "BORDER")
+			btnBankTexture:SetAllPoints(btnBank)
+			btnBankTexture:SetTexture(CasualTBCPrep.AddonLogoTexture)
+			btnBank.textureObj = btnBankTexture
+			CasualTBCPrep.UI.HookTooltip(btnBank, tooltipHeader, ttCompanion, nil, funcCallHoverEnter, funcCallHoverLeave)
+			btnBank:SetScript("OnClick", funcToggleCompanion)
 		end
 	end
 end

@@ -7,6 +7,7 @@ Changelog:
 
 - Implemented first version of the new 'Extras - Mailbox' feature. This feature helps manage your items with your bank & mailbox, but is optional.
 -- This is pretty complex and a separate description window has been made, please read through it thoroughly if you're interested. We're still testing it, but it's published in case you want to test it or try it out
+-- The 'Companion' can be opened from the extras tab, from '/tbcprep companion' or from the buttons added to the Mail & Bank interface.
 
 - Implemented the 'Extras - Extra TBC Prep' feature. A selection of quests can be added to the 'Quests' tab from here, but they are not 'fully' supported everywhere. You should make sure to manage these yourself!
 -- Hunters can enable their Rhok'delar class quests here.
