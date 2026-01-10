@@ -362,7 +362,7 @@ CasualTBCPrep.Routing.Routes = {
             "[Work In Progress] This route is currently being finalized, and will be ready in a later update"
         },
         sectionOrder = {
-            "BurningSteppes","Badlands","SilithusHold","SilithusCave","SilithusSouth","SilithusHold2","Ungoro","UngoroPylonN","UngoroKrakle","UngoroPylonW",
+            "Badlands","BurningSteppes","BurningSteppes2","SilithusHold","SilithusCave","SilithusSouth","SilithusHold2","Ungoro","UngoroPylonN","UngoroKrakle","UngoroPylonW",
             "UngoroFirePlumeRidge","UngoroKrakle2","UngoroRefuge","TanarisTown","TanarisPort","CavernsOfTime","TanarisTown2","Feralas","ThunderBluff","wsEverlook",
             "wsDonowa","Timbermaw","Moonglade", "felwoodTown", "felwoodEmerald","Ashenvale","AzsharaFP","Orgrimmar","OrgrimmarBank","Undercity","AV","Undercity2","SilvermoonCity","EPLTown","EPLDarrowshire",
             "EPLNathanos","EPLTirion", "WPLCauldron", "WPLWrithingHaunt","WPLSorrowAndorhal","WPLDalsonsTears","WPLFelstoneField","WPLBulwark","zgSTV","gromgolSTV",
@@ -370,8 +370,9 @@ CasualTBCPrep.Routing.Routes = {
         },
         sections=
         {
-            ["BurningSteppes"] = { key="BurningSteppes", estTime=30, travelType=0, quests={ }, pickups={} },
-            ["Badlands"] = { key="Badlands", estTime=70, travelType=3, quests={ }, pickups={} },
+            ["Badlands"] = { key="Badlands", estTime=30, travelType=0, quests={ }, pickups={} },
+            ["BurningSteppes"] = { key="BurningSteppes", estTime=70, travelType=3, quests={ }, pickups={} },
+            ["BurningSteppes2"] = { key="BurningSteppes2", estTime=75, travelType=2, quests={ }, pickups={} },
 
             ["SilithusHold"] = { key="SilithusHold", estTime=25, travelType=5, travelText="to Cenarion Hold, Silithus", target="Cenarion Hold", quests={ }, pickups={} },
             ["SilithusCave"] = { key="SilithusCave", estTime=71, travelType=2, quests={ }, pickups={} },
@@ -430,8 +431,8 @@ CasualTBCPrep.Routing.Routes = {
         mailboxCount = 7,
         mailboxData = {
             [1] = { -- Bags
-                from = "BurningSteppes",
-                to = "Badlands"
+                from = "Badlands",
+                to = "BurningSteppes2"
             },
             [2] = {
                 from = "SilithusHold",

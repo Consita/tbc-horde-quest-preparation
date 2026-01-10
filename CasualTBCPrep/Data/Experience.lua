@@ -29,9 +29,6 @@ local scalingQuestKnownConstants = {
     [3] = 27.61467890, --ScaleRank3
 }
 
----@param charLevel number
----@return number
-local function CalculateScalingIncrementExp_TBC(charLevel) return 235+5*charLevel end
 
 ---@param exp number
 ---@return number
@@ -42,6 +39,10 @@ local function RoundXP(exp)
         return math.floor((exp + 2.5) / 5) * 5 --Round to 5
     end
 end
+
+---@param charLevel number
+---@return number
+local function CalculateScalingIncrementExp_TBC(charLevel) return 235+5*charLevel end
 
 ---@param questLevel number
 ---@param questExp number

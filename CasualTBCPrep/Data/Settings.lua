@@ -33,8 +33,9 @@ CasualTBCPrep.Settings.AllSettings = {
 	{ key=CasualTBCPrep.Settings.SelectedTheme, 		dataType="text",	type="cmb",	defaultValueGlobal=2,	defaultValueChar=-1,	values={ { text="Use Global", value=-1}, { text="Default", value="DEFAULT" }, { text="Distinct", value="DISTINCT"}, { text="Deuteranopia", value="CB_DEUTE"}, { text="DeuteranopiaGPT", value="CB_DEUTE_GPT"}, { text="Tritanopia", value="CB_TRITAN"}, { text="TritanopiaGPT", value="CB_TRITAN_GPT"}},	name="Selected Theme", description={ "Which theme to use for the UI.", " ", "This changes the colors in the UI, but does not affect the RXP guides" } },
 }
 
-CasualTBCPrep.Settings.CurrentMajorVersionValue = 3.2
+CasualTBCPrep.Settings.CurrentMajorVersionValue = 3.14
 CasualTBCPrep.Settings.VersionCheck_RouteSelection = 3.0
+CasualTBCPrep.Settings.VersionCheck_QuestlogOverhaul1 = 3.15
 
 --[Settings Getter/Setter]
 ---@param key string
@@ -182,6 +183,13 @@ function CasualTBCPrep.Settings.LoadDefaults()
 	-- RouteSelection Version Check
 	if charMajorVersionVal == nil or charMajorVersionVal < CasualTBCPrep.Settings.VersionCheck_RouteSelection then
 		CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.SelectedRoute, nil)
+	end
+	if charMajorVersionVal == nil or charMajorVersionVal < CasualTBCPrep.Settings.VersionCheck_QuestlogOverhaul1 then
+		CasualTBCPrep.NotifyUserWarning("WARNING. In this update we realized questlog quests didn't calculate the correct exp based on your level.\rPlease check that your questlog quests are still good! If quests now give low exp, you need to fix it!")
+
+		C_Timer.After(10, function()
+			CasualTBCPrep.W_WarningNotice.Show("3.15 Update (2026-01-10)", nil, "warn_qlog_overhaul", nil)
+		end)
 	end
 
 

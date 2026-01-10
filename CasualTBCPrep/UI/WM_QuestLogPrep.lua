@@ -36,8 +36,8 @@ local function CreateListQuestTooltip(wMain, quest, btnClickableQuest, questText
 			table.insert(ttLines, CasualTBCPrep.CreateZoneText(q.areaType .. ": ", q.area))
 		end
 
-		if q.baseexp then
-			table.insert(ttLines, CasualTBCPrep.CreateExpText("Experience: ", q.baseexp))
+		if q.exp then
+			table.insert(ttLines, CasualTBCPrep.CreateExpText("Experience: ", q.exp))
 		end
 
 		if q.reqRep ~= nil and q.reqRep > 0 and q.reqRepRank ~= nil and q.reqRepRank > 0 then

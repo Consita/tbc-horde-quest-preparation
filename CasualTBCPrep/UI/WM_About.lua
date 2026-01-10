@@ -202,31 +202,31 @@ function CasualTBCPrep.WM_About.Load(wMain)
 	txtThanks:SetText(specialThanks)
 	txtThanks:SetTextColor(1, 1, 0.9)
 	table.insert(frameAbout.texts, txtThanks)
-	yPos = yPos + txtThanks:GetStringHeight() + 25
+	yPos = yPos + txtThanks:GetStringHeight() + 15
 
-	local txtKnownIssuesHeader = frameAbout:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
-	txtKnownIssuesHeader:SetPoint("TOPLEFT", frameAbout.scrollChild, "TOPLEFT", xOffset, -yPos)
-	txtKnownIssuesHeader:SetWidth(frameAbout.scrollFrame:GetWidth() - 2)
-	txtKnownIssuesHeader:SetJustifyH("LEFT")
-	txtKnownIssuesHeader:SetJustifyV("TOP")
-	txtKnownIssuesHeader:SetSpacing(3)
-	txtKnownIssuesHeader:SetText(clrHeader .. "KNOWN ISSUES")
-	txtKnownIssuesHeader:SetTextColor(1, 1, 0.9)
-	table.insert(frameAbout.texts, txtKnownIssuesHeader)
-	yPos = yPos + txtKnownIssuesHeader:GetStringHeight() + 4
+	local txtStupidDev = frameAbout:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+	txtStupidDev:SetPoint("TOPLEFT", frameAbout.scrollChild, "TOPLEFT", xOffset, -yPos)
+	txtStupidDev:SetWidth(frameAbout.scrollFrame:GetWidth() - 2)
+	txtStupidDev:SetJustifyH("LEFT")
+	txtStupidDev:SetJustifyV("TOP")
+	txtStupidDev:SetSpacing(3)
+	txtStupidDev:SetText(CasualTBCPrep.W_WarningNotice.GetQuestlogWarningOverhaulText())
+	txtStupidDev:SetTextColor(1, 1, 0.9)
+	table.insert(frameAbout.texts, txtStupidDev)
+	yPos = yPos + txtStupidDev:GetStringHeight() + 4
 
-	for _, kIssue in ipairs(knownIssueList) do
-		local txtKnownIssues = frameAbout:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-		txtKnownIssues:SetPoint("TOPLEFT", frameAbout.scrollChild, "TOPLEFT", xOffset + 2, -yPos)
-		txtKnownIssues:SetWidth(frameAbout.scrollFrame:GetWidth() - 2)
-		txtKnownIssues:SetJustifyH("LEFT")
-		txtKnownIssues:SetJustifyV("TOP")
-		txtKnownIssues:SetSpacing(3)
-		txtKnownIssues:SetText(clrSpecial .. " > " .. kIssue .. "|r")
-		txtKnownIssues:SetTextColor(1,1,1)
-		table.insert(frameAbout.texts, txtKnownIssues)
-		yPos = yPos + txtKnownIssues:GetStringHeight() + 3
-	end
+	-- for _, kIssue in ipairs(knownIssueList) do
+	-- 	local txtKnownIssues = frameAbout:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+	-- 	txtKnownIssues:SetPoint("TOPLEFT", frameAbout.scrollChild, "TOPLEFT", xOffset + 2, -yPos)
+	-- 	txtKnownIssues:SetWidth(frameAbout.scrollFrame:GetWidth() - 2)
+	-- 	txtKnownIssues:SetJustifyH("LEFT")
+	-- 	txtKnownIssues:SetJustifyV("TOP")
+	-- 	txtKnownIssues:SetSpacing(3)
+	-- 	txtKnownIssues:SetText(clrSpecial .. " > " .. kIssue .. "|r")
+	-- 	txtKnownIssues:SetTextColor(1,1,1)
+	-- 	table.insert(frameAbout.texts, txtKnownIssues)
+	-- 	yPos = yPos + txtKnownIssues:GetStringHeight() + 3
+	-- end
 end
 
 ---@param wMain Frame|nil
