@@ -50,17 +50,6 @@ local extraData = {
         }
     },
     {
-        code="EXPERIMENTAL", name="EXPERIMENTAL", desc={"This contains quests where the exp value is not 100% known and can be used on your own risk!"},
-        options=
-        {
-            {
-                id=7, name="Alterac Valley", summonsNeeded=0, estExtraExp=0, reqQuests={}, removedQuests={},
-                addedQuests={{7142,"optional"},{8272,"turnin"},{7101,"optional"},{7124,"optional"},{7082,"optional"} },
-                desc={"!!!HIGHLY EXPERIMENTAL OPTIONAL QUESTLOG QUESTS. USE AT YOUR OWN RISK!", "THE VALUE IS NOT KNOWN FOR SURE!!!"}
-            }
-        }
-    },
-    {
         code="HUNTER_RHOK", name="Hunter Rhok'delar Quests", reqClass=CasualTBCPrep.Classes.HunterID, desc={"This contains quests related to the Ancient Petrified Leaf MC quest for hunters"},
         options=
         {
