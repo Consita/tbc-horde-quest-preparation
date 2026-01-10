@@ -1014,7 +1014,12 @@ RXPGuides.RegisterGuide([[
 		>>|cRXP_ENEMY_Warning:|r |cRXP_WARN_Do not pick up or complete the followup|r |cRXP_LOOT_Rise and Be Recognized|r|cRXP_WARN_, as this is used for TBC|r
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warmaster Laggrond|r
 		.turnin 7161
-		.target Warmaster Laggrond			
+		.target Warmaster Laggrond		
+		
+	step
+		>>Queue for |cFFfa9602Alterac Valley|r until you reach exalted reputation with the |cRXP_FRIENDLY_Frostwolf Clan|r
+        .reputation 729,Exalted,999  
+		.isQuestTurnedIn 7161		
 
 	step
 		>>|cRXP_WARN_You have now completed all steps within Alterac Valley. Well done!|r

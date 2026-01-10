@@ -185,6 +185,7 @@ step
 		>>|cRXP_WARN_Has a short 2 min respawn timer. The quest is worth ~4½ minutes of SlavePens|r
 		.complete 8283,1 
 		.unitscan Deathclasp
+		.isOnQuest 8283
 
 	step	
 		#label TwilightCook2
@@ -1284,6 +1285,7 @@ step
 		.complete 4941,1
 		.target Eitrigg
 		.skipgossip
+		.isOnQuest 4941
 
 	step
 		.use 18422 >>Click |T134153:0|t[Head of Onyxia] and accept |cRXP_LOOT_Victory for the Horde|r
@@ -1438,6 +1440,9 @@ step
 		.isQuestTurnedIn 10359
 		.isQuestTurnedIn 10360
 		.isQuestTurnedIn 10361	
+
+	step
+		#label Silvermoonlast
 
 --- Azshara
 
@@ -1862,6 +1867,7 @@ step
 		>>Kill |cRXP_ENEMY_Ezra Grimm|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Grimm's Premium Tobacco|r
 		.mob Ezra Grimm
 		.complete 5214,1
+		.isOnQuest 5214
 
 	step
 		>>Loot the painting |cRXP_LOOT_Of Love and Family|r inside |cFFfa9602Stratholme|r
@@ -2201,140 +2207,6 @@ step
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Argent Officer Garush|r
 		.turnin -6029
 		.target Argent Officer Garush	
-
---- Tarren Mill
-
-	step
-		#completewith Hillsbradlast
-		.zone Hillsbrad Foothills >> Get summon to |cFFfa9602Hillsbrad Foothills|r
-		.zoneskip Hillsbrad Foothills
-
-	step
-		.goto Hillsbrad Foothills,61.4,19.2
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Apothecary Lydon|r
-		.turnin -2937
-		.target Apothecary Lydon	
-
-	step
-		.goto Hillsbrad Foothills,61.4,19.2
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Apothecary Lydon|r
-		.accept 2938
-		.target Apothecary Lydon	
-		.isQuestTurnedIn 2937
-	
-	step
-		#completewith next
-		.zone Alterac Mountains >>Travel to |cFFfa9602Alterac Mountains|r
-		.zoneskip Alterac Mountains
-
-	step
-		.goto Alterac Mountains,62.2,59.0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warmaster Laggrond|r
-		.accept 7163
-		.turnin 7163
-		.target Warmaster Laggrond
-		.reputation 729,friendly,<0,1 
-		.isQuestTurnedIn 7161
-
-	step
-		.goto Alterac Mountains,62.2,59.0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warmaster Laggrond|r
-		.accept 7164
-		.turnin 7164
-		.target Warmaster Laggrond
-		.reputation 729,honored,<0,1 
-		.isQuestTurnedIn 7161
-
-	step
-		.goto Alterac Mountains,62.2,59.0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warmaster Laggrond|r
-		.accept 7165
-		.turnin 7165
-		.target Warmaster Laggrond
-		.reputation 729,revered,<0,1 
-		.isQuestTurnedIn 7161
-
-	step
-		.goto Alterac Mountains,62.2,59.0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warmaster Laggrond|r
-		.accept 7166
-		.turnin 7166
-		.target Warmaster Laggrond
-		.reputation 729,exalted,<0,1 
-		.isQuestTurnedIn 7161
-
-	step
-		#label Hillsbradlast
-		.goto Alterac Mountains,62.2,59.0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warmaster Laggrond|r
-		.accept 7167
-		.turnin 7167
-		.target Warmaster Laggrond
-		.reputation 729,exalted,<0,1 
-		.isQuestTurnedIn 7161
-
---- Undercity
-
-	step
-		#completewith Undercitylast
-		.zone Undercity >>Take Portal or get summon to |cFFfa9602Undercity|r
-		.zoneskip Undercity
-
-	step
-		.goto Undercity,71.65,29.28
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ralston Farnsley|r
-		.accept 7813
-		.turnin 7813
-		.target Ralston Farnsley
-		.itemcount 2592,60	
-
-	step
-		.goto Undercity,71.65,29.28
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ralston Farnsley|r
-		.accept 7814
-		.turnin 7814
-		.target Ralston Farnsley
-		.itemcount 4306,60		
-		
-	step
-		.goto Undercity,71.65,29.28
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ralston Farnsley|r
-		.accept 7817
-		.turnin 7817
-		.target Ralston Farnsley
-		.itemcount 4338,60	
-		
-	step
-		.goto Undercity,71.65,29.28
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ralston Farnsley|r
-		.accept 7818
-		.turnin 7818
-		.target Ralston Farnsley
-		.itemcount 14047,60	
-		.isQuestTurnedIn 7813
-		.isQuestTurnedIn 7814
-		.isQuestTurnedIn 7817
-
-	step
-		#completewith next
-		.goto Undercity,47.20,59.69,0
-		.goto Undercity,47.20,59.69,12,0
-		.goto Undercity,43.55,68.11,12,0
-		.goto Undercity,45.20,71.67,12 >>Travel toward |cRXP_FRIENDLY_Master Apothecary Faranell|r
-
-	step
-		.goto Undercity,48.80,69.28
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Master Apothecary Faranell|r
-		.turnin -2938
-		.target Master Apothecary Faranell
-
-	step
-		#label Undercitylast
-		.goto Undercity,48.74,71.36
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Chemist Cuely|r
-		.turnin 3570
-		.target Chemist Cuely
-		.isQuestAvailable 3570
 
 --- STV
 
@@ -2930,12 +2802,191 @@ step
 	step
 		#label Stranglethornlast
 
+--- Tarren Mill
+
+	step
+		#completewith Hillsbradlast
+		.zone Hillsbrad Foothills >> Get summon to |cFFfa9602Hillsbrad Foothills|r
+		.zoneskip Hillsbrad Foothills
+
+	step
+		.goto Hillsbrad Foothills,61.4,19.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Apothecary Lydon|r
+		.turnin -2937
+		.target Apothecary Lydon	
+
+	step
+		.goto Hillsbrad Foothills,61.4,19.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Apothecary Lydon|r
+		.accept 2938
+		.target Apothecary Lydon	
+		.isQuestTurnedIn 2937
+	
+	step
+		#completewith next
+		.zone Alterac Mountains >>Travel to |cFFfa9602Alterac Mountains|r
+		.zoneskip Alterac Mountains
+
+	step
+		.goto Alterac Mountains,62.2,59.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warmaster Laggrond|r
+		.accept 7163
+		.turnin 7163
+		.target Warmaster Laggrond
+		.reputation 729,friendly,<0,1 
+		.isQuestTurnedIn 7161
+
+	step
+		.goto Alterac Mountains,62.2,59.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warmaster Laggrond|r
+		.accept 7164
+		.turnin 7164
+		.target Warmaster Laggrond
+		.reputation 729,honored,<0,1 
+		.isQuestTurnedIn 7161
+
+	step
+		.goto Alterac Mountains,62.2,59.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warmaster Laggrond|r
+		.accept 7165
+		.turnin 7165
+		.target Warmaster Laggrond
+		.reputation 729,revered,<0,1 
+		.isQuestTurnedIn 7161
+
+	step
+		.goto Alterac Mountains,62.2,59.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warmaster Laggrond|r
+		.accept 7166
+		.turnin 7166
+		.target Warmaster Laggrond
+		.reputation 729,exalted,<0,1 
+		.isQuestTurnedIn 7161
+
+	step
+		#label Hillsbradlast
+		.goto Alterac Mountains,62.2,59.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warmaster Laggrond|r
+		.accept 7167
+		.turnin 7167
+		.target Warmaster Laggrond
+		.reputation 729,exalted,<0,1 
+		.isQuestTurnedIn 7161
+
+--- Undercity
+
+	step
+		#completewith Undercitylast
+		.zone Undercity >>Take Portal or get summon to |cFFfa9602Undercity|r
+		.zoneskip Undercity
+
+	step << Warlock
+		.goto Undercity,88.9,15.9
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Richard Kerwin|r
+		.trainer >> Train your class spells
+		.target Richard Kerwin
+		.xp <62,1	
+
+	step
+		.goto Undercity,71.65,29.28
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ralston Farnsley|r
+		.accept 7813
+		.turnin 7813
+		.target Ralston Farnsley
+		.itemcount 2592,60	
+
+	step
+		.goto Undercity,71.65,29.28
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ralston Farnsley|r
+		.accept 7814
+		.turnin 7814
+		.target Ralston Farnsley
+		.itemcount 4306,60		
+		
+	step
+		.goto Undercity,71.65,29.28
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ralston Farnsley|r
+		.accept 7817
+		.turnin 7817
+		.target Ralston Farnsley
+		.itemcount 4338,60	
+		
+	step
+		.goto Undercity,71.65,29.28
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ralston Farnsley|r
+		.accept 7818
+		.turnin 7818
+		.target Ralston Farnsley
+		.itemcount 14047,60	
+		.isQuestTurnedIn 7813
+		.isQuestTurnedIn 7814
+		.isQuestTurnedIn 7817
+
+	step << Rogue
+		.goto Undercity,83.8,72.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Carolyn Ward|r
+		.trainer >> Train your class spells
+		.target Carolyn Ward
+		.xp <62,1
+
+	step
+		#completewith next
+		.goto Undercity,47.20,59.69,0
+		.goto Undercity,47.20,59.69,12,0
+		.goto Undercity,43.55,68.11,12,0
+		.goto Undercity,45.20,71.67,12 >>Travel toward |cRXP_FRIENDLY_Master Apothecary Faranell|r
+
+	step
+		.goto Undercity,48.80,69.28
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Master Apothecary Faranell|r
+		.turnin -2938
+		.target Master Apothecary Faranell
+
+	step
+		.goto Undercity,48.74,71.36
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Chemist Cuely|r
+		.turnin 3570
+		.target Chemist Cuely
+		.isQuestAvailable 3570
+		.isQuestTurnedIn 3569
+
+	step << Paladin
+		.goto Undercity,58.0,90.5
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Champion Cyssa Dawnrose|r
+		.trainer >> Train your class spells
+		.target Champion Cyssa Dawnrose
+		.xp <62,1	
+		
+	step
+		#label Undercitylast		
+
 --- Thunder Bluff
 
 	step
 		#completewith Thunderlast
 		.zone Thunder Bluff >> Take Portal to |cFFfa9602Thunder Bluff|r
 		.zoneskip Thunder Bluff
+		
+	step << Mage
+		.goto Thunder Bluff,22.8,14.5
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Archmage Shymm|r
+		.trainer >> Train your class spells
+		.target Archmage Shymm
+		.xp <62,1
+
+	step << Priest
+		.goto Thunder Bluff,24.5,22.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Malakai Cross|r
+		.trainer >> Train your class spells
+		.target Malakai Cross
+		.xp <62,1
+		
+	step << Shaman
+		.goto Thunder Bluff,22.0,18.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Beram Skychaser|r
+		.trainer >> Train your class spells
+		.target Beram Skychaser
+		.xp <62,1
 
 	step
 		.goto Thunder Bluff,43.1,42.8
@@ -2971,6 +3022,13 @@ step
 		.isQuestTurnedIn 7820
 		.isQuestTurnedIn 7821
 		.isQuestTurnedIn 7822
+
+	step << Druid
+		.goto Thunder Bluff,77.1,30,0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kym Wildmane|r
+		.trainer >> Train your class spells
+		.target Kym Wildmane
+		.xp <62,1
 
 	step
 		.goto Thunder Bluff,75.7,31.6
