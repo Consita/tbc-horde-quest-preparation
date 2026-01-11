@@ -25,6 +25,7 @@ Changelog:
 - Fixed many 'pickup' quests not being shown in section tooltips on the 'Route' tab
 - Added Egg Freezing steps to UBRS preparation guides
 - Added 'The Scarlet Oracle, Demetria' steps to the strat preparation guide
+- Added 'Orgrimmar The Drag' to the routes so mail can be picked up there, we run past it anyways.
 - 'Taste of Flame' is now properly handled, whether you did the Searing Gorge quests or not.
 - Solo Route now also starts in Kargath and flies to Burning Steppes, so it can turn in 'Taste of Flame' before hearthstoning
 - Several formatting changes to the RXP guides

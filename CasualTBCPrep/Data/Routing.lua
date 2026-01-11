@@ -62,6 +62,7 @@ local targetTexts = {
     ["Feralas"] = { text="Feralas", travel="to Camp Mojache, Feralas" },
     ["ThunderBluff"] = { text="Thunder Bluff", travel="to Thunder Bluff, Mulgore" },
     ["Orgrimmar"] = { text="Orgrimmar", travel="to Orgrimmar, Durotar" },
+    ["OrgrimmarDrag"] = { text="Orgrimmar", travel="to The Drag, Orgrimmar" },
     ["OrgrimmarBank"] = { text="Orgrimmar Bank", travel="to the Orgrimmar bank" },
     ["Undercity"] = { text="The Undercity", travel="to The Undercity, Tirisfal Glades" },
     ["SilvermoonCity"] = { text="Silvermoon City", travel="to Silvermoon City, Eversong Woods" },
@@ -114,7 +115,7 @@ CasualTBCPrep.Routing.Routes = {
         sectionOrder = {
             "Badlands","BurningSteppes","BurningSteppes2","SilithusNE","SilithusHold","SilithusCave","SilithusSouth","SilithusHold2","SilithusNE2","Ungoro","UngoroPylonN","UngoroKrakle",
             "UngoroPylonW","UngoroFirePlumeRidge","UngoroKrakle2","UngoroRefuge","TanarisTown","TanarisPort","CavernsOfTime","wsEverlook","wsDonowa","Timbermaw",
-            "Moonglade","felwoodTown","felwoodEmerald","Orgrimmar","OrgrimmarBank","SilvermoonCity","BayOfStorms","EPLTown","EPLDarrowshire","EPLNathanos",
+            "Moonglade","felwoodTown","felwoodEmerald","Orgrimmar","OrgrimmarDrag","OrgrimmarBank","SilvermoonCity","BayOfStorms","EPLTown","EPLDarrowshire","EPLNathanos",
             "EPLTirion","EPLEgan","WPLCauldron","WPLWrithingHaunt","WPLSorrowAndorhal","WPLDalsonsTears","WPLFelstoneField","WPLBulwark","zgSTV","AV","Undercity","ThunderBluff","Stonard",
             "oldhero","BlastedLands","TheDarkPortal"
         },
@@ -151,6 +152,7 @@ CasualTBCPrep.Routing.Routes = {
             ["felwoodEmerald"] = { key="felwoodEmerald", estTime=135, travelType=2, quests={ }, pickups={} },
 
             ["Orgrimmar"] = { key="Orgrimmar", estTime=167, travelType=6, quests={ }, pickups={} },
+            ["OrgrimmarDrag"] = { key="OrgrimmarDrag", estTime=0, travelType=2, quests={ }, pickups={} },
             ["OrgrimmarBank"] = { key="OrgrimmarBank", estTime=0, travelType=2, quests={ }, pickups={}, canHaveZeroQuests=true },
             ["SilvermoonCity"] = { key="SilvermoonCity", estTime=115, travelType=9, quests={ }, pickups={} },
             ["BayOfStorms"] = { key="BayOfStorms", estTime=60, travelType=4, quests={ }, pickups={} },
@@ -193,7 +195,7 @@ CasualTBCPrep.Routing.Routes = {
                 to = "Orgrimmar"
             },
             [4] = {
-                from = "OrgrimmarBank",
+                from = "OrgrimmarDrag",
                 to = "BayOfStorms"
             },
             [5] = {
@@ -235,7 +237,7 @@ CasualTBCPrep.Routing.Routes = {
         sectionOrder = {
             "Badlands","BurningSteppes","BurningSteppes2","SilithusNE","SilithusHold","SilithusCave","SilithusSouth","SilithusHold2","SilithusNE2","Ungoro","UngoroPylonN","UngoroKrakle",
             "UngoroPylonW","UngoroFirePlumeRidge","UngoroKrakle2","UngoroRefuge","TanarisTown","TanarisPort","CavernsOfTime","wsEverlook","wsDonowa","Timbermaw",
-            "Moonglade","felwoodTown","felwoodEmerald","Orgrimmar","OrgrimmarBank","SilvermoonCity","BayOfStorms","EPLTown","EPLDarrowshire","EPLNathanos",
+            "Moonglade","felwoodTown","felwoodEmerald","Orgrimmar","OrgrimmarDrag","OrgrimmarBank","SilvermoonCity","BayOfStorms","EPLTown","EPLDarrowshire","EPLNathanos",
             "EPLTirion","WPLCauldron", "WPLCaerDarrow","Scholomance","EPLTown2","EPLEgan","StratholmeGates1","Stratholme1","EPLTown3",
             "StratholmeBackdoor","Stratholme2","EPLTown4","StratholmeGates2","EPLEgan2", "EPLTirion2", "EPLNathanos2","WPLWrithingHaunt","WPLSorrowAndorhal",
             "WPLDalsonsTears","WPLFelstoneField","WPLBulwark","zgSTV","AV","Undercity","ThunderBluff","Stonard","oldhero","BlastedLands","TheDarkPortal"
@@ -269,6 +271,7 @@ CasualTBCPrep.Routing.Routes = {
             ["felwoodTown"] = { key="felwoodTown", estTime=165, travelType=3, quests={ }, pickups={} },
             ["felwoodEmerald"] = { key="felwoodEmerald", estTime=135, travelType=2, quests={ }, pickups={} },
             ["Orgrimmar"] = { key="Orgrimmar", estTime=167, travelType=6, quests={ }, pickups={} },
+            ["OrgrimmarDrag"] = { key="OrgrimmarDrag", estTime=0, travelType=2, quests={ }, pickups={} },
             ["OrgrimmarBank"] = { key="OrgrimmarBank", estTime=0, travelType=2, quests={ }, pickups={}, canHaveZeroQuests=true },
 
             ["SilvermoonCity"] = { key="SilvermoonCity", estTime=115, travelType=9, quests={ }, pickups={} },
@@ -326,7 +329,7 @@ CasualTBCPrep.Routing.Routes = {
                 to = "Orgrimmar"
             },
             [4] = {
-                from = "OrgrimmarBank",
+                from = "OrgrimmarDrag",
                 to = "BayOfStorms"
             },
             [5] = {
@@ -367,7 +370,7 @@ CasualTBCPrep.Routing.Routes = {
         sectionOrder = {
             "Badlands","BurningSteppes","BurningSteppes2","SilithusHold","SilithusCave","SilithusSouth","SilithusHold2","Ungoro","UngoroPylonN","UngoroKrakle","UngoroPylonW",
             "UngoroFirePlumeRidge","UngoroKrakle2","UngoroRefuge","TanarisTown","TanarisPort","CavernsOfTime","TanarisTown2","Feralas","ThunderBluff","wsEverlook",
-            "wsDonowa","Timbermaw","Moonglade", "felwoodTown", "felwoodEmerald","Ashenvale","AzsharaFP","Orgrimmar","OrgrimmarBank","Undercity","AV","Undercity2","SilvermoonCity","EPLTown","EPLDarrowshire",
+            "wsDonowa","Timbermaw","Moonglade", "felwoodTown", "felwoodEmerald","Ashenvale","AzsharaFP","Orgrimmar","OrgrimmarDrag","OrgrimmarBank","Undercity","AV","Undercity2","SilvermoonCity","EPLTown","EPLDarrowshire",
             "EPLNathanos","EPLTirion", "WPLCauldron", "WPLWrithingHaunt","WPLSorrowAndorhal","WPLDalsonsTears","WPLFelstoneField","WPLBulwark","zgSTV","gromgolSTV",
             "Stonard","oldhero","BlastedLands","TheDarkPortal"
         },
@@ -406,6 +409,7 @@ CasualTBCPrep.Routing.Routes = {
             ["Ashenvale"] = { key="Ashenvale", estTime=184, travelType=2, travelText="south. Hug the mountains east, jump down after the satyr camp", target="Splintertree Post, Ashenvale", quests={ }, pickups={}, canHaveZeroQuests=true },
             ["AzsharaFP"] = { key="AzsharaFP", estTime=110, travelType=3, quests={ }, pickups={} },
             ["Orgrimmar"] = { key="Orgrimmar", estTime=244, travelType=3, quests={ }, pickups={} },
+            ["OrgrimmarDrag"] = { key="OrgrimmarDrag", estTime=0, travelType=2, quests={ }, pickups={} },
             ["OrgrimmarBank"] = { key="OrgrimmarBank", estTime=0, travelType=2, quests={ }, pickups={}, canHaveZeroQuests=true },
             ["Undercity"] = { key="Undercity", estTime=145, travelType=15, travelText="to Tirisfal Glades, then run to The Undercity", quests={ }, pickups={} },
             ["AV"] = { key="AV", estTime=206, travelType=3, textKey="TarrenMill", quests={ }, pickups={} },
@@ -432,7 +436,7 @@ CasualTBCPrep.Routing.Routes = {
             ["TheDarkPortal"] = { key="TheDarkPortal", estTime=45, travelType=12, quests={ }, pickups={}, canHaveZeroQuests=true },
             ["ExtraFeature"] = { key="ExtraFeature", estTime=0, travelType=4, quests={}, pickups={}, canHaveZeroQuests=true }
         },
-        mailboxCount = 7,
+        mailboxCount = 8,
         mailboxData = {
             [1] = { -- Bags
                 from = "Badlands",
@@ -448,22 +452,26 @@ CasualTBCPrep.Routing.Routes = {
             },
             [4] = {
                 from = "wsEverlook",
-                to = "Orgrimmar"
+                to = "Ashenvale"
             },
             [5] = {
-                from = "OrgrimmarBank",
-                to = "AV"
+                from = "Ashenvale",
+                to = "Orgrimmar"
             },
             [6] = {
+                from = "OrgrimmarDrag",
+                to = "AV"
+            },
+            [7] = {
                 from = "Undercity2",
                 to = "SilvermoonCity"
             },
-            [7] = {
+            [8] = {
                 from = "EPLTown",
                 to = "TheDarkPortal"
             }
         },
-        bankSections = { "TanarisTown", "wsEverlook", "OrgrimmarBank" , "Undercity2" }
+        bankSections = { "TanarisTown", "OrgrimmarBank" , "Undercity2" }
     },
 }
 
