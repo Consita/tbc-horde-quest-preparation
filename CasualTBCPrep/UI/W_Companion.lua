@@ -224,7 +224,7 @@ local function LoadStepDetails()
         -- Not reached, show text to go there
 
         local txtReachStatic = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
-        txtReachStatic:SetPoint("TOP", wCompanion.txtHeaderText, "BOTTOM", 0, yPos)
+        txtReachStatic:SetPoint("TOP", parent, "BOTTOM", 0, yPos)
         txtReachStatic:SetText("Waiting For")
         txtReachStatic:SetTextColor(clrWarn.r, clrWarn.g, clrWarn.b)
         table.insert(wCompanion.texts, txtReachStatic)
@@ -239,14 +239,14 @@ local function LoadStepDetails()
         end
         txtReach:SetTextColor(clrWaitingForZone.r, clrWaitingForZone.g, clrWaitingForZone.b)
         table.insert(wCompanion.texts, txtReach)
-        yPos = yPos - 45
+        yPos = yPos - 35
     end
 
     local mailID,bankID = currentStep.targetMailID or 0, currentStep.targetBankID or 0
 
     if (mailID+bankID) > 0 and showButton == true then
         local txtInteractHeader = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
-        txtInteractHeader:SetPoint("TOP", wCompanion.txtHeaderText, "BOTTOM", 0, yPos)
+        txtInteractHeader:SetPoint("TOP", parent, "BOTTOM", 0, yPos)
         txtInteractHeader:SetText("Interact With")
         txtInteractHeader:SetTextColor(clrWarn.r, clrWarn.g, clrWarn.b)
         table.insert(wCompanion.texts, txtInteractHeader)
@@ -254,7 +254,7 @@ local function LoadStepDetails()
 
         if mailID > 0 then
             local txtInteractMail = parent:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-            txtInteractMail:SetPoint("TOP", wCompanion.txtHeaderText, "BOTTOM", 0, yPos)
+            txtInteractMail:SetPoint("TOP", parent, "BOTTOM", 0, yPos)
             txtInteractMail:SetText("Mailbox")
 
             if currentStep.interactedWithMail == true then
@@ -268,7 +268,7 @@ local function LoadStepDetails()
 
         if bankID > 0 then
             local txtInteractBank = parent:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-            txtInteractBank:SetPoint("TOP", wCompanion.txtHeaderText, "BOTTOM", 0, yPos)
+            txtInteractBank:SetPoint("TOP", parent, "BOTTOM", 0, yPos)
             txtInteractBank:SetText("Bank")
 
             if currentStep.interactedWithBank == true then
@@ -277,9 +277,9 @@ local function LoadStepDetails()
                 txtInteractBank:SetTextColor(clrBad.r, clrBad.g, clrBad.b)
             end
             table.insert(wCompanion.texts, txtInteractBank)
-            yPos = yPos - 15
+            yPos = yPos - 13
         end
-        yPos = yPos - 5
+        yPos = yPos - 2
 
         if (mailID > 0 or bankID > 0) then
             local funcNotify = function(text) CasualTBCPrep.NotifyUserCompanion(text) end
@@ -288,7 +288,7 @@ local function LoadStepDetails()
 
             local btnCollect = CreateFrame("Button", nil, parent, "UIPanelButtonTemplate")
             btnCollect:SetSize(90, 25)
-            btnCollect:SetPoint("TOP", wCompanion.txtHeaderText, "BOTTOM", 0, yPos)
+            btnCollect:SetPoint("TOP", parent, "BOTTOM", 0, yPos)
             btnCollect:SetNormalFontObject("GameFontNormal")
             btnCollect:SetText("Collect")
 
@@ -404,7 +404,7 @@ local function LoadStepDetails()
         end
     end
 
-    LoadStepDetailsItems(yPos-35)
+    LoadStepDetailsItems(yPos-30)
 end
 
 local function LoadStepHeader()
