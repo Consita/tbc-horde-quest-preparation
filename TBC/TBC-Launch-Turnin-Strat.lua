@@ -95,7 +95,7 @@ RXPGuides.RegisterGuide([[
 		.turnin -4862
 		.target Kibler
 
-step
+	step
 		.goto Burning Steppes,95.061,31.563
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Cyrus Therepentous|r
 		.itemcount 10575,1
@@ -105,7 +105,7 @@ step
 		.isQuestAvailable 4022
 		.skipgossip			
 
-step
+	step
 		#label BurningLast
 		.goto Burning Steppes,95.061,31.563
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Cyrus Therepentous|r
@@ -128,6 +128,11 @@ step
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Layo|r
 		.accept 1126
 		.target Layo Starstrike	
+
+	step
+		.goto Silithus,51.74,37.91
+		+Open your |cRXP_PICK_Mailbox|r and collect your items via "/tbc companion"
+		>>Once done, or when you picked up your items yourself, complete this step manually
 
 	step
 		.goto Silithus,51.34,38.2
@@ -696,6 +701,17 @@ step
 		.target Gryfe
 		.zoneskip Tanaris
 
+	step
+		.goto Tanaris,52.32,27.81
+		+Open your |cRXP_PICK_Mailbox|r and collect your items via "/tbc companion"
+		>>Once done, or when you picked up your items yourself, complete this step manually
+
+	step
+		.goto Tanaris,52.30,28.92
+		+|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gimblethorn|r and collect your items via "/tbc companion"
+		>>Once done, or when you picked up your items yourself, complete this step manually
+		.target Gimblethorn
+		
 	step
 		.goto Tanaris,52.47,27.23
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mux Manascrambler|r
@@ -1329,7 +1345,12 @@ step
 		.target Sagorne Crestrider
 		.itemcount 12800,1
 		.itemcount 18335,1
-		
+	
+	step
+		.goto Orgrimmar,62.18,40.49
+		+Open your |cRXP_PICK_Mailbox|r and collect your items via "/tbc companion"
+		>>Once done, or when you picked up your items yourself, complete this step manually
+
 	step
 		.goto Orgrimmar,63.61,51.22
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rashona Straglash|r
@@ -1393,11 +1414,17 @@ step
 		.target High Overlord Saurfang	
 
 	step
-		#label Orgrimmarlast
 		.goto Orgrimmar,49.58,69.15
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_High Overlord Saurfang|r
 		.turnin -4511
 		.target High Overlord Saurfang	
+
+	step
+		#label Orgrimmarlast
+		.goto Orgrimmar,49.58,69.13
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Karus|r and collect your items via "/tbc companion"
+		>>Once done, or when you picked up your items yourself, complete this step manually
+		.target Karus	
 
 --- Silvermoon City
 
@@ -1495,6 +1522,11 @@ step
 		.zone Eastern Plaguelands >> Hearth to |cFFfa9602Lights Hope Chapel|r
 		.use 6948
 		.zoneskip Eastern Plaguelands
+
+	step
+		.goto Eastern Plaguelands,80.92,58.54
+		+Open your |cRXP_PICK_Mailbox|r and collect your items via "/tbc companion"
+		>>Once done, or when you picked up your items yourself, complete this step manually		
 		
 	step	
 		.goto Eastern Plaguelands,81.6,60.0
@@ -2810,6 +2842,11 @@ step
 		.zoneskip Hillsbrad Foothills
 
 	step
+		.goto Hillsbrad Foothills,62.36,19.75
+		+Open your |cRXP_PICK_Mailbox|r and collect your items via "/tbc companion"
+		>>Once done, or when you picked up your items yourself, complete this step manually
+
+	step
 		.goto Hillsbrad Foothills,61.4,19.2
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Apothecary Lydon|r
 		.turnin -2937
@@ -3098,6 +3135,11 @@ step
 		#completewith Swamplast
 		.zone Swamp of Sorrows >> Take Portal to |cFFfa9602Swamp of Sorrows|r
 		.zoneskip Swamp of Sorrows
+
+	step
+		.goto Swamp of Sorrows,45.45,55.08
+		+Open your |cRXP_PICK_Mailbox|r and collect your items via "/tbc companion"
+		>>Once done, or when you picked up your items yourself, complete this step manually		
 
 	step
 		.goto Swamp of Sorrows,34.28,66.17
