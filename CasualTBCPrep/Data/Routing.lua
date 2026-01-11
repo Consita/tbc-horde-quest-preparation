@@ -525,8 +525,18 @@ function CasualTBCPrep.Routing.GetTurninItemsForCurrentRoute()
         return {},{},{}
     end
 
+    local allItemsNeeded, _ = CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(true)
+
+
+    local questItemLookup = {}
+    for _, itemData in ipairs(allItemsNeeded) do
+        for _, quest in ipairs(itemData.quests) do
+            questItemLookup[quest.id] = {}
+        end
+    end
+    --quests
     -- -- Get the CORRECT list of all items needed
-    -- local allItemsNeeded, _ = CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(true)
+    -- 
     -- -- Build a lookup table: questID -> list of items for that quest
     -- local questItemsLookup = {}
     -- for _, itemData in ipairs(allItemsNeeded) do
@@ -581,9 +591,9 @@ function CasualTBCPrep.Routing.GetTurninItemsForCurrentRoute()
 
         if mbStarted == true then
             sectionsUsed = sectionsUsed + 1
-    processedSections[sectionName] = true  -- Track this section
+            processedSections[sectionName] = true
             for _, questID in ipairs(route.sections[sectionName].quests) do
-                if CasualTBCPrep.QuestData.IsQuestIDValidForUser(questID) and not CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) then
+                if CasualTBCPrep.QuestData.IsQuestIDValidForUser(questID) and not CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) and questItemLookup[questID] ~= nil then
                     local questItemString = CasualTBCPrep.QuestData.GetQuestRequiredItemsString(questID)
                     for itemPair in string.gmatch(questItemString, "([^,]+)") do
                         local itemIDStr, countStr = string.match(itemPair, "(%d+)-(%d+)")
@@ -591,7 +601,6 @@ function CasualTBCPrep.Routing.GetTurninItemsForCurrentRoute()
                         if itemIDStr and countStr then
                             local itemID = tonumber(itemIDStr)
                             local neededItemCount = tonumber(countStr)
-                            
                             local itemObj = CasualTBCPrep.Items.GetItemDetails(itemID)
                             if itemObj then
                                 if itemObj.auctionHouse == true then
