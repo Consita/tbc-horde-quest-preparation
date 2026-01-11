@@ -56,11 +56,15 @@ local function CreateListQuestTooltip(wMain, quest, btnClickableQuest, questText
 		if q.comments ~= nil and q.comments ~= "" then
 			table.insert(ttLines, " ")
 			table.insert(ttLines, CasualTBCPrep.CreateZoneText("Comments",""))
-			table.insert(ttLines, CasualTBCPrep.CreateZoneText("",string.gsub(q.comments, "%. ", ".\r")))
 
-			local dotCount = select(2, q.comments:gsub("%.", ""))
-			for i = 1, dotCount do
-				table.insert(ttLines, " ")
+			local parts = {}
+			for part in (q.comments .. ". "):gmatch("(.-%. )") do
+				table.insert(parts, part:match("^%s*(.-)%s*$"))
+			end
+			for _, part in ipairs(parts) do
+				if part ~= "" then
+					table.insert(ttLines, CasualTBCPrep.CreateZoneText("", part))
+				end
 			end
 		end
 

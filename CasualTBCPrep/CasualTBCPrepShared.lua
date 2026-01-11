@@ -537,9 +537,9 @@ function CasualTBCPrep.UI.UpdateAdvancedQuestTooltip(parent, point, width, heigh
 	tooltip:SetPoint(point, parent, point, x, y)
 	tooltip:SetSize(width, height)
 	tooltip:SetScript("OnEnter", function(self)
-	local clrWarn = CasualTBCPrep.Themes.SelectedTheme.colors.warn.hex
-	local clrBad = CasualTBCPrep.Themes.SelectedTheme.colors.bad.hex
-	local clrGood = CasualTBCPrep.Themes.SelectedTheme.colors.good.hex
+		local clrWarn = CasualTBCPrep.Themes.SelectedTheme.colors.warn.hex
+		local clrBad = CasualTBCPrep.Themes.SelectedTheme.colors.bad.hex
+		local clrGood = CasualTBCPrep.Themes.SelectedTheme.colors.good.hex
 
 		local ttFrame = GetOrCreateCustomTooltip()
 
