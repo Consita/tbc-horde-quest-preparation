@@ -89,6 +89,7 @@ local targetTexts = {
     ["oldhero"] = { text="The Fallen Hero", travel="southwest towards The Blasted Lands" },
     ["BlastedLands"] = { text="Blasted Lands", travel="" },
     ["TheDarkPortal"] = { text="The Dark Portal", travel="towards The Dark Portal" },
+    ["ExtraFeature"] = { text="Extra features", travel="to the extra featrures" },
 }
 
 CasualTBCPrep.Routing.Routes = {
@@ -175,6 +176,7 @@ CasualTBCPrep.Routing.Routes = {
             ["oldhero"] = { key="oldhero", estTime=25, travelType=2, quests={ }, pickups={} },
             ["BlastedLands"] = { key="BlastedLands", estTime=52, travelType=2, quests={ }, pickups={} },
             ["TheDarkPortal"] = { key="TheDarkPortal", estTime=45, travelType=12, quests={ }, pickups={}, canHaveZeroQuests=true },
+            ["ExtraFeature"] = { key="ExtraFeature", estTime=0, travelType=4, quests={}, pickups={}, canHaveZeroQuests=true }
         },
         mailboxCount = 7,
         mailboxData = {
@@ -307,6 +309,7 @@ CasualTBCPrep.Routing.Routes = {
             ["oldhero"] = { key="oldhero", estTime=25, travelType=2, quests={ }, pickups={} },
             ["BlastedLands"] = { key="BlastedLands", estTime=52, travelType=2, quests={ }, pickups={} },
             ["TheDarkPortal"] = { key="TheDarkPortal", estTime=45, travelType=12, quests={ }, pickups={}, canHaveZeroQuests=true },
+            ["ExtraFeature"] = { key="ExtraFeature", estTime=0, travelType=4, quests={}, pickups={}, canHaveZeroQuests=true }
         },
         mailboxCount = 7,
         mailboxData = {
@@ -427,6 +430,7 @@ CasualTBCPrep.Routing.Routes = {
             ["oldhero"] = { key="oldhero", estTime=25, travelType=2, quests={ }, pickups={} },
             ["BlastedLands"] = { key="BlastedLands", estTime=52, travelType=2, quests={ }, pickups={} },
             ["TheDarkPortal"] = { key="TheDarkPortal", estTime=45, travelType=12, quests={ }, pickups={}, canHaveZeroQuests=true },
+            ["ExtraFeature"] = { key="ExtraFeature", estTime=0, travelType=4, quests={}, pickups={}, canHaveZeroQuests=true }
         },
         mailboxCount = 7,
         mailboxData = {

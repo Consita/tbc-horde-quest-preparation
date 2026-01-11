@@ -3,7 +3,7 @@ CasualTBCPrep.Extras_ExtraPrep = CasualTBCPrep.Extras_ExtraPrep or {}
 
 -- Variables
 local disabledType = "disabled"
-
+local eventRouteChangedRegistryID = 0
 -- Data
 local extraData = {
     {
@@ -163,8 +163,10 @@ function CasualTBCPrep.Extras_ExtraPrep.ApplyAllStoredExtras(printAddedQuests)
     local storedSelections = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.ExtraTBCPrepSelections)
     if not storedSelections then return end
 
+    local routeCode = CasualTBCPrep.Routing.CurrentRouteCode
+    if not storedSelections[routeCode] then storedSelections[routeCode] = { } end
     for _, extraFeature in ipairs(extraData) do
-        local stored = storedSelections[extraFeature.code]
+        local stored = storedSelections[routeCode][extraFeature.code]
 
         for _, optionData in ipairs(extraFeature.options) do
             local enabled = false
@@ -186,11 +188,12 @@ end
 ---@param reloadRoute boolean
 local function ToggleStoredSetting(frame, featureData, optionData, reloadRoute)
     local storedSelections = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.ExtraTBCPrepSelections) or { }
-
+    local routeCode = CasualTBCPrep.Routing.CurrentRouteCode
     local featureCode = featureData.code
 
+    if not storedSelections[routeCode] then storedSelections[routeCode] = { } end
     if featureData.multiSelect == true then
-        local optionList = storedSelections[featureCode] or { }
+        local optionList = storedSelections[routeCode][featureCode] or { }
 
         if optionList[optionData.id] then
             optionList[optionData.id] = nil
@@ -198,14 +201,14 @@ local function ToggleStoredSetting(frame, featureData, optionData, reloadRoute)
             optionList[optionData.id] = optionData
         end
 
-        storedSelections[featureCode] = optionList
+        storedSelections[routeCode][featureCode] = optionList
     else
-        local currentStored = storedSelections[featureCode]
+        local currentStored = storedSelections[routeCode][featureCode]
 
         if currentStored and currentStored.id == optionData.id then
-            storedSelections[featureCode] = nil
+            storedSelections[routeCode][featureCode] = nil
         else
-            storedSelections[featureCode] = optionData
+            storedSelections[routeCode][featureCode] = optionData
         end
     end
 
@@ -219,10 +222,10 @@ local function ToggleStoredSetting(frame, featureData, optionData, reloadRoute)
     local enabledNow = false
 
     if featureData.multiSelect == true then
-        local optionList = storedSelections[featureData.code]
+        local optionList = storedSelections[routeCode][featureData.code]
         enabledNow = optionList and optionList[optionData.id] ~= nil
     else
-        local storedOption = storedSelections[featureData.code]
+        local storedOption = storedSelections[routeCode][featureData.code]
         enabledNow = storedOption and storedOption.id == optionData.id
     end
 
@@ -243,6 +246,8 @@ DrawList = function(frame)
 	local headerColorBright = CasualTBCPrep.Themes.SelectedTheme.colors.headerSpecialHover
 
     local storedSelections = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.ExtraTBCPrepSelections)
+    local routeCode = CasualTBCPrep.Routing.CurrentRouteCode
+    if not storedSelections[routeCode] then storedSelections[routeCode] = { } end
 
     local playerClassID = CasualTBCPrep.Classes.GetPlayerClassID()
     yPos = -5
@@ -261,12 +266,12 @@ DrawList = function(frame)
                 local storedOption = nil
 
                 if extraFeature.multiSelect == true then
-                    local storedOptionList = storedSelections[extraFeature.code]
+                    local storedOptionList = storedSelections[routeCode][extraFeature.code]
                     if storedOptionList then
                         storedOption = storedOptionList[optionData.id]
                     end
                 else
-                    local storedSelectedOption = storedSelections[extraFeature.code]
+                    local storedSelectedOption = storedSelections[routeCode][extraFeature.code]
                     if storedSelectedOption and optionData.id == storedSelectedOption.id then
                         storedOption = storedSelectedOption
                     end
@@ -372,4 +377,14 @@ function CasualTBCPrep.Extras_ExtraPrep.Load(frame)
     CasualTBCPrep.Extras_ExtraPrep.Clean(frame)
 
     DrawList(frame)
+end
+
+local OnMessageRouteChanged = function(data)
+    CasualTBCPrep.Extras_ExtraPrep.ApplyAllStoredExtras(false)
+end
+
+if eventRouteChangedRegistryID <= 0 then
+	local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
+    if debugger == 1 then CasualTBCPrep.NotifyUserCompanion(CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex.."[DEBUG] Companion registering ROUTE_CHANGED event") end
+    eventRouteChangedRegistryID = CasualTBCPrep.MessageBroker.Register(CasualTBCPrep.MessageBroker.TYPE.ROUTE_CHANGED, OnMessageRouteChanged)
 end
