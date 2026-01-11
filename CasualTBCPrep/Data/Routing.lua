@@ -525,23 +525,22 @@ function CasualTBCPrep.Routing.GetTurninItemsForCurrentRoute()
         return {},{},{}
     end
 
-    -- Get the CORRECT list of all items needed
-    local allItemsNeeded, _ = CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(true)
-    
-    -- Build a lookup table: questID -> list of items for that quest
-    local questItemsLookup = {}
-    for _, itemData in ipairs(allItemsNeeded) do
-        for _, questInfo in ipairs(itemData.quests) do
-            local questID = questInfo.id
-            if not questItemsLookup[questID] then
-                questItemsLookup[questID] = {}
-            end
-            table.insert(questItemsLookup[questID], {
-                itemID = itemData.id,
-                count = itemData.requiredAmount / #itemData.quests -- Split evenly if multiple quests need same item
-            })
-        end
-    end
+    -- -- Get the CORRECT list of all items needed
+    -- local allItemsNeeded, _ = CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(true)
+    -- -- Build a lookup table: questID -> list of items for that quest
+    -- local questItemsLookup = {}
+    -- for _, itemData in ipairs(allItemsNeeded) do
+    --     for _, questInfo in ipairs(itemData.quests) do
+    --         local questID = questInfo.id
+    --         if not questItemsLookup[questID] then
+    --             questItemsLookup[questID] = {}
+    --         end
+    --         table.insert(questItemsLookup[questID], {
+    --             itemID = itemData.id,
+    --             count = itemData.requiredAmount / #itemData.quests -- Split evenly if multiple quests need same item
+    --         })
+    --     end
+    -- end
 
     local sectionsUsed, expectedSectionsUsed = 0, #route.sectionOrder
     local currentBankGroup, currentMailGroup = 1, 1
@@ -552,7 +551,7 @@ function CasualTBCPrep.Routing.GetTurninItemsForCurrentRoute()
     local tempBankData, tempMailData = {}, {}
     local mbStarted, mbExit = false, false
 
-local processedSections = {}
+    local processedSections = {}
     for _, sectionName in ipairs(route.sectionOrder) do
         if mbStarted == false then
             if sectionName == currentMailboxData.from then
@@ -585,15 +584,20 @@ local processedSections = {}
     processedSections[sectionName] = true  -- Track this section
             for _, questID in ipairs(route.sections[sectionName].quests) do
                 if CasualTBCPrep.QuestData.IsQuestIDValidForUser(questID) and not CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) then
-                    local questItems = questItemsLookup[questID]
-                    if questItems then
-                        for _, item in ipairs(questItems) do
-                            local itemObj = CasualTBCPrep.Items.GetItemDetails(item.itemID)
+                    local questItemString = CasualTBCPrep.QuestData.GetQuestRequiredItemsString(questID)
+                    for itemPair in string.gmatch(questItemString, "([^,]+)") do
+                        local itemIDStr, countStr = string.match(itemPair, "(%d+)-(%d+)")
+
+                        if itemIDStr and countStr then
+                            local itemID = tonumber(itemIDStr)
+                            local neededItemCount = tonumber(countStr)
+                            
+                            local itemObj = CasualTBCPrep.Items.GetItemDetails(itemID)
                             if itemObj then
                                 if itemObj.auctionHouse == true then
-                                    GetTurninItemsForCurrentRoute_AddOrCombineItem(tempMailData, item.itemID, item.count)
+                                    GetTurninItemsForCurrentRoute_AddOrCombineItem(tempMailData, itemID, neededItemCount)
                                 else
-                                    GetTurninItemsForCurrentRoute_AddOrCombineItem(tempBankData, item.itemID, item.count)
+                                    GetTurninItemsForCurrentRoute_AddOrCombineItem(tempBankData, itemID, neededItemCount)
                                 end
                             end
                         end
