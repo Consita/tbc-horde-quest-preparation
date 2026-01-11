@@ -62,7 +62,7 @@ local targetTexts = {
     ["Feralas"] = { text="Feralas", travel="to Camp Mojache, Feralas" },
     ["ThunderBluff"] = { text="Thunder Bluff", travel="to Thunder Bluff, Mulgore" },
     ["Orgrimmar"] = { text="Orgrimmar", travel="to Orgrimmar, Durotar" },
-    ["OrgrimmarDrag"] = { text="Orgrimmar", travel="to The Drag, Orgrimmar" },
+    ["OrgrimmarDrag"] = { text="The Drag, Orgrimmar", travel="to The Drag, Orgrimmar" },
     ["OrgrimmarBank"] = { text="Orgrimmar Bank", travel="to the Orgrimmar bank" },
     ["Undercity"] = { text="The Undercity", travel="to The Undercity, Tirisfal Glades" },
     ["SilvermoonCity"] = { text="Silvermoon City", travel="to Silvermoon City, Eversong Woods" },
