@@ -2828,7 +2828,45 @@ step
 		.zoneskip Alterac Mountains
 
 	step
-		.goto Alterac Mountains,62.2,59.0
+		.goto Alterac Mountains,63.84,60.47
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Voggah Deathgrip|r
+		.turnin -7142
+		.target Voggah Deathgrip
+
+	step
+		.goto Alterac Mountains,63.84,60.47
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Voggah Deathgrip|r
+		.accept 8272
+		.turnin 8272
+		.isQuestTurnedIn 7142
+		.target Voggah Deathgrip
+
+	step
+		.goto Alterac Mountains,63.08,59.87
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Horde Warbringer|r
+		.accept 8430
+		.turnin 8430
+		.target Horde Warbringer
+		.itemcount 20558,3
+
+	step
+		.goto Alterac Mountains,63.08,59.87
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Horde Warbringer|r	
+		.accept 8439
+		.turnin 8439
+		.target Horde Warbringer
+		.itemcount 20559,3
+		
+	step
+		.goto Alterac Mountains,63.08,59.87
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Horde Warbringer|r
+		.accept 8369
+		.turnin 8369
+		.target Horde Warbringer	
+		.itemcount 20560,3
+
+	step
+		.goto Alterac Mountains,62.27,58.89
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warmaster Laggrond|r
 		.accept 7163
 		.turnin 7163
@@ -2872,6 +2910,14 @@ step
 		.target Warmaster Laggrond
 		.reputation 729,exalted,<0,1 
 		.isQuestTurnedIn 7161
+
+	step
+		.goto Alterac Mountains,65.55,55.12
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Corporal Teeka Bloodsnarl|r
+		.turnin -7101
+		.turnin -7124
+		.turnin -7082
+		.target Corporal Teeka Bloodsnarl			
 
 --- Undercity
 
