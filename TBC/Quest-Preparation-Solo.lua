@@ -1930,7 +1930,6 @@ RXPGuides.RegisterGuide([[
 			.goto Eastern Plaguelands,26.54,74.74
 			.target Nathanos Blightcaller
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nathanos Blightcaller|r
-			.turnin -5961
 			.accept 6042 >>Accept Un-Life's Little Annoyances
 			.accept 6022 >>Accept To Kill With Purpose
 			.accept 6133 >>Accept The Ranger Lord's Behest
