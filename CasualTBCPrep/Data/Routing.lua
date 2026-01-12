@@ -105,7 +105,7 @@ CasualTBCPrep.Routing.Routes = {
             info1="This route was made for a 5man group that wants a headstart before entering TBC",
             info2="3 Summons can be skipped for less or slower exp",
             info3="",
-            possibleLevelText="Possible Level: 62 + 78%",
+            possibleLevelText="Possible Level: 62 + 80%",
             estimatedTimeText="Estimated Time:   73 minutes"
         },
         preparation=
@@ -224,8 +224,8 @@ CasualTBCPrep.Routing.Routes = {
             info1="The Main route, but with 1 Living & 1 Undead Stratholme run",
             info2="This opens up more quests, turnins, mob exp and continues the 0.5 questline",
             info3="Each Strat run is assumed to take 20min, but you can definitely go faster",
-            possibleLevelText="Possible Level: 63 + 21%",
-            estimatedTimeText="Estimated Time:  135 minutes"
+            possibleLevelText="Possible Level: 63 + 25%",
+            estimatedTimeText="Estimated Time:  133 minutes"
         },
         preparation=
         {
@@ -358,8 +358,8 @@ CasualTBCPrep.Routing.Routes = {
             info1="This route requires no outside help on TBC Release",
             info2="It takes longer as it has more flying and relies on public transportation :)",
             info3="Waiting for zeppelins is not included in the estimated time",
-            possibleLevelText="Possible Level: 62 + 68%",
-            estimatedTimeText="Estimated Time:   96 minutes"
+            possibleLevelText="Possible Level: 62 + 71%",
+            estimatedTimeText="Estimated Time:   98 minutes"
         },
         preparation=
         {
