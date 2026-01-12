@@ -2453,8 +2453,8 @@ RXPGuides.RegisterGuide([[
 
 		step
 			.use 15786 >>Open the chest and loot |cRXP_LOOT_The Grand Crusader's Command|r and |cRXP_LOOT_Rotten Apple|r
-			.collect 13852,1,6146
-			.collect 15875,1,6146
+			.collect 13852,1,6146,1
+			.collect 15875,1,6146,1
 
 		step
 			.goto Eastern Plaguelands,88.2,86,0
