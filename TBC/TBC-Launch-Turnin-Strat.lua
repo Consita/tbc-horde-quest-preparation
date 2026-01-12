@@ -12,6 +12,25 @@ RXPGuides.RegisterGuide([[
 #displayname Strat Route Turnin
 #next Dungeon Grind to 70
 
+--- Beginning / Note
+
+	step
+		#completewith next
+		+ |cRXP_ENEMY_Go through the following steps thoroughly and make sure you have all of them ready!|r
+		>>|cRXP_WARN_Otherwise we cannot guarantee a flawless turnin process|r
+
+	step
+		#sticky
+		>>|cRXP_WARN_Always mandatory:|r
+		+Make sure your |cRXP_ENEMY_Hearthstone|r is set to |cFFfa9602Light's Hope Chapel|r
+		+Make sure you have |cRXP_ENEMY_at least 40 free bagslots|r
+
+	step
+		>>|cRXP_WARN_If you are using our companion feature:|r
+		+Make sure that |cRXP_ENEMY_all BoE items are sent and ready|r in your |cFFfa9602mailbox|r
+		>>Send all items that are not soulbound from another character to this one and keep them in the mailbox
+		+Open the companion (/tbc companion) and |cRXP_ENEMY_prepare the initial items|r from step 1
+
 --- Kargath
 
 	step	
