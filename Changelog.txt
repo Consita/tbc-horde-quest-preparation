@@ -23,6 +23,7 @@ Changelog:
 - Fixed prequest issues with the Tier 0.5 questline
 - Fixed warning popups showing for quests that aren't relevant for your selected route.
 - Fixed many 'pickup' quests not being shown in section tooltips on the 'Route' tab
+- Fixed quest XP not being calculated correctly the first time after a load
 - Added Egg Freezing steps to UBRS preparation guides
 - Added 'The Scarlet Oracle, Demetria' steps to the strat preparation guide
 - Added 'Orgrimmar The Drag' to the routes so mail can be picked up there, we run past it anyways.
