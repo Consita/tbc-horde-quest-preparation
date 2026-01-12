@@ -8,6 +8,7 @@ Changelog:
 - ExtraPrep: Scepter of the Sands quests now only show items if you have done their prequests
 - Companion: No longer goes to the next step if you're missing 0 items, as it could lead to unexpecting jumping now before release.
 - Companion: Fixed weird behaviour with the Bijou quest
+- Added the 2 Morrowgrain quests that come after 'Un'goro Soil'. Low exp but almost free.
 
 3.15 (2026-01-12)
 - We realized 'questlog' quests didn't calculate the correct exp based on your level. Please check that your questlog quests are still good! If quests now give low exp, you need to fix it!
