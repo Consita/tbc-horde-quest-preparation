@@ -593,20 +593,23 @@ function CasualTBCPrep.Routing.GetTurninItemsForCurrentRoute()
             sectionsUsed = sectionsUsed + 1
             processedSections[sectionName] = true
             for _, questID in ipairs(route.sections[sectionName].quests) do
-                if CasualTBCPrep.QuestData.IsQuestIDValidForUser(questID) and not CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) and questItemLookup[questID] ~= nil then
-                    local questItemString = CasualTBCPrep.QuestData.GetQuestRequiredItemsString(questID)
-                    for itemPair in string.gmatch(questItemString, "([^,]+)") do
-                        local itemIDStr, countStr = string.match(itemPair, "(%d+)-(%d+)")
+                if questItemLookup[questID] ~= nil then
+                    local hasFullyPreparedQuest = CasualTBCPrep.QuestData.GetQuestProgressionDetailsFromID(questID)
+                    if hasFullyPreparedQuest == true then
+                        local questItemString = CasualTBCPrep.QuestData.GetQuestRequiredItemsString(questID)
+                        for itemPair in string.gmatch(questItemString, "([^,]+)") do
+                            local itemIDStr, countStr = string.match(itemPair, "(%d+)-(%d+)")
 
-                        if itemIDStr and countStr then
-                            local itemID = tonumber(itemIDStr)
-                            local neededItemCount = tonumber(countStr)
-                            local itemObj = CasualTBCPrep.Items.GetItemDetails(itemID)
-                            if itemObj then
-                                if itemObj.auctionHouse == true then
-                                    GetTurninItemsForCurrentRoute_AddOrCombineItem(tempMailData, itemID, neededItemCount)
-                                else
-                                    GetTurninItemsForCurrentRoute_AddOrCombineItem(tempBankData, itemID, neededItemCount)
+                            if itemIDStr and countStr then
+                                local itemID = tonumber(itemIDStr)
+                                local neededItemCount = tonumber(countStr)
+                                local itemObj = CasualTBCPrep.Items.GetItemDetails(itemID)
+                                if itemObj then
+                                    if itemObj.auctionHouse == true then
+                                        GetTurninItemsForCurrentRoute_AddOrCombineItem(tempMailData, itemID, neededItemCount)
+                                    else
+                                        GetTurninItemsForCurrentRoute_AddOrCombineItem(tempBankData, itemID, neededItemCount)
+                                    end
                                 end
                             end
                         end
