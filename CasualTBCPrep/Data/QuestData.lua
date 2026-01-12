@@ -603,6 +603,9 @@ local extraCompletionQuestWarnings = {
 	[8757] = true, [8758] = true, [8759] = true, [8760] = true, [8761] = true,
 }
 
+local questCanHaveZeroExp = {
+	[5122] = true
+}
 -- Not used yet.
 local benchedQuests = {
 	[3907] = { name="Disharmony of Fire", reason="NPC that ends the quest can go on a 5min patrol. You can't turn it in while he's walking around." },
@@ -1120,8 +1123,8 @@ function CasualTBCPrep.QuestData.LoadRoute(routeCode)
 	local charLvl = 60
 	local expForLevel = CasualTBCPrep.Experience.GetRequiredExperienceFor(charLvl, charLvl + 1)
 
+	local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
 	for _, section in ipairs(CasualTBCPrep.Routing.GetActiveSectionsInCurrentRoute()) do
-		--print("Section: "..tostring(section.key)..", charLvl="..tostring(charLvl)..", exp4level="..tostring(expForLevel))
 		for _, questID in ipairs(section.quests) do
 			local questObj = questsMetadata[questID]
 
@@ -1137,17 +1140,16 @@ function CasualTBCPrep.QuestData.LoadRoute(routeCode)
 					questObj.active = true
 					expForLevel = expForLevel - questObj.exp
 
-					if questObj.exp <= 0 then
-						CasualTBCPrep.NotifyUserError("Route (NM)" .. route.name .. " would get 0 exp from quest " .. tostring(questID) .. ", " .. questObj.name .. " - Quest is lvl " .. tostring(questObj.qlvl) .. ", user would be " .. tostring(charLvl))
+					if questObj.exp <= 0 and questCanHaveZeroExp[questObj.id] ~= true then
+						CasualTBCPrep.NotifyUserError("Route " .. route.name .. " would get 0 exp from quest " .. tostring(questID) .. ", " .. questObj.name .. " - Quest is lvl " .. tostring(questObj.qlvl) .. ", user would be " .. tostring(charLvl))
 					end
 
 					if expForLevel <= 0 then
 						charLvl = charLvl + 1
 						expForLevel = expForLevel + CasualTBCPrep.Experience.GetRequiredExperienceFor(charLvl, charLvl + 1)
 
-						local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
 						if debugger == 1 then
-							CasualTBCPrep.NotifyUser("Route (NM)" .. route.name .. " would ding " .. tostring(charLvl) .. " from quest " .. tostring(questID) .. ", " .. questObj.name)
+							CasualTBCPrep.NotifyUser("Route " .. route.name .. " would ding " .. tostring(charLvl) .. " from quest " .. tostring(questID) .. ", " .. questObj.name)
 						end
 					end
 				end
