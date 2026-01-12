@@ -15,19 +15,22 @@ Changelog:
 - The 'A Bijou for Zanza' fix was lost in the 3.14b update. It's now back again ^_^
 - Added a '/tbcprep ghetto' command to ghetto HS in dungeons, without needing a macro. It will leave your current party first if you're in one.
 - Updated the 'About' tab with correct version number and the 3.15 questlog warning.
-- AV Quests have been added, thanks to everyone who helped pop AV on PTR! It turns out Battle for Azeroth is the best QuestLog quest in the game, so it has been added. Please check your questlog and ensure you have the 25 you want
 
-- Added level 62 trainers to the turnin guides.
+- Added initial note and warning to turnin guide
+- Added PvP quests to all routes and UI
+- Added level 62 trainers to the turnin guide
+- Added Mailbox and Bank steps to turnin guide
+- Added Egg Freezing steps to UBRS preparation guides
+- Added 'Orgrimmar The Drag' to the routes so mail can be picked up there, we run past it anyways
 - Added exalted requirement for AV quests as a step in the preparation guides
+- Added and Fixed 'The Scarlet Oracle, Demetria' steps to the strat preparation guide
+- Removed 'The Champion of the Banshee Queen' turnin from Prep guide
 - Fixed several Molten Core raid steps
 - Fixed prequest issues with the Tier 0.5 questline
-- Fixed warning popups showing for quests that aren't relevant for your selected route.
+- Fixed warning popups showing for quests that aren't relevant for your selected route
 - Fixed many 'pickup' quests not being shown in section tooltips on the 'Route' tab
 - Fixed quest XP not being calculated correctly the first time after a load
-- Added Egg Freezing steps to UBRS preparation guides
-- Added 'The Scarlet Oracle, Demetria' steps to the strat preparation guide
-- Added 'Orgrimmar The Drag' to the routes so mail can be picked up there, we run past it anyways.
-- 'Taste of Flame' is now properly handled, whether you did the Searing Gorge quests or not.
+- 'Taste of Flame' is now properly handled, whether you did the Searing Gorge quests or not
 - Solo Route now also starts in Kargath and flies to Burning Steppes, so it can turn in 'Taste of Flame' before hearthstoning
 - Several formatting changes to the RXP guides
 - Small bugfixes to the RXP guides
