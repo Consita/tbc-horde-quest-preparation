@@ -51,6 +51,7 @@ end
 ---@param currentStep table
 ---@return table,table,integer,integer
 local function GetStepDetails_ItemsNeeded(currentStep)
+    GetTurninData()
     return CasualTBCPrep.Extras_Mailbox.GetStepDetails_ItemsNeeded(dataMail, dataBank, currentStep)
 end
 
@@ -124,8 +125,8 @@ local function LoadStepDetailsItems(startY)
     end
 
     if #missing == 0 then
-        CasualTBCPrep.NotifyUserCompanion("Step "..tostring(currentStep.id).." completed, switching to step2.")
-        IncrementStep()
+        --CasualTBCPrep.NotifyUserCompanion("Step "..tostring(currentStep.id).." completed, switching to step2.")
+        --IncrementStep()
         return
     end
 

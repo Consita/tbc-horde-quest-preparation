@@ -525,7 +525,7 @@ function CasualTBCPrep.Routing.GetTurninItemsForCurrentRoute()
         return {},{},{}
     end
 
-    local allItemsNeeded, _ = CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(true)
+    local allItemsNeeded, itemsNeededAnyItems = CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(true)
 
 
     local questItemLookup = {}
@@ -534,23 +534,9 @@ function CasualTBCPrep.Routing.GetTurninItemsForCurrentRoute()
             questItemLookup[quest.id] = {}
         end
     end
-    --quests
-    -- -- Get the CORRECT list of all items needed
-    -- 
-    -- -- Build a lookup table: questID -> list of items for that quest
-    -- local questItemsLookup = {}
-    -- for _, itemData in ipairs(allItemsNeeded) do
-    --     for _, questInfo in ipairs(itemData.quests) do
-    --         local questID = questInfo.id
-    --         if not questItemsLookup[questID] then
-    --             questItemsLookup[questID] = {}
-    --         end
-    --         table.insert(questItemsLookup[questID], {
-    --             itemID = itemData.id,
-    --             count = itemData.requiredAmount / #itemData.quests -- Split evenly if multiple quests need same item
-    --         })
-    --     end
-    -- end
+    for _, itemData in ipairs(itemsNeededAnyItems) do
+        questItemLookup[itemData.questID] = {}
+    end
 
     local sectionsUsed, expectedSectionsUsed = 0, #route.sectionOrder
     local currentBankGroup, currentMailGroup = 1, 1
@@ -596,19 +582,54 @@ function CasualTBCPrep.Routing.GetTurninItemsForCurrentRoute()
                 if questItemLookup[questID] ~= nil then
                     local hasFullyPreparedQuest = CasualTBCPrep.QuestData.GetQuestProgressionDetailsFromID(questID)
                     if hasFullyPreparedQuest == true then
-                        local questItemString = CasualTBCPrep.QuestData.GetQuestRequiredItemsString(questID)
-                        for itemPair in string.gmatch(questItemString, "([^,]+)") do
-                            local itemIDStr, countStr = string.match(itemPair, "(%d+)-(%d+)")
+                        local questObj = CasualTBCPrep.QuestData.GetQuest(questID)
+                        local questItemString = questObj.reqItems
+                        if questObj.reqAnyItem then
+                            local hadAny = false
+                            local tempItemReqAnyDataMail,tempItemReqAnyDataBank = {},{}
+                            for itemPair in string.gmatch(questItemString, "([^,]+)") do
+                                if hadAny == false then
+                                    local itemIDStr, countStr = string.match(itemPair, "(%d+)-(%d+)")
 
-                            if itemIDStr and countStr then
-                                local itemID = tonumber(itemIDStr)
-                                local neededItemCount = tonumber(countStr)
-                                local itemObj = CasualTBCPrep.Items.GetItemDetails(itemID)
-                                if itemObj then
-                                    if itemObj.auctionHouse == true then
-                                        GetTurninItemsForCurrentRoute_AddOrCombineItem(tempMailData, itemID, neededItemCount)
-                                    else
-                                        GetTurninItemsForCurrentRoute_AddOrCombineItem(tempBankData, itemID, neededItemCount)
+                                    if itemIDStr and countStr then
+                                        local itemID, neededItemCount = tonumber(itemIDStr), tonumber(countStr)
+                                        local itemObj = CasualTBCPrep.Items.GetItemDetails(itemID)
+                                        if itemObj then
+                                            local playerInvCount = CasualTBCPrep.Items.GetPlayerItemCount(itemID, false)
+                                            if playerInvCount > 0 then
+                                                hadAny = true
+                                            end
+                                            if itemObj.auctionHouse == true then
+                                                table.insert(tempItemReqAnyDataMail, { itemID=itemID, count=neededItemCount })
+                                            else
+                                                table.insert(tempItemReqAnyDataBank, { itemID=itemID, count=neededItemCount })
+                                            end
+                                        end
+                                    end
+                                end
+                            end
+
+                            if hadAny == false then
+                                for _, itemData in ipairs(tempItemReqAnyDataMail) do
+                                    GetTurninItemsForCurrentRoute_AddOrCombineItem(tempMailData, itemData.itemID, itemData.count)
+                                end
+                                for _, itemData in ipairs(tempItemReqAnyDataBank) do
+                                    GetTurninItemsForCurrentRoute_AddOrCombineItem(tempBankData, itemData.itemID, itemData.count)
+                                end
+                            end
+                        else
+                            for itemPair in string.gmatch(questItemString, "([^,]+)") do
+                                local itemIDStr, countStr = string.match(itemPair, "(%d+)-(%d+)")
+
+                                if itemIDStr and countStr then
+                                    local itemID,neededItemCount = tonumber(itemIDStr), tonumber(countStr)
+                                    local itemObj = CasualTBCPrep.Items.GetItemDetails(itemID)
+                                    if itemObj then
+                                        if itemObj.auctionHouse == true then
+                                            GetTurninItemsForCurrentRoute_AddOrCombineItem(tempMailData, itemID, neededItemCount)
+                                        else
+                                            GetTurninItemsForCurrentRoute_AddOrCombineItem(tempBankData, itemID, neededItemCount)
+                                        end
                                     end
                                 end
                             end

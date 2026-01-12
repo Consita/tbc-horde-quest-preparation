@@ -1593,7 +1593,7 @@ function CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
 	end
 
 	local isQuestCompleted = CasualTBCPrep.QuestData.HasCharacterCompletedQuest(quest.id)
-	local hasFullyPreparedQuest, hasRequiredItemsInBank, isBankAlted, bankAltName = CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(quest.id, false, false, false)
+	local hasFullyPreparedQuest, hasRequiredItemsInBank, isBankAlted, bankAltName = CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(quest.id, false, false, quest.reqAnyItem == 1)
 	local itemDisplayList = { }
 	local nextPreQuest = nil
 
