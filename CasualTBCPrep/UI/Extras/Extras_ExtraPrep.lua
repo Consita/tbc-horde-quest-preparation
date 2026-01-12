@@ -2,7 +2,6 @@ CasualTBCPrep = CasualTBCPrep or {}
 CasualTBCPrep.Extras_ExtraPrep = CasualTBCPrep.Extras_ExtraPrep or {}
 
 -- Variables
-local disabledType = "disabled"
 local eventRouteChangedRegistryID = 0
 -- Data
 local extraData = {
@@ -18,7 +17,8 @@ local extraData = {
                     {8736,"optional"},{8741,"optional"}, --Green Shard
                     {8730,"optional"} --Red Shard
                 },
-                desc={"Uses the Scepter quests that line up with our existing routes.", "This opens up some better QuestLog quests, and extra turnins, but also loses the Silithid Carapace Fragment quest.", " ", "This is mainly worth it if you're missing a lot of questlog quests, and the exp gained depends on that."},
+                desc={"Uses the Scepter quests that line up with our existing routes.", "This opens up some better QuestLog quests, and extra turnins, but also loses the Silithid Carapace Fragment quest.", 
+                " ", "This is mainly worth it if you're missing a lot of questlog quests, and the exp gained depends on that." },
             }
         }
     },
@@ -32,9 +32,15 @@ local extraData = {
                 desc={"Uses the Blacksmithing quests that line up with our existing routes. This includes only optional quests.", " ", "This is mainly worth it if you're missing a lot of questlog quests, and the exp gained depends on that."},
             },
             {
-                id=5, name="Diremaul", summonsNeeded=1, estExtraExp=42900, reqQuests={}, removedQuests={},
-                addedQuests={ {7649,"turnin"},{7650,"turnin"},{7651,"turnin"}, },
-                desc={"Uses the Blacksmithing quests that are turned in in Diremaul. This requires a summon but it contains only turnin quests.", "Can also be combined with the class book in Diremaul for additional exp."}
+                id=5, name="Diremaul", summonsNeeded=1, newQuestCountOverride=5, estExtraExp=57200, reqQuests={}, removedQuests={},
+                addedQuests=
+                {
+                    {7649,"turnin"},{7650,"turnin"},{7651,"turnin"}, -- Blacksmithing Thorium
+                    {7506,"turnin"},{7503,"turnin"},{7500,"turnin"},{7501,"turnin"},{7504,"turnin"},{7498,"turnin"},{7505,"turnin"},{7502,"turnin"},{7499,"turnin"}, -- Class Books
+                    {7507,"turnin"} -- Quel'Serrar
+                },
+                desc={"Uses the Blacksmithing quests that are turned in in Diremaul. This requires a summon but it contains only turnin quests.",
+                    "Also adds the DireMaul class books & Quel'Serrar book now that you go here for additional exp.", " ", "The Quel'Serrar book is not included in the 'estimated extra exp'"}
             }
         }
     },
@@ -45,7 +51,9 @@ local extraData = {
             {
                 id=6, name="Battleground Marks", summonsNeeded=0, estExtraExp=32000, reqQuests={}, removedQuests={},
                 addedQuests={{8430,"turnin"},{8439,"turnin"},{8369,"turnin"}},
-                desc={"The quests for turning in 3x AB, WSG & AV marks are removed with TBC.", "If you keep them on another character, you can share them to yourself while turning in the other AV quests for free exp.", " ", "The actual exp value of these in TBC is unknown, but we assume it's 32k total."}
+                desc={"The quests for turning in 3x AB, WSG & AV marks are removed with TBC.", "If you keep them on another character, you can share them to yourself while turning in the other AV quests for free exp.", 
+                " ", "The actual exp value of these in TBC is unknown, but we assume it's 32k total.",
+                " ", "Remember that you would need them on a second account, that has a character placed in TarrenMill to share them.", "The addon will not plan this for you"}
             }
         }
     },
@@ -126,7 +134,7 @@ local function ApplyQuestTypeChange(optionData, enable, printQuestChanges)
             local quest = CasualTBCPrep.QuestData.GetQuest(questID)
             if quest then
                 if enable then
-                    CasualTBCPrep.QuestData.SetQuestType(questID, disabledType)
+                    CasualTBCPrep.QuestData.SetQuestType(questID, CasualTBCPrep.QuestData.DisabledTypeText)
                     quest.ignoreReqItemsForPrep = 1
 
                     if printQuestChanges == true then
@@ -294,7 +302,12 @@ DrawList = function(frame)
                 local funcOptionHoverEnter = function(btn) if not btn then return end btn:GetFontString():SetTextColor(optionColor.r,optionColor.g,optionColor.b, 0.6) end
                 local funcOptionHoverLeave = function(btn) if not btn then return end btn:GetFontString():SetTextColor(optionColor.r,optionColor.g,optionColor.b, 1) end
 
-                local addedQuestCount = #optionData.addedQuests
+                local addedQuestCount = 0
+                if optionData.newQuestCountOverride then
+                    addedQuestCount = optionData.newQuestCountOverride
+                else
+                    addedQuestCount = #optionData.addedQuests
+                end
 
                 local ttLines = {}
                 if optionData.estExtraExp and optionData.estExtraExp > 0 then

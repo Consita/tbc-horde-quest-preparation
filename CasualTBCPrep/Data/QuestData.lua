@@ -3,6 +3,8 @@ CasualTBCPrep.QuestData = CasualTBCPrep.QuestData or {}
 local cachedPlayerClass = nil
 local lastLoadedRouteCode = nil
 
+CasualTBCPrep.QuestData.DisabledTypeText = "disabled"
+
 --[Forward Declarations]
 CasualTBCPrep.QuestData.UpdateRoutesFromQuestData = nil
 
@@ -1187,7 +1189,6 @@ function CasualTBCPrep.QuestData.IsQuestValidForUser(quest)
 	if quest == nil then
 		return false
 	end
-
 	local isQuestInRoute = CasualTBCPrep.Routing.IsQuestInCurrentRoute(quest.id)
 	if isQuestInRoute == false then
 		return false
@@ -1449,7 +1450,7 @@ function CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(onlyPrepa
 	for questID, _ in pairs(CasualTBCPrep.Routing.GetQuestsInCurrentRoute()) do
 		local questData = questsMetadata[questID]
 
-			local isValidQuest = false
+		local isValidQuest = false
 		if onlyPreparedQuests == true then
 			local hasFullyPreparedQuest, _, _, _ = CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(questID, false, false, true)
 			isValidQuest = hasFullyPreparedQuest
@@ -1457,6 +1458,9 @@ function CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(onlyPrepa
 			isValidQuest = (CasualTBCPrep.QuestData.IsQuestValidForUser(questData) == true and CasualTBCPrep.QuestData.HasCharacterCompletedQuest(questID) == false) or false
 		end
 
+		if isValidQuest then
+			isValidQuest = questData.type ~= CasualTBCPrep.QuestData.DisabledTypeText
+		end
 		if isValidQuest then
 			if questData.reqItems and (not questData.reqAnyItem or questData.reqAnyItem ~= 1) and (not questData.ignoreReqItemsForPrep or questData.ignoreReqItemsForPrep ~= 1) then
 

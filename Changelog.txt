@@ -1,6 +1,13 @@
 Changelog:
 
-3.15
+3.16
+- Removed the 0xp warning for the quest 'Medallion of Faith'
+- ExtraPrep: Fixed some issues with the Rhok'delar quests that can be added
+- ExtraPrep: Added class books & Quel'Serrar DireMaul quests to the 'Blacksmithing - Dire Maul' selection
+- ExtraPrep: Quests from unselected extraprep no longer shows up on the 'Items' tab
+- ExtraPrep: Scepter of the Sands quests now only show items if you have done their prequests
+
+3.15 (2026-01-12)
 - We realized 'questlog' quests didn't calculate the correct exp based on your level. Please check that your questlog quests are still good! If quests now give low exp, you need to fix it!
 -- 'Summoning Shadra' has been removed as a questlog quest because of this. If you already prepared it, please turn it in (don't abandon)
 -- Addon will show a warning as well the first time you log in after updating
