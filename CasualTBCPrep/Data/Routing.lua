@@ -702,6 +702,7 @@ function CasualTBCPrep.Routing.ChangeCurrentRoute(routeCode)
 	CasualTBCPrep.QuestData.LoadRoute(routeCode)
     cachedRouteQuestDic = CasualTBCPrep.Routing.GetQuestsInCurrentRoute()
 	CasualTBCPrep.WM_Route.RefreshRoute()
+    C_Timer.After(0.2, function() CasualTBCPrep.QuestData.LoadRoute(routeCode) end)
 
     CasualTBCPrep.MessageBroker.Send(CasualTBCPrep.MessageBroker.TYPE.ROUTE_CHANGED, { from=oldRouteCode, to=routeCode })
 end

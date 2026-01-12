@@ -1111,7 +1111,7 @@ function CasualTBCPrep.QuestData.LoadRoute(routeCode)
 				local questObj = questsMetadata[questID]
 				if questObj ~= nil then
 					questObj.active = false
-					questObj.exp = questObj.baseexp
+					questObj.exp = 0--questObj.baseexp
 				end
 			end
 		end
@@ -1121,6 +1121,7 @@ function CasualTBCPrep.QuestData.LoadRoute(routeCode)
 	local expForLevel = CasualTBCPrep.Experience.GetRequiredExperienceFor(charLvl, charLvl + 1)
 
 	for _, section in ipairs(CasualTBCPrep.Routing.GetActiveSectionsInCurrentRoute()) do
+		--print("Section: "..tostring(section.key)..", charLvl="..tostring(charLvl)..", exp4level="..tostring(expForLevel))
 		for _, questID in ipairs(section.quests) do
 			local questObj = questsMetadata[questID]
 
@@ -1627,7 +1628,7 @@ function CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
 						if preqQuestType and preqQuestType == "optional" then
 							-- preQuests that are optional doesn't have to be completed, if they are fully prepared (and in the questlog)
 							local isPreQuestFullyPrepared = CasualTBCPrep.QuestData.GetQuestProgressionDetailsFromID(preQuestID)
-							if not isPreQuestFullyPrepared then
+							if not isPreQuestFullyPrepared then								
 								foundQuest = preQuestObj
 								currentStep = currentStep - 1
 							end
