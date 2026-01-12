@@ -1,6 +1,8 @@
 Changelog:
 
 3.16
+- Fixed comment for 'The Twilight Lexicon'
+- Fixed item for 'The Battle of Darrowshire' quest
 - Removed the 0xp warning for the quest 'Medallion of Faith'
 - ExtraPrep: Fixed some issues with the Rhok'delar quests that can be added
 - ExtraPrep: Added class books & Quel'Serrar DireMaul quests to the 'Blacksmithing - Dire Maul' selection

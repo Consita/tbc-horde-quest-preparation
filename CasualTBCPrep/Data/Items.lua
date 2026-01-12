@@ -205,6 +205,8 @@ local itemsMetadata = {
     [18954] = { id=18954, name="Solenor's Head", rarity=1, stackSize=1, texture=136221, quests="7632,7634,7635,7630", sources="Drops from a special elite from the hunter quest that must be soloed" },
     [18955] = { id=18955, name="Artorius's Head", rarity=1, stackSize=1, texture=136221, quests="7632,7634,7635,7630", sources="Drops from a special elite from the hunter quest that must be soloed" },
     [11040] = { id=11040, name="Morrowgrain", rarity=1, stackSize=1, texture=134185, quests="3786", sources="Created from the Evergreen Pouch with 2 Un'goro Soil and some seeds. 10 Min CD.", auctionHouse=true },
+    [15209] = { id=15209, name="Relic Bundle", rarity=1, stackSize=1, texture=133639, quests="5721", sources="Used for the 'The Battle of Darrowshire' quest", auctionHouse=true },
+
 }
 
 --local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount, itemEquipLoc, itemTexture = C_Item.GetItemInfo(itemID)
