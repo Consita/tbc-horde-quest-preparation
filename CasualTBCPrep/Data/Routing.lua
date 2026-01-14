@@ -149,7 +149,7 @@ CasualTBCPrep.Routing.Routes = {
 
             ["Moonglade"] = { key="Moonglade", estTime=205, travelType=1, quests={ }, pickups={} },
             ["felwoodTown"] = { key="felwoodTown", estTime=165, travelType=3, quests={ }, pickups={} },
-            ["felwoodEmerald"] = { key="felwoodEmerald", estTime=135, travelType=2, quests={ }, pickups={} },
+            ["felwoodEmerald"] = { key="felwoodEmerald", estTime=75, travelType=3, quests={ }, pickups={} },
 
             ["Orgrimmar"] = { key="Orgrimmar", estTime=167, travelType=6, quests={ }, pickups={} },
             ["OrgrimmarDrag"] = { key="OrgrimmarDrag", estTime=0, travelType=2, quests={ }, pickups={} },
@@ -269,7 +269,7 @@ CasualTBCPrep.Routing.Routes = {
             ["Timbermaw"] = { key="Timbermaw", estTime=112, travelType=2, quests={ }, pickups={} },
             ["Moonglade"] = { key="Moonglade", estTime=205, travelType=1, quests={ }, pickups={} },
             ["felwoodTown"] = { key="felwoodTown", estTime=165, travelType=3, quests={ }, pickups={} },
-            ["felwoodEmerald"] = { key="felwoodEmerald", estTime=135, travelType=2, quests={ }, pickups={} },
+            ["felwoodEmerald"] = { key="felwoodEmerald", estTime=75, travelType=3, quests={ }, pickups={} },
             ["Orgrimmar"] = { key="Orgrimmar", estTime=167, travelType=6, quests={ }, pickups={} },
             ["OrgrimmarDrag"] = { key="OrgrimmarDrag", estTime=0, travelType=2, quests={ }, pickups={} },
             ["OrgrimmarBank"] = { key="OrgrimmarBank", estTime=0, travelType=2, quests={ }, pickups={}, canHaveZeroQuests=true },
@@ -405,9 +405,8 @@ CasualTBCPrep.Routing.Routes = {
             ["Timbermaw"] = { key="Timbermaw", estTime=112, travelType=2, quests={ }, pickups={} },
             ["Moonglade"] = { key="Moonglade", estTime=205, travelType=1, quests={ }, pickups={} },
             ["felwoodTown"] = { key="felwoodTown", estTime=165, travelType=3, quests={ }, pickups={} },
-            ["felwoodEmerald"] = { key="felwoodEmerald", estTime=135, travelType=2, quests={ }, pickups={} },
-            ["Ashenvale"] = { key="Ashenvale", estTime=184, travelType=2, travelText="south. Hug the mountains east, jump down after the satyr camp", target="Splintertree Post, Ashenvale", quests={ }, pickups={}, canHaveZeroQuests=true },
-            ["AzsharaFP"] = { key="AzsharaFP", estTime=110, travelType=3, quests={ }, pickups={} },
+            ["felwoodEmerald"] = { key="felwoodEmerald", estTime=75, travelType=3, quests={ }, pickups={} },
+            ["AzsharaFP"] = { key="AzsharaFP", estTime=170, travelType=3, quests={ }, pickups={} },
             ["Orgrimmar"] = { key="Orgrimmar", estTime=244, travelType=3, quests={ }, pickups={} },
             ["OrgrimmarDrag"] = { key="OrgrimmarDrag", estTime=0, travelType=2, quests={ }, pickups={} },
             ["OrgrimmarBank"] = { key="OrgrimmarBank", estTime=0, travelType=2, quests={ }, pickups={}, canHaveZeroQuests=true },
@@ -452,10 +451,10 @@ CasualTBCPrep.Routing.Routes = {
             },
             [4] = {
                 from = "wsEverlook",
-                to = "Ashenvale"
+                to = "AzsharaFP"
             },
             [5] = {
-                from = "Ashenvale",
+                from = "AzsharaFP",
                 to = "Orgrimmar"
             },
             [6] = {

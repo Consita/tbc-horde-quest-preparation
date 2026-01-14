@@ -11,6 +11,7 @@ local taxiMetadata = {
     ["Nighthaven, Moonglade"] = { continent=0, isHorde=true, isAlly=true },
     ["Moonglade"] = { continent=0, isHorde=true, isAlly=true },
     ["Everlook, Winterspring"] = { continent=0, isHorde=true, isAlly=true },
+
     ["Bloodvenom Post, Felwood"] = { continent=0, isHorde=true, isAlly=false },
     ["Valormok, Azshara"] = { continent=0, isHorde=true, isAlly=false },
     ["Orgrimmar, Durotar"] = { continent=0, isHorde=true, isAlly=false },
@@ -66,7 +67,14 @@ local taxiMetadata = {
     ["Darkshire, Duskwood"] = { continent=1, isHorde=false, isAlly=true },
     ["Nethergarde Keep, Blasted Lands"] = { continent=1, isHorde=false, isAlly=true },
 
+    -- TBC Neutral
+    ["Emerald Sanctuary, Felwood"] = { continent=0, isHorde=true, isAlly=true },
+    ["Zul'Aman, Ghostlands"] = { continent=0, isHorde=true, isAlly=true },
+
     -- TBC Horde
+    ["Mudsprocket, Dustwallow Marsh"] = { continent=0, isHorde=true, isAlly=true },
+    ["Silvermoon City"] = { continent=0, isHorde=true, isAlly=false },
+    ["Tranquillien, Ghostlands"] = { continent=0, isHorde=true, isAlly=false },
     ["Hellfire Peninsula, The Dark Portal, Horde"] = { continent=1, isHorde=true, isAlly=false },
     ["Thrallmar, Hellfire Peninsula"] = { continent=2, isHorde=true, isAlly=false },
 
@@ -79,6 +87,7 @@ local neededTaxiNodes = {
 	[CasualTBCPrep.Routing.RouteCodeMain] = {
 		[0] = { -- Neutral
 			["Marshal's Refuge, Un'Goro Crater"] = { }, -- Marshal's Refuge, Un'Goro, NodeID=79
+            ["Emerald Sanctuary, Felwood"] = { }
 		},
 		[1] = { -- Horde
 			["Kargath, Badlands"] = { }, -- Kargath, Badlands, NodeID=21
@@ -92,6 +101,7 @@ local neededTaxiNodes = {
 	[CasualTBCPrep.Routing.RouteCodeStrat] = {
 		[0] = { -- Neutral
 			["Marshal's Refuge, Un'Goro Crater"] = { }, -- Marshal's Refuge, Un'Goro, NodeID=79
+            ["Emerald Sanctuary, Felwood"] = { }
 		},
 		[1] = { -- Horde
 			["Kargath, Badlands"] = { }, -- Kargath, Badlands, NodeID=21
@@ -105,6 +115,7 @@ local neededTaxiNodes = {
 	[CasualTBCPrep.Routing.RouteCodeSolo] = {
 		[0] = { -- Neutral
 			["Marshal's Refuge, Un'Goro Crater"] = { }, -- Marshal's Refuge, Un'Goro, NodeID=79
+            ["Emerald Sanctuary, Felwood"] = { }
 		},
 		[1] = { -- Horde
 			["Tarren Mill, Hillsbrad"] = { }, -- Tarren Mill, Hillsbrad, NodeID=13

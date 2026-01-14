@@ -2,6 +2,7 @@ Changelog:
 
 3.17 (2026-01-14)
 - Fixed the DireMaul Blacksmithing selection crashing the addon
+- Added new flightpaths added to Kalimdor & Eastern Kingdoms
 
 3.16 (2016-01-12)
 - Removed the 0xp warning for the quest 'Medallion of Faith'
