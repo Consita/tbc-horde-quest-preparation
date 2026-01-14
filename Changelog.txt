@@ -1,6 +1,9 @@
 Changelog:
 
-3.16
+3.17 (2026-01-14)
+- Fixed the DireMaul Blacksmithing selection crashing the addon
+
+3.16 (2016-01-12)
 - Removed the 0xp warning for the quest 'Medallion of Faith'
 - ExtraPrep: Fixed some issues with the Rhok'delar quests that can be added
 - ExtraPrep: Added class books & Quel'Serrar DireMaul quests to the 'Blacksmithing - Dire Maul' selection

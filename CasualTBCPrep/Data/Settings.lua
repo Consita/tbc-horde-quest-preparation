@@ -33,7 +33,7 @@ CasualTBCPrep.Settings.AllSettings = {
 	{ key=CasualTBCPrep.Settings.SelectedTheme, 		dataType="text",	type="cmb",	defaultValueGlobal=2,	defaultValueChar=-1,	values={ { text="Use Global", value=-1}, { text="Default", value="DEFAULT" }, { text="Distinct", value="DISTINCT"}, { text="Deuteranopia", value="CB_DEUTE"}, { text="DeuteranopiaGPT", value="CB_DEUTE_GPT"}, { text="Tritanopia", value="CB_TRITAN"}, { text="TritanopiaGPT", value="CB_TRITAN_GPT"}},	name="Selected Theme", description={ "Which theme to use for the UI.", " ", "This changes the colors in the UI, but does not affect the RXP guides" } },
 }
 
-CasualTBCPrep.Settings.CurrentMajorVersionValue = 3.15
+CasualTBCPrep.Settings.CurrentMajorVersionValue = 3.17
 CasualTBCPrep.Settings.VersionCheck_RouteSelection = 3.0
 CasualTBCPrep.Settings.VersionCheck_QuestlogOverhaul1 = 3.15
 

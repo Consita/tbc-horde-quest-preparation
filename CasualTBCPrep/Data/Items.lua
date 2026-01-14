@@ -205,6 +205,16 @@ local itemsMetadata = {
     [18954] = { id=18954, name="Solenor's Head", rarity=1, stackSize=1, texture=136221, quests="7632,7634,7635,7630", sources="Drops from a special elite from the hunter quest that must be soloed" },
     [18955] = { id=18955, name="Artorius's Head", rarity=1, stackSize=1, texture=136221, quests="7632,7634,7635,7630", sources="Drops from a special elite from the hunter quest that must be soloed" },
     [11040] = { id=11040, name="Morrowgrain", rarity=1, stackSize=1, texture=134185, quests="3786", sources="Created from the Evergreen Pouch with 2 Un'goro Soil and some seeds. 10 Min CD.", auctionHouse=true },
+    [18364] = { id=18364, name="The Emerald Dream...", rarity=3, stackSize=1, texture=133742, quests="7506", sources="Dire Maul Drop", auctionHouse=true },
+    [18361] = { id=18361, name="The Greatest Race of Hunters", rarity=3, stackSize=1, texture=133734, quests="7503", sources="Dire Maul Drop", auctionHouse=true },
+    [18358] = { id=18358, name="The Arcanist's Cookbook", rarity=3, stackSize=1, texture=133733, quests="7500", sources="Dire Maul Drop", auctionHouse=true },
+    [18359] = { id=18359, name="The Light and How To Swing It", rarity=3, stackSize=1, texture=133743, quests="7501", sources="Dire Maul Drop", auctionHouse=true },
+    [18362] = { id=18362, name="Holy Bologna: What the Light Won't Tell You", rarity=3, stackSize=1, texture=133740, quests="7504", sources="Dire Maul Drop", auctionHouse=true },
+    [18356] = { id=18356, name="Garona: A Study on Stealth and Treachery", rarity=3, stackSize=1, texture=133738, quests="7498", sources="Dire Maul Drop", auctionHouse=true },
+    [18363] = { id=18363, name="Frost Shock and You", rarity=3, stackSize=1, texture=133736, quests="7505", sources="Dire Maul Drop", auctionHouse=true },
+    [18360] = { id=18360, name="Harnessing Shadows", rarity=3, stackSize=1, texture=133737, quests="7502", sources="Dire Maul Drop", auctionHouse=true },
+    [18357] = { id=18357, name="Codex of Defense", rarity=3, stackSize=1, texture=133739, quests="7499", sources="Dire Maul Drop", auctionHouse=true },
+    [18401] = { id=18401, name="Nostro's Compendium", rarity=3, stackSize=1, texture=133743, quests="7507", sources="", auctionHouse=true },
 }
 
 --local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount, itemEquipLoc, itemTexture = C_Item.GetItemInfo(itemID)
