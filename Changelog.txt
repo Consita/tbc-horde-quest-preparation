@@ -5,6 +5,9 @@ Changelog:
 - Fixed item for 'The Battle of Darrowshire' quest
 - Fixed the DireMaul Blacksmithing selection crashing the addon
 - Added new flightpaths added to Kalimdor & Eastern Kingdoms
+- Changed all routes to fly to Emerald Sanctuary in felwood now.
+- Companion: Now picks up mail in Felwood at Bloodvenom Post (Was that mailbox always there??)
+- Now only shows the 3.15 questlog warning for level 60 characters, and it should stop showing in the next update (3.18)
 
 3.16 (2016-01-12)
 - Removed the 0xp warning for the quest 'Medallion of Faith'

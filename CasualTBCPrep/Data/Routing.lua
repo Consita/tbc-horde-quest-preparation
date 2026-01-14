@@ -180,7 +180,7 @@ CasualTBCPrep.Routing.Routes = {
             ["TheDarkPortal"] = { key="TheDarkPortal", estTime=45, travelType=12, quests={ }, pickups={}, canHaveZeroQuests=true },
             ["ExtraFeature"] = { key="ExtraFeature", estTime=0, travelType=4, quests={}, pickups={}, canHaveZeroQuests=true }
         },
-        mailboxCount = 7,
+        mailboxCount = 8,
         mailboxData = {
             [1] = { -- Bags
                 from = "Badlands",
@@ -192,21 +192,25 @@ CasualTBCPrep.Routing.Routes = {
             },
             [3] = {
                 from = "TanarisTown",
-                to = "Orgrimmar"
+                to = "Moonglade"
             },
             [4] = {
+                from = "felwoodTown",
+                to = "Orgrimmar"
+            },
+            [5] = {
                 from = "OrgrimmarDrag",
                 to = "BayOfStorms"
             },
-            [5] = {
+            [6] = {
                 from = "EPLTown",
                 to = "zgSTV"
             },
-            [6] = {
+            [7] = {
                 from = "AV",
                 to = "ThunderBluff"
             },
-            [7] = {
+            [8] = {
                 from = "Stonard",
                 to = "TheDarkPortal"
             },
@@ -314,7 +318,7 @@ CasualTBCPrep.Routing.Routes = {
             ["TheDarkPortal"] = { key="TheDarkPortal", estTime=45, travelType=12, quests={ }, pickups={}, canHaveZeroQuests=true },
             ["ExtraFeature"] = { key="ExtraFeature", estTime=0, travelType=4, quests={}, pickups={}, canHaveZeroQuests=true }
         },
-        mailboxCount = 7,
+        mailboxCount = 8,
         mailboxData = {
             [1] = { -- Bags
                 from = "Badlands",
@@ -326,21 +330,25 @@ CasualTBCPrep.Routing.Routes = {
             },
             [3] = {
                 from = "TanarisTown",
-                to = "Orgrimmar"
+                to = "Moonglade"
             },
             [4] = {
+                from = "felwoodTown",
+                to = "Orgrimmar"
+            },
+            [5] = {
                 from = "OrgrimmarDrag",
                 to = "BayOfStorms"
             },
-            [5] = {
+            [6] = {
                 from = "EPLTown",
                 to = "zgSTV"
             },
-            [6] = {
+            [7] = {
                 from = "AV",
                 to = "ThunderBluff"
             },
-            [7] = {
+            [8] = {
                 from = "Stonard",
                 to = "TheDarkPortal"
             },
@@ -406,7 +414,8 @@ CasualTBCPrep.Routing.Routes = {
             ["Moonglade"] = { key="Moonglade", estTime=205, travelType=1, quests={ }, pickups={} },
             ["felwoodTown"] = { key="felwoodTown", estTime=165, travelType=3, quests={ }, pickups={} },
             ["felwoodEmerald"] = { key="felwoodEmerald", estTime=75, travelType=3, quests={ }, pickups={} },
-            ["AzsharaFP"] = { key="AzsharaFP", estTime=170, travelType=3, quests={ }, pickups={} },
+            ["Ashenvale"] = { key="Ashenvale", estTime=184, travelType=2, travelText="south. Hug the mountains east, jump down after the satyr camp", target="Splintertree Post, Ashenvale", quests={ }, pickups={}, canHaveZeroQuests=true },
+            ["AzsharaFP"] = { key="AzsharaFP", estTime=110, travelType=3, quests={ }, pickups={} },
             ["Orgrimmar"] = { key="Orgrimmar", estTime=244, travelType=3, quests={ }, pickups={} },
             ["OrgrimmarDrag"] = { key="OrgrimmarDrag", estTime=0, travelType=2, quests={ }, pickups={} },
             ["OrgrimmarBank"] = { key="OrgrimmarBank", estTime=0, travelType=2, quests={ }, pickups={}, canHaveZeroQuests=true },
@@ -451,10 +460,10 @@ CasualTBCPrep.Routing.Routes = {
             },
             [4] = {
                 from = "wsEverlook",
-                to = "AzsharaFP"
+                to = "Moonglade"
             },
             [5] = {
-                from = "AzsharaFP",
+                from = "felwoodTown",
                 to = "Orgrimmar"
             },
             [6] = {
