@@ -61,7 +61,7 @@ end
 
 function CasualTBCPrep.GhettoHearth()
     LeaveParty()
-    InviteUnit("abcd")
+    C_PartyInfo.InviteUnit("abcd")
     C_Timer.After(1, function()
         LeaveParty()
     end)
