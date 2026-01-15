@@ -1,7 +1,11 @@
 Changelog:
 
-3.18
+3.17c
 - Fixed the "/tbcprep ghetto" command to work with the TBC Prepatch changes
+- Fixed Paladin T0,5 questline in prep guide
+
+3.17b
+- Actually fixed item for 'The Battle of Darrowshire' quest
 
 3.17 (2026-01-14)
 - Fixed comment for 'The Twilight Lexicon'
