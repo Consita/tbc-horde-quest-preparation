@@ -486,7 +486,7 @@ RXPGuides.RegisterGuide([[
 			.accept 8918 >>Accept An Earnest Proposition << Shaman
 			.accept 8919 >>Accept An Earnest Proposition << Warlock
 			.accept 8920 >>Accept An Earnest Proposition << Warrior
-			.accept 8908 << Paladin
+			.accept 10493 << Paladin
 			.target Mokvar
 
 		step
@@ -695,7 +695,7 @@ RXPGuides.RegisterGuide([[
 			.complete 8918,1 << Shaman --Silithus Venom Sample (x15)
 			.complete 8919,1 << Warlock --Silithus Venom Sample (x15)
 			.complete 8920,1 << Warrior --Silithus Venom Sample (x15)
-			.complete 8908,1 << Paladin --Silithus Venom Sample (x15)
+			.complete 10493,1 << Paladin --Silithus Venom Sample (x15)
 			.mob Sand Skitterer
 			.mob Stonelash Pincer
 			.mob Stonelash Scorpid
@@ -777,7 +777,7 @@ RXPGuides.RegisterGuide([[
 			.collect 16671,1,8918,1 << Shaman --Bindings of Elements (x1)
 			.collect 16703,1,8919,1 << Warlock --Dreadmist Bracers (x1)
 			.collect 16735,1,8920,1 << Warrior --Bracers of Valor (x1)
-			.collect 16722,1,8908,1 << Paladin
+			.collect 16722,1,10493,1 << Paladin
 			.turnin 8913 >>Turn in An Earnest Proposition << Druid
 			.turnin 8914 >>Turn in An Earnest Proposition << Hunter
 			.turnin 8915 >>Turn in An Earnest Proposition << Mage
@@ -786,7 +786,7 @@ RXPGuides.RegisterGuide([[
 			.turnin 8918 >>Turn in An Earnest Proposition << Shaman
 			.turnin 8919 >>Turn in An Earnest Proposition << Warlock
 			.turnin 8920 >>Turn in An Earnest Proposition << Warrior
-			.turnin 8908 << Paladin
+			.turnin 10493 << Paladin
 			.accept 8923 >>Accept A Supernatural Device
 			.target Mokvar
 
