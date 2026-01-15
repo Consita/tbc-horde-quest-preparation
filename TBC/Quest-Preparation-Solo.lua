@@ -470,6 +470,7 @@ RXPGuides.RegisterGuide([[
 			.accept 8918 >>Accept An Earnest Proposition << Shaman
 			.accept 8919 >>Accept An Earnest Proposition << Warlock
 			.accept 8920 >>Accept An Earnest Proposition << Warrior
+			.accept 8908 << Paladin
 			.target Mokvar
 
 		step
@@ -755,6 +756,7 @@ RXPGuides.RegisterGuide([[
 			.complete 8918,1 << Shaman --Silithus Venom Sample (x15)
 			.complete 8919,1 << Warlock --Silithus Venom Sample (x15)
 			.complete 8920,1 << Warrior --Silithus Venom Sample (x15)
+			.complete 8908,1 << Paladin --Silithus Venom Sample (x15)
 			.mob Sand Skitterer
 			.mob Stonelash Pincer
 			.mob Stonelash Scorpid
@@ -803,6 +805,7 @@ RXPGuides.RegisterGuide([[
 			>>|cRXP_WARN_You will need 20 gold and|r |T132601:0|t[|cRXP_LOOT_Bindings of Elements|r] |cRXP_WARN_to turn in this quest|r << Shaman
 			>>|cRXP_WARN_You will need 20 gold and|r |T132612:0|t[|cRXP_LOOT_Dreadmist Bracers|r] |cRXP_WARN_to turn in this quest|r << Warlock
 			>>|cRXP_WARN_You will need 20 gold and|r |T132617:0|t[|cRXP_LOOT_Bracers of Valor|r] |cRXP_WARN_to turn in this quest|r << Warrior
+			>>|cRXP_WARN_You will need 20 gold and|r |T132617:0|t[|cRXP_LOOT_	Lightforge Bracers|r] |cRXP_WARN_to turn in this quest|r << Paladin
 			.collect 16714,1,8913,1 << Druid --Wildheart Bracers (x1)
 			.collect 16681,1,8914,1 << Hunter --Beaststalker's Bindings (x1)
 			.collect 16683,1,8915,1 << Mage --Magister's Bindings (x1)
@@ -811,6 +814,7 @@ RXPGuides.RegisterGuide([[
 			.collect 16671,1,8918,1 << Shaman --Bindings of Elements (x1)
 			.collect 16703,1,8919,1 << Warlock --Dreadmist Bracers (x1)
 			.collect 16735,1,8920,1 << Warrior --Bracers of Valor (x1)
+			.collect 16722,1,8908,1 << Paladin
 			.turnin 8913 >>Turn in An Earnest Proposition << Druid
 			.turnin 8914 >>Turn in An Earnest Proposition << Hunter
 			.turnin 8915 >>Turn in An Earnest Proposition << Mage
@@ -819,6 +823,7 @@ RXPGuides.RegisterGuide([[
 			.turnin 8918 >>Turn in An Earnest Proposition << Shaman
 			.turnin 8919 >>Turn in An Earnest Proposition << Warlock
 			.turnin 8920 >>Turn in An Earnest Proposition << Warrior
+			.turnin 8908 << Paladin
 			.accept 8923 >>Accept A Supernatural Device
 			.target Mokvar
 
