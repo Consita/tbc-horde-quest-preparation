@@ -6,7 +6,7 @@ local mainText_qlog = "This quest is used for TBC Quest Preparation!\nBe careful
 local mainText_optional = "This quest can be used for TBC Quest Preparation as an optional questlog quest!\n\nBe sure to check with /tbcprep that you don't need it before turning it in.\n\nTo turn off this warning, disable \"Optional Warnings\"\nin the /tbcprep settings."
 local mainText_turnin = "This quest is turned in during TBC Release, this quest should NOT be in your questlog until release.\n\nTo turn off this warning, disable \"Quest Turnin Warnings\"\nin the /tbcprep settings."
 local mainText_completing  = "You just tried to complete a quest used on TBC Release for EXP!\nThis is currently being blocked!\n\nTo turn off this warning, disable \"Quest Completion Warnings\"\nin the /tbcprep settings."
-local mainText_itemdelete = "You just tried to delete an Item needed for TBC Prep Quests.\nThis item won't be blocked again for this sesson.\n\nIf you really want to delete it, do it again"
+local mainText_itemdelete = "You just tried to delete an Item needed for TBC Prep Quests.\nThis item won't be blocked again for this session.\n\nIf you really want to delete it, do it again"
 local mainText_warn_qlog_overhaul = "WARNING. In the 3.15 update (2026-01-12) we realized questlog quests didn't calculate the correct exp based on your level.\r"
 	.."Please check that your questlog quests are still good, it depends on how much you prepared!\r\rIf any of your questlog quests now give low exp, you may need to replace it!\r\r"
 	.."For example, we noticed that 'Summoning Shadra' will most likely be turned in at 61 or later, meaning it ONLY gives 9800 exp, not 12250.\r\r"
