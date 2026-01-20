@@ -179,7 +179,7 @@ local itemsMetadata = {
     [20560] = { id=20560, name="Alterac Valley Mark of Honor", rarity=2, stackSize=100, texture=133308, quests="8369", sources="Battlegrounds" },
     [7391] = { id=7391, name="Swift Boots", rarity=2, stackSize=1, texture=132542, sources="Leatherworking" },
     [11018] = { id=11018, name="Un'Goro Soil", rarity=1, stackSize=100, texture=133849, quests="3761", sources="Lootable dirt objects in Un'Goro Crater", auctionHouse=true },
-    [10575] = { id=10575, name="Black Dragonflight Molt", rarity=1, stackSize=10, texture=134430, sources="Searing Gorge Quest or dropped by Burning Steppes elite summoned by Cyrus Therepentous. Used by either of the two Taste of Flame quests" },
+    [10575] = { id=10575, name="Black Dragonflight Molt", rarity=1, stackSize=10, texture=134430, quests="4022,4023", sources="Searing Gorge Quest or dropped by Burning Steppes elite summoned by Cyrus Therepentous. Used by either of the two Taste of Flame quests" },
     [11371] = { id=11371, name="Dark Iron Bar", rarity=1, stackSize=20, texture=133233, quests="8947", sources="Mining", auctionHouse=true },
     [12810] = { id=12810, name="Enchanted Leather", rarity=1, stackSize=20, texture=134418, quests="8947", sources="Enchanting, Darkmoon Faire vendor (limited)", auctionHouse=true },
     [15407] = { id=15407, name="Cured Rugged Hide", rarity=1, stackSize=20, texture=134355, quests="8947", sources="Leatherworking", auctionHouse=true },
