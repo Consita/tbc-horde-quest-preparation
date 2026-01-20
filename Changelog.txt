@@ -7,7 +7,8 @@ Changelog:
 - Added quest comment for Anthion's Strange Request
 - Fixed the second "Of Love and Family" having the first "Of Love and Family" as prequest in the strat route.
 - The "Black Dragonflight Molt" Item now has its quests correctly assigned. It should now show the item tooltip.
- 
+- Quests tab now doesn't include completed quests, as well as ignored quests, in the "total quest count" at the top
+
 3.17c
 - Fixed the "/tbcprep ghetto" command to work with the TBC Prepatch changes
 - Fixed Paladin T0,5 questline in prep guide

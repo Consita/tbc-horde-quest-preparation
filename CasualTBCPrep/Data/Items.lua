@@ -214,12 +214,12 @@ local itemsMetadata = {
     [18363] = { id=18363, name="Frost Shock and You", rarity=3, stackSize=1, texture=133736, quests="7505", sources="Dire Maul Drop", auctionHouse=true },
     [18360] = { id=18360, name="Harnessing Shadows", rarity=3, stackSize=1, texture=133737, quests="7502", sources="Dire Maul Drop", auctionHouse=true },
     [18357] = { id=18357, name="Codex of Defense", rarity=3, stackSize=1, texture=133739, quests="7499", sources="Dire Maul Drop", auctionHouse=true },
-    [18401] = { id=18401, name="Nostro's Compendium", rarity=3, stackSize=1, texture=133743, quests="7507", sources="Drops from Shazzrah in Molten Core", auctionHouse=true },
-    [17332] = { id=17332, name="Hand of Shazzrah", rarity=1, stackSize=1, texture=132953, quests="6824", sources="Drops from Lucifron in Molten Core" },
-    [17329] = { id=17329, name="Hand of Lucifron", rarity=1, stackSize=1, texture=132960, quests="6824", sources="Drops from Gehennas in Molten Core" },
-    [17331] = { id=17331, name="Hand of Gehennas", rarity=1, stackSize=1, texture=135817, quests="6824", sources="Drops from Sulfuron in Molten Core" },
-    [17330] = { id=17330, name="Hand of Sulfuron", rarity=1, stackSize=1, texture=132937, quests="6824", sources="Reward from Kirtonos the Herald Quest" },
-    [13544] = { id=13544, name="Spectral Essence", rarity=2, stackSize=1, texture=134337, quests="5462", sources="" },
+    [18401] = { id=18401, name="Nostro's Compendium", rarity=3, stackSize=1, texture=133743, quests="7507", sources="Dire Maul Drop", auctionHouse=true },
+    [17332] = { id=17332, name="Hand of Shazzrah", rarity=1, stackSize=1, texture=132953, quests="6824", sources="Drops from Shazzrah in Molten Core" },
+    [17329] = { id=17329, name="Hand of Lucifron", rarity=1, stackSize=1, texture=132960, quests="6824", sources="Drops from Lucifron in Molten Core" },
+    [17331] = { id=17331, name="Hand of Gehennas", rarity=1, stackSize=1, texture=135817, quests="6824", sources="Drops from Gehennas in Molten Core" },
+    [17330] = { id=17330, name="Hand of Sulfuron", rarity=1, stackSize=1, texture=132937, quests="6824", sources="Drops from Sulfuron in Molten Core" },
+    [13544] = { id=13544, name="Spectral Essence", rarity=2, stackSize=1, texture=134337, quests="5462", sources="Reward from Kirtonos the Herald Quest" },
 }
 
 --local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount, itemEquipLoc, itemTexture = C_Item.GetItemInfo(itemID)

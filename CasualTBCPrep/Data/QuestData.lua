@@ -978,7 +978,8 @@ local function LoadRouteQuestSpecifics_Strat()
 	RemovePrequestFromQuest(5463, 5462) -- The Dying, Ras Frostwhisper removed as Prequest
 	RemovePrequestFromQuest(5464, 5462) -- The Dying, Ras Frostwhisper removed as Prequest
 	RemovePrequestFromQuest(5057, 5056) -- Shy-Rotam is made qlog above, so it's no longer a preQ to Past Endeavors
-	RemovePrequestFromQuest(5848, 5846) -- "Of Love and Family 1" should not be prequest to "Of Love and Family 2" in strat
+	RemovePrequestFromQuest(5848, 5846) -- "Of Love and Family 1" should not be prequest to "Of Love and Family 2" in strat route
+	RemovePrequestFromQuest(5861, 5846) -- "Of Love and Family" should not be prequest to "Find Myranda" in strat route
 
 	RemovePrequestFromQuest(5263, 5251) -- Above and Beyond - Whole qline is done in strat
 	RemovePrequestFromQuest(5263, 5262) -- Above and Beyond - Whole qline is done in strat
@@ -1645,10 +1646,10 @@ function CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
                 if preQuestObj then
                 	if not CasualTBCPrep.QuestData.HasCharacterCompletedQuest(preQuestID) then
 						local preqQuestType = CasualTBCPrep.QuestData.GetQuestType(preQuestID)
-						if preqQuestType and preqQuestType == "optional" then
+						if preqQuestType and (preqQuestType == "optional"  or preqQuestType == "qlog") then
 							-- preQuests that are optional doesn't have to be completed, if they are fully prepared (and in the questlog)
 							local isPreQuestFullyPrepared = CasualTBCPrep.QuestData.GetQuestProgressionDetailsFromID(preQuestID)
-							if not isPreQuestFullyPrepared then								
+							if not isPreQuestFullyPrepared then
 								foundQuest = preQuestObj
 								currentStep = currentStep - 1
 							end

@@ -320,9 +320,9 @@ local function LoadSpecificQuestList(wMain, xOffset, yOffset, headerText, header
 		-- Process completed quests
 		for i, quest in ipairs(completedQuests) do
 			local isIgnored = CasualTBCPrep.Settings.GetQuestIgnoredState(CasualTBCPrep.Routing.CurrentRouteCode, quest.quest.id) == true
-			if not isIgnored then
-				totalCountNonIgnored = totalCountNonIgnored + 1
-			end
+			-- if not isIgnored then
+			-- 	totalCountNonIgnored = totalCountNonIgnored + 1
+			-- end
 
 			table.insert(newList, { wrap=quest, completed=true })
 		end
