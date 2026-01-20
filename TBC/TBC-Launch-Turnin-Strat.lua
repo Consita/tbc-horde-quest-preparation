@@ -1117,6 +1117,11 @@ RXPGuides.RegisterGuide([[
 		.zoneskip Felwood
 
 	step
+		.goto Felwood,34.80,52.94
+		+Open your |cRXP_PICK_Mailbox|r and collect your items via "/tbc companion"
+		>>Once done, or when you picked up your items yourself, complete this step manually	
+
+	step
 		#completewith next
 		.use 12558 >>Click |T133298:0|t[Blue-feathered Necklace] and accept |cRXP_LOOT_Guarding Secrets|r
 		.accept 4882
@@ -1336,11 +1341,33 @@ RXPGuides.RegisterGuide([[
 		.goto Orgrimmar,31.74,37.82
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thrall|r
 		.turnin -4941
+		.turnin -4974
 		.turnin -4004
 		.turnin -7490
 		.turnin -7783
 		.turnin -8485
 		.target Thrall
+
+	step
+		.goto Orgrimmar,31.74,37.82
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thrall|r
+		.accept 6566
+		.target Thrall	
+		.isQuestTurnedIn 4974	
+
+	step
+		.goto Orgrimmar,31.74,37.82
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thrall|r
+		.complete 6566
+		.target Thrall	
+		.isOnQuest 6566	
+		.skipgossip	
+
+	step
+		.goto Orgrimmar,31.74,37.82
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thrall|r
+		.turnin -6566
+		.target Thrall		
 
 	step
 		.goto Orgrimmar,31.74,37.82
