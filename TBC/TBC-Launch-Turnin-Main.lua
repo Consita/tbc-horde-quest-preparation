@@ -1358,7 +1358,7 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Orgrimmar,31.74,37.82
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thrall|r
-		.complete 6566
+		.complete 6566,1
 		.target Thrall	
 		.isOnQuest 6566	
 		.skipgossip	
@@ -1747,14 +1747,7 @@ RXPGuides.RegisterGuide([[
 		.turnin -5531
 		.accept 5212
 		.accept 5529
-		.target Betina Bigglezink
-
-	step	
-		.goto Eastern Plaguelands,81.5,59.6
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r	
-		.accept 4771
-		.target Betina Bigglezink
-		.isQuestTurnedIn 5531		
+		.target Betina Bigglezink	
 
 	step
 		.goto Eastern Plaguelands,79.60,63.87
@@ -1798,14 +1791,6 @@ RXPGuides.RegisterGuide([[
 		.target Nathanos Blightcaller	
 		.isQuestTurnedIn 6136		
 
-	step	
-		#label EPL1
-		.goto Eastern Plaguelands,7.6,43.6
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tirion Fordring|r
-		.accept 5846
-		.target Tirion Fordring
-		.isQuestTurnedIn 5845
-
 	step
 		.goto Western Plaguelands,62.59,58.55
 		>>Click the |cRXP_PICK_Scourge Cauldron|r
@@ -1818,55 +1803,9 @@ RXPGuides.RegisterGuide([[
 		.turnin -5846
 		.target Artist Renfray
 
-	step
-		.goto Western Plaguelands,65.7,75.4
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Artist Renfray|r
-		.accept 5848	
-		.target Artist Renfray
-		.isQuestTurnedIn 5846	
-
-	step
-		.goto Western Plaguelands,70.6,74.0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Magistrate Marduke|r
-		.equip 13,13544 >> |cRXP_WARN_Equip the|r |T134337:0|t|cRXP_LOOT_[Spectral Essence]|r
-		.accept 5462
-		.target Magistrate Marduke
-		.isQuestTurnedIn 5461
-
-	step
-		#completewith next
-		.goto 1415,52.8,26.4
-		.subzone 2057 >>Enter |cFFfa9602Scholomance|r
-
-	step
-		>>Kill 20 |cRXP_ENEMY_Plagued Hatchlings|r inside |cFFfa9602Scholomance|r
-		.mob Plagued Hatchling
-		.complete 5529,1
-		.isOnQuest 5529
-
-	step
-		#completewith next
-		>>At least one person in your group needs to have the |cRXP_LOOT_Viewing Room Key|r. If you did not prefarm it you have to kill |cRXP_ENEMY_Rattlegore|r
-		.collect 13873
-		.mob Rattlegore
-
-	step
-		.use 12368 >>Place |T132596:0|t[Dawn's Gambit] in the Viewing Room of |cFFfa9602Scholomance|r and kill |cRXP_ENEMY_Vectus|r
-		.complete 4771,1
-		.complete 4771,2
-		.isOnQuest 4771
-		.mob Vectus
-
-	step
-		#completewith EPL2
-		.zone Eastern Plaguelands >> Hearth to |cFFfa9602Lights Hope Chapel|r
-		.use 6948
-		.zoneskip Eastern Plaguelands
-
 	step	
 		.goto Eastern Plaguelands,81.5,59.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r	
-		.turnin -4771
 		.turnin -5529
 		.target Betina Bigglezink
 
@@ -1874,33 +1813,13 @@ RXPGuides.RegisterGuide([[
 		.goto Eastern Plaguelands,81.7,57.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Leonid Barthalomew the Revered|r	
 		.turnin -5462
-		.target Leonid Barthalomew the Revered	
-		
-	step	
-		.goto Eastern Plaguelands,81.7,57.8
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Leonid Barthalomew the Revered|r	
-		.accept 5463
-		.target Leonid Barthalomew the Revered	
-		.isQuestTurnedIn 5462		
-
-	step
-		#completewith StratholmeEntry1
-		.use 15736 >>Use |T133715:0|t[Smokey's Special Compound] to destroy |cRXP_ENEMY_Scourge Ziggurats|r
-		>>Try to destroy at least 4 before entering Stratholme
-		.complete 6041,1
+		.target Leonid Barthalomew the Revered		
 		
 	step
 		.goto Eastern Plaguelands,14.45,33.74
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Egan|r
 		.turnin -5281
-		.target Egan
-
-	step
-		.goto Eastern Plaguelands,14.45,33.74
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Egan|r
-		.accept 5282
-		.target Egan
-		.isQuestTurnedIn 5281		
+		.target Egan	
 
 	step
 		.goto Eastern Plaguelands,30.86,20.13,0
@@ -1911,29 +1830,9 @@ RXPGuides.RegisterGuide([[
 		.target Anthion Harmon
 
 	step
-		#label EPL2
-		.goto Eastern Plaguelands,30.86,20.13,0
-		.goto Eastern Kingdoms,55.06,17.51
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anthion Harmon|r
-		.use 22115 >>|cRXP_WARN_Use the|r |T133878:0|t[Extra-Dimensional Ghost Revealer] |cRXP_WARN_to reveal|r |cRXP_FRIENDLY_Anthion|r
-		.accept 8945
-		.target Anthion Harmon
-		.isQuestTurnedIn 8930		
-
-	step
 		#completewith StratholmeLive
 		#label StratholmeEntry1
 		.goto Eastern Kingdoms,55.12,17.36,8 >> Enter |cFFfa9602Stratholme|r
-	
-	step
-		#completewith StratholmeLive
-		.use 13289 >>Use |T135614:0|t[Egan's Blaster] on the |cRXP_WARN_Ghostly Citizen|r and |cRXP_WARN_Spectral Citizen|r inside |cFFfa9602Stratholme|r
-		>>When the |cRXP_WARN_Restless Soul|r break free, use the blaster again
-		.complete 5282,1
-		.isOnQuest 5282
-		.mob Spectral Citizen
-		.mob Ghostly Citizen
-		.mob Restless Soul
 
 	step
 		#sticky
@@ -1951,14 +1850,6 @@ RXPGuides.RegisterGuide([[
 		>>Loot the painting |cRXP_LOOT_Of Love and Family|r inside |cFFfa9602Stratholme|r
 		.complete 5848,1
 		.isOnQuest 5848
-
-	step
-		#label StratholmeLive
-		>>Kill |cRXP_ENEMY_Balnazzar|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Head of Balnazzar|r
-		.mob Balnazzar
-		.collect 13250,1
-		.isQuestTurnedIn 5251
-		.isQuestAvailable 5262
 
 	step
 		#completewith EPL3
@@ -2003,30 +1894,6 @@ RXPGuides.RegisterGuide([[
 		#completewith StratholmeUndead
 		.goto Eastern Plaguelands,47.9,23.9
 		.subzone 2017 >>Enter |cFFfa9602Stratholme|r
-	
-	step
-		#completewith StratholmeUndead
-		.use 13289 >>Use |T135614:0|t[Egan's Blaster] on the |cRXP_WARN_Ghostly Citizen|r and |cRXP_WARN_Spectral Citizen|r inside |cFFfa9602Stratholme|r
-		>>When the |cRXP_WARN_Restless Soul|r break free, use the blaster again
-		.complete 5282,1
-		.isOnQuest 5282
-		.mob Spectral Citizen
-		.mob Ghostly Citizen
-		.mob Restless Soul
-
-	step
-		#completewith StratholmeUndead
-		>>Kill |cRXP_ENEMY_Baron Rivendare|r within 45 minutes to save |cRXP_FRIENDLY_Ysida Harmon|r
-    	>>|cRXP_WARN_The timer starts as you get the|r |T136129:0|t[The Baron's Ultimatum] |cRXP_WARN_debuff upon entering the undead side|r
-		.complete 8945,1
-		.isOnQuest 8945	
-		.target Ysida Harmon	
-
-	step
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Aurius|r inside |cFFfa9602Stratholme|r
-		.turnin 5122
-		.itemcount 12845,1
-		.target Aurius
 
 	step
 		>>Enter the ziggurats you gain access to after killing |cRXP_ENEMY_Nerub'enkan|r, |cRXP_ENEMY_Baroness Anastari|r and |cRXP_ENEMY_Maleki the Pallid|r. Kill the cultists inside and look for a small box inside. It will randomly spawn in one of the three ziggurats
@@ -2047,36 +1914,7 @@ RXPGuides.RegisterGuide([[
 		>>Kill |cRXP_ENEMY_Baron Rivendare|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Head of Baron Rivendare|r
 		.mob Baron Rivendare
 		.complete 5263,1
-		.isOnQuest 5263
-
-	step
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Aurius|r inside |cFFfa9602Stratholme|r
-		>>|cRXP_WARN_This quest is only available if you handed|r |cRXP_FRIENDLY_Aurius|r |cRXP_WARN_a |r|cRXP_LOOT_Medallion of Faith|r |cRXP_WARN_before starting|r
-		.accept 5125
-		.turnin 5125
-		.target Aurius	
-		
-	step
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ysida Harmon|r
-		.turnin -8945
-		.target Ysida Harmon	
-
-	step
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ysida Harmon|r
-		.accept 8946
-		.target Ysida Harmon
-		.isQuestTurnedIn 8945		
-
-	step
-		>>Click on the big symbol on the floor in |cRXP_ENEMY_Baron Rivendare's|r room to turn in the quest
-		.turnin -5463
-		.mob Baron Rivendare
-
-	step
-		#label StratholmeUndead
-		>>Click on the big symbol on the floor in |cRXP_ENEMY_Baron Rivendare's|r room to accept the quest
-		.accept 5464
-		.isQuestTurnedIn 5463
+		.isOnQuest 5263	
 
 	step
 		#completewith EPL4
@@ -2133,34 +1971,6 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Smokey LaRue|r	
 		.turnin -6041
 		.target Smokey LaRue
-
-	step
-		.goto Eastern Plaguelands,30.86,20.13,0
-		.goto Eastern Kingdoms,55.06,17.51
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anthion Harmon|r
-		.use 22115 >>|cRXP_WARN_Use the|r |T133878:0|t[Extra-Dimensional Ghost Revealer] |cRXP_WARN_to reveal|r |cRXP_FRIENDLY_Anthion|r
-		.turnin -8946
-		.target Anthion Harmon
-
-	step
-		.goto Eastern Plaguelands,30.86,20.13,0
-		.goto Eastern Kingdoms,55.06,17.51
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anthion Harmon|r
-		.use 22115 >>|cRXP_WARN_Use the|r |T133878:0|t[Extra-Dimensional Ghost Revealer] |cRXP_WARN_to reveal|r |cRXP_FRIENDLY_Anthion|r
-		.accept 8947
-		.turnin 8947
-		.target Anthion Harmon	
-		.isQuestTurnedIn 8946
-		.itemcount 11371,3
-		.itemcount 12810,20
-		.itemcount 14342,3
-		.itemcount 15407,4
-		
-	step
-		.goto Eastern Plaguelands,14.45,33.74
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Egan|r
-		.turnin -5282
-		.target Egan
 
 	step	
 		.goto Eastern Plaguelands,7.6,43.6
@@ -3167,13 +2977,43 @@ RXPGuides.RegisterGuide([[
 		.target Nara Wildmane
 
 	step
-		#label Thunderlast
 		.goto Thunder Bluff,78.50,28.60
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Arch Druid Hamuul Runetotem|r
 		.accept 3761
-		.turnin 3761
 		.target Arch Druid Hamuul Runetotem		
 		.itemcount 11018,20
+
+	step
+		.goto Thunder Bluff,77.6,22.4
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ghede|r
+		.turnin -3761
+		.target Ghede		
+
+	step
+		.goto Thunder Bluff,78.50,28.60
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Arch Druid Hamuul Runetotem|r
+		.accept 3782
+		.target Arch Druid Hamuul Runetotem		
+		.istQuestTurnedIn 3761
+
+	step
+		.goto Thunder Bluff,70.8,33.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bashana Runetotem|r
+		.turnin -3782
+		.target Bashana Runetotem		
+		.istQuestTurnedIn 3761		
+
+	step
+		.goto Thunder Bluff,70.8,33.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bashana Runetotem|r
+		.accept 3786
+		.turnin 3786
+		.target Bashana Runetotem		
+		.istQuestTurnedIn 3782
+		.itemcount 11040,10
+
+	step
+		#label Thunderlast
 
 --- Swamp of Sorrows		
 

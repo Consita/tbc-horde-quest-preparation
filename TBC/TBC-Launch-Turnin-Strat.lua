@@ -1358,7 +1358,7 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Orgrimmar,31.74,37.82
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thrall|r
-		.complete 6566
+		.complete 6566,1
 		.target Thrall	
 		.isOnQuest 6566	
 		.skipgossip	
@@ -3167,13 +3167,43 @@ RXPGuides.RegisterGuide([[
 		.target Nara Wildmane
 
 	step
-		#label Thunderlast
 		.goto Thunder Bluff,78.50,28.60
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Arch Druid Hamuul Runetotem|r
 		.accept 3761
-		.turnin 3761
 		.target Arch Druid Hamuul Runetotem		
 		.itemcount 11018,20
+
+	step
+		.goto Thunder Bluff,77.6,22.4
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ghede|r
+		.turnin -3761
+		.target Ghede		
+
+	step
+		.goto Thunder Bluff,78.50,28.60
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Arch Druid Hamuul Runetotem|r
+		.accept 3782
+		.target Arch Druid Hamuul Runetotem		
+		.istQuestTurnedIn 3761
+
+	step
+		.goto Thunder Bluff,70.8,33.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bashana Runetotem|r
+		.turnin -3782
+		.target Bashana Runetotem		
+		.istQuestTurnedIn 3761		
+
+	step
+		.goto Thunder Bluff,70.8,33.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bashana Runetotem|r
+		.accept 3786
+		.turnin 3786
+		.target Bashana Runetotem		
+		.istQuestTurnedIn 3782
+		.itemcount 11040,10
+
+	step
+		#label Thunderlast
 
 --- Swamp of Sorrows		
 

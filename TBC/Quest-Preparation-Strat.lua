@@ -1209,6 +1209,7 @@ RXPGuides.RegisterGuide([[
 			#completewith silithus2
 			>> Keep an eye out for |T133463:0|t[|cRXP_LOOT_Brann Bronzebeard's Lost Letter|r] dropped by |cRXP_ENEMY_Silithus Silithid|r. It is part of the TBC turn in.
 			.collect 20461
+			.isQuestAvailable 8308
 		
 		step
 			#completewith next
