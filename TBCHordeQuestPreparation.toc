@@ -30,6 +30,7 @@ CasualTBCPrep\Data\QuestData.lua
 CasualTBCPrep\Data\Navigation.lua
 CasualTBCPrep\Data\Routing.lua
 CasualTBCPrep\Data\Flights.lua
+CasualTBCPrep\UI\ElvUI.lua
 CasualTBCPrep\UI\WM_QuestLogPrep.lua
 CasualTBCPrep\UI\WM_QuestPrep.lua
 CasualTBCPrep\UI\WM_ItemPrep.lua
