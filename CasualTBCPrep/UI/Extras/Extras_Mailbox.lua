@@ -264,12 +264,6 @@ local function Display(parent)
     txtNoticeA:SetTextColor(clrWarn.r, clrWarn.g, clrWarn.b)
 	table.insert(texts, txtNoticeA)
 
-	local txtNoticeB = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-    txtNoticeB:SetPoint("TOP", txtNoticeA, "BOTTOM", 0, -1)
-	txtNoticeB:SetText("Click the scroll on the right for a detailed explanation")
-    txtNoticeB:SetTextColor(clrWarn.r, clrWarn.g, clrWarn.b)
-	table.insert(texts, txtNoticeB)
-
     local yPosStart = -50
     yPos = yPosStart
 

@@ -2,6 +2,8 @@ Changelog:
 
 3.18
 - Fixed spelling mistake in the "Item Deleteion Warning" window
+- Fix wrong text in Extras - Mailbox description
+- Clarify that the "Completion Warnings" settings is not guaranteed to work in its tooltips
 
 3.17c
 - Fixed the "/tbcprep ghetto" command to work with the TBC Prepatch changes
