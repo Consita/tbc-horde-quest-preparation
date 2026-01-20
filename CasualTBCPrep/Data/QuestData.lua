@@ -978,6 +978,7 @@ local function LoadRouteQuestSpecifics_Strat()
 	RemovePrequestFromQuest(5463, 5462) -- The Dying, Ras Frostwhisper removed as Prequest
 	RemovePrequestFromQuest(5464, 5462) -- The Dying, Ras Frostwhisper removed as Prequest
 	RemovePrequestFromQuest(5057, 5056) -- Shy-Rotam is made qlog above, so it's no longer a preQ to Past Endeavors
+	RemovePrequestFromQuest(5848, 5846) -- "Of Love and Family 1" should not be prequest to "Of Love and Family 2" in strat
 
 	RemovePrequestFromQuest(5263, 5251) -- Above and Beyond - Whole qline is done in strat
 	RemovePrequestFromQuest(5263, 5262) -- Above and Beyond - Whole qline is done in strat

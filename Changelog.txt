@@ -5,6 +5,7 @@ Changelog:
 - Fix wrong text in Extras - Mailbox description
 - Clarify that the "Completion Warnings" settings is not guaranteed to work in its tooltips
 - Added quest comment for Anthion's Strange Request
+- Fixed the second "Of Love and Family" having the first "Of Love and Family" as prequest in the strat route.
 
 3.17c
 - Fixed the "/tbcprep ghetto" command to work with the TBC Prepatch changes
