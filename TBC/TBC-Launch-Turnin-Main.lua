@@ -2994,14 +2994,14 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Arch Druid Hamuul Runetotem|r
 		.accept 3782
 		.target Arch Druid Hamuul Runetotem		
-		.istQuestTurnedIn 3761
+		.isQuestTurnedIn 3761
 
 	step
 		.goto Thunder Bluff,70.8,33.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bashana Runetotem|r
 		.turnin -3782
 		.target Bashana Runetotem		
-		.istQuestTurnedIn 3761		
+		.isQuestTurnedIn 3761		
 
 	step
 		.goto Thunder Bluff,70.8,33.8
@@ -3009,7 +3009,7 @@ RXPGuides.RegisterGuide([[
 		.accept 3786
 		.turnin 3786
 		.target Bashana Runetotem		
-		.istQuestTurnedIn 3782
+		.isQuestTurnedIn 3782
 		.itemcount 11040,10
 
 	step
