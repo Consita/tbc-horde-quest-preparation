@@ -931,18 +931,16 @@ local function RestoreModifiedQuests()
 	end
 end
 
-local function HasCompletedUngoroSoilPrequest()
-	return CasualTBCPrep.QuestData.HasCharacterCompletedQuest(936)
-		or CasualTBCPrep.QuestData.HasCharacterCompletedQuest(3762)
-		or CasualTBCPrep.QuestData.HasCharacterCompletedQuest(3784)
-end
+-- local function HasCompletedUngoroSoilPrequest()
+-- 	return CasualTBCPrep.QuestData.HasCharacterCompletedQuest(936) or CasualTBCPrep.QuestData.HasCharacterCompletedQuest(3762) or CasualTBCPrep.QuestData.HasCharacterCompletedQuest(3784)
+-- end
 
 local function LoadRouteQuestSpecifics_All()
 	-- Un'Goro Soil
-	local hasCompletedAnyPreQuest = HasCompletedUngoroSoilPrequest()
-	if not hasCompletedAnyPreQuest then
-		AddPrequestToQuest(3761, 3762)
-	end
+	-- local hasCompletedAnyPreQuest = HasCompletedUngoroSoilPrequest()
+	-- if not hasCompletedAnyPreQuest then
+	-- 	AddPrequestToQuest(3761, 3762)
+	-- end
 end
 
 local function LoadRouteQuestSpecifics_Main()
