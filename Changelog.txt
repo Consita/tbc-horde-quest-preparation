@@ -9,6 +9,7 @@ Changelog:
 - The "Black Dragonflight Molt" Item now has its quests correctly assigned. It should now show the item tooltip.
 - Quests tab now doesn't include completed quests, as well as ignored quests, in the "total quest count" at the top
 - Removed "Assisting Arch Druid Runetotem" as a prequest to Un'goro Soil (and Morrowgrain) since the quest is removed in the prepatch for TBC
+- Made "To Serve Kum'isha" an Expensive Quest in the Quests tab
 
 3.17c
 - Fixed the "/tbcprep ghetto" command to work with the TBC Prepatch changes

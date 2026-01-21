@@ -650,7 +650,8 @@ local aqgl_expensiveQuests = {
 	[9248] = { name="A Humble Offering", notice="The Abyssal Scepter can cost several hundred gold. Check your Auction House, or farm it in a guild group." },
 	[9230] = { name="Ramaladni's Icy Grasp", notice="The materials can be very expensive" },
 	[9232] = { name="The Only Song I Know...", notice="The materials can be very expensive" },
-	[8947] = { name="Anthion's Strange Request", notice="The materials can be very expensive" }
+	[8947] = { name="Anthion's Strange Request", notice="The materials can be very expensive" },
+	[2521] = { name="To Serve Kum'isha", notice="Drops from Teremus in the Blasted Lands, can be very expensive" }
 }
 
 -- [Hardcoded fixes for complex quest metadata]
