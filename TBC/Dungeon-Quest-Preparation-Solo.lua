@@ -138,7 +138,7 @@ RXPGuides.RegisterGuide([[
 	step
 		#label CoreAttunement
 		>>|cRXP_WARN_OPTIONAL|r This step will grab the Molten Core attunement quest
-		.goto 1415,48.409,63.815
+		.goto 1415,47.16,68.83
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lothos Riftwaker|r
 		.accept 7848 >> Accept Attunement to the Core
 		.target Lothos Riftwaker
@@ -152,9 +152,9 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.goto Eastern Kingdoms,48.4,63.8,0
-		.goto Eastern Kingdoms,48.4,63.8,15,0
-		.goto Eastern Kingdoms,48.1,62.4,15,0
+		.goto Eastern Kingdoms,47.18,68.85,0
+		.goto Eastern Kingdoms,46.91,68.36,15,0
+		.goto Eastern Kingdoms,46.87,67.61,15,0
 		.subzone 1584 >>Enter the |cFFfa9602Blackrock Depths|r
 		
 	step
@@ -208,9 +208,9 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.goto Eastern Kingdoms,48.4,63.8,0
-		.goto Eastern Kingdoms,48.4,63.8,15,0
-		.goto Eastern Kingdoms,48.1,62.4,15,0
+		.goto Eastern Kingdoms,47.18,68.85,0
+		.goto Eastern Kingdoms,46.91,68.36,15,0
+		.goto Eastern Kingdoms,46.87,67.61,15,0
 		.subzone 1584 >>Return to Blackrock Mountain and enter the |cFFfa9602Blackrock Depths|r
 		
 	step
@@ -397,9 +397,9 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.goto Eastern Kingdoms,48.4,63.8,0
-		.goto Eastern Kingdoms,48.4,63.8,15,0
-		.goto Eastern Kingdoms,48.1,62.4,15,0
+		.goto Eastern Kingdoms,47.18,68.85,0
+		.goto Eastern Kingdoms,46.91,68.36,15,0
+		.goto Eastern Kingdoms,46.87,67.61,15,0
 		.subzone 1584 >>Enter the |cFFfa9602Blackrock Depths|r
 		
 	step
@@ -530,7 +530,7 @@ RXPGuides.RegisterGuide([[
 		.target Kibler
 
 	step
-		.goto 1415,48.409,63.815
+		.goto 1415,47.16,68.83
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lothos Riftwaker|r
 		>>|cRXP_WARN_You can either turn this in now or the next time you are in Blackrock Mountain|r
 		.turnin 7848 >> Turn in Attunement to the Core
@@ -539,9 +539,8 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.goto Eastern Kingdoms,48.9,63.9
-		.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r
-		.zoneskip 1583
+		.goto Eastern Kingdoms,47.61,68.9
+		.subzone 1583 >>Enter the |cFFfa9602Blackrock Spire|r
 
 	step		
 		>>Complete the objective for |cRXP_LOOT_Egg Freezing|r by right-clicking and freezing one of the eggs
@@ -566,9 +565,8 @@ RXPGuides.RegisterGuide([[
 	
 	step
 		#completewith next
-		.goto Eastern Kingdoms,48.9,63.9
-		.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r
-		.zoneskip 1583
+		.goto Eastern Kingdoms,47.61,68.9
+		.subzone 1583 >>Enter the |cFFfa9602Blackrock Spire|r
 
 	step
 		#completewith next
@@ -623,9 +621,8 @@ RXPGuides.RegisterGuide([[
 	
 	step
 		#completewith next
-		.goto Eastern Kingdoms,48.9,63.9
-		.zone 1583 >>Enter the |cFFfa9602Blackrock Spire|r
-		.zoneskip 1583
+		.goto Eastern Kingdoms,47.61,68.9
+		.subzone 1583 >>Enter the |cFFfa9602Blackrock Spire|r
 
 	step
 		>>Loot the |cRXP_LOOT_Spire Spider Eggs|r on the ground
@@ -681,7 +678,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.goto 1415,52.8,26.4
+		.goto 1415,50.95,36.53
 		.subzone 2057 >>Enter |cFFfa9602Scholomance|r
 
 	step
@@ -865,7 +862,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.goto 1415,48.92,64.47,10 >>Enter |cFFfa9602Blackwing Lair|r
+		.goto 1415,47.6,69.4,10 >>Enter |cFFfa9602Blackwing Lair|r
 
 	step	
 		>>Kill |cRXP_ENEMY_Broodlord Lashlayer|r inside |cFFfa9602Blackwing Lair|r and loot him for |cRXP_LOOT_Head of the Broodlord Lashlayer|r

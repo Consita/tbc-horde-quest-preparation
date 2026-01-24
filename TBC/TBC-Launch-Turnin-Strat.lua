@@ -1834,7 +1834,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.goto 1415,52.8,26.4
+		.goto 1415,50.95,36.53
 		.subzone 2057 >>Enter |cFFfa9602Scholomance|r
 
 	step
@@ -1922,7 +1922,7 @@ RXPGuides.RegisterGuide([[
 	step
 		#completewith StratholmeLive
 		#label StratholmeEntry1
-		.goto Eastern Kingdoms,55.12,17.36,8 >> Enter |cFFfa9602Stratholme|r
+		.goto Eastern Kingdoms,52.97,28.68,8 >> Enter |cFFfa9602Stratholme|r
 	
 	step
 		#completewith StratholmeLive

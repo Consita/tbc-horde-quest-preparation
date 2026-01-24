@@ -126,7 +126,7 @@ RXPGuides.RegisterGuide([[
 		step
 			.goto Feralas,59.1,45.3,0
 			.goto Feralas,59.1,45.3,15,0
-			.goto Kalimdor,42.8,70.2,20 >>You have to enter |cFFfa9602Dire Maul|r zone once to be able to accept |cRXP_WARN_A Reliquary of Purity|r in Moonglade.
+			.goto Kalimdor,42.76,70.17,20 >>You have to enter |cFFfa9602Dire Maul|r zone once to be able to accept |cRXP_WARN_A Reliquary of Purity|r in Moonglade.
 			>>If you have been to |cFFfa9602Dire Maul|r before, manually complete this step.
 			.isQuestAvailable 5527
 
