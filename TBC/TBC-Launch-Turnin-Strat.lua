@@ -1112,7 +1112,7 @@ RXPGuides.RegisterGuide([[
 		#completewith Felwoodlast
 		.goto Moonglade,32.2,66.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Faustron|r
-		.fly Felwood >>Fly to |cFFfa9602Felwood|r
+		.fly Bloodvenom Post >>Fly to |cFFfa9602Felwood|r
 		.target Faustron
 		.zoneskip Felwood
 
@@ -1142,14 +1142,29 @@ RXPGuides.RegisterGuide([[
 		.target Winna Hazzard	
 		
 	step
-		#completewith Felwoodlast
-		.goto Felwood,35.23,50.25,15,0
-		.goto Felwood,37.0,49.0,15,0
-		.goto Felwood,37.4,49.1,15,0
-		.goto Felwood,39.8,53.0,15,0
-		.goto Felwood,41.0,57.3,15,0
-		.goto Felwood,43.4,74.4,15,0
-		.goto Felwood,46.75,83.08,40 >>Travel to |cRXP_FRIENDLY_Maybess Riverbreeze|r
+		#completewith next
+		.goto Felwood,34.4,53.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Brakkar|r
+		.fly Emerald Sanctuary>>Fly to |cFFfa9602Emerald Sanctuary|r
+		.target Brakkar
+
+	step
+		.goto Felwood,51.18,82.22
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Greta Mosshoof|r
+		.turnin -5242
+		.target Greta Mosshoof			
+		
+	step
+		.goto Felwood,51.14,81.76
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kelek Skykeeper|r
+		.turnin -5128
+		.target Kelek Skykeeper	
+
+	step
+		.goto Felwood,51.35,82.01
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jessir Moonbow|r
+		.turnin -5385
+		.target Jessir Moonbow	
 
 	step
 		.goto Felwood,46.75,83.08
@@ -1196,23 +1211,7 @@ RXPGuides.RegisterGuide([[
 		.itemcount 11512,5	
 
 	step
-		.goto Felwood,51.18,82.22
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Greta Mosshoof|r
-		.turnin -5242
-		.target Greta Mosshoof			
-		
-	step
-		.goto Felwood,51.14,81.76
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kelek Skykeeper|r
-		.turnin -5128
-		.target Kelek Skykeeper	
-
-	step
 		#label Felwoodlast
-		.goto Felwood,51.35,82.01
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jessir Moonbow|r
-		.turnin -5385
-		.target Jessir Moonbow	
 
 --- Orgrimmar
 	

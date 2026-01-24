@@ -333,7 +333,7 @@ RXPGuides.RegisterGuide([[
 			#completewith next
 			.goto Moonglade,32.2,66.6
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Faustron|r
-			.fly Felwood >>Fly to |cFFfa9602Felwood|r
+			.fly Bloodvenom Post >>Fly to |cFFfa9602Felwood|r
 			.target Faustron
 			.zoneskip Felwood
 
@@ -2559,7 +2559,7 @@ RXPGuides.RegisterGuide([[
 			#completewith next
 			.goto Un'Goro Crater,45.23,5.82
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gryfe|r
-			.fly Felwood >>Fly to |cFFfa9602Felwood|r
+			.fly Bloodvenom Post >>Fly to |cFFfa9602Felwood|r
 			.target Gryfe
 			.zoneskip Felwood
 
@@ -2573,7 +2573,7 @@ RXPGuides.RegisterGuide([[
 			#completewith next
 			.goto Felwood,34.4,53.8
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Brakkar|r
-			.fly Winterspring>>Fly to Winterspring
+			.fly Winterspring>>Fly to |cFFfa9602Winterspring|r
 			.target Brakkar
 			.zoneskip Winterspring
 
@@ -2662,7 +2662,7 @@ RXPGuides.RegisterGuide([[
 			#completewith next
 			.goto Winterspring,60.47,36.30
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r
-			.fly Felwood>>Fly to Felwood
+			.fly Bloodvenom Post>>Fly to |cFFfa9602Felwood|r
 			.target Yugrek
 			.zoneskip Felwood
 
@@ -2677,7 +2677,7 @@ RXPGuides.RegisterGuide([[
 			#completewith next
 			.goto Felwood,34.4,53.8
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Brakkar|r
-			.fly Winterspring>>Fly to Winterspring
+			.fly Winterspring>>Fly to |cFFfa9602Winterspring|r
 			.target Brakkar
 			.zoneskip Winterspring
 
@@ -2697,7 +2697,7 @@ RXPGuides.RegisterGuide([[
 			#completewith next
 			.goto Winterspring,60.47,36.30
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r
-			.fly Felwood>>Fly to Felwood
+			.fly Bloodvenom Post>>Fly to |cFFfa9602Felwood|r
 			.target Yugrek
 			.zoneskip Felwood
 
@@ -2712,7 +2712,7 @@ RXPGuides.RegisterGuide([[
 			#completewith next
 			.goto Felwood,34.4,53.8
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Brakkar|r
-			.fly Winterspring>>Fly to Winterspring
+			.fly Winterspring>>Fly to |cFFfa9602Winterspring|r
 			.target Brakkar
 			.zoneskip Winterspring
 
@@ -2787,7 +2787,7 @@ RXPGuides.RegisterGuide([[
 			#completewith next
 			.goto Winterspring,60.47,36.30
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yugrek|r
-			.fly Felwood>>Fly to Felwood
+			.fly Bloodvenom Post>>Fly to |cFFfa9602Felwood|r
 			.target Yugrek
 			.zoneskip Felwood
 
