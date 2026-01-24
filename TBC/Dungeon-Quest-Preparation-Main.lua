@@ -782,7 +782,8 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Magistrate Marduke|r
 		.equip 13,13544 >> |cRXP_WARN_Equip the|r |T134337:0|t|cRXP_LOOT_[Spectral Essence]|r
 		.accept 5461
-		.target Magistrate Marduke	
+		.target Magistrate Marduke
+		.skipgossip	
 
 	step
 		#completewith next

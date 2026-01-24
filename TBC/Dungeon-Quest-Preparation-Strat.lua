@@ -764,6 +764,7 @@ RXPGuides.RegisterGuide([[
 		.equip 13,13544 >> |cRXP_WARN_Equip the|r |T134337:0|t|cRXP_LOOT_[Spectral Essence]|r
 		.accept 5461
 		.target Magistrate Marduke	
+		.skipgossip	
 
 	step
 		#completewith next
