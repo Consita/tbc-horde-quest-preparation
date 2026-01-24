@@ -1575,6 +1575,81 @@ RXPGuides.RegisterGuide([[
 		>>Once done, or when you picked up your items yourself, complete this step manually		
 		
 	step	
+		.goto Eastern Plaguelands,80.0,57.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Emissary Gormok|r	
+		.turnin -9665
+		.target Emissary Gormok
+
+	step	
+		.goto Eastern Plaguelands,81.0,57.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dispatch Commander Metz|r	
+		.accept 9141
+		.turnin 9141
+		.target Dispatch Commander Metz		
+		.itemcount 12844,1
+
+	step	
+		.goto Eastern Plaguelands,80.6,58.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Smokey LaRue|r	
+		.accept 6026
+		.turnin 6026
+		.target Smokey LaRue
+		.itemcount 11128,1
+		.itemcount 12359,2
+		.itemcount 10562,8
+		.itemcount 10560,8
+
+	step	
+		.goto Eastern Plaguelands,80.6,58.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Smokey LaRue|r	
+		.turnin -5214
+		.target Smokey LaRue
+	
+	step	
+		.goto Eastern Plaguelands,81.4,58.5
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rayne|r	
+		.accept 9136
+		.turnin 9136
+		.target Rayne
+		.itemcount 22529,30
+
+	step	
+		.goto Eastern Plaguelands,81.5,59.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r	
+		.turnin -5212
+		.turnin -5213
+		.turnin -5529
+		.target Betina Bigglezink
+
+	step
+		#completewith next
+		.use 13250 >> Click |T136183:0|t[Head of Balnazzar] and accept |cRXP_LOOT_The Truth Comes Crashing Down|r
+		.accept 5262
+		.itemcount 13250,1
+
+	step	
+		.goto Eastern Plaguelands,81.4,59.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Nicholas Zverenhoff|r	
+		.turnin 5262
+		.target Duke Nicholas Zverenhoff	
+		.itemcount 13250,1
+
+	step	
+		.goto Eastern Plaguelands,81.4,59.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Nicholas Zverenhoff|r	
+		.turnin -5251
+		.turnin -5263
+		.turnin -6030
+		.target Duke Nicholas Zverenhoff
+
+	step	
+		.goto Eastern Plaguelands,81.4,59.8
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Nicholas Zverenhoff|r	
+		.accept 5264
+		.target Duke Nicholas Zverenhoff
+		.isQuestTurnedIn 5263
+
+	step	
 		.goto Eastern Plaguelands,81.6,60.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Quartermaster Miranda Breechlock|r
 		.accept 5513
@@ -1593,39 +1668,12 @@ RXPGuides.RegisterGuide([[
 		.reputation 529,exalted,<0,1
 
 	step	
-		.goto Eastern Plaguelands,81.4,59.8
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Nicholas Zverenhoff|r	
-		.turnin -5251
-		.turnin -6030
-		.target Duke Nicholas Zverenhoff		
-
-	step	
-		.goto Eastern Plaguelands,81.00,59.61
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Craftsman Wilhelm|r	
-		.accept 9232
-		.turnin 9232
-		.target Craftsman Wilhelm
-		.reputation 529,revered,<0,1
-		.itemcount 22682,2
-		.itemcount 7080,2
-		.itemcount 12361,2
-		.isQuestTurnedIn 9233
-
-	step	
-		.goto Eastern Plaguelands,81.4,58.5
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rayne|r	
-		.accept 9136
-		.turnin 9136
-		.target Rayne
-		.itemcount 22529,30
-
-	step	
 		.goto Eastern Plaguelands,81.4,58.5
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rohan the Assassin|r	
 		.accept 9126
 		.turnin 9126
 		.target Rohan the Assassin		
-		.itemcount 22526,30
+		.itemcount 22526,30		
 
 	step	
 		.goto Eastern Plaguelands,81.5,58.5
@@ -1654,7 +1702,7 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Father Inigo Montoy|r	
 		.turnin 9120	
 		.target Father Inigo Montoy	
-		.itemcount 22520,1	
+		.itemcount 22520,1			
 
 	step	
 		.goto Eastern Plaguelands,81.8,58.1
@@ -1681,7 +1729,25 @@ RXPGuides.RegisterGuide([[
 		.itemcount 22682,1
 		.itemcount 12361,1
 		.itemcount 12360,1
+
+	step	
+		.goto Eastern Plaguelands,81.7,58.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lord Maxwell Tyrosus|r
+		.target Lord Maxwell Tyrosus	
+		.turnin -5264
+
+	step	
+		.goto Eastern Plaguelands,81.7,58.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lord Maxwell Tyrosus|r
+		.accept 5265
+		.target Lord Maxwell Tyrosus	
+		.isQuestTurnedIn 5264	
 		
+	step	
+		.goto Eastern Plaguelands,81.8,58.0
+		>>Click |cRXP_PICK_the Argent Hold|r
+		.turnin -5265
+
 	step	
 		.goto Eastern Plaguelands,81.7,57.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Leonid Barthalomew the Revered|r	
@@ -1694,6 +1760,7 @@ RXPGuides.RegisterGuide([[
 		.goto Eastern Plaguelands,81.7,57.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Leonid Barthalomew the Revered|r	
 		.turnin -5522
+		.turnin -5464
 		.target Leonid Barthalomew the Revered		
 
 	step	
@@ -1704,56 +1771,22 @@ RXPGuides.RegisterGuide([[
 		.isQuestTurnedIn 5522	
 
 	step	
-		.goto Eastern Plaguelands,80.6,58.0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Smokey LaRue|r	
-		.accept 6026
-		.turnin 6026
-		.target Smokey LaRue
-		.itemcount 11128,1
-		.itemcount 12359,2
-		.itemcount 10562,8
-		.itemcount 10560,8
-
-	step
-		.goto Eastern Plaguelands,80.6,58.0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Smokey LaRue|r	
-		.accept 6041
-		.target Smokey LaRue
-		.isQuestTurnedIn 6026
-
-	step	
-		.goto Eastern Plaguelands,80.6,58.0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Smokey LaRue|r	
-		.accept 5214
-		.target Smokey LaRue		
-
-	step	
-		.goto Eastern Plaguelands,81.0,57.6
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dispatch Commander Metz|r	
-		.accept 9141
-		.turnin 9141
-		.target Dispatch Commander Metz		
-		.itemcount 12844,1
-
-	step	
-		.goto Eastern Plaguelands,80.0,57.6
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Emissary Gormok|r	
-		.turnin -9665
-		.target Emissary Gormok
-
-	step	
 		.goto Eastern Plaguelands,81.5,59.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r	
 		.turnin -5531
-		.accept 5212
-		.accept 5529
-		.target Betina Bigglezink	
+		.target Betina Bigglezink
 
-	step
-		.goto Eastern Plaguelands,79.60,63.87
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Caretaker Alen|r
-		.accept 5281
-		.target Caretaker Alen
+	step	
+		.goto Eastern Plaguelands,81.00,59.61
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Craftsman Wilhelm|r	
+		.accept 9232
+		.turnin 9232
+		.target Craftsman Wilhelm
+		.reputation 529,revered,<0,1
+		.itemcount 22682,2
+		.itemcount 7080,2
+		.itemcount 12361,2
+		.isQuestTurnedIn 9233
 
 	step
 		.goto Eastern Plaguelands,36.4,90.8
@@ -1777,200 +1810,13 @@ RXPGuides.RegisterGuide([[
 		.goto Eastern Plaguelands,28.1,86.1
 		>>Click |cRXP_PICK_Mound of Dirt|r
 		.turnin -6024
-		
+
 	step	
 		.goto Eastern Plaguelands,26.6,74.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nathanos Blightcaller|r
+		.turnin -6163
 		.turnin -6148
-		.target Nathanos Blightcaller
-		
-	step	
-		.goto Eastern Plaguelands,26.6,74.8
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nathanos Blightcaller|r
-		.accept 6163
-		.target Nathanos Blightcaller	
-		.isQuestTurnedIn 6136		
-
-	step
-		.goto Western Plaguelands,62.59,58.55
-		>>Click the |cRXP_PICK_Scourge Cauldron|r
-		.accept 5236
-		.isQuestTurnedIn 5235
-
-	step
-		.goto Western Plaguelands,65.7,75.4
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Artist Renfray|r
-		.turnin -5846
-		.target Artist Renfray
-
-	step	
-		.goto Eastern Plaguelands,81.5,59.6
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r	
-		.turnin -5529
-		.target Betina Bigglezink
-
-	step	
-		.goto Eastern Plaguelands,81.7,57.8
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Leonid Barthalomew the Revered|r	
-		.turnin -5462
-		.target Leonid Barthalomew the Revered		
-		
-	step
-		.goto Eastern Plaguelands,14.45,33.74
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Egan|r
-		.turnin -5281
-		.target Egan	
-
-	step
-		.goto Eastern Plaguelands,30.86,20.13,0
-		.goto Eastern Kingdoms,55.06,17.51
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anthion Harmon|r
-		.use 22115 >>|cRXP_WARN_Use the|r |T133878:0|t[Extra-Dimensional Ghost Revealer] |cRXP_WARN_to reveal|r |cRXP_FRIENDLY_Anthion|r
-		.turnin -8930
-		.target Anthion Harmon
-
-	step
-		#completewith StratholmeLive
-		#label StratholmeEntry1
-		.goto Eastern Kingdoms,55.12,17.36,8 >> Enter |cFFfa9602Stratholme|r
-
-	step
-		#sticky
-		>>Kill |cRXP_ENEMY_any Undead|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Plagued Flesh Sample|r
-		.complete 5212,1
-		.isOnQuest 5212			
-
-	step
-		>>Kill |cRXP_ENEMY_Ezra Grimm|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Grimm's Premium Tobacco|r
-		.mob Ezra Grimm
-		.complete 5214,1
-		.isOnQuest 5214
-
-	step
-		>>Loot the painting |cRXP_LOOT_Of Love and Family|r inside |cFFfa9602Stratholme|r
-		.complete 5848,1
-		.isOnQuest 5848
-
-	step
-		#completewith EPL3
-		.zone Eastern Plaguelands >> Hearth to |cFFfa9602Lights Hope Chapel|r
-		.use 6948
-		.zoneskip Eastern Plaguelands
-
-	step
-		#completewith next
-		.use 13250 >> Click |T136183:0|t[Head of Balnazzar] and accept |cRXP_LOOT_The Truth Comes Crashing Down|r
-		.accept 5262
-		.itemcount 13250,1
-
-	step	
-		.goto Eastern Plaguelands,81.4,59.8
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Nicholas Zverenhoff|r	
-		.turnin 5262
-		.accept 5263
-		.target Duke Nicholas Zverenhoff	
-		.itemcount 13250,1
-
-	step	
-		.goto Eastern Plaguelands,81.5,59.6
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r	
-		.turnin -5212
-		.accept 5213
-		.target Betina Bigglezink
-	
-	step	
-		#label EPL3
-		.goto Eastern Plaguelands,80.6,58.0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Smokey LaRue|r	
-		.turnin -5214
-		.target Smokey LaRue		
-	
-	step
-		#completewith next
-		.use 15736 >>Use |T133715:0|t[Smokey's Special Compound] to destroy |cRXP_ENEMY_Scourge Ziggurats|r
-		.complete 6041,1	
-
-	step
-		#completewith StratholmeUndead
-		.goto Eastern Plaguelands,47.9,23.9
-		.subzone 2017 >>Enter |cFFfa9602Stratholme|r
-
-	step
-		>>Enter the ziggurats you gain access to after killing |cRXP_ENEMY_Nerub'enkan|r, |cRXP_ENEMY_Baroness Anastari|r and |cRXP_ENEMY_Maleki the Pallid|r. Kill the cultists inside and look for a small box inside. It will randomly spawn in one of the three ziggurats
-		>>Loot the box for |T134420:0|t[Scourge Data]
-		.complete 5213,1 
-		.isOnQuest 5213
-		.mob Nerub'enkan
-		.mob Baroness Anastari
-		.mob Maleki the Pallid
-
-	step
-		>>Kill |cRXP_ENEMY_Ramstein|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Head of Ramstein the Gorger|r
-		.mob Ramstein
-		.complete 6163,1
-		.isOnQuest 6163		
-
-	step
-		>>Kill |cRXP_ENEMY_Baron Rivendare|r inside |cFFfa9602Stratholme|r for |cRXP_LOOT_Head of Baron Rivendare|r
-		.mob Baron Rivendare
-		.complete 5263,1
-		.isOnQuest 5263	
-
-	step
-		#completewith EPL4
-		.zone Eastern Plaguelands >> Hearth to |cFFfa9602Lights Hope Chapel|r
-		.use 6948
-		.zoneskip Eastern Plaguelands
-
-	step	
-		.goto Eastern Plaguelands,81.4,59.8
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Nicholas Zverenhoff|r	
-		.turnin -5263
-		.target Duke Nicholas Zverenhoff	
-
-	step	
-		.goto Eastern Plaguelands,81.4,59.8
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duke Nicholas Zverenhoff|r	
-		.accept 5264
-		.target Duke Nicholas Zverenhoff
-		.isQuestTurnedIn 5263
-
-	step	
-		.goto Eastern Plaguelands,81.5,59.6
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Betina Bigglezink|r	
-		.turnin -5213
-		.target Betina Bigglezink
-
-	step	
-		.goto Eastern Plaguelands,81.7,58.0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lord Maxwell Tyrosus|r
-		.target Lord Maxwell Tyrosus	
-		.turnin -5264
-
-	step	
-		.goto Eastern Plaguelands,81.7,58.0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lord Maxwell Tyrosus|r
-		.accept 5465
-		.target Lord Maxwell Tyrosus	
-		.isQuestTurnedIn 5264	
-		
-	step	
-		.goto Eastern Plaguelands,81.8,58.0
-		>>Click |cRXP_PICK_the Argent Hold|r
-		.turnin -5265	
-		
-	step	
-		#label EPL4
-		.goto Eastern Plaguelands,81.7,57.8
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Leonid Barthalomew the Revered|r	
-		.turnin -5464
-		.target Leonid Barthalomew the Revered	
-
-	step
-		.goto Eastern Plaguelands,80.6,58.0
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Smokey LaRue|r	
-		.turnin -6041
-		.target Smokey LaRue
+		.target Nathanos Blightcaller		
 
 	step	
 		.goto Eastern Plaguelands,7.6,43.6
@@ -1983,13 +1829,19 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tirion Fordring|r
 		.accept 5861
 		.target Tirion Fordring		
-		.isQuestTurnedIn 5848	
+		.isQuestTurnedIn 5848			
 
-	step	
-		.goto Eastern Plaguelands,26.6,74.8
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nathanos Blightcaller|r
-		.turnin -6163
-		.target Nathanos Blightcaller		
+	step
+		.goto Eastern Plaguelands,14.45,33.74
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Egan|r
+		.turnin -5281
+		.target Egan	
+
+	step
+		.goto Western Plaguelands,62.59,58.55
+		>>Click the |cRXP_PICK_Scourge Cauldron|r
+		.accept 5236
+		.isQuestTurnedIn 5235
 
 	step
 		.goto Western Plaguelands,53.73,64.66
@@ -2040,6 +1892,9 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Janice Felstone|r
 		.turnin -5051
 		.target Janice Felstone
+
+	step
+		#label EPL1
 
 --- Tirisfal Glades
 

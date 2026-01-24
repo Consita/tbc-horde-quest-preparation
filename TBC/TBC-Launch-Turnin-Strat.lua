@@ -2112,7 +2112,7 @@ RXPGuides.RegisterGuide([[
 	step	
 		.goto Eastern Plaguelands,81.7,58.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lord Maxwell Tyrosus|r
-		.accept 5465
+		.accept 5265
 		.target Lord Maxwell Tyrosus	
 		.isQuestTurnedIn 5264	
 		
