@@ -225,16 +225,39 @@ local function SortQuestList(questList)
 end
 ---@param q any
 ---@param src string|nil
+---@return boolean
 local function DoesSearchMatchQuest(q, src)
 	if not q then return false end
 	if src == nil or src == "" then return true end
 
-	return (q.id and q.id > 0 and tostring(q.id):lower():find(src,1,true))
-		or (q.name and q.name:lower():find(src,1,true))
-		or (q.routeSection and q.routeSection:lower():find(src,1,true))
-		or (q.areaType and q.areaType:lower():find(src,1,true))
-		or (q.area and q.area:lower():find(src,1,true))
-		or (q.exp and q.exp > 0 and tostring(q.exp):lower():find(src,1,true))
+	local commandResult = nil
+	local command, cmdValue = src:match("^(%w+):(.*)$")
+	if command then
+		command, cmdValue = command:lower(), cmdValue:lower()
+
+		if command == "ready" then
+			if cmdValue == "yes" then
+				local hasFullyPreparedQuest = CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(q.id, false, false, false)
+				return hasFullyPreparedQuest
+			elseif cmdValue == "no" then
+				local hasFullyPreparedQuest = CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(q.id, false, false, false)
+				return not hasFullyPreparedQuest
+			end
+		elseif command == "completed" then
+			if cmdValue == "yes" then
+				return CasualTBCPrep.QuestData.HasCharacterCompletedQuest(q.id);
+			elseif cmdValue == "no" then
+				return not CasualTBCPrep.QuestData.HasCharacterCompletedQuest(q.id);
+			end
+		end
+	end
+	if commandResult ~= nil then return commandResult end
+	return (q.id and q.id > 0 and tostring(q.id):lower():find(src,1,true) ~= nil)
+		or (q.name and q.name:lower():find(src,1,true) ~= nil)
+		or (q.routeSection and q.routeSection:lower():find(src,1,true) ~= nil)
+		or (q.areaType and q.areaType:lower():find(src,1,true) ~= nil)
+		or (q.area and q.area:lower():find(src,1,true) ~= nil)
+		or (q.exp and q.exp > 0 and tostring(q.exp):lower():find(src,1,true) ~= nil)
 end
 
 ---@param wMain Frame|nil

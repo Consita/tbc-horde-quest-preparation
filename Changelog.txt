@@ -10,6 +10,7 @@ Changelog:
 - Quests tab now doesn't include completed quests, as well as ignored quests, in the "total quest count" at the top
 - Removed "Assisting Arch Druid Runetotem" as a prequest to Un'goro Soil (and Morrowgrain) since the quest is removed in the prepatch for TBC
 - Made "To Serve Kum'isha" an Expensive Quest in the Quests tab
+- Added some special search filters on the "Quests" tab. You can search for ready:yes, ready:no, completed:yes, completed:no to only show quests matching that criteria. Use "ready:no" to see what you have left to work on
 
 3.17c
 - Fixed the "/tbcprep ghetto" command to work with the TBC Prepatch changes
