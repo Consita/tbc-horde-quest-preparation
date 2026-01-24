@@ -1,6 +1,8 @@
 Changelog:
 
 3.18
+- Added Main Route turnin
+- Fixed Coordinates for dungeons with prepatch
 - Fixed spelling mistake in the "Item Delete Warning" window
 - Fix wrong text in Extras - Mailbox description
 - Clarify that the "Completion Warnings" settings is not guaranteed to work in its tooltips
@@ -11,6 +13,7 @@ Changelog:
 - Removed "Assisting Arch Druid Runetotem" as a prequest to Un'goro Soil (and Morrowgrain) since the quest is removed in the prepatch for TBC
 - Made "To Serve Kum'isha" an Expensive Quest in the Quests tab
 - Added some special search filters on the "Quests" tab. You can search for ready:yes, ready:no, completed:yes, completed:no to only show quests matching that criteria. Use "ready:no" to see what you have left to work on
+- Minor Fixes and QoL changes to the guide
 
 3.17c
 - Fixed the "/tbcprep ghetto" command to work with the TBC Prepatch changes

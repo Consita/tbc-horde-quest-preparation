@@ -13,19 +13,7 @@ RXPGuides.RegisterGuide([[
 #next 5 - TBC Dungeon Grind
 
 step
-+test 2
-
-
-	step
-		#completewith next
-		.goto Feralas,59.1,45.3,15,0
-		.goto Kalimdor,43.0,69.2,15,0
-		.goto Kalimdor,43.5,68.4,15,0
-		.subzone 2577>>Enter |cFFfa9602Dire Maul East|r
-
-
-	step
-		+test
++soonTM
 
 
 ]])
