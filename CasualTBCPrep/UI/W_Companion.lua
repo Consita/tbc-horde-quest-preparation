@@ -356,6 +356,10 @@ local function LoadStepDetails()
 
                         self.isCollecting = false
                         self:Enable()
+                        C_Timer.After(0.5, function()
+                            CleanupElements()
+                            LoadStepDetails()
+                        end)
                     end
 
                     if debugger == 1 then
@@ -398,6 +402,10 @@ local function LoadStepDetails()
                         end
                         self.isCollecting = false
                         self:Enable()
+                        C_Timer.After(1, function()
+                            CleanupElements()
+                            LoadStepDetails()
+                        end)
                     end
                     CasualTBCPrep.BankInteraction.TryGetItemsFromBank(self.itemsFromBank, funcNotify, funcComplete)
                 end

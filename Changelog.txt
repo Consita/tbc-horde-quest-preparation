@@ -5,6 +5,7 @@ Changelog:
 - Companion: Added 'Collect' button the the 'Bags' steps, so you can quickly loot the items from the bank.
 - Companion: T0.5 Class belt & gloves are now set to always be in bags, so players that have equipped them doesn't get griefed on release since they can't mail them.
 - Companion: No longer only loots 1 stack after the prepatch.
+- Companion: Companion now tries to update the itemlist after collecting, not only after closing the mail/bank. If the mailbox lags it might not work, just close the mail/bank to get a fresh update.
 
 3.18 (2026-01-24)
 - Added Main Route turnin
