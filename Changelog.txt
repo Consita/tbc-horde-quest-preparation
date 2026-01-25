@@ -1,6 +1,7 @@
 Changelog:
 
 3.19 
+- Eitrigg's Wisdom (part of Onyxia attunement) should no longer show a warning when picked up.
 - "Fel Elemental Rod" for the T0.5 questline is now marked correctly as BoE (Can be mailed and bought on AH).
 - Companion: Added 'Collect' button the the 'Bags' steps, so you can quickly loot the items from the bank.
 - Companion: T0.5 Class belt & gloves are now set to always be in bags, so players that have equipped them doesn't get griefed on release since they can't mail them.

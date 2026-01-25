@@ -82,7 +82,8 @@ local function OnQuestAcceptedEvent(self, event, questLogIndex)
 		local questName, _, _, _, _, _, _, questID = GetQuestLogTitle(questLogIndex)
 
 		if questID ~= nil and questID > 0 then
-			if CasualTBCPrep.Routing.IsQuestInCurrentRoute(questID) then
+
+			if CasualTBCPrep.QuestData.ShouldQuestShowAcceptedWarning(questID) then
 				if CasualTBCPrep.QuestData.ShouldBeInQuestLog(questID) then
 					if CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(CasualTBCPrep.Settings.Warning_QLOG) == false then
 						CasualTBCPrep.W_WarningNotice.Show(questName, questLogIndex, "qlog", questID)

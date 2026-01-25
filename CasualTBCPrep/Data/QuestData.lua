@@ -617,6 +617,9 @@ local extraCompletionQuestWarnings = {
 	[8752] = true, [8753] = true, [8754] = true, [8755] = true, [8756] = true,
 	[8757] = true, [8758] = true, [8759] = true, [8760] = true, [8761] = true,
 }
+local questsIgnoreAcceptWarning = {
+	[4941] = true
+}
 
 local questCanHaveZeroExp = {
 	[5122] = true
@@ -1302,6 +1305,20 @@ end
 ---@return boolean
 function CasualTBCPrep.QuestData.IsTurnInQuest(questID)
     return (dicTurnQuestList[questID]) and true or false
+end
+
+---@param questID number
+---@return boolean
+function CasualTBCPrep.QuestData.ShouldQuestShowAcceptedWarning(questID)
+	if questsIgnoreAcceptWarning[questID] == true then
+		return false
+	end
+
+	if not CasualTBCPrep.Routing.IsQuestInCurrentRoute(questID) then
+		return false
+	end
+
+	return true
 end
 
 ---@param questID number
