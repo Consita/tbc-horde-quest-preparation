@@ -1295,4 +1295,4 @@ RXPGuides.RegisterGuide([[
 		>>|cRXP_WARN_You have now completed all steps within Stratholme. Well done!|r
 		+You can either complete this step to jump to the next guide or select another guide manually		
 
-]])		d
+]])		
