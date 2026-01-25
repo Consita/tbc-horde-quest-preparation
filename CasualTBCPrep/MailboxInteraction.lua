@@ -272,14 +272,8 @@ end
 
 
 
+----[[AI Slop, this is not efficient at all, do not re-use in other addons YUCK]]
 
-
-
-
-
-
----@param itemsNeeded table {[itemID] = {itemID=number, count=number}}
----@param funcOnComplete function|nil
 function CasualTBCPrep.MailboxInteraction.TryGetItemsFromMailbox(itemsNeeded, funcOnComplete)
     if itemsNeeded == nil or next(itemsNeeded) == nil then
         if funcOnComplete then funcOnComplete({}, {}) end
@@ -291,8 +285,9 @@ function CasualTBCPrep.MailboxInteraction.TryGetItemsFromMailbox(itemsNeeded, fu
         remainingNeeds[itemID] = item.count
     end
 
-    local mailIndex, lastItemCount = 1,0
-    local isCancelled,waitingForUpdate = false, false
+    local isCancelled = false
+    local isProcessing = false
+    local emptyScansInARow = 0
 
     local registryID = 0
     local funcCleanupRegistry = function()
@@ -309,20 +304,10 @@ function CasualTBCPrep.MailboxInteraction.TryGetItemsFromMailbox(itemsNeeded, fu
         end
     end)
 
-    local function CountRelevantItems()
-        local count = 0
-        for itemID, need in pairs(remainingNeeds) do
-            if need > 0 then
-                local playerCount = CasualTBCPrep.Items.GetPlayerItemCount(itemID, false)
-                count = count + playerCount
-            end
-        end
-        return count
-    end
-
     local function ProcessNext()
-        if isCancelled then return end
+        if isCancelled or isProcessing then return end
 
+        -- Check if we're done
         local allDone = true
         for _, need in pairs(remainingNeeds) do
             if need > 0 then
@@ -336,61 +321,82 @@ function CasualTBCPrep.MailboxInteraction.TryGetItemsFromMailbox(itemsNeeded, fu
             return
         end
 
-        if waitingForUpdate then
-            local currentCount = CountRelevantItems()
-            if currentCount ~= lastItemCount then
-                waitingForUpdate = false
-                lastItemCount = currentCount
-            else
-                C_Timer.After(0.1, ProcessNext)
-                return
-            end
-        end
-
-        CheckInbox()
-        local inboxCount = GetInboxNumItems()
-        if mailIndex > inboxCount then
+        -- Stop after 5 empty scans in a row
+        if emptyScansInARow >= 5 then
             if funcOnComplete then funcOnComplete(collectedItems, remainingNeeds) end
             funcCleanupRegistry()
             return
         end
 
-        local _, _, _, _, money, moneyCOD, _, _, _, _, _, _, isGM = GetInboxHeaderInfo(mailIndex)
-        if isGM or (moneyCOD and moneyCOD > 0) then
-            mailIndex = mailIndex + 1
-            C_Timer.After(0.1, ProcessNext)
-            return
-        end
+        isProcessing = true
+        CheckInbox()
+        
+        C_Timer.After(0.3, function()
+            if isCancelled then 
+                isProcessing = false
+                return 
+            end
+            
+            local inboxCount = GetInboxNumItems()
+            
+            if inboxCount == 0 then
+                isProcessing = false
+                if funcOnComplete then funcOnComplete(collectedItems, remainingNeeds) end
+                funcCleanupRegistry()
+                return
+            end
 
-        local tookSomething = false
-        for attachIndex = 1, 12 do
-            local itemName, itemID, texture, count = GetInboxItem(mailIndex, attachIndex)
-            if itemName then
-                local itemLink = GetInboxItemLink(mailIndex, attachIndex)
-                if itemLink then
-                    local itemID = tonumber(string.match(itemLink, "item:(%d+)"))
-                    if itemID and remainingNeeds[itemID] and remainingNeeds[itemID] > 0 then
-                        TakeInboxItem(mailIndex, attachIndex)
-
-                        remainingNeeds[itemID] = remainingNeeds[itemID] - count
-                        collectedItems[itemID] = (collectedItems[itemID] or 0) + count
-
-                        tookSomething = true
-                        waitingForUpdate = true
-
-                        if money and money > 0 then TakeInboxMoney(mailIndex) end
-
-                        C_Timer.After(0.3, ProcessNext)
-                        return
+            -- Find ONE item to take
+            local foundAndTookItem = false
+            for mailIdx = 1, inboxCount do
+                if foundAndTookItem then break end
+                
+                local _, _, _, _, money, moneyCOD, _, _, _, _, _, _, isGM = GetInboxHeaderInfo(mailIdx)
+                
+                if not isGM and (not moneyCOD or moneyCOD == 0) then
+                    for attachIdx = 1, 12 do
+                        local itemName, _, _, count = GetInboxItem(mailIdx, attachIdx)
+                        if itemName then
+                            local itemLink = GetInboxItemLink(mailIdx, attachIdx)
+                            if itemLink then
+                                local itemID = tonumber(string.match(itemLink, "item:(%d+)"))
+                                
+                                if itemID and remainingNeeds[itemID] and remainingNeeds[itemID] > 0 then
+                                    TakeInboxItem(mailIdx, attachIdx)
+                                    
+                                    remainingNeeds[itemID] = remainingNeeds[itemID] - count
+                                    collectedItems[itemID] = (collectedItems[itemID] or 0) + count
+                                    
+                                    if money and money > 0 then 
+                                        TakeInboxMoney(mailIdx)
+                                    end
+                                    
+                                    foundAndTookItem = true
+                                    emptyScansInARow = 0
+                                    break
+                                end
+                            end
+                        end
                     end
                 end
             end
-        end
 
-        if not tookSomething then
-            mailIndex = mailIndex + 1
-            C_Timer.After(0.1, ProcessNext)
-        end
+            if foundAndTookItem then
+                -- Found and took an item, scan again after delay
+                C_Timer.After(0.6, function()
+                    isProcessing = false
+                    ProcessNext()
+                end)
+            else
+                -- Didn't find anything THIS scan, but don't give up yet
+                emptyScansInARow = emptyScansInARow + 1
+                C_Timer.After(0.5, function()
+                    isProcessing = false
+                    ProcessNext()
+                end)
+            end
+        end)
     end
+    
     ProcessNext()
 end

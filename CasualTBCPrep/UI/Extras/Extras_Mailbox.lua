@@ -4,7 +4,7 @@ CasualTBCPrep.Extras_Mailbox = CasualTBCPrep.Extras_Mailbox or {}
 
 local turninSteps = {
     [CasualTBCPrep.Routing.RouteCodeMain] = {
-        { id=1, text="Items in bags", header="Bags", targetMailID=1, targetBankID=1, section=nil, mapID=nil, zone=nil, subZone=nil, reached=false, interactedWithMail=false, interactedWithBank=false },
+        { id=1, text="Items in bags", header="Bags", targetMailID=1, targetBankID=1, section=nil, mapID=nil, zone=nil, subZone=nil, reached=true, interactedWithMail=false, interactedWithBank=false },
         { id=2, text="Cenarion Hold", header="Mail", targetMailID=2, targetBankID=nil, section="SilithusHold", mapID=1451, zone="Silithus", subZone="Cenarion Hold", reached=false, interactedWithMail=false, interactedWithBank=false },
         { id=3, text="Gadgetzan", header="Mail & Bank", targetMailID=3, targetBankID=2, section="TanarisTown", mapID=1446, zone="Tanaris", subZone="Gadgetzan", reached=false, interactedWithMail=false, interactedWithBank=false },
         { id=4, text="Bloodvenom Post", header="Mail", targetMailID=4, targetBankID=nil, section="felwoodTown", mapID=1440, zone="Felwood", subZone="Bloodvenom Post", reached=false, interactedWithMail=false, interactedWithBank=false },
@@ -15,7 +15,7 @@ local turninSteps = {
         { id=9, text="Stonard", header="Mail", targetMailID=8, targetBankID=nil, section="Stonard", mapID=1435, zone="Swamp of Sorrows", subZone="Stonard", shortZoneText="Swamp of Sorrows, Stonard", reached=false, interactedWithMail=false, interactedWithBank=false },
     },
     [CasualTBCPrep.Routing.RouteCodeStrat] = {
-        { id=1, text="Items in bags", header="Bags", targetMailID=1, targetBankID=1, section=nil, mapID=nil, zone=nil, subZone=nil, reached=false, interactedWithMail=false, interactedWithBank=false },
+        { id=1, text="Items in bags", header="Bags", targetMailID=1, targetBankID=1, section=nil, mapID=nil, zone=nil, subZone=nil, reached=true, interactedWithMail=false, interactedWithBank=false },
         { id=2, text="Cenarion Hold", header="Mail", targetMailID=2, targetBankID=nil, section="SilithusHold", mapID=1451, zone="Silithus", subZone="Cenarion Hold", reached=false, interactedWithMail=false, interactedWithBank=false },
         { id=3, text="Gadgetzan", header="Mail & Bank", targetMailID=3, targetBankID=2, section="TanarisTown", mapID=1446, zone="Tanaris", subZone="Gadgetzan", reached=false, interactedWithMail=false, interactedWithBank=false },
         { id=4, text="Bloodvenom Post", header="Mail", targetMailID=4, targetBankID=nil, section="felwoodTown", mapID=1440, zone="Felwood", subZone="Bloodvenom Post", reached=false, interactedWithMail=false, interactedWithBank=false },
@@ -26,7 +26,7 @@ local turninSteps = {
         { id=9, text="Stonard", header="Mail", targetMailID=8, targetBankID=nil, section="Stonard", mapID=1435, zone="Swamp of Sorrows", subZone="Stonard", shortZoneText="Swamp of Sorrows, Stonard", reached=false, interactedWithMail=false, interactedWithBank=false },
     },
     [CasualTBCPrep.Routing.RouteCodeSolo] = {
-        { id=1, text="Items in bags", header="Bags", targetMailID=1, targetBankID=1, section=nil, mapID=nil, zone=nil, subZone=nil, reached=false, interactedWithMail=false, interactedWithBank=false },
+        { id=1, text="Items in bags", header="Bags", targetMailID=1, targetBankID=1, section=nil, mapID=nil, zone=nil, subZone=nil, reached=true, interactedWithMail=false, interactedWithBank=false },
         { id=2, text="Cenarion Hold", header="Mail", targetMailID=2, targetBankID=nil, section="SilithusHold", mapID=1451, zone="Silithus", subZone="Cenarion Hold", reached=false, interactedWithMail=false, interactedWithBank=false },
         { id=3, text="Gadgetzan", header="Mail & Bank", targetMailID=3, targetBankID=2, section="TanarisTown", mapID=1446, zone="Tanaris", subZone="Gadgetzan", reached=false, interactedWithMail=false, interactedWithBank=false },
         { id=4, text="Everlook", header="Mail & Bank", targetMailID=4, targetBankID=nil, section="wsEverlook", mapID=1452, zone="Winterspring", subZone="Everlook", reached=false, interactedWithMail=false, interactedWithBank=false },

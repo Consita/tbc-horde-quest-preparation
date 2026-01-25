@@ -534,7 +534,7 @@ function CasualTBCPrep.Routing.GetTurninItemsForCurrentRoute()
     end
 
     local allItemsNeeded, itemsNeededAnyItems = CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(true)
-
+    local companionBagItemsMail, companionBagItemsBank = {}, {}
 
     local questItemLookup = {}
     for _, itemData in ipairs(allItemsNeeded) do
@@ -619,10 +619,20 @@ function CasualTBCPrep.Routing.GetTurninItemsForCurrentRoute()
 
                             if hadAny == false then
                                 for _, itemData in ipairs(tempItemReqAnyDataMail) do
-                                    GetTurninItemsForCurrentRoute_AddOrCombineItem(tempMailData, itemData.itemID, itemData.count)
+                                    local item = CasualTBCPrep.Items.GetItemDetails(itemData.itemID)
+                                    if item and item.inCompanionBag == true then
+                                        GetTurninItemsForCurrentRoute_AddOrCombineItem(companionBagItemsMail, itemData.itemID, itemData.count)
+                                    else
+                                        GetTurninItemsForCurrentRoute_AddOrCombineItem(tempMailData, itemData.itemID, itemData.count)
+                                    end
                                 end
                                 for _, itemData in ipairs(tempItemReqAnyDataBank) do
-                                    GetTurninItemsForCurrentRoute_AddOrCombineItem(tempBankData, itemData.itemID, itemData.count)
+                                    local item = CasualTBCPrep.Items.GetItemDetails(itemData.itemID)
+                                    if item and item.inCompanionBag == true then
+                                        GetTurninItemsForCurrentRoute_AddOrCombineItem(companionBagItemsBank, itemData.itemID, itemData.count)
+                                    else
+                                        GetTurninItemsForCurrentRoute_AddOrCombineItem(tempBankData, itemData.itemID, itemData.count)
+                                    end
                                 end
                             end
                         else
@@ -633,10 +643,18 @@ function CasualTBCPrep.Routing.GetTurninItemsForCurrentRoute()
                                     local itemID,neededItemCount = tonumber(itemIDStr), tonumber(countStr)
                                     local itemObj = CasualTBCPrep.Items.GetItemDetails(itemID)
                                     if itemObj then
-                                        if itemObj.auctionHouse == true then
-                                            GetTurninItemsForCurrentRoute_AddOrCombineItem(tempMailData, itemID, neededItemCount)
+                                        if itemObj.inCompanionBag == true then
+                                            if itemObj.auctionHouse == true then
+                                                GetTurninItemsForCurrentRoute_AddOrCombineItem(companionBagItemsMail, itemID, neededItemCount)
+                                            else
+                                                GetTurninItemsForCurrentRoute_AddOrCombineItem(companionBagItemsBank, itemID, neededItemCount)
+                                            end
                                         else
-                                            GetTurninItemsForCurrentRoute_AddOrCombineItem(tempBankData, itemID, neededItemCount)
+                                            if itemObj.auctionHouse == true then
+                                                GetTurninItemsForCurrentRoute_AddOrCombineItem(tempMailData, itemID, neededItemCount)
+                                            else
+                                                GetTurninItemsForCurrentRoute_AddOrCombineItem(tempBankData, itemID, neededItemCount)
+                                            end
                                         end
                                     end
                                 end
@@ -672,7 +690,37 @@ function CasualTBCPrep.Routing.GetTurninItemsForCurrentRoute()
             end
         end
     end
+    --[Items that should be forced to bags should be sent into first entry now]
+     if #companionBagItemsMail > 0 then
+        if #resultMail > 0 then
+            for _, item in ipairs(companionBagItemsMail) do
+                GetTurninItemsForCurrentRoute_AddOrCombineItem(resultMail[1].items, item.itemID, item.count)
+            end
+        else
+            table.insert(resultMail, 1, { id=1, section="BAGS", items=companionBagItemsMail })
+            table.insert(resultOrder, 1, { type="MAIL", section="BAGS", targetID=1})
+        end
+    end
+    if #companionBagItemsBank > 0 then
+        if #resultBank > 0 then
+            for _, item in ipairs(companionBagItemsBank) do
+                GetTurninItemsForCurrentRoute_AddOrCombineItem(resultBank[1].items, item.itemID, item.count)
+            end
+        else
+            table.insert(resultBank, 1, { id=1, section="BAGS", items=companionBagItemsBank })
+            table.insert(resultOrder, 1, { type="BANK", section="BAGS", targetID=1})
+        end
+    end
 
+    if sectionsUsed ~= expectedSectionsUsed then
+        CasualTBCPrep.NotifyUserError("(Routing.GetMailboxItemsForCurrentRoute_"..routeCode.."): Expected to see "..tostring(expectedSectionsUsed).." but only checked "..tostring(sectionsUsed))
+        CasualTBCPrep.NotifyUserError("Missing Sections:")
+        for _, sectionName in ipairs(route.sectionOrder) do
+            if not processedSections[sectionName] then
+                CasualTBCPrep.NotifyUserError("- "..sectionName)
+            end
+        end
+    end
     return resultMail, resultBank, resultOrder
 end
 

@@ -202,10 +202,10 @@ local function LoadStepDetails()
     local currentStep = CasualTBCPrep.Extras_Mailbox.GetTurninStep(stepCurrent)
     if currentStep == nil then return end
 
-    if stepCurrent == 1 then
-        LoadStepDetailsItems(-5)
-        return
-    end
+    -- if stepCurrent == 1 then
+    --     LoadStepDetailsItems(-5)
+    --     return
+    -- end
 
     local globalCompanionSettings = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.CompanionSettings)
     local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
@@ -221,7 +221,7 @@ local function LoadStepDetails()
     local yPos = -5
 
     local showButton = true
-    if currentStep.reached == false then
+    if currentStep.reached == false and currentStep.id ~= 1 then
         -- Not reached, show text to go there
 
         local txtReachStatic = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
@@ -245,42 +245,45 @@ local function LoadStepDetails()
 
     local mailID,bankID = currentStep.targetMailID or 0, currentStep.targetBankID or 0
 
+    local isFirstStep = (currentStep.id == 1) or false
     if (mailID+bankID) > 0 and showButton == true then
-        local txtInteractHeader = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
-        txtInteractHeader:SetPoint("TOP", parent, "BOTTOM", 0, yPos)
-        txtInteractHeader:SetText("Interact With")
-        txtInteractHeader:SetTextColor(clrWarn.r, clrWarn.g, clrWarn.b)
-        table.insert(wCompanion.texts, txtInteractHeader)
-        yPos = yPos - 16
+        if not isFirstStep then -- Don't show interact texts on Bagstep
+            local txtInteractHeader = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
+            txtInteractHeader:SetPoint("TOP", parent, "BOTTOM", 0, yPos)
+            txtInteractHeader:SetText("Interact With")
+            txtInteractHeader:SetTextColor(clrWarn.r, clrWarn.g, clrWarn.b)
+            table.insert(wCompanion.texts, txtInteractHeader)
+            yPos = yPos - 16
 
-        if mailID > 0 then
-            local txtInteractMail = parent:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-            txtInteractMail:SetPoint("TOP", parent, "BOTTOM", 0, yPos)
-            txtInteractMail:SetText("Mailbox")
+            if mailID > 0 then
+                local txtInteractMail = parent:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+                txtInteractMail:SetPoint("TOP", parent, "BOTTOM", 0, yPos)
+                txtInteractMail:SetText("Mailbox")
 
-            if currentStep.interactedWithMail == true then
-                txtInteractMail:SetTextColor(clrGood.r, clrGood.g, clrGood.b)
-            else
-                txtInteractMail:SetTextColor(clrBad.r, clrBad.g, clrBad.b)
+                if currentStep.interactedWithMail == true then
+                    txtInteractMail:SetTextColor(clrGood.r, clrGood.g, clrGood.b)
+                else
+                    txtInteractMail:SetTextColor(clrBad.r, clrBad.g, clrBad.b)
+                end
+                table.insert(wCompanion.texts, txtInteractMail)
+                yPos = yPos - 15
             end
-            table.insert(wCompanion.texts, txtInteractMail)
-            yPos = yPos - 15
-        end
 
-        if bankID > 0 then
-            local txtInteractBank = parent:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-            txtInteractBank:SetPoint("TOP", parent, "BOTTOM", 0, yPos)
-            txtInteractBank:SetText("Bank")
+            if bankID > 0 then
+                local txtInteractBank = parent:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+                txtInteractBank:SetPoint("TOP", parent, "BOTTOM", 0, yPos)
+                txtInteractBank:SetText("Bank")
 
-            if currentStep.interactedWithBank == true then
-                txtInteractBank:SetTextColor(clrGood.r, clrGood.g, clrGood.b)
-            else
-                txtInteractBank:SetTextColor(clrBad.r, clrBad.g, clrBad.b)
+                if currentStep.interactedWithBank == true then
+                    txtInteractBank:SetTextColor(clrGood.r, clrGood.g, clrGood.b)
+                else
+                    txtInteractBank:SetTextColor(clrBad.r, clrBad.g, clrBad.b)
+                end
+                table.insert(wCompanion.texts, txtInteractBank)
+                yPos = yPos - 13
             end
-            table.insert(wCompanion.texts, txtInteractBank)
-            yPos = yPos - 13
+            yPos = yPos - 2
         end
-        yPos = yPos - 2
 
         if (mailID > 0 or bankID > 0) then
             local funcNotify = function(text) CasualTBCPrep.NotifyUserCompanion(text) end

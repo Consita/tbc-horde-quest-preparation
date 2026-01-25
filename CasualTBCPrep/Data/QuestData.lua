@@ -1165,7 +1165,7 @@ function CasualTBCPrep.QuestData.LoadRoute(routeCode)
 						expForLevel = expForLevel + CasualTBCPrep.Experience.GetRequiredExperienceFor(charLvl, charLvl + 1)
 
 						if debugger == 1 then
-							CasualTBCPrep.NotifyUser("Route " .. route.name .. " would ding " .. tostring(charLvl) .. " from quest " .. tostring(questID) .. ", " .. questObj.name.." at "..tostring(questObj.sectionName))
+							CasualTBCPrep.NotifyUser("Route " .. route.name .. " would ding " .. tostring(charLvl) .. " from quest " .. tostring(questID) .. ", " .. questObj.name.." at "..tostring(questObj.routeSection))
 						end
 					end
 				end

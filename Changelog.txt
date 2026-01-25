@@ -1,6 +1,10 @@
 Changelog:
 
 3.19 
+- "Fel Elemental Rod" for the T0.5 questline is now marked correctly as BoE (Can be mailed and bought on AH).
+- Companion: Added 'Collect' button the the 'Bags' steps, so you can quickly loot the items from the bank.
+- Companion: T0.5 Class belt & gloves are now set to always be in bags, so players that have equipped them doesn't get griefed on release since they can't mail them.
+- Companion: No longer only loots 1 stack after the prepatch.
 
 3.18 (2026-01-24)
 - Added Main Route turnin
