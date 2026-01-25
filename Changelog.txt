@@ -1,6 +1,8 @@
 Changelog:
 
-3.18
+3.19 
+
+3.18 (2026-01-24)
 - Added Main Route turnin
 - Fixed Coordinates for dungeons with prepatch
 - Fixed spelling mistake in the "Item Delete Warning" window
