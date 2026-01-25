@@ -51,14 +51,6 @@ local function GenerateContent_Extra_None(parent)
 	wFeatureManual.title:SetText("Description:  Nothing")
 	wFeatureManual:SetSize(500, 500)
 	fontStringWidth = 460
-	-- local clrWarn = CasualTBCPrep.Themes.SelectedTheme.colors.warn
-	-- local clrHeader = CasualTBCPrep.Themes.SelectedTheme.colors.headerSpecialHover
-	-- local clrText = CasualTBCPrep.Themes.SelectedTheme.colors.manualText
-	-- local clrStep = CasualTBCPrep.Themes.SelectedTheme.colors.standoutText
-	-- local txt = QuickText(parent, "What does this feature do?", "GameFontNormalLarge", "TOPLEFT", parent, "TOPLEFT", 0, -5, clrHeader)
-	-- txt = QuickText(parent, "The Extras - Mailbox feature is to help you manage all your items on release day.\rIf you prepared a lot of quests, you can't have all the items in your bags from the beginning.\r\r"
-	-- 	.."This feature will help you manage it by storing items in the bank/mailbox\rand withdrawing them as they are needed.\r\rThis feature is OPTIONAL, you can manage this yourself as well!\r"
-	-- 	.."If this seems too complicated, or if you don't want to read, please don't use this feature - you might accidentally grief yourself and that's not fun.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
 end
 
 local function GenerateContent(type)

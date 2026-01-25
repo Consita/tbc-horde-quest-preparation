@@ -273,7 +273,8 @@ local function Display(parent)
 	local clrStep = CasualTBCPrep.Themes.SelectedTheme.colors.standoutText
 	local txt = QuickText(parent, "What does this feature do?", "GameFontNormalLarge", "TOPLEFT", parent, "TOPLEFT", 0, yPos, clrHeader)
 	txt = QuickText(parent, "The Extras - Mailbox feature is to help you manage all your items on release day.\rIf you prepared a lot of quests, you can't have all the items in your bags from the beginning.\r\r"
-		.."The companion helps you withdrawing items when they are needed.\r\rThis feature is OPTIONAL, you can do this yourself as well!\rIf this seems too complicated, or if you don't want to read, please don't use this feature - you might accidentally grief yourself and that's not fun.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+		.."The companion helps you withdrawing items when they are needed.\r\rThis feature is OPTIONAL, you can do this yourself as well!\rIf this seems too complicated, or if you don't want to read, please don't use this feature - you might accidentally grief yourself and that's not fun.\r\r"
+            .."A simpler way of using this tool, is to only use it to help prepare your mails, and you can then manually loot them on release.\rRefer to the 'Manual Mail Help' topic below for more info on this, it's below the test example.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
 
 	txt = QuickText(parent, "How does it work?", "GameFontNormalLarge", "TOPLEFT", txt, "BOTTOMLEFT", 0, -13, clrHeader)
 	txt = QuickText(parent, "Using the whistle button in the topleft, you can open the Companion.\r"
@@ -342,75 +343,37 @@ local function Display(parent)
 	txt = QuickText(parent, "If you leave town, the Companion should update and tell you to go back to town.\r\rIf you leave town, go to any other step than Tanaris and then enter town again, it should automatically select the correct step for you.\r\r"
 	    .."You don't have to test at Gadgetzan, you can test any step with any item needed on release.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
 
+	txt = QuickText(parent, "Simple 'Manual Mail Help' Usage", "GameFontNormalLarge", "TOPLEFT", txt, "BOTTOMLEFT", 0, -22, clrHeader)
+	txt = QuickText(parent, "Instead of relying on this addon to loot every item from every mail on release, when the servers are known to... struggle...\r"
+    .."You can instead use the companion to help organize your mails now, and then manually loot them.\rThis is just for the mailbox, the bank should™ work fine.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrWarn)
+
+	txt = QuickText(parent, "Step 1", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -9, clrStep)
+	txt = QuickText(parent, "Make sure you are done prepping, and you have all your BoE items ready.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+	txt = QuickText(parent, "Step 2", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -9, clrStep)
+	txt = QuickText(parent, "Send all your prep items to an alt,  make sure all the items are on this alt, and ideally the alt has no other mail, so you don't need to search.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+	txt = QuickText(parent, "Step 3", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -9, clrStep)
+	txt = QuickText(parent, "On the alt, send all the items to your main, either by sending new mails, or returning the mails you sent. The order doesn't matter, just send them all!", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+	txt = QuickText(parent, "Step 4", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -9, clrStep)
+	txt = QuickText(parent, "Log back on your main, now it should have several mails with items. Make sure your bags are clean and have enough room.\rOpen the companion and go to step 2 in the companion.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+	txt = QuickText(parent, "Step 5", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -9, clrStep)
+	txt = QuickText(parent, "Interact with any mailbox, and click 'Collect'. Now all items will be collected for this step. Close the mailbox when it's done.\nIf it didn't collect all items, try clicking collect again. If you're missing items, get them.\r"
+    .."Make sure the itemlist for this step is empty, so you have them all in your bags.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+	txt = QuickText(parent, "Step 6", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -9, clrStep)
+	txt = QuickText(parent, "Once you have all items from this step in your bags, send a new mail to your alt, and name it something useful, like 'Silithus1', 'Silithus2'.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+    txt = QuickText(parent, "Step 7", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -9, clrStep)
+	txt = QuickText(parent, "Now go to 'Step 3' in the companion and do the same - use collect button to get them, check you have all items, send them back to alt with a good name, maybe Gadgetzan1, Gadgetzan2 for step3.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+    txt = QuickText(parent, "Step 8", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -9, clrStep)
+	txt = QuickText(parent, "Continue this for all steps. At the end, your alt should have nicely named mails with all your items, that you can open yourself with shift+rightclick on release.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+    txt = QuickText(parent, "Step 9", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -9, clrStep)
+	txt = QuickText(parent, "Log on to the alt, and return these nicely named mails in reverse order. So you want to return the 'Stonard' mail first.\rIf you do this, the mail you need first, will appear first in your mailbox.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+    txt = QuickText(parent, "Step 10", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -9, clrStep)
+	txt = QuickText(parent, "Now you can manually loot the mails you need on release. You should still have the companion open to help loot bank items, and to remember when to loot stuff, but you don't rely on our addon looping through mails on release, where the server might be lagging badly.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
+
 	txt = QuickText(parent, "Feedback", "GameFontNormalLarge", "TOPLEFT", txt, "BOTTOMLEFT", 0, -28, clrHeader)
 	txt = QuickText(parent, "If you find something here confusing, or find any errors, please let us know on Discord.", "GameFontNormal", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrText)
 	txt = QuickText(parent, "Discord Invite: Click the discord link in the /tbcprep 'About' tab, you can copy it :)", "GameFontNormalSmall", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrWarn)
-	txt = QuickText(parent, " ", "GameFontNormalSmall", "TOPLEFT", txt, "BOTTOMLEFT", 0, -1, clrWarn)
-    -- Items
-    -- yPos = yPosStart
-    -- local mailsNeeded, bankItems = CasualTBCPrep.Extras_Mailbox.GetTurninData()
 
-    -- local allCombinedItems = {}
-    -- for _,mailGroup in ipairs(mailsNeeded) do
-    --     for _,mail in ipairs(mailGroup.mails) do
-    --         for _,item in ipairs(mail.items) do
-    --             if allCombinedItems[item.itemID] then
-    --                 allCombinedItems[item.itemID] = allCombinedItems[item.itemID] + item.count
-    --             else
-    --                 allCombinedItems[item.itemID] = item.count
-    --             end
-    --         end
-    --     end
-    -- end
-
-    -- local clrHeader1 = CasualTBCPrep.Themes.SelectedTheme.colors.headerSpecialHover
-    -- local txtHeader = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
-    -- txtHeader:SetPoint("TOPLEFT", parent, "TOPLEFT", 0, yPos)
-    -- txtHeader:SetText("Missing Items for Mails")
-    -- txtHeader:SetTextColor(clrHeader1.r, clrHeader1.g, clrHeader1.b)
-    -- table.insert(texts, txtHeader)
-    -- yPos = yPos - 20
-
-    -- local itemIconSize = 28
-
-    -- for itemID, totalNeeded in pairs(allCombinedItems) do
-    --     local inventoryCount = CasualTBCPrep.Items.GetPlayerItemCount(itemID, false)
-    --     local missing = math.max(0, totalNeeded - inventoryCount)
-
-    --     if missing > 0 then
-    --         local icon, border, textRarityColor, imgItem = CasualTBCPrep.UI.CreateItemImage(parent, itemIconSize, itemID, "TOPLEFT", "TOPLEFT", 4, yPos)
-    --         table.insert(content, icon)
-    --         table.insert(content, border)
-
-    --         local itemName = imgItem and imgItem.name or ("Item " .. itemID)
-    --         local r,g,b,cHex = CasualTBCPrep.GetRarityColor(imgItem and imgItem.rarity or 0)
-
-    --         local txtItemName = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-    --         txtItemName:SetPoint("TOPLEFT", icon, "TOPRIGHT", 2, -1)
-    --         txtItemName:SetText(cHex .. itemName .. "|r")
-    --         table.insert(texts, txtItemName)
-
-    --         local txtMissing = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-    --         txtMissing:SetPoint("BOTTOMLEFT", icon, "BOTTOMRIGHT", 2, 1)
-    --         txtMissing:SetText(clrMissing.hex .. "Missing: " .. missing .. "|r")
-    --         table.insert(texts, txtMissing)
-
-    --         if icon then
-    --             icon:SetScript("OnEnter", function(self)
-    --                 local link = CasualTBCPrep.Items.TryGetItemLink(itemID)
-    --                 if link then
-    --                     GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-    --                     GameTooltip:SetHyperlink(link)
-    --                     GameTooltip:Show()
-    --                 end
-    --             end)
-    --             icon:SetScript("OnLeave", function()
-    --                 GameTooltip:Hide()
-    --             end)
-    --         end
-    --         yPos = yPos - (itemIconSize + 5)
-    --     end
-    -- end
+	parent:SetSize(parent:GetWidth(), 1)
 end
 ---@param frame Frame
 function CasualTBCPrep.Extras_Mailbox.Load(frame)

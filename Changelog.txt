@@ -7,6 +7,8 @@ Changelog:
 - Companion: T0.5 Class belt & gloves are now set to always be in bags, so players that have equipped them doesn't get griefed on release since they can't mail them.
 - Companion: No longer only loots 1 stack after the prepatch.
 - Companion: Companion now tries to update the itemlist after collecting, not only after closing the mail/bank. If the mailbox lags it might not work, just close the mail/bank to get a fresh update.
+- Added description of a way to use the companion without relying on our mail-loot logic on release. The servers might be lagging and we can't guarantee how well it works.
+  > Please go to /tbcprep > Extras > Mailbox and scroll down to the "Simple 'Manual Mail Help' Usage" header. This is how Pawaox will handle mails on release.
 
 3.18 (2026-01-24)
 - Added Main Route turnin
