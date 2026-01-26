@@ -1142,7 +1142,7 @@ RXPGuides.RegisterGuide([[
 		.target Winna Hazzard	
 		
 	step
-		#completewith next
+		#completewith Felwoodlast
 		.goto Felwood,34.4,53.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Brakkar|r
 		.fly Emerald Sanctuary>>Fly to |cFFfa9602Emerald Sanctuary|r
@@ -1564,8 +1564,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith EPL1
-		.zone Eastern Plaguelands >> Hearth to |cFFfa9602Lights Hope Chapel|r
-		.use 6948
+		.hs >> Hearth to |cFFfa9602Lights Hope Chapel|r
 		.zoneskip Eastern Plaguelands
 
 	step
