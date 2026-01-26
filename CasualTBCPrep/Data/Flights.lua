@@ -86,54 +86,54 @@ local taxiMetadata = {
 local neededTaxiNodes = {
 	[CasualTBCPrep.Routing.RouteCodeMain] = {
 		[0] = { -- Neutral
-			["Marshal's Refuge, Un'Goro Crater"] = { }, -- Marshal's Refuge, Un'Goro, NodeID=79
+			["Marshal's Refuge, Un'Goro Crater"] = { },
             ["Emerald Sanctuary, Felwood"] = { }
 		},
 		[1] = { -- Horde
-			["Kargath, Badlands"] = { }, -- Kargath, Badlands, NodeID=21
-			["Gadgetzan, Tanaris"] = { }, -- Gadgetzan, Tanaris, NodeID=39
-			["Bloodvenom Post, Felwood"] = { }, -- Bloodvenom Post, Felwood, NodeID=48
+			["Kargath, Badlands"] = { },
+			["Gadgetzan, Tanaris"] = { },
+			["Bloodvenom Post, Felwood"] = { }, 
 		},
 		[2] = { -- Alliance
-			["Gadgetzan, Tanaris"] = { }, -- Gadgetzan, Tanaris, NodeID=40
+			["Gadgetzan, Tanaris"] = { },
 		}
 	},
 	[CasualTBCPrep.Routing.RouteCodeStrat] = {
 		[0] = { -- Neutral
-			["Marshal's Refuge, Un'Goro Crater"] = { }, -- Marshal's Refuge, Un'Goro, NodeID=79
+			["Marshal's Refuge, Un'Goro Crater"] = { },
             ["Emerald Sanctuary, Felwood"] = { }
 		},
 		[1] = { -- Horde
-			["Kargath, Badlands"] = { }, -- Kargath, Badlands, NodeID=21
-			["Gadgetzan, Tanaris"] = { }, -- Gadgetzan, Tanaris, NodeID=39
-			["Bloodvenom Post, Felwood"] = { }, -- Bloodvenom Post, Felwood, NodeID=48
+			["Kargath, Badlands"] = { },
+			["Gadgetzan, Tanaris"] = { },
+			["Bloodvenom Post, Felwood"] = { },
 		},
 		[2] = { -- Alliance
-			["Gadgetzan, Tanaris"] = { }, -- Gadgetzan, Tanaris, NodeID=40
+			["Gadgetzan, Tanaris"] = { },
 		}
 	},
 	[CasualTBCPrep.Routing.RouteCodeSolo] = {
 		[0] = { -- Neutral
-			["Marshal's Refuge, Un'Goro Crater"] = { }, -- Marshal's Refuge, Un'Goro, NodeID=79
+			["Marshal's Refuge, Un'Goro Crater"] = { },
             ["Emerald Sanctuary, Felwood"] = { }
 		},
 		[1] = { -- Horde
-			["Tarren Mill, Hillsbrad"] = { }, -- Tarren Mill, Hillsbrad, NodeID=13
-			["Kargath, Badlands"] = { }, -- Kargath, Badlands, NodeID=21
-			["Thunder Bluff, Mulgore"] = { }, -- Thunder Bluff, Mulgore, NodeID=22
-			["Orgrimmar, Durotar"] = { }, -- Orgrimmar, Durotar, NodeID=23
-			["Gadgetzan, Tanaris"] = { }, -- Gadgetzan, Tanaris, NodeID=39
-			["Camp Mojache, Feralas"] = { }, -- Camp Mojache, Feralas, NodeID=42
-			["Valormok, Azshara"] = { }, -- Valormok, Azshara, NodeID=44
-			["Bloodvenom Post, Felwood"] = { }, -- Bloodvenom Post, Felwood, NodeID=48
-			["Everlook, Winterspring"] = { }, -- Everlook, Winterspring,, NodeID=53
-			["Stonard, Swamp of Sorrows"] = { }, -- Stonard, Swamp of Sorrows, NodeID=56
-			["Light's Hope Chapel, Eastern Plaguelands"] = { }, -- Light's Hope Chapel, EPL, NodeID=68
+			["Tarren Mill, Hillsbrad"] = { },
+			["Kargath, Badlands"] = { },
+			["Thunder Bluff, Mulgore"] = { },
+			["Orgrimmar, Durotar"] = { },
+			["Gadgetzan, Tanaris"] = { },
+			["Camp Mojache, Feralas"] = { },
+			["Valormok, Azshara"] = { },
+			["Bloodvenom Post, Felwood"] = { },
+			["Everlook, Winterspring"] = { },
+			["Stonard, Swamp of Sorrows"] = { },
+			["Light's Hope Chapel, Eastern Plaguelands"] = { },
 		},
 		[2] = { -- Alliance
-			["Gadgetzan, Tanaris"] = { }, -- Gadgetzan, Tanaris, NodeID=40
-			["Everlook, Winterspring"] = { }, -- Everlook, Winterspring,, NodeID=52
-			["Light's Hope Chapel, Eastern Plaguelands"] = { }, -- Light's Hope Chapel, EPL, NodeID=67
+			["Gadgetzan, Tanaris"] = { },
+			["Everlook, Winterspring"] = { },
+			["Light's Hope Chapel, Eastern Plaguelands"] = { },
 		}
 	},
 }
@@ -228,7 +228,6 @@ function CasualTBCPrep.Flights.GetPlayerFlightPathState(routeCode)
 	local playerFactionID = CasualTBCPrep.Faction.GetPlayerFactionID()
 
 	local finalTaxiList = { }
-
     local toCheck = {}
     for taxi, _ in pairs(neededTaxiNodes[routeCode][neutralFactionID]) do
         table.insert(toCheck, taxi)

@@ -18,16 +18,13 @@ CasualTBCPrep\Data\Themes.lua
 CasualTBCPrep\Data\Classes.lua
 CasualTBCPrep\Data\Faction.lua
 CasualTBCPrep\Data\Professions.lua
-CasualTBCPrep\Data\Skills.lua
 CasualTBCPrep\Data\Locale\Professions.lua
-CasualTBCPrep\Data\Locale\Skills.lua
 CasualTBCPrep\Data\Experience.lua
 CasualTBCPrep\Data\Items.lua
 CasualTBCPrep\Data\Sounds.lua
 CasualTBCPrep\Data\Settings.lua
 CasualTBCPrep\CasualTBCPrepShared.lua
 CasualTBCPrep\Data\QuestData.lua
-CasualTBCPrep\Data\Navigation.lua
 CasualTBCPrep\Data\Routing.lua
 CasualTBCPrep\Data\Flights.lua
 CasualTBCPrep\Integration\ElvUI.lua
@@ -50,7 +47,6 @@ CasualTBCPrep\UI\W_WarningNotice.lua
 CasualTBCPrep\UI\W_ItemManagement.lua
 CasualTBCPrep\UI\W_QuestManagement.lua
 CasualTBCPrep\UI\W_Companion.lua
-CasualTBCPrep\UI\W_FeatureManual.lua
 CasualTBCPrep\CasualTBCPrep.lua
 
 # Guide

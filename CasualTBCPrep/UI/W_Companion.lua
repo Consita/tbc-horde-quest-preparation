@@ -20,13 +20,6 @@ local SetStep
 ---@class Frame|nil
 local wCompanion = nil;
 
----@param text string|nil
-local function Notify(text)
-    if text == nil or text == "" then return end
-    if not wCompanion:IsShown() then return end
-    CasualTBCPrep.NotifyUserCompanion(text)
-end
-
 local function CleanupElements()
 	if wCompanion.texts then
 		for _, fontString in ipairs(wCompanion.texts) do
@@ -62,7 +55,7 @@ local function LoadStepDetailsItems(startY)
     local mailsToOpen, itemsFromBank, mailItemStackCount, bankItemStackCount = GetStepDetails_ItemsNeeded(currentStep)
 
     local itemsNeededInBags = {}
-    local mailItemGrouping = {} -- Since multiple mailslots may have the same itemstack, gotta  group them first to get one final count (fx Runecloth 20/300)
+    local mailItemGrouping = {} -- Since multiple mailslots may have the same itemstack, group them first to get one final count (fx Runecloth 20/300)
     for _,mail in ipairs(mailsToOpen) do
         if mail ~= nil and mail.id ~= nil and mail.id > 0 then
            for _,item in ipairs(mail.items) do
@@ -103,7 +96,6 @@ local function LoadStepDetailsItems(startY)
         end
 
         if item.totalNeeded <= inventoryCount then
-            -- Yay we have enough
             inventoryCount = inventoryCount - item.totalNeeded
         else
             if item.totalNeeded <= (inventoryCount+bankCount) then
@@ -125,8 +117,6 @@ local function LoadStepDetailsItems(startY)
     end
 
     if #missing == 0 then
-        --CasualTBCPrep.NotifyUserCompanion("Step "..tostring(currentStep.id).." completed, switching to step2.")
-        --IncrementStep()
         return
     end
 
@@ -169,13 +159,11 @@ local function LoadStepDetailsItems(startY)
             table.insert(wCompanion.content, border)
 
             local itemNameText = textRarityColor .. (itemName or ("Item " .. imgItem.id))
-
             local txtItemName = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
             txtItemName:SetPoint("TOPLEFT", icon, "TOPRIGHT", 1, -1)
             txtItemName:SetText(itemNameText)
             table.insert(wCompanion.texts, txtItemName)
 
-            --local progressText = tostring(playerTrackedCount.invOrig).."/"..item.count
             local progressText = tostring(playerTrackedCount.invOrig).."/"..(item.totalNeeded or item.count)
             if playerTrackedCount.bankOrig > 0 then
                 progressText = clrBanked.hex..progressText.." ("..tostring(playerTrackedCount.bankOrig).." in bank)|r"
@@ -191,7 +179,7 @@ local function LoadStepDetailsItems(startY)
         end
     end
 
-    -- Hack some fake space at the bottom of the list
+    -- Fake space at bottom of the list
     local txtBottomSpace = parent:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     txtBottomSpace:SetPoint("TOP", parent, "TOP", 0, yPos+(spacing/3))
     txtBottomSpace:SetText(" ")
@@ -202,18 +190,11 @@ local function LoadStepDetails()
     local currentStep = CasualTBCPrep.Extras_Mailbox.GetTurninStep(stepCurrent)
     if currentStep == nil then return end
 
-    -- if stepCurrent == 1 then
-    --     LoadStepDetailsItems(-5)
-    --     return
-    -- end
-
-    local globalCompanionSettings = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.CompanionSettings)
     local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
     local clrBad = CasualTBCPrep.Themes.SelectedTheme.colors.bad
     local clrWarn = CasualTBCPrep.Themes.SelectedTheme.colors.warn
     local clrGood = CasualTBCPrep.Themes.SelectedTheme.colors.good
-    local clrBanked = CasualTBCPrep.Themes.SelectedTheme.colors.questReadyBanked
-    local clrMissing = CasualTBCPrep.Themes.SelectedTheme.colors.questCompleted
+
     local clrDebugMsg = CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex
     local clrWaitingForZone = { r=0.7, g=0.7, b=0.7 }
 
@@ -222,8 +203,6 @@ local function LoadStepDetails()
 
     local showButton = true
     if currentStep.reached == false and currentStep.id ~= 1 then
-        -- Not reached, show text to go there
-
         local txtReachStatic = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
         txtReachStatic:SetPoint("TOP", parent, "BOTTOM", 0, yPos)
         txtReachStatic:SetText("Waiting For")
@@ -553,14 +532,6 @@ IncrementStep = function()
     local newValue = stepCurrent + 1
     if newValue > stepMax then newValue = 1 end
     SetStep(newValue, true)
-
-    local currentStep = CasualTBCPrep.Extras_Mailbox.GetTurninStep(stepCurrent)
-    local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
-    if debugger == 1 and currentStep then
-        local debugMailsToOpen, debugItemsFromBank, debugMailItemStackCount, debugBankItemStackCount = GetStepDetails_ItemsNeeded(currentStep)
-        CasualTBCPrep.NotifyUserCompanion("[DEBUG] Mail slots needed: " .. debugMailItemStackCount)
-        CasualTBCPrep.NotifyUserCompanion("[DEBUG] Bank slots needed: " .. debugBankItemStackCount)
-    end
 end
 DecrementStep = function()
     local newValue = stepCurrent - 1
@@ -700,8 +671,7 @@ local function Create()
         Display()
     end)
 
-	wCompanion.scrollFrame, wCompanion.scrollChild = CasualTBCPrep.UI.CreateTBCPrepScrollFrame(wCompanion, 11, -30, -26, 10) --2nd value is distance from top
-	-- Place in the front above other UI/addons
+	wCompanion.scrollFrame, wCompanion.scrollChild = CasualTBCPrep.UI.CreateTBCPrepScrollFrame(wCompanion, 11, -30, -26, 10)
 	wCompanion:SetFrameStrata("FULLSCREEN_DIALOG")
 	wCompanion:SetFrameLevel(1001)
 

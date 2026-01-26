@@ -39,7 +39,6 @@ CasualTBCPrep.Settings.CurrentMajorVersionValue = 3.21
 CasualTBCPrep.Settings.VersionCheck_RouteSelection = 3.0
 CasualTBCPrep.Settings.VersionCheck_QuestlogOverhaul1 = 3.15
 
---[Settings Getter/Setter]
 ---@param key string
 local function ParseSettingsValue(key, value)
 	if value == nil then
@@ -179,7 +178,6 @@ function CasualTBCPrep.Settings.LoadDefaults()
 	end
 
 	-- Major Version Checks. Use this when we need to force some settings after big changes that could break stuff.
-	-- For example, after adding Route Selection, we want users who had the addon before, to also get the new selection window, so we reset their SelectedRoute
 	local charMajorVersionVal = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.CurrentMajorVersion)
 
 	-- RouteSelection Version Check
@@ -197,7 +195,6 @@ function CasualTBCPrep.Settings.LoadDefaults()
 			end)
 		end
 	end
-
 
 	-- Should probably always be last
 	CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.CurrentMajorVersion, CasualTBCPrep.Settings.CurrentMajorVersionValue)

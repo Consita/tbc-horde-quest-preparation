@@ -27,19 +27,7 @@ SlashCmdList["CASUAL_TBC_PREP"] = function(msg)
 	elseif args[1] == "ghetto" then
 		CasualTBCPrep.GhettoHearth()
 	elseif args[1] == "debug" then
-		if args[2] == "warn1" then
-			CasualTBCPrep.W_WarningNotice.Show("A Collection of Heads", nil, "qlog")
-		elseif args[2] == "warn2" then
-			CasualTBCPrep.W_WarningNotice.Show("Lords of the Council", nil, "turnin")
-		elseif args[2] == "warn3" then
-			CasualTBCPrep.W_WarningNotice.Show("Ramstein", nil, "completing")
-		elseif args[2] == "witem" then
-			CasualTBCPrep.W_ItemManagement.Show(20644)
-		elseif args[2] == "err" or args[3] == "error" then
-			CasualTBCPrep.NotifyUserError("This is an example ERROR message... Oh no!")
-		elseif args[2] == "not" or args[3] == "notify" then
-			CasualTBCPrep.NotifyUser("This is an example message from " .. CasualTBCPrep.AddonName .. "... Hello!")
-		elseif args[2] == "on" then
+		if args[2] == "on" then
 			CasualTBCPrep.Settings.SetGlobalSetting(CasualTBCPrep.Settings.DebugDetails, 1)
 			notifyText = "Debugging Details is now ON"
 		elseif args[2] == "off" then
@@ -51,7 +39,7 @@ SlashCmdList["CASUAL_TBC_PREP"] = function(msg)
 			CasualTBCPrep.W_Main.Hide()
 			CasualTBCPrep.BlockSlashCommandsUntillReloaded = true
 		else
-			notifyText = "Invalid syntax, use: /tbcprep debug <warn1/warn2/warn3/witem/err/not/on/off/wiperoute>"
+			notifyText = "Invalid syntax, use: /tbcprep debug </on/off/wiperoute>"
 		end
 	elseif args[1] == "flights" then
 		for _, routeCode in ipairs({ CasualTBCPrep.Routing.RouteCodeStrat,CasualTBCPrep.Routing.RouteCodeMain,CasualTBCPrep.Routing.RouteCodeSolo}) do
@@ -117,17 +105,8 @@ local function OnQuestAcceptedEvent(self, event, questLogIndex)
 			CloseQuest()
 		end
 
-		-- if not CasualTBCPrep.Routing.IsQuestInCurrentRoute(questID) then
-		-- 	return
-		-- end
-
-		-- if CasualTBCPrep.QuestData.ShouldBeInQuestLog(questID) or CasualTBCPrep.QuestData.IsTurnInQuest(questID) then
-		-- 	CasualTBCPrep.W_WarningNotice.Show(questName, nil, "completing");
-		-- 	CloseQuest()
-		-- end
-
 		CasualTBCPrep.W_Main.ReloadActiveTab()
-	elseif event == "QUEST_LOG_UPDATE" then -- Will this spam updates? This happens a lot... But if you have the window open, is it fine?
+	elseif event == "QUEST_LOG_UPDATE" then
 		CasualTBCPrep.W_Main.ReloadActiveTab()
 	end
 end
@@ -139,7 +118,6 @@ local function OnInventoryChangedEvent(self, event)
 end
 local function OnAddonLoadedEvent(self, event, addonName)
 	if event == "ADDON_LOADED" and addonName == CasualTBCPrep.AddonNameInternal then
-		--CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.SelectedRoute, nil)
 		CasualTBCPrep.Settings.LoadDefaults()
 
 		CasualTBCPrep.QuestData.UpdateRoutesFromQuestData(nil)
@@ -293,7 +271,6 @@ local function OnItemTooltip(itemLink, tooltipObject)
 
 		if questID > 0 then
 			local loopIsInCurrentRoute = CasualTBCPrep.Routing.IsQuestInCurrentRoute(questID) or false
-			--CasualTBCPrep.NotifyUser("["..tostring(itemID).."]: "..tostring(questID).."="..tostring(loopIsInCurrentRoute))
 			if loopIsInCurrentRoute == true then
 				isInCurrentRoute = true
 				break

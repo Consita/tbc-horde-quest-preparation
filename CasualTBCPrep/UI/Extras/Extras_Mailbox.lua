@@ -96,7 +96,7 @@ function CasualTBCPrep.Extras_Mailbox.SetTurninReached(index,value) turninSteps[
 
 ---@return table,table
 function CasualTBCPrep.Extras_Mailbox.GetTurninData()
-    local mailboxItems, bankItems, turnOrder = CasualTBCPrep.Routing.GetTurninItemsForCurrentRoute()
+    local mailboxItems, bankItems = CasualTBCPrep.Routing.GetTurninItemsForCurrentRoute()
     local mailsNeeded = {}
 
     for _,data in ipairs(mailboxItems) do
@@ -153,60 +153,57 @@ end
 function CasualTBCPrep.Extras_Mailbox.GetStepDetails_ItemsNeeded(dataMail, dataBank, currentStep)
     local mailsToOpen, itemsFromBank = {},{}
     local mailItemStackCount, bankItemStackCount = 0,0
-    local targetMailID = currentStep.targetMailID or 0
+    local targetMailID,targetBankID = currentStep.targetMailID or 0, currentStep.targetBankID or 0
 
     if targetMailID > 0 then
         local mails = dataMail[targetMailID]
-
         if mails == nil then
-            CasualTBCPrep.NotifyUserCompanionError("ERR, Extras_Mailbox.GetStepDetails_ItemsNeeded has nil 'mails' from dataMail["..tostring(targetMailID.."]"))
-        end
-        
-        for _,mail in pairs(mails.mails) do
-            local filteredItems = {}
-            local playerInvCountRemaining = {}  -- Track remaining per itemID
+            CasualTBCPrep.NotifyUserCompanionError("GetStepDetails_ItemsNeeded has nil 'mails' from dataMail["..tostring(targetMailID.."]"))
+        else
+            for _,mail in pairs(mails.mails) do
+                local filteredItems = {}
+                local playerInvCountRemaining = {}
 
-            for _,item in ipairs(mail.items) do
-                -- Get remaining inventory (subtract what we've already allocated)
-                local playerInvCount = playerInvCountRemaining[item.itemID]
-                if playerInvCount == nil then
-                    playerInvCount = CasualTBCPrep.Items.GetPlayerItemCount(item.itemID, false)
-                    playerInvCountRemaining[item.itemID] = playerInvCount
+                for _,item in ipairs(mail.items) do
+                    local playerInvCount = playerInvCountRemaining[item.itemID]
+                    if playerInvCount == nil then
+                        playerInvCount = CasualTBCPrep.Items.GetPlayerItemCount(item.itemID, false)
+                        playerInvCountRemaining[item.itemID] = playerInvCount
+                    end
+                    if playerInvCount < item.count then
+                        local needed = item.count - playerInvCount
+                        table.insert(filteredItems, {
+                            itemID = item.itemID,
+                            count = needed
+                        })
+                        mailItemStackCount = mailItemStackCount + 1
+                        playerInvCountRemaining[item.itemID] = 0
+                    else
+                        playerInvCountRemaining[item.itemID] = playerInvCount - item.count
+                    end
                 end
-                
-                if playerInvCount < item.count then
-                    local needed = item.count - playerInvCount
-                    table.insert(filteredItems, {
-                        itemID = item.itemID,
-                        count = needed
-                    })
-                    mailItemStackCount = mailItemStackCount + 1
-                    playerInvCountRemaining[item.itemID] = 0  -- We've allocated all available
-                else
-                    -- We have enough for this stack, subtract it
-                    playerInvCountRemaining[item.itemID] = playerInvCount - item.count
-                end
-            end
 
-            if #filteredItems > 0 then
-                table.insert(mailsToOpen, {id = mail.id, items = filteredItems})
+                if #filteredItems > 0 then
+                    table.insert(mailsToOpen, {id = mail.id, items = filteredItems})
+                end
             end
         end
     end
 
-    if currentStep.targetBankID ~= nil and currentStep.targetBankID > 0 then
-        local bank = dataBank[currentStep.targetBankID]
+    if targetBankID > 0 then
+        local bank = dataBank[targetBankID]
         if bank == nil then
-            CasualTBCPrep.NotifyUserCompanionError("ERR, Extras_Mailbox.GetStepDetails_ItemsNeeded has nil 'bank' from dataBank["..tostring(targetBankID.."]"))
-        end
-        for _,item in ipairs(bank.items) do
-            local playerInvCount = CasualTBCPrep.Items.GetPlayerItemCount(item.itemID, false)
-            if playerInvCount < item.count then
-                table.insert(itemsFromBank, {
-                    itemID = item.itemID,
-                    count = item.count - playerInvCount
-                })
-                bankItemStackCount = bankItemStackCount + 1
+            CasualTBCPrep.NotifyUserCompanionError("GetStepDetails_ItemsNeeded has nil 'bank' from dataBank["..tostring(targetBankID).."]")
+        else
+            for _,item in ipairs(bank.items) do
+                local playerInvCount = CasualTBCPrep.Items.GetPlayerItemCount(item.itemID, false)
+                if playerInvCount < item.count then
+                    table.insert(itemsFromBank, {
+                        itemID = item.itemID,
+                        count = item.count - playerInvCount
+                    })
+                    bankItemStackCount = bankItemStackCount + 1
+                end
             end
         end
     end
@@ -218,14 +215,10 @@ end
 local function Display(parent)
 	local yPos = -1
 
-	local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
-
-    local clrBad = CasualTBCPrep.Themes.SelectedTheme.colors.bad
     local clrWarn = CasualTBCPrep.Themes.SelectedTheme.colors.warn
-    local clrBanked = CasualTBCPrep.Themes.SelectedTheme.colors.questReadyBanked
-    local clrMissing = CasualTBCPrep.Themes.SelectedTheme.colors.questCompleted
-    local clrAcceptanceText = CasualTBCPrep.Themes.SelectedTheme.colors.standoutText
-
+	local clrHeader = CasualTBCPrep.Themes.SelectedTheme.colors.headerSpecialHover
+	local clrText = CasualTBCPrep.Themes.SelectedTheme.colors.manualText
+	local clrStep = CasualTBCPrep.Themes.SelectedTheme.colors.standoutText
     local companionSettingsGlobal = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.CompanionSettings)
     if companionSettingsGlobal == nil then
         companionSettingsGlobal = { mailCharacterName = "" }
@@ -267,10 +260,6 @@ local function Display(parent)
     local yPosStart = -50
     yPos = yPosStart
 
-	local clrWarn = CasualTBCPrep.Themes.SelectedTheme.colors.warn
-	local clrHeader = CasualTBCPrep.Themes.SelectedTheme.colors.headerSpecialHover
-	local clrText = CasualTBCPrep.Themes.SelectedTheme.colors.manualText
-	local clrStep = CasualTBCPrep.Themes.SelectedTheme.colors.standoutText
 	local txt = QuickText(parent, "What does this feature do?", "GameFontNormalLarge", "TOPLEFT", parent, "TOPLEFT", 0, yPos, clrHeader)
 	txt = QuickText(parent, "The Extras - Mailbox feature is to help you manage all your items on release day.\rIf you prepared a lot of quests, you can't have all the items in your bags from the beginning.\r\r"
 		.."The companion helps you withdrawing items when they are needed.\r\rThis feature is OPTIONAL, you can do this yourself as well!\rIf this seems too complicated, or if you don't want to read, please don't use this feature - you might accidentally grief yourself and that's not fun.\r\r"

@@ -223,8 +223,6 @@ local itemsMetadata = {
     [18426] = { id=18426, name="Lethtendris's Web", rarity=1, stackSize=1, texture=136113, quests="7489", sources="Drops from Lethtendris in Dire Maul" },
 }
 
---local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount, itemEquipLoc, itemTexture = C_Item.GetItemInfo(itemID)
-
 ---@param itemID number
 function CasualTBCPrep.Items.GetCachedItemName(itemID)
     if not itemID or itemID <= 0 then return "" end
@@ -259,14 +257,12 @@ function CasualTBCPrep.Items.GetItemDetails(itemID)
             result = iData
 
             local r, g, b = C_Item.GetItemQualityColor(iData.rarity or 1)
-            result.colorR = r
-            result.colorG = g
-            result.colorB = b
+            result.colorR,result.colorG,result.colorB = r,g,b
             result.colorHex = string.format("|cFF%02x%02x%02x", r*255, g*255, b*255)
             result.questText = nil
 
-            -- Throwaway, but need to call GetItemInfo so the item is cached in wow - otherwise itemlinks won't work
-            if not result.cached then local _,_,_,_,_,_,_,_,_,_ = C_Item.GetItemInfo(itemID) end
+            -- Need to call this for wow client to cache it
+            if not result.cached then local _ = C_Item.GetItemInfo(itemID) end
 
             if "QUEST_TOOL" == iData.sources then
                 if iData.quests ~= nil and iData.quests ~= "" then
@@ -365,7 +361,7 @@ end
 
 ---@param itemID number
 function CasualTBCPrep.Items.GetItemDetailsFromWowAPI(itemID)
-	return C_Item.GetItemInfo(itemID) --itemName,itemLink,itemRarity,itemLevel,itemMinLevel,itemType,itemSubType,itemStackCount,itemEquipLoc,itemTexture
+	return C_Item.GetItemInfo(itemID)
 end
 
 ---@param itemID number

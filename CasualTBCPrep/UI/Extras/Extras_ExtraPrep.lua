@@ -98,7 +98,6 @@ local function CalculatePreviewExpForQuest(quest)
     end
 end
 
-local countTemp = 1
 ---@param optionData table
 ---@param enable boolean
 ---@param printQuestChanges boolean
@@ -248,10 +247,8 @@ end
 DrawList = function(frame)
 	local yPos = -2
     local parent = frame.scrollChild
-    local parentW = parent:GetWidth()
 
 	local headerColor = CasualTBCPrep.Themes.SelectedTheme.colors.headerSpecial
-	local headerColorBright = CasualTBCPrep.Themes.SelectedTheme.colors.headerSpecialHover
 
     local storedSelections = CasualTBCPrep.Settings.GetCharSetting(CasualTBCPrep.Settings.ExtraTBCPrepSelections)
     local routeCode = CasualTBCPrep.Routing.CurrentRouteCode
@@ -357,7 +354,6 @@ DrawList = function(frame)
         end
     end
 end
-
 
 ---@param frame Frame
 function CasualTBCPrep.Extras_ExtraPrep.Clean(frame)

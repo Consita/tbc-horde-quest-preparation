@@ -13,8 +13,6 @@ local mainText_warn_qlog_overhaul = "WARNING. In the 3.15 update (2026-01-12) we
 	.."We have removed it as a questlog quest, but since it still gives a free followup on release, you need to TURN IT IN if you already prepared it, not abandon it!\r\r"
 	.."We're sorry about this, this was 100% our fault"
 
---		CasualTBCPrep.NotifyUserCompanionError("If 'Summoning Shadra' gives you <= 9800 exp, you need to turn it in, not abandon it, since it gives another turnin quest on release.")
-
 local warningSpecificQuestOverrides = {
 	[4023] = {message = "This quest is turned in during TBC Release.\nMake sure that you abandon it after you gathered the\nBlack Dragonflight Molt\nTo turn off this warning, disable \"Questlog Warnings\"\nin the /tbcprep settings."},
 }
@@ -25,7 +23,7 @@ local w_window_name = "CasualTBCPrep_W_WarningNotice"
 ---@class Frame|nil
 local wAcceptQuestWarning = nil;
 
---@param type string|nil
+---@param type string|nil
 local function Create(type)
 	wAcceptQuestWarning = CreateFrame("Frame", w_window_name, UIParent, "BasicFrameTemplateWithInset")
 	wAcceptQuestWarning:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
@@ -40,12 +38,10 @@ local function Create(type)
 	wAcceptQuestWarning:SetFrameLevel(1000)
 	table.insert(UISpecialFrames, w_window_name)
 
-	--[Title]
 	wAcceptQuestWarning.TitleBg:SetHeight(30);
 	wAcceptQuestWarning.title = wAcceptQuestWarning:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 	wAcceptQuestWarning.title:SetPoint("LEFT", wAcceptQuestWarning.TitleBg, "LEFT", 8, 6)
 
-	--[Warning]
 	wAcceptQuestWarning.warningText = wAcceptQuestWarning:CreateFontString(nil, "OVERLAY", "GameFontNormalHuge")
 	wAcceptQuestWarning.warningText:SetPoint("TOP", wAcceptQuestWarning, "TOP", 0, -40)
 	wAcceptQuestWarning.warningText:SetWidth(450)
@@ -208,8 +204,4 @@ function CasualTBCPrep.W_WarningNotice.Show(headerText, qLogEntry, type, questID
 	if not wAcceptQuestWarning:IsShown() then
 		wAcceptQuestWarning:Show()
 	end
-end
-
-function CasualTBCPrep.W_WarningNotice.GetQuestlogWarningOverhaulText()
-	return mainText_warn_qlog_overhaul
 end

@@ -1,7 +1,7 @@
 CasualTBCPrep = CasualTBCPrep or {}
 CasualTBCPrep.BankInteraction = CasualTBCPrep.BankInteraction or {}
 
----@param itemsNeeded table {itemID=number, count=number}
+---@param itemsNeeded table
 ---@param funcOnNotify function|nil
 ---@param funcOnComplete function|nil
 function CasualTBCPrep.BankInteraction.TryGetItemsFromBank(itemsNeeded, funcOnNotify, funcOnComplete)

@@ -520,7 +520,7 @@ end
 
 ---@return table,table, table
 function CasualTBCPrep.Routing.GetTurninItemsForCurrentRoute()
-    local resultMail, resultBank, resultOrder = {}, {}, {}
+    local resultMail, resultBank = {}, {}
     local routeCode = CasualTBCPrep.Routing.CurrentRouteCode
     local route = CasualTBCPrep.Routing.Routes[routeCode]
 
@@ -560,11 +560,6 @@ function CasualTBCPrep.Routing.GetTurninItemsForCurrentRoute()
         if mbStarted == false then
             if sectionName == currentMailboxData.from then
                 mbStarted = true
-                if #resultOrder == 0 then
-                    table.insert(resultOrder, { type="MAIL", section="BAGS", targetID=currentMailGroup})
-                else
-                    table.insert(resultOrder, { type="MAIL", section=sectionName, targetID=currentMailGroup})
-                end
             end
         elseif sectionName == currentMailboxData.to then
             mbExit = true
@@ -572,11 +567,6 @@ function CasualTBCPrep.Routing.GetTurninItemsForCurrentRoute()
 
         if sectionName == nextBankSection then
             table.insert(resultBank, { id=currentBankGroup, section=sectionName, items=tempBankData})
-            if #resultBank == 1 then
-                table.insert(resultOrder, 1, { type="BANK", section=lastBankSection, targetID=currentBankGroup})
-            else
-                table.insert(resultOrder, { type="BANK", section=lastBankSection, targetID=currentBankGroup})
-            end
             tempBankData = {}
             currentBankGroup = currentBankGroup + 1
             lastBankSection = nextBankSection
@@ -677,7 +667,6 @@ function CasualTBCPrep.Routing.GetTurninItemsForCurrentRoute()
 
     if #tempBankData > 0 then
         table.insert(resultBank, { id=currentBankGroup, items=tempBankData})
-        table.insert(resultOrder, { type="BANK", section=lastBankSection, targetID=currentBankGroup})
         tempBankData = {}
     end
 
@@ -698,7 +687,6 @@ function CasualTBCPrep.Routing.GetTurninItemsForCurrentRoute()
             end
         else
             table.insert(resultMail, 1, { id=1, section="BAGS", items=companionBagItemsMail })
-            table.insert(resultOrder, 1, { type="MAIL", section="BAGS", targetID=1})
         end
     end
     if #companionBagItemsBank > 0 then
@@ -708,7 +696,6 @@ function CasualTBCPrep.Routing.GetTurninItemsForCurrentRoute()
             end
         else
             table.insert(resultBank, 1, { id=1, section="BAGS", items=companionBagItemsBank })
-            table.insert(resultOrder, 1, { type="BANK", section="BAGS", targetID=1})
         end
     end
 
@@ -721,7 +708,7 @@ function CasualTBCPrep.Routing.GetTurninItemsForCurrentRoute()
             end
         end
     end
-    return resultMail, resultBank, resultOrder
+    return resultMail, resultBank
 end
 
 function CasualTBCPrep.Routing.GetCurrentRoute()
@@ -755,7 +742,7 @@ function CasualTBCPrep.Routing.GetActiveSectionsInCurrentRoute()
         local section = route.sections[sectKey]
 
         if section == nil then
-            CasualTBCPrep.NotifyUserError("CasualTBCPrep.Routing.GetActiveSectionsInCurrentRoute > " .. sectKey .. " found in .sectionOrder, but not in .sections for route " .. route.name)
+            CasualTBCPrep.NotifyUserError("Routing.GetActiveSectionsInCurrentRoute > " .. sectKey .. " found in .sectionOrder, but not in .sections for route " .. route.name)
         else
             local ignoredSectionKey = route.key .. "_" .. sectKey
             local isIgnored = ignoredRouteSections[ignoredSectionKey] or false

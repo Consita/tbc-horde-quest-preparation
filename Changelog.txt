@@ -1,7 +1,9 @@
 Changelog:
 
-3.21 
-- 
+3.21 (2026-01-27)
+- Went through all addon files and cleaned up old/unused code.
+- Removed the 3.15 warning from the about page.
+- Fixed lua errors happening if RXP or Questie addons aren't installed/enabled, when tbcprep checks if their quest automation is on.
 
 3.20 (2026-01-26)
 - Profession requirements on quests should now work on non-english (enUS) wow clients. Please let us know if it doesn't work
@@ -9,6 +11,7 @@ Changelog:
 - TBCprep now warns if RXP/Questie quest automation is enabled every 10 minutes in chat. Can be disabled in the '/tbcprep' settings tab
 - It didn't seem possible to disable LeatrixPlus automation from our addon. Please turn it off yourself.
 - Companion: 'Collect' button for 'Bags' step should now work when using the bank button to open the companion
+- Implemented more of the RXP Guide for the Solo Route (not finished)
 
 3.19 (2026-01-25) 
 - Eitrigg's Wisdom (part of Onyxia attunement) should no longer show a warning when picked up.
