@@ -1,15 +1,15 @@
 CasualTBCPrep = CasualTBCPrep or {}
-CasualTBCPrep.ElvUI = CasualTBCPrep.ElvUI or {}
+CasualTBCPrep.Integration.ElvUI = CasualTBCPrep.Integration.ElvUI or {}
 
 --[Variables]
 local bankOpenedRegistryID = 0
 local elements = {}
 
-function CasualTBCPrep.ElvUI.RegisterBankOpen(tooltipHeader, ttCompanion, funcCallHoverEnter, funcCallHoverLeave, funcToggleCompanion)
+function CasualTBCPrep.Integration.ElvUI.RegisterBankOpen(tooltipHeader, ttCompanion, funcCallHoverEnter, funcCallHoverLeave, funcToggleCompanion)
     if bankOpenedRegistryID > 0 then return end
 
     bankOpenedRegistryID = CasualTBCPrep.MessageBroker.Register(CasualTBCPrep.MessageBroker.TYPE.BANK_INTERACT, function(data)
-        if data.open == true then
+        if data.open == true and _G.ElvUI then
             C_Timer.After(0, function()
                 local bank = _G.ElvUI_BankContainerFrame
                 if not bank then return end

@@ -54,7 +54,8 @@
         "MailFrameTab_OnClick",
         "MailFrameTab2",
         "ATTACHMENTS_MAX_RECEIVE",
-        "BankFrame"
+        "BankFrame",
+        "ReloadUI"
     ],
     "Lua.type.weakUnionCheck": true
 }

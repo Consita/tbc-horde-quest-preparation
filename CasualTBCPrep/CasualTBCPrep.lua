@@ -4,6 +4,8 @@ CasualTBCPrep.BlockSlashCommandsUntillReloaded = false
 CasualTBCPrep.AddonLogoTexture = "255348"
 CasualTBCPrep.MaxLevel = 70
 
+local tickerQuestAutomationCheck = nil
+
 --[Slash Commands]
 SLASH_CASUAL_TBC_PREP1 = "/tbc"
 SLASH_CASUAL_TBC_PREP2 = "/tbcprep"
@@ -183,8 +185,68 @@ local function OnAddonLoadedEvent(self, event, addonName)
 			CasualTBCPrep.UI.HookTooltip(btnBank, tooltipHeader, ttCompanion, nil, funcCallHoverEnter, funcCallHoverLeave)
 			btnBank:SetScript("OnClick", funcToggleCompanion)
 
-			-- Button Bank Elvui
-			CasualTBCPrep.ElvUI.RegisterBankOpen(tooltipHeader, ttCompanion, funcCallHoverEnter, funcCallHoverLeave, funcToggleCompanion)
+			CasualTBCPrep.Integration.ElvUI.RegisterBankOpen(tooltipHeader, ttCompanion, funcCallHoverEnter, funcCallHoverLeave, funcToggleCompanion)
+
+			local funcCreateTicker = function()
+				if tickerQuestAutomationCheck ~= nil then return end
+				tickerQuestAutomationCheck = C_Timer.NewTicker(600, function()
+					local keepChecking = CasualTBCPrep.Settings.GetSettingFromCharOrGlobal(CasualTBCPrep.Settings.QuestAutomationChecks)
+
+					if keepChecking ~= 1 and tickerQuestAutomationCheck ~= nil then
+						tickerQuestAutomationCheck:Cancel()
+						tickerQuestAutomationCheck = nil
+						return
+					end
+
+					local didAnnounce = false
+					if CasualTBCPrep.Integration.Questie.IsQuestAutoCompleteOn() then
+						CasualTBCPrep.NotifyUserWarning("Questie QuestAutomation is on! Consider turning it off.")
+						didAnnounce = true
+					end
+					if CasualTBCPrep.Integration.RXP.IsQuestAutomationOn() then
+						CasualTBCPrep.NotifyUserWarning("RXPGuides QuestAutomation is on! Consider turning it off.")
+						didAnnounce = true
+					end
+					if CasualTBCPrep.Integration.Leatrix.IsQuestAutoCompleteOn() then
+						CasualTBCPrep.NotifyUserWarning("LeatrixPlus QuestAutomation is on! Consider turning it off.")
+						didAnnounce = true
+					end
+
+					if didAnnounce == true then
+						CasualTBCPrep.NotifyUserWarning("You can disable the 'QuestAutomation' checks in the '/tbcprep' settings tab")
+					end
+				end)
+			end
+			if playerLevel <= 60 and CasualTBCPrep.GameState ~= "TBC" then -- Only check if <=60 and TBC isn't out
+				CasualTBCPrep.MessageBroker.Register(CasualTBCPrep.MessageBroker.TYPE.SETTING_CHANGED, function(data)
+					if data.key == CasualTBCPrep.Settings.QuestAutomationChecks then
+						funcCreateTicker()
+					end
+				end)
+
+				-- Initial check on load
+				local questAutomationChecks = CasualTBCPrep.Settings.GetSettingFromCharOrGlobal(CasualTBCPrep.Settings.QuestAutomationChecks)
+				if questAutomationChecks == 1 then
+					C_Timer.After(10, function()
+						local didAnnounce = false
+						if CasualTBCPrep.Integration.Questie.IsQuestAutoCompleteOn() then
+							CasualTBCPrep.Integration.Questie.DisableAutoQuestCompletion()
+							CasualTBCPrep.NotifyUserError("Questie 'QuestAutomation' was on, it has been turned off!")
+							didAnnounce = true
+						end
+						if CasualTBCPrep.Integration.RXP.IsQuestAutomationOn() then
+							CasualTBCPrep.Integration.RXP.DisableAutoQuestCompletion()
+							CasualTBCPrep.NotifyUserError("RXP 'QuestAutomation' was on, it has been turned off!")
+							didAnnounce = true
+						end
+						if didAnnounce == true then
+							CasualTBCPrep.NotifyUserWarning("You can disable the 'QuestAutomation' checks in the '/tbcprep' settings tab")
+						end
+					end)
+
+					funcCreateTicker()
+				end
+			end
 		end
 	end
 end
