@@ -1,10 +1,13 @@
 Changelog:
 
+3.21 
+- 
+
 3.20 (2026-01-26)
-- Profession requirements should now work on non-english (enUS) wow clients. Please let us know if it doesn't work, we can't test it ourselves :(
+- Profession requirements on quests should now work on non-english (enUS) wow clients. Please let us know if it doesn't work
 - TBCPrep now turns off RXP & Questie quest automation 10 seconds after logging in / reloading. Can be disabled in the '/tbcprep' settings tab
 - TBCprep now warns if RXP/Questie quest automation is enabled every 10 minutes in chat. Can be disabled in the '/tbcprep' settings tab
-- It didn't seem possible to disable LeatrixPlus automation from our addon, as they don't expose their live settings globally. Please turn it off yourself.
+- It didn't seem possible to disable LeatrixPlus automation from our addon. Please turn it off yourself.
 - Companion: 'Collect' button for 'Bags' step should now work when using the bank button to open the companion
 
 3.19 (2026-01-25) 
