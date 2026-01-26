@@ -22,23 +22,23 @@ CasualTBCPrep.ReputationRanks = {
 	[7] = "Revered",
 	[8] = "Exalted"
 }
-CasualTBCPrep.ProfessionNames = {
-	[185] = "Cooking",
-	[129] = "First Aid",
-	[356] = "Fishing",
+-- CasualTBCPrep.ProfessionNames = {
+-- 	[185] = "Cooking",
+-- 	[129] = "First Aid",
+-- 	[356] = "Fishing",
 
-	[171] = "Alchemy",
-	[164] = "Blacksmithing",
-	[333] = "Enchanting",
-	[202] = "Engineering",
-	[773] = "Inscription", -- wotlk
-	[755] = "Jewelcrafting", -- tbc
-	[165] = "Leatherworking",
-	[197] = "Tailoring",
-	[182] = "Herbalism",
-	[186] = "Mining",
-	[393] = "Skinning"
-}
+-- 	[171] = "Alchemy",
+-- 	[164] = "Blacksmithing",
+-- 	[333] = "Enchanting",
+-- 	[202] = "Engineering",
+-- 	[773] = "Inscription", -- wotlk
+-- 	[755] = "Jewelcrafting", -- tbc
+-- 	[165] = "Leatherworking",
+-- 	[197] = "Tailoring",
+-- 	[182] = "Herbalism",
+-- 	[186] = "Mining",
+-- 	[393] = "Skinning"
+-- }
 
 CasualTBCPrep.CachedRarityColors = { }
 
@@ -160,10 +160,10 @@ end
 ---@param profID number
 ---@param reqProfLevel number
 function CasualTBCPrep.CreateProfRankText(profID, reqProfLevel)
-	local professionName = CasualTBCPrep.ProfessionNames[profID] or "Unknown Profession"
+	local internalProfID = CasualTBCPrep.Professions.GetInternalProfessionIDFromWowID(profID)
+	local professionName = CasualTBCPrep.Locale.Professions.GetProfessionName(internalProfID) or "Unknown Profession"
 
 	local playerProfessionSkill = 0
-
 	for i = 1, GetNumSkillLines() do
 		local skillName, _, _ , skillRank, _, _, maxSkill = GetSkillLineInfo(i)
 

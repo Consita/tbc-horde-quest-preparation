@@ -1383,12 +1383,13 @@ function CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(ques
 
 	-- Profession Check
 	if not skipProfCheck and (quest.reqProf ~= nil and quest.reqProf > 0 and quest.reqProfSkill ~= nil and quest.reqProfSkill > 0) then
-		local professionName = CasualTBCPrep.ProfessionNames[quest.reqProf] or "Unknown Profession"
+		local internalProfID = CasualTBCPrep.Professions.GetInternalProfessionIDFromWowID(quest.reqProf)
+		local professionLocaleName = CasualTBCPrep.Locale.Professions.GetProfessionName(internalProfID) or "Unknown Profession"
 		local playerProfessionSkill = 0
 		for i = 1, GetNumSkillLines() do
 			local skillName, _, _ , skillRank, _, _, maxSkill = GetSkillLineInfo(i)
 
-			if professionName == skillName then
+			if professionLocaleName == skillName then
 				playerProfessionSkill = skillRank
 				break
 			end

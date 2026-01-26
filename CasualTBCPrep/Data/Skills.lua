@@ -211,22 +211,5 @@ function CasualTBCPrep.Professions.GetPlayerSkills()
             playerCurrentSkills[skillID] = playerSkillData
         end
     end
-
-    -- TODO TEST
-    -- print(WOW_PROJECT_ID)
-    -- print(WOW_PROJECT_CLASSIC)
-    -- print(WOW_PROJECT_BURNING_CRUSADE_CLASSIC)
-    local skillList = skillsToLearn[classID]
-    if skillList and #skillList > 0 then
-        for skillID,skill in pairs(skillList) do
-            local playerSkillData = playerCurrentSkills[skillID]
-            if playerSkillData == nil then
-                
-            else
-
-            end
-        end
-    end
-
     return toLearn,toSkillUp
 end
