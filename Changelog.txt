@@ -2,8 +2,8 @@ Changelog:
 
 3.20
 - TBCPrep now turns off RXP & Questie quest automation 10 seconds after logging in / reloading. Can be disabled in the '/tbcprep' settings tab
-- TBCprep now warns if RXP/Questie/LeatrixPlus quest automation is enabled every 10 minutes in chat. Can be disabled in the '/tbcprep' settings tab
-- It didn't seem possible to disable LeatrixPlus automation from our addon, as they don't expose their live settings globally (only their SavedVars). Please turn it off yourself.
+- TBCprep now warns if RXP/Questie quest automation is enabled every 10 minutes in chat. Can be disabled in the '/tbcprep' settings tab
+- It didn't seem possible to disable LeatrixPlus automation from our addon, as they don't expose their live settings globally. Please turn it off yourself.
 
 3.19 (2026-01-25) 
 - Eitrigg's Wisdom (part of Onyxia attunement) should no longer show a warning when picked up.

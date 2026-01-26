@@ -33,7 +33,6 @@ CasualTBCPrep\Data\Flights.lua
 CasualTBCPrep\Integration\ElvUI.lua
 CasualTBCPrep\Integration\RXP.lua
 CasualTBCPrep\Integration\Questie.lua
-CasualTBCPrep\Integration\Leatrix.lua
 CasualTBCPrep\UI\WM_QuestLogPrep.lua
 CasualTBCPrep\UI\WM_QuestPrep.lua
 CasualTBCPrep\UI\WM_ItemPrep.lua
