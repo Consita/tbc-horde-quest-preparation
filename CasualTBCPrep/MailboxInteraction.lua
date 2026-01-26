@@ -1,7 +1,6 @@
 CasualTBCPrep = CasualTBCPrep or {}
 CasualTBCPrep.MailboxInteraction = CasualTBCPrep.MailboxInteraction or {}
 
-----[[AI Slop, this is not efficient at all, do not re-use in other addons YUCK]]
 function CasualTBCPrep.MailboxInteraction.TryGetItemsFromMailbox(itemsNeeded, funcOnComplete)
     if itemsNeeded == nil or next(itemsNeeded) == nil then
         if funcOnComplete then funcOnComplete({}, {}) end
