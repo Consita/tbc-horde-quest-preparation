@@ -189,7 +189,7 @@ local function OnAddonLoadedEvent(self, event, addonName)
 
 			local funcCreateTicker = function()
 				if tickerQuestAutomationCheck ~= nil then return end
-				tickerQuestAutomationCheck = C_Timer.NewTicker(600, function()
+				tickerQuestAutomationCheck = C_Timer.NewTicker(600, function() --10min
 					local keepChecking = CasualTBCPrep.Settings.GetSettingFromCharOrGlobal(CasualTBCPrep.Settings.QuestAutomationChecks)
 
 					if keepChecking ~= 1 and tickerQuestAutomationCheck ~= nil then
@@ -205,10 +205,6 @@ local function OnAddonLoadedEvent(self, event, addonName)
 					end
 					if CasualTBCPrep.Integration.RXP.IsQuestAutomationOn() then
 						CasualTBCPrep.NotifyUserWarning("RXPGuides QuestAutomation is on! Consider turning it off.")
-						didAnnounce = true
-					end
-					if CasualTBCPrep.Integration.Leatrix.IsQuestAutoCompleteOn() then
-						CasualTBCPrep.NotifyUserWarning("LeatrixPlus QuestAutomation is on! Consider turning it off.")
 						didAnnounce = true
 					end
 
