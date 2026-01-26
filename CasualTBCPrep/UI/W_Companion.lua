@@ -299,11 +299,6 @@ local function LoadStepDetails()
             btnCollect.isCollecting = false
             btnCollect:SetScript("OnClick", function(self)
                 if self.isCollecting == true then return end
-
-                if not isInteractingWithMail or not isInteractingWithBank then
-                    CasualTBCPrep.NotifyUserCompanionError("Cannot Collect - Must be interacting with the Mailbox or Bank")
-                end
-                -- Gotta call it everytime sadly, to see if user got some items from a previous click.
                 GetTurninData()
                 btnCollect.mailsToOpen, btnCollect.itemsFromBank, btnCollect.mailItemStackCount, btnCollect.bankItemStackCount = GetStepDetails_ItemsNeeded(currentStep)
 
@@ -496,38 +491,46 @@ local function OnMessageZoneChanged(data, skipCheckingAllSteps)
     end
 end
 
----@param data table
-local function OnBankInteraction(data)
-    isInteractingWithBank = data.open or false
+---@param isOpen boolean
+local function HandleBankOpen(isOpen)
+    isInteractingWithBank = isOpen or false
     local currentStep = CasualTBCPrep.Extras_Mailbox.GetTurninStep(stepCurrent)
     if currentStep == nil or currentStep.targetBankID == nil then return end
 
-    if data.open == false then
+    if isOpen == false then
         CasualTBCPrep.Extras_Mailbox.SetTurninInteractedWithBank(stepCurrent, false)
         CleanupElements()
         LoadStepDetails()
-    elseif data.open == true and currentStep.reached == true then
+    elseif isOpen == true and currentStep.reached == true then
         CasualTBCPrep.Extras_Mailbox.SetTurninInteractedWithBank(stepCurrent, true)
         CleanupElements()
         LoadStepDetails()
     end
 end
-
----@param data table
-local function OnMailInteraction(data)
-    isInteractingWithMail = data.open or false
+---@param isOpen boolean
+local function HandleMailOpen(isOpen)
+    isInteractingWithMail = isOpen or false
     local currentStep = CasualTBCPrep.Extras_Mailbox.GetTurninStep(stepCurrent)
     if currentStep == nil or currentStep.targetMailID == nil then return end
 
-    if data.open == false then
+    if isOpen == false then
         CasualTBCPrep.Extras_Mailbox.SetTurninInteractedWithMail(stepCurrent, false)
         CleanupElements()
         LoadStepDetails()
-    elseif data.open == true and currentStep.reached == true then
+    elseif isOpen == true and currentStep.reached == true then
         CasualTBCPrep.Extras_Mailbox.SetTurninInteractedWithMail(stepCurrent, true)
         CleanupElements()
         LoadStepDetails()
     end
+end
+---@param data table
+local function OnBankInteraction(data)
+    HandleBankOpen(data.open or false)
+end
+
+---@param data table
+local function OnMailInteraction(data)
+    HandleMailOpen(data.open or false)
 end
 
 local function ResetCurrentStep()
@@ -580,6 +583,10 @@ local function Display()
     LoadStepDetails()
 
 	wCompanion.scrollChild:SetSize(wCompanion.scrollFrame:GetWidth(), 1)
+    C_Timer.After(0.5, function()
+        HandleBankOpen(BankFrame and BankFrame:IsShown())
+        HandleMailOpen(MailFrame and MailFrame:IsShown())
+    end)
 end
 
 local function OnRouteChanged(data)
