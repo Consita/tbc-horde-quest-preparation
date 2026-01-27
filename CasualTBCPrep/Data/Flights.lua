@@ -1,12 +1,5 @@
 CasualTBCPrep.Flights = CasualTBCPrep.Flights or {}
 
-local continentNames = {
-    [0] = "Kalimdor",
-    [1] = "Eastern Kingdoms",
-    [2] = "Outland",
-    [3] = "Northrend"
-}
-
 local taxiMetadata = {
     ["Nighthaven, Moonglade"] = { continent=0, isHorde=true, isAlly=true },
     ["Moonglade"] = { continent=0, isHorde=true, isAlly=true },
@@ -69,18 +62,54 @@ local taxiMetadata = {
 
     -- TBC Neutral
     ["Emerald Sanctuary, Felwood"] = { continent=0, isHorde=true, isAlly=true },
-    ["Zul'Aman, Ghostlands"] = { continent=0, isHorde=true, isAlly=true },
+    ["Mudsprocket, Dustwallow Marsh"] = { continent=0, isHorde=true, isAlly=true },
+    ["Zul'Aman, Ghostlands"] = { continent=1, isHorde=true, isAlly=true },
+    ["Shattered Sun Staging Area"] = { continent=1, isHorde=true, isAlly=true },
+
+    -- TBC Neutral Outland
+    ["Hellfire Peninsula, The Dark Portal"] = { continent=2, isHorde=true, isAlly=false },
+    ["The Stair of Destiny, Hellfire Peninsula"] = { continent=2, isHorde=true, isAlly=true },
+    ["Evergrove, Blade's Edge Mountains"] = { continent=2, isHorde=true, isAlly=true },
+    ["Area 52, Netherstorm"] = { continent=2, isHorde=true, isAlly=true },
+    ["The Stormspire, Netherstorm"] = { continent=2, isHorde=true, isAlly=true },
+    ["Cosmowrench, Netherstorm"] = { continent=2, isHorde=true, isAlly=true },
+    ["Altar of Sha'tar, Shadowmoon Valley"] = { continent=2, isHorde=true, isAlly=true },
+    ["Sanctum of the Stars, Shadowmoon Valley"] = { continent=2, isHorde=true, isAlly=true },
+    ["Shattrath City, Terokkar Forest"] = { continent=2, isHorde=true, isAlly=true },
 
     -- TBC Horde
-    ["Mudsprocket, Dustwallow Marsh"] = { continent=0, isHorde=true, isAlly=true },
-    ["Silvermoon City"] = { continent=0, isHorde=true, isAlly=false },
-    ["Tranquillien, Ghostlands"] = { continent=0, isHorde=true, isAlly=false },
-    ["Hellfire Peninsula, The Dark Portal, Horde"] = { continent=1, isHorde=true, isAlly=false },
+    ["Silvermoon City"] = { continent=1, isHorde=true, isAlly=false },
+    ["Tranquillien, Ghostlands"] = { continent=1, isHorde=true, isAlly=false },
+
+    -- TBC Horde Outland
+    ["Hellfire Peninsula, The Dark Portal, Horde"] = { continent=2, isHorde=true, isAlly=false },
     ["Thrallmar, Hellfire Peninsula"] = { continent=2, isHorde=true, isAlly=false },
+    ["Spinebreaker Ridge, Hellfire Peninsula"] = { continent=2, isHorde=true, isAlly=false },
+    ["Falcon Watch, Hellfire Peninsula"] = { continent=2, isHorde=true, isAlly=false },
+    ["Swamprat Post, Zangarmarsh"] = { continent=2, isHorde=true, isAlly=false },
+    ["Zabra'jin, Zangarmarsh"] = { continent=2, isHorde=true, isAlly=false },
+    ["Stonebreaker Hold, Terokkar Forest"] = { continent=2, isHorde=true, isAlly=false },
+    ["Garadar, Nagrand"] = { continent=2, isHorde=true, isAlly=false },
+    ["Thunderlord Stronghold, Blade's Edge Mountains"] = { continent=2, isHorde=true, isAlly=false },
+    ["Mok'Nathal Village, Blade's Edge Mountains"] = { continent=2, isHorde=true, isAlly=false },
+    ["Shadowmoon Village, Shadowmoon Valley"] = { continent=2, isHorde=true, isAlly=false },
 
     -- TBC Ally
-    ["Hellfire Peninsula, The Dark Portal, Alliance"] = { continent=1, isHorde=false, isAlly=true },
+    ["Forest Song, Ashenvale"] = { continent=0, isHorde=false, isAlly=true },
+    ["Rebel Camp, Stranglethorn Vale"] = { continent=1, isHorde=false, isAlly=true },
+
+    -- TBC Ally Outland
+    ["Hellfire Peninsula, The Dark Portal, Alliance"] = { continent=2, isHorde=false, isAlly=true },
     ["Honor Hold, Hellfire Peninsula"] = { continent=2, isHorde=false, isAlly=true },
+    ["Temple of Telhamat, Hellfire Peninsula"] = { continent=2, isHorde=false, isAlly=true },
+    ["Shatter Point, Hellfire Peninsula"] = { continent=2, isHorde=false, isAlly=true },
+    ["Telredor, Zangarmarsh"] = { continent=2, isHorde=false, isAlly=true },
+    ["Orebor Harborage, Zangarmarsh"] = { continent=2, isHorde=false, isAlly=true },
+    ["Allerian Stronghold, Terokkar Forest"] = { continent=2, isHorde=false, isAlly=true },
+    ["Telaar, Nagrand"] = { continent=2, isHorde=false, isAlly=true },
+    ["Sylvanaar, Blade's Edge Mountains"] = { continent=2, isHorde=false, isAlly=true },
+    ["Toshley's Station, Blade's Edge Mountains"] = { continent=2, isHorde=false, isAlly=true },
+    ["Wildhammer Stronghold, Shadowmoon Valley"] = { continent=2, isHorde=false, isAlly=true },
 }
 
 local neededTaxiNodes = {
