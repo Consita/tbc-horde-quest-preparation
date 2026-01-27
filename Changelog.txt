@@ -1,6 +1,9 @@
 Changelog:
 
-3.21
+3.22
+- 
+
+3.21 (2026-01-27)
 - Went through all addon files and cleaned up old/unused code, reducing filesize.
 - Removed the 3.15 warning from the about page.
 - Fixed lua errors happening if RXP or Questie addons aren't installed/enabled, when tbcprep checks if their quest automation is on.
