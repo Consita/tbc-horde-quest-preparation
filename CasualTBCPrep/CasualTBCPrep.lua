@@ -26,6 +26,10 @@ SlashCmdList["CASUAL_TBC_PREP"] = function(msg)
 		CasualTBCPrep.W_Main.Show();
 	elseif args[1] == "ghetto" then
 		CasualTBCPrep.GhettoHearth()
+	elseif args[1] == "resetmarkeditems" then
+		CasualTBCPrep.Settings.RemoveAllItemsMarkedAsStoredOnBankAlt()
+		CasualTBCPrep.W_Main.ReloadActiveTab()
+		CasualTBCPrep.NotifyUser("All items marked as stored have been reset.")
 	elseif args[1] == "debug" then
 		if args[2] == "on" then
 			CasualTBCPrep.Settings.SetGlobalSetting(CasualTBCPrep.Settings.DebugDetails, 1)

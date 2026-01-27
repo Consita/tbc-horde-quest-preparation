@@ -217,6 +217,9 @@ function CasualTBCPrep.Settings.SetItemMarkedAsStoredOnBankAlt(itemID, value, ba
     CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.ItemStates, eItemStates)
 end
 
+function CasualTBCPrep.Settings.RemoveAllItemsMarkedAsStoredOnBankAlt()
+    CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.ItemStates, {})
+end
 
 ---@param itemID number
 ---@return boolean,string
