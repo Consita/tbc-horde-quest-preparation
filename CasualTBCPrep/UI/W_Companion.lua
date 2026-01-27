@@ -190,7 +190,6 @@ local function LoadStepDetails()
     local currentStep = CasualTBCPrep.Extras_Mailbox.GetTurninStep(stepCurrent)
     if currentStep == nil then return end
 
-    local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
     local clrBad = CasualTBCPrep.Themes.SelectedTheme.colors.bad
     local clrWarn = CasualTBCPrep.Themes.SelectedTheme.colors.warn
     local clrGood = CasualTBCPrep.Themes.SelectedTheme.colors.good
@@ -297,9 +296,6 @@ local function LoadStepDetails()
 
                     local playerFreeBagSlots = CasualTBCPrep.GetPlayerFreeBagSlots()
                     local toGrab = btnCollect.mailItemStackCount
-                    if debugger == 1 then
-                        funcNotify(clrDebugMsg.."[DEBUG] Player has room for "..tostring(playerFreeBagSlots).." stacks, "..tostring(toGrab).." required...")
-                    end
 
                     if playerFreeBagSlots < toGrab then
                         funcNotifyWarn("You may not have enough bagspace if you prepped everything ("..tostring(playerFreeBagSlots).."/"..toGrab.."), opening as many as possible")
@@ -308,11 +304,7 @@ local function LoadStepDetails()
                     self.isCollecting = true
                     self:Disable()
 
-                    if debugger == 1 then
-                        funcNotify(clrDebugMsg.."[DEBUG] Grabbing up to "..tostring(toGrab).." stacks.")
-                    else
-                        funcNotify("Trying to collect "..tostring(toGrab).." stacks from the mailbox...")
-                    end
+                    funcNotify("Trying to collect "..tostring(toGrab).." stacks from the mailbox...")
                     local funcComplete = function(collectedItems, remainingNeeds)
                         local totalCollected = 0
                         for itemID, count in pairs(collectedItems) do
@@ -336,20 +328,11 @@ local function LoadStepDetails()
                         end)
                     end
 
-                    if debugger == 1 then
-                        funcNotify(clrDebugMsg.."[DEBUG] Mail 'Collect' - Trying to find the following in mailbox:")
-                        for itemID, item in pairs(itemsToCollect) do
-                            funcNotify(clrDebugMsg.."[DEBUG] x"..tostring(item.count).." "..CasualTBCPrep.Items.GetCachedItemName(itemID))
-                        end
-                    end
                     CasualTBCPrep.MailboxInteraction.TryGetItemsFromMailbox(itemsToCollect, funcComplete)
                 elseif bankID > 0 and isInteractingWithBank == true and self.itemsFromBank ~= nil then
                     local playerFreeBagSlots = CasualTBCPrep.GetPlayerFreeBagSlots()
 
                     local toGrab = btnCollect.bankItemStackCount
-                    if debugger == 1 then
-                        funcNotify(clrDebugMsg.."[DEBUG] Player has room for "..tostring(playerFreeBagSlots).." stacks, "..tostring(toGrab).." required...")
-                    end
 
                     if playerFreeBagSlots < toGrab then
                         funcNotifyWarn("You may not have enough bagspace if you prepped everything ("..tostring(playerFreeBagSlots).."/"..toGrab.."), opening as many as possible")
@@ -358,11 +341,7 @@ local function LoadStepDetails()
                     self.isCollecting = true
                     self:Disable()
 
-                    if debugger == 1 then
-                        funcNotify(clrDebugMsg.."[DEBUG] Grabbing up to "..tostring(toGrab).." stacks.")
-                    else
-                        funcNotify("Trying to collect "..tostring(toGrab).." stacks from the bank...")
-                    end
+                    funcNotify("Trying to collect "..tostring(toGrab).." stacks from the bank...")
 
                     local funcComplete = function(collectedCount, missingCount)
                         if collectedCount == 0 then
@@ -733,7 +712,6 @@ local function Create()
 end
 
 function CasualTBCPrep.W_Companion.Show()
-	local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
 	if wCompanion == nil then
 
 		Create()
@@ -755,19 +733,15 @@ function CasualTBCPrep.W_Companion.Show()
 	Display()
 	if not wCompanion:IsShown() then
         if msgZoneChangedID <= 0 then
-            if debugger == 1 then CasualTBCPrep.NotifyUserCompanion(CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex.."[DEBUG] Companion registering ZONE_CHANGED event") end
 	        msgZoneChangedID = CasualTBCPrep.MessageBroker.Register(CasualTBCPrep.MessageBroker.TYPE.ZONE_CHANGED, OnMessageZoneChanged)
         end
         if msgBankID <= 0 then
-            if debugger == 1 then CasualTBCPrep.NotifyUserCompanion(CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex.."[DEBUG] Companion registering BANK_INTERACT event") end
 	        msgBankID = CasualTBCPrep.MessageBroker.Register(CasualTBCPrep.MessageBroker.TYPE.BANK_INTERACT, OnBankInteraction)
         end
         if msgMailID <= 0 then
-            if debugger == 1 then CasualTBCPrep.NotifyUserCompanion(CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex.."[DEBUG] Companion registering MAILBOX_INTERACT event") end
 	        msgMailID = CasualTBCPrep.MessageBroker.Register(CasualTBCPrep.MessageBroker.TYPE.MAILBOX_INTERACT, OnMailInteraction)
         end
         if msgRouteChanged <= 0 then
-            if debugger == 1 then CasualTBCPrep.NotifyUserCompanion(CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex.."[DEBUG] Companion registering ROUTE_CHANGED event") end
 	        msgRouteChanged = CasualTBCPrep.MessageBroker.Register(CasualTBCPrep.MessageBroker.TYPE.ROUTE_CHANGED, OnRouteChanged)
         end
 		wCompanion:Show()
@@ -776,27 +750,22 @@ function CasualTBCPrep.W_Companion.Show()
     CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.CompanionSettings, companionSettings)
 end
 function CasualTBCPrep.W_Companion.Hide()
-	local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
 	if wCompanion ~= nil and wCompanion:IsShown() then
 		wCompanion:Hide()
 
         if msgZoneChangedID > 0 then
-            if debugger == 1 then CasualTBCPrep.NotifyUserCompanion(CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex.."[DEBUG] Companion Unregistering ZONE_CHANGED event") end
             CasualTBCPrep.MessageBroker.Unregister(CasualTBCPrep.MessageBroker.TYPE.ZONE_CHANGED, msgZoneChangedID)
             msgZoneChangedID = 0
         end
         if msgBankID > 0 then
-            if debugger == 1 then CasualTBCPrep.NotifyUserCompanion(CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex.."[DEBUG] Companion Unregistering BANK_INTERACT event") end
             CasualTBCPrep.MessageBroker.Unregister(CasualTBCPrep.MessageBroker.TYPE.BANK_INTERACT, msgBankID)
             msgBankID = 0
         end
         if msgMailID > 0 then
-            if debugger == 1 then CasualTBCPrep.NotifyUserCompanion(CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex.."[DEBUG] Companion Unregistering MAILBOX_INTERACT event") end
             CasualTBCPrep.MessageBroker.Unregister(CasualTBCPrep.MessageBroker.TYPE.MAILBOX_INTERACT, msgMailID)
             msgMailID = 0
         end
         if msgRouteChanged > 0 then
-            if debugger == 1 then CasualTBCPrep.NotifyUserCompanion(CasualTBCPrep.Themes.SelectedTheme.colors.standoutText.hex.."[DEBUG] Companion Unregistering ROUTE_CHANGED event") end
             CasualTBCPrep.MessageBroker.Unregister(CasualTBCPrep.MessageBroker.TYPE.ROUTE_CHANGED, msgRouteChanged)
             msgRouteChanged = 0
         end

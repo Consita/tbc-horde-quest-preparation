@@ -184,7 +184,7 @@ function CasualTBCPrep.Flights.OnTaxiMapOpened()
         if taxiMetadata == nil then
             local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
             if debugger == 1 then
-                CasualTBCPrep.NotifyUserError("Couldn't find metadata for taxi: "..taxiName)
+                CasualTBCPrep.NotifyUserError("[DEBUG] Couldn't find metadata for taxi: "..taxiName)
             end
             return
         end

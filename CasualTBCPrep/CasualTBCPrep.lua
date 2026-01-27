@@ -232,12 +232,6 @@ local function OnTalkToFlightMaster(self, event)
 end
 local function OnZoneChangedEvent(self, event)
 	local mapID, zoneName, subZoneName = CasualTBCPrep.GetMapAndZoneInfo()
-
-	local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
-	if debugger == 1 then
-		CasualTBCPrep.NotifyUser("DebugNavigation : mapID="..tostring(mapID)..", zone="..tostring(zoneName)..", subZone="..tostring(subZoneName))
-	end
-
 	CasualTBCPrep.MessageBroker.Send(CasualTBCPrep.MessageBroker.TYPE.ZONE_CHANGED, { mapID=mapID, zoneName=zoneName, subzoneName=subZoneName })
 end
 local function OnMailboxAndBankEvent(self, event,...)
