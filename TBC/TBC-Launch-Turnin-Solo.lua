@@ -135,7 +135,7 @@ RXPGuides.RegisterGuide([[
 		.isQuestAvailable 4023
 		.skipgossip	
 
---- Silithus		
+--- Silithus
 
 	step
 		#completewith Silithuslast
@@ -211,6 +211,13 @@ RXPGuides.RegisterGuide([[
 		.complete 8283,1 
 		.unitscan Deathclasp
 		.isOnQuest 8283
+
+	step
+		.goto Silithus,44,91
+		>>Click the |cRXP_LOOT_Satchel|r to the right along the path
+		>>|cRXP_WARN_The item has a long respawn timer. It is not recommended to wait for the respawn if it is not up|r
+		.complete 8282,1 
+		.isOnQuest 8282
 
 	step	
 		#label TwilightCook2
@@ -430,7 +437,7 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Silithus,51.62,38.49
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Noggle Ficklespragg|r
-		.accept -8282
+		.turnin -8282
 		.target Noggle Ficklespragg	
 		.isQuestComplete 8282
 
