@@ -6,6 +6,8 @@ Changelog:
 - Fixed lua errors happening if RXP or Questie addons aren't installed/enabled, when tbcprep checks if their quest automation is on.
 - Companion: Fixed 'Bank Collect' not working if you didn't have room in the main backpack.
 - Added many outland/tbc flight paths to our flightpath tracker
+- Added a new command "/tbc resetmarkeditems" that resets all items that are marked to be stored elsewhere (alt, mailbox)
+- Updated the "Manual Mail Help" guide on the Extras>Mailbox description, adding steps to mark items.
 
 3.20 (2026-01-26)
 - Profession requirements on quests should now work on non-english (enUS) wow clients. Please let us know if it doesn't work
