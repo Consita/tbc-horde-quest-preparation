@@ -26,6 +26,10 @@ SlashCmdList["CASUAL_TBC_PREP"] = function(msg)
 		CasualTBCPrep.W_Main.Show();
 	elseif args[1] == "ghetto" then
 		CasualTBCPrep.GhettoHearth()
+	elseif args[1] == "resetmarkeditems" then
+		CasualTBCPrep.Settings.RemoveAllItemsMarkedAsStoredOnBankAlt()
+		CasualTBCPrep.W_Main.ReloadActiveTab()
+		CasualTBCPrep.NotifyUser("All items marked as stored have been reset.")
 	elseif args[1] == "debug" then
 		if args[2] == "on" then
 			CasualTBCPrep.Settings.SetGlobalSetting(CasualTBCPrep.Settings.DebugDetails, 1)
@@ -228,12 +232,6 @@ local function OnTalkToFlightMaster(self, event)
 end
 local function OnZoneChangedEvent(self, event)
 	local mapID, zoneName, subZoneName = CasualTBCPrep.GetMapAndZoneInfo()
-
-	local debugger = CasualTBCPrep.Settings.GetGlobalSetting(CasualTBCPrep.Settings.DebugDetails) or -1
-	if debugger == 1 then
-		CasualTBCPrep.NotifyUser("DebugNavigation : mapID="..tostring(mapID)..", zone="..tostring(zoneName)..", subZone="..tostring(subZoneName))
-	end
-
 	CasualTBCPrep.MessageBroker.Send(CasualTBCPrep.MessageBroker.TYPE.ZONE_CHANGED, { mapID=mapID, zoneName=zoneName, subzoneName=subZoneName })
 end
 local function OnMailboxAndBankEvent(self, event,...)
