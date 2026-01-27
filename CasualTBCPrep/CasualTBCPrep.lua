@@ -89,8 +89,6 @@ local function OnQuestAcceptedEvent(self, event, questLogIndex)
 				end
 			end
 		end
-	
-
 		CasualTBCPrep.W_Main.ReloadActiveTab()
 	elseif event == "QUEST_COMPLETE" then
 		if CasualTBCPrep.Settings.GetIsFeatureDisabledGlobalOrChar(CasualTBCPrep.Settings.Warning_COMPLETING) == true then

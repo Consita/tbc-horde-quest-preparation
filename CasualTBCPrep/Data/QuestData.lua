@@ -628,13 +628,8 @@ local questsIgnoreAcceptWarning = {
 local questCanHaveZeroExp = {
 	[5122] = true
 }
--- Not used yet.
-local benchedQuests = {
-	[3907] = { name="Disharmony of Fire", reason="NPC that ends the quest can go on a 5min patrol. You can't turn it in while he's walking around." },
-}
 
 local _storedOriginalsForHardcodeFixes = {}
-
 local tierQuestNotice = "~250g + AH items, This is by far the most expensive exp, the Belt+Gloves quest gives 14300 exp and doesn't have to be in the questlog.\nThe bracers only give 9550 and requires a slot in the questlog, so it's worthless.\nSkip this if you're not rich."
 
 --['All Quests' Group Lists]
@@ -716,7 +711,6 @@ local questLogList = {}
 local dicQuestLogList = {}
 
 local questLogListAlts = {}
-local dicQuestLogListAlts = {}
 
 local turnQuestList = {}
 local dicTurnQuestList = {}
@@ -733,7 +727,6 @@ function CasualTBCPrep.QuestData.CreateAndSortLookupLists()
 	dicQuestLogList = {}
 	local questLogListAltsPreSort = {}
 	questLogListAlts = {}
-	dicQuestLogListAlts = {}
 
 	local turnQuestListPreSort = {}
 	turnQuestList = {}
@@ -747,7 +740,6 @@ function CasualTBCPrep.QuestData.CreateAndSortLookupLists()
 			dicQuestLogList[questID] = true
 		elseif quest.type == "optional" then
 			table.insert(questLogListAltsPreSort, { id = questID, baseexp = quest.baseexp, name = quest.name })
-			dicQuestLogListAlts[questID] = true
 		elseif quest.type == "turnin" then
 			table.insert(turnQuestListPreSort, { id = questID, baseexp = quest.baseexp, name = quest.name })
 			dicTurnQuestList[questID] = true
@@ -763,12 +755,10 @@ function CasualTBCPrep.QuestData.CreateAndSortLookupLists()
 			end
 		end
 
-		-- Store replacement details for easy lookup later
 		if quest.replacementQuest ~= nil and quest.replacementQuest > 0 then
 			dicReplacementQuests[quest.replacementQuest] = quest.id
 		end
 	end
-
 
 	-- QuestLogList Sort
 	table.sort(questLogListPreSort, function(a, b)
@@ -844,7 +834,6 @@ local function UpdateQuestOnForRouteHardcodeFix(questID, type, routeSection, che
 	end
 
 	if not _storedOriginalsForHardcodeFixes[questID] then
-		-- Store the original values, so we can use it when changing route, before modifying again
 		_storedOriginalsForHardcodeFixes[questID] = {
 			type = questObj.type,
 			routeSection = questObj.routeSection,
@@ -939,16 +928,7 @@ local function RestoreModifiedQuests()
 	end
 end
 
--- local function HasCompletedUngoroSoilPrequest()
--- 	return CasualTBCPrep.QuestData.HasCharacterCompletedQuest(936) or CasualTBCPrep.QuestData.HasCharacterCompletedQuest(3762) or CasualTBCPrep.QuestData.HasCharacterCompletedQuest(3784)
--- end
-
 local function LoadRouteQuestSpecifics_All()
-	-- Un'Goro Soil
-	-- local hasCompletedAnyPreQuest = HasCompletedUngoroSoilPrequest()
-	-- if not hasCompletedAnyPreQuest then
-	-- 	AddPrequestToQuest(3761, 3762)
-	-- end
 end
 
 local function LoadRouteQuestSpecifics_Main()
@@ -977,7 +957,6 @@ local function LoadRouteQuestSpecifics_Strat()
 
 	-- To accomodate The Twilight Lexicon being annoying
 	UpdateQuestOnForRouteHardcodeFix(4123, "qlog", nil, nil, false) -- The Heart of the Mountain
-
 
 	-- Strat Stuff
 	RemovePrequestFromQuest(5464, 5463) -- Menethil's Gift not a preQ to Menethil's Gift, we do both in strat
@@ -1137,7 +1116,7 @@ function CasualTBCPrep.QuestData.LoadRoute(routeCode)
 				local questObj = questsMetadata[questID]
 				if questObj ~= nil then
 					questObj.active = false
-					questObj.exp = 0--questObj.baseexp
+					questObj.exp = 0
 				end
 			end
 		end
@@ -1356,7 +1335,7 @@ function CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(ques
 		return false, false, false, ""
 	end
 
-	--If 10 lvls below qlevel, don't show as completed. It's not accurate, but stops a lot of greens on low lvl chars
+	--If 10 lvls below qlevel, don't show as completed.
 	if UnitLevel("player") < ((quest.qlvl or 55) - 10) then
 		return false, false, false, ""
 	end
@@ -1781,11 +1760,7 @@ function CasualTBCPrep.QuestData.GetCharacterQuestLogStates_Main()
 	return available, completed, optAvailable, optCompleted
 end
 
-
-
-
 --[AllQuestGroup Getters]
-
 function CasualTBCPrep.QuestData.GetAllQuestsGroup_Questlog()
 	local available = {};
 	local completed = {};

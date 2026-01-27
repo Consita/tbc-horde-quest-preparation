@@ -550,7 +550,6 @@ function CasualTBCPrep.Routing.GetTurninItemsForCurrentRoute()
     local currentBankGroup, currentMailGroup = 1, 1
     local currentMailboxData = route.mailboxData[1]
     local nextBankSection = route.bankSections[1]
-    local lastBankSection = "BAGS"
 
     local tempBankData, tempMailData = {}, {}
     local mbStarted, mbExit = false, false
@@ -569,7 +568,6 @@ function CasualTBCPrep.Routing.GetTurninItemsForCurrentRoute()
             table.insert(resultBank, { id=currentBankGroup, section=sectionName, items=tempBankData})
             tempBankData = {}
             currentBankGroup = currentBankGroup + 1
-            lastBankSection = nextBankSection
             nextBankSection = route.bankSections[currentBankGroup]
         end
 
