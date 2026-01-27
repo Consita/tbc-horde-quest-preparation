@@ -1,11 +1,11 @@
 Changelog:
 
 3.21
-- Went through all addon files and cleaned up old/unused code.
+- Went through all addon files and cleaned up old/unused code, reducing filesize.
 - Removed the 3.15 warning from the about page.
 - Fixed lua errors happening if RXP or Questie addons aren't installed/enabled, when tbcprep checks if their quest automation is on.
 - Companion: Fixed 'Bank Collect' not working if you didn't have room in the main backpack.
-- Added many outland/tbc flight paths to our list
+- Added many outland/tbc flight paths to our flightpath tracker
 
 3.20 (2026-01-26)
 - Profession requirements on quests should now work on non-english (enUS) wow clients. Please let us know if it doesn't work
