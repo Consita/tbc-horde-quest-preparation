@@ -2,6 +2,7 @@ Changelog:
 
 3.22
 - Added "Tranquillien, Ghostlands" as a required flight path for Solo route, as it links Silvermoon to EPL.
+- Added back "Summoning Shadra" as a prequest to "Venom to the Undercity"
 
 3.21 (2026-01-27)
 - Went through all addon files and cleaned up old/unused code, reducing filesize.
