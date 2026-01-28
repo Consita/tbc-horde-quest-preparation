@@ -4,6 +4,14 @@ Changelog:
 - Added "Tranquillien, Ghostlands" as a required flight path for Solo route, as it links Silvermoon to EPL.
 - Added back "Summoning Shadra" as a prequest to "Venom to the Undercity"
 - SoloRoute Companion: Removed "Winterspring" as a mail pick-up spot, added "Stonard" as a mail pick-up spot. Now it matches the other routes.
+- Redid rep requirements for the lords/dukes quests at Cenarion Hold.
+> Abyssal Contacts Rep Requirement: Honored > None
+> Aurel Goldleaf Rep Requirement: None > Friendly
+> Dukes of the Council Rep Requirement: Honored > Friendly 
+> Bor Wildmane Rep Requirement: None > Friendly
+> Signet of the Dukes Rep Requirement: Revered > Friendly
+> Goldleaf's Discovery Rep Requirement: None > Revered
+> Bor Wishes to Speak Rep Requirement: None > Revered
 
 3.21 (2026-01-27)
 - Went through all addon files and cleaned up old/unused code, reducing filesize.
