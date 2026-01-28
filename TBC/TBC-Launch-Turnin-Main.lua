@@ -1458,11 +1458,11 @@ RXPGuides.RegisterGuide([[
 		.turnin -7784
 		.target High Overlord Saurfang	
 
-	step
-		.goto Orgrimmar,49.58,69.15
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_High Overlord Saurfang|r
+	step	
+		.goto Orgrimmar,49.58,69.13
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Karus|r
 		.turnin -4511
-		.target High Overlord Saurfang	
+		.target Karus			
 
 	step
 		#label Orgrimmarlast
@@ -2047,7 +2047,7 @@ RXPGuides.RegisterGuide([[
 		.accept 8063
 		.turnin 8063
 		.target Falthir the Sightless
-		.reputation 270,friendly,>=1
+		.reputation 270,friendly,<0,1
 		.itemcount 19717,1
 
 	step << Rogue
@@ -2056,7 +2056,7 @@ RXPGuides.RegisterGuide([[
 		.accept 8072
 		.turnin 8072
 		.target Falthir the Sightless
-		.reputation 270,honored,>=1
+		.reputation 270,honored,<0,1
 		.itemcount 19719,1
 
 	step << Rogue
@@ -2065,7 +2065,7 @@ RXPGuides.RegisterGuide([[
 		.accept 8073
 		.turnin 8073	
 		.target Falthir the Sightless
-		.reputation 270,revered,>=1
+		.reputation 270,revered,<0,1
 		.itemcount 19724,1
 
 	step << Hunter
@@ -2106,7 +2106,7 @@ RXPGuides.RegisterGuide([[
 		.accept 8062
 		.turnin 8062
 		.target Falthir the Sightless
-		.reputation 270,friendly,>=1
+		.reputation 270,friendly,<0,1
 		.itemcount 19716,1	
 		
 	step << Hunter
@@ -2115,7 +2115,7 @@ RXPGuides.RegisterGuide([[
 		.accept 8066
 		.turnin 8066
 		.target Falthir the Sightless
-		.reputation 270,honored,>=1
+		.reputation 270,honored,<0,1
 		.itemcount 19721,1
 	
 	step << Hunter
@@ -2124,7 +2124,7 @@ RXPGuides.RegisterGuide([[
 		.accept 8067
 		.turnin 8067	
 		.target Falthir the Sightless
-		.reputation 270,revered,>=1
+		.reputation 270,revered,<0,1
 		.itemcount 19724,1	
 
 	step << Paladin
@@ -2283,7 +2283,7 @@ RXPGuides.RegisterGuide([[
 		.accept 8059
 		.turnin 8059	
 		.target Al'tabim the All-Seeing
-		.reputation 270,friendly,>=1
+		.reputation 270,friendly,<0,1
 		.itemcount 19718,1
 
 	step << Warlock
@@ -2292,7 +2292,7 @@ RXPGuides.RegisterGuide([[
 		.accept 8076
 		.turnin 8076
 		.target Al'tabim the All-Seeing
-		.reputation 270,honored,>=1
+		.reputation 270,honored,<0,1
 		.itemcount 19720,1
 
 	step << Warlock
@@ -2301,7 +2301,7 @@ RXPGuides.RegisterGuide([[
 		.accept 8077
 		.turnin 8077		
 		.target Al'tabim the All-Seeing
-		.reputation 270,revered,>=1
+		.reputation 270,revered,<0,1
 		.itemcount 19723,1
 		
 	step << Priest
@@ -2342,7 +2342,7 @@ RXPGuides.RegisterGuide([[
 		.accept 8061
 		.turnin 8061
 		.target Al'tabim the All-Seeing	
-		.reputation 270,friendly,>=1
+		.reputation 270,friendly,<0,1
 		.itemcount 19718,1
 
 	step << Priest
@@ -2351,7 +2351,7 @@ RXPGuides.RegisterGuide([[
 		.accept 8070
 		.turnin 8070
 		.target Al'tabim the All-Seeing
-		.reputation 270,honored,>=1
+		.reputation 270,honored,<0,1
 		.itemcount 19720,1		
 
 	step << Priest
@@ -2360,7 +2360,7 @@ RXPGuides.RegisterGuide([[
 		.accept 8071
 		.turnin 8071	
 		.target Al'tabim the All-Seeing	
-		.reputation 270,revered,>=1
+		.reputation 270,revered,<0,1
 		.itemcount 19724,1
 
 	step << Mage
@@ -2401,7 +2401,7 @@ RXPGuides.RegisterGuide([[
 		.accept 8060
 		.turnin 8060	
 		.target Al'tabim the All-Seeing
-		.reputation 270,friendly,>=1
+		.reputation 270,friendly,<0,1
 		.itemcount 19716,1
 
 	step << Mage
@@ -2410,7 +2410,7 @@ RXPGuides.RegisterGuide([[
 		.accept 8068
 		.turnin 8068
 		.target Al'tabim the All-Seeing
-		.reputation 270,honored,>=1
+		.reputation 270,honored,<0,1
 		.itemcount 19721,1
 
 	step << Mage
@@ -2419,7 +2419,7 @@ RXPGuides.RegisterGuide([[
 		.accept 8069
 		.turnin 8069		
 		.target Al'tabim the All-Seeing
-		.reputation 270,revered,>=1
+		.reputation 270,revered,<0,1
 		.itemcount 19723,1
 
 	step << Shaman
@@ -2460,7 +2460,7 @@ RXPGuides.RegisterGuide([[
 		.accept 8056
 		.turnin 8056
 		.target Maywiki of Zuldazar
-		.reputation 270,friendly,>=1
+		.reputation 270,friendly,<0,1
 		.itemcount 19717,1
 
 	step << Shaman
@@ -2469,7 +2469,7 @@ RXPGuides.RegisterGuide([[
 		.accept 8074
 		.turnin 8074
 		.target Maywiki of Zuldazar
-		.reputation 270,honored,>=1
+		.reputation 270,honored,<0,1
 		.itemcount 19719,1
 
 	step << Shaman
@@ -2478,7 +2478,7 @@ RXPGuides.RegisterGuide([[
 		.accept 8075
 		.turnin 8075
 		.target Maywiki of Zuldazar
-		.reputation 270,revered,>=1
+		.reputation 270,revered,<0,1
 		.itemcount 19722,1
 
 	step << Druid
@@ -2519,7 +2519,7 @@ RXPGuides.RegisterGuide([[
 		.accept 8057
 		.turnin 8057
 		.target Maywiki of Zuldazar
-		.reputation 270,friendly,>=1
+		.reputation 270,friendly,<0,1
 		.itemcount 19718,1
 
 	step << Druid
@@ -2528,7 +2528,7 @@ RXPGuides.RegisterGuide([[
 		.accept 8064
 		.turnin 8064
 		.target Maywiki of Zuldazar
-		.reputation 270,honored,>=1
+		.reputation 270,honored,<0,1
 		.itemcount 19720,1
 
 	step << Druid
@@ -2537,7 +2537,7 @@ RXPGuides.RegisterGuide([[
 		.accept 8065
 		.turnin 8065
 		.target Maywiki of Zuldazar
-		.reputation 270,revered,>=1
+		.reputation 270,revered,<0,1
 		.itemcount 19722,1
 
 	step
