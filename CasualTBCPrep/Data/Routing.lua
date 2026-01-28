@@ -456,28 +456,28 @@ CasualTBCPrep.Routing.Routes = {
             },
             [3] = {
                 from = "TanarisTown",
-                to = "ThunderBluff"
-            },
-            [4] = {
-                from = "wsEverlook",
                 to = "Moonglade"
             },
-            [5] = {
+            [4] = {
                 from = "felwoodTown",
                 to = "Orgrimmar"
             },
-            [6] = {
+            [5] = {
                 from = "OrgrimmarDrag",
                 to = "AV"
             },
-            [7] = {
+            [6] = {
                 from = "Undercity2",
                 to = "SilvermoonCity"
             },
-            [8] = {
+            [7] = {
                 from = "EPLTown",
+                to = "gromgolSTV"
+            },
+            [8] = {
+                from = "Stonard",
                 to = "TheDarkPortal"
-            }
+            },
         },
         bankSections = { "TanarisTown", "OrgrimmarBank" , "Undercity2" }
     },
