@@ -158,6 +158,7 @@ local neededTaxiNodes = {
 			["Everlook, Winterspring"] = { },
 			["Stonard, Swamp of Sorrows"] = { },
 			["Light's Hope Chapel, Eastern Plaguelands"] = { },
+			["Tranquillien, Ghostlands"] = { },
 		},
 		[2] = { -- Alliance
 			["Gadgetzan, Tanaris"] = { },
