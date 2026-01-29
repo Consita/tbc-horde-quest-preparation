@@ -4,6 +4,7 @@ Changelog:
 - Added "Tranquillien, Ghostlands" as a required flight path for Solo route, as it links Silvermoon to EPL.
 - Added back "Summoning Shadra" as a prequest to "Venom to the Undercity"
 - SoloRoute Companion: Removed "Winterspring" as a mail pick-up spot, added "Stonard" as a mail pick-up spot. Now it matches the other routes.
+- Companion: "Collect" button for step 1 (bags) can now collect the Tier 0.5 items from the bank (even though they are BoE and is expected in the mailbox)
 - Redid rep requirements for the lords/dukes quests at Cenarion Hold.
 > Abyssal Contacts Rep Requirement: Honored > None
 > Aurel Goldleaf Rep Requirement: None > Friendly

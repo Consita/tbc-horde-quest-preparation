@@ -208,6 +208,13 @@ function CasualTBCPrep.Extras_Mailbox.GetStepDetails_ItemsNeeded(dataMail, dataB
         end
     end
 
+    if targetBankID == 1 and targetMailID == 1 then
+        for _,mail in ipairs(mailsToOpen) do
+            for _,item in ipairs(mail.items) do
+                table.insert(itemsFromBank, item)
+            end
+        end
+    end
     return mailsToOpen, itemsFromBank, mailItemStackCount, bankItemStackCount
 end
 

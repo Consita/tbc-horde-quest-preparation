@@ -81,7 +81,7 @@ local function LoadStepDetailsItems(startY)
         end
     end
 
-    local missing = {},{}
+    local missing = {}
     local playerItemCountTracker = {}
     for _, item in ipairs(itemsNeededInBags) do
         local inventoryCount,bankCount = 0,0
@@ -130,8 +130,12 @@ local function LoadStepDetailsItems(startY)
     if currentStep.targetMailID and currentStep.targetMailID > 0 then stackSlotsNeeded = stackSlotsNeeded+(mailItemStackCount or 0) end
     if currentStep.targetBankID and currentStep.targetBankID > 0 then stackSlotsNeeded = stackSlotsNeeded+(bankItemStackCount or 0) end
 
-    local missingStr = tostring(#missing).." ITEMS"
-    if stackSlotsNeeded > 0 then missingStr=missingStr.." ("..tostring(stackSlotsNeeded).." bagslots)" end
+    local missingStr = ""
+    if stackSlotsNeeded > 0 then
+        missingStr = tostring(stackSlotsNeeded).." Items Missing"
+    else
+        missingStr = tostring(#missing).." Items Missing"
+    end
 
     local yPos = startY
     local txtBagHeader = parent:CreateFontString(nil, "OVERLAY", "GameFontNormal")
@@ -144,38 +148,42 @@ local function LoadStepDetailsItems(startY)
     local iconSize = 24
     local spacing = iconSize + 4
     if #missing > 0 then
+        local alreadyShownItems = {}
         for _, item in ipairs(missing) do
-            local playerTrackedCount = playerItemCountTracker[item.itemID]
+            if alreadyShownItems[item.itemID] == nil then
+                local playerTrackedCount = playerItemCountTracker[item.itemID]
 
-            local icon, border, textRarityColor, imgItem = CasualTBCPrep.UI.CreateItemImage(parent, iconSize, item.itemID, "TOPLEFT", "TOPLEFT", 0, yPos)
-            local itemName = ""
-            if imgItem then
-                local r,g,b,cHex = CasualTBCPrep.GetRarityColor(imgItem.rarity)
-                local displayName = imgItem.name
-                itemName = cHex..displayName.."|r"
+                local icon, border, textRarityColor, imgItem = CasualTBCPrep.UI.CreateItemImage(parent, iconSize, item.itemID, "TOPLEFT", "TOPLEFT", 0, yPos)
+                local itemName = ""
+                if imgItem then
+                    local r,g,b,cHex = CasualTBCPrep.GetRarityColor(imgItem.rarity)
+                    local displayName = imgItem.name
+                    itemName = cHex..displayName.."|r"
+                end
+
+                table.insert(wCompanion.content, icon)
+                table.insert(wCompanion.content, border)
+
+                local itemNameText = textRarityColor .. (itemName or ("Item " .. imgItem.id))
+                local txtItemName = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+                txtItemName:SetPoint("TOPLEFT", icon, "TOPRIGHT", 1, -1)
+                txtItemName:SetText(itemNameText)
+                table.insert(wCompanion.texts, txtItemName)
+
+                local progressText = tostring(playerTrackedCount.invOrig).."/"..(item.totalNeeded or item.count)
+                if playerTrackedCount.bankOrig > 0 then
+                    progressText = clrBanked.hex..progressText.." ("..tostring(playerTrackedCount.bankOrig).." in bank)|r"
+                else
+                    progressText = clrMissing.hex..progressText.."|r"
+                end
+                local txtItemProg = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+                txtItemProg:SetPoint("BOTTOMLEFT", icon, "BOTTOMRIGHT", 1, 1)
+                txtItemProg:SetText(progressText)
+                table.insert(wCompanion.texts, txtItemProg)
+
+                yPos = yPos - spacing
+                alreadyShownItems[item.itemID] = {}
             end
-
-            table.insert(wCompanion.content, icon)
-            table.insert(wCompanion.content, border)
-
-            local itemNameText = textRarityColor .. (itemName or ("Item " .. imgItem.id))
-            local txtItemName = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-            txtItemName:SetPoint("TOPLEFT", icon, "TOPRIGHT", 1, -1)
-            txtItemName:SetText(itemNameText)
-            table.insert(wCompanion.texts, txtItemName)
-
-            local progressText = tostring(playerTrackedCount.invOrig).."/"..(item.totalNeeded or item.count)
-            if playerTrackedCount.bankOrig > 0 then
-                progressText = clrBanked.hex..progressText.." ("..tostring(playerTrackedCount.bankOrig).." in bank)|r"
-            else
-                progressText = clrMissing.hex..progressText.."|r"
-            end
-            local txtItemProg = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-            txtItemProg:SetPoint("BOTTOMLEFT", icon, "BOTTOMRIGHT", 1, 1)
-            txtItemProg:SetText(progressText)
-            table.insert(wCompanion.texts, txtItemProg)
-
-            yPos = yPos - spacing
         end
     end
 
