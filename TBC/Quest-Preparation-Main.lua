@@ -872,6 +872,8 @@ RXPGuides.RegisterGuide([[
 		step
 			#completewith next
 			.use 12284 >>Use |T133001:0|t[Draco-Incarcinatrix] 900 and Kill |cRXP_ENEMY_Broodlings|r in Burning Steppes
+			.mob Scalding Broodling
+			.mob Black Broodling
 			.complete 4726,1
 
 		step
@@ -915,6 +917,8 @@ RXPGuides.RegisterGuide([[
 			.goto Burning Steppes,64.33,60.36,60,0
 			.goto Burning Steppes,54.69,62.45,60,0
 			.use 12284 >>Use |T133001:0|t[Draco-Incarcinatrix] 900 and Kill |cRXP_ENEMY_Broodlings|r in Burning Steppes
+			.mob Scalding Broodling
+			.mob Black Broodling
 			.complete 4726,1
 
 		step
