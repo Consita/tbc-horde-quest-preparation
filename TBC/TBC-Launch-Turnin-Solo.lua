@@ -172,8 +172,14 @@ RXPGuides.RegisterGuide([[
 		.goto Silithus,67,69.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hermit Ortell|r
 		.turnin -8279
+		.target Hermit Ortell	
+
+	step
+		.goto Silithus,67,69.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hermit Ortell|r
 		.accept 8287
 		.target Hermit Ortell	
+		.isQuestTurnedIn 8279	
 
 	step
 		.goto Silithus,67,69.6
@@ -182,6 +188,7 @@ RXPGuides.RegisterGuide([[
 		.turnin 8323
 		.target Hermit Ortell	
 		.itemcount 20404,10	
+		.isQuestTurnedIn 8279
 
 	step
 		#completewith RutgarTurnin
@@ -203,8 +210,16 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rutgar|r
 		.turnin -8308
 		.turnin -8309
+		.target Rutgar Glyphshaper
+
+	step
+		#label RutgarTurnin
+		.goto Silithus,41.3,88.5
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rutgar|r
 		.accept 8314
 		.target Rutgar Glyphshaper
+		.isQuestTurnedIn 8308
+		.isQuestTurnedIn 8309	
 		
 	step
 		.goto Silithus,45.00,92.20
@@ -231,7 +246,7 @@ RXPGuides.RegisterGuide([[
 		.skill cooking,<285,1	
 
 	step	
-		.use 21220
+		.use 21220>>Click |T132192:0|t[Head of Ossirian the Unscarred] and accept |cRXP_LOOT_The Fall of Ossirian|r
 		.accept 8791
 		.itemcount 21220,1
 
