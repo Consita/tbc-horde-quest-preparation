@@ -147,6 +147,7 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Layo|r
 		.accept 1126
 		.target Layo Starstrike	
+		.isQuestTurnedIn 1125
 
 	step
 		.goto Silithus,51.74,37.91
@@ -911,14 +912,14 @@ RXPGuides.RegisterGuide([[
 		.goto Winterspring,61.93,38.37
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Storm Shadowhoof|r
 		.turnin -5056
-		.accept 5057
 		.target Storm Shadowhoof		
 
 	step
 		.goto Winterspring,61.93,38.37
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Storm Shadowhoof|r
-		.turnin -5057
-		.target Storm Shadowhoof		
+		.turnin 5057
+		.target Storm Shadowhoof	
+		.isQuestTurnedIn 5056			
 
 	step
 		.goto Winterspring,61.919,38.298

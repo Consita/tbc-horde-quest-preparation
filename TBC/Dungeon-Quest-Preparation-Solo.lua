@@ -340,14 +340,7 @@ RXPGuides.RegisterGuide([[
 		.goto Badlands,5.8,47.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lexlort|r
 		.accept 4122
-		.target Lexlort
-
-	step
-		.goto Badlands,3.0,47.6
-		>>|cRXP_LOOT_Lost Thunderbrew Recipe|r |cRXP_WARN_can be used as an optional questlog quest for TBC. Check /tbcprep to see if you need it|r
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shadowmage Vivian Lagrave|r
-		.turnin 4134
-		.target Shadowmage Vivian Lagrave			
+		.target Lexlort		
 
 	step
 		#completewith next
@@ -457,6 +450,18 @@ RXPGuides.RegisterGuide([[
 		.accept 4004 >> Accept The Princess Saved?
 		.target Princess Moira Bronzebeard
 		.isQuestTurnedIn 4003
+
+	step
+		#completewith next
+		.zone Badlands >>Travel to |cFFfa9602Kargath|r
+		.zoneskip Badlands
+
+	step
+		.goto Badlands,3.0,47.6
+		>>|cRXP_LOOT_Lost Thunderbrew Recipe|r |cRXP_WARN_can be used as an optional questlog quest for TBC. Check /tbcprep to see if you need it|r
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shadowmage Vivian Lagrave|r
+		.turnin 4134
+		.target Shadowmage Vivian Lagrave			
 
 	step
 		>>|cRXP_WARN_You have now completed all steps within BRD. Well done!|r
