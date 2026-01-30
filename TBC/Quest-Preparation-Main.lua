@@ -879,7 +879,7 @@ RXPGuides.RegisterGuide([[
 		step
 			.goto Burning Steppes,95.061,31.563
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Cyrus Therepentous|r and select the option: "I do not possess any proof, Cyrus."
-			>>This will spawn a level 54 Elite Dragon at the entrance of the small cave. Kill and loot it for the |T134430:0|t[Black Dragonflight Molt]
+			>>This will spawn a Dragon at the entrance of the small cave. Kill and loot it for the |T134430:0|t[Black Dragonflight Molt]
 			>>|cRXP_ENEMY_Do not turn in|r |cRXP_LOOT_A Taste of Flame|r |cRXP_ENEMY_as it is used for the TBC turnin!|r
 			.collect 10575,1
 			.accept 4023
