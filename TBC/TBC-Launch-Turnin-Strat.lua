@@ -31,7 +31,7 @@ RXPGuides.RegisterGuide([[
 		+Make sure that |cRXP_ENEMY_all BoE items are sent and ready|r in your |cFFfa9602mailbox|r
 		>>Send all items that are not soulbound from another character to this one and keep them in the mailbox
 		+Open the companion (/tbc companion) and |cRXP_ENEMY_prepare the initial items|r from step 1
-		+|cRXP_WARN_The server might lag on launch and break our companion functionality. I promise to not yell at the devs and take out the mail by myself!|r
+		+|cRXP_WARN_This companion addin might break due to the server load on launch. Please dont blame the devs for stuff that is out of their hands and take out the mail by yourself!|r
 
 --- Kargath
 
