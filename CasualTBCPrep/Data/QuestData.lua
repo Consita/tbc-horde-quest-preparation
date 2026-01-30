@@ -43,7 +43,7 @@ local questsMetadata = {
 	[4724] = { name="The Pack Mistress", baseexp=13950, qlvl=59, type="qlog", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Lower Blackrock Spire", },
 	[4132] = { name="Operation: Death to Angerforge", baseexp=13500, qlvl=58, type="qlog", preQuests="4081,4082,4122,4121", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Blackrock Depths", },
 	[4063] = { name="The Rise of the Machines", baseexp=13500, qlvl=58, type="qlog", reqItems="11268-1,11269-10", preQuests="4061,4062,", routes="Main,Strat,Solo", routeSection="Badlands", areaType="Dungeon", area="Blackrock Depths", },
-	[5942] = { name="Hidden Treasures", baseexp=14300, qlvl=60, type="turnin", preQuests="5149,5152,5153,5154,5210,5181,5168,5206,5941", routes="Main,Strat,Solo", routePickup="EPLDarrowshire", routeSection="EPLDarrowshire", areaType="Zone", area="Eastern Plaguelands", },
+	[5942] = { name="Hidden Treasures", baseexp=14300, qlvl=60, type="turnin", preQuests="5149,5152,5153,5154,5210,5181,5168,5206,5941,5721", routes="Main,Strat,Solo", routePickup="EPLDarrowshire", routeSection="EPLDarrowshire", areaType="Zone", area="Eastern Plaguelands", },
 	[4788] = { name="The Final Tablets", baseexp=13500, qlvl=58, type="qlog", reqItems="12740-1,12741-1", preQuests="3520,3527,4787,3528,5065", routes="Main,Strat,Solo", routeSection="TanarisPort", areaType="Dungeon", area="Lower Blackrock Spire", },
 	[5846] = { name="Of Love and Family", baseexp=9000, qlvl=58, type="turnin", preQuests="5542,5543,5544,5742,5781,5845", routes="Strat", routePickup="EPLTirion", routeSection="WPLCaerDarrow", area="Eastern Plaguelands", },
 	[5529] = { name="Plagued Hatchlings", baseexp=13500, qlvl=58, type="qlog", routes="Main,Strat,Solo", routeSection="EPLTown", areaType="Dungeon", area="Scholomance", },
@@ -913,7 +913,6 @@ local function AddPrequestToQuest(questID, preQuestID)
 	questsMetadata[questID] = questObj
 end
 
-
 local function RestoreModifiedQuests()
 	for questID, orig in pairs(_storedOriginalsForHardcodeFixes) do
 		local quest = questsMetadata[questID]
@@ -938,8 +937,8 @@ local function LoadRouteQuestSpecifics_Solo()
 	UpdateQuestOnForRouteHardcodeFix(4134, "optional", nil, nil, false) -- Lost Thunderbrew Recipe
 	AddPrequestToQuest(6845, 1126) -- Add Hive in the Tower to Uncovering Past Secrets
 	AddPrequestToQuest(6845, 6844) -- Add Umber, Archivist to Uncovering Past Secrets
-
 end
+
 local function LoadRouteQuestSpecifics_Strat()
 	UpdateQuestOnForRouteHardcodeFix(5212, "turnin", "EPLTown3", nil, true) -- The Flesh Does Not Lie
 	UpdateQuestOnForRouteHardcodeFix(5214, "turnin", "EPLTown3", nil, true) -- The Great Ezra Grimm
@@ -1364,7 +1363,6 @@ function CasualTBCPrep.QuestData.HasPlayerFullyPreparedQuestExceptPrequests(ques
 	if not fullyPrepared then
 		return false, needsItemsFromBank, isBankAlted, bankAltName
 	end
-
 	-- Profession Check
 	if not skipProfCheck and (quest.reqProf ~= nil and quest.reqProf > 0 and quest.reqProfSkill ~= nil and quest.reqProfSkill > 0) then
 		local internalProfID = CasualTBCPrep.Professions.GetInternalProfessionIDFromWowID(quest.reqProf)
@@ -1646,6 +1644,7 @@ function CasualTBCPrep.QuestData.GetQuestProgressionDetails(quest)
                 local preQuestObj = CasualTBCPrep.QuestData.GetPreQuest(preQuestID)
                 if preQuestObj then
                 	if not CasualTBCPrep.QuestData.HasCharacterCompletedQuest(preQuestID) then
+
 						local preqQuestType = CasualTBCPrep.QuestData.GetQuestType(preQuestID)
 						if preqQuestType and (preqQuestType == "optional"  or preqQuestType == "qlog") then
 							-- preQuests that are optional doesn't have to be completed, if they are fully prepared (and in the questlog)

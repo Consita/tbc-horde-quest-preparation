@@ -6,6 +6,7 @@ Changelog:
 - Fixed steps and formatting for Dungeon Grind
 - Went through all turnin guides and double checked .accept and .turnin steps
 - Minor formatting and text tweaks to current preparation guides
+- "The Battle for Darrowshire" is now properly a prequest for "Hidden Treasures" again
 
 3.22 (2026-01-29)
 - Finished RXP Turn-in guide for Solo Route.
