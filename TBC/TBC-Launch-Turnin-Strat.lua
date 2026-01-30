@@ -490,6 +490,7 @@ RXPGuides.RegisterGuide([[
 		>>Kill |cRXP_ENEMY_Emissary Roman'khan|r and loot him for |cRXP_LOOT_Crystal Unlocking Mechanism|r
 		.complete -8315,1	
 		.mob Emissary Roman'khan
+		.isOnQuest 8315
 
 	step
 		.goto Silithus,49.7,37.5
@@ -1888,6 +1889,7 @@ RXPGuides.RegisterGuide([[
 		.use 15736 >>Use |T133715:0|t[Smokey's Special Compound] to destroy |cRXP_ENEMY_Scourge Ziggurats|r
 		>>Try to destroy at least 4 before entering Stratholme
 		.complete 6041,1
+		.isOnQuest 6041
 		
 	step
 		.goto Eastern Plaguelands,14.45,33.74
@@ -1997,6 +1999,7 @@ RXPGuides.RegisterGuide([[
 		#completewith next
 		.use 15736 >>Use |T133715:0|t[Smokey's Special Compound] to destroy |cRXP_ENEMY_Scourge Ziggurats|r
 		.complete 6041,1	
+		.isOnQuest 6041
 
 	step
 		#completewith StratholmeUndead

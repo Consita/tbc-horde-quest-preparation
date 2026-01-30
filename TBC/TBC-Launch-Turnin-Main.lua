@@ -490,6 +490,7 @@ RXPGuides.RegisterGuide([[
 		>>Kill |cRXP_ENEMY_Emissary Roman'khan|r and loot him for |cRXP_LOOT_Crystal Unlocking Mechanism|r
 		.complete -8315,1	
 		.mob Emissary Roman'khan
+		.isOnQuest 8315
 
 	step
 		.goto Silithus,49.7,37.5
