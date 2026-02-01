@@ -832,8 +832,7 @@ RXPGuides.RegisterGuide([[
 		
 	step
 		#completewith Tanarislast
-		.goto Tanaris,64.2,51.4,50
-		>>Travel to |cFFfa9602The Caverns of Time|r	
+		.goto Tanaris,64.2,51.4,50 >>Travel to |cFFfa9602The Caverns of Time|r	
 	
 	step
 		.goto Tanaris,64.2,51.4
