@@ -775,7 +775,9 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Tanaris,52.30,28.92
 		+|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gimblethorn|r and collect your items via "/tbc companion"
+		>>Also bank any items that you don't need anymore to save bag space
 		>>Once done, or when you picked up your items yourself, complete this step manually
+		.bankdeposit 12264, 12529, 11905, 20422, 20451
 		.target Gimblethorn
 		
 	step
