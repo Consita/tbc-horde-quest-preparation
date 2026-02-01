@@ -1476,6 +1476,9 @@ function CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(onlyPrepa
 			isValidQuest = questData.type ~= CasualTBCPrep.QuestData.DisabledTypeText
 		end
 		if isValidQuest then
+			isValidQuest = CasualTBCPrep.Settings.GetQuestIgnoredState(CasualTBCPrep.Routing.CurrentRouteCode, questID) ~= true
+		end
+		if isValidQuest then
 			if questData.reqItems and (not questData.reqAnyItem or questData.reqAnyItem ~= 1) and (not questData.ignoreReqItemsForPrep or questData.ignoreReqItemsForPrep ~= 1) then
 
 					for itemPair in string.gmatch(questData.reqItems, "([^,]+)") do
