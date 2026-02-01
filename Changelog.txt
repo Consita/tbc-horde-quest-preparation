@@ -7,6 +7,9 @@ Changelog:
 - Went through all turnin guides and double checked .accept and .turnin steps
 - Minor formatting and text tweaks to current preparation guides
 - "The Battle for Darrowshire" is now properly a prequest for "Hidden Treasures" again
+- Clarified that the "The Truth Comes Crashing Down" prequest comes from an item, not from EPL Town
+- Added the "Frostwolf Insignia" items as required for the AV Reputation quests, so the companion will loot it from the bank.
+- Required item count from ignored quests is no longed added to the needed count on the Items tab, if a nonignored quest also needed that item.
 
 3.22 (2026-01-29)
 - Finished RXP Turn-in guide for Solo Route.

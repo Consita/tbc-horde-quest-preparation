@@ -237,11 +237,11 @@ local questsMetadata = {
 	[8343] = { name="Goldleaf's Discovery", baseexp=960, qlvl=60, type="turnin", reqRep=609, reqRepRank=7, routes="Main,Strat,Solo", routePickup="SilithusHold2", routeSection="SilithusHold2", areaType="Zone", area="Silithus", },
 	[8349] = { name="Bor Wildmane", baseexp=960, qlvl=60, type="turnin", reqRep=609, reqRepRank=5, routes="Main,Strat,Solo", routePickup="SilithusHold2", routeSection="SilithusHold2", areaType="Zone", area="Silithus", },
 	[8351] = { name="Bor Wishes to Speak", baseexp=960, qlvl=60, type="turnin", reqRep=609, reqRepRank=7, routes="Main,Strat,Solo", routePickup="SilithusHold2", routeSection="SilithusHold2", areaType="Zone", area="Silithus", },
-	[7163] = { name="Rise and Be Recognized", baseexp=0, qlvl=51, type="turnin", preQuests="7161", reqRep=729, reqRepRank=5, routes="Main,Strat,Solo", routePickup="AV", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=1, comments="These AV quests apparently scale UP with level, unlike other quests. Verified from videos from last TBC" },
-	[7164] = { name="Honored Amongst the Clan", baseexp=0, qlvl=51, type="turnin", preQuests="7161", reqRep=729, reqRepRank=6, routes="Main,Strat,Solo", routePickup="AV", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=1, comments="These AV quests apparently scale UP with level, unlike other quests. Verified from videos from last TBC" },
-	[7165] = { name="Earned Reverence", baseexp=0, qlvl=51, type="turnin", preQuests="7161", reqRep=729, reqRepRank=7, routes="Main,Strat,Solo", routePickup="AV", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=2, comments="These AV quests apparently scale UP with level, unlike other quests. Verified from videos from last TBC" },
-	[7166] = { name="Legendary Heroes", baseexp=0, qlvl=51, type="turnin", preQuests="7161", reqRep=729, reqRepRank=8, routes="Main,Strat,Solo", routePickup="AV", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=3, comments="These AV quests apparently scale UP with level, unlike other quests. Verified from videos from last TBC" },
-	[7167] = { name="Eye of Command", baseexp=0, qlvl=51, type="turnin", preQuests="7161", reqRep=729, reqRepRank=8, routes="Main,Strat,Solo", routePickup="AV", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=3, comments="These AV quests apparently scale UP with level, unlike other quests. Verified from videos from last TBC" },
+	[7163] = { name="Rise and Be Recognized", baseexp=0, qlvl=51, type="turnin", reqItems="17690-1", ignoreReqItemsForPrep=1, preQuests="7161", reqRep=729, reqRepRank=5, routes="Main,Strat,Solo", routePickup="AV", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=1, comments="These AV quests apparently scale UP with level, unlike other quests. Verified from videos from last TBC" },
+	[7164] = { name="Honored Amongst the Clan", baseexp=0, qlvl=51, type="turnin", reqItems="17690-1,17905-1", reqAnyItem=1, ignoreReqItemsForPrep=1, preQuests="7161", reqRep=729, reqRepRank=6, routes="Main,Strat,Solo", routePickup="AV", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=1, comments="These AV quests apparently scale UP with level, unlike other quests. Verified from videos from last TBC" },
+	[7165] = { name="Earned Reverence", baseexp=0, qlvl=51, type="turnin", reqItems="17690-1,17905-1,17906-1", reqAnyItem=1, ignoreReqItemsForPrep=1, preQuests="7161", reqRep=729, reqRepRank=7, routes="Main,Strat,Solo", routePickup="AV", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=2, comments="These AV quests apparently scale UP with level, unlike other quests. Verified from videos from last TBC" },
+	[7166] = { name="Legendary Heroes", baseexp=0, qlvl=51, type="turnin", reqItems="17690-1,17905-1,17906-1,17907-1", reqAnyItem=1, ignoreReqItemsForPrep=1, preQuests="7161", reqRep=729, reqRepRank=8, routes="Main,Strat,Solo", routePickup="AV", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=3, comments="These AV quests apparently scale UP with level, unlike other quests. Verified from videos from last TBC" },
+	[7167] = { name="Eye of Command", baseexp=0, qlvl=51, type="turnin", reqItems="17690-1,17905-1,17906-1,17907-1,17908-1", reqAnyItem=1, ignoreReqItemsForPrep=1, preQuests="7161", reqRep=729, reqRepRank=8, routes="Main,Strat,Solo", routePickup="AV", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=3, comments="These AV quests apparently scale UP with level, unlike other quests. Verified from videos from last TBC" },
 	[5051] = { name="Two Halves Become One", baseexp=7900, qlvl=54, type="turnin", preQuests="5021,5023,5049,5050", routes="Main,Strat,Solo", routePickup="WPLFelstoneField", routeSection="WPLFelstoneField", areaType="Zone", area="Western Plaguelands", comments="On TBC release, check if the Jabbering Ghoul is up. If it is, this is free extra exp. If it's not up, you should skip this quest. " },
 	[5060] = { name="Locked Away", baseexp=10200, qlvl=55, type="turnin", reqItems="12739-1", preQuests="5058", routes="Main,Strat,Solo", routePickup="WPLDalsonsTears", routeSection="WPLDalsonsTears", areaType="Zone", area="Western Plaguelands", },
 	[6031] = { name="Runecloth", baseexp=8150, qlvl=55, type="turnin", reqItems="14047-30", reqRep=576, reqRepRank=5, routes="Main,Strat,Solo", routePickup="Timbermaw", routeSection="Timbermaw", areaType="Zone", area="Timbermaw Hold", },
@@ -421,7 +421,7 @@ local preQuestMetadata = {
     [5210] = { name = "Brother Carlin", startZone = "Andorhal, WPL" },
 	[5212] = { name = "The Flesh Does Not Lie", startZone= "Light's Hope Chapel, EPL" },
     [5251] = { name = "The Archivist", startZone = "Light's Hope Chapel, EPL" },
-    [5262] = { name = "The Truth Comes Crashing Down", startZone = "Light's Hope Chapel, EPL" },
+    [5262] = { name = "The Truth Comes Crashing Down", startZone = "Strat Living, Head of Balnazzar Item" },
     [5341] = { name = "Barov Family Fortune", startZone = "The Bulwark, Tirisfal Glades" },
     [5382] = { name = "Doctor Theolen Krastinov, the Butcher", startZone = "Caer Darrow, WPL" },
     [5384] = { name = "Kirtonos the Herald", startZone = "Caer Darrow, WPL" },
@@ -630,6 +630,16 @@ local questCanHaveZeroExp = {
 	[5122] = true
 }
 
+local itemsForceSingleAmount = {
+	[18422]={},--OnyHead
+	[19002]={},--NefHead
+	--AV
+	[17690]={},
+	[17905]={},
+	[17906]={},
+	[17907]={},
+	[17908]={}
+}
 local _storedOriginalsForHardcodeFixes = {}
 local tierQuestNotice = "~250g + AH items, This is by far the most expensive exp, the Belt+Gloves quest gives 14300 exp and doesn't have to be in the questlog.\nThe bracers only give 9550 and requires a slot in the questlog, so it's worthless.\nSkip this if you're not rich."
 
@@ -1476,6 +1486,9 @@ function CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(onlyPrepa
 			isValidQuest = questData.type ~= CasualTBCPrep.QuestData.DisabledTypeText
 		end
 		if isValidQuest then
+			isValidQuest = CasualTBCPrep.Settings.GetQuestIgnoredState(CasualTBCPrep.Routing.CurrentRouteCode, questID) ~= true
+		end
+		if isValidQuest then
 			if questData.reqItems and (not questData.reqAnyItem or questData.reqAnyItem ~= 1) and (not questData.ignoreReqItemsForPrep or questData.ignoreReqItemsForPrep ~= 1) then
 
 					for itemPair in string.gmatch(questData.reqItems, "([^,]+)") do
@@ -1488,7 +1501,11 @@ function CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(onlyPrepa
 							local dicCurItemStats = dicItemStats[itemID]
 
 							if dicCurItemStats ~= nil then
-								dicCurItemStats.requiredAmount = dicCurItemStats.requiredAmount + neededItemCount
+								if itemsForceSingleAmount[itemID] ~= nil then
+									dicCurItemStats.requiredAmount = 1
+								else
+									dicCurItemStats.requiredAmount = dicCurItemStats.requiredAmount + neededItemCount
+								end
 								table.insert(dicCurItemStats.quests, { id=questID, quest=questData })
 							else
 								local playerInvCount,playerBankCount,playerTotalCount = CasualTBCPrep.Items.GetPlayerItemCount(itemID)
@@ -1533,7 +1550,12 @@ function CasualTBCPrep.QuestData.GetAllRequiredItemsForAvailableQuests(onlyPrepa
 					local dicCurItemStats = dicItemStats[completedItemData.id]
 
 					if dicCurItemStats ~= nil then
-						dicCurItemStats.requiredAmount = dicCurItemStats.requiredAmount + completedItemData.requiredAmount
+						if itemsForceSingleAmount[completedItemData.id] ~= nil then
+							dicCurItemStats.requiredAmount = 1
+						else
+							dicCurItemStats.requiredAmount = dicCurItemStats.requiredAmount + completedItemData.requiredAmount
+						end
+
 						table.insert(dicCurItemStats.quests, { id=questID, quest=questData })
 					else
 						dicItemStats[completedItemData.id] = completedItemData

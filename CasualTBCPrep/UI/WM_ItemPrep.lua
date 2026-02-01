@@ -580,6 +580,9 @@ local function LoadItemList(wMain)
 							anyqImgOffsetX = anyqImgOffsetX + anyqImgSize + anyqImgSpacing
 						end
 					end
+
+					anyqImgOffsetX = anyqImgSpacing
+					yPosition = yPosition-45
 				end
 			end
 		end
