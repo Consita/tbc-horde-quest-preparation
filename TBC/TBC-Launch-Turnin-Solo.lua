@@ -718,7 +718,9 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Tanaris,52.30,28.92
 		+|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gimblethorn|r and collect your items via "/tbc companion"
+		>>Also bank any items that you don't need anymore to save bag space
 		>>Once done, or when you picked up your items yourself, complete this step manually
+		.bankdeposit 12264, 12529, 11905, 20422, 20451
 		.target Gimblethorn
 		
 	step
@@ -764,17 +766,16 @@ RXPGuides.RegisterGuide([[
 		.turnin -8181
 		.target Yeh'kinya
 
-	step	
-		.goto Tanaris,67.0,22.4
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yeh'kinya|r
+	step
+		.goto Tanaris,66.8,24.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Prospector Ironboot|r
 		.accept 8182
-		.target Yeh'kinya
-		.isQuestTurnedIn 8181
+		.target Prospector Ironboot
+		.isQuestTurnedIn 8181	
 		
 	step
 		#completewith Tanarislast
-		.goto Tanaris,64.2,51.4
-		>>Travel to |cFFfa9602The Caverns of Time|r	
+		.goto Tanaris,64.2,51.4,50 >>Travel to |cFFfa9602The Caverns of Time|r	
 	
 	step
 		.goto Tanaris,64.2,51.4
@@ -882,13 +883,15 @@ RXPGuides.RegisterGuide([[
 		.reputation 910,revered,<0,1 	
 		
 	step
-		#label Tanarislast
 		.goto Tanaris,64.2,51.4
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
 		.turnin 8751
 		.target Anachronos
 		.isQuestTurnedIn 8747
-		.reputation 910,exalted,<0,1 		
+		.reputation 910,exalted,<0,1 	
+		
+	step
+		#label Tanarislast	
 
 --- Feralas
 
