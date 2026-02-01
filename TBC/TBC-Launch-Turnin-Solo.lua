@@ -607,6 +607,7 @@ RXPGuides.RegisterGuide([[
 		>>Click the |cRXP_PICK_Northern Crystal Pylon|r
 		.complete 4285,1 
 		.isOnQuest 4285
+		.skipgossip
 
 	step	
 		.goto Un'Goro Crater,48.3,20.9,20,0
@@ -624,6 +625,7 @@ RXPGuides.RegisterGuide([[
 		>>Click the |cRXP_PICK_Western Crsytal Pylon|r
 		.complete 4288,1
 		.isOnQuest 4288
+		.skipgossip
 		
 	step
 		#completewith next
@@ -640,6 +642,7 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Un'Goro Crater,51.90,49.85
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ringo|r
+		>>If Ringo is not there, skip this step. It is only 4k experience
 		.turnin -4492
 		.target Ringo		
 
@@ -670,7 +673,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		.goto Un'Goro Crater,49.6,45.7
-		.use 12472 >>|cRXP_WARN_Climb up to the top of the volcano, then use|r |T132995:0|t[Krakle's Thermometer]
+		.use 12472 >>Use |T132995:0|t[Krakle's Thermometer] at the waypoint
 		.complete 974,1 
 		.isOnQuest 974
 
@@ -763,6 +766,7 @@ RXPGuides.RegisterGuide([[
 		.goto Tanaris,67.0,22.4
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yeh'kinya|r
 		>>|cRXP_WARN_This starts a 1:30-5min respawn, so try to have everyone turn this in at the same time|r
+		>>When anyone is turning in "Confront Yeh'kinya', you get 20 seconds to turnin, before he goes RP
 		.turnin -8181
 		.target Yeh'kinya
 
@@ -1210,10 +1214,20 @@ RXPGuides.RegisterGuide([[
 		.goto Moonglade,51.70,45.00
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rabine|r
 		.accept 5526
-		.turnin 5526
 		.target Rabine Saturna	
 		.itemcount 18501,1
 		.isQuestTurnedIn 5527
+
+	step
+		.use 18539 >> Use |T132595:0|t[Reliquary of Purity] to combine with the the Felvine Shard
+		.complete 5526
+
+	step
+		.goto Moonglade,51.70,45.00
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rabine|r
+		.turnin -5526
+		.target Rabine Saturna	
+		.isQuestTurnedIn 5527	
 		
 	step
 		.goto Moonglade,44.7,35.5
