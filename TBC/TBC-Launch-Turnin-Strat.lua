@@ -1156,7 +1156,7 @@ RXPGuides.RegisterGuide([[
 		.isQuestTurnedIn 5527
 
 	step
-		.use 18539 >> Use |T132595:0|t[Reliquary of Purity] to combine with the the Felvine Shard
+		.use 18539 >> Use |T132595:0|t[Reliquary of Purity] to combine it with the Felvine Shard
 		.complete 5526,1
 
 	step
