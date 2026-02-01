@@ -221,6 +221,11 @@ local itemsMetadata = {
     [17330] = { name="Hand of Sulfuron", rarity=1, texture=132937, quests="6824", sources="Drops from Sulfuron in Molten Core" },
     [13544] = { name="Spectral Essence", rarity=2, texture=134337, quests="5462", sources="Reward from Kirtonos the Herald Quest" },
     [18426] = { name="Lethtendris's Web", rarity=1, texture=136113, quests="7489", sources="Drops from Lethtendris in Dire Maul" },
+    [17690] = { name="Frostwolf Insignia Rank 1", rarity=2, texture=133283, quests="7163", sources="Alterac Valley Reputation Quest" },
+    [17905] = { name="Frostwolf Insignia Rank 2", rarity=2, texture=133283, quests="7164", sources="Alterac Valley Reputation Quest" },
+    [17906] = { name="Frostwolf Insignia Rank 3", rarity=2, texture=133284, quests="7165", sources="Alterac Valley Reputation Quest" },
+    [17907] = { name="Frostwolf Insignia Rank 4", rarity=3, texture=133285, quests="7166", sources="Alterac Valley Reputation Quest" },
+    [17908] = { name="Frostwolf Insignia Rank 5", rarity=3, texture=133286, quests="7167", sources="Alterac Valley Reputation Quest" },
 }
 
 for id,i in pairs(itemsMetadata) do
