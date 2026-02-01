@@ -121,7 +121,6 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Cyrus Therepentous|r
 		.itemcount 10575,1
 		.accept 4022
-		.turnin 4022
 		.target Cyrus Therepentous
 		.isQuestAvailable 4022
 		.skipgossip			
@@ -132,10 +131,19 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Cyrus Therepentous|r
 		.itemcount 10575,1
 		.accept 4023
-		.turnin 4023
 		.target Cyrus Therepentous
 		.isQuestAvailable 4023
 		.skipgossip	
+
+	step
+		#label BurningLast
+		.goto Burning Steppes,95.061,31.563
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Cyrus Therepentous|r
+		.itemcount 10575,1
+		.turnin -4022
+		.turnin -4023
+		.target Cyrus Therepentous
+		.skipgossip			
 
 --- Silithus		
 
