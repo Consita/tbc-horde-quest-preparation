@@ -177,6 +177,15 @@ RXPGuides.RegisterGuide([[
 		.skill cooking,<285,1
 
 	step
+		.goto Silithus,60.22,52.55
+		>>Click on the |cRXP_PICK_Gooey Nest|r at the top of the tower
+		>>Kill the two |cRXP_ENEMY_Hive'Ashi Ambushers|r that spawn on the top floor. Loot them for a |cRXP_LOOT_Encrusted Silithid Object|r
+		>>|cRXP_WARN_Be careful! Three|r |cRXP_ENEMY_Hive'Ashi Drones|r |cRXP_WARN_will spawn when you enter the bottom floor of the tower!|r
+		.complete 1126,1 
+		.mob Hive'Ashi Drone
+		.mob Hive'Ashi Ambusher	
+
+	step
 		.goto Silithus,67,69.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hermit Ortell|r
 		.turnin -8279
