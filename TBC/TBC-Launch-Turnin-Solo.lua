@@ -1220,7 +1220,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		.use 18539 >> Use |T132595:0|t[Reliquary of Purity] to combine with the the Felvine Shard
-		.complete 5526
+		.complete 5526,1
 
 	step
 		.goto Moonglade,51.70,45.00
