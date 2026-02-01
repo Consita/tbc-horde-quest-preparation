@@ -1212,7 +1212,7 @@ RXPGuides.RegisterGuide([[
 		step
 			#completewith silithus2
 			>> Keep an eye out for |T133463:0|t[|cRXP_LOOT_Brann Bronzebeard's Lost Letter|r] dropped by |cRXP_ENEMY_Silithus Silithid|r. It is part of the TBC turn in.
-			.collect 20460
+			.collect 20461
 			.isQuestAvailable 8308
 		
 		step
@@ -1430,7 +1430,7 @@ RXPGuides.RegisterGuide([[
 		step
 			.goto Winterspring,61.4,37.0
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Izzy Coppergrab|r
-			.bankdeposit 11315,20394,20395,20396,20460,20460,20404 >> Deposit all quest items that are either for TBC or later used
+			.bankdeposit 11315,20394,20395,20396,20461,20461,20404 >> Deposit all quest items that are either for TBC or later used
 			.target Izzy Coppergrab
 
 		step

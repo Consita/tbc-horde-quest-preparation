@@ -198,10 +198,9 @@ RXPGuides.RegisterGuide([[
 		.isQuestTurnedIn 8279
 
 	step
-		#completewith RutgarTurnin
-		.use 20460 >> Click |T133463:0|t[Brann Bronzebeard's Lost Letter] and accept |cRXP_LOOT_Brann Bronzebeard's Lost Letter|r
+		.use 20461 >> Click |T133463:0|t[Brann Bronzebeard's Lost Letter] and accept |cRXP_LOOT_Brann Bronzebeard's Lost Letter|r
 		.accept 8308
-		.itemcount 20460,1
+		.itemcount 20461,1
 
 	step
 		.goto Silithus,62.7,75.1,20,0
