@@ -439,7 +439,7 @@ RXPGuides.RegisterGuide([[
 		.accept 8700 << Druid
 		.turnin 8700 << Druid
 		.accept 8556 << Warrior
-		.turnin 8555 << Warrior
+		.turnin 8556 << Warrior
 		.target Windcaller Yessendra
 		.itemcount 20884,1
 		.reputation 609,honored,<0,1 
