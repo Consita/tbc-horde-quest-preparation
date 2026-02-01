@@ -1512,6 +1512,12 @@ RXPGuides.RegisterGuide([[
 		>>Once done, or when you picked up your items yourself, complete this step manually
 
 	step
+		.goto Orgrimmar,75.2,34.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Belgrom Rockmaul|r
+		.turnin -3507
+		.target Belgrom Rockmaul		
+
+	step
 		.goto Orgrimmar,63.61,51.22
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rashona Straglash|r
 		.accept 7826
