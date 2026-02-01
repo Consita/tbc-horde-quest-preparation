@@ -278,9 +278,21 @@ RXPGuides.RegisterGuide([[
 		.goto Silithus,48.6,37.9
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Huum Wildmane|r	
 		.turnin -8321
-		.accept 8343
-		.accept 8331
 		.target Huum Wildmane
+
+	step	
+		.goto Silithus,48.6,37.9
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Huum Wildmane|r	
+		.accept 8343
+		.target Huum Wildmane
+		.reputation 609,revered,<0,1 
+		
+	step	
+		.goto Silithus,48.6,37.9
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Huum Wildmane|r	
+		.accept 8331
+		.target Huum Wildmane	
+		.reputation 609,friendly,<0,1 
 
 	step	
 		.goto Silithus,51.0,38.8
