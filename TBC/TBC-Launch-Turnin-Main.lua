@@ -941,13 +941,15 @@ RXPGuides.RegisterGuide([[
 		.reputation 910,revered,<0,1 	
 		
 	step
-		#label Tanarislast
 		.goto Tanaris,64.2,51.4
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Anachronos|r
 		.turnin 8751
 		.target Anachronos
 		.isQuestTurnedIn 8747
-		.reputation 910,exalted,<0,1 		
+		.reputation 910,exalted,<0,1 
+		
+	step
+		#label Tanarislast
 
 --- Winterspring
 
