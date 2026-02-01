@@ -120,7 +120,7 @@ local itemsMetadata = {
     [20457] = { name="Hive'Ashi Silithid Brain", rarity=1, texture=134340, quests="8310", sources="Silithid mobs at Hive'Ashi, Silithus" },
     [20458] = { name="Hive'Zora Silithid Brain", rarity=1, texture=134340, quests="8310", sources="Silithid mobs at Hive'Zora, Silithus" },
     [20459] = { name="Hive'Regal Silithid Brain", rarity=1, texture=134340, quests="8310", sources="Silithid mobs at Hive'Regal, Silithus" },
-    [20461] = { name="Brann Bronzebeard's Lost Letter", rarity=1, texture=133463, quests="8308", sources="Silithid mobs at all three hives in Silithus" },
+    [20460] = { name="Brann Bronzebeard's Lost Letter", rarity=1, texture=133463, quests="8308", sources="Silithid mobs at all three hives in Silithus" },
     [20466] = { name="Vyral's Signet Ring", rarity=1, texture=133357, quests="8321", sources="Vyral the Vile inside the Twilight's Run cave, Silithus" },
     [20513] = { name="Abyssal Crest", rarity=2, stackSize=20, texture=133438, quests="8361,8332", sources="Summoned Templar mobs using the 3-piece set, Silithus", auctionHouse=true },
     [20514] = { name="Abyssal Signet", rarity=3, stackSize=20, texture=133378, quests="8341,8348", sources="Summoned Duke mobs using the 3-piece set & medallion, Silithus", auctionHouse=true },
