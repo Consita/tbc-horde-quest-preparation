@@ -2177,6 +2177,61 @@ RXPGuides.RegisterGuide([[
 	step
 		#label EPL1
 
+	step
+		#completewith Tirisfallast
+		.zone Tirisfal Glades >> Travel to |cFFfa9602Tirisfal Glades|r
+		.zoneskip Tirisfal Glades
+
+	step
+		.goto Tirisfal Glades,83.0,71.9
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Shadow Priestess Vandis|r
+		.turnin -5236
+		.target Shadow Priestess Vandis
+
+	step
+		.goto Tirisfal Glades,83.1,71.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Alexi Barov|r
+		.turnin -5341	
+		.turnin -5342
+		.target Alexi Barov
+
+	step
+		.goto Tirisfal Glades,83.2,71.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mehlar Dawnblade|r
+		.turnin -9444
+		.target Mehlar Dawnblade			
+		
+	step
+		.goto Tirisfal Glades,83.3,69.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Apothecary Dithers|r
+		.accept 5511
+		.turnin 5511
+		.target Apothecary Dithers
+		.isQuestTurnedIn 5804
+
+	step	
+		.goto Tirisfal Glades,83.1,68.9
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_High Executor Derrington|r
+		.turnin -105	
+		.target High Executor Derrington
+
+	step	
+		.goto Tirisfal Glades,83.1,68.9
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_High Executor Derrington|r	
+		.accept 5238
+		.turnin 5238
+		.target High Executor Derrington	
+		.isQuestTurnedIn 5236	
+
+	step
+		.goto Tirisfal Glades,83.19,68.45
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Argent Officer Garush|r
+		.turnin -6029
+		.target Argent Officer Garush	
+
+	step
+		#label Tirisfallast
+
 --- STV
 
 	step
