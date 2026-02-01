@@ -1806,6 +1806,12 @@ RXPGuides.RegisterGuide([[
 		.isQuestTurnedIn 9233
 
 	step
+		.goto Eastern Plaguelands,79.60,63.87
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Caretaker Alen|r
+		.accept 5281
+		.target Caretaker Alen
+
+	step
 		.goto Eastern Plaguelands,36.4,90.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pamela Redpath|r
 		.turnin -5721
