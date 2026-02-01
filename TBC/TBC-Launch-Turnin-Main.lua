@@ -823,12 +823,12 @@ RXPGuides.RegisterGuide([[
 		.turnin -8181
 		.target Yeh'kinya
 
-	step	
-		.goto Tanaris,67.0,22.4
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Yeh'kinya|r
+	step
+		.goto Tanaris,66.8,24.0
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Prospector Ironboot|r
 		.accept 8182
-		.target Yeh'kinya
-		.isQuestTurnedIn 8181
+		.target Prospector Ironboot
+		.isQuestTurnedIn 8181		
 		
 	step
 		#completewith Tanarislast
