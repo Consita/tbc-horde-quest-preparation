@@ -56,6 +56,7 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Badlands,5.8,47.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warlord Goretooth|r
+		>>He sometimes patrols down the tower towards |cRXP_FRIENDLY_Shadowmage Vivian Lagrave|r
 		.turnin -4132
 		.turnin -4903
 		.target Warlord Goretooth
@@ -63,6 +64,7 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Badlands,5.8,47.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warlord Goretooth|r
+		>>He sometimes patrols down the tower towards |cRXP_FRIENDLY_Shadowmage Vivian Lagrave|r
 		.accept 4941
 		.target Warlord Goretooth
 		.isQuestTurnedIn 4903	

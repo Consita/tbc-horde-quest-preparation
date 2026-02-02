@@ -196,6 +196,7 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Badlands,5.81,47.52
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warlord Goretooth|r
+		>>He sometimes patrols down the tower towards |cRXP_FRIENDLY_Shadowmage Vivian Lagrave|r
 		.turnin 4081 >> Turn in KILL ON SIGHT: Dark Iron Dwarves
 		.target Warlord Goretooth
 		.isQuestComplete 4081
@@ -332,6 +333,7 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Badlands,5.81,47.52
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warlord Goretooth|r
+		>>He sometimes patrols down the tower towards |cRXP_FRIENDLY_Shadowmage Vivian Lagrave|r
 		.turnin 4082 >> Turn in KILL ON SIGHT: High Ranking Dark Iron Officials
 		.target Warlord Goretooth
 		.isQuestComplete 4082
@@ -385,6 +387,7 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Badlands,5.81,47.52
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warlord Goretooth|r
+		>>He sometimes patrols down the tower towards |cRXP_FRIENDLY_Shadowmage Vivian Lagrave|r
 		.accept 4132
 		.target Warlord Goretooth
 
