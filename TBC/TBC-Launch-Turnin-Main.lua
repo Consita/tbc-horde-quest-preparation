@@ -24,6 +24,7 @@ RXPGuides.RegisterGuide([[
 		>>|cRXP_WARN_Always mandatory:|r
 		+Make sure your |cRXP_ENEMY_Hearthstone|r is set to |cFFfa9602Light's Hope Chapel|r
 		+Make sure you have |cRXP_ENEMY_at least 40 free bagslots|r
+		+Make sure to turn off the |cRXP_WARN_Turnin Warnings|r and |cRXP_WARN_Completion Warnings|r
 
 	step
 		>>|cRXP_WARN_If you are using our companion feature:|r
