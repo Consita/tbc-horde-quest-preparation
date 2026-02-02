@@ -241,7 +241,7 @@ local questsMetadata = {
 	[7164] = { name="Honored Amongst the Clan", baseexp=0, qlvl=51, type="turnin", reqItems="17690-1,17905-1", reqAnyItem=1, ignoreReqItemsForPrep=1, preQuests="7161", reqRep=729, reqRepRank=6, routes="Main,Strat,Solo", routePickup="AV", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=1, comments="These AV quests apparently scale UP with level, unlike other quests. Verified from videos from last TBC" },
 	[7165] = { name="Earned Reverence", baseexp=0, qlvl=51, type="turnin", reqItems="17690-1,17905-1,17906-1", reqAnyItem=1, ignoreReqItemsForPrep=1, preQuests="7161", reqRep=729, reqRepRank=7, routes="Main,Strat,Solo", routePickup="AV", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=2, comments="These AV quests apparently scale UP with level, unlike other quests. Verified from videos from last TBC" },
 	[7166] = { name="Legendary Heroes", baseexp=0, qlvl=51, type="turnin", reqItems="17690-1,17905-1,17906-1,17907-1", reqAnyItem=1, ignoreReqItemsForPrep=1, preQuests="7161", reqRep=729, reqRepRank=8, routes="Main,Strat,Solo", routePickup="AV", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=3, comments="These AV quests apparently scale UP with level, unlike other quests. Verified from videos from last TBC" },
-	[7167] = { name="Eye of Command", baseexp=0, qlvl=51, type="turnin", reqItems="17690-1,17905-1,17906-1,17907-1,17908-1", reqAnyItem=1, ignoreReqItemsForPrep=1, preQuests="7161", reqRep=729, reqRepRank=8, routes="Main,Strat,Solo", routePickup="AV", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=3, comments="These AV quests apparently scale UP with level, unlike other quests. Verified from videos from last TBC" },
+	[7167] = { name="Eye of Command", baseexp=0, qlvl=51, type="turnin", reqItems="17690-1,17905-1,17906-1,17907-1,17908-1", reqAnyItem=1, preQuests="7161", reqRep=729, reqRepRank=8, routes="Main,Strat,Solo", routePickup="AV", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=3, comments="These AV quests apparently scale UP with level, unlike other quests. Verified from videos from last TBC" },
 	[5051] = { name="Two Halves Become One", baseexp=7900, qlvl=54, type="turnin", preQuests="5021,5023,5049,5050", routes="Main,Strat,Solo", routePickup="WPLFelstoneField", routeSection="WPLFelstoneField", areaType="Zone", area="Western Plaguelands", comments="On TBC release, check if the Jabbering Ghoul is up. If it is, this is free extra exp. If it's not up, you should skip this quest. " },
 	[5060] = { name="Locked Away", baseexp=10200, qlvl=55, type="turnin", reqItems="12739-1", preQuests="5058", routes="Main,Strat,Solo", routePickup="WPLDalsonsTears", routeSection="WPLDalsonsTears", areaType="Zone", area="Western Plaguelands", },
 	[6031] = { name="Runecloth", baseexp=8150, qlvl=55, type="turnin", reqItems="14047-30", reqRep=576, reqRepRank=5, routes="Main,Strat,Solo", routePickup="Timbermaw", routeSection="Timbermaw", areaType="Zone", area="Timbermaw Hold", },
@@ -260,7 +260,7 @@ local questsMetadata = {
 	[8377] = { name="Armaments of War", baseexp=9550, qlvl=60, type="turnin", preQuests="8304,8309,8310", playerClass="HUNTER", routes="Main,Strat", routePickup="SilithusHold2", routeSection="SilithusHold2", areaType="Zone", area="Silithus", },
 	[8380] = { name="Armaments of War", baseexp=9550, qlvl=60, type="turnin", preQuests="8304,8309,8310", playerClass="SHAMAN", routes="Main,Strat", routePickup="SilithusHold2", routeSection="SilithusHold2", areaType="Zone", area="Silithus", },
 	[8382] = { name="Armaments of War", baseexp=9550, qlvl=60, type="turnin", preQuests="8304,8309,8310", playerClass="DRUID", routes="Main,Strat", routePickup="SilithusHold2", routeSection="SilithusHold2", areaType="Zone", area="Silithus", },
-	[8381] = { name="Armaments of War", baseexp=9550, qlvl=60, type="turnin", preQuests="8304,8309,8310", routes="Main,Strat", routePickup="SilithusHold2", routeSection="SilithusHold2", areaType="Zone", area="Silithus", },
+	[8381] = { name="Armaments of War", baseexp=9550, qlvl=60, type="turnin", preQuests="8304,8309,8310", playerClass="WARLOCK", routes="Main,Strat", routePickup="SilithusHold2", routeSection="SilithusHold2", areaType="Zone", area="Silithus", },
 	[8379] = { name="Armaments of War", baseexp=9550, qlvl=60, type="turnin", preQuests="8304,8309,8310", playerClass="PRIEST", routes="Main,Strat", routePickup="SilithusHold2", routeSection="SilithusHold2", areaType="Zone", area="Silithus", },
 	[8378] = { name="Armaments of War", baseexp=9550, qlvl=60, type="turnin", preQuests="8304,8309,8310", playerClass="ROGUE", routes="Main,Strat", routePickup="SilithusHold2", routeSection="SilithusHold2", areaType="Zone", area="Silithus", },
 	[5122] = { name="The Medallion of Faith", baseexp=0, qlvl=60, type="turnin", reqItems="12845-1", routes="Strat", routePickup="Stratholme2", routeSection="Stratholme2", areaType="Dungeon", area="Stratholme", },
@@ -327,6 +327,11 @@ local questsMetadata = {
 	[7101] = { name="Towers and Bunkers", baseexp=0, qlvl=51, type="optional", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=1, comments="Added in 3.15, Battleground Quest Scaling was tested on PTR." },
 	[7124] = { name="Capture a Mine", baseexp=0, qlvl=51, type="optional", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=1, comments="Added in 3.15, Battleground Quest Scaling was tested on PTR." },
 	[7082] = { name="The Graveyards of Alterac", baseexp=0, qlvl=51, type="optional", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", area="Alterac Valley", isScaling=true, scaleRank=1, comments="Added in 3.15, Battleground Quest Scaling was tested on PTR." },
+	[3782] = { name="Morrowgrain Research", baseexp=680, qlvl=50, type="turnin", routes="Main,Strat,Solo", routePickup="ThunderBluff", routeSection="ThunderBluff", areaType="Zone", area="Thunder Bluff", },
+	[3786] = { name="Morrowgrain Research", baseexp=6800, qlvl=50, type="turnin", reqItems="11040-10", routes="Main,Strat,Solo", routePickup="ThunderBluff", routeSection="ThunderBluff", areaType="Zone", area="Thunder Bluff", },
+	[8430] = { name="Battle of Warsong Gulch", baseexp=9550, qlvl=60, type="disabled", reqItems="20558-3", routes="Main,Strat,Solo", routeSection="OrgrimmarDrag", areaType="Battleground", area="Warsong Gulch", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. It is included in the Turnin RXP Guide." },
+	[8439] = { name="Conquering Arathi Basin", baseexp=9550, qlvl=60, type="disabled", reqItems="20559-3", routes="Main,Strat,Solo", routeSection="OrgrimmarDrag", areaType="Battleground", area="Arathi Basin", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. It is included in the Turnin RXP Guide." },
+	[8369] = { name="Invaders of Alterac Valley", baseexp=11900, qlvl=60, type="disabled", reqItems="20560-3", routes="Main,Strat,Solo", routeSection="OrgrimmarDrag", areaType="Battleground", area="Alterac Valley", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. It is included in the Turnin RXP Guide." },
 	[8586] = { name="Dirge's Kickin' Chimaerok Chops", baseexp=9550, qlvl=60, type="disabled", reqItems="9061-20,8150-20", preQuests="8286,8288,8301,8303,8305,8519,8555,8575,8576,8584,8585", routes="Main,Strat,Solo", routeSection="TanarisTown", areaType="Zone", area="Silithus", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turnin guide will NOT turn in this quest, you MUST plan this yourself" },
 	[8587] = { name="Return to Narain", baseexp=9550, qlvl=60, type="disabled", preQuests="8286,8288,8301,8303,8305,8519,8555,8575,8576,8584,8585", routes="Main,Strat,Solo", routeSection="TanarisTown", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turnin guide will NOT turn in this quest, you MUST plan this yourself" },
 	[8620] = { name="The Only Prescription", baseexp=9550, qlvl=60, type="disabled", reqItems="21111-1,21112-1", preQuests="8286,8288,8301,8303,8305,8519,8555,8575,8576,8597,8599,8598,8606", routes="Main,Strat,Solo", routeSection="TanarisTown", areaType="Zone", area="Silithus", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turnin guide will NOT turn in this quest, you MUST plan this yourself" },
@@ -335,9 +340,6 @@ local questsMetadata = {
 	[8736] = { name="The Nightmare Manifests", baseexp=14300, qlvl=60, type="disabled", preQuests="8286,8288,8301,8303,8305,8519,8555,8575,8576,8733,8734,8735", routes="Main,Strat,Solo", routeSection="TanarisTown", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turnin guide will NOT turn in this quest, you MUST plan this yourself" },
 	[8741] = { name="The Champion Returns", baseexp=9550, qlvl=60, type="disabled", reqItems="21139-1", preQuests="8286,8288,8301,8303,8305,8519,8555,8575,8576,8733,8734,8735", routes="Main,Strat,Solo", routeSection="TanarisTown", areaType="Zone", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turnin guide will NOT turn in this quest, you MUST plan this yourself" },
 	[8730] = { name="Nefarius's Corruption", baseexp=14300, qlvl=60, type="disabled", reqItems="21138-1", preQuests="8286,8288,8301,8303,8305,8519,8555,8575,8576", routes="Main,Strat,Solo", routeSection="TanarisTown", areaType="Raid", area="Tanaris", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turnin guide will NOT turn in this quest, you MUST plan this yourself" },
-	[8430] = { name="Battle of Warsong Gulch", baseexp=9550, qlvl=60, type="disabled", reqItems="20558-3", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", area="Warsong Gulch", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. It is included in the Turnin RXP Guide." },
-	[8439] = { name="Conquering Arathi Basin", baseexp=9550, qlvl=60, type="disabled", reqItems="20559-3", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", area="Arathi Basin", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. It is included in the Turnin RXP Guide." },
-	[8369] = { name="Invaders of Alterac Valley", baseexp=11900, qlvl=60, type="disabled", reqItems="20560-3", routes="Main,Strat,Solo", routeSection="AV", areaType="Battleground", area="Alterac Valley", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. It is included in the Turnin RXP Guide." },
 	[5306] = { name="Snakestone of the Shadow Huntress", baseexp=14300, qlvl=60, type="disabled", reqItems="13352-1", reqProf=164, reqProfSkill=280, routes="Main,Strat,Solo", routeSection="wsEverlook", areaType="Dungeon", area="Winterspring", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turnin guide will NOT turn in this quest, you MUST plan this yourself" },
 	[5305] = { name="Sweet Serenity", baseexp=14300, qlvl=60, type="disabled", reqItems="13351-1", reqProf=164, reqProfSkill=280, routes="Main,Strat,Solo", routeSection="wsEverlook", areaType="Dungeon", area="Winterspring", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turnin guide will NOT turn in this quest, you MUST plan this yourself" },
 	[5307] = { name="Corruption", baseexp=14300, qlvl=60, type="disabled", reqItems="13350-1", reqProf=164, reqProfSkill=280, routes="Main,Strat,Solo", routeSection="wsEverlook", areaType="Dungeon", area="Winterspring", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turnin guide will NOT turn in this quest, you MUST plan this yourself" },
@@ -358,8 +360,6 @@ local questsMetadata = {
 	[7502] = { name="Harnessing Shadows", baseexp=14300, qlvl=60, type="disabled", reqItems="18360-1", playerClass="WARLOCK", routes="Main,Strat,Solo", routeSection="felwoodTown", areaType="Dungeon", area="Dire Maul", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turnin guide will NOT turn in this quest, you MUST plan this yourself" },
 	[7499] = { name="Codex of Defense", baseexp=14300, qlvl=60, type="disabled", reqItems="18357-1", playerClass="WARRIOR", routes="Main,Strat,Solo", routeSection="felwoodTown", areaType="Dungeon", area="Dire Maul", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turnin guide will NOT turn in this quest, you MUST plan this yourself" },
 	[7507] = { name="Nostro's Compendium", baseexp=14300, qlvl=60, type="disabled", reqItems="18401-1", routes="Main,Strat,Solo", routeSection="felwoodTown", areaType="Dungeon", area="Dire Maul", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turnin guide will NOT turn in this quest, you MUST plan this yourself" },
-	[3782] = { name="Morrowgrain Research", baseexp=680, qlvl=50, type="turnin", routes="Main,Strat,Solo", routePickup="ThunderBluff", routeSection="ThunderBluff", areaType="Zone", area="Thunder Bluff", },
-	[3786] = { name="Morrowgrain Research", baseexp=6800, qlvl=50, type="turnin", reqItems="11040-10", routes="Main,Strat,Solo", routePickup="ThunderBluff", routeSection="ThunderBluff", areaType="Zone", area="Thunder Bluff", },
 }
 
 for qID,q in pairs(questsMetadata) do
@@ -852,7 +852,8 @@ local function UpdateQuestOnForRouteHardcodeFix(questID, type, routeSection, che
 			replacementQuest = questObj.replacementQuest,
 			preQuests = questObj.preQuests,
 			reqItems = questObj.reqItems,
-			reqAnyItem = questObj.reqAnyItem
+			reqAnyItem = questObj.reqAnyItem,
+			playerClass = questObj.playerClass
 		}
 	end
 
@@ -923,6 +924,19 @@ local function AddPrequestToQuest(questID, preQuestID)
 	questsMetadata[questID] = questObj
 end
 
+---@param questID number
+---@param classString string
+local function ChangeQuestClass(questID, classString)
+	local questObj = questsMetadata[questID]
+
+	if questObj == nil then
+		CasualTBCPrep.NotifyUserError("ChangeQuestClass - tried to handle an invalid questID: " .. tostring(questID))
+		return
+	end
+	questObj.playerClass = classString
+	questsMetadata[questID] = questObj
+end
+
 local function RestoreModifiedQuests()
 	for questID, orig in pairs(_storedOriginalsForHardcodeFixes) do
 		local quest = questsMetadata[questID]
@@ -934,11 +948,19 @@ local function RestoreModifiedQuests()
 			quest.preQuests = orig.preQuests
 			quest.reqItems = orig.reqItems
 			quest.reqAnyItem = orig.reqAnyItem
+			quest.playerClass = orig.playerClass
 		end
 	end
 end
 
 local function LoadRouteQuestSpecifics_All()
+	-- Armaments of War Hackfix, Warlock & Mage share questID as the only ones.
+	local playerClass = CasualTBCPrep.Classes.GetPlayerClassID()
+	if CasualTBCPrep.Classes.WarlockID == playerClass then
+		ChangeQuestClass(8381, "WARLOCK")
+	else
+		ChangeQuestClass(8381, "MAGE")
+	end
 end
 
 local function LoadRouteQuestSpecifics_Main()
