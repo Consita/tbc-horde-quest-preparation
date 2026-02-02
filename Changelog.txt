@@ -11,6 +11,8 @@ Changelog:
 - Added the "Frostwolf Insignia" items as required for the AV Reputation quests, so the companion will loot it from the bank.
 - Required item count from ignored quests is no longed added to the needed count on the Items tab, if a nonignored quest also needed that item.
 - Fix Armanents of War quests being multiple for some classes
+- Companion: Now works in Felwood again after prepatch change to the zone
+- Companion: When opened, it will now open the step for the current map/zone/subzone, if there is one.
 
 3.22 (2026-01-29)
 - Finished RXP Turn-in guide for Solo Route.
