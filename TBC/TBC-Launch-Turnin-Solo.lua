@@ -1195,14 +1195,18 @@ RXPGuides.RegisterGuide([[
 		.subzoneskip 2362
 
 	step
-		.goto Moonglade,44.7,35.5
+		.goto Moonglade,44.7,35.5,20,0
+		.goto Moonglade,47.7,39.7
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Umber|r
+		>>|cRXP_FRIENDLY_Umber|r |cRXP_WARN_patrols over the bridge into the next building|r
 		.turnin -6844
 		.target Umber
 
 	step
-		.goto Moonglade,44.7,35.5
+		.goto Moonglade,44.7,35.5,20,0
+		.goto Moonglade,47.7,39.7
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Umber|r
+		>>|cRXP_FRIENDLY_Umber|r |cRXP_WARN_patrols over the bridge into the next building|r
 		.accept 6845
 		.target Umber		
 		.isQuestTurnedIn 6844
@@ -1239,8 +1243,10 @@ RXPGuides.RegisterGuide([[
 		.isQuestTurnedIn 5527	
 		
 	step
+		.goto Moonglade,47.7,39.7,20,0
 		.goto Moonglade,44.7,35.5
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Umber|r
+		>>|cRXP_FRIENDLY_Umber|r |cRXP_WARN_patrols over the bridge into the next building|r
 		.accept 1185
 		.turnin 1185
 		.target Umber		

@@ -1466,8 +1466,10 @@ RXPGuides.RegisterGuide([[
 			.zoneskip Moonglade	
 
 		step
-			.goto Moonglade,44.88,35.60
+			.goto Moonglade,44.7,35.5,20,0
+			.goto Moonglade,47.7,39.7
 			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Umber|r
+			>>|cRXP_FRIENDLY_Umber|r |cRXP_WARN_patrols over the bridge into the next building|r
 			.turnin 6844 >>Turn in Umber, Archivist		
 			.target Umber	
 			
