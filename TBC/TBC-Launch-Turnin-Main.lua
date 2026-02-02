@@ -2007,6 +2007,7 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Tirisfal Glades,83.1,71.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Alexi Barov|r
+		>>|cRXP_WARN_Alliance gets a quest to kill him, if he is not up try to swap layer or skip this step|r
 		.turnin -5341	
 		.turnin -5342
 		.target Alexi Barov
