@@ -1513,6 +1513,16 @@ RXPGuides.RegisterGuide([[
 		.isQuestTurnedIn 7831
 
 	step
+		.goto Orgrimmar,62.8,50.4
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tor'phan|r
+		.vendor >>|cRXP_BUY_Sell your junk and unneeded quest rewards to free up space|r
+		.target Tor'phan		
+
+	step
+		.destroy 11516 >> Delete any remaining |T132804:0|t[Cenarion Plant Salve]
+		.itemcount 11516,1
+
+	step
 		.goto Orgrimmar,55.9,57.5,8,0
 		.goto Orgrimmar,56.26,46.68
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Zilzibin Drumlore|r
