@@ -1395,6 +1395,13 @@ RXPGuides.RegisterGuide([[
 			.target Frankal Stonebridge
 			.turnin 8310
 
+		step	
+			.goto Silithus,49.2,34.2
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Commander Mar'alith|r	
+			>>|cRXP_LOOT_Into The Maw of Madness|r |cRXP_WARN_can be used as an optional questlog quest for TBC. Check /tbcprep to see if you need it|r
+			.turnin -8306
+			.target Commander Mar'alith		
+
 	--- Moonglade 2
 
 		step << !Druid

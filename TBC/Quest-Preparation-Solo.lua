@@ -1431,8 +1431,8 @@ RXPGuides.RegisterGuide([[
 			.mob Hive'Ashi Ambusher
 			.mob Hive'Ashi Spitfire
 			.mob Hive'Ashi Burrower
-			.complete 8310,3		
-
+			.complete 8310,3
+			
 		step
 			>>|cRXP_WARN_Both,|r |cRXP_LOOT_Glyph Chasing|r |cRXP_WARN_and|r |cRXP_LOOT_Unraveling the Mystery|r |cRXP_WARN_can be used as optional questlog quests for TBC. Check /tbcprep to see if you need these|r
 			.goto Silithus,41.30,88.50,10,0
@@ -1442,6 +1442,13 @@ RXPGuides.RegisterGuide([[
 			.turnin 8309
 			.target Frankal Stonebridge
 			.turnin 8310
+
+		step	
+			.goto Silithus,49.2,34.2
+			>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Commander Mar'alith|r	
+			>>|cRXP_LOOT_Into The Maw of Madness|r |cRXP_WARN_can be used as an optional questlog quest for TBC. Check /tbcprep to see if you need it|r
+			.turnin -8306
+			.target Commander Mar'alith				
 
 	--- Moonglade 2
 
