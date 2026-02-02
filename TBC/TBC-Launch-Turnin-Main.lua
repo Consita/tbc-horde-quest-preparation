@@ -996,6 +996,7 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Winterspring,61.35,38.97
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gregor Greystone|r
+		>>|cRXP_WARN_Both of these quests give only minor experience. If you struggle with space in your questlog drop these|r
 		.accept 6029
 		.accept 6030
 		.target Gregor Greystone
