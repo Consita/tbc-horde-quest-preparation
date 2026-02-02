@@ -1536,7 +1536,7 @@ RXPGuides.RegisterGuide([[
 		#label Orgrimmarlast
 		.goto Orgrimmar,49.58,69.13
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Karus|r and collect your items via "/tbc companion"
-		>>Once done, or when you picked up your items yourself, complete this step manually
+		+Once done, or when you picked up your items yourself, complete this step manually
 		.target Karus	
 
 --- Silvermoon City
