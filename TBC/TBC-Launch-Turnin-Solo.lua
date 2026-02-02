@@ -1700,7 +1700,7 @@ RXPGuides.RegisterGuide([[
 		.isQuestTurnedIn 2937
 	
 	step
-		#completewith next
+		#completewith Hillsbradlast
 		.zone Alterac Mountains >>Travel to |cFFfa9602Alterac Mountains|r
 		.zoneskip Alterac Mountains
 

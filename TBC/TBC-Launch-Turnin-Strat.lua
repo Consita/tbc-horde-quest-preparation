@@ -3016,7 +3016,7 @@ RXPGuides.RegisterGuide([[
 		.isQuestTurnedIn 2937
 	
 	step
-		#completewith next
+		#completewith Hillsbradlast
 		.zone Alterac Mountains >>Travel to |cFFfa9602Alterac Mountains|r
 		.zoneskip Alterac Mountains
 
@@ -3094,7 +3094,6 @@ RXPGuides.RegisterGuide([[
 		.isQuestTurnedIn 7161
 
 	step
-		#label Hillsbradlast
 		.goto Alterac Mountains,62.2,59.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warmaster Laggrond|r
 		.accept 7167
@@ -3109,7 +3108,10 @@ RXPGuides.RegisterGuide([[
 		.turnin -7101
 		.turnin -7124
 		.turnin -7082
-		.target Corporal Teeka Bloodsnarl			
+		.target Corporal Teeka Bloodsnarl	
+		
+	step
+		#label Hillsbradlast
 
 --- Undercity
 
