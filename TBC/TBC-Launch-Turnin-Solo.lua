@@ -1683,7 +1683,6 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Alterac Mountains,63.84,60.47
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Voggah Deathgrip|r
-		.accept 8272
 		.turnin 8272
 		.isQuestTurnedIn 7142
 		.target Voggah Deathgrip
