@@ -1109,22 +1109,6 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		.use 20644 >>Click |T136163:0|t[Nightmare Engulfed Object] and accept |cRXP_LOOT_Shrouded in Nightmare|r
-		.accept 8446
-		.itemcount 20644,1
-
-	step
-		.goto Felwood,65.5,0.9,15,0
-		.goto Moonglade,35.7,72.4,15,0
-		.goto Moonglade,36.19,41.78
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Keeper Remulos|r
-		.turnin 8446
-		.itemcount 20644,1
-		.target Keeper Remulos
-
-	step
-		#completewith next
-		.goto Felwood,65.5,0.9,15,0
 		.goto Moonglade,35.7,72.4,15,0
 		.goto Moonglade,40.00,43.59,15,0
 		.goto Moonglade,42.13,34.94,5 >>Travel to |cFFfa9602Nighthaven|r
@@ -1188,6 +1172,19 @@ RXPGuides.RegisterGuide([[
 		.turnin 1185
 		.target Umber		
 		.isQuestTurnedIn 6845
+
+	step
+		#completewith next
+		.use 20644 >>Click |T136163:0|t[Nightmare Engulfed Object] and accept |cRXP_LOOT_Shrouded in Nightmare|r
+		.accept 8446
+		.itemcount 20644,1
+
+	step
+		.goto Moonglade,36.19,41.78
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Keeper Remulos|r
+		.turnin 8446
+		.itemcount 20644,1
+		.target Keeper Remulos		
 	
 --- Felwood
 
