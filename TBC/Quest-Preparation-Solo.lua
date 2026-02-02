@@ -1432,7 +1432,7 @@ RXPGuides.RegisterGuide([[
 			.mob Hive'Ashi Spitfire
 			.mob Hive'Ashi Burrower
 			.complete 8310,3
-			
+
 		step
 			>>|cRXP_WARN_Both,|r |cRXP_LOOT_Glyph Chasing|r |cRXP_WARN_and|r |cRXP_LOOT_Unraveling the Mystery|r |cRXP_WARN_can be used as optional questlog quests for TBC. Check /tbcprep to see if you need these|r
 			.goto Silithus,41.30,88.50,10,0
@@ -2269,6 +2269,12 @@ RXPGuides.RegisterGuide([[
 			>>Kill |cRXP_ENEMY_Skeletons|r while doing the next quests for 15x |T133724:0|t[|cRXP_LOOT_Skeletal Fragments|r]
 			.collect 14619,15
 			.isQuestAvailable 964
+			.mob Skeletal Executioner
+			.mob Skeletal Acolyte
+			.mob Skeletal Warlord
+			.mob Skeletal Sorcerer
+			.mob Skeletal Flayer
+			.mob Skeletal Terror			
 
 		step
 			.goto Western Plaguelands,49.2,78.6
@@ -2308,6 +2314,12 @@ RXPGuides.RegisterGuide([[
 			>>Kill |cRXP_ENEMY_Skeletons|r for 15x |T133724:0|t[|cRXP_LOOT_Skeletal Fragments|r]
 			.collect 14619,15
 			.isQuestAvailable 964
+			.mob Skeletal Executioner
+			.mob Skeletal Acolyte
+			.mob Skeletal Warlord
+			.mob Skeletal Sorcerer
+			.mob Skeletal Flayer
+			.mob Skeletal Terror			
 
 		step
 			.goto Western Plaguelands,26.67,56.33
