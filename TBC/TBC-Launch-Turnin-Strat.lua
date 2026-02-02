@@ -814,6 +814,12 @@ RXPGuides.RegisterGuide([[
 		.isQuestTurnedIn 4507
 
 	step
+		.goto Tanaris,50.90,27.00
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pestlezugg|r
+		.vendor >>|cRXP_BUY_Sell your junk and unneeded quest rewards to free up space|r
+		.target Alchemist Pestlezugg			
+
+	step
 		.goto Tanaris,66.8,24.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Prospector Ironboot|r
 		.turnin -4788
