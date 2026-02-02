@@ -16,7 +16,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		+ |cRXP_ENEMY_Go through the following steps thoroughly and make sure you have all of them ready!|r
+		+|cRXP_ENEMY_Go through the following steps thoroughly and make sure you have all of them ready!|r
 		>>|cRXP_WARN_Otherwise we cannot guarantee a flawless turnin process|r
 
 	step
