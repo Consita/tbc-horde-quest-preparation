@@ -5,7 +5,8 @@ CasualTBCPrep.AddonLogoTexture = "255348"
 CasualTBCPrep.MaxLevel = 70
 
 local tickerQuestAutomationCheck = nil
-
+local prevMapID = 0
+local prevZoneName, prevSubZoneName = "",""
 --[Slash Commands]
 SLASH_CASUAL_TBC_PREP1 = "/tbc"
 SLASH_CASUAL_TBC_PREP2 = "/tbcprep"
@@ -70,6 +71,9 @@ SlashCmdList["CASUAL_TBC_PREP"] = function(msg)
 	end
 end
 
+function CasualTBCPrep.GetLastZoneUpdate()
+	return prevMapID, prevZoneName, prevSubZoneName
+end 
 --[Event Wrappers]
 local function OnQuestAcceptedEvent(self, event, questLogIndex)
 	if event == "QUEST_ACCEPTED" then
@@ -233,6 +237,9 @@ end
 local function OnZoneChangedEvent(self, event)
 	local mapID, zoneName, subZoneName = CasualTBCPrep.GetMapAndZoneInfo()
 	CasualTBCPrep.MessageBroker.Send(CasualTBCPrep.MessageBroker.TYPE.ZONE_CHANGED, { mapID=mapID, zoneName=zoneName, subzoneName=subZoneName })
+	prevMapID = mapID
+	prevZoneName = zoneName
+	prevSubZoneName = subZoneName
 end
 local function OnMailboxAndBankEvent(self, event,...)
 	if event == "MAIL_SHOW" then

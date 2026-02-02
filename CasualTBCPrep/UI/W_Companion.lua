@@ -534,9 +534,11 @@ end
 local function Display()
     CleanupElements()
 
+    local mapID, zoneName, subzoneName = CasualTBCPrep.GetLastZoneUpdate()
     UpdateStepCounts()
     GetTurninData()
 
+    OnMessageZoneChanged({ mapID = mapID, zoneName = zoneName, subzoneName = subzoneName }, false)
     LoadStepHeader()
     LoadStepDetails()
 
