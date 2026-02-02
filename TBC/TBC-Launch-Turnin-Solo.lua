@@ -2197,6 +2197,12 @@ RXPGuides.RegisterGuide([[
 		.isQuestTurnedIn 5848			
 
 	step
+		#completewith next
+		.goto Eastern Plaguelands,7.2,41.2,10,0
+		.goto Eastern Plaguelands,16.5,29.1,15 >> Travel through the |cFFfa9602Terrorweb Tunnel|r
+		>>|cRXP_WARN_Try to avoid the mobs and especially elite as much as possible as their web will slow you down and they deal quite alot of damage|r
+
+	step
 		.goto Eastern Plaguelands,14.45,33.74
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Egan|r
 		.turnin -5281
@@ -2209,6 +2215,12 @@ RXPGuides.RegisterGuide([[
 		.use 22115 >>|cRXP_WARN_Use the|r |T133878:0|t[Extra-Dimensional Ghost Revealer] |cRXP_WARN_to reveal|r |cRXP_FRIENDLY_Anthion|r
 		.turnin -8930
 		.target Anthion Harmon
+
+	step
+		#completewith next
+		.goto Eastern Plaguelands,16.5,29.1,10,0
+		.goto Eastern Plaguelands,7.2,41.2,15 >> Travel through the |cFFfa9602Terrorweb Tunnel|r
+		>>|cRXP_WARN_Try to avoid the mobs and especially elite as much as possible as their web will slow you down and they deal quite alot of damage|r
 
 	step
 		.goto Western Plaguelands,62.59,58.55

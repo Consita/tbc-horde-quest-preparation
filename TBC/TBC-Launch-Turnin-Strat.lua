@@ -2259,6 +2259,12 @@ RXPGuides.RegisterGuide([[
 		.turnin -5282
 		.target Egan
 
+	step
+		#completewith next
+		.goto Eastern Plaguelands,16.5,29.1,10,0
+		.goto Eastern Plaguelands,7.2,41.2,15 >> Travel through the |cFFfa9602Terrorweb Tunnel|r
+		>>|cRXP_WARN_Try to avoid the mobs and especially elite as much as possible as their web will slow you down and they deal quite alot of damage|r		
+
 	step	
 		.goto Eastern Plaguelands,7.6,43.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tirion Fordring|r
