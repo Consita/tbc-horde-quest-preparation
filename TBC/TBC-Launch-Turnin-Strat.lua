@@ -2977,7 +2977,7 @@ RXPGuides.RegisterGuide([[
 		.zoneskip Hillsbrad Foothills
 
 	step
-		.goto Hillsbrad Foothills,62.6,19,9
+		.goto Hillsbrad Foothills,62.6,19.9
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kayren Soothallow|r
 		.vendor >>|cRXP_BUY_Sell your junk and unneeded quest rewards to free up space|r
 		.target Kayren Soothallow		
