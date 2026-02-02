@@ -1163,6 +1163,13 @@ RXPGuides.RegisterGuide([[
 		.accept 7161
 		.target Warmaster Laggrond
 
+	step
+		.goto Alterac Mountains,63.84,60.47
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Voggah Deathgrip|r
+		.accept 7142
+		.isQuestTurnedIn 7142
+		.target Voggah Deathgrip		
+
 	step	
 		>>Collect |cRXP_LOOT_Frostwolf Banner|r from the battleground |cFFfa9602Alterac Valley|r
 		>>The Banner is located in the cave in the south of the valley
@@ -1173,7 +1180,11 @@ RXPGuides.RegisterGuide([[
 		>>|cRXP_ENEMY_Warning:|r |cRXP_WARN_Do not pick up or complete the followup|r |cRXP_LOOT_Rise and Be Recognized|r|cRXP_WARN_, as this is used for TBC|r
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Warmaster Laggrond|r
 		.turnin 7161
-		.target Warmaster Laggrond	
+		.target Warmaster Laggrond
+		
+	step
+		>>Queue for |cFFfa9602Alterac Valley|r until you win the battleground
+		.complete 7142,1
 
 	step
 		>>Queue for |cFFfa9602Alterac Valley|r until you reach exalted reputation with the |cRXP_FRIENDLY_Frostwolf Clan|r
