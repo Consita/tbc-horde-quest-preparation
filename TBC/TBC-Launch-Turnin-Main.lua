@@ -2093,7 +2093,7 @@ RXPGuides.RegisterGuide([[
 		.goto Western Plaguelands,37.80,57.60,50,0
 		>>Kill the |cRXP_ENEMY_Jabbering Ghoul|r. Loot it for the |cRXP_LOOT_Good Luck Other-Half-Charm|r
 		>>|cRXP_WARN_Skip this quest if |cRXP_ENEMY_Jabbering Ghoul|r is not up
-		.use 12722 >> Use it to create the |cRXP_LOOT_Good Luck Good Luck Charm|r
+		.use 12722 >>Click |T133443:0|t[Good Luck Other-Half-Charm] to create the |cRXP_LOOT_Good Luck Charm|r
 		.complete 5051,1 
 		.unitscan Jabbering Ghoul
 		.isOnQuest 5051	
