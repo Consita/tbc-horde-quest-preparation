@@ -2649,6 +2649,12 @@ RXPGuides.RegisterGuide([[
 		.zoneskip Hillsbrad Foothills
 
 	step
+		.goto Hillsbrad Foothills,62.6,19,9
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kayren Soothallow|r
+		.vendor >>|cRXP_BUY_Sell your junk and unneeded quest rewards to free up space|r
+		.target Kayren Soothallow
+
+	step
 		.goto Hillsbrad Foothills,62.36,19.75
 		+Open your |cRXP_PICK_Mailbox|r and collect your items via "/tbc companion"
 		>>Once done, or when you picked up your items yourself, complete this step manually
