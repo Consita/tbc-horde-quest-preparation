@@ -1065,6 +1065,14 @@ RXPGuides.RegisterGuide([[
 		.itemcount 11040,10
 
 	step
+		.destroy 11020 >>Destroy |T133651:0|t[Evergreen Pouch]
+		.itemcount 11020,1		
+
+	step
+		.destroy 11022 >>Destroy |T136074:0|t[Packet of Tharlendris Seeds]
+		.itemcount 11022,1			
+
+	step
 		#label Thunderlast	
 
 --- Winterspring
@@ -2016,6 +2024,10 @@ RXPGuides.RegisterGuide([[
 		.turnin 9141
 		.target Dispatch Commander Metz		
 		.itemcount 12844,1
+
+	step
+		.destroy 22568 >>Destroy |T134940:0|t[Sealed Craftsman's Writ]
+		.itemcount 22568,1			
 
 	step	
 		.goto Eastern Plaguelands,80.6,58.0
