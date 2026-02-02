@@ -1879,6 +1879,13 @@ RXPGuides.RegisterGuide([[
 		.goto Undercity,54.67,11.25
 		.zone Silvermoon City >> Take the Orb of Translocation to |cFFfa9602Silvermoon City|r
 
+	step
+		#completewith Silvermoonlast
+		.goto Silvermoon City,56.2,23.0,15,0
+		.goto Silvermoon City,72.6,43.8,15,0
+		.goto Silvermoon City,75.5,59.0,15,0
+		.goto Silvermoon City,56.6,52.8,50 >>Travel to |cFFfa9602The Bazaar|r in Silvermoon City
+
 	step <<tbc
 		.goto Silvermoon City,56.6,52.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sorim Lightsong|r

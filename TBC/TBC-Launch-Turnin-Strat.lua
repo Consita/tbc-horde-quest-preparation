@@ -1571,6 +1571,13 @@ RXPGuides.RegisterGuide([[
 		.zone Silvermoon City >>Take Portal or get summon to |cFFfa9602Silvermoon City|r
 		.zoneskip Silvermoon City
 
+	step
+		#completewith Silvermoonlast
+		.goto Silvermoon City,56.2,23.0,15,0
+		.goto Silvermoon City,72.6,43.8,15,0
+		.goto Silvermoon City,75.5,59.0,15,0
+		.goto Silvermoon City,56.6,52.8,50 >>Travel to |cFFfa9602The Bazaar|r in Silvermoon City
+
 	step <<tbc
 		.goto Silvermoon City,56.6,52.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sorim Lightsong|r
