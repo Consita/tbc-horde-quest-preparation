@@ -16,7 +16,7 @@ RXPGuides.RegisterGuide([[
 
 	step
 		#completewith next
-		+ |cRXP_ENEMY_Go through the following steps thoroughly and make sure you have all of them ready!|r
+		+|cRXP_ENEMY_Go through the following steps thoroughly and make sure you have all of them ready!|r
 		>>|cRXP_WARN_Otherwise we cannot guarantee a flawless turnin process|r
 
 	step
@@ -729,6 +729,23 @@ RXPGuides.RegisterGuide([[
 		>>Once done, or when you picked up your items yourself, complete this step manually
 		.bankdeposit 12264, 12529, 11905, 20422, 20451
 		.target Gimblethorn
+
+	step
+		.goto Tanaris,52.63,28.12
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dirge Quikcleave|r
+		.accept 8586
+		.turnin 8586
+		.target Dirge Quikcleave
+		.isQuestTurnedIn 8585
+		.itemcount 9061,20
+		.itemcount 8150,20
+
+	step
+		.goto Tanaris,52.63,28.12
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dirge Quikcleave|r
+		.accept 8587
+		.target Dirge Quikcleave
+		.isQuestTurnedIn 8586	
 		
 	step
 		.goto Tanaris,52.47,27.23
@@ -758,6 +775,28 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Pestlezugg|r
 		.vendor >>|cRXP_BUY_Sell your junk and unneeded quest rewards to free up space|r
 		.target Alchemist Pestlezugg			
+
+	step
+		.goto Tanaris,65.24,18.58
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Narain Soothfancy|r
+		.turnin -8587
+		.turnin -8620
+		.turnin -8578
+		.target Narain Soothfancy	
+
+	step
+		.goto Tanaris,65.24,18.58
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Narain Soothfancy|r
+		.accept 8728
+		.turnin 8728
+		.target Narain Soothfancy
+		.isQuestTurnedIn 8587
+		.isQuestTurnedIn 8578
+		.isQuestTurnedIn 8620
+		.itemcount 12360,20
+		.itemcount 18562,20
+		.itemcount 12800,10
+		.itemcount 12361,10
 
 	step
 		.goto Tanaris,66.8,24.0
@@ -1050,6 +1089,24 @@ RXPGuides.RegisterGuide([[
 		.turnin 5057
 		.target Storm Shadowhoof	
 		.isQuestTurnedIn 5056			
+
+	step
+		.goto Winterspring,61.33,37.19
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Seril Scourgebane|r
+		.turnin -5307
+		.target Seril Scourgebane
+
+	step
+		.goto Winterspring,61.33,37.13
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lilith the Lithe|r
+		.turnin -5305
+		.target Lilith the Lithe
+		
+	step
+		.goto Winterspring,61.30,37.07
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kilram|r
+		.turnin -5306
+		.target Kilram
 
 	step
 		.goto Winterspring,61.919,38.298
@@ -1564,7 +1621,38 @@ RXPGuides.RegisterGuide([[
 		.goto Orgrimmar,75.2,34.2
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Belgrom Rockmaul|r
 		.turnin -3507
-		.target Belgrom Rockmaul		
+		.target Belgrom Rockmaul	
+		
+	step
+		>>Get |cRXP_LOOT_Battle of Warsong Gulch|r shared from another toon or complete manually if not available
+		.goto Orgrimmar,79.78,30.34
+		.accept 8430
+		.itemcount 20558,3
+
+	step
+		>>Get |cRXP_LOOT_Conquering Arathi Basin|r shared from another toon or complete manually if not available
+		.goto Orgrimmar,79.78,30.34
+		.accept 8439
+		.itemcount 20559,3
+		
+	step
+		>>Get |cRXP_LOOT_Invaders of Alterac Valley|r shared from another toon or complete manually if not available
+		.goto Orgrimmar,79.78,30.34
+		.accept 8369
+		.itemcount 20560,3
+
+	step
+		.goto Orgrimmar,79.78,30.34
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Horde Warbringer|r
+		.turnin -8430
+		.turnin -8439
+		.turnin -8369
+		.turnin -11338
+		.turnin -11335
+		.turnin -11336
+		.turnin -11337
+		.turnin -11340
+		.turnin -95457
 
 	step
 		.goto Orgrimmar,63.61,51.22
@@ -1700,7 +1788,7 @@ RXPGuides.RegisterGuide([[
 		.isQuestTurnedIn 2937
 	
 	step
-		#completewith next
+		#completewith Hillsbradlast
 		.zone Alterac Mountains >>Travel to |cFFfa9602Alterac Mountains|r
 		.zoneskip Alterac Mountains
 
@@ -1716,30 +1804,6 @@ RXPGuides.RegisterGuide([[
 		.turnin 8272
 		.isQuestTurnedIn 7142
 		.target Voggah Deathgrip
-
-	step
-		.goto Alterac Mountains,63.08,59.87
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Horde Warbringer|r
-		.accept 8430
-		.turnin 8430
-		.target Horde Warbringer
-		.itemcount 20558,3
-
-	step
-		.goto Alterac Mountains,63.08,59.87
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Horde Warbringer|r	
-		.accept 8439
-		.turnin 8439
-		.target Horde Warbringer
-		.itemcount 20559,3
-		
-	step
-		.goto Alterac Mountains,63.08,59.87
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Horde Warbringer|r
-		.accept 8369
-		.turnin 8369
-		.target Horde Warbringer	
-		.itemcount 20560,3
 
 	step
 		.goto Alterac Mountains,62.27,58.89
@@ -1785,15 +1849,15 @@ RXPGuides.RegisterGuide([[
 		.target Warmaster Laggrond
 		.reputation 729,exalted,<0,1 
 		.isQuestTurnedIn 7161
-
+		
 	step
 		.goto Alterac Mountains,65.55,55.12
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Corporal Teeka Bloodsnarl|r
 		.turnin -7101
 		.turnin -7124
 		.turnin -7082
-		.target Corporal Teeka Bloodsnarl
-		
+		.target Corporal Teeka Bloodsnarl	
+
 	step
 		#label Hillsbradlast
 
@@ -2260,7 +2324,7 @@ RXPGuides.RegisterGuide([[
 		.goto Western Plaguelands,37.80,57.60,50,0
 		>>Kill the |cRXP_ENEMY_Jabbering Ghoul|r. Loot it for the |cRXP_LOOT_Good Luck Other-Half-Charm|r
 		>>|cRXP_WARN_Skip this quest if |cRXP_ENEMY_Jabbering Ghoul|r is not up
-		.use 12722 >> Use it to create the |cRXP_LOOT_Good Luck Good Luck Charm|r
+		.use 12722 >>Click |T133443:0|t[Good Luck Other-Half-Charm] to create the |cRXP_LOOT_Good Luck Charm|r
 		.complete 5051,1 
 		.unitscan Jabbering Ghoul
 		.isOnQuest 5051	
