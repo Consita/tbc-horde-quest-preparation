@@ -3015,7 +3015,35 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Swamp of Sorrows,45.45,55.08
 		+Open your |cRXP_PICK_Mailbox|r and collect your items via "/tbc companion"
-		>>Once done, or when you picked up your items yourself, complete this step manually		
+		>>Once done, or when you picked up your items yourself, complete this step manually	
+		
+	step << Warlock
+		.goto Swamp of Sorrows,48.6,55.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kartosh|r
+		.trainer >> Train your class spells
+		.target Kartosh
+		.xp <61,1	
+		
+	step << Warrior
+		.goto Swamp of Sorrows,44.9,57.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Malosh|r
+		.trainer >> Train your class spells
+		.target Malosh
+		.xp <61,1
+		
+	step << Hunter
+		.goto Swamp of Sorrows,47.3,53.4
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ogromm|r
+		.trainer >> Train your class spells
+		.target Ogromm	
+		.xp <61,1
+
+	step << Shaman
+		.goto Swamp of Sorrows,48.2,57.9
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Haromm|r
+		.trainer >> Train your class spells
+		.target Haromm	
+		.xp <61,1		
 
 	step
 		.goto Swamp of Sorrows,34.28,66.17

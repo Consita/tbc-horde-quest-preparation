@@ -2877,13 +2877,6 @@ RXPGuides.RegisterGuide([[
 		.zone Undercity >>Take Portal or get summon to |cFFfa9602Undercity|r
 		.zoneskip Undercity
 
-	step << Warlock
-		.goto Undercity,88.9,15.9
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Richard Kerwin|r
-		.trainer >> Train your class spells
-		.target Richard Kerwin
-		.xp <62,1	
-
 	step
 		.goto Undercity,71.65,29.28
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ralston Farnsley|r
@@ -2924,7 +2917,7 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Carolyn Ward|r
 		.trainer >> Train your class spells
 		.target Carolyn Ward
-		.xp <62,1
+		.xp <61,1
 
 	step
 		#completewith next
@@ -2952,7 +2945,7 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Champion Cyssa Dawnrose|r
 		.trainer >> Train your class spells
 		.target Champion Cyssa Dawnrose
-		.xp <62,1	
+		.xp <61,1	
 		
 	step
 		#label Undercitylast		
@@ -2969,22 +2962,15 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Archmage Shymm|r
 		.trainer >> Train your class spells
 		.target Archmage Shymm
-		.xp <62,1
+		.xp <61,1
 
 	step << Priest
 		.goto Thunder Bluff,24.5,22.6
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Malakai Cross|r
 		.trainer >> Train your class spells
 		.target Malakai Cross
-		.xp <62,1
+		.xp <61,1
 		
-	step << Shaman
-		.goto Thunder Bluff,22.0,18.8
-		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Beram Skychaser|r
-		.trainer >> Train your class spells
-		.target Beram Skychaser
-		.xp <62,1
-
 	step
 		.goto Thunder Bluff,43.1,42.8
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rumstag Proudstrider|r
@@ -3025,7 +3011,7 @@ RXPGuides.RegisterGuide([[
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kym Wildmane|r
 		.trainer >> Train your class spells
 		.target Kym Wildmane
-		.xp <62,1
+		.xp <61,1
 
 	step
 		.goto Thunder Bluff,75.7,31.6
@@ -3091,7 +3077,35 @@ RXPGuides.RegisterGuide([[
 	step
 		.goto Swamp of Sorrows,45.45,55.08
 		+Open your |cRXP_PICK_Mailbox|r and collect your items via "/tbc companion"
-		>>Once done, or when you picked up your items yourself, complete this step manually		
+		>>Once done, or when you picked up your items yourself, complete this step manually	
+		
+	step << Warlock
+		.goto Swamp of Sorrows,48.6,55.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kartosh|r
+		.trainer >> Train your class spells
+		.target Kartosh
+		.xp <61,1	
+		
+	step << Warrior
+		.goto Swamp of Sorrows,44.9,57.6
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Malosh|r
+		.trainer >> Train your class spells
+		.target Malosh
+		.xp <61,1
+		
+	step << Hunter
+		.goto Swamp of Sorrows,47.3,53.4
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ogromm|r
+		.trainer >> Train your class spells
+		.target Ogromm	
+		.xp <61,1
+
+	step << Shaman
+		.goto Swamp of Sorrows,48.2,57.9
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Haromm|r
+		.trainer >> Train your class spells
+		.target Haromm	
+		.xp <61,1		
 
 	step
 		.goto Swamp of Sorrows,34.28,66.17
