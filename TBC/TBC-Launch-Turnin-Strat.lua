@@ -1678,7 +1678,7 @@ RXPGuides.RegisterGuide([[
 		.isQuestTurnedIn 9233
 
 	step	
-		.goto Eastern Plaguelands,81.4,58.5
+		.goto Eastern Plaguelands,81.2,59.0
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rayne|r	
 		.accept 9136
 		.turnin 9136
