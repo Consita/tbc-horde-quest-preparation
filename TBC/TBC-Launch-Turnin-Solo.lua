@@ -1065,11 +1065,11 @@ RXPGuides.RegisterGuide([[
 		.itemcount 11040,10
 
 	step
-		.destroy 11020 >>Destroy |T133651:0|t[Evergreen Pouch]
+		.destroy 11020 >>Destroy |T133651:0|t[Evergreen Pouch] to free up bag space
 		.itemcount 11020,1		
 
 	step
-		.destroy 11022 >>Destroy |T136074:0|t[Packet of Tharlendris Seeds]
+		.destroy 11022 >>Destroy |T136074:0|t[Packet of Tharlendris Seeds] to free up bag space
 		.itemcount 11022,1			
 
 	step
@@ -2026,7 +2026,7 @@ RXPGuides.RegisterGuide([[
 		.itemcount 12844,1
 
 	step
-		.destroy 22568 >>Destroy |T134940:0|t[Sealed Craftsman's Writ]
+		.destroy 22568 >>Destroy |T134940:0|t[Sealed Craftsman's Writ] to free up bag space
 		.itemcount 22568,1			
 
 	step	
