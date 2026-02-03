@@ -49,7 +49,7 @@ local function Display()
 
 	local editBox = CreateFrame("EditBox", nil, wReleaseNotice, "InputBoxTemplate")
 	editBox:SetPoint("TOP", txtHeader, "BOTTOM", 0, -10)
-	editBox:SetSize(300, 20)
+	editBox:SetSize(400, 20)
 	editBox:SetAutoFocus(false)
 	editBox:SetJustifyH("CENTER")
 	editBox:SetJustifyV("TOP")
@@ -89,7 +89,9 @@ local function Create()
     wReleaseNotice.txtRead = CreateString("PLEASE READ", "GameFontNormalHuge3Outline", "TOP", wReleaseNotice, "TOP", 0, -28, nil, "CENTER", nil)
     wReleaseNotice.txtRead:SetTextColor(1,0.11,0.15)
 	SetPortraitToTexture(wReleaseNotice.portrait, CasualTBCPrep.AddonLogoTexture)
-	--[QoL]
+	
+    Display()
+    --[QoL]
 	wReleaseNotice:SetScript("OnShow", function() CasualTBCPrep.Sounds.PlaySound_RaidWarning() end)
 	wReleaseNotice:SetScript("OnHide", function() CasualTBCPrep.Sounds.PlaySound_Click() end)
 	wReleaseNotice:Hide();
@@ -100,13 +102,11 @@ function CasualTBCPrep.W_ReleaseNotice.Show()
 
 	if wReleaseNotice == nil then
 
-		Create(type)
+		Create()
 		if wReleaseNotice == nil then
 			return
 		end
 	end
-
-    Display()
 
 	if not wReleaseNotice:IsShown() then
 		wReleaseNotice:Show()
