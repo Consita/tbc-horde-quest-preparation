@@ -2140,8 +2140,16 @@ RXPGuides.RegisterGuide([[
 		.goto Tirisfal Glades,83.2,71.2
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mehlar Dawnblade|r
 		.turnin -9444
-		.target Mehlar Dawnblade			
+		.target Mehlar Dawnblade
 		
+	step << Paladin
+		.goto Tirisfal Glades,83.2,71.2
+		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mehlar Dawnblade|r
+		.accept 10590
+		.turnin 10590
+		.target Mehlar Dawnblade
+		.itemcount 12840,20
+
 	step
 		.goto Tirisfal Glades,83.3,69.2
 		>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Apothecary Dithers|r
