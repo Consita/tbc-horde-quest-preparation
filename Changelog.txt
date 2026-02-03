@@ -1,6 +1,9 @@
 Changelog:
+4.01 
+- Added Paladin-only turnin quest "Proving Your Hatred"
+- Rewrote the "Manual Mail Help" guide again.
 
-4.0
+4.0 (2026-02-03)
 - Added Battle for Alterac in Preparation
 - Went through all turnin guides and double checked .accept and .turnin steps
 	- Added trainer support where possible to all guides (solo doesn't have full support)
