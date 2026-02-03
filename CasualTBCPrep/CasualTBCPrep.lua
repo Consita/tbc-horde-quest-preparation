@@ -27,6 +27,8 @@ SlashCmdList["CASUAL_TBC_PREP"] = function(msg)
 		CasualTBCPrep.W_Main.Show();
 	elseif args[1] == "ghetto" then
 		CasualTBCPrep.GhettoHearth()
+	elseif args[1] == "release" then
+		CasualTBCPrep.W_ReleaseNotice.Show()
 	elseif args[1] == "resetmarkeditems" then
 		CasualTBCPrep.Settings.RemoveAllItemsMarkedAsStoredOnBankAlt()
 		CasualTBCPrep.W_Main.ReloadActiveTab()
