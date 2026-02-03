@@ -1,10 +1,28 @@
 Changelog:
 
 4.0
-- Fixed note for companion in all routes
-- Fixed dynamic quest requirements in all routes
-- Fixed steps and formatting for Dungeon Grind
+- Added Battle for Alterac in Preparation
 - Went through all turnin guides and double checked .accept and .turnin steps
+	- Added trainer support where possible to all guides (solo doesn't have full support)
+	- Added multiple .destroy steps to clean up inventory to all turnin guides
+	- Added Blacksmith, PvP and partly AQ quest turnins to all turnin routes
+	- Added Vendor and Bank steps to all turnin routes
+	- Added note for low exp quest in case of full questlog
+	- Added additional warnings and notes to the beginning of all turnin routes
+	- Added note for RP in Tanaris
+	- Added note to Alexi Barov NPC
+	- Removed multiple .accept steps as only .turnin is needed
+	- Fixed Jabbering Ghoul description
+	- Fixed waypoints and order for Moonglade quests
+	- Fixed waypoint for Rayne in EPL
+	- Fixed felvine shard quest
+	- Fixed travel steps
+	- Fixed dynamic quest requirements in all turnin routes
+	- Fixed Taste of Flame quest
+	- Fixed Cenarion reputation for relevant quests
+	- Fixed Brann Bronzebeard's Lost Letter steps
+- Fixed note for companion in all routes
+- Fixed steps and formatting for Dungeon Grind
 - Minor formatting and text tweaks to current preparation guides
 - "The Battle for Darrowshire" is now properly a prequest for "Hidden Treasures" again
 - Clarified that the "The Truth Comes Crashing Down" prequest comes from an item, not from EPL Town
