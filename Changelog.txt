@@ -31,6 +31,7 @@ Changelog:
 - Fix Armanents of War quests being multiple for some classes
 - Companion: Now works in Felwood again after prepatch change to the zone
 - Companion: When opened, it will now open the step for the current map/zone/subzone, if there is one.
+- Added a "Release Notice" warning window
 
 3.22 (2026-01-29)
 - Finished RXP Turn-in guide for Solo Route.

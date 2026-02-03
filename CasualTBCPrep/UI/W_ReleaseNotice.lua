@@ -33,19 +33,20 @@ local function Display()
     local txtComing = CreateString("TBC is around the corner!", "GameFontNormalSmall", "TOP", wReleaseNotice.txtRead, "BOTTOM", 0, -10, clr, "CENTER", nil)
 
     local txtHeader = CreateString("Reminders:", "GameFontNormal", "LEFT", wReleaseNotice, "TOPLEFT", 9, -80, clrHdr, "LEFT", nil)
-    local txt = CreateString("1. Go to Step 1 in 'Quests Part 1' of your chosen guide and run through all steps.\r    We have made many changes & additions to the quest prep!", "GameFontNormalSmall", "TOPLEFT", txtHeader, "BOTTOMLEFT", 2, -4, clr, "LEFT", nil)
-    txt = CreateString("2. Check that you have all flightpaths in the extras tab!\r    New ones were added with prepatch", "GameFontNormalSmall", "TOPLEFT", txt, "BOTTOMLEFT", 0, -8, clr, "LEFT", nil)
-    txt = CreateString("3. Your hearthstone should already be set!\r    Check the first step of your turnin guide to see where you need to set it.", "GameFontNormalSmall", "TOPLEFT", txt, "BOTTOMLEFT", 0, -8, clr, "LEFT", nil)
+    local txt = CreateString("1. Go to Step 1 in 'Quests Part 1' of your chosen RXP guide and run through all steps.\r    We have made many changes & additions to the quest prep!", "GameFontNormalSmall", "TOPLEFT", txtHeader, "BOTTOMLEFT", 2, -4, clr, "LEFT", nil)
+    txt = CreateString("2. Check that you have all flightpaths in the extras tab!\r    New ones were added with prepatch.", "GameFontNormalSmall", "TOPLEFT", txt, "BOTTOMLEFT", 0, -8, clr, "LEFT", nil)
+    txt = CreateString("3. Your hearthstone should already be set!\r    Check the first step of your turnin guide to see where you need to set it to.", "GameFontNormalSmall", "TOPLEFT", txt, "BOTTOMLEFT", 0, -8, clr, "LEFT", nil)
 
-    txt = CreateString("4. Make sure you have room in your bags (40+).\r    Mail your consumables and pick them up at Stonard or Thrallmar!", "GameFontNormalSmall", "TOPLEFT", txt, "BOTTOMLEFT", 0, -8, clr, "LEFT", nil)
-    txt = CreateString("5. Check that you marked all items as 'on an alt/bank/mailbox', to use the companion.\r    |cFFFF1C26IT WILL NOT WORK WITHOUT!|r", "GameFontNormalSmall", "TOPLEFT", txt, "BOTTOMLEFT", 0, -8, clr, "LEFT", nil)
+    txt = CreateString("4. Make sure you have room in your bags (40+ open slots).\r    Mail your consumables and pick them up at Stonard or Thrallmar!", "GameFontNormalSmall", "TOPLEFT", txt, "BOTTOMLEFT", 0, -8, clr, "LEFT", nil)
+    txt = CreateString("5. Check that you marked all items as 'on an alt/mailbox' to use the companion.\r    |cFFFF1C26IT WILL NOT WORK WITHOUT!|r", "GameFontNormalSmall", "TOPLEFT", txt, "BOTTOMLEFT", 0, -8, clr, "LEFT", nil)
     txt = CreateString("6. Check that all your BoE items are in your mail, and all BoP items are in your bank.\r    It's your character, you should double check this!", "GameFontNormalSmall", "TOPLEFT", txt, "BOTTOMLEFT", 0, -8, clr, "LEFT", nil)
 
-    txt = CreateString("7. Remember to disable the all the warnings in the /tbc settings tab. They will block you", "GameFontNormalSmall", "TOPLEFT", txt, "BOTTOMLEFT", 0, -8, clr, "LEFT", nil)
-    txt = CreateString("8. Also, remember to turn back on the RXP Quest AutoAccept/Complete feature.", "GameFontNormalSmall", "TOPLEFT", txt, "BOTTOMLEFT", 0, -8, clr, "LEFT", nil)
-    txt = CreateString("9. Remind your friends to update the addon. We made a lot of bugfixes in this version.", "GameFontNormalSmall", "TOPLEFT", txt, "BOTTOMLEFT", 0, -8, clr, "LEFT", nil)
+    txt = CreateString("7. On launch, remember to disable all the warnings in the /tbc settings tab.", "GameFontNormalSmall", "TOPLEFT", txt, "BOTTOMLEFT", 0, -8, clr, "LEFT", nil)
+    txt = CreateString("8. Also on launch, remember to turn on the RXP Quest AutoAccept/Complete feature.", "GameFontNormalSmall", "TOPLEFT", txt, "BOTTOMLEFT", 0, -8, clr, "LEFT", nil)
 
     txtHeader = CreateString("We sacrificed a character to test the 'Main/Group' route.\rYou can see the run edited together here.", "GameFontNormal", "BOTTOM", wReleaseNotice, "BOTTOM", 0, 45, clrHdr, "CENTER", nil)
+
+    txt = CreateString("Remind your friends to update the addon. We made a lot of bugfixes in this version.", "GameFontNormalSmall", "BOTTOM", txtHeader, "TOP", 0, 24, clr, "CENTER", nil)
 
     local youtubeLink = "https://youtu.be/c7443D-OnHw"
 	local editBox = CreateFrame("EditBox", nil, wReleaseNotice, "InputBoxTemplate")
