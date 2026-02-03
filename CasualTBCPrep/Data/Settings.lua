@@ -197,6 +197,10 @@ function CasualTBCPrep.Settings.LoadDefaults()
 		end
 	end
 
+	if charMajorVersionVal <= CasualTBCPrep.Settings.VersionCheck_ReleaseNotice then
+		CasualTBCPrep.W_ReleaseNotice:Show();
+	end
+
 	-- Should probably always be last
 	CasualTBCPrep.Settings.SetCharSetting(CasualTBCPrep.Settings.CurrentMajorVersion, CasualTBCPrep.Settings.CurrentMajorVersionValue)
 end

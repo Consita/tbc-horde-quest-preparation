@@ -47,10 +47,13 @@ local function Display()
     txtHeader = CreateString("We sacrificed a character to test the 'Main/Group' route.\rYou can see the run edited together here.", "GameFontNormal", "BOTTOM", wReleaseNotice, "BOTTOM", 0, 45, clrHdr, "CENTER", nil)
 
     txt = CreateString("Remind your friends to update the addon. We made a lot of bugfixes in this version.", "GameFontNormalSmall", "BOTTOM", txtHeader, "TOP", 0, 24, clr, "CENTER", nil)
+    txt:SetTextColor(0.9,0.9,0.9)
+    txt = CreateString("You can open this window again with '/tbc release'", "GameFontNormalSmall", "TOP", txt, "BOTTOM", 0, -1, clr, "CENTER", nil)
+    txt:SetTextColor(0.9,0.9,0.9)
 
     local youtubeLink = "https://youtu.be/c7443D-OnHw"
 	local editBox = CreateFrame("EditBox", nil, wReleaseNotice, "InputBoxTemplate")
-	editBox:SetPoint("TOP", txtHeader, "BOTTOM", 0, -10)
+	editBox:SetPoint("TOP", txtHeader, "BOTTOM", 0, -80)
 	editBox:SetSize(320, 20)
 	editBox:SetFontObject(GameFontNormalSmall)
 	editBox:SetAutoFocus(false)
