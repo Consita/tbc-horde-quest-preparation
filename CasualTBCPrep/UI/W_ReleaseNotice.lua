@@ -47,15 +47,16 @@ local function Display()
 
     txtHeader = CreateString("We sacrificed a character to test the 'Main/Group' route.\rYou can see the run edited together here.", "GameFontNormal", "BOTTOM", wReleaseNotice, "BOTTOM", 0, 45, clrHdr, "CENTER", nil)
 
+    local youtubeLink = "https://youtu.be/c7443D-OnHw"
 	local editBox = CreateFrame("EditBox", nil, wReleaseNotice, "InputBoxTemplate")
 	editBox:SetPoint("TOP", txtHeader, "BOTTOM", 0, -10)
-	editBox:SetSize(400, 20)
+	editBox:SetSize(320, 20)
+	editBox:SetFontObject(GameFontNormalSmall)
 	editBox:SetAutoFocus(false)
 	editBox:SetJustifyH("CENTER")
 	editBox:SetJustifyV("TOP")
-    editBox:SetText("https://www.youtube.com/watch?v=c7443D-OnHw")
-
-
+    editBox:SetText(youtubeLink)
+    editBox:SetTextColor(0.9,0.9,0.9)
 end
 
 --@param type string|nil
