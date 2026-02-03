@@ -360,6 +360,7 @@ local questsMetadata = {
 	[7502] = { name="Harnessing Shadows", baseexp=14300, qlvl=60, type="disabled", reqItems="18360-1", playerClass="WARLOCK", routes="Main,Strat,Solo", routeSection="felwoodTown", areaType="Dungeon", area="Dire Maul", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turnin guide will NOT turn in this quest, you MUST plan this yourself" },
 	[7499] = { name="Codex of Defense", baseexp=14300, qlvl=60, type="disabled", reqItems="18357-1", playerClass="WARRIOR", routes="Main,Strat,Solo", routeSection="felwoodTown", areaType="Dungeon", area="Dire Maul", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turnin guide will NOT turn in this quest, you MUST plan this yourself" },
 	[7507] = { name="Nostro's Compendium", baseexp=14300, qlvl=60, type="disabled", reqItems="18401-1", routes="Main,Strat,Solo", routeSection="felwoodTown", areaType="Dungeon", area="Dire Maul", comments="This quest was added from the EXTRAS tab, ROUTING IS NOT SUPPORTED. Our RXP turnin guide will NOT turn in this quest, you MUST plan this yourself" },
+	[10590] = { name="Prove Your Hatred", baseexp=7350, qlvl=52, type="turnin", reqItems="12840-20", playerClass="PALADIN", routes="Main,Strat,Solo", routePickup="WPLBulwark", routeSection="WPLBulwark", areaType="Zone", area="Western Plaguelands", },
 }
 
 for qID,q in pairs(questsMetadata) do
