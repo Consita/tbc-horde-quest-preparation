@@ -226,8 +226,10 @@ local itemsMetadata = {
     [17906] = { name="Frostwolf Insignia Rank 3", rarity=2, texture=133284, quests="7165", sources="Alterac Valley Reputation Quest" },
     [17907] = { name="Frostwolf Insignia Rank 4", rarity=3, texture=133285, quests="7166", sources="Alterac Valley Reputation Quest" },
     [17908] = { name="Frostwolf Insignia Rank 5", rarity=3, texture=133286, quests="7167", sources="Alterac Valley Reputation Quest" },
-    [12562] = { name="Important Blackrock Documents", rarity=1, texture=134938, quests="4903", sources="LBRS object" },
+    [12562] = { name="Important Blackrock Documents", rarity=1, texture=134938, quests="4903", sources="LBRS Object" },
     [12840] = { name="Minion's Scourgestone", rarity=1, texture=133447, quests="10590", sources="Killing undead in WPL/EPL (& dungeons) with the Argent Dawn Commision trinket equipped" },
+    [18261] = { name="Book of Incantations", rarity=1, texture=133739, quests="7441", sources="Dropped by Pusillin In Dire Maul" },
+    
 }
 
 for id,i in pairs(itemsMetadata) do
