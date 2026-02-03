@@ -1,5 +1,5 @@
 Changelog:
-4.01 
+4.1 
 - Added Paladin-only turnin quest "Proving Your Hatred"
 - Rewrote the "Manual Mail Help" guide again.
 - Added Required Item to "A Reliquary of Purity"
