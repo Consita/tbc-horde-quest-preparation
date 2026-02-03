@@ -53,7 +53,7 @@ local function Display()
 
     local youtubeLink = "https://youtu.be/c7443D-OnHw"
 	local editBox = CreateFrame("EditBox", nil, wReleaseNotice, "InputBoxTemplate")
-	editBox:SetPoint("TOP", txtHeader, "BOTTOM", 0, -80)
+	editBox:SetPoint("TOP", txtHeader, "BOTTOM", 0, -8)
 	editBox:SetSize(320, 20)
 	editBox:SetFontObject(GameFontNormalSmall)
 	editBox:SetAutoFocus(false)
