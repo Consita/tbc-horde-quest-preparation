@@ -4,6 +4,8 @@ Changelog:
 - Rewrote the "Manual Mail Help" guide again.
 - Added Required Item to "A Reliquary of Purity"
 - Added Required Item to "Pusillin and the Elder Azj'Tordin"
+- The "Black Dragonflight Molt" Item tooltip now properly shows if it's in your selected route
+- The "Black Dragonflight Molt" Item tooltip on the Items tab now correctly show being related to the "A Taste of Flame" quest
 
 4.0 (2026-02-03)
 - Added Battle for Alterac in Preparation
