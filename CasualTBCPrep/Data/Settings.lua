@@ -198,7 +198,12 @@ function CasualTBCPrep.Settings.LoadDefaults()
 	end
 
 	if charMajorVersionVal <= CasualTBCPrep.Settings.VersionCheck_ReleaseNotice then
-		CasualTBCPrep.W_ReleaseNotice:Show();
+		local playerLevel = UnitLevel("player")
+		if playerLevel == nil or playerLevel == 60 then
+			C_Timer.After(5, function()
+				CasualTBCPrep.W_ReleaseNotice:Show();
+			end)
+		end
 	end
 
 	-- Should probably always be last
