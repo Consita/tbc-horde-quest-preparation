@@ -105,7 +105,7 @@ CasualTBCPrep.Routing.Routes = {
             info1="This route was made for a 5man group that wants a headstart before entering TBC",
             info2="3 Summons can be skipped for less or slower exp",
             info3="",
-            possibleLevelText="Possible Level: 62 + 80%",
+            possibleLevelText="Possible Level: 62 + 79%",
             estimatedTimeText="Estimated Time:   73 minutes"
         },
         preparation=
