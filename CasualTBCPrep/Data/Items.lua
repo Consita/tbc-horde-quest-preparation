@@ -229,7 +229,7 @@ local itemsMetadata = {
     [12562] = { name="Important Blackrock Documents", rarity=1, texture=134938, quests="4903", sources="LBRS Object" },
     [12840] = { name="Minion's Scourgestone", rarity=1, texture=133447, quests="10590", sources="Killing undead in WPL/EPL (& dungeons) with the Argent Dawn Commision trinket equipped" },
     [18261] = { name="Book of Incantations", rarity=1, texture=133739, quests="7441", sources="Dropped by Pusillin In Dire Maul" },
-    
+    [22201] = { name="Reliquary of Purity", rarity=1, texture=132595, quests="5527", sources="Looted from Silithus hive, or given for the folllowup quest" },    
 }
 
 for id,i in pairs(itemsMetadata) do
