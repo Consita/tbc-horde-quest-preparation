@@ -1,4 +1,7 @@
 Changelog:
+4.2
+- Fixed Enchanted Thorium PLatemail not being looted for the Blacksmithing Diremaul quests
+
 4.1 
 - Added Paladin-only turnin quest "Proving Your Hatred"
 - Rewrote the "Manual Mail Help" guide again.
